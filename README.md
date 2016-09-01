@@ -4,10 +4,10 @@
 2. With Custom SQL Server Configuration.ini
 
 ## To Run as Is
-  Full Install. Open CMD and run   
+  Full Install, in CMD run   
   ```start http://bit.ly/win10boxstarter```   
   
-  Chocolatey Only: Open CMD and run   
+  Chocolatey Only, in CMD run   
   ```start http://bit.ly/win10boxstarter-choco```
 
 ## Short Links
