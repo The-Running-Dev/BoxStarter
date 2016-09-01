@@ -5,7 +5,7 @@
 
 ## To Run as Is
   Full Install. Open CMD and run   
-  ```start http://bit.ly/win10boxstarter```
+  ```start http://bit.ly/win10boxstarter```   
   Chocolatey Only: Open CMD and run   
   ```start http://bit.ly/win10boxstarter-choco```
 
