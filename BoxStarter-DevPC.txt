@@ -38,7 +38,7 @@ Set-TaskbarOptions -Size Small -Lock -Dock Bottom -Combine Full
 
 # Move-LibraryDirectory "Documents""$env:UserProfile\skydrive\documents"
 
-Install-WindowsUpdate -AcceptEula -criteria "IsInstalled=0 and (Type='Driver' or Type='Software')"
+Install-WindowsUpdate -AcceptEula -Criteria "IsAssigned=1 and IsHidden=0 and IsInstalled=0" -SuppressReboots
 if (Test-PendingReboot) { Invoke-Reboot }
 ########################################
 
