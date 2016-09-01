@@ -2,7 +2,7 @@
 # start http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/Boyan-Kostadinov/BoxStarter/master/BoxStarter-DevPC.txt
 
 # Install Chocolatey
-# iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 ########################################
 # Boxstarter options
@@ -207,18 +207,13 @@ cinst K-LiteCodecPackMega -y
 cinst OpenLiveWriter -y
 cinst Office365Business -y
 cinst VMWareWorkstation -y
+cinst nodejs.install
 
 cinst MSSQLServerManagementStudio2014Express -y
 if (Test-PendingReboot) { Invoke-Reboot }
 
-# ESET
-# EditPad
-# ACDSee
-# PreCode
-
-#cinst nodejs.install
-
 #cinst visualstudio2015enterprise --installargs "/ProductKey YOURKEYHERE" -y
+#cinst visualstudio2015enterprise -y
 #if (Test-PendingReboot) { Invoke-Reboot }
 
 #cinst resharper -y
@@ -229,29 +224,20 @@ if (Test-PendingReboot) { Invoke-Reboot }
 #Install-ChocolateyVsixPackage SaveAllTheTime https://visualstudiogallery.msdn.microsoft.com/ee676c7f-83e8-4ef8-87ab-22a95ae8f1d4/file/100488/15/SaveAllTheTime.vsix
 
 #Install-ChocolateyVsixPackage BuildOnSave https://github.com/pragmatrix/BuildOnSave/releases/download/0.21/BuildOnSave.vsix
+
+# ESET
+# EditPad Pro C:\EditPad\SetupEditPadPro736.exe /silent
+# ACDSee
+# PreCode
+# [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Parameters](time) "Type"="NoSync"(off) "Type"="NTP" (on)
+# [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\tzautoupdate](time zone) "Start"=dword:00000003 (off) "Start"=dword:00000004 (on)
 ########################################
 
 ########################################
 # SQL Server
 ########################################
-$sqlServerConfigurationUrl = "https://raw.githubusercontent.com/Boyan-Kostadinov/BoxStarter/master/SQLServer-Configuration.ini"
-
-$sqlServerConfigurationFile = "SQLServer-Configuration.ini"
-$sqlServerConfigurationFilePath = Join-Path (Join-Path (Get-Item $env:TEMP).FullName "chocolatey") $sqlServerConfigurationFile
-
-Invoke-WebRequest -Uri $sqlServerConfigurationUrl -OutFile $sqlServerConfigurationFilePath
-
-# SQL Server Parameters - https://msdn.microsoft.com/en-us/library/ms144259.aspx
-# How to Create the Configuration INI - https://msdn.microsoft.com/en-us/library/dd239405.aspx
-
-$installArgs = "/ConfigurationFile=""$($sqlServerConfigurationFilePath)"" /SAPWD=""SetYourOwn"""
-
-# SQL Server Parameters - https://msdn.microsoft.com/en-us/library/ms144259.aspx
-# How to Create the Configuration INI - https://msdn.microsoft.com/en-us/library/dd239405.aspx
-
-cinst MSSQLServer2014Express -y --installargs $installArgs
-
-if (Test-PendingReboot) { Invoke-Reboot }
+# iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Boyan-Kostadinov/BoxStarter/master/SQLServer-Install.ps1'))
+# if (Test-PendingReboot) { Invoke-Reboot }
 ########################################
 
 ########################################
@@ -267,8 +253,7 @@ Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Microsoft VS 
 Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\GitExtensions\GitExtensions.exe"
 Install-ChocolateyPinnedTaskBarItem "$env:APPDATA\Spotify\Spotify.exe"
 Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles)\ConEmu\ConEmu64.exe"
-
-#Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe"
+#Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.com"
 ########################################
 
 ########################################
