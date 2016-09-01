@@ -4,8 +4,10 @@
 2. With Custom SQL Server Configuration.ini
 
 ## To Run as Is
-..Full Install. Open CMD and run: ```start http://bit.ly/win10boxstarter```
-..Chocolatey Only: Open CMD and run: ```start http://bit.ly/win10boxstarter-choco```
+  Full Install. Open CMD and run   
+  ```start http://bit.ly/win10boxstarter```
+  Chocolatey Only: Open CMD and run   
+  ```start http://bit.ly/win10boxstarter-choco```
 
 ## Short Links
 - SQL Server Configuration: http://bit.ly/win10boxstarter-sqlserverconfig
