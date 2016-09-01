@@ -1,5 +1,5 @@
 # The command to run, built from the raw link of this gist
-# start http://boxstarter.org/package/nr/url?https://gist.githubusercontent.com/Boyan-Kostadinov/46c3c49d5b3dc597f488edce9d9fcc33/raw/cd274770830a0b306f6f6bc71bd52999bf3b9556/Windows%2520Install
+# start http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/Boyan-Kostadinov/BoxStarter/master/BoxStarter-DevPC.txt
 
 $sqlServerConfigurationUrl = "https://raw.githubusercontent.com/Boyan-Kostadinov/BoxStarter/master/SQLServer-Configuration.ini"
 
