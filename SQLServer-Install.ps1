@@ -14,7 +14,7 @@ $silentArgs = "/IAcceptSQLServerLicenseTerms ConfigurationFile=""$($sqlServerCon
 # SQL Server Parameters - https://msdn.microsoft.com/en-us/library/ms144259.aspx
 # How to Create the Configuration INI - https://msdn.microsoft.com/en-us/library/dd239405.aspx
 # Get the Configuration file
-Invoke-WebRequest -Uri $sqlServerConfigurationUrl -OutFile $sqlServerConfigurationFilePath
+Get-ChocolateyWebFile $sqlServerConfigurationFile $sqlServerConfigurationFilePath $sqlServerConfigurationUrl
 
 # Create the directory if it doesn't exist
 [System.IO.Directory]::CreateDirectory($tempDir) | Out-Null
