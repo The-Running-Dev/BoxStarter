@@ -27,7 +27,6 @@ Write-BoxstarterMessage "Configuring Windows"
 Update-ExecutionPolicy Unrestricted
 
 Enable-RemoteDesktop
-Enable-MicrosoftUpdate
 
 Set-StartScreenOptions -EnableBootToDesktop -EnableDesktopBackgroundOnStart -EnableShowStartOnActiveScreen -EnableShowAppsViewOnStartScreen -EnableSearchEverywhereInAppsView -EnableListDesktopAppsFirst
 
@@ -41,7 +40,6 @@ Set-TaskbarOptions -Size Small -Lock -Dock Bottom -Combine Full
 
 # Move-LibraryDirectory "Documents""$env:UserProfile\skydrive\documents"
 
-Install-WindowsUpdate -AcceptEula -Criteria "IsAssigned=1 and IsHidden=0 and IsInstalled=0" -SuppressReboots
 if (Test-PendingReboot) { Invoke-Reboot }
 ########################################
 
@@ -209,7 +207,7 @@ cinst DataGrip -y
 cinst Slack -y
 cinst K-LiteCodecPackMega -y
 cinst OpenLiveWriter -y
-cinst Office365ProPlus -y
+cinst Office365Business -y
 cinst VMWareWorkstation -y
 
 cinst MSSQLServerManagementStudio2014Express -y
@@ -265,3 +263,11 @@ Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles)\ConEmu\ConEmu64
 
 #Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe"
 ########################################
+
+########################################
+# Windows Updates
+########################################
+Enable-MicrosoftUpdate
+
+Install-WindowsUpdate -AcceptEula -Criteria "IsAssigned=1 and IsHidden=0 and IsInstalled=0" -SuppressReboots
+if (Test-PendingReboot) { Invoke-Reboot }
