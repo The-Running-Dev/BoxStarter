@@ -1,7 +1,7 @@
-@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-
 # The command to run, built from the raw link of this gist
 # start http://boxstarter.org/package/nr/url?https://gist.githubusercontent.com/Boyan-Kostadinov/46c3c49d5b3dc597f488edce9d9fcc33/raw/cd274770830a0b306f6f6bc71bd52999bf3b9556/Windows%2520Install
+
+$sqlServerConfigurationUrl = "https://raw.githubusercontent.com/Boyan-Kostadinov/BoxStarter/master/SQLServer-Configuration.ini"
 
 ########################################
 # Boxstarter options
@@ -34,7 +34,7 @@ Disable-UAC
 Disable-GameBarTips
 Disable-InternetExplorerESC
 
-Set-TaskbarOptions -Size Small -Lock -Dock Bottom -Combine WhenFull
+Set-TaskbarOptions -Size Small -Lock -Dock Bottom -Combine Full
 
 # Move-LibraryDirectory "Documents""$env:UserProfile\skydrive\documents"
 
@@ -177,7 +177,7 @@ cinst IIS-ARR -y
 ########################################
 
 ########################################
-# Applications. See: https://chocolatey.org/packages
+# Applications. See https://chocolatey.org/packages
 ########################################
 Write-BoxstarterMessage "Installing Applications"
 
@@ -210,11 +210,6 @@ cinst Office365ProPlus -y
 cinst VMWareWorkstation -y
 
 cinst MSSQLServerManagementStudio2014Express -y
-#if (Test-PendingReboot) { Invoke-Reboot }
-
-# SQL Server Parameters - https://msdn.microsoft.com/en-us/library/ms144259.aspx
-# How to Create the Configuration INI - https://msdn.microsoft.com/en-us/library/dd239405.aspx
-cinst MSSQLServer2014Express -y --installargs '"/ConfigurationFile=""C:\Temp\ConfigurationFile.ini"" /SAPWD=""SetYourOwn"""'
 if (Test-PendingReboot) { Invoke-Reboot }
 
 # ESET
@@ -235,6 +230,20 @@ if (Test-PendingReboot) { Invoke-Reboot }
 #Install-ChocolateyVsixPackage SaveAllTheTime https://visualstudiogallery.msdn.microsoft.com/ee676c7f-83e8-4ef8-87ab-22a95ae8f1d4/file/100488/15/SaveAllTheTime.vsix
 
 #Install-ChocolateyVsixPackage BuildOnSave https://github.com/pragmatrix/BuildOnSave/releases/download/0.21/BuildOnSave.vsix
+########################################
+
+########################################
+# SQL Server
+########################################
+$sqlServerConfigurationFile = "SQLServer-Configuration.ini"
+$sqlServerConfigurationFilePath = Join-Path (Join-Path (Get-Item $env:TEMP).FullName "chocolatey") $sqlServerConfigurationFile
+
+Invoke-WebRequest -Uri $sqlServerConfigurationUrl -OutFile $sqlServerConfigurationFilePath
+
+# SQL Server Parameters - https://msdn.microsoft.com/en-us/library/ms144259.aspx
+# How to Create the Configuration INI - https://msdn.microsoft.com/en-us/library/dd239405.aspx
+cinst MSSQLServer2014Express -y --installargs '"/ConfigurationFile=""$sqlServerConfigurationFilePath"" /SAPWD=""SetYourOwn"""'
+if (Test-PendingReboot) { Invoke-Reboot }
 ########################################
 
 ########################################
