@@ -1,3 +1,5 @@
+# DOES NOI WORK as is, needs to be inside a ChocolateyInstall.ps1 in a NuGet package
+
 $packageName = "MsSqlServer2014Express"
 $chocolateyTempDir = Join-Path (Get-Item $env:TEMP).FullName "chocolatey"
 $tempDir = Join-Path $chocolateyTempDir $packageName
