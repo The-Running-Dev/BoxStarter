@@ -10,6 +10,12 @@
   Chocolatey Only, in CMD run   
   ```start http://bit.ly/win10boxstarter-choco```
 
+## ToDo
+  Create NuGet package for SQL Server and make BoxStarter use it
+  Create PowerShell script with registery changes
+  Create a way to do silent install on other software without chocolatey package
+  Restore settings for various application (WebStorm, DataGrip)
+  
 ## Short Links
 - SQL Server Configuration: http://bit.ly/win10boxstarter-sqlserverconfig
 - Visual Studio AdminFile: http://bit.ly/win10boxstarter-vsadmin
