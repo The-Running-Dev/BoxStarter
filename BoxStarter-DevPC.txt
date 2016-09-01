@@ -3,6 +3,9 @@
 
 $sqlServerConfigurationUrl = "https://raw.githubusercontent.com/Boyan-Kostadinov/BoxStarter/master/SQLServer-Configuration.ini"
 
+# Install Chocolatey
+# iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
 ########################################
 # Boxstarter options
 ########################################
