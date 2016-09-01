@@ -245,7 +245,12 @@ Invoke-WebRequest -Uri $sqlServerConfigurationUrl -OutFile $sqlServerConfigurati
 # How to Create the Configuration INI - https://msdn.microsoft.com/en-us/library/dd239405.aspx
 
 $installArgs = "/ConfigurationFile=""$($sqlServerConfigurationFilePath)"" /SAPWD=""SetYourOwn"""
-cinst MSSQLServer2014Express -y --installargs '$installArgs'
+
+# SQL Server Parameters - https://msdn.microsoft.com/en-us/library/ms144259.aspx
+# How to Create the Configuration INI - https://msdn.microsoft.com/en-us/library/dd239405.aspx
+
+cinst MSSQLServer2014Express -y --installargs $installArgs
+
 if (Test-PendingReboot) { Invoke-Reboot }
 ########################################
 
