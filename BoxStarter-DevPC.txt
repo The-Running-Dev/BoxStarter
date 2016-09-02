@@ -1,9 +1,6 @@
 # The command to run, built from the raw link of this gist
 # start http://bit.ly/win10boxstarter
 
-# Install Chocolatey
-# iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-
 ########################################
 # Boxstarter options
 ########################################
