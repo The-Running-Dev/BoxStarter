@@ -51,48 +51,48 @@ if (Test-PendingReboot) { Invoke-Reboot }
 ########################################
 Write-BoxstarterMessage "Installing Applications"
 
-cinst DotNet3.5 -y
-cinst LinkShellExtension -y
-cinst GoogleChrome -y
-cinst Paint.Net -y
-cinst WinDirStat -y
-cinst RoboForm -y
-cinst Dropbox -y
-cinst Launchy -y
-cinst Spotify -y
-cinst Kdiff3 -y
-cinst GitExtensions -y
-cinst JRE8 -y
-cinst DisplayFusion -y
-cinst ConEmu -y
-cinst MySql.Workbench -y
-cinst TeamViewer -y
-cinst WebPI -y
-cinst VisualStudioCode -y
-cinst WebStorm -y
-cinst DataGrip -y
-cinst Slack -y
-cinst K-LiteCodecPackMega -y
-cinst OpenLiveWriter -y
-cinst Office365Business -y
-cinst VMWareWorkstation -y
-cinst nodejs.install
+cinst DotNet3.5 -y --allowEmptyChecksums
+cinst LinkShellExtension -y --allowEmptyChecksums
+cinst GoogleChrome -y --allowEmptyChecksums
+cinst Paint.Net -y --allowEmptyChecksums
+cinst WinDirStat -y --allowEmptyChecksums
+cinst RoboForm -y --allowEmptyChecksums
+cinst Dropbox -y --allowEmptyChecksums
+cinst Launchy -y --allowEmptyChecksums
+cinst Spotify -y --allowEmptyChecksums
+cinst Kdiff3 -y --allowEmptyChecksums
+cinst GitExtensions -y --allowEmptyChecksums
+cinst JRE8 -y --allowEmptyChecksums
+cinst DisplayFusion -y --allowEmptyChecksums
+cinst ConEmu -y --allowEmptyChecksums
+cinst MySql.Workbench -y --allowEmptyChecksums
+cinst TeamViewer -y --allowEmptyChecksums
+cinst WebPI -y --allowEmptyChecksums
+cinst VisualStudioCode -y --allowEmptyChecksums
+cinst WebStorm -y --allowEmptyChecksums
+cinst DataGrip -y --allowEmptyChecksums
+cinst Slack -y --allowEmptyChecksums
+cinst K-LiteCodecPackMega -y --allowEmptyChecksums
+cinst OpenLiveWriter -y --allowEmptyChecksums
+cinst Office365Business -y --allowEmptyChecksums
+cinst VMWareWorkstation -y --allowEmptyChecksums
+cinst nodejs.install --allowEmptyChecksums
 
-cinst MSSQLServerManagementStudio2014Express -y
+cinst MSSQLServerManagementStudio2014Express -y --allowEmptyChecksums
 if (Test-PendingReboot) { Invoke-Reboot }
 
 # Provide optional product key with: --installargs "/ProductKey YOURKEYHERE"
-cinst VisualStudio2015Enterprise -y -packageParameters "--AdminFile http://bit.ly/win10boxstarter-vsadmin"
+cinst VisualStudio2015Enterprise -y -packageParameters "--AdminFile http://bit.ly/win10boxstarter-vsadmin" --allowEmptyChecksums
 if (Test-PendingReboot) { Invoke-Reboot }
 
-Install-ChocolateyVsixPackage SpellChecker http://bit.ly/win10boxstarter-vs-spellchecker
+Install-ChocolateyVsixPackage SpellChecker http://bit.ly/win10boxstarter-vs-spellchecker --allowEmptyChecksums
 
-Install-ChocolateyVsixPackage SaveAllTheTime http://bit.ly/win10boxstarert-vs-saveallthetime
+Install-ChocolateyVsixPackage SaveAllTheTime http://bit.ly/win10boxstarert-vs-saveallthetime --allowEmptyChecksums
 
-Install-ChocolateyVsixPackage BuildOnSave ttps://bit.ly/win10boxstarert-vs-buildonsave
+Install-ChocolateyVsixPackage BuildOnSave ttps://bit.ly/win10boxstarert-vs-buildonsave --allowEmptyChecksums
 
 # ReSharper
-cinst resharper-platform -y
+cinst resharper-platform -y --allowEmptyChecksums
 
 # Additonal software that doesn't have packages
 # ESET
