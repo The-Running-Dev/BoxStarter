@@ -4,10 +4,10 @@
 ########################################
 # Boxstarter options
 ########################################
-# Allow reboots
-$Boxstarter.RebootOk = $true
+# Don't allow reboots
+$Boxstarter.RebootOk = $false
 
-# Is this a machine with no login password?
+# Is this a machine with no login password
 $Boxstarter.NoPassword = $false
 
 # Save password securely and auto-login after a reboot
@@ -54,7 +54,10 @@ cinst GoogleChrome
 cinst Paint.Net
 cinst WinDirStat
 cinst RoboForm
-cinst Dropbox
+
+# Temporary fix for broken Dropbox package
+cinst Dropbox --version 9.4.49
+
 cinst Launchy
 cinst Spotify
 cinst Kdiff3
