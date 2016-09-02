@@ -2,7 +2,7 @@
 # start http://bit.ly/win10boxstarter
 
 # Install Chocolatey
-iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+# iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 ########################################
 # Boxstarter options
@@ -48,41 +48,41 @@ if (Test-PendingReboot) { Invoke-Reboot }
 ########################################
 Write-BoxstarterMessage "Installing Applications"
 
-# Enable empty checksums for Chocolatey
-choco feature enable -n allowEmptyChecksums
+# Enable empty global confirmation for Chocolatey
+choco feature enable -n allowGlobalConfirmation
 
-cinst DotNet3.5 -y
-cinst LinkShellExtension -y
-cinst GoogleChrome -y
-cinst Paint.Net -y
-cinst WinDirStat -y
-cinst RoboForm -y
-cinst Dropbox -y
-cinst Launchy -y
-cinst Spotify -y
-cinst Kdiff3 -y
-cinst GitExtensions -y
-cinst JRE8 -y
-cinst DisplayFusion -y
-cinst ConEmu -y
-cinst MySql.Workbench -y
-cinst TeamViewer -y
-cinst WebPI -y
-cinst VisualStudioCode -y
-cinst WebStorm -y
-cinst DataGrip -y
-cinst Slack -y
-cinst K-LiteCodecPackMega -y
-cinst OpenLiveWriter -y
-cinst Office365Business -y
-cinst VMWareWorkstation -y
+cinst DotNet3.5
+cinst LinkShellExtension
+cinst GoogleChrome
+cinst Paint.Net
+cinst WinDirStat
+cinst RoboForm
+cinst Dropbox
+cinst Launchy
+cinst Spotify
+cinst Kdiff3
+cinst GitExtensions
+cinst JRE8
+cinst DisplayFusion
+cinst ConEmu
+cinst MySql.Workbench
+cinst TeamViewer
+cinst WebPI
+cinst VisualStudioCode
+cinst WebStorm
+cinst DataGrip
+cinst Slack
+cinst K-LiteCodecPackMega
+cinst OpenLiveWriter
+cinst Office365Business
+cinst VMWareWorkstation
 cinst nodejs.install
 
-cinst MSSQLServerManagementStudio2014Express -y
+cinst MSSQLServerManagementStudio2014Express
 if (Test-PendingReboot) { Invoke-Reboot }
 
 # Provide optional product key with: --installargs "/ProductKey YOURKEYHERE"
-cinst VisualStudio2015Enterprise -y -packageParameters "--AdminFile http://bit.ly/win10boxstarter-vsadmin"
+cinst VisualStudio2015Enterprise -packageParameters "--AdminFile http://bit.ly/win10boxstarter-vsadmin"
 if (Test-PendingReboot) { Invoke-Reboot }
 
 Install-ChocolateyVsixPackage SpellChecker http://bit.ly/win10boxstarter-vs-spellchecker
@@ -92,7 +92,7 @@ Install-ChocolateyVsixPackage SaveAllTheTime http://bit.ly/win10boxstarert-vs-sa
 Install-ChocolateyVsixPackage BuildOnSave ttps://bit.ly/win10boxstarert-vs-buildonsave
 
 # ReSharper
-cinst resharper-platform -y
+cinst resharper-platform
 
 # Additonal software that doesn't have packages
 # ESET
