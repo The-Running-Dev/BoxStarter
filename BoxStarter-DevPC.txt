@@ -4,6 +4,9 @@
 # Install Chocolatey
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
+# Enable empty checksums for Chocolatey
+choco feature enable -n allowEmptyChecksums
+
 ########################################
 # Boxstarter options
 ########################################
@@ -28,9 +31,11 @@ Enable-RemoteDesktop
 
 Set-StartScreenOptions -EnableBootToDesktop -EnableDesktopBackgroundOnStart -EnableShowStartOnActiveScreen -EnableShowAppsViewOnStartScreen -EnableSearchEverywhereInAppsView -EnableListDesktopAppsFirst
 
-Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar -DisableOpenFileExplorerToQuickAccess -DisableShowRecentFilesInQuickAccess -DisableShowFrequentFoldersInQuickAccess -EnableExpandToOpenFolder
+Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions -EnableShowFullPathInTitleBar -DisableOpenFileExplorerToQuickAccess -DisableShowRecentFilesInQuickAccess -DisableShowFrequentFoldersInQuickAccess -EnableExpandToOpenFolder
 
-Disable-UAC
+# This requires restarts, disable for now
+# Disable-UAC
+
 Disable-GameBarTips
 Disable-InternetExplorerESC
 
@@ -46,130 +51,134 @@ if (Test-PendingReboot) { Invoke-Reboot }
 ########################################
 Write-BoxstarterMessage "Configuring Windows Features"
 
-cuninst LegacyComponents -source WindowsFeatures
-cuninst DirectPlay -source WindowsFeatures
-cuninst SimpleTCP -source WindowsFeatures
-cuninst SNMP -source WindowsFeatures
-cuninst WMISnmpProvider -source WindowsFeatures
-cuninst IIS-Metabase -source WindowsFeatures
-cuninst TelnetClient -source WindowsFeatures
-cuninst TFTP -source WindowsFeatures
-cuninst Xps-Foundation-Xps-Viewer -source WindowsFeatures
-cuninst WorkFolders-Client -source WindowsFeatures
-cuninst SMB1Protocol -source WindowsFeatures
-cuninst Microsoft-Hyper-V-All -source WindowsFeatures
-cuninst Microsoft-Hyper-V-Tools-All -source WindowsFeatures
-cuninst Microsoft-Hyper-V-Management-Clients -source WindowsFeatures
-cuninst Microsoft-Hyper-V-Management-PowerShell -source WindowsFeatures
-cuninst Microsoft-Hyper-V -source WindowsFeatures
-cuninst Microsoft-Hyper-V-Hypervisor -source WindowsFeatures
-cuninst Microsoft-Hyper-V-Services -source WindowsFeatures
-cuninst Printing-Foundation-Features -source WindowsFeatures
-cuninst Printing-Foundation-LPRPortMonitor -source WindowsFeatures
-cuninst Printing-Foundation-LPDPrintService -source WindowsFeatures
-cuninst Printing-Foundation-InternetPrinting-Client -source WindowsFeatures
-cuninst FaxServicesClientPackage -source WindowsFeatures
-cuninst ScanManagementConsole -source WindowsFeatures
-cuninst DirectoryServices-ADAM-Client -source WindowsFeatures
-cuninst ServicesForNFS-ClientOnly -source WindowsFeatures
-cuninst ClientForNFS-Infrastructure -source WindowsFeatures
-cuninst NFS-Administration -source WindowsFeatures
-cuninst RasCMAK -source WindowsFeatures
-cuninst TIFFIFilter -source WindowsFeatures
-cuninst IsolatedUserMode -source WindowsFeatures
-cuninst Client-EmbeddedShellLauncher -source WindowsFeatures
-cuninst Client-EmbeddedBootExp -source WindowsFeatures
-cuninst Client-EmbeddedLogon -source WindowsFeatures
-cuninst Client-KeyboardFilter -source WindowsFeatures
-cuninst Client-UnifiedWriteFilter -source WindowsFeatures
-cuninst MultiPoint-Connector -source WindowsFeatures
-cuninst IIS-ManagementService -source WindowsFeatures
-cuninst IIS-WMICompatibility -source WindowsFeatures
-cuninst IIS-LegacyScripts -source WindowsFeatures
-cuninst IIS-LegacySnapIn -source WindowsFeatures
-cuninst IIS-FTPServer -source WindowsFeatures 
-cuninst IIS-FTPSvc -source WindowsFeatures
-cuninst IIS-FTPExtensibility -source WindowsFeatures
-cuninst MSMQ-Triggers -source WindowsFeatures
-cuninst MSMQ-ADIntegration -source WindowsFeatures
-cuninst MSMQ-HTTP -source WindowsFeatures
-cuninst MSMQ-Multicast -source WindowsFeatures
-cuninst MSMQ-DCOMProxy -source WindowsFeatures
-cuninst Printing-PrintToPDFServices-Features -source WindowsFeatures
-cuninst Printing-XPSServices-Features -source WindowsFeatures
-cuninst RasRip -source WindowsFeatures
-cuninst MSRDC-Infrastructure -source WindowsFeatures
+cuninst LegacyComponents -source WindowsFeatures -y
+cuninst DirectPlay -source WindowsFeatures -y
+cuninst SimpleTCP -source WindowsFeatures -y
+cuninst SNMP -source WindowsFeatures -y
+cuninst WMISnmpProvider -source WindowsFeatures -y
+cuninst IIS-Metabase -source WindowsFeatures -y
+cuninst TelnetClient -source WindowsFeatures -y
+cuninst TFTP -source WindowsFeatures -y
+cuninst Xps-Foundation-Xps-Viewer -source WindowsFeatures -y
+cuninst WorkFolders-Client -source WindowsFeatures -y
+cuninst SMB1Protocol -source WindowsFeatures -y
+cuninst Microsoft-Hyper-V-All -source WindowsFeatures -y
+cuninst Microsoft-Hyper-V-Tools-All -source WindowsFeatures -y
+cuninst Microsoft-Hyper-V-Management-Clients -source WindowsFeatures -y
+cuninst Microsoft-Hyper-V-Management-PowerShell -source WindowsFeatures -y
+cuninst Microsoft-Hyper-V -source WindowsFeatures -y
+cuninst Microsoft-Hyper-V-Hypervisor -source WindowsFeatures -y
+cuninst Microsoft-Hyper-V-Services -source WindowsFeatures -y
+cuninst Printing-Foundation-Features -source WindowsFeatures -y
+cuninst Printing-Foundation-LPRPortMonitor -source WindowsFeatures -y
+cuninst Printing-Foundation-LPDPrintService -source WindowsFeatures -y
+cuninst Printing-Foundation-InternetPrinting-Client -source WindowsFeatures -y
+cuninst FaxServicesClientPackage -source WindowsFeatures -y
+cuninst ScanManagementConsole -source WindowsFeatures -y
+cuninst DirectoryServices-ADAM-Client -source WindowsFeatures -y
+cuninst ServicesForNFS-ClientOnly -source WindowsFeatures -y
+cuninst ClientForNFS-Infrastructure -source WindowsFeatures -y
+cuninst NFS-Administration -source WindowsFeatures -y
+cuninst RasCMAK -source WindowsFeatures -y
+cuninst TIFFIFilter -source WindowsFeatures -y
+cuninst IsolatedUserMode -source WindowsFeatures -y
+cuninst Client-EmbeddedShellLauncher -source WindowsFeatures -y
+cuninst Client-EmbeddedBootExp -source WindowsFeatures -y
+cuninst Client-EmbeddedLogon -source WindowsFeatures -y
+cuninst Client-KeyboardFilter -source WindowsFeatures -y
+cuninst Client-UnifiedWriteFilter -source WindowsFeatures -y
+cuninst MultiPoint-Connector -source WindowsFeatures -y
+cuninst IIS-ManagementService -source WindowsFeatures -y
+cuninst IIS-WMICompatibility -source WindowsFeatures -y
+cuninst IIS-LegacyScripts -source WindowsFeatures -y
+cuninst IIS-LegacySnapIn -source WindowsFeatures -y
+cuninst IIS-FTPServer -source WindowsFeatures -y 
+cuninst IIS-FTPSvc -source WindowsFeatures -y
+cuninst IIS-FTPExtensibility -source WindowsFeatures -y
+cuninst MSMQ-Triggers -source WindowsFeatures -y
+cuninst MSMQ-ADIntegration -source WindowsFeatures -y
+cuninst MSMQ-HTTP -source WindowsFeatures -y
+cuninst MSMQ-Multicast -source WindowsFeatures -y
+cuninst MSMQ-DCOMProxy -source WindowsFeatures -y
+cuninst Printing-PrintToPDFServices-Features -source WindowsFeatures -y
+cuninst Printing-XPSServices-Features -source WindowsFeatures -y
+cuninst RasRip -source WindowsFeatures -y
+cuninst MSRDC-Infrastructure -source WindowsFeatures -y
 
-cinst Windows-Identity-Foundation -source WindowsFeatures
-cinst MicrosoftWindowsPowerShellV2Root -source WindowsFeatures
-cinst MicrosoftWindowsPowerShellV2 -source WindowsFeatures
-cinst Internet-Explorer-Optional-amd64 -source WindowsFeatures
-cinst NetFx3 -source WindowsFeatures
-cinst IIS-WebServerRole -source WindowsFeatures
-cinst IIS-WebServer -source WindowsFeatures
-cinst IIS-CommonHttpFeatures -source WindowsFeatures
-cinst IIS-HttpErrors -source WindowsFeatures
-cinst IIS-HttpRedirect -source WindowsFeatures
-cinst IIS-ApplicationDevelopment -source WindowsFeatures
-cinst IIS-NetFxExtensibility -source WindowsFeatures
-cinst IIS-NetFxExtensibility45 -source WindowsFeatures
-cinst IIS-HealthAndDiagnostics -source WindowsFeatures
-cinst IIS-HttpLogging -source WindowsFeatures
-cinst IIS-LoggingLibraries -source WindowsFeatures
-cinst IIS-RequestMonitor -source WindowsFeatures
-cinst IIS-HttpTracing -source WindowsFeatures
-cinst IIS-Security -source WindowsFeatures
-cinst IIS-URLAuthorization -source WindowsFeatures
-cinst IIS-RequestFiltering -source WindowsFeatures
-cinst IIS-IPSecurity -source WindowsFeatures
-cinst IIS-Performance -source WindowsFeatures
-cinst IIS-HttpCompressionDynamic -source WindowsFeatures
-cinst IIS-WebServerManagementTools -source WindowsFeatures
-cinst IIS-ManagementScriptingTools -source WindowsFeatures
-cinst IIS-IIS6ManagementCompatibility -source WindowsFeatures
-cinst WAS-WindowsActivationService -source WindowsFeatures
-cinst WAS-ProcessModel -source WindowsFeatures
-cinst WAS-NetFxEnvironment -source WindowsFeatures
-cinst WAS-ConfigurationAPI -source WindowsFeatures
-cinst IIS-HostableWebCore -source WindowsFeatures
-cinst WCF-HTTP-Activation -source WindowsFeatures
-cinst WCF-NonHTTP-Activation -source WindowsFeatures
-cinst WCF-Services45 -source WindowsFeatures
-cinst WCF-HTTP-Activation45 -source WindowsFeatures
-cinst WCF-TCP-Activation45 -source WindowsFeatures
-cinst WCF-Pipe-Activation45 -source WindowsFeatures
-cinst WCF-MSMQ-Activation45 -source WindowsFeatures
-cinst WCF-TCP-PortSharing45 -source WindowsFeatures
-cinst IIS-CertProvider -source WindowsFeatures
-cinst IIS-WindowsAuthentication -source WindowsFeatures
-cinst IIS-DigestAuthentication -source WindowsFeatures
-cinst IIS-ClientCertificateMappingAuthentication -source WindowsFeatures
-cinst IIS-IISCertificateMappingAuthentication -source WindowsFeatures
-cinst IIS-ODBCLogging -source WindowsFeatures
-cinst IIS-StaticContent -source WindowsFeatures
-cinst IIS-DefaultDocument -source WindowsFeatures
-cinst IIS-DirectoryBrowsing -source WindowsFeatures
-cinst IIS-WebDAV -source WindowsFeatures
-cinst IIS-WebSockets -source WindowsFeatures
-cinst IIS-ApplicationInit -source WindowsFeatures
-cinst IIS-ASPNET -source WindowsFeatures
-cinst IIS-ASPNET45 -source WindowsFeatures
-cinst IIS-ASP -source WindowsFeatures
-cinst IIS-CGI -source WindowsFeatures
-cinst IIS-ISAPIExtensions -source WindowsFeatures
-cinst IIS-ISAPIFilter -source WindowsFeatures
-cinst IIS-ServerSideIncludes -source WindowsFeatures
-cinst IIS-CustomLogging -source WindowsFeatures
-cinst IIS-BasicAuthentication -source WindowsFeatures
-cinst IIS-HttpCompressionStatic -source WindowsFeatures
-cinst IIS-ManagementConsole -source WindowsFeatures
-cinst MSMQ-Container -source WindowsFeatures
-cinst MSMQ-Server -source WindowsFeatures
-cinst NetFx4-AdvSrvs -source WindowsFeatures
-cinst NetFx4Extended-ASPNET45 -source WindowsFeatures
-cinst MediaPlayback -source WindowsFeatures
-cinst WindowsMediaPlayer -source WindowsFeatures
-cinst SearchEngine-Client-Package -source WindowsFeatures
+if (Test-PendingReboot) { Invoke-Reboot }
+
+cinst Windows-Identity-Foundation -source WindowsFeatures -y
+cinst MicrosoftWindowsPowerShellV2Root -source WindowsFeatures -y
+cinst MicrosoftWindowsPowerShellV2 -source WindowsFeatures -y
+cinst Internet-Explorer-Optional-amd64 -source WindowsFeatures -y
+cinst NetFx3 -source WindowsFeatures -y
+cinst IIS-WebServerRole -source WindowsFeatures -y
+cinst IIS-WebServer -source WindowsFeatures -y
+cinst IIS-CommonHttpFeatures -source WindowsFeatures -y
+cinst IIS-HttpErrors -source WindowsFeatures -y
+cinst IIS-HttpRedirect -source WindowsFeatures -y
+cinst IIS-ApplicationDevelopment -source WindowsFeatures -y
+cinst IIS-NetFxExtensibility -source WindowsFeatures -y
+cinst IIS-NetFxExtensibility45 -source WindowsFeatures -y
+cinst IIS-HealthAndDiagnostics -source WindowsFeatures -y
+cinst IIS-HttpLogging -source WindowsFeatures -y
+cinst IIS-LoggingLibraries -source WindowsFeatures -y
+cinst IIS-RequestMonitor -source WindowsFeatures -y
+cinst IIS-HttpTracing -source WindowsFeatures -y
+cinst IIS-Security -source WindowsFeatures -y
+cinst IIS-URLAuthorization -source WindowsFeatures -y
+cinst IIS-RequestFiltering -source WindowsFeatures -y
+cinst IIS-IPSecurity -source WindowsFeatures -y
+cinst IIS-Performance -source WindowsFeatures -y
+cinst IIS-HttpCompressionDynamic -source WindowsFeatures -y
+cinst IIS-WebServerManagementTools -source WindowsFeatures -y
+cinst IIS-ManagementScriptingTools -source WindowsFeatures -y
+cinst IIS-IIS6ManagementCompatibility -source WindowsFeatures -y
+cinst WAS-WindowsActivationService -source WindowsFeatures -y
+cinst WAS-ProcessModel -source WindowsFeatures -y
+cinst WAS-NetFxEnvironment -source WindowsFeatures -y
+cinst WAS-ConfigurationAPI -source WindowsFeatures -y
+cinst IIS-HostableWebCore -source WindowsFeatures -y
+cinst WCF-HTTP-Activation -source WindowsFeatures -y
+cinst WCF-NonHTTP-Activation -source WindowsFeatures -y
+cinst WCF-Services45 -source WindowsFeatures -y
+cinst WCF-HTTP-Activation45 -source WindowsFeatures -y
+cinst WCF-TCP-Activation45 -source WindowsFeatures -y
+cinst WCF-Pipe-Activation45 -source WindowsFeatures -y
+cinst WCF-MSMQ-Activation45 -source WindowsFeatures -y
+cinst WCF-TCP-PortSharing45 -source WindowsFeatures -y
+cinst IIS-CertProvider -source WindowsFeatures -y
+cinst IIS-WindowsAuthentication -source WindowsFeatures -y
+cinst IIS-DigestAuthentication -source WindowsFeatures -y
+cinst IIS-ClientCertificateMappingAuthentication -source WindowsFeatures -y
+cinst IIS-IISCertificateMappingAuthentication -source WindowsFeatures -y
+cinst IIS-ODBCLogging -source WindowsFeatures -y
+cinst IIS-StaticContent -source WindowsFeatures -y
+cinst IIS-DefaultDocument -source WindowsFeatures -y
+cinst IIS-DirectoryBrowsing -source WindowsFeatures -y
+cinst IIS-WebDAV -source WindowsFeatures -y
+cinst IIS-WebSockets -source WindowsFeatures -y
+cinst IIS-ApplicationInit -source WindowsFeatures -y
+cinst IIS-ASPNET -source WindowsFeatures -y
+cinst IIS-ASPNET45 -source WindowsFeatures -y
+cinst IIS-ASP -source WindowsFeatures -y
+cinst IIS-CGI -source WindowsFeatures -y
+cinst IIS-ISAPIExtensions -source WindowsFeatures -y
+cinst IIS-ISAPIFilter -source WindowsFeatures -y
+cinst IIS-ServerSideIncludes -source WindowsFeatures -y
+cinst IIS-CustomLogging -source WindowsFeatures -y
+cinst IIS-BasicAuthentication -source WindowsFeatures -y
+cinst IIS-HttpCompressionStatic -source WindowsFeatures -y
+cinst IIS-ManagementConsole -source WindowsFeatures -y
+cinst MSMQ-Container -source WindowsFeatures -y
+cinst MSMQ-Server -source WindowsFeatures -y
+cinst NetFx4-AdvSrvs -source WindowsFeatures -y
+cinst NetFx4Extended-ASPNET45 -source WindowsFeatures -y
+cinst MediaPlayback -source WindowsFeatures -y
+cinst WindowsMediaPlayer -source WindowsFeatures -y
+cinst SearchEngine-Client-Package -source WindowsFeatures -y
+
+if (Test-PendingReboot) { Invoke-Reboot }
 
 cinst UrlRewrite -y
 cinst IIS-ARR -y
@@ -179,8 +188,6 @@ cinst IIS-ARR -y
 # Applications. See https://chocolatey.org/packages
 ########################################
 Write-BoxstarterMessage "Installing Applications"
-
-choco feature enable -n allowEmptyChecksums
 
 cinst DotNet3.5 -y
 cinst LinkShellExtension -y
@@ -216,11 +223,11 @@ if (Test-PendingReboot) { Invoke-Reboot }
 cinst VisualStudio2015Enterprise -y -packageParameters "--AdminFile http://bit.ly/win10boxstarter-vsadmin"
 if (Test-PendingReboot) { Invoke-Reboot }
 
-Install-ChocolateyVsixPackage SpellChecker https://github.com/EWSoftware/VSSpellChecker/releases/download/v2016.7.28.0/VisualStudio.SpellChecker.vsix
+Install-ChocolateyVsixPackage SpellChecker http://bit.ly/win10boxstarter-vs-spellchecker
 
-Install-ChocolateyVsixPackage SaveAllTheTime https://visualstudiogallery.msdn.microsoft.com/ee676c7f-83e8-4ef8-87ab-22a95ae8f1d4/file/100488/15/SaveAllTheTime.vsix
+Install-ChocolateyVsixPackage SaveAllTheTime http://bit.ly/win10boxstarert-vs-saveallthetime
 
-Install-ChocolateyVsixPackage BuildOnSave https://github.com/pragmatrix/BuildOnSave/releases/download/0.21/BuildOnSave.vsix
+Install-ChocolateyVsixPackage BuildOnSave ttps://bit.ly/win10boxstarert-vs-buildonsave
 
 # ReSharper
 cinst resharper-platform -y
