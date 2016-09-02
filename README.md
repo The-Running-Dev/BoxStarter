@@ -16,8 +16,13 @@
    * Restore settings for various application (WebStorm, DataGrip)
   
 ## Short Links
-* SQL Server Configuration: http://bit.ly/win10boxstarter-sqlserverconfig
-* Visual Studio AdminFile: http://bit.ly/win10boxstarter-vsadmin
+* Install BoxStarter. http://bit.ly/win10boxstarter
+* Install Chocolatey. http://bit.ly/win10boxstarter-choco
+* SQL Server Configuration. http://bit.ly/win10boxstarter-sqlserverconfig
+* Visual Studio AdminFile. http://bit.ly/win10boxstarter-vsadmin
+* Visual Studio BuildOnSave Add-In. http://bit.ly/win10boxstarert-vs-buildonsave
+* Visual Studio SaveAllTheTime Add-In. http://bit.ly/win10boxstarert-vs-saveallthetime
+* Visual Studio SpellChecker Add-In. http://bit.ly/win10boxstarter-vs-spellchecker
 
 ## References
 * Running Visual Studio Install from the Command Line  
