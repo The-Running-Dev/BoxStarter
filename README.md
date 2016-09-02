@@ -30,5 +30,9 @@ https://msdn.microsoft.com/en-us/library/mt720584.aspx
 * Visual Studio Package on Chocolatey  
 https://chocolatey.org/packages/VisualStudio2015Enterprise
 
+## Gotchas
+* BOXSTARTER USES OLDER VERSION OF CHOCOLATEY. Big gotcha!
+* The SQL Server package does not allow for passing some parameters as they are passed as part of the silent install, so the configuration file doesn't work completely.
+
 ## Editor
 https://jbt.github.io/markdown-editor
