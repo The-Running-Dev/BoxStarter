@@ -4,9 +4,9 @@
 2. With Custom SQL Server Configuration.ini
 
 ## To Run as Is
-  * Full Install, in CMD run
+  * Full Install, in CMD run   
   ```start http://bit.ly/win10boxstarter```
-  * Chocolatey Only, in PowerShell run
+  * Chocolatey Only, in PowerShell run   
   ```iex ((New-Object System.Net.WebClient).DownloadString('http://bit.ly/win10boxstarter-choco'))```
 
 ## ToDo 
