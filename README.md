@@ -6,8 +6,8 @@
 ## To Run as Is
   * Full Install, in CMD run
   ```start http://bit.ly/win10boxstarter```
-  * Chocolatey Only, in CMD run
-  ```start http://bit.ly/win10boxstarter-choco```
+  * Chocolatey Only, in PowerShell run
+  ```iex ((New-Object System.Net.WebClient).DownloadString('http://bit.ly/win10boxstarter-choco'))```
 
 ## ToDo 
    * Create NuGet package for SQL Server and make BoxStarter use it
