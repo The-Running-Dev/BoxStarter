@@ -12,7 +12,7 @@
 ## ToDo 
    * Create NuGet package for SQL Server and make BoxStarter use it
    * Create PowerShell script with registery changes
-   * Create a way to do silent install on other software without chocolatey package
+   * Create a way to do silent install of other software without chocolatey package
    * Restore settings for various application (WebStorm, DataGrip)
   
 ## Short Links
