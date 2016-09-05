@@ -19,6 +19,9 @@ $Boxstarter.AutoLogin = $true
 ########################################
 Write-BoxstarterMessage "Configuring Windows"
 
+# Set the computer name
+# wmic computersystem where name="%COMPUTERNAME%" call rename name="NEW-NAME"
+
 Update-ExecutionPolicy Unrestricted
 
 Enable-RemoteDesktop
@@ -51,29 +54,24 @@ choco feature enable -n allowGlobalConfirmation
 cinst DotNet3.5
 cinst LinkShellExtension
 cinst GoogleChrome
-cinst Paint.Net
-cinst WinDirStat
 cinst RoboForm
-
-# Temporary fix for broken Dropbox package
-cinst Dropbox --version 9.4.49
-
+cinst Dropbox
 cinst Launchy
-cinst Spotify
+# cinst Spotify
 cinst Kdiff3
 cinst GitExtensions
 cinst JRE8
 cinst DisplayFusion
 cinst ConEmu
-cinst MySql.Workbench
+# cinst MySql.Workbench
 cinst TeamViewer
 cinst WebPI
 cinst VisualStudioCode
 cinst WebStorm
 cinst DataGrip
-cinst Slack
+# cinst Slack
 cinst K-LiteCodecPackMega
-cinst OpenLiveWriter
+# cinst OpenLiveWriter
 cinst Office365Business
 cinst VMWareWorkstation
 cinst nodejs.install
