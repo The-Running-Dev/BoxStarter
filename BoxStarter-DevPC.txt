@@ -57,21 +57,18 @@ cinst GoogleChrome
 cinst RoboForm
 cinst Dropbox
 cinst Launchy
-# cinst Spotify
 cinst Kdiff3
 cinst GitExtensions
 cinst JRE8
 cinst DisplayFusion
 cinst ConEmu
-# cinst MySql.Workbench
 cinst TeamViewer
 cinst WebPI
 cinst VisualStudioCode
 cinst WebStorm
 cinst DataGrip
-# cinst Slack
 cinst K-LiteCodecPackMega
-# cinst OpenLiveWriter
+cinst OpenLiveWriter
 cinst Office365Business
 cinst VMWareWorkstation
 cinst nodejs.install
@@ -97,7 +94,12 @@ cinst resharper-platform
 # ESET
 # EditPad Pro C:\EditPad\SetupEditPadPro736.exe /silent
 # ACDSee
+#
+# Already installed as portable apps
 # PreCode
+# cinst Slack
+# cinst MySql.Workbench
+# cinst Spotify
 #
 # ToDo: Add registery keys
 #
