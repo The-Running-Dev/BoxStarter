@@ -98,7 +98,7 @@ function Update-Admin-File($parameters, $adminFile)
 
 function Generate-Install-Arguments-String($parameters, $adminFile)
 {
-    $s = "/Quiet /NoRestart /Log $env:temp\vs.log"
+    $s = "/Quiet /NoRestart /NoRefresh /Log $env:temp\vs.log"
 
     if ($adminFile)
     {

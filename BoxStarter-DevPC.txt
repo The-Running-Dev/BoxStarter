@@ -80,14 +80,15 @@ cinst MSSQLServerManagementStudio2014Express
 if (Test-PendingReboot) { Invoke-Reboot }
 
 # Provide optional product key with: --installargs "/ProductKey YOURKEYHERE"
-cinst VisualStudio2015Enterprise -packageParameters "--AdminFile http://bit.ly/win10boxstarter-vsadmin"
+cinst VisualStudio2015Enterprise -s "\\nas\Data\Applications\_Install\Programming\Chocolatey" -packageParameters "--AdminFile http://bit.ly/win10boxstarter-vsadmin"
+
 if (Test-PendingReboot) { Invoke-Reboot }
 
 Install-ChocolateyVsixPackage SpellChecker http://bit.ly/win10boxstarter-vs-spellchecker
 
 Install-ChocolateyVsixPackage SaveAllTheTime http://bit.ly/win10boxstarert-vs-saveallthetime
 
-Install-ChocolateyVsixPackage BuildOnSave ttps://bit.ly/win10boxstarert-vs-buildonsave
+Install-ChocolateyVsixPackage BuildOnSave https://bit.ly/win10boxstarert-vs-buildonsave
 
 # ReSharper
 cinst resharper-platform

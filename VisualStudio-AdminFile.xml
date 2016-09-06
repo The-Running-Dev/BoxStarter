@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="windows-1252"?>
+<?xml version="1.0" encoding="utf-8"?>
 <AdminDeploymentCustomizations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/wix/2011/AdminDeployment">
   <BundleCustomizations TargetDir="C:\Program Files (x86)\Microsoft Visual Studio 14.0" NoCacheOnlyMode="default" NoWeb="default" NoRefresh="default" SuppressRefreshPrompt="default" Feed="default" />
   <SelectableItemCustomizations>
@@ -34,7 +34,7 @@
     <SelectableItemCustomization Id="NativeLanguageSupport_XPV1" Hidden="no" Selected="no" FriendlyName="Windows XP Support for C++" />
     <SelectableItemCustomization Id="Win81SDK_HiddenV1" Hidden="no" Selected="no" FriendlyName="Windows 8.1 SDK and Universal CRT SDK" />
     <SelectableItemCustomization Id="FSharpV1" Hidden="no" Selected="yes" FriendlyName="Visual F#" />
-    <SelectableItemCustomization Id="PythonToolsForVisualStudioV6" Hidden="no" Selected="yes" FriendlyName="Python Tools for Visual Studio (June 2016)" />
+    <SelectableItemCustomization Id="PythonToolsForVisualStudioV6" Hidden="yes" Selected="no" FriendlyName="Python Tools for Visual Studio (June 2016)" />
     <SelectableItemCustomization Id="ClickOnceV1" Hidden="no" Selected="yes" FriendlyName="ClickOnce Publishing Tools" />
     <SelectableItemCustomization Id="LightSwitchV1" Hidden="no" Selected="yes" FriendlyName="LightSwitch" />
     <SelectableItemCustomization Id="OfficeDeveloperToolsV1" Hidden="no" Selected="no" FriendlyName="Microsoft Office Developer Tools" />
@@ -66,7 +66,7 @@
     <SelectableItemCustomization Id="JavaJDKV1" Hidden="no" Selected="no" FriendlyName="Java SE Development Kit (7.0.550.13)" />
     <SelectableItemCustomization Id="Node.jsV1" Hidden="no" Selected="no" FriendlyName="Joyent Node.js" />
     <SelectableItemCustomization Id="VSEmu_AndroidV1.1.622.2" Hidden="no" Selected="no" FriendlyName="Microsoft Visual Studio Emulator for Android (July 2016)" />
-    <SelectableItemCustomization Id="WebSocket4NetV1" Hidden="no" Selected="yes" FriendlyName="WebSocket4Net" />
+    <SelectableItemCustomization Id="WebSocket4NetV1" Hidden="no" Selected="no" FriendlyName="WebSocket4Net" />
     <SelectableItemCustomization Id="ToolsForWin81_WP80_WP81V1" Hidden="no" Selected="no" FriendlyName="Tools and Windows SDKs" />
     <SelectableItemCustomization Id="WindowsPhone81EmulatorsV1" Hidden="no" Selected="no" FriendlyName="Emulators for Windows Phone 8.1" />
     <SelectableItemCustomization Id="GitForWindowsx64V6" Hidden="no" Selected="no" FriendlyName="Git for Windows" />
