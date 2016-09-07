@@ -20,7 +20,7 @@ $Boxstarter.AutoLogin = $true
 Write-BoxstarterMessage "Configuring Windows"
 
 # Set the computer name
-# wmic computersystem where name="%COMPUTERNAME%" call rename name="NEW-NAME"
+wmic computersystem where name="%COMPUTERNAME%" call rename name="NewPC"
 
 Update-ExecutionPolicy Unrestricted
 
@@ -31,7 +31,7 @@ Set-StartScreenOptions -EnableBootToDesktop -EnableDesktopBackgroundOnStart -Ena
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions -EnableShowFullPathInTitleBar -DisableOpenFileExplorerToQuickAccess -DisableShowRecentFilesInQuickAccess -DisableShowFrequentFoldersInQuickAccess -EnableExpandToOpenFolder
 
 # This requires restarts, disable for now
-# Disable-UAC
+Disable-UAC
 
 Disable-GameBarTips
 Disable-InternetExplorerESC
@@ -47,48 +47,6 @@ if (Test-PendingReboot) { Invoke-Reboot }
 # Applications. See https://chocolatey.org/packages
 ########################################
 Write-BoxstarterMessage "Installing Applications"
-
-# Enable empty global confirmation for Chocolatey
-choco feature enable -n allowGlobalConfirmation
-
-cinst DotNet3.5
-cinst LinkShellExtension
-cinst GoogleChrome
-cinst RoboForm
-cinst Dropbox
-cinst Launchy
-cinst Kdiff3
-cinst GitExtensions
-cinst JRE8
-cinst DisplayFusion
-cinst ConEmu
-cinst TeamViewer
-cinst WebPI
-cinst VisualStudioCode
-cinst WebStorm
-cinst DataGrip
-cinst K-LiteCodecPackMega
-cinst OpenLiveWriter
-cinst Office365Business
-cinst VMWareWorkstation
-cinst nodejs.install
-
-cinst MSSQLServerManagementStudio2014Express
-if (Test-PendingReboot) { Invoke-Reboot }
-
-# Provide optional product key with: --installargs "/ProductKey YOURKEYHERE"
-cinst VisualStudio2015Enterprise -s "\\nas\Data\Applications\_Install\Programming\Chocolatey" -packageParameters "--AdminFile http://bit.ly/win10boxstarter-vsadmin"
-
-if (Test-PendingReboot) { Invoke-Reboot }
-
-Install-ChocolateyVsixPackage SpellChecker http://bit.ly/win10boxstarter-vs-spellchecker
-
-Install-ChocolateyVsixPackage SaveAllTheTime http://bit.ly/win10boxstarert-vs-saveallthetime
-
-Install-ChocolateyVsixPackage BuildOnSave https://bit.ly/win10boxstarert-vs-buildonsave
-
-# ReSharper
-cinst resharper-platform
 
 # Additonal software that doesn't have packages
 # ESET
