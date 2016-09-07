@@ -20,7 +20,7 @@ $Boxstarter.AutoLogin = $true
 Write-BoxstarterMessage "Configuring Windows"
 
 # Set the computer name
-wmic computersystem where name="%COMPUTERNAME%" call rename name="NewPC"
+Rename-Computer -NewName "NewPC"
 
 Update-ExecutionPolicy Unrestricted
 
@@ -58,11 +58,27 @@ Write-BoxstarterMessage "Installing Applications"
 # cinst Slack
 # cinst MySql.Workbench
 # cinst Spotify
-#
-# ToDo: Add registery keys
-#
+########################################
+
+########################################
+# Registry Settings
+########################################
+Write-BoxstarterMessage "Configuring Registry"
+
+# Set TimeZone to NTP and enable sync
 # [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Parameters](time) "Type"="NoSync"(off) "Type"="NTP" (on)
+#
+$registryPath = "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Parameters"
+$name = "Type"
+$value = "NTP"
+New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType SZ -Force | Out-Null
+
 # [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\tzautoupdate](time zone) "Start"=dword:00000003 (off) "Start"=dword:00000004 (on)
+$registryPath = "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Parameters"
+$name = "Type"
+$value = "00000004"
+New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType DWORD -Force | Out-Null
+
 ########################################
 
 ########################################
