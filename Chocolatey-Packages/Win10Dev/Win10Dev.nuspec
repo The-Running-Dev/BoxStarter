@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+	<metadata>
+		<id>VisualStudio2015Enterprise</id>
+		<version>2015.03.02</version>
+		<title>Visual Studio 2015 Enterprise Update 3</title>
+		<authors>Microsoft</authors>
+		<licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+		<projectUrl>https://www.visualstudio.com/vs-2015-product-editions</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/KennethB/Chocolatey-Packages/master/icons/VS2015.png</iconUrl>
+		<packageSourceUrl>https://github.com/KennethB/Chocolatey-Packages</packageSourceUrl>
+		<docsUrl>https://msdn.microsoft.com/library</docsUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<summary>Enterprise grade solution with advanced capabilities for teams working on projects of any size or complexity, including advanced testing and DevOps</summary>
+		<tags>Microsoft Visual Studio 2015 Enterprise IDE admin</tags>
+		<description>
+### Overview
+Enterprise grade solution with advanced capabilities for teams working on projects of any size or complexity, including advanced testing and DevOps.
+- End-to-end solution for your development teams, including the most feature-rich Visual Studio IDE for working on any type of project.
+- Build quality applications at scale with advanced features such as Load Testing, automated and manual testing and new IntelliTest capabilities.
+- Manage complexity and resolve issues quickly with features such as Code Map and IntelliTrace.
+- Enhanced MSDN subscription benefits including comprehensive access to software for dev/test, Team Foundation Server, Visual Studio Online Advanced, $150/month in Azure credits, training and support.
+
+### Attention Windows 8.1 and  Windows Server 2012 R2 Users
+
+You must have Windows RT 8.1, Windows 8.1, and Windows Server 2012 R2 update: April 2014 installed in order to install Visual Studio 2015
+You can download KB2919355 here https://support.microsoft.com/en-us/kb/2919355
+
+### Customizations
+You can customize the installation either by specifying your own installation configuration file.
+#### Adding optional features
+Optional features (Sql tools, phone tools, etc.) are available but not installed by default.
+To specify the features you want installed you can download the AdminDeployment.xml and modify it to support your needs.
+
+https://raw.githubusercontent.com/KennethB/Chocolatey-Packages/master/VisualStudio2015Enterprise/Tools/AdminDeployment.xml
+Specifying the optional features above modifies the configuration file used during installation (AdminDeployment.xml). If that is not enough you can provide this file on your own.
+Example:
+choco install VisualStudio2015Enterprise -packageParameters "--AdminFile c:\path to your\AdminDeployment.xml"
+choco install VisualStudio2015Enterprise -packageParameters "--AdminFile http://path/to/your/AdminDeployment.xml"
+		</description>
+		<releaseNotes>- Adding checksum for downloaded components</releaseNotes>
+	</metadata>
+</package>

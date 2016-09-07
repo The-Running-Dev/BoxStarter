@@ -44,7 +44,7 @@ cuninst IIS-ManagementService -source WindowsFeatures -y
 cuninst IIS-WMICompatibility -source WindowsFeatures -y
 cuninst IIS-LegacyScripts -source WindowsFeatures -y
 cuninst IIS-LegacySnapIn -source WindowsFeatures -y
-cuninst IIS-FTPServer -source WindowsFeatures -y 
+cuninst IIS-FTPServer -source WindowsFeatures -y
 cuninst IIS-FTPSvc -source WindowsFeatures -y
 cuninst IIS-FTPExtensibility -source WindowsFeatures -y
 cuninst MSMQ-Triggers -source WindowsFeatures -y
@@ -134,4 +134,3 @@ if (Test-PendingReboot) { Invoke-Reboot }
 
 cinst UrlRewrite -y
 cinst IIS-ARR -y
-########################################
