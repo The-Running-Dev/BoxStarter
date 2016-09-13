@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>DataGrip</id>
+    <version>2016.2.3</version>
+    <title>JetBrains DataGrip</title>
+    <authors>JetBrains</authors>
+    <description>
+      This package installs JetBrains DataGrip.
+    </description>
+  </metadata>
+  <files>
+    <file src="tools\**\*" target="tools" />
+  </files>
+</package>
