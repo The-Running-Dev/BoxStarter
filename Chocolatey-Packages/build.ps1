@@ -6,6 +6,7 @@ Foreach($nuspec in $nuspecs){
     choco pack $nuspec.FullName
 }
 
-$artifactsFolder = "../"
+$artifactsFolder = "./Artifacts"
 
+New-Item -Path $artifactsFolder -ItemType Directory -Force
 Move-Item *.nupkg $artifactsFolder -Force

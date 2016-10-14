@@ -87,6 +87,7 @@ New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType DWO
 # ToDo: Create SQL Server NuGet package with ability to take Configuration file URL
 # See VS package for example: https://chocolatey.org/packages/VisualStudio2015Enterprise
 # cinst http://path.to.NuGet.Package
+# choco install MSSSQLServer2014Express -source D:\Dropbox\Projects\BoxStarter\Artifacts
 # if (Test-PendingReboot) { Invoke-Reboot }
 ########################################
 

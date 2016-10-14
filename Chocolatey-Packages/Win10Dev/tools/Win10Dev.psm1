@@ -1,71 +1,47 @@
-$applicationsFile = (Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) 'Chocolatey-Applications.txt')
+$applicationsFile = (Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) 'Config\Applications.txt')
+$enableWindowsFeaturesFile = (Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) 'Config\WindowsFeatures-Enable.txt')
+$disableWindowsFeaturesFile = (Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) 'Config\WindowsFeatures-Disable.txt')
 
 function Install-Applications {
-<#
-.SYNOPSIS
-Installs applications
+    Write-Debug "Installing Applications"
 
-.DESCRIPTION
-Installs all applications
-
-.EXAMPLE
-Install-Applications
-
-.OUTPUTS
-None
-#>
-param(
-)
-    Write-Debug "Installing APplications"
-
-    try {
-        foreach ($line in Get-Content -Path $applicationsFile | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'})
-        {
-            Write-Debug "Running: choco install $line -y"
-
-            choco install $line -y
-        }
-
-        ##if (Test-PendingReboot) { Invoke-Reboot }
-    }
-    catch {
-        Write-ChocolateyFailure 'Installation Failed: ' $($_.Exception.ToString())
-        throw
-    }
+    RunChocoCommands $applicationsFile "cinst ##application## -y"
 }
 
 function Uninstall-Applications {
-<#
-.SYNOPSIS
-Installs applications
+    Write-Debug "Uninstalling Applications"
 
-.DESCRIPTION
-Installs all applications
+    RunChocoCommands $applicationsFile "cuninst ##application## -y"
+}
 
-.EXAMPLE
-Install-Applications
+function Enable-WindowsFeatures {
+    Write-Debug "Enabling Windows Features"
 
-.OUTPUTS
-None
-#>
-param(
-)
-    Write-Debug "Installing APplications"
+    RunChocoCommands $enableWindowsFeaturesFile "cinst ##application## -source WindowsFeatures -y"
+}
 
+function Disable-WindowsFeatures {
+    Write-Debug "Disabling Windows Features"
+
+    RunChocoCommands $disableWindowsFeaturesFile "cuninst ##application## -source WindowsFeatures -y"
+}
+
+function RunChocoCommands([string] $filePath, [string] $commandTemplate) {
     try {
-        foreach ($line in Get-Content -Path $applicationsFile | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'})
+        foreach ($line in Get-Content -Path $filePath | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'})
         {
-            Write-Debug "Running: choco uninstall $line -y"
+            $commmand = $commandTemplate.replace("##application##", $line)
 
-            choco uninstall $line -y
+            Write-Debug "Running: $commmand"
+
+            Invoke-Expression $commmand
         }
-
-        ##if (Test-PendingReboot) { Invoke-Reboot }
     }
     catch {
-        Write-ChocolateyFailure 'Installation Failed: ' $($_.Exception.ToString())
+        Write-Host 'Failed: ' $($_.Exception.ToString())
+
         throw
     }
 }
 
-Export-ModuleMember Install-Applications, Uninstall-Applications
+Export-ModuleMember Install-Applications, Uninstall-Applications, Enable-WindowsFeatures, Disable-WindowsFeatures

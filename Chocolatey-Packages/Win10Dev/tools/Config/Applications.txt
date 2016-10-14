@@ -1,0 +1,31 @@
+DotNet3.5
+RoboForm
+Launchy
+
+#TeamViewer
+#Dropbox
+#GoogleChrome
+
+#Kdiff3
+#GitExtensions
+#JRE8
+#VisualStudioCode
+#WebStorm
+#DataGrip
+#MSSQLServerManagementStudio2014Express
+#OpenLiveWriter
+
+#K-LiteCodecPackMega
+#DisplayFusion
+
+#ConEmu
+#LinkShellExtension
+#WebPI
+
+# Office365Business
+# VMWareWorkstation
+# nodejs.install
+
+#https://www.jetbrains.com/webstorm/download/download-thanks.html?platform=windows
+#https://www.jetbrains.com/resharper/download/download-thanks.html?platform=windows&code=RSU
+#https://www.jetbrains.com/datagrip/download/download-thanks.html?platform=windows
