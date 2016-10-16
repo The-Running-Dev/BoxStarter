@@ -1,5 +1,4 @@
-# https://github.com/riezebosch/BoxstarterPackages
-
+# Reference: https://github.com/riezebosch/BoxstarterPackages
 $packageName = "MSSQLServer2014Express"
 $chocolateyTempDir = Join-Path (Get-Item $env:TEMP).FullName "chocolatey"
 $tempDir = Join-Path $chocolateyTempDir $packageName
@@ -14,7 +13,7 @@ $checksum64 = '0C90C147A1C2A550165C9301AE7A6C604E318E51'
 $sqlServerConfigurationUrl = "https://raw.githubusercontent.com/Boyan-Kostadinov/BoxStarter/master/SQLServer-Configuration.ini"
 $sqlServerConfigurationFile = "SQLServer-Configuration.ini"
 $sqlServerConfigurationFilePath = Join-Path (Join-Path (Get-Item $env:TEMP).FullName "chocolatey") $sqlServerConfigurationFile
-$silentArgs = "/IAcceptSQLServerLicenseTerms ConfigurationFile=""$($sqlServerConfigurationFilePath)"" /SAPWD=""SetYourOwn"""
+$silentArgs = "/IAcceptSQLServerLicenseTerms /ConfigurationFile=""$($sqlServerConfigurationFilePath)"" /SAPWD=""SetYourOwn"""
 
 # SQL Server Parameters - https://msdn.microsoft.com/en-us/library/ms144259.aspx
 # How to Create the Configuration INI - https://msdn.microsoft.com/en-us/library/dd239405.aspx

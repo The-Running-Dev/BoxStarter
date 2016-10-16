@@ -1,7 +1,6 @@
 try {
 	cinst DotNet3.5 -y
 
-	cinst RoboForm -y
 	cinst Launchy -y
 
 	cinst TeamViewer -y
@@ -14,8 +13,9 @@ try {
 	cinst VisualStudioCode -y
 	cinst WebStorm -y
 	cinst DataGrip -y
-	cinst MSSQLServerManagementStudio2014Express
-	cinst OpenLiveWriter -y
+	cinst MSSQLServerManagementStudio2014Express -y
+
+	# cinst OpenLiveWriter -y
 
 	cinst K-LiteCodecPackMega -y
 	cinst DisplayFusion -y
@@ -25,7 +25,7 @@ try {
 	cinst WebPI -y
 
 	# cinst Office365Business -y
-	# cinst VMWareWorkstation -yD:\Dropbox\Projects\BoxStarter
+	# cinst VMWareWorkstation -y
 	# cinst nodejs.install -y
 
 	if (Test-PendingReboot) { Invoke-Reboot }
@@ -35,16 +35,15 @@ catch {
 	throw
 }
 
-	# Provide optional product key with: --installargs "/ProductKey YOURKEYHERE"
-	cinst VisualStudio2015Enterprise -s "\\nas\Data\Applications\_Install\Programming\Chocolatey" -packageParameters "--AdminFile 	http://bit.ly/win10boxstarter-vsadmin"
+# Provide optional product key with: --installargs "/ProductKey YOURKEYHERE"
+cinst VisualStudio2015Enterprise -y -s "\\nas\Data\Applications\_Install\Programming\Chocolatey" -packageParameters "--AdminFile http://bit.ly/win10boxstarter-vsadmin"
 
-	# ReSharper
-	cinst resharper-platform
+# ReSharper
+cinst resharper-platform -y
 
-	Install-ChocolateyVsixPackage SpellChecker http://bit.ly/win10boxstarter-vs-spellchecker
+Install-ChocolateyVsixPackage SpellChecker http://bit.ly/win10boxstarter-vs-spellchecker
 
-	Install-ChocolateyVsixPackage SaveAllTheTime http://bit.ly/win10boxstarert-vs-saveallthetime
+#Install-ChocolateyVsixPackage SaveAllTheTime http://bit.ly/win10boxstarert-vs-saveallthetime
+#Install-ChocolateyVsixPackage BuildOnSave https://bit.ly/win10boxstarert-vs-buildonsave
 
-	Install-ChocolateyVsixPackage BuildOnSave https://bit.ly/win10boxstarert-vs-buildonsave
-
-	if (Test-PendingReboot) { Invoke-Reboot }
+if (Test-PendingReboot) { Invoke-Reboot }
