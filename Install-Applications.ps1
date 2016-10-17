@@ -21,7 +21,7 @@ try {
 	cinst DisplayFusion -y
 
 	cinst ConEmu -y
-	cinst LinkShellExtension -y
+	# cinst LinkShellExtension -y
 	cinst WebPI -y
 
 	# cinst Office365Business -y

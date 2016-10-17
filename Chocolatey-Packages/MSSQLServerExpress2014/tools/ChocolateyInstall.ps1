@@ -1,5 +1,6 @@
 # Reference: https://github.com/riezebosch/BoxstarterPackages
 $packageName = "MSSQLServer2014Express"
+$executionPath = Split-Path -parent $MyInvocation.MyCommand.Definition
 $chocolateyTempDir = Join-Path (Get-Item $env:TEMP).FullName "chocolatey"
 $tempDir = Join-Path $chocolateyTempDir $packageName
 $fileFullPath = "$tempDir\SQLEXPR.exe"
@@ -10,15 +11,14 @@ $url64 = "https://download.microsoft.com/download/1/5/6/156992E6-F7C7-4E55-833D-
 $checksum = '33C0112905B62B6BAD883112C2F49B50AA12C679'
 $checksum64 = '0C90C147A1C2A550165C9301AE7A6C604E318E51'
 
-$sqlServerConfigurationUrl = "https://raw.githubusercontent.com/Boyan-Kostadinov/BoxStarter/master/SQLServer-Configuration.ini"
-$sqlServerConfigurationFile = "SQLServer-Configuration.ini"
+# SQL Server Parameters - https://msdn.microsoft.com/en-us/library/ms144259.aspx
+# How to Create the Configuration INI - https://msdn.microsoft.com/en-us/library/dd239405.aspx
+$sqlServerConfigurationFile = Join-Path $executionPath "Configuration.ini"
 $sqlServerConfigurationFilePath = Join-Path (Join-Path (Get-Item $env:TEMP).FullName "chocolatey") $sqlServerConfigurationFile
 $silentArgs = "/IAcceptSQLServerLicenseTerms /ConfigurationFile=""$($sqlServerConfigurationFilePath)"" /SAPWD=""SetYourOwn"""
 
-# SQL Server Parameters - https://msdn.microsoft.com/en-us/library/ms144259.aspx
-# How to Create the Configuration INI - https://msdn.microsoft.com/en-us/library/dd239405.aspx
-# Get the Configuration file
-Get-ChocolateyWebFile $sqlServerConfigurationFile $sqlServerConfigurationFilePath $sqlServerConfigurationUrl
+# Copy the configuraiton file to the same palce as the setup
+Copy-Item $sqlServerConfigurationFile $sqlServerConfigurationFilePath
 
 # Create the directory if it doesn't exist
 [System.IO.Directory]::CreateDirectory($tempDir) | Out-Null
