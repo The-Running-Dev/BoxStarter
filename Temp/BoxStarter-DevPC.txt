@@ -88,6 +88,7 @@ New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType DWO
 # See VS package for example: https://chocolatey.org/packages/VisualStudio2015Enterprise
 # cinst http://path.to.NuGet.Package
 # choco install MSSSQLServer2014Express -source D:\Dropbox\Projects\BoxStarter\Artifacts
+# choco install -s C:\Temp MSSQLServer2014Express -f -params='/SAPWD="blah"'
 # if (Test-PendingReboot) { Invoke-Reboot }
 ########################################
 
