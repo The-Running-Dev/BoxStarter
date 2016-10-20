@@ -23,22 +23,35 @@
 ## Chocolatey Packages
   * Microsoft SQL Server 2014 Express
 
-    Install with the default Configuration.ini inside the package (Data directory is D:\SQLData)
+    Because you need to specify the source of the NuGet package and it's not possible to use GitHub as the source (I tried),
+    you have to download the NuGet package first. Here is the script to do that. Create it in save it in C:\Temp.
 
     ```
-    choco install MSSQLServer2014Express -s http://bit.ly/2emVvN7
+    Import-Module BitsTransfer
+
+    $url = "http://bit.ly/2dsDNp9"
+    $output = "$PSScriptRoot\MSSQLServer2014Express.12.0.4100.20160621.nupkg"
+    Start-BitsTransfer -Source $url -Destination $output
+
+    choco install MSSQLServer2014Express -s $PSScriptRoot -params='Your Params' (See Below)
     ```
 
-    Install with overriding some parameters
+    Install with the default parameters from the Configuration.ini inside the package (Data directory is D:\SQLData)
 
     ```
-    choco install MSSQLServer2014Express -s http://bit.ly/2emVvN7 -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData"'
+    choco install MSSQLServer2014Express -s $PSScriptRoot
     ```
 
-    Install with overriding some parameters and your own Configuraiton.ini. (Specify URL to Configuration.ini)
+    Install with overriding some parameters. Replace -params='Your Params' above.
 
     ```
-    choco install MSSQLServer2014Express -s http://bit.ly/2emVvN7 -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData" /ConfigurationFile="http://bit.ly/2doxBU1"'
+    -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData"'
+    ```
+
+    Install with overriding some parameters and your own Configuraiton.ini (by specifing the URL to Configuration.ini). Replace -params='Your Params' above.
+
+    ```
+    -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData" /ConfigurationFile="http://bit.ly/2doxBU1"'
     ```
 
 ## Short Links
