@@ -28,11 +28,9 @@
 
     ```
     Import-Module BitsTransfer
-
     $url = "http://bit.ly/2dsDNp9"
     $output = "$PSScriptRoot\MSSQLServer2014Express.12.0.4100.20160621.nupkg"
     Start-BitsTransfer -Source $url -Destination $output
-
     choco install MSSQLServer2014Express -s $PSScriptRoot -params='Your Params' (See Below)
     ```
 

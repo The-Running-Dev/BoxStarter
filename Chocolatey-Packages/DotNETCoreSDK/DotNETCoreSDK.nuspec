@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>DotNETCoreSDK</id>
+    <version>1.0.1</version>
+    <title>.NET Core</title>
+    <authors>Microsoft</authors>
+    <owners>boyank@gmail.com</owners>
+    <projectUrl>https://www.microsoft.com/net/core</projectUrl>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxstarterPackages</packageSourceUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      This package installs .NET Core
+    </description>
+    <summary>Installs .NET Core</summary>
+    <releaseNotes></releaseNotes>
+    <copyright />
+    <language>en-US</language>
+    <tags>.net core</tags>
+    <dependencies>
+      <dependency id="dotnetcore-runtime" version="1.0.1"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="tools\**\*" target="tools" />
+  </files>
+</package>
