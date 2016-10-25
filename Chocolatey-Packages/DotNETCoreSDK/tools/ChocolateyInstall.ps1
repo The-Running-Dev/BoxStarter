@@ -33,9 +33,6 @@ function CheckDotNetCliInstalled($value) {
 if (CheckDotNetCliInstalled($version)) {
     Write-Host "Microsoft .Net Core SDK is already installed on your machine."
 }
-elseif (Get-ProcessorBits(32)){
-    throw "32 bit Microsoft .Net Core SDK is not available."
-}
 else {
   Install-ChocolateyPackage $packageName $fileType $silentArgs '' $url
 }
