@@ -2,7 +2,7 @@ $packageName = 'DotNetCoreSDK'
 $fileType = 'exe'
 $silentArgs = '/quiet'
 $url = 'https://go.microsoft.com/fwlink/?LinkID=827524'
-$version = '1.0.1'
+$version = '1.0.0-preview2-003133'
 
 function Test-RegistryValue {
 param (
@@ -11,20 +11,19 @@ param (
     [parameter(Mandatory=$true)]
     [ValidateNotNullOrEmpty()]$Value
 )
-try {
-    if (Test-Path -Path $Path) {
-        Get-ItemProperty -Path $Path | Select-Object -ExpandProperty $Value -ErrorAction Stop | Out-Null
-        return $true
+    try {
+        if (Test-Path -Path $Path) {
+            Get-ItemProperty -Path $Path | Select-Object -ExpandProperty $Value -ErrorAction Stop | Out-Null
+            return $true
+        }
     }
-}
-catch {
-    return $false
-}
-
+    catch {
+        return $false
+    }
 }
 
 function CheckDotNetCliInstalled($value) {
-    $registryPath = 'HKLM:\SOFTWARE\Wow6432Node\dotnet\Setup\InstalledVersions\x64\sharedfx\Microsoft.NETCore.App'
+    $registryPath = 'HKLM:\SOFTWARE\Wow6432Node\dotnet\Setup\InstalledVersions\x64\sdk'
 
     if (Test-RegistryValue -Path $registryPath -Value $value) {
         return $true
