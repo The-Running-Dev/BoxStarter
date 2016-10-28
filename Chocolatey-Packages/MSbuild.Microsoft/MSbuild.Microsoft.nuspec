@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MSBuild.Microsoft</id>
+    <version>1.0.0</version>
+    <title>MSBuild Microsoft</title>
+    <authors>Microsoft</authors>
+    <owners>boyank@gmail.com</owners>
+    <projectUrl>https://github.com/Boyan-Kostadinov/BoxstarterPackages</projectUrl>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxstarterPackages</packageSourceUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      This package installs the MS build targets provided by Visual Studio
+    </description>
+    <summary>Installs MSBuild Visual Studio Targets</summary>
+    <releaseNotes></releaseNotes>
+    <copyright />
+    <language>en-US</language>
+    <tags>.net core</tags>
+  </metadata>
+  <files>
+    <file src="tools\**\*" target="tools" />
+  </files>
+</package>
