@@ -7,11 +7,26 @@ function Unzip()
 {
     param([string]$file, [string]$destination)
 
-    try {
-        Add-Type -AssemblyName System.IO.Compression.FileSystem
-        [System.IO.Compression.ZipFile]::ExtractToDirectory($file, $destination)
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $archive = [System.IO.Compression.ZipFile]::OpenRead($file)
+    foreach ($entry in $archive.Entries)
+    {
+        $entryTargetFilePath = [System.IO.Path]::Combine($destination, $entry.FullName)
+        $entryDir = [System.IO.Path]::GetDirectoryName($entryTargetFilePath)
+
+        #Ensure the directory of the archive entry exists
+        if(!(Test-Path $entryDir)){
+            New-Item -ItemType Directory -Path $entryDir | Out-Null
+        }
+
+        # If the entry is not a directory entry, then extract entry
+        if(!$entryTargetFilePath.EndsWith("/")){
+            try {
+                [System.IO.Compression.ZipFileExtensions]::ExtractToFile($entry, $entryTargetFilePath, $true);
+            }
+            catch {}
+        }
     }
-    catch {}
 }
 
 # Copy the MSBuild targets to the right place
