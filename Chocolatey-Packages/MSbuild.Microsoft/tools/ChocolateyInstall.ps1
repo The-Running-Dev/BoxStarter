@@ -31,5 +31,7 @@ function Unzip()
     }
 }
 
+echo "File is: $file"
+
 # Copy the MSBuild targets to the right place
 Unzip –File $script:MSBuildTargets –Destination $script:MSBuildTargetsDestination
