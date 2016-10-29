@@ -7,6 +7,8 @@ function Unzip()
 {
     param([string]$file, [string]$destination)
 
+    echo "File is: $file"
+
     Add-Type -AssemblyName System.IO.Compression.FileSystem
     $archive = [System.IO.Compression.ZipFile]::OpenRead($file)
     foreach ($entry in $archive.Entries)
@@ -30,8 +32,6 @@ function Unzip()
         }
     }
 }
-
-echo "File is: $file"
 
 # Copy the MSBuild targets to the right place
 Unzip –File $script:MSBuildTargets –Destination $script:MSBuildTargetsDestination
