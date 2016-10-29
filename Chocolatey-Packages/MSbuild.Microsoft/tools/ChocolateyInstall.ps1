@@ -24,7 +24,9 @@ function Unzip()
             try {
                 [System.IO.Compression.ZipFileExtensions]::ExtractToFile($entry, $entryTargetFilePath, $true);
             }
-            catch {}
+            catch {
+                echo $_.Exception.Message
+            }
         }
     }
 }
