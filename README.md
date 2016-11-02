@@ -27,11 +27,13 @@
     you have to download the NuGet package first. Here is the script to do that. Create it in save it in C:\Temp.
 
     ```
-    Import-Module BitsTransfer
     $url = "http://bit.ly/2dsDNp9"
-    $output = "$PSScriptRoot\MSSQLServer2014Express.12.0.4100.20160621.nupkg"
-    Start-BitsTransfer -Source $url -Destination $output
-    choco install MSSQLServer2014Express -s $PSScriptRoot -params='Your Params' (See Below)
+    $packageName = "MSSQLServer2014Express"
+    $version = "12.0.4100.20160621"
+    $tempDir = $(Get-Item $env:TEMP)
+    $output = "$tempDir\$packageName.$version.nupkg"
+    Invoke-WebRequest -Uri $url -OutFile $output
+    choco install $packageName -y -source "'$tempDir;https://chocolatey.org/api/v2/'" -params='Your Params' (See Below)
     ```
 
     Install with the default parameters from the Configuration.ini inside the package (Data directory is D:\SQLData)
@@ -50,6 +52,16 @@
 
     ```
     -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData" /ConfigurationFile="http://bit.ly/2doxBU1"'
+    ```
+
+  * Internet Information Service (IIS)
+    ```
+    $url = "http://bit.ly/2f19w2P"
+    $packageName = "WinIIS"
+    $tempDir = $(Get-Item $env:TEMP)
+    $output = "$tempDir\WinIIS.2016.11.02.nupkg"
+    Invoke-WebRequest -Uri $url -OutFile $output
+    choco install $packageName -y -source "'$tempDir;https://chocolatey.org/api/v2/'"
     ```
 
 ## Short Links
