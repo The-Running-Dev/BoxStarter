@@ -103,3 +103,10 @@ Enable-MicrosoftUpdate
 
 #Install-WindowsUpdate -AcceptEula -Criteria "IsAssigned=1 and IsHidden=0 and IsInstalled=0" -SuppressReboots
 if (Test-PendingReboot) { Invoke-Reboot }
+
+choco install vcredist2015
+choco install netfx-4.6.1-devpack
+choco install microsoft-build-tools
+
+DotNetCore SDK
+https://go.microsoft.com/fwlink/?LinkID=827524
