@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>WebStorm</id>
-    <version>2016.3</version>
-    <title>JetBrains Web Storm</title>
+    <id>ReSharper</id>
+    <version>2016.2.2</version>
+    <title>JetBrains ReSharper Ultimate</title>
     <authors>JetBrains</authors>
     <description>
-      This package installs JetBrains WebStorm.
+      This package installs JetBrains ReSharper Ultimate.
     </description>
   </metadata>
   <files>

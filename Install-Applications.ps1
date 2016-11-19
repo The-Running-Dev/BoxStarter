@@ -21,12 +21,14 @@ try {
 	cinst DisplayFusion -y
 
 	cinst ConEmu -y
-	# cinst LinkShellExtension -y
 	cinst WebPI -y
 
 	# cinst Office365Business -y
 	# cinst VMWareWorkstation -y
 	# cinst nodejs.install -y
+
+	cinst nodejs.install -version 7.0.0 -y
+	npm install -g angular-cli@latest
 
 	if (Test-PendingReboot) { Invoke-Reboot }
 }
@@ -36,7 +38,9 @@ catch {
 }
 
 # Provide optional product key with: --installargs "/ProductKey YOURKEYHERE"
-cinst VisualStudio2015Enterprise -y -s "\\nas\Data\Applications\_Install\Programming\Chocolatey" -packageParameters "--AdminFile http://bit.ly/win10boxstarter-vsadmin"
+cinst VisualStudio2015Enterprise -y `
+	-s "\\nas\Data\Applications\_Install\Programming\Chocolatey" `
+	-packageParameters "--AdminFile http://bit.ly/win10boxstarter-vsadmin"
 
 # ReSharper
 cinst resharper-platform -y

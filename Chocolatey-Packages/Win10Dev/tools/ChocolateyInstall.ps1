@@ -29,6 +29,7 @@ Set-StartScreenOptions -EnableBootToDesktop -EnableDesktopBackgroundOnStart -Ena
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions -EnableShowFullPathInTitleBar -DisableOpenFileExplorerToQuickAccess -DisableShowRecentFilesInQuickAccess -DisableShowFrequentFoldersInQuickAccess -EnableExpandToOpenFolder
 
 Disable-UAC
+
 if (Test-PendingReboot) { Invoke-Reboot }
 
 Disable-GameBarTips
@@ -58,9 +59,6 @@ Install-Applications
 #
 # Already installed as portable apps
 # PreCode
-# cinst Slack
-# cinst MySql.Workbench
-# cinst Spotify
 ########################################
 
 ########################################

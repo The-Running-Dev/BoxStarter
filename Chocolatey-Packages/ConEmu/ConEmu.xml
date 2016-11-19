@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2016-09-19 20:27:45" build="160904">
+		<key name=".Vanilla" modified="2016-11-17 13:50:38" build="161022">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -99,7 +99,7 @@
 			<value name="SingleInstance" type="hex" data="01"/>
 			<value name="ShowHelpTooltips" type="hex" data="01"/>
 			<value name="Multi" type="hex" data="01"/>
-			<value name="Multi.ShowButtons" type="hex" data="00"/>
+			<value name="Multi.ShowButtons" type="hex" data="01"/>
 			<value name="Multi.ShowSearch" type="hex" data="00"/>
 			<value name="Multi.NumberInCaption" type="hex" data="00"/>
 			<value name="Multi.CloseConfirmFlags" type="hex" data="00"/>
@@ -134,30 +134,30 @@
 			<value name="Monospace" type="hex" data="01"/>
 			<value name="CompressLongStrings" type="hex" data="01"/>
 			<value name="BackGround Image show" type="hex" data="01"/>
-			<value name="BackGround Image" type="string" data="C:\Program Files\ConEmu\Wallpapers\(33).jpg"/>
-			<value name="bgImageDarker" type="hex" data="96"/>
+			<value name="BackGround Image" type="string" data="%ConEmuDir%\Wallpapers\01153_gouganebarra_1280x800.jpg"/>
+			<value name="bgImageDarker" type="hex" data="64"/>
 			<value name="bgImageColors" type="dword" data="ffffffff"/>
 			<value name="bgOperation" type="hex" data="07"/>
 			<value name="bgPluginAllowed" type="hex" data="01"/>
-			<value name="AlphaValue" type="hex" data="ff"/>
-			<value name="AlphaValueSeparate" type="hex" data="00"/>
+			<value name="AlphaValue" type="hex" data="d4"/>
+			<value name="AlphaValueSeparate" type="hex" data="01"/>
 			<value name="AlphaValueInactive" type="hex" data="33"/>
-			<value name="UserScreenTransparent" type="hex" data="00"/>
+			<value name="UserScreenTransparent" type="hex" data="01"/>
 			<value name="ColorKeyTransparent" type="hex" data="00"/>
 			<value name="ColorKeyValue" type="dword" data="00000000"/>
 			<value name="UseCurrentSizePos" type="hex" data="01"/>
 			<value name="AutoSaveSizePos" type="hex" data="01"/>
 			<value name="Cascaded" type="hex" data="01"/>
 			<value name="IntegralSize" type="hex" data="00"/>
-			<value name="WindowMode" type="dword" data="00000520"/>
-			<value name="ConWnd X" type="long" data="-3"/>
+			<value name="WindowMode" type="dword" data="0000051f"/>
+			<value name="ConWnd X" type="long" data="916"/>
 			<value name="ConWnd Y" type="long" data="-3"/>
-			<value name="LastMonitor" type="string" data="0,0,1680,989"/>
-			<value name="ConWnd Width" type="dword" data="00000050"/>
-			<value name="ConWnd Height" type="dword" data="00000019"/>
+			<value name="LastMonitor" type="string" data="0,0,3440,1363"/>
+			<value name="ConWnd Width" type="dword" data="00000085"/>
+			<value name="ConWnd Height" type="dword" data="0000002a"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="QuakeStyle" type="hex" data="01"/>
-			<value name="Restore2ActiveMon" type="hex" data="00"/>
+			<value name="Restore2ActiveMon" type="hex" data="01"/>
 			<value name="QuakeAnimation" type="ulong" data="300"/>
 			<value name="HideCaption" type="hex" data="01"/>
 			<value name="HideChildCaption" type="hex" data="01"/>
@@ -300,7 +300,7 @@
 			<value name="StatusBar.Hide.Time" type="hex" data="01"/>
 			<value name="StatusBar.Hide.Resize" type="hex" data="00"/>
 			<value name="Tabs" type="hex" data="02"/>
-			<value name="TabsLocation" type="hex" data="00"/>
+			<value name="TabsLocation" type="hex" data="01"/>
 			<value name="TabIcons" type="hex" data="01"/>
 			<value name="OneTabPerGroup" type="hex" data="00"/>
 			<value name="ActivateSplitMouseOver" type="hex" data="01"/>
@@ -311,7 +311,7 @@
 			<value name="TabDblClick" type="ulong" data="1"/>
 			<value name="TabBtnDblClick" type="ulong" data="4"/>
 			<value name="TabsOnTaskBar" type="hex" data="02"/>
-			<value name="TaskBarOverlay" type="hex" data="01"/>
+			<value name="TaskBarOverlay" type="hex" data="00"/>
 			<value name="TaskbarProgress" type="hex" data="01"/>
 			<value name="TabCloseMacro" type="string" data=""/>
 			<value name="TabFontFace" type="string" data="Segoe UI"/>
@@ -398,7 +398,7 @@
 			<value name="Update.DownloadPath" type="string" data="%TEMP%\ConEmu"/>
 			<value name="Update.LeavePackages" type="hex" data="00"/>
 			<value name="Update.PostUpdateCmd" type="string" data="echo Last successful update&gt;ConEmuUpdate.info &amp;&amp; date /t&gt;&gt;ConEmuUpdate.info &amp;&amp; time /t&gt;&gt;ConEmuUpdate.info"/>
-			<key name="HotKeys" modified="2016-09-19 20:27:45" build="160904">
+			<key name="HotKeys" modified="2016-11-17 13:50:38" build="161022">
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="0000005b"/>
 				<value name="Multi.ArrowsModifier" type="dword" data="0000005b"/>
@@ -583,9 +583,9 @@
 				<value name="DndRKey" type="hex" data="a2"/>
 				<value name="WndDragKey" type="dword" data="00121101"/>
 			</key>
-			<key name="Tasks" modified="2016-09-19 20:27:45" build="160904">
+			<key name="Tasks" modified="2016-11-17 13:50:38" build="161022">
 				<value name="Count" type="long" data="10"/>
-				<key name="Task1" modified="2016-09-19 20:27:45" build="160904">
+				<key name="Task1" modified="2016-11-17 13:50:38" build="161022">
 					<value name="Name" type="string" data="{Shells::cmd}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -594,7 +594,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task2" modified="2016-09-19 20:27:45" build="160904">
+				<key name="Task2" modified="2016-11-17 13:50:38" build="161022">
 					<value name="Name" type="string" data="{Shells::cmd (Admin)}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -603,7 +603,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task3" modified="2016-09-19 20:27:45" build="160904">
+				<key name="Task3" modified="2016-11-17 13:50:38" build="161022">
 					<value name="Name" type="string" data="{Shells::cmd-32}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -612,7 +612,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task4" modified="2016-09-19 20:27:45" build="160904">
+				<key name="Task4" modified="2016-11-17 13:50:38" build="161022">
 					<value name="Name" type="string" data="{Shells::cmd 64/32}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -622,7 +622,7 @@
 					<value name="Active" type="long" data="1"/>
 					<value name="Count" type="long" data="2"/>
 				</key>
-				<key name="Task5" modified="2016-09-19 20:27:45" build="160904">
+				<key name="Task5" modified="2016-11-17 13:50:38" build="161022">
 					<value name="Name" type="string" data="{Shells::PowerShell}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -631,7 +631,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task6" modified="2016-09-19 20:27:45" build="160904">
+				<key name="Task6" modified="2016-11-17 13:50:38" build="161022">
 					<value name="Name" type="string" data="{Shells::PowerShell (Admin)}"/>
 					<value name="Flags" type="dword" data="00000007"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -640,7 +640,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task7" modified="2016-09-19 20:27:45" build="160904">
+				<key name="Task7" modified="2016-11-17 13:50:38" build="161022">
 					<value name="Name" type="string" data="{Bash::bash}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -649,7 +649,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task8" modified="2016-09-19 20:27:45" build="160904">
+				<key name="Task8" modified="2016-11-17 13:50:38" build="161022">
 					<value name="Name" type="string" data="{Bash::Git bash}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -658,7 +658,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task9" modified="2016-09-19 20:27:45" build="160904">
+				<key name="Task9" modified="2016-11-17 13:50:38" build="161022">
 					<value name="Name" type="string" data="{Helper::Show ANSI colors}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -667,7 +667,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task10" modified="2016-09-19 20:27:45" build="160904">
+				<key name="Task10" modified="2016-11-17 13:50:38" build="161022">
 					<value name="Name" type="string" data="{Tools::Chocolatey (Admin)}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -677,12 +677,13 @@
 					<value name="Count" type="long" data="1"/>
 				</key>
 			</key>
-			<key name="Apps" modified="2016-09-19 20:27:45" build="160904">
+			<key name="Apps" modified="2016-11-17 13:50:38" build="161022">
 				<value name="Count" type="long" data="0"/>
 			</key>
-			<key name="Colors" modified="2016-09-19 20:27:45" build="160904">
+			<key name="Colors" modified="2016-11-17 13:50:38" build="161022">
 				<value name="Count" type="long" data="0"/>
 			</key>
+			<value name="KillSshAgent" type="hex" data="01"/>
 		</key>
 	</key>
 </key>
