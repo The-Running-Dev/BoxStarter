@@ -1,12 +1,13 @@
 Write-Host "Building Chocolatey Pacakges"
 
-$nuspecs = Get-ChildItem -Path $PSScriptRoot -Filter *.nuspec -Recurse
+$artifactsPath = Join-Path $PSScriptRoot 'Artifacts'
 
-Foreach($nuspec in $nuspecs){
-    choco pack $nuspec.FullName
+if (Test-Path($artifactsPath)) {
+    Remove-Item $artifactsPath\** -Recurse -Force
 }
 
-$artifactsFolder = "./Artifacts"
+New-Item -Path $artifactsPath -ItemType Directory -Force
 
-New-Item -Path $artifactsFolder -ItemType Directory -Force
-Move-Item *.nupkg $artifactsFolder -Force
+foreach ($nuspec in (Get-ChildItem -Path $PSScriptRoot -Filter *.nuspec -Recurse)){
+    choco pack $nuspec.FullName --outputdirectory $artifactsPath
+}

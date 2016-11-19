@@ -115,7 +115,7 @@ param(
         2147205120  # pending restart required for setup update
     )
 
-    $defaultConfigurationFile = (Join-Path $PSScriptRoot 'Configuration.ini')
+    $defaultConfigurationFile = Join-Path (Join-Path $PSScriptRoot .. -Resolve) 'Configuration.ini'
 
     $packageParameters = ParseParameters $env:chocolateyPackageParameters
     $configurationFile = GetConfigurationFile $packageParameters $defaultConfigurationFile

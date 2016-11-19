@@ -28,6 +28,10 @@ function Disable-WindowsFeatures {
     RunChocoCommands $disableWindowsFeaturesFile "choco uninstall ##application## -source WindowsFeatures -y"
 }
 
+function CopySettings {
+    $env:APPDATA\Code\User
+}
+
 function RunChocoCommands([string] $filePath, [string] $commandTemplate) {
     try {
         foreach ($line in Get-Content -Path $filePath | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'})

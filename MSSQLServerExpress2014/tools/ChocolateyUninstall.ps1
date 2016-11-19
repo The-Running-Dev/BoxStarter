@@ -22,4 +22,3 @@ Uninstall-ChocolateyPackage "$packageName" "EXE" "$silentArgs" "$setupPath" -val
 
 Write-Host "Removing SQL Server Express Extracted Files..."
 rm -r "$extractPath"
-

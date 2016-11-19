@@ -32,5 +32,3 @@ Install-ChocolateyPackage @params
 Copy-Item -Recurse -Force $packagePath\$wallpapersDirectory $installDirectory
 Copy-Item -Force $packagePath\$settingsFile $installDirectory\$settingsFile
 Copy-Item -Force $packagePath\$settingsFile $env:APPDATA\$settingsFile
-
-C:\Users\Boyan\AppData\Roaming\Code\User
