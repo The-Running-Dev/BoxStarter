@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+	<metadata>
+		<id>ConEmu</id>
+		<version>16.10.22</version>
+		<title>ConEmu</title>
+		<authors>ConEmu</authors>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+		<docsUrl>https://github.com/Boyan-Kostadinov/BoxStarter</docsUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<summary></summary>
+		<tags></tags>
+		<description>
+		ConEmu Installer
+		https://conemu.github.io/
+		</description>
+		<releaseNotes></releaseNotes>
+	</metadata>
+</package>

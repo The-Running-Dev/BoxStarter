@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>MsSqlServer2014Express</id>
+    <id>MSSQLServer2014Express</id>
     <version>12.0.4100.20160621</version>
     <title>SQL Server 2014 Express with SP1</title>
     <authors>Microsoft</authors>

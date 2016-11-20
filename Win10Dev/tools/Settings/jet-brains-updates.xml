@@ -1,0 +1,1765 @@
+<!DOCTYPE products SYSTEM "updates.dtd">
+<products>
+  <product name="IntelliJ IDEA">
+    <code>IU</code>
+    <code>IC</code>
+
+    <channel id="IDEA12" name="IntelliJ IDEA 12" status="release" url="https://www.jetbrains.com/idea/download" feedback="http://youtrack.jetbrains.net" majorVersion="12">
+      <build number="129.1561" version="12.1.8" releaseDate="20121203">
+        <message><![CDATA[
+        <p>IntelliJ IDEA 12.1.8, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/IntelliJIDEA/Previous+IntelliJ+IDEA+Releases" download="true" />
+        <patch from="129.1525" size="1" />
+      </build>
+    </channel>
+
+    <channel id="IDEA13" name="IntelliJ IDEA 13" status="release" url="https://www.jetbrains.com/idea/download" feedback="http://youtrack.jetbrains.net" majorVersion="13">
+      <build number="133.1885" version="13.0.5" releaseDate="20131202">
+        <message><![CDATA[
+        <p>IntelliJ IDEA 13.0.5, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/IntelliJIDEA/Previous+IntelliJ+IDEA+Releases" download="true" />
+        <patch from="133.1711" size="1" />
+      </build>
+    </channel>
+
+    <channel id="IDEA13.1" name="IntelliJ IDEA 13.1" status="release" url="https://www.jetbrains.com/idea/download" feedback="http://youtrack.jetbrains.net" majorVersion="13">
+      <build number="135.1356" version="13.1.7" releaseDate="20131202">
+        <message><![CDATA[
+        <p>IntelliJ IDEA 13.1.7, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/IntelliJIDEA/Previous+IntelliJ+IDEA+Releases" download="true" />
+        <patch from="135.1306" size="1" />
+      </build>
+    </channel>
+
+    <channel id="IDEA14.1" name="IntelliJ IDEA 14.1" status="release" url="https://www.jetbrains.com/idea/download" feedback="http://youtrack.jetbrains.net" majorVersion="14">
+      <build number="141.3058" version="14.1.7" releaseDate="20150323">
+        <message><![CDATA[
+        <p>IntelliJ IDEA 14.1.7, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/IntelliJIDEA/Previous+IntelliJ+IDEA+Releases" download="true" />
+        <patch from="141.3057" size="20" />
+        <patch from="141.3056" size="20" />
+      </build>
+    </channel>
+
+    <channel id="IDEA14.0" name="IntelliJ IDEA 14.0" status="release" url="https://www.jetbrains.com/idea/download" feedback="http://youtrack.jetbrains.net" majorVersion="14">
+      <build number="139.1803" version="14.0.5" releaseDate="20141103">
+        <message><![CDATA[
+        <p>IntelliJ IDEA 14.0.5, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/IntelliJIDEA/Previous+IntelliJ+IDEA+Releases" download="true" />
+        <patch from="139.1603" size="1" />
+      </build>
+    </channel>
+
+    <channel id="IDEA_EAP" name="IntelliJ IDEA EAP" status="eap" url="https://confluence.jetbrains.com/display/IDEADEV/IDEA+2016.3+EAP" feedback="http://youtrack.jetbrains.net" majorVersion="2016" licensing="eap">
+      <build number="163.7743" version="2016.3 RC2" fullNumber="163.7743.37">
+        <message><![CDATA[
+<p><strong>IntelliJ IDEA 2016.3 RC2</strong> is out.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/IDEADEV/IDEA+2016.3+EAP" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2016.3+163.7743.37+Release+Notes" />
+        <patch from="163.7743" size="from 2 to 18" fullFrom="163.7743.17" />
+      </build>
+      <build number="163.7743" version="2016.3 RC" fullNumber="163.7743.17">
+        <message><![CDATA[
+<p>A fresh <strong>IntelliJ IDEA 2016.3 RC</strong> is out.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/IDEADEV/IDEA+2016.3+EAP" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2016.3+163.7743.17+Release+Notes" />
+        <patch from="163.7342" size="from 4 to 23" fullFrom="163.7342.3" />
+      </build>
+      <build number="163.7342" version="2016.3 EAP" fullNumber="163.7342.3">
+        <message><![CDATA[
+<p>A fresh <strong>IntelliJ IDEA 2016.3 EAP</strong> is out.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/IDEADEV/IDEA+2016.3+EAP" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2016.3+163.7342.3+Release+Notes" />
+        <patch from="163.6957" size="from 6 to 40" fullFrom="163.6957.12" />
+      </build>
+      <build number="163.6512" version="2016.3 Public Preview" fullNumber="163.6512.17">
+        <message><![CDATA[
+<p>A fresh <strong>IntelliJ IDEA 2016.3 Public Preview</strong> build is out.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/IDEADEV/IDEA+2016.3+EAP" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2016.3+163.6512.17+Release+Notes" />
+        <patch from="163.6110" size="from 18 to 46" fullFrom="163.6110.12" />
+      </build>
+      <build number="162.2228" version="2016.2.5" releaseDate="20160712" fullNumber="162.2228.15">
+        <message><![CDATA[
+        <p>The <strong>IntelliJ IDEA 2016.2.5</strong> update is available. <br>
+    Apart from bugfixes, the update brings support for <strong>macOS Sierra</strong>.</p>
+]]></message>
+        <button name="Download" url="https://www.jetbrains.com/idea/download/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2016.2.5+Release+Notes" />
+        <patch from="162.2032" size="from 1 to 13" fullFrom="162.2032.8" />
+        <patch from="162.2228" size="from 21 to 53" fullFrom="162.2228.14" />
+        <patch from="162.1812" size="from 21 to 55" fullFrom="162.1812.17" />
+        <patch from="162.1628" size="from 21 to 59" fullFrom="162.1628.40" />
+        <patch from="162.1447" size="from 21 to 67" fullFrom="162.1447.26" />
+        <patch from="162.1121" size="from 33 to 80" fullFrom="162.1121.32" />
+      </build>
+      <build number="162.1121" version="2016.2" releaseDate="20160712" fullNumber="162.1121.32">
+        <message><![CDATA[
+        <p>Welcome <strong>IntelliJ IDEA 2016.2</strong>, a second update planned for this year.<br>
+    The update brings lots of new features and improvements across the <br>
+    built-in tools, UI, and support for languages and frameworks.
+</p>
+
+<p>Learn more about the update by reading the <a href="http://blog.jetbrains.com/idea/2016/07/intellij-idea-2016-2-is-here/">blog post</a>.</p>
+]]></message>
+        <button name="What's New" url="https://www.jetbrains.com/idea/whatsnew/" />
+        <button name="Download" url="https://www.jetbrains.com/idea/download/" download="true" />
+        <patch from="162.1121" size="from 1 to 12" fullFrom="162.1121.10" />
+      </build>
+      <build number="145.2070" version="2016.1.4" releaseDate="20160316">
+        <message><![CDATA[
+        <p>IntelliJ IDEA 2016.1.4 build 145.2070 is available with important bugfixes.</p>
+]]></message>
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2016.1.4+Release+Notes" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/IntelliJIDEA/Previous+IntelliJ+IDEA+Releases" download="true" />
+        <patch from="145.1617" size="from 42 to 58" />
+      </build>
+    </channel>
+
+    <channel id="IDEA_Beta" name="IntelliJ IDEA Beta" status="beta" url="https://www.jetbrains.com/idea/download" feedback="http://youtrack.jetbrains.net" majorVersion="2016" licensing="release">
+      <build number="163.7743" version="2016.3 RC2" fullNumber="163.7743.37">
+        <message><![CDATA[
+<p><strong>IntelliJ IDEA 2016.3 RC2</strong> is out.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/IDEADEV/IDEA+2016.3+EAP" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2016.3+163.7743.37+Release+Notes" />
+        <patch from="163.7743" size="from 2 to 18" fullFrom="163.7743.17" />
+      </build>
+      <build number="163.7743" version="2016.3 RC" releaseDate="20160712" fullNumber="163.7743.17">
+        <message><![CDATA[
+        <p><strong>IntelliJ IDEA 2016.3 RC</strong> is now available.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/IDEADEV/IDEA+2016.3+EAP" download="true" />
+        <button name="Release Notes" url="https://www.jetbrains.com/idea/nextversion/" />
+      </build>
+      <build number="163.6512" version="2016.3 Public Preview" releaseDate="20160712" fullNumber="163.6512.17">
+        <message><![CDATA[
+        <p><strong>IntelliJ IDEA 2016.3</strong> is now available for a public preview.</p>
+
+<p>Notable new features include:</p>
+
+<ul>
+    <li><strong>Java</strong>: Refactoring to Java 8, Inspections with no-highlighting policy</li>
+    <li><strong>JVM Debugger</strong>: Class-level watches, Memory view</li>
+    <li><strong>Code Editor</strong>: Parameter hints, Semantic highlighting</li>
+    <li><strong>Build Tools</strong>: Delegate IDE build/run actions to Gradle, Gradle composite <br>
+        builds, Polyglot maven</li>
+    <li><strong>VCS Improvements</strong>: Git/Mercurial Log, Merge and Diff, Managing remotes</li>
+    <li><strong>JavaScript Improvements</strong>: ECMAScript 6, TypeScript, Flow</li>
+    <li><strong>Android</strong>: Blueprint, Constraint Layout, more stable Instant Run, <br>
+        APK Analyzer</li>
+    <li><strong>Databases</strong>: Editing multiple cells, Bulk submit</li>
+</ul>
+
+<p>For more details and screenshots, read the <a href="http://blog.jetbrains.com/idea/2016/10/intellij-idea-2016-3-public-preview/">blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://www.jetbrains.com/idea/nextversion/" download="true" />
+        <button name="Release Notes" url="https://www.jetbrains.com/idea/nextversion/" />
+      </build>
+      <build number="162.2228" version="2016.2.5" releaseDate="20160712" fullNumber="162.2228.15">
+        <message><![CDATA[
+        <p>The <strong>IntelliJ IDEA 2016.2.5</strong> update is available. <br>
+    Apart from bugfixes, the update brings support for <strong>macOS Sierra</strong>.</p>
+]]></message>
+        <button name="Download" url="https://www.jetbrains.com/idea/download/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2016.2.5+Release+Notes" />
+        <patch from="162.2032" size="from 1 to 13" fullFrom="162.2032.8" />
+        <patch from="162.2228" size="from 21 to 53" fullFrom="162.2228.14" />
+        <patch from="162.1812" size="from 21 to 55" fullFrom="162.1812.17" />
+        <patch from="162.1628" size="from 21 to 59" fullFrom="162.1628.40" />
+        <patch from="162.1447" size="from 21 to 67" fullFrom="162.1447.26" />
+        <patch from="162.1121" size="from 33 to 80" fullFrom="162.1121.32" />
+      </build>
+      <build number="145.2070" version="2016.1.4" releaseDate="20160316">
+        <message><![CDATA[
+        <p>IntelliJ IDEA 2016.1.4 build 145.2070 is available with important bugfixes.</p>
+]]></message>
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2016.1.4+Release+Notes" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/IntelliJIDEA/Previous+IntelliJ+IDEA+Releases" download="true" />
+        <patch from="145.1617" size="from 42 to 58" />
+      </build>
+      <build number="162.1121" version="2016.2" releaseDate="20160712" fullNumber="162.1121.32">
+        <message><![CDATA[
+        <p>Welcome <strong>IntelliJ IDEA 2016.2</strong>, a second update planned for this year.<br>
+    The update brings lots of new features and improvements across the <br>
+    built-in tools, UI, and support for languages and frameworks.
+</p>
+
+<p>Learn more about the update by reading the <a href="http://blog.jetbrains.com/idea/2016/07/intellij-idea-2016-2-is-here/">blog post</a>.</p>
+]]></message>
+        <button name="What's New" url="https://www.jetbrains.com/idea/whatsnew/" />
+        <button name="Download" url="https://www.jetbrains.com/idea/download/" download="true" />
+        <patch from="162.1121" size="from 1 to 12" fullFrom="162.1121.10" />
+      </build>
+    </channel>
+
+    <channel id="IDEA15_Release" name="IntelliJ IDEA Release" status="release" url="https://www.jetbrains.com/idea/download" feedback="http://youtrack.jetbrains.net" majorVersion="15" licensing="release">
+      <build number="143.2370" version="15.0.6" releaseDate="20151102">
+        <message><![CDATA[
+        <p>IntelliJ IDEA 15.0.6 is now available. For the list of fixes see the <a href="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+15.0.6+Release+Notes">release notes</a>.</p>
+        <p><b>IMPORTANT:</b> The update also contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/IntelliJIDEA/Previous+IntelliJ+IDEA+Releases" download="true" />
+        <patch from="143.2332" size="from 2 to 45" />
+      </build>
+    </channel>
+
+    <channel id="IDEA_Release" name="IntelliJ IDEA Release" status="release" url="https://www.jetbrains.com/idea/download" feedback="http://youtrack.jetbrains.net" majorVersion="2016" licensing="release">
+      <build number="162.2228" version="2016.2.5" releaseDate="20160712" fullNumber="162.2228.15">
+        <message><![CDATA[
+        <p>The <strong>IntelliJ IDEA 2016.2.5</strong> update is available. <br>
+    Apart from bugfixes, the update brings support for <strong>macOS Sierra</strong>.</p>
+]]></message>
+        <button name="Download" url="https://www.jetbrains.com/idea/download/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2016.2.5+Release+Notes" />
+        <patch from="162.2032" size="from 1 to 13" fullFrom="162.2032.8" />
+        <patch from="162.2228" size="from 21 to 53" fullFrom="162.2228.14" />
+        <patch from="162.1812" size="from 21 to 55" fullFrom="162.1812.17" />
+        <patch from="162.1628" size="from 21 to 59" fullFrom="162.1628.40" />
+        <patch from="162.1447" size="from 21 to 67" fullFrom="162.1447.26" />
+        <patch from="162.1121" size="from 33 to 80" fullFrom="162.1121.32" />
+      </build>
+      <build number="162.1121" version="2016.2" releaseDate="20160712" fullNumber="162.1121.32">
+        <message><![CDATA[
+        <p>Welcome <strong>IntelliJ IDEA 2016.2</strong>, a second update planned for this year.<br>
+    The update brings lots of new features and improvements across the <br>
+    built-in tools, UI, and support for languages and frameworks.
+</p>
+
+<p>Learn more about the update by reading the <a href="http://blog.jetbrains.com/idea/2016/07/intellij-idea-2016-2-is-here/">blog post</a>.</p>
+]]></message>
+        <button name="What's New" url="https://www.jetbrains.com/idea/whatsnew/" />
+        <button name="Download" url="https://www.jetbrains.com/idea/download/" download="true" />
+        <patch from="162.1121" size="from 1 to 12" fullFrom="162.1121.10" />
+      </build>
+      <build number="145.2070" version="2016.1.4" releaseDate="20160316">
+        <message><![CDATA[
+        <p>IntelliJ IDEA 2016.1.4 build 145.2070 is available with important bugfixes.</p>
+]]></message>
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/IDEADEV/IntelliJ+IDEA+2016.1.4+Release+Notes" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/IntelliJIDEA/Previous+IntelliJ+IDEA+Releases" download="true" />
+        <patch from="145.1617" size="from 42 to 58" />
+      </build>
+    </channel>
+  </product>
+
+  <product name="RubyMine">
+    <code>RM</code>
+    <channel id="rm20" name="RubyMine 2" status="Release" url="https://www.jetbrains.com/ruby/download" feedback="http://youtrack.jetbrains.net">
+      <build number="117.230" version="4.0.3">
+        <message>RubyMine 4.0.3 is available.</message>
+        <button name="Download" url="https://www.jetbrains.com/ruby/download" download="true" />
+        <button name="Release Notes" url="http://blog.jetbrains.com/ruby/2012/04/rubymine-4-0-3-update-is-available/" />
+        <patch from="113.29" size="17" exclusions="mac" />
+        <patch from="113.31" size="17" exclusions="mac" />
+        <patch from="117.159" size="1" exclusions="mac" />
+      </build>
+    </channel>
+    <channel id="rm30" name="RubyMine 3.0" status="Release" url="https://www.jetbrains.com/ruby/download" feedback="http://youtrack.jetbrains.net" majorVersion="3">
+      <build number="117.230" version="4.0.3">
+        <message>RubyMine 4.0.3 is available.</message>
+        <button name="Download" url="https://www.jetbrains.com/ruby/download" download="true" />
+        <button name="Release Notes" url="http://blog.jetbrains.com/ruby/2012/04/rubymine-4-0-3-update-is-available/" />
+        <patch from="113.29" size="17" exclusions="mac" />
+        <patch from="113.31" size="17" exclusions="mac" />
+        <patch from="117.159" size="1" exclusions="mac" />
+      </build>
+    </channel>
+    <channel id="rm32" name="RubyMine 3.2" status="Release" url="https://www.jetbrains.com/ruby/download" feedback="http://youtrack.jetbrains.net" majorVersion="3">
+      <build number="117.230" version="4.0.3">
+        <message>RubyMine 4.0.3 is available.</message>
+        <button name="Download" url="https://www.jetbrains.com/ruby/download" download="true" />
+        <button name="Release Notes" url="http://blog.jetbrains.com/ruby/2012/04/rubymine-4-0-3-update-is-available/" />
+        <patch from="113.29" size="17" exclusions="mac" />
+        <patch from="113.31" size="17" exclusions="mac" />
+        <patch from="117.159" size="1" exclusions="mac" />
+      </build>
+    </channel>
+    <channel id="rm4" name="RubyMine 4.0" status="Release" url="https://www.jetbrains.com/ruby/download" feedback="http://youtrack.jetbrains.net" majorVersion="4">
+      <build number="117.230" version="4.0.3">
+        <message>RubyMine 4.0.3 is available.</message>
+        <button name="Download" url="https://www.jetbrains.com/ruby/download" download="true" />
+        <button name="Release Notes" url="http://blog.jetbrains.com/ruby/2012/04/rubymine-4-0-3-update-is-available/" />
+        <patch from="113.29" size="17" exclusions="mac" />
+        <patch from="113.31" size="17" exclusions="mac" />
+        <patch from="117.159" size="1" exclusions="mac" />
+      </build>
+    </channel>
+    <channel id="rm45" name="RubyMine 4.5" status="Release" url="https://www.jetbrains.com/ruby/" feedback="http://youtrack.jetbrains.net" majorVersion="4">
+      <build number="119.71" version="4.5.4">
+        <message>RubyMine 4.5.4 is available.</message>
+        <button name="Download" url="https://www.jetbrains.com/ruby/download/" download="true" />
+        <button name="Release Notes" url="http://blog.jetbrains.com/ruby/2012/09/rubymine-4-5-4/" />
+        <patch from="119.63" size="1" exclusions="mac" />
+      </build>
+    </channel>
+
+    <channel id="rm50" name="RubyMine 5.0" status="Release" url="https://www.jetbrains.com/ruby" feedback="http://youtrack.jetbrains.com" majorVersion="5">
+      <build number="125.94" version="5.0.2">
+        <message>RubyMine 5.0.2 is available</message>
+        <button name="Download" url="https://www.jetbrains.com/ruby/download/" download="true" />
+        <button name="Release Notes" url="http://blog.jetbrains.com/ruby/2013/03/welcome-spring-with-rubymine-5-0-2/" />
+        <patch from="125.65" size="1" />
+      </build>
+    </channel>
+
+    <channel id="rm54" name="RubyMine 5.4" status="Release" url="https://www.jetbrains.com/ruby" feedback="http://youtrack.jetbrains.com" majorVersion="5">
+      <build number="129.1565" version="5.4.4">
+        <message><![CDATA[
+        <p>RubyMine 5.4.4, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+]]>
+        </message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/RUBYDEV/Previous+RubyMine+Releases" download="true" />
+        <patch from="129.861" size="7" />
+      </build>
+    </channel>
+
+    <channel id="rm60" name="RubyMine 6.0" status="Release" url="https://www.jetbrains.com/ruby" feedback="http://youtrack.jetbrains.com" majorVersion="6">
+      <build number="133.1883" version="6.0.4">
+        <message><![CDATA[
+        <p>RubyMine 6.0.4, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+]]>
+        </message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/RUBYDEV/Previous+RubyMine+Releases" download="true" />
+        <patch from="133.632" size="1" />
+      </build>
+    </channel>
+
+    <channel id="rm63" name="RubyMine 6.3" status="Release" url="https://www.jetbrains.com/ruby" feedback="http://youtrack.jetbrains.com" majorVersion="6">
+      <build number="135.1355" version="6.3.4">
+        <message><![CDATA[
+        <p>RubyMine 6.3.4, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+]]>
+        </message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/RUBYDEV/Previous+RubyMine+Releases" download="true" />
+        <patch from="135.1104" size="3" exclusions="mac" />
+      </build>
+    </channel>
+
+    <channel id="rm71" name="RubyMine 7.1" status="Release" url="https://www.jetbrains.com/ruby" feedback="http://youtrack.jetbrains.com" majorVersion="7">
+      <build number="141.3058" version="7.1.5" releaseDate="20150415">
+        <message><![CDATA[
+        <p>RubyMine 7.1.5, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+]]>
+        </message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/RUBYDEV/Previous+RubyMine+Releases" download="true" />
+        <patch from="141.1835" size="5" />
+      </build>
+    </channel>
+
+    <channel id="rm70" name="RubyMine 7.0" status="Release" url="https://www.jetbrains.com/ruby" feedback="http://youtrack.jetbrains.com" majorVersion="7">
+      <build number="139.1803" version="7.0.5">
+        <message><![CDATA[
+        <p>RubyMine 7.0.5, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+]]>
+        </message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/RUBYDEV/Previous+RubyMine+Releases" download="true" />
+        <patch from="139.1231" size="5" />
+      </build>
+    </channel>
+
+    <channel id="rm8" name="RubyMine 8 Release" status="release" url="https://www.jetbrains.com/ruby/" feedback="https://youtrack.jetbrains.com/issues/ruby" majorVersion="8">
+      <build number="143.2370" version="8.0.4" releaseDate="20151102">
+        <message><![CDATA[
+        <p>RubyMine 8.0.4, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+]]>
+        </message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/RUBYDEV/Previous+RubyMine+Releases" download="true" />
+        <patch from="143.1559" size="7" />
+      </build>
+    </channel>
+
+    <channel id="rm2016.1r" name="RubyMine 2016.1" status="Release" url="https://www.jetbrains.com/ruby/" feedback="https://youtrack.jetbrains.com/issues/ruby" majorVersion="2016" licensing="release">
+      <build number="145.1813" version="2016.1.2" releaseDate="20160331">
+        <message><![CDATA[
+        <p>RubyMine 2016.1.2 is now available.</p>
+        <p>See the <a href="https://blog.jetbrains.com/ruby/2016/06/rubymine-2016-1-2/">blog post</a> for more details.</p>
+        </p>
+]]></message>
+        <button name="More Information" url="https://blog.jetbrains.com/ruby/2016/06/rubymine-2016-1-2/" />
+        <button name="Download" url="https://jetbrains.com/ruby/download/" download="true" />
+        <patch from="145.1812" size="2" />
+        <patch from="145.972" size="2 to 12" />
+      </build>
+    </channel>
+
+    <channel id="rm2016.2" name="RubyMine 2016.2" status="Release" url="https://www.jetbrains.com/ruby/" feedback="https://youtrack.jetbrains.com/issues/ruby" majorVersion="2016" licensing="release">
+      <build number="162.2380" version="2016.2.5" releaseDate="20160721" fullNumber="162.2380.8">
+        <patch from="162.2032" size="12 to 22" fullFrom="162.2032.10" />
+        <message><![CDATA[
+<div width="600px">
+  <p>RubyMine 2016.2.5 is out.</p>
+
+  <p>This update fixes the <a href="https://youtrack.jetbrains.com/issue/IDEA-158500">sensitive scrolling problem</a>
+  in macOS Sierra. Check out the <a href="https://confluence.jetbrains.com/display/RUBYDEV/RubyMine+2016.2">release notes</a> for
+  the full list of changes.
+  </p>
+</div>
+]]></message>
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/RUBYDEV/RubyMine+2016.2" />
+        <button name="Download" url="https://jetbrains.com/ruby/download/" download="true" />
+      </build>
+    </channel>
+
+    <channel id="RubyMine EAP" name="RubyMine EAP" status="eap" url="https://www.jetbrains.com/ruby/" feedback="https://youtrack.jetbrains.com/issues/ruby" majorVersion="2016" licensing="eap">
+      <build number="163.7743" version="2016.3 BETA" fullNumber="163.7743.27">
+        <patch from="163.7342" size="7 to 8" fullFrom="163.7342.19" />
+        <message><![CDATA[
+<div width="450px">
+  <p>RubyMine 2016.3 BETA is Now Available!</p>
+    <p> Major changes since 2016.2:</p>
+    <ul>
+       <li>Attach with debugger to local ruby process</li>
+       <li>Faster gem downloading</li>
+       <li>Better Puppet support</li>
+       <li>New gem management UI</li>
+       <li>Support for Rails Mailers</li>
+       <li>Improved VCS</li>
+       <li>JavaScript improvements</li>
+    </ul>
+    <p>
+        Please check out our <a href="https://www.jetbrains.com/ruby/whatsnew/">"What’s new" page</a>
+        to find more about new features.
+    </p>
+</div>
+]]></message>
+        <!--<button name="More Information" url="http://blog.jetbrains.com/ruby/2016/09/new-gem-management-ui/"/>-->
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/RUBYDEV/RubyMine+2016.3" />
+        <button name="Download" url="https://www.jetbrains.com/ruby/whatsnew/" download="true" />
+      </build>
+    </channel>
+
+    <channel id="RubyMine BETA" name="RubyMine BETA" status="beta" url="https://www.jetbrains.com/ruby/" feedback="https://youtrack.jetbrains.com/issues/ruby" majorVersion="2016" licensing="eap">
+      <build number="163.7743" version="2016.3 BETA" fullNumber="163.7743.27">
+        <patch from="163.7342" size="7 to 8" fullFrom="163.7342.19" />
+        <message><![CDATA[
+<div width="450px">
+  <p>RubyMine 2016.3 BETA is Now Available!</p>
+    <p> Major changes since 2016.2:</p>
+    <ul>
+       <li>Attach with debugger to local ruby process</li>
+       <li>Faster gem downloading</li>
+       <li>Better Puppet support</li>
+       <li>New gem management UI</li>
+       <li>Support for Rails Mailers</li>
+       <li>Improved VCS</li>
+       <li>JavaScript improvements</li>
+    </ul>
+    <p>
+        Please check out our <a href="https://www.jetbrains.com/ruby/whatsnew/">"What’s new" page</a>
+        to find more about new features.
+    </p>
+</div>
+]]></message>
+        <!--<button name="More Information" url="http://blog.jetbrains.com/ruby/2016/09/new-gem-management-ui/"/>-->
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/RUBYDEV/RubyMine+2016.3" />
+        <button name="Download" url="https://www.jetbrains.com/ruby/whatsnew/" download="true" />
+      </build>
+    </channel>
+
+
+  </product>
+
+  <product name="PyCharm">
+    <code>PY</code>
+    <code>PC</code>
+
+    <channel id="pycharm10" name="PyCharm 1.0" status="Release" url="https://www.jetbrains.com/pycharm/whatsnew" feedback="http://youtrack.jetbrains.net" majorVersion="1">
+      <build number="107.576" version="1.5.4">
+        <message>PyCharm 1.5.4 is available.</message>
+      </build>
+    </channel>
+
+    <channel id="pycharm2" name="PyCharm 2" status="Release" url="https://www.jetbrains.com/pycharm/whatsnew" feedback="http://youtrack.jetbrains.net" majorVersion="2">
+      <build number="129.1566" version="2.7.4">
+        <message><![CDATA[
+        <p>PyCharm 2.7.4, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/Previous+PyCharm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="129.782" size="1" />
+      </build>
+    </channel>
+
+    <channel id="pycharm3.0" name="PyCharm 3.0" status="Release" url="https://www.jetbrains.com/pycharm/whatsnew" feedback="http://youtrack.jetbrains.com" majorVersion="3">
+      <build number="131.849" version="3.0.3">
+        <message><![CDATA[
+        <p>PyCharm 3.0.3, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/Previous+PyCharm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="131.618" size="1" />
+      </build>
+    </channel>
+
+    <channel id="pycharm3.1" name="PyCharm 3.1" status="Release" url="https://www.jetbrains.com/pycharm/whatsnew" feedback="http://youtrack.jetbrains.com" majorVersion="3">
+      <build number="133.1884" version="3.1.4">
+        <message><![CDATA[
+        <p>PyCharm 3.1.4, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/Previous+PyCharm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="133.1347" size="1" />
+      </build>
+    </channel>
+
+    <channel id="pycharm3.4" name="PyCharm 3.4" status="Release" url="https://www.jetbrains.com/pycharm/whatsnew" feedback="http://youtrack.jetbrains.com" majorVersion="3">
+      <build number="135.1357" version="3.4.4">
+        <message><![CDATA[
+        <p>PyCharm 3.4.4, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/Previous+PyCharm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="135.1318" size="1" />
+      </build>
+    </channel>
+
+    <channel id="pycharm4" name="PyCharm 4" status="Release" url="https://www.jetbrains.com/pycharm/whatsnew" feedback="http://youtrack.jetbrains.com" majorVersion="4">
+      <build number="141.3058" version="4.5.5">
+        <message><![CDATA[
+        <p>PyCharm 4.5.5, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/Previous+PyCharm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="141.2569" size="1" />
+      </build>
+    </channel>
+
+    <channel id="pycharm40" name="PyCharm 4.0" status="Release" url="https://www.jetbrains.com/pycharm/whatsnew" feedback="http://youtrack.jetbrains.com" majorVersion="4">
+      <build number="139.1803" version="4.0.7">
+        <message><![CDATA[
+        <p>PyCharm 4.0.7, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/Previous+PyCharm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="139.1659" size="1" />
+      </build>
+    </channel>
+
+    <channel id="pycharm5" name="PyCharm 5" status="Release" url="https://www.jetbrains.com/pycharm/whatsnew" feedback="http://youtrack.jetbrains.com" majorVersion="5">
+      <build number="143.2371" version="5.0.6" releaseDate="20151102">
+        <message><![CDATA[
+        <p>PyCharm 5.0.6 is now available.</p>
+        <p>In this update we've switched to a more modern API of the Python Package Index repository.</p>
+        <p>For more details please read <a href="https://blog.jetbrains.com/pycharm/2016/11/pycharm-5-and-2016-1-pypi-compatibility-hotfix/">this blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/Previous+PyCharm+Releases" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+143.2371.1+Release+Notes" />
+        <patch from="143.2370" size="3 to 13" />
+      </build>
+    </channel>
+
+    <channel id="pycharm2016.1" name="PyCharm 2016.1" status="Release" url="https://www.jetbrains.com/pycharm/whatsnew/" feedback="https://youtrack.jetbrains.com/issues/PY" majorVersion="2016" licensing="release">
+      <build number="145.2073" version="2016.1.5" releaseDate="20160323">
+        <message><![CDATA[
+        <p>PyCharm 2016.1.5 is now available.</p>
+        <p>In this update we've switched to a more modern API of the Python Package Index repository.</p>
+        <p>For more details please read <a href="https://blog.jetbrains.com/pycharm/2016/11/pycharm-5-and-2016-1-pypi-compatibility-hotfix/">this blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/Previous+PyCharm+Releases" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+145.2073.10+Release+Notes" />
+        <patch from="145.1504" size="3 to 16" />
+      </build>
+    </channel>
+
+    <channel id="pycharm2016.2Release" name="PyCharm 2016.2" status="Release" url="https://www.jetbrains.com/pycharm/whatsnew/" feedback="https://youtrack.jetbrains.com/issues/PY" majorVersion="2016" licensing="release">
+      <build number="162.1237" version="2016.2" releaseDate="20160721" fullNumber="162.1237.1">
+        <message><![CDATA[
+        <p>The new PyCharm 2016.2 is out.</p>
+        <p>Some of the features are:</p>
+        <ul>
+          <li>vmprof Profiler support</li>
+          <li>Pandas dataframes viewer</li>
+          <li>Thread suspend option</li>
+          <li>Function return values in the debugger</li>
+          <li>Configuration for optimize imports</li>
+          <li>Lettuce scenario outlines</li>
+          <li>Support for ligatures</li>
+          <li>Custom background image for the editor</li>
+          <li>Enhanced VCS log viewer</li>
+        </ul>
+        <p>For more details please read <a href="https://blog.jetbrains.com/pycharm/2016/07/announcing-general-availability-of-pycharm-2016-2/">the blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://www.jetbrains.com/pycharm/download/" download="true" />
+        <button name="Release Notes" url="https://www.jetbrains.com/pycharm/whatsnew/" />
+        <patch from="162.1236" size="from 3 to 7" fullFrom="162.1236.15" />
+      </build>
+
+      <build number="162.1967" version="2016.2.3" releaseDate="20160721" fullNumber="162.1967.10">
+        <message><![CDATA[
+        <p>PyCharm 2016.2.3 bug-fix update is out.</p>
+        <p>For more details please read <a href="https://blog.jetbrains.com/pycharm/2016/09/announcing-pycharm-2016-2-3/">the blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://www.jetbrains.com/pycharm/download/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+162.1967.10+Release+Notes" />
+        <patch from="162.1812" size="from 1 to 8" fullFrom="162.1812.1" />
+        <patch from="162.1967" size="from 1 to 8" fullFrom="162.1967.5" />
+      </build>
+    </channel>
+
+    <channel id="pycharm2016.3EAP" name="PyCharm 2016.3 EAP" status="EAP" url="https://confluence.jetbrains.com/display/PYH/JetBrains+PyCharm+Preview+%28EAP%29" feedback="https://youtrack.jetbrains.com/issues/PY" majorVersion="2016" licensing="release">
+      <build number="163.5219" version="2016.3 EAP" fullNumber="163.5219.9">
+        <message><![CDATA[
+        <p>The new PyCharm 2016.3 EAP is now open!</p>
+        <p>Some of the features are:</p>
+        <ul>
+          <li>Support for PEP 526: Syntax for variable annotations</li>
+          <li>Support for PEP 498: Formatted string literals</li>
+          <li>Support for PEP 515: Underscores in numeric literals</li>
+          <li>Type checking of the inferred type of a function against the type specified in the type hint</li>
+          <li>Tab code completion in IPython console</li>
+        </ul>
+        <p>For more details please read <a href="https://blog.jetbrains.com/pycharm/2016/09/pycharm-2016-3-eap-is-available-with-initial-support-for-python-3-6/">the blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/JetBrains+PyCharm+Preview+%28EAP%29" download="true" />
+        <!--<button name="Release Notes" url="https://www.jetbrains.com/pycharm/whatsnew/"/>-->
+      </build>
+
+      <build number="163.5644" version="2016.3 EAP" fullNumber="163.5644.6">
+        <message><![CDATA[
+        <p>PyCharm 2016.3 EAP 2 (build 163.5644.6) is available.</p>
+        <p>Some of the features are:</p>
+        <ul>
+          <li>Support for PEP 525: Asynchronous generators</li>
+          <li>Support for PEP 530: Asynchronous comprehensions</li>
+          <li>Various bug fixes</li>
+        </ul>
+        <p>For more details please read <a href="https://blog.jetbrains.com/pycharm/2016/10/pycharm-2016-3-eap-2-build-163-5644-6/">the blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/JetBrains+PyCharm+Preview+%28EAP%29" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+163.5644.6+Release+Notes" />
+        <patch from="163.5219" size="from 2 to 26" fullFrom="163.5219.9" />
+      </build>
+
+      <build number="163.6110" version="2016.3 EAP" fullNumber="163.6110.26">
+        <message><![CDATA[
+        <p>PyCharm 2016.3 EAP 3 (build 163.6110.26) is available.</p>
+        <p>Some of the features are:</p>
+        <ul>
+          <li>Code completion for Django forms in class-based views</li>
+          <li>Better handling of multi-line commands in Python console</li>
+          <li>Improvements in Python 3.6 support</li>
+          <li>Various bug fixes</li>
+        </ul>
+        <p>For more details please read <a href="https://blog.jetbrains.com/pycharm/2016/10/pycharm-2016-3-eap-3-build-163-6110-26/">the blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/JetBrains+PyCharm+Preview+%28EAP%29" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+163.6110.26+Release+Notes" />
+        <patch from="163.5644" size="from 2 to 28" fullFrom="163.5644.6" />
+      </build>
+
+      <build number="163.6512" version="2016.3 EAP" fullNumber="163.6512.5">
+        <message><![CDATA[
+        <p>PyCharm 2016.3 EAP 4 (build 163.6512.5) is available.</p>
+        <p>Some of the features are:</p>
+        <ul>
+          <li>Simplified variables view for Variables Pane</li>
+          <li>Various bug fixes</li>
+        </ul>
+        <p>For more details please read <a href="https://blog.jetbrains.com/pycharm/2016/10/pycharm-2016-3-eap-4-build-163-6512/">the blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/JetBrains+PyCharm+Preview+%28EAP%29" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+163.6512.5+Release+Notes" />
+        <patch from="163.6110" size="from 2 to 11" fullFrom="163.6110.26" />
+      </build>
+
+      <build number="163.6957" version="2016.3 EAP" fullNumber="163.6957.22">
+        <message><![CDATA[
+        <p>PyCharm 2016.3 Public Preview (build 163.6957.22) is available.</p>
+        <p>Some of the features are:</p>
+        <ul>
+          <li>Django projects Run/Debug on a remote machine</li>
+          <li>Python 3.6: Intention action for converting comment-based type hints to variable annotations</li>
+          <li>Python 3.6: Intention action for converting str.format() and percent-style formatting into f-string literals</li>
+          <li>Code insight for function type hints in comments</li>
+          <li>Support for the new syntax for TEMPLATES (Django)</li>
+          <li>"View as..." hyperlink in the variables explorer</li>
+          <li>Docker Compose: overrides for configuration files</li>
+          <li>Docker Compose: environment variables in Compose files</li>
+          <li>Branch coverage support</li>
+          <li>Line profiling support with vmprof</li>
+          <li>Virtualenv auto activation in terminal</li>
+        </ul>
+        <p>For the <strong>full features list</strong> of the Public Preview please read <a href="https://blog.jetbrains.com/pycharm/2016/10/pycharm-2016-3-public-preview/">the blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/JetBrains+PyCharm+Preview+%28EAP%29" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+163.6957.22+Release+Notes" />
+        <patch from="163.6512" size="from 8 to 33" fullFrom="163.6512.5" />
+      </build>
+
+      <build number="163.7342" version="2016.3 EAP" fullNumber="163.7342.4">
+        <message><![CDATA[
+        <p>PyCharm 2016.3 Public Preview 2 (build 163.7342.4) is available.</p>
+        <p>This build contains fixes to the Python console, debugger, inspections, and the Docker integration.</p>
+        <p>For more details please read <a href="https://blog.jetbrains.com/pycharm/2016/11/pycharm-2016-3-public-preview-2/">the blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/PYH/JetBrains+PyCharm+Preview+%28EAP%29" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+163.7342.4+Release+Notes" />
+        <patch from="163.6957" size="from 1 to 11" fullFrom="163.6957.22" />
+      </build>
+
+      <build number="163.7743" version="2016.3 Public Preview" fullNumber="163.7743.16">
+        <message><![CDATA[
+        <p>PyCharm 2016.3 Public Preview 3 (build 163.7743.16) is available.</p>
+        <p>This build contains Jupyter Notebook improvements and other bug fixes.</p>
+        <p>You can see all the <strong>new features</strong> since 2016.2 and try out the new version on the <a href="https://www.jetbrains.com/pycharm/nextversion/">preview page</a>.</p>
+        <p>For more details please read <a href="https://blog.jetbrains.com/pycharm/2016/11/pycharm-2016-3-public-preview-3/">the blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://www.jetbrains.com/pycharm/nextversion/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+163.7743.16+Release+Notes" />
+        <patch from="163.7342" size="from 5 to 16" fullFrom="163.7342.4" />
+      </build>
+
+      <build number="163.8233" version="2016.3 RC" releaseDate="20161123" fullNumber="163.8233.4">
+        <message><![CDATA[
+          <p>PyCharm 2016.3 RC (build 163.8233.4) is available.</p>
+          <p>We are approaching the release of 2016's third major PyCharm update.</p>
+          <p>Since the previous public preview we've fixed several bugs, see details in the <a href="https://blog.jetbrains.com/pycharm/2016/11/pycharm-2016-3-release-candidate/">blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://www.jetbrains.com/pycharm/nextversion/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+163.8233.4+Release+Notes" />
+        <patch from="163.7743" size="from 2 to 17" fullFrom="163.7743.16" />
+      </build>
+    </channel>
+
+    <channel id="pycharm2016.3Beta" name="PyCharm 2016.3 Public Preview" status="Beta" url="https://www.jetbrains.com/pycharm/nextversion/" feedback="https://youtrack.jetbrains.com/issues/PY" majorVersion="2016" licensing="release">
+      <build number="163.7743" version="2016.3 Public Preview" fullNumber="163.7743.16">
+        <message><![CDATA[
+        <p>PyCharm 2016.3 Public Preview 3 (build 163.7743.16) is available.</p>
+        <p>This build contains Jupyter Notebook improvements and other bug fixes.</p>
+        <p>You can see all the <strong>new features</strong> since 2016.2 and try out the new version on the <a href="https://www.jetbrains.com/pycharm/nextversion/">preview page</a>.</p>
+        <p>For more details please read <a href="https://blog.jetbrains.com/pycharm/2016/11/pycharm-2016-3-public-preview-3/">the blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://www.jetbrains.com/pycharm/nextversion/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+163.7743.16+Release+Notes" />
+        <patch from="163.7342" size="from 5 to 16" fullFrom="163.7342.4" />
+      </build>
+
+      <build number="163.8233" version="2016.3 RC" releaseDate="20161123" fullNumber="163.8233.4">
+        <message><![CDATA[
+          <p>PyCharm 2016.3 RC (build 163.8233.4) is available.</p>
+          <p>We are approaching the release of 2016's third major PyCharm update.</p>
+          <p>Since the previous public preview we've fixed several bugs, see details in the <a href="https://blog.jetbrains.com/pycharm/2016/11/pycharm-2016-3-release-candidate/">blog post</a>.</p>
+]]></message>
+        <button name="Download" url="https://www.jetbrains.com/pycharm/nextversion/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/PYH/PyCharm+163.8233.4+Release+Notes" />
+        <patch from="163.7743" size="from 2 to 17" fullFrom="163.7743.16" />
+      </build>
+    </channel>
+
+  </product>
+
+  <product name="PyCharm Educational Edition">
+    <code>PE</code>
+
+    <channel id="pycharmEdu2" name="PyCharm Edu 2.0" status="release" url="https://www.jetbrains.com/pycharm-edu/whatsnew" majorVersion="2">
+      <build number="143.2370" version="2.0.4">
+        <message>PyCharm Edu 2.0.3 is available.</message>
+        <button name="Download" url="https://www.jetbrains.com/pycharm-edu/download/" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <!--<button name="Release Notes" url="http://blog.jetbrains.com/pycharm/2015/10/announcing-pycharm-edu-2-0-2-checkio-integration/"/>-->
+        <button name="What's New" url="https://www.jetbrains.com/pycharm-edu/whatsnew/index.html" />
+        <patch from="143.1363" size="10" />
+      </build>
+      <build number="162.1740" version="3.0">
+        <message>PyCharm Edu 3.0 is available.</message>
+        <button name="Download" url="https://www.jetbrains.com/pycharm-edu/download/" download="true" />
+        <button name="What's New" url="https://www.jetbrains.com/pycharm-edu/whatsnew/index.html" />
+      </build>
+    </channel>
+
+    <channel id="pycharmEdu3" name="PyCharm Edu 3.0.1" status="release" url="https://www.jetbrains.com/pycharm-edu/whatsnew" majorVersion="3">
+      <build number="162.2465" version="3.0.1">
+        <message>PyCharm Edu 3.0.1 is available.</message>
+        <button name="Download" url="https://www.jetbrains.com/pycharm-edu/download/" download="true" />
+        <button name="More Information" url="https://blog.jetbrains.com/pycharm/2016/10/announcing-the-pycharm-edu-3-0-1-release-update/" />
+        <button name="What's New" url="https://www.jetbrains.com/pycharm-edu/whatsnew/index.html" />
+        <patch from="162.1740" size="10" />
+      </build>
+    </channel>
+  </product>
+
+  <product name="PhpStorm">
+    <code>PS</code>
+
+    <channel id="WI6" name="PhpStorm 6" status="release" url="https://www.jetbrains.com/phpstorm/download/" feedback="https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program" majorVersion="6">
+      <build number="129.1560" version="6.0.4">
+        <message><![CDATA[
+        <p>PhpStorm 6.0.4, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/PhpStorm/Previous+PhpStorm+Releases/" />
+        <patch from="129.814" size="8" />
+      </build>
+    </channel>
+
+    <channel id="WI7" name="PhpStorm 7" status="release" url="https://www.jetbrains.com/phpstorm/download/" feedback="https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program" majorVersion="7">
+      <build number="133.1886" version="7.1.5">
+        <message><![CDATA[
+        <p>PhpStorm 7.1.5, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/PhpStorm/Previous+PhpStorm+Releases/" />
+        <patch from="133.1777" size="1" />
+      </build>
+    </channel>
+
+    <channel id="WI8" name="PhpStorm 8" status="release" url="https://www.jetbrains.com/phpstorm/download/" feedback="https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program" majorVersion="8">
+      <build number="139.1803" version="8.0.4">
+        <patch from="139.1348" size="1" />
+        <message><![CDATA[
+        <p>PhpStorm 8.0.4, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/PhpStorm/Previous+PhpStorm+Releases/" />
+      </build>
+    </channel>
+
+    <channel id="WI9" name="PhpStorm 9" status="release" url="http://www.jetbrains.com/phpstorm/download/" feedback="https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program" majorVersion="9">
+      <build number="141.3058" version="9.0.3">
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/PhpStorm/Previous+PhpStorm+Releases/" download="true" />
+        <message><![CDATA[
+        <p>PhpStorm 9.0.3, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+        <patch from="141.2462" size="from 1 to 21" />
+      </build>
+    </channel>
+
+    <channel id="WI10" name="PhpStorm 10" status="release" url="https://www.jetbrains.com/phpstorm/download/" feedback="https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program" majorVersion="10">
+      <build number="143.2370" version="10.0.4" releaseDate="20151102">
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <button name="Download" url="https://confluence.jetbrains.com/display/PhpStorm/Previous+PhpStorm+Releases/" download="true" />
+        <patch from="143.1770" size="from 6 to 33" />
+        <message><![CDATA[
+        <p>PhpStorm 10.0.4, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> The update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+]]></message>
+      </build>
+    </channel>
+
+    <channel id="PS2016" name="PhpStorm 2016.1" status="release" url="https://www.jetbrains.com/phpstorm/download/" feedback="https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program" majorVersion="2016" licensing="release">
+      <build number="145.1616" version="2016.1.2" releaseDate="20160316">
+        <patch from="145.970" size="from 2 to 12" />
+        <patch from="145.1503" size="from 2 to 12" />
+        <message><![CDATA[
+The new minor release of our professional PHP IDE with various improvements and bug fixes, is now available for download!
+<p>This release brings new bugfixes and usability improvements:</p>
+- Completion of function parameter is disabled by default<br/>
+- A critical fix addressing a <a href="https://youtrack.jetbrains.com/issue/IDEA-155856">startup crash on OS X 10.10</a><br/>
+Other changes from IntelliJ platform and web are also included.
+        ]]></message>
+        <button name="Release Notes / Download" url="http://blog.jetbrains.com/phpstorm/2016/05/phpstorm-2016-1-2/" download="true" />
+      </build>
+    </channel>
+
+    <channel id="PS2016.2" name="PhpStorm 2016.2" status="release" url="https://www.jetbrains.com/phpstorm/download/" feedback="http://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program" majorVersion="2016" licensing="release">
+      <build number="162.2380" version="2016.2.2" releaseDate="20160713" fullNumber="162.2380.11">
+        <patch from="162.1889" size="from 4 to 27" fullFrom="162.1889.1" />
+        <button name="Release Notes / Download" url="https://blog.jetbrains.com/phpstorm/2016/10/phpstorm-2016-2-2-is-now-available/" download="true" />
+        <message><![CDATA[
+The new minor release of our professional PHP IDE with various bug fixes, is now available for download!
+<p>This release brings new features, bugfixes and usability improvements:</p>
+- Fixed scrolling on macOS Sierra<br/>
+<p>Other changes from IntelliJ platform and web are also included.</p>
+        ]]></message>
+      </build>
+    </channel>
+
+    <channel id="EAP" name="PhpStorm 2016.3" status="EAP" url="https://www.jetbrains.com/phpstorm/nextversion" feedback="http://confluence.jetbrains.com/display/PhpStorm/PhpStorm+Early+Access+Program" majorVersion="2016" licensing="eap">
+      <build number="163.7342" version="2016.3 EAP" fullNumber="163.7342.9">
+        <patch from="163.6957" size="from 8 to 27" fullFrom="163.6957.13" />
+        <button name="Release Notes / Download" url="http://blog.jetbrains.com/phpstorm/2016/11/phpstorm-2016-3-public-preview/" />
+        <message><![CDATA[
+<p>This build is a preview of PhpStorm 2016.3. This public preview build brings new features, <br>
+bugfixes and usability improvements:</p>
+<br/>
+<b>Tools and Frameworks:</b><br/>
+- Support of Docker in Remote Interpreters<br/>ё
+- PHPSpec support<br/>
+- Auto-detection and configuration of PHPUnit, Behat, PHPSpec<br/>
+<br/>
+<b>PHP Language & Editing Experience :</b><br/>
+- Semantic highlighting for variables and parameters<br/>
+- Completion of overriden methods and fields<br/>
+- Improved support of PSR-0/PSR-4<br/>
+<br/>
+<b>Code Quality Analysis:</b><br/>
+- Project wide PHP 7 strict types<br/>
+- New naming convention inspections<br/>
+- Improved Runtime Error Prevention<br/>
+<br/>
+Many other features and changes from IntelliJ platform and web are also included.
+
+        ]]></message>
+      </build>
+      <build number="163.7743" version="2016.3 RC1" fullNumber="163.7743.20">
+        <patch from="163.7342" size="7" fullFrom="163.7342.9" />
+        <button name="Download / Blog" url="http://blog.jetbrains.com/phpstorm/2016/11/phpstorm-2016-3-RC1/" />
+        <message><![CDATA[
+<p>This build is a first release candidate of PhpStorm 2016.3.<br/>
+This RC1 build brings features, bugfixes and usability improvements:</p>
+- Support of <code>class_alias</code><br/>
+- Blade: Support <code>hasSection</code> directive<br/>
+Many other features and changes from IntelliJ platform and web are also included.
+See <a href="https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+EAP+163.7743.20+Release+Notes">Release Notes</a>.
+        ]]></message>
+      </build>
+
+      <build number="163.7743" version="2016.3 RC2" fullNumber="163.7743.39">
+        <patch from="163.7743" size="5" fullFrom="163.7743.20" />
+        <button name="Download / Blog" url="http://blog.jetbrains.com/phpstorm/2016/11/phpstorm-2016-3-RC2/" />
+        <message><![CDATA[
+<p>This build is a second release candidate of PhpStorm 2016.3.<br/>
+This RC2 build brings platform bugfixes and usability improvements.</p>
+See <a href="https://confluence.jetbrains.com/display/PhpStorm/PhpStorm+EAP+163.7743.39+Release+Notes">Release Notes</a>.
+        ]]></message>
+      </build>
+    </channel>
+
+  </product>
+
+  <product name="WebStorm">
+    <code>WS</code>
+    <channel id="WI1" name="WebStorm 1" status="release" url="http://confluence.jetbrains.net/pages/viewpage.action?pageId=41487696" feedback="http://devnet.jetbrains.net/community/wi/" majorVersion="1">
+      <build number="95.503" version="1.0.2">
+        <button name="Download" url="http://confluence.jetbrains.net/pages/viewpage.action?pageId=41487696" download="true" />
+      </build>
+    </channel>
+
+    <channel id="WI2" name="WebStorm 2" status="release" url="http://confluence.jetbrains.net/pages/viewpage.action?pageId=41487696" feedback="http://devnet.jetbrains.net/community/wi/" majorVersion="2">
+      <build number="107.658" version="2.1.5">
+        <button name="Download" url="http://confluence.jetbrains.net/pages/viewpage.action?pageId=41487696" download="true" />
+      </build>
+    </channel>
+
+    <channel id="WI3" name="WebStorm 3" status="release" url="https://www.jetbrains.com/webstorm/download/" feedback="http://devnet.jetbrains.net/community/wi/" majorVersion="3">
+      <build number="117.257" version="4.0.1">
+        <button name="Release Notes" url="http://blog.jetbrains.com/webide/2012/04/webstorm-4-0-in-harmony-with-ecmascript/" />
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download/" download="true" />
+      </build>
+    </channel>
+
+    <channel id="WI4" name="WebStorm 4.0.3" status="release" url="https://www.jetbrains.com/webstorm/download/" feedback="http://devnet.jetbrains.net/community/wi/" majorVersion="4">
+      <build number="117.746" version="4.0.3">
+        <button name="Release Notes" url="http://blog.jetbrains.com/webide/2012/07/phpstorm-webstorm-4-0-3/" />
+      </build>
+    </channel>
+
+    <channel id="WI5" name="WebStorm 5" status="release" url="https://www.jetbrains.com/webstorm/download/" feedback="http://devnet.jetbrains.net/community/wi/" majorVersion="5">
+      <build number="121.390" version="5.0.4">
+        <button name="Release Notes" url="http://blog.jetbrains.com/webide/2012/11/phpstorm-webstorm-5-0-4-released/" />
+      </build>
+    </channel>
+
+    <channel id="WS6" name="WebStorm 6" status="release" url="https://www.jetbrains.com/webstorm/download/" feedback="http://devnet.jetbrains.net/community/wi/" majorVersion="6">
+      <build number="129.1557" version="6.0.3">
+        <message>
+          <![CDATA[
+    WebStorm 6.0.3, a security update, is now available.
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+        ]]>
+        </message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/WI/Previous+WebStorm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="129.664" size="1" />
+      </build>
+    </channel>
+
+    <channel id="WS7" name="WebStorm 7" status="release" url="https://www.jetbrains.com/webstorm/download/" feedback="http://devnet.jetbrains.net/community/wi/" majorVersion="7">
+      <build number="133.1882" version="7.0.5">
+        <message>
+          <![CDATA[
+    WebStorm 7.0.5, a security update, is now available.
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/WI/Previous+WebStorm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="133.434" size="2" />
+      </build>
+    </channel>
+
+    <channel id="WS8" name="WebStorm 8" status="release" url="https://www.jetbrains.com/webstorm/download/" feedback="http://devnet.jetbrains.net/community/wi/" majorVersion="8">
+      <build number="135.1358" version="8.0.6">
+        <message>
+          <![CDATA[
+    WebStorm 8.0.6, a security update, is now available.
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/WI/Previous+WebStorm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="135.1297" size="2" />
+      </build>
+    </channel>
+
+    <channel id="WS9" name="WebStorm 9" status="release" url="https://www.jetbrains.com/webstorm/download/" feedback="http://devnet.jetbrains.net/community/wi/" majorVersion="9">
+      <build number="139.1803" version="9.0.4">
+        <message>
+          <![CDATA[
+    WebStorm 9.0.4, a security update, is now available.
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/WI/Previous+WebStorm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="139.1112" size="1" />
+      </build>
+    </channel>
+
+    <channel id="WS10" name="WebStorm 10" status="release" url="https://www.jetbrains.com/webstorm/download/" feedback="http://devnet.jetbrains.net/community/wi/" majorVersion="10">
+      <build number="163.7743" version="2016.3.0" releaseDate="20161114" targetSince="141.0" targetUntil="141.*" fullNumber="163.7743.25">
+        <message>
+          <![CDATA[
+          <p>Please meet <strong>WebStorm 2016.3</strong>, the third big WebStorm update of 2016!</p>
+          <p>Visit <a href="https://www.jetbrains.com/webstorm/whatsnew/?fromIDE=">What’s new in WebStorm</a> to see a full overview of new features added in WebStorm 2016.3 <br>and learn about the great progress WebStorm made in earlier 2016 releases.
+          </p>
+          <p>Download WebStorm for a free 30-day trial today. If you decide to keep using WebStorm 2016.3, <br>purchase a subscription at <a href="https://www.jetbrains.com/webstorm/buy/?fromIDE=">jetbrains.com</a> as an existing customer and get a
+              <strong>40% automatic discount</strong> <br>before January 1, 2017.
+          </p>
+         ]]>
+        </message>
+        <button name="Download Trial" url="https://www.jetbrains.com/webstorm/download/?fromIDE=" download="true" />
+        <button name="What's new" url="https://www.jetbrains.com/webstorm/whatsnew/" />
+        <patch from="162.2228" size="from 58 to 73" fullFrom="162.2228.20" />
+        <patch from="163.7743" size="from 4 to 5" fullFrom="163.7743.13" />
+      </build>
+      <build number="141.3058" version="10.0.5">
+        <message>
+          <![CDATA[
+    WebStorm 10.0.5, a security update, is now available.
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/WI/Previous+WebStorm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="141.1550" size="1" />
+      </build>
+    </channel>
+
+    <channel id="WS11" name="WebStorm 11" status="release" url="https://www.jetbrains.com/webstorm" feedback="http://devnet.jetbrains.net/community/wi/" majorVersion="11">
+      <build number="163.7743" version="2016.3.0" releaseDate="20161114" targetSince="143.0" targetUntil="143.*" fullNumber="163.7743.25">
+        <message>
+          <![CDATA[
+          <p>Please meet <strong>WebStorm 2016.3</strong>, the third big WebStorm update of 2016!</p>
+          <p>Visit <a href="https://www.jetbrains.com/webstorm/whatsnew/?fromIDE=">What’s new in WebStorm</a> to see a full overview of new features added in WebStorm 2016.3 <br>and learn about the great progress WebStorm made in earlier 2016 releases.
+          </p>
+          <p>Download WebStorm for a free 30-day trial today. If you decide to keep using WebStorm 2016.3, <br>purchase a subscription at <a href="https://www.jetbrains.com/webstorm/buy/?fromIDE=">jetbrains.com</a> as an existing customer and get a
+              <strong>40% automatic discount</strong> <br>before January 1, 2017.
+          </p>
+         ]]>
+        </message>
+        <button name="Download Trial" url="https://www.jetbrains.com/webstorm/download/?fromIDE=" download="true" />
+        <button name="What's new" url="https://www.jetbrains.com/webstorm/whatsnew/" />
+        <patch from="162.2228" size="from 58 to 73" fullFrom="162.2228.20" />
+        <patch from="163.7743" size="from 4 to 5" fullFrom="163.7743.13" />
+      </build>
+      <build number="143.2370" version="11.0.4" releaseDate="20151102">
+        <message>
+          <![CDATA[
+    WebStorm 11.0.4, a security update, is now available.
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read this <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">blog post</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://confluence.jetbrains.com/display/WI/Previous+WebStorm+Releases" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="143.1559" size="6" />
+      </build>
+    </channel>
+
+    <channel id="WS_EAP" name="WebStorm EAP" status="eap" url="https://confluence.jetbrains.com/display/WI/WebStorm+EAP" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200367229-WebStorm" majorVersion="2016" licensing="release">
+      <build number="163.7743" version="2016.3.0" releaseDate="20161114" fullNumber="163.7743.25">
+        <message>
+          <![CDATA[
+          <p>Meet WebStorm 2016.3, the third big WebStorm update of 2016!</p>
+          <p>Visit <a href="https://www.jetbrains.com/webstorm/whatsnew/">What’s new in WebStorm 2016.3</a> for a full list of new features and an overview video.</p>
+          <p>And here’re the highlights:</p>
+          <ul>
+              <li><strong>Support for Flow</strong>: type errors are reported right in the editor; Flow-powered code completion</li>
+              <li><strong>Support for React Native</strong>: code completion; running and debugging apps in WebStorm</li>
+              <li><strong>Better TypeScript support</strong>: more precise code completion and analysis; smarter <strong>Rename</strong> refactoring <br>that understands the inheritance hierarchy</li>
+              <li>Set of inspections and quick-fixes for <strong>migrating the code to ES6</strong> and a new <strong>Convert to class</strong> intention</li>
+              <li>Integration with <strong>Stylelint</strong>; support for <strong>PostCSS</strong> via a plugin; running and debugging tests with <strong>Protractor</strong>;<br>quick bootstrap to run and debug Node.js app in <strong>Docker</strong>; better support for <strong>ES6 destructuring</strong>, and even more!</li>
+          </ul>
+         ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download/" download="true" />
+        <!--<button name="Release notes" url="https://confluence.jetbrains.com/display/WI/WebStorm+162.2228.7+Release+Notes"/>-->
+        <button name="What's new" url="https://www.jetbrains.com/webstorm/whatsnew/" />
+        <patch from="162.2228" size="from 58 to 73" fullFrom="162.2228.20" />
+        <patch from="163.7743" size="from 4 to 5" fullFrom="163.7743.13" />
+      </build>
+      <build number="163.7342" version="2016.3 Beta" fullNumber="163.7342.11">
+        <message>
+          <![CDATA[
+    <strong>WebStorm 2016.3 beta</strong> is now available!
+    <p>In this update we added a new <em>Convert to class</em> intention for JavaScript objects and support for Yarn.</p>
+    <p>A full list of new features coming in WebStorm 2016.3 is now available on the <a href="https://www.jetbrains.com/webstorm/nextversion/">website</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/nextversion/" download="true" />
+        <button name="Release notes" url="https://confluence.jetbrains.com/display/WI/WebStorm+163.7342.11+Release+Notes" />
+        <patch from="163.6957" size="5" fullFrom="163.6957.17" />
+      </build>
+      <build number="162.2228" version="2016.2.4" releaseDate="20160711" fullNumber="162.2228.20">
+        <message>
+          <![CDATA[
+    <strong>WebStorm 2016.2.4</strong> is now available!
+    <p>This update brings over 30 bug fixes and improvements, including fixes for scrolling on macOS Sierra and better Unicode support in the find dialogs</p>
+    <p>For a full list of addressed issues please read the <a href="https://confluence.jetbrains.com/display/WI/WebStorm+162.2228.7+Release+Notes">Release notes</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download/" download="true" />
+        <button name="Release notes" url="https://confluence.jetbrains.com/display/WI/WebStorm+162.2228.7+Release+Notes" />
+        <patch from="162.1628" size="from 13 to 21" fullFrom="162.1628.41" />
+        <patch from="162.1812" size="from 11 to 24" fullFrom="162.1812.21" />
+        <patch from="162.2228" size="from 15 to 27" fullFrom="162.2228.7" />
+      </build>
+      <build number="145.1616" version="2016.1.3" releaseDate="20160316">
+        <message>
+          <![CDATA[
+    WebStorm 2016.1.3 is now available!
+    <p>This update brings various bug fixes and improvements, including support for Angular 2 RC and npm scoped packages.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/webstorm/2016/05/webstorm-2016-1-3/" />
+        <patch from="145.971" size="from 2 to 12" />
+        <patch from="145.972" size="from 2 to 12" />
+        <patch from="145.1503" size="from 2 to 12" />
+      </build>
+    </channel>
+
+    <channel id="WS_Beta" name="WebStorm Beta" status="beta" url="https://www.jetbrains.com/webstorm/nextversion/" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200367229-WebStorm" majorVersion="2016" licensing="release">
+      <build number="163.7743" version="2016.3.0" releaseDate="20161114" fullNumber="163.7743.25">
+        <message>
+          <![CDATA[
+          <p>Meet WebStorm 2016.3, the third big WebStorm update of 2016!</p>
+          <p>Visit <a href="https://www.jetbrains.com/webstorm/whatsnew/">What’s new in WebStorm 2016.3</a> for a full list of new features and an overview video.</p>
+          <p>And here’re the highlights:</p>
+          <ul>
+              <li><strong>Support for Flow</strong>: type errors are reported right in the editor; Flow-powered code completion</li>
+              <li><strong>Support for React Native</strong>: code completion; running and debugging apps in WebStorm</li>
+              <li><strong>Better TypeScript support</strong>: more precise code completion and analysis; smarter <strong>Rename</strong> refactoring <br>that understands the inheritance hierarchy</li>
+              <li>Set of inspections and quick-fixes for <strong>migrating the code to ES6</strong> and a new <strong>Convert to class</strong> intention</li>
+              <li>Integration with <strong>Stylelint</strong>; support for <strong>PostCSS</strong> via a plugin; running and debugging tests with <strong>Protractor</strong>;<br>quick bootstrap to run and debug Node.js app in <strong>Docker</strong>; better support for <strong>ES6 destructuring</strong>, and even more!</li>
+          </ul>
+         ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download/" download="true" />
+        <!--<button name="Release notes" url="https://confluence.jetbrains.com/display/WI/WebStorm+162.2228.7+Release+Notes"/>-->
+        <button name="What's new" url="https://www.jetbrains.com/webstorm/whatsnew/" />
+        <patch from="162.2228" size="from 58 to 73" fullFrom="162.2228.20" />
+        <patch from="163.7743" size="from 4 to 5" fullFrom="163.7743.13" />
+      </build>
+      <build number="163.7342" version="2016.3 Beta" fullNumber="163.7342.11">
+        <message>
+          <![CDATA[
+    <strong>WebStorm 2016.3 beta</strong> is now available!
+    <p>In this update we added a new <em>Convert to class</em> intention for JavaScript objects and support for Yarn.</p>
+    <p>A full list of new features coming in WebStorm 2016.3 is now available on the <a href="https://www.jetbrains.com/webstorm/nextversion/">website</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/nextversion/" download="true" />
+        <button name="Release notes" url="https://confluence.jetbrains.com/display/WI/WebStorm+163.7342.11+Release+Notes" />
+        <patch from="163.6957" size="5" fullFrom="163.6957.17" />
+      </build>
+      <build number="162.2228" version="2016.2.4" releaseDate="20160711" fullNumber="162.2228.20">
+        <message>
+          <![CDATA[
+    <strong>WebStorm 2016.2.4</strong> is now available!
+    <p>This update brings over 30 bug fixes and improvements, including fixes for scrolling on macOS Sierra and better Unicode support in the find dialogs</p>
+    <p>For a full list of addressed issues please read the <a href="https://confluence.jetbrains.com/display/WI/WebStorm+162.2228.7+Release+Notes">Release notes</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download/" download="true" />
+        <button name="Release notes" url="https://confluence.jetbrains.com/display/WI/WebStorm+162.2228.7+Release+Notes" />
+        <patch from="162.1628" size="from 13 to 21" fullFrom="162.1628.41" />
+        <patch from="162.1812" size="from 11 to 24" fullFrom="162.1812.21" />
+        <patch from="162.2228" size="from 15 to 27" fullFrom="162.2228.7" />
+      </build>
+      <build number="145.1616" version="2016.1.3" releaseDate="20160316">
+        <message>
+          <![CDATA[
+    WebStorm 2016.1.3 is now available!
+    <p>This update brings various bug fixes and improvements, including support for Angular 2 RC and npm scoped packages.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/webstorm/2016/05/webstorm-2016-1-3/" />
+        <patch from="145.971" size="from 2 to 12" />
+        <patch from="145.972" size="from 2 to 12" />
+        <patch from="145.1503" size="from 2 to 12" />
+      </build>
+    </channel>
+
+    <channel id="WS_Release" name="WebStorm Release" status="release" url="https://www.jetbrains.com/webstorm/whatsnew" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200367229-WebStorm" majorVersion="2016" licensing="release">
+      <build number="163.7743" version="2016.3.0" releaseDate="20161114" fullNumber="163.7743.25">
+        <message>
+          <![CDATA[
+          <p>Meet WebStorm 2016.3, the third big WebStorm update of 2016!</p>
+          <p>Visit <a href="https://www.jetbrains.com/webstorm/whatsnew/">What’s new in WebStorm 2016.3</a> for a full list of new features and an overview video.</p>
+          <p>And here’re the highlights:</p>
+          <ul>
+              <li><strong>Support for Flow</strong>: type errors are reported right in the editor; Flow-powered code completion</li>
+              <li><strong>Support for React Native</strong>: code completion; running and debugging apps in WebStorm</li>
+              <li><strong>Better TypeScript support</strong>: more precise code completion and analysis; smarter <strong>Rename</strong> refactoring <br>that understands the inheritance hierarchy</li>
+              <li>Set of inspections and quick-fixes for <strong>migrating the code to ES6</strong> and a new <strong>Convert to class</strong> intention</li>
+              <li>Integration with <strong>Stylelint</strong>; support for <strong>PostCSS</strong> via a plugin; running and debugging tests with <strong>Protractor</strong>;<br>quick bootstrap to run and debug Node.js app in <strong>Docker</strong>; better support for <strong>ES6 destructuring</strong>, and even more!</li>
+          </ul>
+         ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download/" download="true" />
+        <!--<button name="Release notes" url="https://confluence.jetbrains.com/display/WI/WebStorm+162.2228.7+Release+Notes"/>-->
+        <button name="What's new" url="https://www.jetbrains.com/webstorm/whatsnew/" />
+        <patch from="162.2228" size="from 58 to 73" fullFrom="162.2228.20" />
+        <patch from="163.7743" size="from 4 to 5" fullFrom="163.7743.13" />
+      </build>
+      <build number="162.2228" version="2016.2.4" releaseDate="20160711" fullNumber="162.2228.20">
+        <message>
+          <![CDATA[
+    <strong>WebStorm 2016.2.4</strong> is now available!
+    <p>This update brings over 30 bug fixes and improvements, including fixes for scrolling on macOS Sierra and better Unicode support in the find dialogs</p>
+    <p>For a full list of addressed issues please read the <a href="https://confluence.jetbrains.com/display/WI/WebStorm+162.2228.7+Release+Notes">Release notes</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download/" download="true" />
+        <button name="Release notes" url="https://confluence.jetbrains.com/display/WI/WebStorm+162.2228.7+Release+Notes" />
+        <patch from="162.1628" size="from 13 to 21" fullFrom="162.1628.41" />
+        <patch from="162.1812" size="from 11 to 24" fullFrom="162.1812.21" />
+        <patch from="162.2228" size="from 15 to 27" fullFrom="162.2228.7" />
+      </build>
+      <build number="162.1812" version="2016.2.3" releaseDate="20160711" fullNumber="162.1812.21">
+        <message>
+          <![CDATA[
+    <strong>WebStorm 2016.2.3</strong> is now available!
+    <p>This update brings over 30 bug fixes and improvements.</p>
+    <p>For a full list of addressed issues please read the <a href="https://confluence.jetbrains.com/display/WI/WebStorm+162.1812.21+Release+Notes">Release notes</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download/" download="true" />
+        <button name="Release notes" url="https://confluence.jetbrains.com/display/WI/WebStorm+162.1812.21+Release+Notes" />
+        <patch from="162.1628" size="from 5 to 20" fullFrom="162.1628.41" />
+        <patch from="162.1812" size="from 5 to 20" fullFrom="162.1812.12" />
+        <patch from="162.1447" size="from 9 to 27" fullFrom="162.1447.27" />
+      </build>
+      <build number="162.1628" version="2016.2.2" releaseDate="20160711" fullNumber="162.1628.41">
+        <message>
+          <![CDATA[
+    <strong>WebStorm 2016.2.2</strong>, a new bug fix update for WebStorm 2016.2, is now available!
+    <p>This update brings various bug fixes and performance improvements.</p>
+    <p>For a more detailed overview please read this <a href="http://blog.jetbrains.com/webstorm/2016/08/webstorm-2016-2-2/">blog post</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download/" download="true" />
+        <button name="Release notes" url="https://confluence.jetbrains.com/display/WI/WebStorm+162.1628.41+Release+Notes" />
+        <patch from="162.1447" size="8" fullFrom="162.1447.27" />
+        <patch from="162.1628" size="2" fullFrom="162.1628.21" />
+      </build>
+      <build number="162.1447" version="2016.2.1" releaseDate="20160711" fullNumber="162.1447.27">
+        <message>
+          <![CDATA[
+    <strong>WebStorm 2016.2.1</strong>, the first bug fix update for WebStorm 2016.2, is now available!
+    <p>This update brings over 80 bug fixes and improvements, including:</p>
+    <ul>
+        <li>New state diagram for AngularJS apps that use ui-router</li>
+        <li>Fixes for debugging Karma tests from the IDE</li>
+        <li>New sorting in JavaScript code completion results – recently used options are now shown first</li>
+    </ul>
+    <p>For a more detailed overview please read this <a href="http://blog.jetbrains.com/webstorm/2016/08/webstorm-2016-2-1/">blog post</a>.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download/" download="true" />
+        <button name="Release notes" url="https://confluence.jetbrains.com/display/WI/WebStorm+162.1447.27+Release+Notes" />
+        <patch from="162.1447" size="4" fullFrom="162.1447.20" />
+        <patch from="162.1121" size="5" fullFrom="162.1121.31" />
+      </build>
+      <build number="145.1616" version="2016.1.3" releaseDate="20160316">
+        <message>
+          <![CDATA[
+    WebStorm 2016.1.3 is now available!
+    <p>This update brings various bug fixes and improvements, including support for Angular 2 RC and npm scoped packages.</p>
+    ]]>
+        </message>
+        <button name="Download" url="https://www.jetbrains.com/webstorm/download" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/webstorm/2016/05/webstorm-2016-1-3/" />
+        <patch from="145.971" size="from 2 to 12" />
+        <patch from="145.972" size="from 2 to 12" />
+        <patch from="145.1503" size="from 2 to 12" />
+      </build>
+    </channel>
+  </product>
+
+  <product name="AppCode">
+    <code>OC</code>
+
+    <!-- Branch up to 137 channels should go from older to newer -->
+
+    <channel id="appcode_20" name="AppCode 2.0" status="release" majorVersion="2" url="http://www.jetbrains.com/objc" feedback="http://devnet.jetbrains.net/community/objc">
+      <build number="129.1564" version="2.1.3">
+        <message><![CDATA[
+        <p>AppCode 2.1.3, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://confluence.jetbrains.com/display/OBJC/Previous+AppCode+Releases/" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="129.934" size="1" />
+      </build>
+    </channel>
+
+    <channel id="appcode_21" name="AppCode 2.1" status="release" majorVersion="2" url="http://www.jetbrains.com/objc" feedback="http://devnet.jetbrains.net/community/objc">
+      <build number="129.1564" version="2.1.3">
+        <message><![CDATA[
+        <p>AppCode 2.1.3, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://confluence.jetbrains.com/display/OBJC/Previous+AppCode+Releases/" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="129.934" size="1" />
+      </build>
+    </channel>
+
+    <channel id="appcode_25" name="AppCode 2.5" status="release" majorVersion="2" url="http://www.jetbrains.com/objc" feedback="http://devnet.jetbrains.net/community/objc">
+      <build number="131.848" version="2.5.6">
+        <message><![CDATA[
+        <p>AppCode 2.5.6, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://confluence.jetbrains.com/display/OBJC/Previous+AppCode+Releases/" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="131.842" size="1" />
+      </build>
+    </channel>
+
+    <channel id="appcode_3" name="AppCode 3.0" status="release" majorVersion="3" url="http://www.jetbrains.com/objc/" feedback="http://devnet.jetbrains.net/community/objc">
+      <build number="137.253" version="3.0.7">
+        <message><![CDATA[
+        <p>AppCode 3.0.7, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://confluence.jetbrains.com/display/OBJC/Previous+AppCode+Releases/" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="137.229" size="1" />
+      </build>
+    </channel>
+
+    <!-- Branch from 139 channels should go from newer to older -->
+
+    <channel id="AppCode_EAP" name="AppCode EAP" status="eap" url="https://confluence.jetbrains.com/display/OBJC/AppCode+EAP" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200379545-AppCode" majorVersion="2016" licensing="release">
+      <build number="145.2073" version="2016.1.4" releaseDate="20160330">
+        <message><![CDATA[
+       AppCode 2016.1.4 is available!
+       The highlights of this update include:
+       <ul>
+         <li>Fix for issue with symbols building introduced in 2016.1.3</li>
+         <li>Fix for running tests for codesigned OS X apps</li>
+       </ul>
+       <p>For more details please see the release notes.</p>]]></message>
+        <button name="Download..." url="https://www.jetbrains.com/objc/download/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/OBJC/AppCode+2016.1.4/" />
+        <patch from="145.1617" size="10" />
+      </build>
+      <build number="162.2573" version="2016.2.4" releaseDate="20160720" fullNumber="162.2573.4">
+        <message>
+          <![CDATA[
+       AppCode 2016.2.4 update brings following fixes:
+       <ul>
+        <li>Fix for problem with running/debugging application with Xcode 8.1 set in Preferences</li>
+        <li>SE-0095: replace protocol <em>&lt;P1,P2&gt;</em> syntax with <em>P1 & P2</em> syntax </li>
+       </ul>
+      <p>For more details please see the release notes.</p>]]></message>
+        <button name="Download..." url="https://www.jetbrains.com/objc/download/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/OBJC/AppCode+2016.2.4%2C+build+162.2573.4" />
+        <patch from="162.2380" size="4" fullFrom="162.2380.5" />
+      </build>
+    </channel>
+
+    <channel id="AppCode_EAP_no_license" name="AppCode 2016.3 EAP" status="eap" url="https://confluence.jetbrains.com/display/OBJC/AppCode+EAP" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200379545-AppCode" majorVersion="2016" licensing="eap">
+      <build number="163.8233" version="2016.3 EAP" fullNumber="163.8233.5">
+        <message>
+          <![CDATA[
+       The highlights of new AppCode 2016.3 EAP include:
+       <ul>
+        <li>Completion performance improvements</li>
+        <li>SourceKit annotator optimizations</li>
+        <li>Support for <em>precedencegroup</em> in Swift 3</li>
+        <li>Fix for NSLog output on macOS 10.12.1</li>
+       </ul>
+      <p>For more details please see the release notes.</p>]]></message>
+        <button name="Download..." url="https://confluence.jetbrains.com/display/OBJC/AppCode+EAP" download="true" />
+        <button name="Release Notes" url="https://blog.jetbrains.com/objc/2016/11/2016-3-performance/" />
+        <patch from="163.7743" size="4" fullFrom="163.7743.19" />
+      </build>
+    </channel>
+
+    <channel id="appcode_2016_2" name="AppCode 2016.2" status="release" url="http://www.jetbrains.com/objc/" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200379545-AppCode" majorVersion="2016" licensing="release">
+      <build number="162.2573" version="2016.2.4" releaseDate="20160720" fullNumber="162.2573.4">
+        <message>
+          <![CDATA[
+       AppCode 2016.2.4 update brings following fixes:
+       <ul>
+        <li>Fix for problem with running/debugging application with Xcode 8.1 set in Preferences</li>
+        <li>SE-0095: replace protocol <em>&lt;P1,P2&gt;</em> syntax with <em>P1 & P2</em> syntax </li>
+       </ul>
+      <p>For more details please see the release notes.</p>]]></message>
+        <button name="Download..." url="https://www.jetbrains.com/objc/download/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/OBJC/AppCode+2016.2.4%2C+build+162.2573.4" />
+        <patch from="162.2380" size="4" fullFrom="162.2380.5" />
+      </build>
+    </channel>
+
+    <channel id="appcode_2016_1" name="AppCode 2016.1" status="release" majorVersion="2016" url="https://www.jetbrains.com/objc/" feedback="http://devnet.jetbrains.net/community/objc">
+      <build number="145.2073" version="2016.1.4" releaseDate="20160330">
+        <message><![CDATA[
+       AppCode 2016.1.4 is available!
+       The highlights of this update include:
+       <ul>
+         <li>Fix for issue with symbols building introduced in 2016.1.3</li>
+         <li>Fix for running tests for codesigned OS X apps</li>
+       </ul>
+       <p>For more details please see the release notes.</p>]]></message>
+        <button name="Download..." url="https://www.jetbrains.com/objc/download/" download="true" />
+        <button name="Release Notes" url="https://confluence.jetbrains.com/display/OBJC/AppCode+2016.1.4/" />
+        <patch from="145.1617" size="10" />
+      </build>
+    </channel>
+
+    <channel id="appcode_33" name="AppCode 3.3" status="release" majorVersion="3" url="https://www.jetbrains.com/objc/" feedback="http://devnet.jetbrains.net/community/objc">
+      <build number="143.2370" version="3.3.4" releaseDate="20151102">
+        <message><![CDATA[
+        <p>AppCode 3.3.4, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://confluence.jetbrains.com/display/OBJC/Previous+AppCode+Releases/" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="143.1824" size="27" />
+      </build>
+    </channel>
+
+    <channel id="appcode_32" name="AppCode 3.2" status="release" majorVersion="3" url="https://www.jetbrains.com/objc/" feedback="http://devnet.jetbrains.net/community/objc">
+      <build number="141.3058" version="3.2.1" releaseDate="20150826">
+        <message><![CDATA[
+        <p>AppCode 3.2.1, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://confluence.jetbrains.com/display/OBJC/Previous+AppCode+Releases/" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="141.2456" size="from 1 to 22" />
+      </build>
+    </channel>
+
+    <channel id="appcode_31" name="AppCode 3.1" status="release" majorVersion="3" url="https://www.jetbrains.com/objc/" feedback="http://devnet.jetbrains.net/community/objc">
+      <build number="139.1803" version="3.1.8">
+        <message><![CDATA[
+        <p>AppCode 3.1.8, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://confluence.jetbrains.com/display/OBJC/Previous+AppCode+Releases/" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="139.1402" size="1" />
+      </build>
+    </channel>
+  </product>
+
+  <product name="CLion">
+    <code>CL</code>
+
+    <!-- Branch from 139 channels should go from newer to older -->
+    <channel id="clion_eap_2016.3" name="CLion 2016.3" status="eap" url="https://confluence.jetbrains.com/display/CLION/Early+Access+Program" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200363649-CLion" majorVersion="2016" licensing="release">
+      <build number="163.7743" version="2016.3 RC2" fullNumber="163.7743.32">
+        <message><![CDATA[
+           <p><strong>CLion 2016.3 RC2</strong> is now available!</p>
+           <!--<p>Here are the highlights:</p>
+             <ul>
+              <li></li>
+             </ul>-->
+           <p>To learn more, please see the <a href="https://blog.jetbrains.com/clion/2016/11/clion-2016-3-rc2/">release notes</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://confluence.jetbrains.com/display/CLION/Early+Access+Program" download="true" />
+        <button name="Learn more" url="https://blog.jetbrains.com/clion/2016/11/clion-2016-3-rc2/" />
+        <!--<patch from="163.7342.13" size="4"/>-->
+      </build>
+    </channel>
+
+    <channel id="clion_eap_2016.2" name="CLion 2016.2" status="eap" url="https://confluence.jetbrains.com/display/CLION/Early+Access+Program" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200363649-CLion" majorVersion="2016" licensing="release">
+      <build number="162.2228" version="2016.2.3" releaseDate="20160720" fullNumber="162.2228.26">
+        <message><![CDATA[
+            <p><strong>CLion 2016.2.3</strong> update is available!</p>
+            <p>This update includes:</p>
+              <ul>
+                <li>Bundled CMake 3.6.2.</li>
+                <li>Fixes for scrolling on macOS Sierra.</li>
+              </ul>
+            <p>To learn more, please see the <a href="http://blog.jetbrains.com/clion/2016/10/clion-2016-2-3-update-with-new-cmake-bundled-and-fix-for-sensitive-scrolling-on-macos-sierra">release notes</a>.</p>
+          ]]></message>
+
+        <button name="Download..." url="https://www.jetbrains.com/clion/download/" download="true" />
+        <button name="Learn more" url="http://blog.jetbrains.com/clion/2016/10/clion-2016-2-3-update-with-new-cmake-bundled-and-fix-for-sensitive-scrolling-on-macos-sierra" />
+        <patch from="162.1967" size="from 5 to 19" fullFrom="162.1967.7" />
+      </build>
+    </channel>
+
+    <channel id="clion_2016_2" name="CLion 2016.2" status="release" url="https://www.jetbrains.com/clion/" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200363649-CLion" majorVersion="2016" licensing="release">
+      <build number="162.2228" version="2016.2.3" releaseDate="20160720" fullNumber="162.2228.26">
+        <message><![CDATA[
+          <p><strong>CLion 2016.2.3</strong> update is available!</p>
+          <p>This update includes:</p>
+            <ul>
+              <li>Bundled CMake 3.6.2.</li>
+              <li>Fixes for scrolling on macOS Sierra.</li>
+            </ul>
+          <p>To learn more, please see the <a href="http://blog.jetbrains.com/clion/2016/10/clion-2016-2-3-update-with-new-cmake-bundled-and-fix-for-sensitive-scrolling-on-macos-sierra">release notes</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://www.jetbrains.com/clion/download/" download="true" />
+        <button name="Learn more" url="http://blog.jetbrains.com/clion/2016/10/clion-2016-2-3-update-with-new-cmake-bundled-and-fix-for-sensitive-scrolling-on-macos-sierra" />
+        <patch from="162.1967" size="from 5 to 19" fullFrom="162.1967.7" />
+      </build>
+    </channel>
+
+    <channel id="clion_eap_15" name="CLion 2016.1" status="eap" url="https://confluence.jetbrains.com/display/CLION/Early+Access+Program" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200363649-CLion" majorVersion="2016" licensing="release">
+      <build number="162.2228" version="2016.2.3" releaseDate="20160720" fullNumber="162.2228.26">
+        <message><![CDATA[
+          <p><strong>CLion 2016.2.3</strong> update is available!</p>
+          <p>This update includes:</p>
+            <ul>
+              <li>Bundled CMake 3.6.2.</li>
+              <li>Fixes for scrolling on macOS Sierra.</li>
+            </ul>
+          <p>To learn more, please see the <a href="http://blog.jetbrains.com/clion/2016/10/clion-2016-2-3-update-with-new-cmake-bundled-and-fix-for-sensitive-scrolling-on-macos-sierra">release notes</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://www.jetbrains.com/clion/download/" download="true" />
+        <button name="Learn more" url="http://blog.jetbrains.com/clion/2016/10/clion-2016-2-3-update-with-new-cmake-bundled-and-fix-for-sensitive-scrolling-on-macos-sierra" />
+        <patch from="162.1967" size="from 5 to 19" fullFrom="162.1967.7" />
+      </build>
+      <build number="145.2073" version="2016.1.4" releaseDate="20160317">
+        <message><![CDATA[
+        <p><b>CLion 2016.1.4</b> bug-fix update is now available!</p>
+        <!--<p>Here are the highlights:</p>
+          <ul>
+            <li>Output doesn't cut off anymore when executing a program</li>
+            <li>Fixed "Binary operator &lt&lt can't be applied" error</li>
+            <li>Solved issue with slow launch on cellular network</li>
+          </ul>-->
+        <p>To learn more, please see the <a href="http://blog.jetbrains.com/clion/2016/09/clion-2016-2-2-update-is-available/">release notes</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://www.jetbrains.com/clion/download/" download="true" />
+        <button name="Learn more" url="http://blog.jetbrains.com/clion/2016/09/clion-2016-2-2-update-is-available/" />
+        <patch from="145.1617" size="4" />
+      </build>
+    </channel>
+
+    <channel id="clion_2016_1" name="CLion 2016.1" status="release" majorVersion="2016" url="https://www.jetbrains.com/clion/" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200363649-CLion">
+      <build number="145.2073" version="2016.1.4" releaseDate="20160317">
+        <message><![CDATA[
+        <p><b>CLion 2016.1.4</b> bug-fix update is now available!</p>
+        <!--<p>Here are the highlights:</p>
+          <ul>
+            <li>Output doesn't cut off anymore when executing a program</li>
+            <li>Fixed "Binary operator &lt&lt can't be applied" error</li>
+            <li>Solved issue with slow launch on cellular network</li>
+          </ul>-->
+        <p>To learn more, please see the <a href="http://blog.jetbrains.com/clion/2016/09/clion-2016-2-2-update-is-available/">release notes</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://www.jetbrains.com/clion/download/" download="true" />
+        <button name="Learn more" url="http://blog.jetbrains.com/clion/2016/09/clion-2016-2-2-update-is-available/" />
+        <patch from="145.1617" size="4" />
+      </build>
+    </channel>
+
+    <channel id="clion_12" name="CLion 1.2" status="release" majorVersion="1" url="https://www.jetbrains.com/clion/" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200363649-CLion">
+      <build number="143.2370" version="1.2.5" releaseDate="20151102">
+        <message><![CDATA[
+       <p>CLion 1.2.5, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://confluence.jetbrains.com/display/CLION/Previous+CLion+Releases/" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="143.1186" size="36" />
+      </build>
+    </channel>
+
+    <channel id="clion_11" name="CLion 1.1" status="release" majorVersion="1" url="https://www.jetbrains.com/clion/" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200363649-CLion">
+      <build number="141.3058" version="1.1.2" releaseDate="20150818">
+        <message><![CDATA[
+       <p>CLion 1.1.2, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+        ]]></message>
+
+        <button name="Download..." url="https://confluence.jetbrains.com/display/CLION/Previous+CLion+Releases/" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="141.2614" size="from 2 to 30" />
+      </build>
+    </channel>
+
+    <channel id="clion_10" name="CLion" status="release" majorVersion="1" url="https://www.jetbrains.com/clion/" feedback="https://intellij-support.jetbrains.com/hc/en-us/community/topics/200363649-CLion">
+      <build number="141.3058" version="1.1.2" releaseDate="20150818">
+        <message><![CDATA[
+        <p>CLion 1.1.2, a security update, is now available.</p>
+        <p><b>IMPORTANT:</b> This free update contains important security fixes and is strongly recommended for all users.<br>
+        For more details please read <a href="https://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides">this blog post</a>.</p>
+         ]]></message>
+
+        <button name="Download..." url="https://confluence.jetbrains.com/display/CLION/Previous+CLion+Releases/" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/blog/2016/05/security-update-for-intellij-based-ides" />
+        <patch from="141.2614" size="from 2 to 30" />
+      </build>
+    </channel>
+  </product>
+
+  <product name="DataGrip">
+    <code>DB</code>
+    <channel id="datagrip_1" name="DataGrip 1.0" status="release" majorVersion="1" url="https://www.jetbrains.com/datagrip/" feedback="https://devnet.jetbrains.com/community/datagrip">
+      <build number="143.2372" version="1.0.5" releaseDate="20160706">
+        <message><![CDATA[
+        <p>In DataGrip 1.0.5 we've fixed the problem with information about the perpetual fallback license.</p>
+        ]]>
+        </message>
+        <button name="Download..." url="https://confluence.jetbrains.com/display/DBE/DataGrip+previous+releases" download="true" />
+        <button name="More Information" url="https://confluence.jetbrains.com/display/DBE/DataGrip+1.0.5+Release+Notes" />
+        <patch from="143.2371" size="2" />
+      </build>
+    </channel>
+
+    <channel id="datagrip_2016_1_release" name="DataGrip 2016.1" status="release" majorVersion="2016" url="https://www.jetbrains.com/datagrip/" feedback="https://devnet.jetbrains.com/community/datagrip">
+      <build number="145.864" version="2016.1.2" releaseDate="20160706">
+        <message><![CDATA[
+        <p>In DataGrip 2016.1.2 we've fixed the problem with information about the perpetual fallback license.</p>
+        ]]>
+        </message>
+        <button name="Download..." url="https://confluence.jetbrains.com/display/DBE/DataGrip+previous+releases" download="true" />
+        <button name="More Information" url="https://confluence.jetbrains.com/display/DBE/DataGrip+2016.1.2+Release+Notes" />
+        <patch from="145.863" size="5" />
+      </build>
+    </channel>
+
+    <channel id="datagrip_2016_2" name="DataGrip 2016.2" status="release" majorVersion="2016" url="https://www.jetbrains.com/datagrip/" feedback="https://devnet.jetbrains.com/community/datagrip">
+      <build number="162.2229" version="2016.2.6" releaseDate="20161017" fullNumber="162.2229.1">
+        <message><![CDATA[
+        <p>DataGrip 2016.2.6 is released.<p>
+        <ul>
+        <li>Fixed problem with sensitive scrolling on macOS Sierra</li>
+        </ul>
+        ]]>
+        </message>
+        <button name="Download..." url="https://www.jetbrains.com/datagrip/download/" download="true" />
+        <!--<button name="More Information" url="http://blog.jetbrains.com/datagrip/2016/09/09/datagrip-2016-2-3/"/>-->
+        <patch from="162.2228" size="from 15 to 21" fullFrom="162.2228.8" />
+      </build>
+    </channel>
+
+    <channel id="datagrip_2016_3_eap" name="DataGrip 2016.3 EAP" status="EAP" majorVersion="2016" url="https://www.jetbrains.com/datagrip/" feedback="https://devnet.jetbrains.com/community/datagrip">
+      <build number="163.7743" version="2016.3" releaseDate="20161114" fullNumber="163.7743.34">
+        <message><![CDATA[
+        <p>DataGrip 2016.3 new EAP build<p>
+        <ul>
+        <li>Data conversion</li>
+        <li>Materialized views support in PostgreSQL</li>
+        <li>Drop triggers from UI</li>
+        <li>Faster scripts execution</li>
+        <li>New icons</li>
+        </ul>
+        <p>To learn more, see the blog post.</p>
+        ]]>
+        </message>
+        <button name="Download..." url="https://confluence.jetbrains.com/display/DBE/DataGrip+2016.3+EAP" download="true" />
+        <button name="More Information" url="http://blog.jetbrains.com/datagrip/2016/11/11/data-conversion-and-more/" />
+        <patch from="163.7342" size="from 5 to 6" fullFrom="163.7342.16" />
+      </build>
+    </channel>
+  </product>
+
+</products>

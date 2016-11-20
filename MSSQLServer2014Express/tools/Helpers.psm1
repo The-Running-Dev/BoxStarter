@@ -115,13 +115,13 @@ param(
         2147205120  # pending restart required for setup update
     )
 
-    $defaultConfigurationFile = (Join-Path $PSScriptRoot 'Configuration.ini')
+    $defaultConfigurationFile = Join-Path $PSScriptRoot 'Configuration.ini' -Resolve 
 
     $packageParameters = ParseParameters $env:chocolateyPackageParameters
     $configurationFile = GetConfigurationFile $packageParameters $defaultConfigurationFile
     $silentArgs = GenerateInstallArguments $packageParameters $configurationFile
 
-    Write-Host "Installing with Arguments:
+    Write-Host "Installing with Arguments: 
 $silentArgs"
 
     $tempDir = Join-Path $(Get-Item $env:TEMP) $packageName
@@ -136,7 +136,7 @@ $silentArgs"
     Write-Host "Extracting SQL Server Express Package..."
     Start-Process "$fileFullPath" "/Q /x:`"$extractPath`"" -Wait
 
-    Write-Host "Installing SQL Server Express..."
+    Write-Host "Installing SQL Server 2014 Express..."
     Install-ChocolateyInstallPackage "$packageName" "EXE" "$silentArgs" "$setupPath" -validExitCodes @(0, 3010)
 
     Write-Host "Removing SQL Server Express Extracted Files..."

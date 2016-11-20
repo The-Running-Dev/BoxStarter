@@ -65,10 +65,17 @@ function GenerateInstallArguments($parameters, $configurationFile)
     foreach ($key in $parameters.Keys)
     {
         if ($key -eq 'configurationfile') { continue };
+        if ($key -eq 'setuppath') { continue };
 
         $value = $parameters[$key]
 
         $s = $s + " /$key=$value"
+    }
+
+    # If the user didn't specify users for the admin accounts,
+    # add the current user
+    if ($parameters['sqlsysadminaccounts'] -eq $null) {
+        $s = $s + " /SQLSYSADMINACCOUNTS=""$(whoami)"""
     }
 
     return $s
@@ -98,15 +105,8 @@ None
 Install-ChocolateyPackage
 #>
 param(
-    [string] $packageName,
-    [string] $url,
-    [string] $url64,
-    [string] $checksum,
-    [string] $checksum64,
-    [string] $exeName
+    [string] $packageName
 )
-    Write-Debug "Running 'Install' for $packageName with url:`'$url`'";
-
     $installerType = 'exe'
     $validExitCodes = @(
         0, # success
@@ -115,32 +115,23 @@ param(
         2147205120  # pending restart required for setup update
     )
 
-    $defaultConfigurationFile = Join-Path (Join-Path $PSScriptRoot .. -Resolve) 'Configuration.ini'
+    $defaultConfigurationFile = Join-Path $PSScriptRoot 'Configuration.ini' -Resolve 
 
     $packageParameters = ParseParameters $env:chocolateyPackageParameters
     $configurationFile = GetConfigurationFile $packageParameters $defaultConfigurationFile
     $silentArgs = GenerateInstallArguments $packageParameters $configurationFile
+    $setupPath = $packageParameters['setuppath']
 
-    Write-Host "Installing with Arguments:
+    if ($setupPath -ne $null -and (Test-Path $setupPath)) {
+        Write-Host "Installing with Arguments: 
 $silentArgs"
 
-    $tempDir = Join-Path $(Get-Item $env:TEMP) $packageName
-    $fileFullPath = "$tempDir\SQLEXPR.exe"
-    $extractPath = "$tempDir\SQLEXPR"
-    $setupPath = "$extractPath\setup.exe"
-
-    # Create the package temporary directory
-    New-Item -ItemType Directory -Force -Path $tempDir
-    Get-ChocolateyWebFile $packageName $fileFullPath $url $url64 -Checksum $checksum -Checksum64 $checksum64 -ChecksumType "sha1"
-
-    Write-Host "Extracting SQL Server Express Package..."
-    Start-Process "$fileFullPath" "/Q /x:`"$extractPath`"" -Wait
-
-    Write-Host "Installing SQL Server Express..."
-    Install-ChocolateyInstallPackage "$packageName" "EXE" "$silentArgs" "$setupPath" -validExitCodes @(0, 3010)
-
-    Write-Host "Removing SQL Server Express Extracted Files..."
-    rm -r "$extractPath"
+        Write-Host "Installing SQL Server 2014 Developer..."
+        Install-ChocolateyInstallPackage "$packageName" "EXE" "$silentArgs" "$setupPath" -validExitCodes @(0, 3010)
+    }
+    else {
+        throw 'Invalid Setup Path.'
+    }
 }
 
 function Uninstall {

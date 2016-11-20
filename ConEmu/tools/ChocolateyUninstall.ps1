@@ -28,5 +28,3 @@ if ($pkg -ne "") {
   Write-Host "Uninstalling '$displayName' via 'msiexec /x $pkg'"
   Start-Process -Wait msiexec -ArgumentList @("/x", $pkg, "/qb-!")
 }
- 
-# Done

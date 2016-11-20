@@ -1,4 +1,4 @@
-$packagePath = join-path (Split-Path -parent $MyInvocation.MyCommand.Definition) .. -Resolve
+$packagePath = join-path (Split-Path -parent $MyInvocation.MyCommand.Definition) . -Resolve
 
 $package = 'ConEmu'
 $version = '16.10.22'
