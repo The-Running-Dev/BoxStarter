@@ -1,4 +1,4 @@
-$packageName = 'DataGrip 2016.2.6'
+$packageName = 'WebStorm 2016.3'
 $programsDir = 'JetBrains';
 $extractionPath = (${env:ProgramFiles(x86)}, ${env:ProgramFiles} -ne $null)[0]
 $installDir = Join-Path $extractionPath $programsDir

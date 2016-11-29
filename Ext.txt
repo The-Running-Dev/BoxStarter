@@ -1,0 +1,55 @@
+#NoEnv
+SendMode Input
+SetWorkingDir %A_ScriptDir%
+
+FileTypeKey := "txtfile"
+
+RegDelete HKCR, .txt
+RegDelete HKCR, %FileTypeKey%
+RegDelete HKCR, Applications\EditPadPro7.exe
+
+RegWrite REG_SZ, HKCR, %FileTypeKey%
+RegWrite REG_SZ, HKCR, .txt,, %FileTypeKey%
+RegWrite REG_SZ, HKCR, .txt\ShellNew, FileName, Template.ahk
+
+RegWrite REG_SZ, HKCR, %FileTypeKey%,, Text Document
+RegWrite REG_SZ, HKCR, %FileTypeKey%\DefaultIcon,, %A_WorkingDir%\EditPadPro7.exe`,1
+
+; Set up system verbs:
+RegWrite REG_SZ, HKCR, %FileTypeKey%\Shell\Open,, Open
+RegWrite REG_SZ, HKCR, %FileTypeKey%\Shell\Open\Command,, EditPadPro7.exe `%1
+
+; Set default action, but don't overwrite.
+try
+    RegRead value, HKCR, %FileTypeKey%\Shell,
+catch   ; Key likely doesn't exist.
+    RegWrite REG_SZ, HKCR, %FileTypeKey%\Shell,, Open
+
+; Set editor, but don't overwrite.
+try
+    RegRead value, HKCR, %FileTypeKey%\Shell\Edit\Command,
+catch
+    RegWrite REG_SZ, HKCR, %FileTypeKey%\Shell\Edit\Command,, EditPadPro7.exe `%1
+
+; App Paths registration isn't strictly necessary, so it's not done for the other exe versions.
+RegWrite REG_SZ, HKLM, SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\EditPadPro7.exe,, %A_WorkingDir%\EditPadPro7.exe
+
+# Working
+#NoEnv
+SendMode Input
+SetWorkingDir %A_ScriptDir%
+
+FileTypeKey := "txtfile"
+
+RegDelete HKCR, .txt
+RegDelete HKCR, %FileTypeKey%
+RegDelete HKCR, Applications\EditPadPro7.exe
+
+RegWrite REG_SZ, HKCR, %FileTypeKey%,, Text Document
+RegWrite REG_SZ, HKCR, %FileTypeKey%\DefaultIcon,, %A_WorkingDir%\EditPadPro7.exe`,1
+RegWrite REG_SZ, HKCR, %FileTypeKey%\Shell\Open,, Open
+RegWrite REG_SZ, HKCR, %FileTypeKey%\Shell\Open\Command,, EditPadPro7.exe `%1
+
+RegWrite REG_SZ, HKCR, .txt,, %FileTypeKey%
+
+RegWrite REG_SZ, HKLM, SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\EditPadPro7.exe,, %A_WorkingDir%\EditPadPro7.exe

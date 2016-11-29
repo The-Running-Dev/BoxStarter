@@ -1,8 +1,0 @@
-select count(dwid) from qtdata
-where datepart(day, testdate) = 16
-and datepart(month, testdate) = 11
-group by sn, UUTResult
-having count(dwid) = 1 and UUTResult = 'p'
-
-52.26.79.41/updates/updates.xml?license=commercial&uid=e8a629a6-3a4c-4996-967a-854d9ec6ced1&os=Windows+10+10.0&build=WS-163.7743.25
-HTTP/1.1

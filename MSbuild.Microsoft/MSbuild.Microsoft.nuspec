@@ -18,7 +18,4 @@
     <language>en-US</language>
     <tags>.net core</tags>
   </metadata>
-  <files>
-    <file src="tools\**\*" target="tools" />
-  </files>
 </package>

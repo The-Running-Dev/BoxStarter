@@ -3,65 +3,99 @@
   2. With Custom SQL Server Configuration.ini
 
 ## To Run as Is
-  * Full Install, in CMD run
-
-  ```
-  start http://bit.ly/win10boxstarter
-  ```
-
-  * Chocolatey Only, in PowerShell run
+  * Chocolatey, in PowerShell run
   ```
   Set-ExecutionPolicy Unrestricted
   iex ((New-Object System.Net.WebClient).DownloadString('http://bit.ly/win10boxstarter-choco'))
   ```
 
-## ToDo
-  * Create PowerShell script with registery changes
-  * Create a way to do silent install of other software without chocolatey package
-  * Restore settings for various application (WebStorm, DataGrip)
-
 ## Chocolatey Packages
-  * Microsoft SQL Server 2014 Express
-
-    Because you need to specify the source of the NuGet package and it's not possible to use GitHub as the source (I tried),
-    you have to download the NuGet package first. Here is the script to do that. Create it in save it in C:\Temp.
-
+  * ConEmu
     ```
-    $url = "http://bit.ly/2dsDNp9"
-    $packageName = "MSSQLServer2014Express"
-    $version = "12.0.4100.20160621"
-    $tempDir = $(Get-Item $env:TEMP)
-    $output = "$tempDir\$packageName.$version.nupkg"
-    Invoke-WebRequest -Uri $url -OutFile $output
-    choco install $packageName -y -source "'$tempDir;https://chocolatey.org/api/v2/'" -params='Your Params' (See Below)
+    choco install ConEmu -s "https://www.myget.org/F/win10"
     ```
-
-    Install with the default parameters from the Configuration.ini inside the package (Data directory is D:\SQLData)
-
-    ```
-    choco install MSSQLServer2014Express -s $PSScriptRoot
-    ```
-
-    Install with overriding some parameters. Replace -params='Your Params' above.
-
-    ```
-    -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData"'
-    ```
-
-    Install with overriding some parameters and your own Configuraiton.ini (by specifing the URL to Configuration.ini). Replace -params='Your Params' above.
-
-    ```
-    -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData" /ConfigurationFile="http://bit.ly/2doxBU1"'
-    ```
-
   * Internet Information Service (IIS)
     ```
-    $url = "http://bit.ly/2f19w2P"
-    $packageName = "WinIIS"
-    $tempDir = $(Get-Item $env:TEMP)
-    $output = "$tempDir\WinIIS.2016.11.02.nupkg"
-    Invoke-WebRequest -Uri $url -OutFile $output
-    choco install $packageName -y -source "'$tempDir;https://chocolatey.org/api/v2/'"
+    choco install WinIIS -s"https://www.myget.org/F/win10/api/v2"
+    ```
+  * JetBrains DataGrip
+    ```
+    choco install DataGrip -s "https://www.myget.org/F/win10"
+    ```
+    ```
+    choco install DataGrip -s "https://www.myget.org/F/win10" `
+      -params='/SettingsPath="D:\Dropbox\Settings\.DataGrip2016.2.zip"'
+    ```
+  * JetBrains ReSharper
+
+    Installs ReShraper and all other applications. Plus the Visual Studio 2015 addin.
+    ```
+    choco install ReSharper -s "https://www.myget.org/F/win10"
+    ```
+  * JetBrains WebStorm
+    ```
+    choco install WebStorm -s "https://www.myget.org/F/win10"
+    ```
+    ```
+    choco install WebStorm -s "https://www.myget.org/F/win10" `
+      -params='/SettingsPath="D:\Dropbox\Settings\.WebStorm2016.3.zip"'
+    ```
+  * Microsoft SQL Server 2014 Developer
+
+    Features installed through the default configuraiton file
+    ```
+    Database Engine Services, Data Qualty Client, Client Tools Connectivity, Integration Services, ManagemetnT Tools - Basic, ManagemetnT Tools - Complete.
+    ```
+    ```
+    choco install MSSQLServer2014Developer `
+      -s "https://www.myget.org/F/win10;https://chocolatey.org/api/v2" `
+      -params='/SetupPath="E:\setup.exe"'
+    ````
+
+    ```
+    choco install MSSQLServer2014Developer `
+      -s "https://www.myget.org/F/win10;https://chocolatey.org/api/v2" `
+      -params='/SetupPath="E:\setup.exe" /SECURITYMODE="SQL" /SAPWD="SetComplexPassword" /InstallSQLDataDir="D:\SQLData" /SQLBACKUPDIR="D:\SQLData\Backup" /SQLUSERDBDIR="D:\SQLData" /SQLTEMPDBDIR="D:\SQLData"'
+    ```
+  * Microsoft SQL Server 2014 Express
+
+    Install with the default parameters from the Configuration.ini inside the package.
+    ```
+    choco install MSSQLServer2014Express -s "https://www.myget.org/F/win10"
+    ```
+
+    Install with SQL Authentication. You have to specify the "sa" password.
+    ```
+    choco install MSSQLServer2014Express `
+      -s "https://www.myget.org/F/win10" `
+      -params='/SECURITYMODE="SQL" /SAPWD="SetYourOwn"'
+    ```
+
+    Install overriding some parameters.
+    ```
+    choco install MSSQLServer2014Express `
+      -s "https://www.myget.org/F/win10" `
+      -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData" /SQLSYSADMINACCOUNTS="Boyan"'
+    ```
+
+    Install with overriding some parameters, and your own Configuraiton.ini (by specifing the URL to Configuration.ini).
+    ```
+    choco install MSSQLServer2014Express `
+      -s "https://www.myget.org/F/win10" `
+      -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData" /ConfigurationFile="http://bit.ly/2doxBU1"'
+    ```
+  * Slack
+    ```
+    choco install Slack -s "https://www.myget.org/F/win10"
+    ```
+    ```
+    choco install Slack `
+      -s "https://www.myget.org/F/win10" `
+      -params='/SettingsPath="D:\Dropbox\Settings\Slack.zip"'
+    ```
+  * Spotify
+    ```
+    choco install Spotify -s "https://www.myget.org/F/win10"
     ```
 
 ## Short Links
@@ -79,7 +113,6 @@
 
 ## Gotchas
   * BOXSTARTER USES OLDER VERSION OF CHOCOLATEY. Big gotcha!
-  * The SQL Server package does not allow for passing some parameters as they are passed as part of the silent install, so the configuration file doesn't work completely.
 
 ## Editor
 https://jbt.github.io/markdown-editor

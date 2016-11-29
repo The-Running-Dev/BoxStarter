@@ -1,5 +1,5 @@
-$packageName = 'DataGrip 2016.2.6'
-$programsDir = 'JetBrains';
+$packageName = 'VSCode'
+$programsDir = 'Microsoft';
 $extractionPath = (${env:ProgramFiles(x86)}, ${env:ProgramFiles} -ne $null)[0]
 $installDir = Join-Path $extractionPath $programsDir
 $installVersionDir  = Join-Path $installDir $packageName

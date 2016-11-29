@@ -22,7 +22,4 @@
       <dependency id="DotNet3.5" version="3.5.20160716"/>
     </dependencies>
   </metadata>
-  <files>
-    <file src="tools\**\*" target="tools" />
-  </files>
 </package>

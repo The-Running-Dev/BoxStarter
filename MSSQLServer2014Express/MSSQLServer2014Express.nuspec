@@ -19,7 +19,4 @@
     <language>en-US</language>
     <tags>mssql sql server 2014 express sp1</tags>
   </metadata>
-  <files>
-    <file src="tools\**\*" target="tools" />
-  </files>
 </package>

@@ -10,13 +10,16 @@ function ParseParameters ($s)
     }
 
     $kvps = $s.Split(@(" "), [System.StringSplitOptions]::RemoveEmptyEntries)
+
     foreach ($kvp in $kvps)
     {
         $delimiterIndex = $kvp.IndexOf('=')
         if (($delimiterIndex -le 0) -or ($delimiterIndex -ge ($kvp.Length - 1))) { continue }
 
         $key = $kvp.Substring(1, $delimiterIndex - 1).Trim().ToLower()
+
         if ($key -eq '') { continue }
+
         $value = $kvp.Substring($delimiterIndex + 1).Trim()
 
         $parameters.Add($key, $value)
@@ -71,32 +74,16 @@ function GenerateInstallArguments($parameters, $configurationFile)
         $s = $s + " /$key=$value"
     }
 
+    # If the user didn't specify users for the admin accounts,
+    # add the current user
+    if ($parameters['sqlsysadminaccounts'] -eq $null) {
+        $s = $s + " /SQLSYSADMINACCOUNTS=""$(whoami)"""
+    }
+
     return $s
 }
 
 function Install {
-<#
-.SYNOPSIS
-Installs SQL Server Express.
-
-.DESCRIPTION
-Installs SQL Serve with ability to specify configuraiton file and command line parameters.
-
-.PARAMETER PackageName
-The name of the SQLServerExpress package.
-
-.PARAMETER Url
-The url of the web installer.
-
-.EXAMPLE
-Install '[PackageName]' 'http://download.microsoft.com/download/....'
-
-.OUTPUTS
-None
-
-.LINK
-Install-ChocolateyPackage
-#>
 param(
     [string] $packageName,
     [string] $url,
@@ -115,13 +102,13 @@ param(
         2147205120  # pending restart required for setup update
     )
 
-    $defaultConfigurationFile = Join-Path $PSScriptRoot 'Configuration.ini' -Resolve 
+    $defaultConfigurationFile = Join-Path $PSScriptRoot 'Configuration.ini' -Resolve
 
     $packageParameters = ParseParameters $env:chocolateyPackageParameters
     $configurationFile = GetConfigurationFile $packageParameters $defaultConfigurationFile
     $silentArgs = GenerateInstallArguments $packageParameters $configurationFile
 
-    Write-Host "Installing with Arguments: 
+    Write-Host "Installing with Arguments:
 $silentArgs"
 
     $tempDir = Join-Path $(Get-Item $env:TEMP) $packageName
@@ -144,31 +131,6 @@ $silentArgs"
 }
 
 function Uninstall {
-<#
-.SYNOPSIS
-Uninstalls SQL Server Express.
-
-.DESCRIPTION
-Uninstalls SQL Server Express.
-
-.PARAMETER PackageName
-The name of the SQLServerExpress package.
-
-.PARAMETER ApplicationName
-The VisualStudio app name - i.e. 'Microsoft Visual Studio Community 2015'.
-
-.PARAMETER UninstallerName
-This name of the installer executable - i.e. 'vs_community.exe'.
-
-.EXAMPLE
-Uninstall 'MSSQLServer2014Express' 'Microsoft Visual Studio Community 2015' 'vs_community.exe'
-
-.OUTPUTS
-None
-
-.LINK
-Uninstall-ChocolateyPackage
-#>
 param(
   [string] $packageName,
   [string] $applicationName,

@@ -21,7 +21,4 @@
       <dependency id="dotnetcore-runtime" version="1.0.1"/>
     </dependencies>
   </metadata>
-  <files>
-    <file src="tools\**\*" target="tools" />
-  </files>
 </package>

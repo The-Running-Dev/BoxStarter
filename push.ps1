@@ -16,9 +16,9 @@ if ($package -eq '') {
     }
 }
 else {
-    $packageToPush = Get-ChildItem -Path $artifactsPath | Where-Object { $_.Name -match "^$package"}
+    $packages = Get-ChildItem -Path $artifactsPath | Where-Object { $_.Name -match "^$package.*"}
     
-    if ($packageToPush -ne '') {
-        choco push $packageToPush.FullName -s "$($config.source)" -k="$($config.apiKey)"
+    foreach ($p in $packages) {
+        choco push $p.FullName -s "$($config.source)" -k="$($config.apiKey)"
     }
 }

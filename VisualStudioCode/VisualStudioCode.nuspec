@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>VisualStudioCode</id>
+    <version>1.7.2</version>
+    <title>Visual Studio Code</title>
+    <authors>Microsoft</authors>
+    <description>
+      This package installs Visual Studio Code.
+    </description>
+  </metadata>
+</package>

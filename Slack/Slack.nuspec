@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Slack</id>
+    <version>1.0.0</version>
+    <title>Slack</title>
+    <authors>Slack</authors>
+    <description>
+      This package installs Slack Windows Client.
+    </description>
+  </metadata>
+</package>
