@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>DisplayFusion</id>
+    <version>8.1.1</version>
+    <title>DisplayFusion</title>
+    <authors>Binary Fortress</authors>
+    <owners>schelljw</owners>
+    <licenseUrl>http://www.binaryfortress.com/data/download/?package=displayFusion&amp;licenseEN=1&amp;log=0</licenseUrl>
+    <projectUrl>http://www.displayfusion.com</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jschell/chocolateyPkgs/master/displayFusion/displayFusion-logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>DisplayFusion will make your multi-monitor life much easier. With powerful features like Multi-Monitor Taskbars, TitleBar Buttons and fully customizable Functions, DisplayFusion will make managing your multiple monitors easy.
+    # Free for personal use
+    - The free license is only usable in a personal and non-commercial context. Commercial use of Display Fusion requires the purchase of a license. http://www.binaryfortress.com/data/download/?package=displayFusion&amp;licenseEN=1&amp;log=0</description>
+    <tags>multiMonitor displayFusion display binaryFortress monitor</tags>
+  </metadata>
+</package>
