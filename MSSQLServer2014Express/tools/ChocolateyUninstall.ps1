@@ -1,4 +1,4 @@
-$packageName = "MsSqlServer2014Express"
+$packageName = "MSSQLServer2014Express"
 $chocolateyTempDir = Join-Path (Get-Item $env:TEMP).FullName "chocolatey"
 $tempDir = Join-Path $chocolateyTempDir $packageName
 $fileFullPath = "$tempDir\SQLEXPR.exe"
