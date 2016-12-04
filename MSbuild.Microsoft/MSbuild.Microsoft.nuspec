@@ -1,21 +1,24 @@
-<?xml version="1.0" encoding="windows-1252"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>MSBuild.Microsoft</id>
     <version>1.0.0</version>
     <title>MSBuild Microsoft</title>
     <authors>Microsoft</authors>
-    <owners>boyank@gmail.com</owners>
-    <projectUrl>https://github.com/Boyan-Kostadinov/BoxstarterPackages</projectUrl>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxstarterPackages</packageSourceUrl>
+    <projectUrl>https://github.com/Boyan-Kostadinov/Packages</projectUrl>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-      This package installs the MS build targets provided by Visual Studio
+      This package installs the MSBuild targets provided by Visual Studio
     </description>
     <summary>Installs MSBuild Visual Studio Targets</summary>
     <releaseNotes></releaseNotes>
     <copyright />
     <language>en-US</language>
-    <tags>.net core</tags>
+    <tags>.net msbuild</tags>
+    <dependencies>
+      <dependency id="boyan-choco.extension" />
+    </dependencies>
   </metadata>
 </package>

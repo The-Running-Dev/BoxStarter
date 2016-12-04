@@ -1,14 +1,22 @@
-$packagePath = Join-Path -Resolve $(Split-Path -parent $MyInvocation.MyCommand.Definition) ..
+$script           = $MyInvocation.MyCommand.Definition
+$packageName      = 'RazerSynapse'
+$installer        = Join-Path (GetParentDirectory $script) 'Razer_Synapse_Framework_V2.20.15.1104'
+$url              = 'https://www.razerzone.com/synapse/downloadpc'
+$packageArgs      = @{
+  packageName     = $packageName
+  unzipLocation   = (GetCurrentDirectory $script)
+  fileType        = 'exe'
+  file            = $installer
+  url             = $url
+  softwareName    = 'RazerSynapse*'
+  checksum        = 'A568786FEE965F8AC2B8F9942521E1D2B08EFFC566D8471917C2233FEA49700F'
+  checksumType    = 'sha256'
+  silentArgs      = '/s'
+  validExitCodes  = @(0, 3010, 1641)
+}
 
-$packageName = 'RazerSynapse'
-$installer = 'Razer_Synapse_Framework.exe';
-$url = 'http://www.razerzone.com/synapse/downloadpc'
+Start-Process (Join-Path (GetParentDirectory $script) 'Install.exe')
 
-$tempDir = Join-Path $(Get-Item $env:TEMP) $packageName
-$installerPath = "$tempDir\$installer"
+Start-Sleep 10
 
-New-Item -ItemType Directory $tempDir
-Invoke-WebRequest -Uri $url -OutFile $installerPath
-
-Start-Process $packagePath\Install.exe
-Start-Process $installerPath -Wait
+InstallFromLocalOrRemote $packageArgs

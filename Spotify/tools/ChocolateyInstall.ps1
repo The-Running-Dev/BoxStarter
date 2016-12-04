@@ -1,18 +1,29 @@
-Import-Module (Join-Path $(Split-Path -parent $MyInvocation.MyCommand.Definition) 'Helpers.psm1')
+$script           = $MyInvocation.MyCommand.Definition
+$packageName      = 'Spotify'
+$installer        = Join-Path (GetParentDirectory $script) 'SpotifyFullSetup.exe'
+$url              = 'http://download.spotify.com/SpotifyFullSetup.exe'
+$packageArgs      = @{
+  packageName     = $packageName
+  unzipLocation   = (GetCurrentDirectory $script)
+  fileType        = 'exe'
+  file            = $installer
+  url             = $url
+  softwareName    = 'Spotify*'
+  checksum        = 'DC1770943FCFADC07DF5E399BA89D071E1E82311284860573C08E05D31BBF965'
+  checksumType    = 'sha256'
+  silentArgs      = '/silent'
+  validExitCodes  = @(0, 3010, 1641)
+}
 
-$installer = 'SpotifyFullSetup.exe'
-$url = "https://download.spotify.com/$installer"
+InstallWithScheduledTaks $packageArgs
 
-$tempDir = Join-Path $(Get-Item $env:TEMP) $packageName
-$installerPath = "$tempDir\$installer"
+$done = $false
+do {
+  if (Get-Process Spotify -ErrorAction SilentlyContinue) {
+    Write-Host "About to Kill"
+    Stop-Process -name Spotify
+    $done = $true
+  }
 
-New-Item -ItemType Directory $tempDir
-Invoke-WebRequest -Uri $url -OutFile $installerPath
-
-$taskname = 'Install Spotify'
-$action = New-ScheduledTaskAction -Execute $installerPath -Argument /silent
-$trigger = New-ScheduledTaskTrigger -Once -At (Get-Date)
-Register-ScheduledTask -TaskName $taskname -Action $action -Trigger $trigger
-Start-ScheduledTask -TaskName $taskname
-Start-Sleep -s 1
-Unregister-ScheduledTask -TaskName $taskname -Confirm:$false
+  Start-Sleep -s 10
+} until ($done)

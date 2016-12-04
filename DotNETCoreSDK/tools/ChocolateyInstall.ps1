@@ -1,25 +1,19 @@
-$packageName = 'DotNetCoreSDK'
-$fileType = 'exe'
-$silentArgs = '/quiet'
-$url = 'https://go.microsoft.com/fwlink/?LinkID=827524'
-$version = '1.0.0-preview2-003133'
+$script           = $MyInvocation.MyCommand.Definition
+$packageName      = 'DotNetCoreSDK'
+$installer        = Join-Path (GetParentDirectory $script) 'DotNetCore.1.0.1-SDK.1.0.0.Preview2-003133-x64.exe'
+$url              = 'https://go.microsoft.com/fwlink/?LinkID=827524'
 
-function Test-RegistryValue {
-param (
-    [parameter(Mandatory=$true)]
-    [ValidateNotNullOrEmpty()]$Path,
-    [parameter(Mandatory=$true)]
-    [ValidateNotNullOrEmpty()]$Value
-)
-    try {
-        if (Test-Path -Path $Path) {
-            Get-ItemProperty -Path $Path | Select-Object -ExpandProperty $Value -ErrorAction Stop | Out-Null
-            return $true
-        }
-    }
-    catch {
-        return $false
-    }
+$packageArgs      = @{
+  packageName     = $packageName
+  unzipLocation   = (GetCurrentDirectory $script)
+  fileType        = 'exe'
+  file            = $installer
+  url             = $url
+  softwareName    = 'DotNetCoreSDK*'
+  checksum        = '27DFA0EA2D2AAA80F76D77D8747E9E2C1178F40592C3650FBD3BCFB512144132'
+  checksumType    = 'sha256'
+  silentArgs      = '/quiet'
+  validExitCodes  = @(0, 3010, 1641)
 }
 
 function CheckDotNetCliInstalled($value) {
@@ -31,8 +25,8 @@ function CheckDotNetCliInstalled($value) {
 }
 
 if (CheckDotNetCliInstalled($version)) {
-    Write-Host "Microsoft .Net Core SDK is already installed on your machine."
+    Write-Host "Microsoft .NET Core SDK is already installed on your machine."
 }
 else {
-  Install-ChocolateyPackage $packageName $fileType $silentArgs '' $url
+    InstallFromLocalOrRemote $packageArgs
 }

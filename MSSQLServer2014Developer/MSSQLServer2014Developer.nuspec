@@ -1,24 +1,23 @@
-<?xml version="1.0" encoding="windows-1252"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>MSSQLServer2014Developer</id>
     <version>12.0.5000.0</version>
     <title>SQL Server 2014 Developer with SP2</title>
     <authors>Microsoft</authors>
-    <owners>riezebosch</owners>
     <projectUrl>https://www.microsoft.com/en-us/sql-server/sql-server-editions-developers</projectUrl>
-    <packageSourceUrl>https://github.com/riezebosch/BoxstarterPackages</packageSourceUrl>
-    <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/59ad5e2e32c52fd2a45a9735f95a81368f9e5e85/icons/microsoft-sql-server.svg</iconUrl>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <iconUrl>https://github.com/Boyan-Kostadinov/Packages</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-      This package installs SQL Server 2014 Developer with SP2. You can use install arguments to add additional arguments or override arguments to supply specific arguments.
+      This package installs SQL Server 2014 Developer with SP2.
+      You can use install arguments to add additional arguments or override arguments to supply specific arguments.
     </description>
     <summary>Installs SQL Server 2014 Developer with SP2</summary>
-    <releaseNotes></releaseNotes>
-    <copyright />
-    <language>en-US</language>
     <tags>mssql sql server 2014 developer sp2</tags>
     <dependencies>
+      <dependency id="boyan-choco.extension" />
       <dependency id="DotNet3.5" version="3.5.20160716"/>
     </dependencies>
   </metadata>

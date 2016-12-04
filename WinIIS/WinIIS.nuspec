@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
 	<metadata>
-		<id>WinIIS</id>
+		<id>InternetInformationServer</id>
 		<version>2016.11.02</version>
-		<title>Windows IIS</title>
+		<title>Internet Information Server</title>
 		<authors>Microsoft</authors>
-		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
-		<docsUrl>https://github.com/Boyan-Kostadinov/BoxStarter</docsUrl>
-		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<summary></summary>
-		<tags></tags>
+		<owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+    	<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
 		<description>
-		Windows IIS Installer
+		Installs Internet Information Server.
 		</description>
-		<releaseNotes></releaseNotes>
+		<dependencies>
+      		<dependency id="boyan-choco.extension" />
+    	</dependencies>
 	</metadata>
 </package>

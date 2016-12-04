@@ -1,12 +1,23 @@
-<?xml version="1.0" encoding="windows-1252"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>ReSharper</id>
     <version>2016.2.2</version>
     <title>JetBrains ReSharper Ultimate</title>
     <authors>JetBrains</authors>
+    <projectUrl>https://www.jetbrains.com/resharper</projectUrl>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
     <description>
       This package installs JetBrains ReSharper Ultimate.
+      Default Silent Arguments:
+      /VsVersion=14.0;15.0 /SpecificProductNames=dotCover;dotMemory;dotPeek;dotTrace;ReSharperCpp;teamCityAddin;ReSharper /Silent=True
+
+      Override Silent Arguments:
+      -ia '/VsVersion=14.0;15.0 /SpecificProductNames=ReSharper' -o
     </description>
+    <dependencies>
+      <dependency id="boyan-choco.extension" />
+    </dependencies>
   </metadata>
 </package>

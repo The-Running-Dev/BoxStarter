@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="windows-1252"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>TeamCity</id>
     <version>12.0.4100.20160621</version>

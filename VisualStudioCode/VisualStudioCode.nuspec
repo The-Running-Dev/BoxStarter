@@ -1,12 +1,18 @@
-<?xml version="1.0" encoding="windows-1252"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>VisualStudioCode</id>
     <version>1.7.2</version>
     <title>Visual Studio Code</title>
     <authors>Microsoft</authors>
+    <projectUrl>http://code.visualstudio.com/</projectUrl>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
     <description>
       This package installs Visual Studio Code.
     </description>
+    <dependencies>
+      <dependency id="boyan-choco.extension" />
+    </dependencies>
   </metadata>
 </package>

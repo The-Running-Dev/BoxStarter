@@ -1,23 +1,21 @@
-<?xml version="1.0" encoding="windows-1252"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>DotNETCoreSDK</id>
     <version>1.0.1</version>
     <title>.NET Core</title>
     <authors>Microsoft</authors>
-    <owners>boyank@gmail.com</owners>
     <projectUrl>https://www.microsoft.com/net/core</projectUrl>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxstarterPackages</packageSourceUrl>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-      This package installs .NET Core
+      This package installs .NET Core SDK
     </description>
-    <summary>Installs .NET Core</summary>
-    <releaseNotes></releaseNotes>
-    <copyright />
-    <language>en-US</language>
+    <summary>Installs .NET Core SDK</summary>
     <tags>.net core</tags>
     <dependencies>
+      <dependency id="boyan-choco.extension" />
       <dependency id="dotnetcore-runtime" version="1.0.1"/>
     </dependencies>
   </metadata>

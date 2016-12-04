@@ -1,18 +1,17 @@
-<?xml version="1.0" encoding="windows-1252"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
 	<metadata>
 		<id>Office365Business</id>
 		<version>16.0.7614.3602</version>
 		<title>Office 365 Business</title>
 		<authors>Microsoft</authors>
-		<packageSourceUrl>https://microsoft.com</packageSourceUrl>
-		<docsUrl>https://microsoft.com</docsUrl>
-		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<summary></summary>
-		<tags></tags>
+		<owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+    	<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
 		<description>
 		Office 365 Business Installer
 		</description>
-		<releaseNotes></releaseNotes>
+		<dependencies>
+      		<dependency id="boyan-choco.extension" />
+    	</dependencies>
 	</metadata>
 </package>

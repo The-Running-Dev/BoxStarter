@@ -2,11 +2,16 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Slack</id>
-    <version>1.0.0</version>
+    <version>2.3.3</version>
     <title>Slack</title>
     <authors>Slack</authors>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
     <description>
       This package installs Slack Windows Client.
     </description>
+    <dependencies>
+      <dependency id="boyan-choco.extension" />
+    </dependencies>
   </metadata>
 </package>

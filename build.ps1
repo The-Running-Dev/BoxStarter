@@ -2,6 +2,8 @@ param(
     [string] $package
 )
 
+Import-Module (Join-Path $PSScriptRoot 'build-helpers.psm1')
+
 $artifactsPath = Join-Path $PSScriptRoot 'Artifacts'
 
 if (Test-Path($artifactsPath)) {
@@ -10,17 +12,19 @@ if (Test-Path($artifactsPath)) {
 
 New-Item -Path $artifactsPath -ItemType Directory -Force
 
-echo $package
-
 if ($package -eq '') {
-    foreach ($nuspec in (Get-ChildItem -Path $PSScriptRoot -Filter *.nuspec -Recurse)){
-       choco pack $nuspec.FullName --outputdirectory $artifactsPath
+    foreach ($p in (Get-ChildItem -Path $PSScriptRoot -Filter *.nuspec -Recurse)) {
+        CompileAutoHotKey((Split-Path -Parent $p.FullName))
+
+        choco pack $p.FullName --outputdirectory $artifactsPath
     }
 }
 else {
     $packages = Get-ChildItem -Path $PSScriptRoot -Filter *.nuspec -Recurse | Where-Object { $_.Name -match "^$package.*"}
 
     foreach ($p in $packages) {
+        CompileAutoHotKey((Split-Path -Parent $p.FullName))
+
         choco pack $p.FullName --outputdirectory $artifactsPath
     }
 }

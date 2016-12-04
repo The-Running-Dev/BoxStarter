@@ -1,12 +1,18 @@
-<?xml version="1.0" encoding="windows-1252"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-  <metadata>
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>  
     <id>Dropbox</id>
     <version>14.4.19</version>
     <title>Dropbox</title>
     <authors>Dropbox</authors>
+    <projectUrl>https://dropbox.com</projectUrl>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
     <description>
       This package installs Dropbox.
     </description>
+    <dependencies>
+      <dependency id="boyan-choco.extension" />
+    </dependencies>
   </metadata>
 </package>
