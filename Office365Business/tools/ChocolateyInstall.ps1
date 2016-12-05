@@ -28,9 +28,6 @@ $configurationFile = GetConfigurationFile $packageParameters['ConfigurationFile'
 $setupPath = PrepareInstaller $packageParameters
 
 if (!([System.IO.File]::Exists($setupPath))) {
-    # Download the deployment tool
-    Install-ChocolateyPackage @packageArgs
-
     # Use the deployment tool to download the installer
     $packageArgs['packageName'] = 'Office365BusinessInstaller'
     $packageArgs['file'] = "$env:Temp\Office\Setup.exe"

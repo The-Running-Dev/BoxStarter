@@ -1,7 +1,7 @@
 $script           = $MyInvocation.MyCommand.Definition
 $packageName      = 'ClipboardFusion'
-$installer        = Join-Path (GetParentDirectory $script) 'LogFusionSetup-5.0.exe'
-$url              = 'https://www.binaryfortress.com/Data/Download/?package=logfusion&log=117'
+$installer        = Join-Path (GetParentDirectory $script) 'ClipboardFusionSetup-4.2.exe'
+$url              = 'https://www.binaryfortress.com/Data/Download/?package=clipboardfusion&log=104'
 
 $packageArgs      = @{
   packageName     = $packageName

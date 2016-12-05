@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>clipboardfusion</id>
+    <id>clipboardFusion</id>
     <version>5.0</version>
     <title>ClipboardFusion</title>
     <authors>Binary Fortress Software</authors>

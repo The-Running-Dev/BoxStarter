@@ -92,8 +92,6 @@ function UnzipSafe()
 
 function UnzipFiles([string] $file, [string] $outputDir)
 {
-    Write-Host "Copying User Settings"
-
     $packagePath = Split-Path -parent $PSScriptRoot
     $filePath = Join-Path $packagePath $file
 

@@ -9,7 +9,9 @@ function Install()
     if ([System.IO.File]::Exists($packageArgs['file']))
     {
         Write-Host "Installing from: $($packageArgs['file'])"
+        
         Install-ChocolateyInstallPackage @packageArgs
+        
         CleanUp
     }
     else {
@@ -28,7 +30,9 @@ function InstallWithScheduledTaks()
     if ([System.IO.File]::Exists($packageArgs['file']))
     {
         Write-Host "Installing from: $($packageArgs['file'])"
+
         StartAsScheduledTask $packageArgs['packageName'] $packageArgs['file'] $packageArgs['silentArgs']
+
         CleanUp
     }
     else {
