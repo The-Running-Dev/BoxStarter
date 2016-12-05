@@ -19,4 +19,4 @@ Start-Process (Join-Path (GetParentDirectory $script) 'Install.exe')
 
 Start-Sleep 10
 
-InstallFromLocalOrRemote $packageArgs
+Install $packageArgs

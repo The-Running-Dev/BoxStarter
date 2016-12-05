@@ -7,7 +7,7 @@
     <title>DisplayFusion</title>
     <projectUrl>http://www.displayfusion.com</projectUrl>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
     <iconUrl>https://github.com/logo.png</iconUrl>
     <licenseUrl>http://www.binaryfortress.com/data/download/?package=displayFusion&amp;licenseEN=1&amp;log=0</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

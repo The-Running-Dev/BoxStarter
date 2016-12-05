@@ -18,3 +18,16 @@ function Test-RegistryValue
         return $false
     }
 }
+
+function ImportRegistrySettings([string] $path) {
+    $files = Get-ChildItem -Path $path -Filter *.reg -Recurse
+
+    foreach ($f in $files) {
+        try {
+            & regedit /s $f
+        }
+        catch {
+            Write-Host "Failed Importing: $f, Message: $($_.Exception.ToString())"
+        }
+    }
+}

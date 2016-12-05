@@ -7,7 +7,7 @@
     <authors>Microsoft</authors>
     <projectUrl>https://github.com/Boyan-Kostadinov/Packages</projectUrl>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       This package installs the MSBuild targets provided by Visual Studio

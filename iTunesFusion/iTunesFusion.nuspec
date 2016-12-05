@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>iTunesFusion</id>
+    <version>2.6.0</version>
+    <title>iTunesFusion</title>
+    <authors>Binary Fortress Software</authors>
+    <licenseUrl>https://www.binaryfortress.com/Data/Download/?package=itunesfusion%26licenseen=1%26log=0</licenseUrl>
+    <projectUrl>https://www.itunesfusion.com</projectUrl>
+    <iconUrl>https://images.binaryfortress.com/ChocolateyIcons/iTunesFusion.png</iconUrl>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>In just a few easy steps iTunesFusion will let you synchronize any iTunes playlist(s) with almost any device! You can configure as many different devices as you need and synchronize each one with different iTunes playlists. You can use standard playlists or dynamically updating smart playlists to synchronize your device.</description>
+    <copyright>2014 Binary Fortress Software</copyright>
+    <tags>itunesfusion itunes sync android mp3 usb</tags>
+    <dependencies>
+			<dependency id="boyan-choco.extension" />
+		</dependencies>
+  </metadata>
+</package>

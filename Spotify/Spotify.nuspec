@@ -7,7 +7,7 @@
     <authors>Spotify</authors>
     <projectUrl>http://spotify.com</projectUrl>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
     <description>
       This package installs Spotify Windows Client.
     </description>

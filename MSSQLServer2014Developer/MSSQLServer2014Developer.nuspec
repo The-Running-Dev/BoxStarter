@@ -7,7 +7,7 @@
     <authors>Microsoft</authors>
     <projectUrl>https://www.microsoft.com/en-us/sql-server/sql-server-editions-developers</projectUrl>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
     <iconUrl>https://github.com/Boyan-Kostadinov/Packages</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>

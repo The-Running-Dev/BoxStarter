@@ -28,5 +28,5 @@ if (CheckDotNetCliInstalled($version)) {
     Write-Host "Microsoft .NET Core SDK is already installed on your machine."
 }
 else {
-    InstallFromLocalOrRemote $packageArgs
+    Install $packageArgs
 }

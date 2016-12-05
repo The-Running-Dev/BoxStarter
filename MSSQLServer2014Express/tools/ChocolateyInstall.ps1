@@ -31,7 +31,7 @@ $packageArgs = @{
     )
 }
 
-$setupPath = DetermineSetupPath $packageParameters
+$setupPath = PrepareInstaller $packageParameters
 $installerPath = $packageParameters['installer']
 
 if (!([System.IO.File]::Exists($setupPath))) {
@@ -55,7 +55,7 @@ elseif (([System.IO.File]::Exists($installerPath))) {
 # Run the extracted setup
 $packageArgs['packageName'] = $packageName
 $packageArgs['silentArgs'] = $silentArgs
-InstallFromLocalOrRemote $packageArgs
+Install $packageArgs
 
 if (Test-Path "$env:Temp\MSSQLServer2014Express") {
     Remove-Item -Recurse "$env:Temp\MSSQLServer2014Express"

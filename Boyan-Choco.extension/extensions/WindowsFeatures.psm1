@@ -1,20 +1,34 @@
+function EnableWindowsFeatures([string] $file)
+{
+    Write-Host "Enabling Windows Features from $file"
+
+    RunChoco $file "choco install ##application## -source WindowsFeatures -y"
+}
+
+function DisableWindowsFeatures([string] $file)
+{   
+    Write-Host "Disabling Windows Features from $file"
+
+    RunChoco $file "choco uninstall ##application## -source WindowsFeatures -y"
+}
+
 function InstallIIS() {
-    echo 'Installing IIS and Windows Features'
+    Write-Host 'Installing IIS and Windows Features'
 
     if ([System.Environment]::OSVersion.Version.Major -eq 6){
         InstallWindows7IIS
     }
     else {
         # .NET and extensibility
-        InstallWindowsFeature NetFx3
-        InstallWindowsFeature NetFx4Extended-ASPNET45
+        EnableWindowsFeature NetFx3
+        EnableWindowsFeature NetFx4Extended-ASPNET45
 
         # Web server
-        InstallWindowsFeature IIS-WebServer
+        EnableWindowsFeature IIS-WebServer
 
         # ASP.NET
-        InstallWindowsFeature IIS-ASPNET
-        InstallWindowsFeature IIS-ASPNET45
+        EnableWindowsFeature IIS-ASPNET
+        EnableWindowsFeature IIS-ASPNET45
     }
 
     # IIS modules
@@ -22,15 +36,16 @@ function InstallIIS() {
     choco install IIS-ARR -y
 }
 
-function InstallWindowsFeature([string] $featureName) {
+function EnableWindowsFeature([string] $featureName) {
     $feature = Get-WindowsOptionalFeature -FeatureName $featureName -Online
 
     if ($feature.State -ne 'Enabled') {
-        echo "Enabling $featureName"
+        Write-Host "Enabling $featureName"
+
         Enable-WindowsOptionalFeature -FeatureName $featureName -Online -All
     }
     else {
-        echo "$featureName Enabled...Skipping"
+        Write-Host "$featureName Enabled...Skipping"
     }
 }
 

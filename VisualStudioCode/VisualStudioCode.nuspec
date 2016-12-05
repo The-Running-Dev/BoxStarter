@@ -7,7 +7,7 @@
     <authors>Microsoft</authors>
     <projectUrl>http://code.visualstudio.com/</projectUrl>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
     <description>
       This package installs Visual Studio Code.
     </description>

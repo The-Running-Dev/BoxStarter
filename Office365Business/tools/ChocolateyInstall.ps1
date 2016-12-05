@@ -25,7 +25,7 @@ $packageArgs                = @{
 $defaultConfigurationFile = if (IsSystem32Bit) { $defaultConfigurationFile32 } else { $defaultConfigurationFile }
 $packageParameters = ParseParameters $env:chocolateyPackageParameters
 $configurationFile = GetConfigurationFile $packageParameters['ConfigurationFile'] $defaultConfigurationFile
-$setupPath = DetermineSetupPath $packageParameters
+$setupPath = PrepareInstaller $packageParameters
 
 if (!([System.IO.File]::Exists($setupPath))) {
     # Download the deployment tool
@@ -37,12 +37,12 @@ if (!([System.IO.File]::Exists($setupPath))) {
     $packageArgs['silentArgs'] = "/download $configurationFile $env:temp\Office\setup.exe"
     Install-ChocolateyInstallPackage @packageArgs
 
-    $packageArgs['file'] = "$env:Temp\Office\setup.exe"
+    $packageArgs['file'] = "$env:Temp\Office\Setup.exe"
 }
 
 $packageArgs['packageName'] = $packageName
 $packageArgs['silentArgs'] = "/configure $configurationFile"
-InstallFromLocalOrRemote $packageArgs
+Install $packageArgs
 
 if (Test-Path "$env:temp\office") {
     Remove-Item -Recurse "$env:temp\Office"

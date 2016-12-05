@@ -43,4 +43,11 @@ if ($packageParameters['Features']) {
     $xml.Save($configuration)
 }
 
-InstallFromLocalOrRemote $packageArgs
+Install $packageArgs
+
+# Visual Studio Addins
+Install-ChocolateyVsixPackage SpellChecker http://bit.ly/2fed0m1
+Install-ChocolateyVsixPackage AutoSave http://bit.ly/2gFVeIR
+Install-ChocolateyVsixPackage PowershellTools http://bit.ly/2gnhTci
+
+choco install ReSharper -s NewPc -params '/setup=""\\nas\Data\Applications\_NewPC\Installers\JetBrains.ReSharperUltimate.2016.2.2.exe""'

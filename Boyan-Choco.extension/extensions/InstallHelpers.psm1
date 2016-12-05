@@ -1,44 +1,20 @@
-function InstallFromLocalOrRemote()
+function Install()
 {
     param(
-        [Hashtable] $packageArgs,
-        [Hashtable] $installArgs
+        [Hashtable] $packageArgs
     )
+    
+    $packageArgs['file'] = PrepareInstaller $packageArgs
 
-    $packageParameters = ParseParameters $env:chocolateyPackageParameters
-    $setupPath = DetermineSetupPath $packageParameters
-
-    # Check for a provided setup executable or ISO
-    if ([System.IO.File]::Exists($setupPath)) {
-        Write-Host "Installing from: $setupPath"
-
-        $packageArgs['file'] = $setupPath
-
-        Install-ChocolateyInstallPackage @packageArgs
-    }
-    elseif ([System.IO.File]::Exists($packageArgs['file'])) {
-        # Look for a local embedded executable
-        
+    if ([System.IO.File]::Exists($packageArgs['file']))
+    {
         Write-Host "Installing from: $($packageArgs['file'])"
-
         Install-ChocolateyInstallPackage @packageArgs
-    } 
-    elseif ($packageArgs.ContainsKey('url')) {
-        # Use The provided URL
-
-        if ($packageArgs.ContainsKey('file')) {
-            $packageArgs.Remove('file')
-        }
-
-        Write-Host "Downloading Installer: $($packageArgs['url'])"
-
-        Install-ChocolateyPackage @packageArgs
+        CleanUp
     }
     else {
         throw 'No Installer or Url Provided. Aborting...'
     }
-
-    CleanUp
 }
 
 function InstallWithScheduledTaks()
@@ -46,65 +22,48 @@ function InstallWithScheduledTaks()
     param(
         [Hashtable] $packageArgs
     )
-
-    $packageParameters = ParseParameters $env:chocolateyPackageParameters
-    $setupPath = DetermineSetupPath $packageParameters
-
-    # Look for a local embedded executable
-    if ([System.IO.File]::Exists($packageArgs['file'])) {
+    
+    $packageArgs['file'] = PrepareInstaller $packageArgs
+    
+    if ([System.IO.File]::Exists($packageArgs['file']))
+    {
         Write-Host "Installing from: $($packageArgs['file'])"
-
         StartAsScheduledTask $packageArgs['packageName'] $packageArgs['file'] $packageArgs['silentArgs']
-    }
-    # Next check for a provided setup executable or ISO
-    elseif ([System.IO.File]::Exists($setupPath)) {
-        Write-Host "Installing from: $setupPath"
-
-        $packageArgs['file'] = $setupPath
-
-        StartAsScheduledTask $packageArgs['packageName'] $packageArgs['file'] $packageArgs['silentArgs']
-    }
-    elseif ($packageArgs.ContainsKey('url')) {
-        Write-Host "Downloading Installer: $($packageArgs['url'])"
-
-        Get-ChocolateyWebFile `
-            -PackageName $packageArgs['packageName'] `
-            -FileFullPath $packageArgs['file'] `
-            -Url $packageArgs['url']
-
-        StartAsScheduledTask $packageArgs['packageName'] $packageArgs['file'] $packageArgs['silentArgs']
+        CleanUp
     }
     else {
         throw 'No Installer or Url Provided. Aborting...'
     }
-
-    CleanUp
 }
 
-function DetermineSetupPath()
+function PrepareInstaller()
 {
-    param(
-        [Hashtable] $packageParameters
+     param(
+        [Hashtable] $packageArgs
     )
 
+    $packageParameters = ParseParameters $env:chocolateyPackageParameters
     $isoPath = $packageParameters["iso"]
     $setupPath = $packageParameters["setup"]
     $installerPath = $packageParameters['installer']
     $installerExe = $packageParameters["exe"]
+    $packageInstaller = [System.IO.Path]::Combine($env:packagesInstallers, [System.IO.Path]::GetFileName($packageArgs['file']))
 
     if ([System.IO.File]::Exists($setupPath)) {
+        # If the provided setup executable or ISO exist
         return $setupPath
     }
-
-    if ([System.IO.File]::Exists($installerPath)) {
+    elseif ([System.IO.File]::Exists($installerPath)) {
         return $installerPath
     }
-
-    if ([System.IO.File]::Exists($isoPath)) {
-        Write-Host "ISO: $isoPath"
-
+    elseif ([System.IO.File]::Exists($packageInstaller)) {
+        # If the installer exists the env:pacakgeInstallers
+        return $packageInstaller
+    }
+    elseif ([System.IO.File]::Exists($isoPath)) {
         $global:mustDismountIso = $true
         $global:isoPath = $isoPath
+
         $mountedIso = Mount-DiskImage -PassThru $isoPath
         $isoDrive = Get-Volume -DiskImage $mountedIso | Select -expand DriveLetter
 
@@ -116,8 +75,14 @@ function DetermineSetupPath()
 
         return $setupPath
     }
+    elseif ($packageArgs.ContainsKey('url')) {
+        # Use The provided URL to get the installer
+        Write-Host "Downloading Installer: $($packageArgs['url'])"
 
-    return $setupPath
+        $packageArgs['file'] = Get-ChocolateyWebFile @packageArgs
+    }
+
+    return $packageArgs['file']
 }
 
 function ParseParameters([string] $packageParameters)
@@ -147,38 +112,6 @@ function ParseParameters([string] $packageParameters)
     }
 
     return $arguments
-}
-
-function Unzip()
-{
-    param(
-        [string]$file,
-        [string] $destination
-    )
-
-    Add-Type -AssemblyName System.IO.Compression.FileSystem
-    $archive = [System.IO.Compression.ZipFile]::OpenRead($file)
-
-    foreach ($entry in $archive.Entries)
-    {
-        $entryTargetFilePath = [System.IO.Path]::Combine($destination, $entry.FullName)
-        $entryDir = [System.IO.Path]::GetDirectoryName($entryTargetFilePath)
-
-        # Ensure the directory of the archive entry exists
-        if(!(Test-Path $entryDir)){
-            New-Item -ItemType Directory -Path $entryDir | Out-Null
-        }
-
-        # If the entry is not a directory entry, then extract entry
-        if(!$entryTargetFilePath.EndsWith("/")){
-            try {
-                [System.IO.Compression.ZipFileExtensions]::ExtractToFile($entry, $entryTargetFilePath, $true);
-            }
-            catch {
-                echo $_.Exception.Message
-            }
-        }
-    }
 }
 
 function CleanUp([string] $isoPath)

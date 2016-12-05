@@ -15,4 +15,4 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-InstallFromLocalOrRemote $packageArgs
+Install $packageArgs

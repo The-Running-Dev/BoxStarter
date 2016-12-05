@@ -7,7 +7,7 @@
     <authors>Razer</authors>
     <projectUrl>http://www.razerzone.com/synapse</projectUrl>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
     <description>
       This package installs Razer Synapse Framework.
     </description>

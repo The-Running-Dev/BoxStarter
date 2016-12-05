@@ -7,7 +7,7 @@
     <authors>Boyan Kostadinov</authors>
     <projectUrl>https://github.com/Boyan-Kostadinov/Packages</projectUrl>
     <owners>Boyan Kostadinov</owners>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
     <summary>Common Install Functionality</summary>
     <description>
     Chocolatey installation extensions

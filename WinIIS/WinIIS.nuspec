@@ -6,7 +6,7 @@
 		<title>Internet Information Server</title>
 		<authors>Microsoft</authors>
 		<owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    	<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    	<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
 		<description>
 		Installs Internet Information Server.
 		</description>

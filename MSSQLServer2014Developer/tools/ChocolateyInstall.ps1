@@ -26,4 +26,4 @@ $packageArgs                = @{
     )
 }
 
-InstallFromLocalOrRemote $packageArgs
+Install $packageArgs
