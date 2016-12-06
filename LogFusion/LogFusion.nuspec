@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>logfusion</id>
-    <version>5.0</version>
+    <id>LogFusion</id>
+    <version>5.1</version>
     <title>LogFusion</title>
     <authors>Binary Fortress Software</authors>
     <licenseUrl>https://www.binaryfortress.com/Data/Download/?package=logfusion%26licenseen=1%26log=0</licenseUrl>
-    <projectUrl>https://www.logfusion.ca</projectUrl>
+    <projectUrl>https://www.logfusion.com</projectUrl>
     <iconUrl>https://images.binaryfortress.com/ChocolateyIcons/LogFusion.png</iconUrl>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
 		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>

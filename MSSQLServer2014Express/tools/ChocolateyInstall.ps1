@@ -2,14 +2,13 @@ $script                     = $MyInvocation.MyCommand.Definition
 $defaultConfigurationFile   = Join-Path (GetParentDirectory $script) 'Configuration.ini'
 $packageName                = 'MSSQLServer2014Express'
 $installer                  = Join-Path (GetParentDirectory $script) 'SQLEXPR.exe'
-
-$packageParameters          = ParseParameters $env:chocolateyPackageParameters
-$configurationFile          = GetConfigurationFile $packageParameters['ConfigurationFile'] $defaultConfigurationFile
+$parameters                 = ParseParameters $env:chocolateyPackageParameters
+$configurationFile          = GetConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
 $silentArgs                 = "/IAcceptSQLServerLicenseTerms /ConfigurationFile=""$($configurationFile)"""
 $os                         = if ($IsSystem32Bit) { "x86" } else { "x64" }
 $installer                  = "SQLEXPR_$os_ENU.exe"
 
-if (!$packageParameters.ContainsKey['sqlsysadminaccounts']) {
+if (!$parameters.ContainsKey['sqlsysadminaccounts']) {
     $silentArgs = $silentArgs + " /SQLSYSADMINACCOUNTS=""$(whoami)"""
 }
 
@@ -31,8 +30,8 @@ $packageArgs = @{
     )
 }
 
-$setupPath = PrepareInstaller $packageParameters
-$installerPath = $packageParameters['installer']
+$setupPath = PrepareInstaller $parameters
+$installerPath = $parameters['installer']
 
 if (!([System.IO.File]::Exists($setupPath))) {
     # Download and run the pre-installer

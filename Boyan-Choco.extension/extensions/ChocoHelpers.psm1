@@ -32,6 +32,24 @@ function RunCommand([string] $file, [string] $commandTemplate) {
         }
     }
     catch {
-         Write-Host "Failed: $($_.Exception.ToString())"
+         Write-Host "Failed: $($_.Exception.Message)"
+         throw
     }
 }
+
+function RunExecutables([string] $path) {
+    $exes = Get-ChildItem -Path $path -Filter *.exe -Recurse
+
+    foreach ($e in $exes) {
+        try {
+            Write-Host "Running $e"
+
+            & $e
+        }
+        catch {
+            Write-Host "Failed Running: $e, Message: $($_.Exception.Message)"
+        }
+    }
+}
+
+Export-ModuleMember *

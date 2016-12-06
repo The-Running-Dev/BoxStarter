@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>ESETNod32Antivirus</id>
+    <version>10.0.369.0</version>
+    <title>ESET</title>
+    <authors>ESET</authors>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <description>
+      This package installs ESET Nod32 Antivirus.
+    </description>
+    <dependencies>
+      <dependency id="boyan-choco.extension" />
+    </dependencies>
+  </metadata>
+</package>

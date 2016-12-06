@@ -13,7 +13,7 @@
       This package installs .NET Core SDK
     </description>
     <summary>Installs .NET Core SDK</summary>
-    <tags>.net core</tags>
+    <tags>.net core sdk</tags>
     <dependencies>
       <dependency id="boyan-choco.extension" />
       <dependency id="dotnetcore-runtime" version="1.0.1"/>

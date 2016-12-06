@@ -1,21 +1,18 @@
 $script                     = $MyInvocation.MyCommand.Definition
 $defaultConfigurationFile   = Join-Path (GetParentDirectory $script) 'Configuration.ini'
-$packageName                = 'MSSQLServer2014Developer'
-$installer                  = Join-Path (GetParentDirectory $script) 'Setup.exe'
-
-$packageParameters          = ParseParameters $env:chocolateyPackageParameters
-$configurationFile          = GetConfigurationFile $packageParameters['ConfigurationFile'] $defaultConfigurationFile
+$parameters                 = ParseParameters $env:chocolateyPackageParameters
+$configurationFile          = GetConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
 $silentArgs                 = "/IAcceptSQLServerLicenseTerms /ConfigurationFile=""$($configurationFile)"""
 
-if (!$packageParameters.ContainsKey['sqlsysadminaccounts']) {
+if (!$parameters.ContainsKey['sqlsysadminaccounts']) {
     $silentArgs = $silentArgs + " /SQLSYSADMINACCOUNTS=""$(whoami)"""
 }
 
 $packageArgs                = @{
-    packageName               = $packageName
+    packageName               = 'MSSQLServer2014Developer'
     unzipLocation             = (GetCurrentDirectory $script)
     fileType                  = 'exe'
-    file                      = $installer
+    file                      = Join-Path (GetParentDirectory $script) 'Setup.exe'
     softwareName              = 'MSSQLServer2014Developer*'
     silentArgs                = $silentArgs
     validExitCodes            = @(

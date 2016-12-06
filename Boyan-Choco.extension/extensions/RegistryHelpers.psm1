@@ -19,7 +19,8 @@ function Test-RegistryValue
     }
 }
 
-function ImportRegistrySettings([string] $path) {
+function ImportRegistrySettings([string] $path)
+{
     $files = Get-ChildItem -Path $path -Filter *.reg -Recurse
 
     foreach ($f in $files) {
@@ -29,5 +30,34 @@ function ImportRegistrySettings([string] $path) {
         catch {
             Write-Host "Failed Importing: $f, Message: $($_.Exception.ToString())"
         }
+    }
+}
+
+function ImportRegistryFile
+{
+    param (
+        [parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][Hashtable] $parameters
+    )
+
+    try {
+        # If settings are provided and the file exists
+        if ([System.IO.File]::Exists($parameters['file'])) {
+            if ([System.IO.File]::Exists($parameters['executable'])) {
+                & $parameters['executable']
+            }
+
+            if ($parameters['process']) {
+                if (Get-Process -Name $parameters['process']) {
+                    # Kill the started application
+                    Stop-Process -Name $parameters['process']
+                }
+            }
+
+            # Import the provided settings
+            & regedit /s $parameters['file']
+        }
+    }
+    catch {
+        Write-Host "Failed Importing: $($parameters['file']), Message: $($_.Exception.Message)"
     }
 }

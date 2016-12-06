@@ -1,14 +1,10 @@
 $script           = $MyInvocation.MyCommand.Definition
-$packageName      = 'DotNetCoreSDK'
-$installer        = Join-Path (GetParentDirectory $script) 'DotNetCore.1.0.1-SDK.1.0.0.Preview2-003133-x64.exe'
-$url              = 'https://go.microsoft.com/fwlink/?LinkID=827524'
-
 $packageArgs      = @{
-  packageName     = $packageName
+  packageName     = 'DotNetCoreSDK'
   unzipLocation   = (GetCurrentDirectory $script)
   fileType        = 'exe'
-  file            = $installer
-  url             = $url
+  file            = Join-Path (GetParentDirectory $script) 'DotNetCore.1.0.1-SDK.1.0.0.Preview2-003133-x64.exe'
+  url             = 'https://go.microsoft.com/fwlink/?LinkID=827524'
   softwareName    = 'DotNetCoreSDK*'
   checksum        = '27DFA0EA2D2AAA80F76D77D8747E9E2C1178F40592C3650FBD3BCFB512144132'
   checksumType    = 'sha256'

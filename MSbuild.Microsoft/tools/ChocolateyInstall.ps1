@@ -1,7 +1,8 @@
-$packagePath = Split-Path -parent $PSScriptRoot
-$MSBuildTargets = Join-Path $packagePath 'MSBuild.Microsoft.zip' 
+$packageArgs    = @{
+  packageName   = 'MSBuild.Microsoft'
+  FileFullPath  = Join-Path (GetParentDirectory $script) 'MSBuild.Microsoft.zip'
+  Destination   = 'C:\Program Files (x86)\MSBuild'
+}
 
-Get-ChocolateyUnzip -FileFullPathMSBuildTargets -Destination 'C:\Program Files (x86)\MSBuild'
-
-# Unzip the MSBuild targets
+Get-ChocolateyUnzip -FileFullPathMSBuildTargets -Destination 
 # UnzipSafe MSBuildTargets 'C:\Program Files (x86)\MSBuild'

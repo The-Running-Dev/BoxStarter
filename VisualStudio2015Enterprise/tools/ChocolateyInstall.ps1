@@ -1,15 +1,9 @@
 $script                 = $MyInvocation.MyCommand.Definition
-$packageName            = 'VisualStudio2015Enterprise'
-$packageDir             = GetParentDirectory $script
 $defaultConfiguration   = Join-Path (GetParentDirectory $script) 'Configuration.xml'
-
-$packageParameters      = ParseParameters $env:chocolateyPackageParameters
-$configuration          = GetConfigurationFile $packageParameters['Configuration'] $defaultConfiguration
-
-echo "configuration: $configuration"
-
+$parameters             = ParseParameters $env:chocolateyPackageParameters
+$configuration          = GetConfigurationFile $parameters['Configuration'] $defaultConfiguration
 $packageArgs            = @{
-    packageName         = $packageName
+    packageName         = 'VisualStudio2015Enterprise'
     unzipLocation       = (GetCurrentDirectory $script)
     fileType            = 'exe'
     url                 = 'https://download.microsoft.com/download/6/4/7/647EC5B1-68BE-445E-B137-916A0AE51304/vs_enterprise.exe'
@@ -26,8 +20,8 @@ $packageArgs            = @{
 }
 
 # If features were passed in through the command line
-if ($packageParameters['Features']) {
-    $features = $packageParameters.Split(',')
+if ($parameters['Features']) {
+    $features = $parameters.Split(',')
     [xml]$xml = Get-Content $configuration
 
     foreach ($feature in $features)
@@ -44,10 +38,3 @@ if ($packageParameters['Features']) {
 }
 
 Install $packageArgs
-
-# Visual Studio Addins
-Install-ChocolateyVsixPackage SpellChecker http://bit.ly/2fed0m1
-Install-ChocolateyVsixPackage AutoSave http://bit.ly/2gFVeIR
-Install-ChocolateyVsixPackage PowershellTools http://bit.ly/2gnhTci
-
-choco install ReSharper -s NewPc -params '/setup=""\\nas\Data\Applications\_NewPC\Installers\JetBrains.ReSharperUltimate.2016.2.2.exe""'

@@ -1,34 +1,35 @@
 $ErrorActionPreference = 'Stop';
 
 # Default values
-$createDesktopIcon = $true
+$createDesktopIcon = $false
 $createQuickLaunchIcon = $true
 $addContextMenuFiles = $true
 $addContextMenuFolders = $true
 $addToPath = $true
 
-$arguments = ParseParameters $env:chocolateyPackageParameters
-if ($arguments.ContainsKey("nodesktopicon"))
+$parameters = ParseParameters $env:chocolateyPackageParameters
+
+if ($parameters.ContainsKey("nodesktopicon"))
 {
     $createDesktopIcon = $false
 }
 
-if ($arguments.ContainsKey("noquicklaunchicon"))
+if ($parameters.ContainsKey("noquicklaunchicon"))
 {
     $createQuickLaunchIcon = $false
 }
 
-if ($arguments.ContainsKey("nocontextmenufiles"))
+if ($parameters.ContainsKey("nocontextmenufiles"))
 {
     $addContextMenuFiles = $false
 }
 
-if ($arguments.ContainsKey("nocontextmenufolders"))
+if ($parameters.ContainsKey("nocontextmenufolders"))
 {
     $addContextMenuFolders = $false
 }
 
-if ($arguments.ContainsKey("dontaddtopath"))
+if ($parameters.ContainsKey("dontaddtopath"))
 {
     $addToPath = $false
 }
@@ -61,15 +62,12 @@ if ($addToPath)
 }
 
 $script           = $MyInvocation.MyCommand.Definition
-$packageName      = 'VisualStudioCode'
-$installer        = Join-Path (GetParentDirectory $script) 'VSCodeSetup-1.7.2.exe'
-$url              = 'https://go.microsoft.com/fwlink/?LinkID=623230'
 $packageArgs      = @{
   packageName     = $packageName
   unzipLocation   = (GetCurrentDirectory $script)
   fileType        = 'exe'
-  file            = $installer
-  url             = $url
+  file            = Join-Path (GetParentDirectory $script) 'VSCodeSetup-1.7.2.exe'
+  url             = 'https://go.microsoft.com/fwlink/?LinkID=623230'
   softwareName    = 'VisualStudioCode*'
   checksum        = 'CE706A90880DFC94F1C6B3911FFD66BE0EC4EC4C0FCB70EEC78B20357BDCEE23'
   checksumType    = 'sha256'

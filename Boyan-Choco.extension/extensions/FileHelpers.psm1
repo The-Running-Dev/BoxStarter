@@ -1,11 +1,11 @@
-function GetCurrentDirectory([string] $scriptDirectory)
+function GetCurrentDirectory([string] $scriptPath)
 {
-    return $(Split-Path -parent $scriptDirectory)
+    return $(Split-Path -parent $scriptPath)
 }
 
-function GetParentDirectory([string] $scriptDirectory)
+function GetParentDirectory([string] $scriptPath)
 {
-    return Join-Path -Resolve $(Split-Path -parent $scriptDirectory) ..
+    return Join-Path -Resolve $(Split-Path -parent $scriptPath) ..
 }
 
 function GetProgramFilesDirectory()
@@ -114,6 +114,6 @@ function UnzipFiles([string] $file, [string] $outputDir)
         }
     }
     catch {
-        Write-Host "Failed: $($_.Exception.ToString())"
+        Write-Host "Failed: $($_.Exception.Message)"
     }
 }
