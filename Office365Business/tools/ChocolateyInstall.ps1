@@ -4,7 +4,6 @@ $packageDir                 = GetParentDirectory $script
 $deploymentTool             = Join-Path (GetParentDirectory $script) 'officedeploymenttool_7614-3602.exe'
 $defaultConfigurationFile   = Join-Path (GetParentDirectory $script) 'Configuration.xml'
 $defaultConfigurationFile32 = Join-Path (GetParentDirectory $script) 'Configuration32.xml'
-
 $packageArgs                = @{
     packageName             = 'Office325DeploymentTool'
     unzipLocation           = (GetCurrentDirectory $script)
@@ -23,9 +22,9 @@ $packageArgs                = @{
 }
 
 $defaultConfigurationFile = if (IsSystem32Bit) { $defaultConfigurationFile32 } else { $defaultConfigurationFile }
-$packageParameters = ParseParameters $env:chocolateyPackageParameters
-$configurationFile = GetConfigurationFile $packageParameters['ConfigurationFile'] $defaultConfigurationFile
-$setupPath = PrepareInstaller $packageParameters
+$parameters = ParseParameters $env:chocolateyPackageParameters
+$configurationFile = GetConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
+$setupPath = PrepareInstaller $parameters
 
 if (!([System.IO.File]::Exists($setupPath))) {
     # Use the deployment tool to download the installer
@@ -39,7 +38,7 @@ if (!([System.IO.File]::Exists($setupPath))) {
 
 $packageArgs['packageName'] = $packageName
 $packageArgs['silentArgs'] = "/configure $configurationFile"
-Install $packageArgs
+InstallWithProcess $packageArgs
 
 if (Test-Path "$env:temp\office") {
     Remove-Item -Recurse "$env:temp\Office"

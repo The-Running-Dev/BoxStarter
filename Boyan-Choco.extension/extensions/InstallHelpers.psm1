@@ -11,7 +11,7 @@ function Install()
         Write-Host "Installing from: $($packageArgs['file'])"
         
         Install-ChocolateyInstallPackage @packageArgs
-        
+
         CleanUp
     }
     else {
@@ -32,6 +32,26 @@ function InstallWithScheduledTaks()
         Write-Host "Installing from: $($packageArgs['file'])"
 
         StartAsScheduledTask $packageArgs['packageName'] $packageArgs['file'] $packageArgs['silentArgs']
+
+        CleanUp
+    }
+    else {
+        throw 'No Installer or Url Provided. Aborting...'
+    }
+}
+
+function InstallWithProcess() {
+    param(
+        [Hashtable] $packageArgs
+    )
+
+    $packageArgs['file'] = PrepareInstaller $packageArgs
+    
+    if ([System.IO.File]::Exists($packageArgs['file']))
+    {
+        Write-Host "Installing from: $($packageArgs['file'])"
+ 
+        Start-Process $packageArgs['file'] $packageArgs['silentArgs'] -Wait -NoNewWindow
 
         CleanUp
     }
