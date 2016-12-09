@@ -1,9 +1,8 @@
 $script           = $MyInvocation.MyCommand.Definition
-$packageName      = 'ESETNod32Antivirus'
 $os               = if ($IsSystem32Bit) { "86" } else { "64" }
 $installer        = Join-Path (GetParentDirectory $script) "eav_nt$($os)_enu.exe"
 $packageArgs      = @{
-    packageName     = $packageName
+    packageName     = 'ESETNod32Antivirus'
     unzipLocation   = (GetCurrentDirectory $script)
     url             = 'https://download.eset.com/com/eset/apps/home/eav/windows/latest/eav_nt64_enu.exe'
     url64           = 'https://download.eset.com/com/eset/apps/home/eav/windows/latest/eav_nt32_enu.exe'

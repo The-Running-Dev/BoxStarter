@@ -8,7 +8,7 @@ function Install()
 
     if ([System.IO.File]::Exists($packageArgs['file']))
     {
-        Write-Host "Installing from: $($packageArgs['file'])"
+        Write-Debug "Installing from: $($packageArgs['file'])"
         
         Install-ChocolateyInstallPackage @packageArgs
 
@@ -29,7 +29,7 @@ function InstallWithScheduledTaks()
     
     if ([System.IO.File]::Exists($packageArgs['file']))
     {
-        Write-Host "Installing from: $($packageArgs['file'])"
+        Write-Debug "Installing from: $($packageArgs['file'])"
 
         StartAsScheduledTask $packageArgs['packageName'] $packageArgs['file'] $packageArgs['silentArgs']
 
@@ -49,7 +49,7 @@ function InstallWithProcess() {
     
     if ([System.IO.File]::Exists($packageArgs['file']))
     {
-        Write-Host "Installing from: $($packageArgs['file'])"
+        Write-Debug "Installing from: $($packageArgs['file'])"
  
         Start-Process $packageArgs['file'] $packageArgs['silentArgs'] -Wait -NoNewWindow
 
@@ -74,17 +74,19 @@ function PrepareInstaller()
     $packageInstaller = [System.IO.Path]::Combine($env:packagesInstallers, [System.IO.Path]::GetFileName($packageArgs['file']))
 
     if ([System.IO.File]::Exists($setupPath)) {
-        # If the provided setup executable or ISO exist
+        # If the provided setup executable exists
         return $setupPath
     }
     elseif ([System.IO.File]::Exists($installerPath)) {
+        # If the provided installer exists
         return $installerPath
     }
     elseif ([System.IO.File]::Exists($packageInstaller)) {
-        # If the installer exists the env:pacakgeInstallers
+        # If the installer exists under env:pacakgeInstallers
         return $packageInstaller
     }
     elseif ([System.IO.File]::Exists($isoPath)) {
+        # If the ISO exists
         $global:mustDismountIso = $true
         $global:isoPath = $isoPath
 
@@ -101,7 +103,7 @@ function PrepareInstaller()
     }
     elseif ($packageArgs.ContainsKey('url')) {
         # Use The provided URL to get the installer
-        Write-Host "Downloading Installer: $($packageArgs['url'])"
+        Write-Debug "Downloading Installer: $($packageArgs['url'])"
 
         $packageArgs['file'] = Get-ChocolateyWebFile @packageArgs
     }
@@ -115,11 +117,11 @@ function ParseParameters([string] $packageParameters)
 
     if ($packageParameters)
     {
-        $match_pattern = "\/(?<option>([a-zA-Z0-9]+))(:|=|-)([`"'])?(?<value>([a-zA-Z0-9- _\\:\.\!\@\#\$\%\^\&\*\(\)+]+))([`"'])?|\/(?<option>([a-zA-Z0-9]+))"
+        $match_pattern = "\/(?<option>([a-zA-Z0-9]+))(:|=|-)([`"'])?(?<value>([a-zA-Z0-9- _\\:\.\!\@\#\$\%\^\&\*\(\)\+\,]+))([`"'])?|\/(?<option>([a-zA-Z0-9]+))"
         $option_name = 'option'
         $value_name = 'value'
 
-        if ($packageParameters -match $match_pattern )
+        if ($packageParameters -match $match_pattern)
         {
             $results = $packageParameters | Select-String $match_pattern -AllMatches
 

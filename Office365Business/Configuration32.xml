@@ -7,7 +7,4 @@
       <Language ID="en-us" />
     </Product>
   </Add>
-  <Updates Enabled="TRUE" Channel="Current" />
-  <Display Level="None" AcceptEULA="TRUE" />
-  <Property Name="AUTOACTIVATE" Value="1" />
 </Configuration>

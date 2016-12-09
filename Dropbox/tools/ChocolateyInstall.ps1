@@ -1,12 +1,10 @@
 $script           = $MyInvocation.MyCommand.Definition
-$packageName      = 'Dropbox'
-$installer        = Join-Path (GetParentDirectory $script) 'Dropbox 15.4.22 Offline Installer.exe'
 $url              = 'https://clientupdates.dropboxstatic.com/client/Dropbox%2015.4.22%20Offline%20Installer.exe'
 $packageArgs      = @{
-  packageName     = $packageName
+  packageName     = 'Dropbox'
   unzipLocation   = (GetCurrentDirectory $script)
   fileType        = 'exe'
-  file            = $installer
+  file            = Join-Path (GetParentDirectory $script) 'Dropbox 15.4.22 Offline Installer.exe'
   url             = $url
   softwareName    = 'Dropbox*'
   checksum        = '46CC8743A1B9BA3BD36799AFE09F7E9BDDA9B7D1F434B3874494BAC02E1757E8'

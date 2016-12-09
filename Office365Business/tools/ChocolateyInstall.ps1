@@ -26,19 +26,38 @@ $parameters = ParseParameters $env:chocolateyPackageParameters
 $configurationFile = GetConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
 $setupPath = PrepareInstaller $parameters
 
+# If exclude features were passed in through the command line
+if ($parameters['excludefeatures']) {
+    Write-Host "Excluding: $($parameters['excludefeatures'])"
+
+    [xml] $xml = Get-Content $configurationFile
+    $features = $parameters['excludefeatures'].Split(',')
+
+    foreach ($feature in $features)
+    {
+        $excludeFeature = $xml.CreateElement('ExcludeApp')
+        $excludeFeature.SetAttribute('ID', $feature)
+
+        $office = $xml.SelectSingleNode("Configuration/Add/Product[@ID=""O365ProPlusRetail""]")
+        $office.AppendChild($excludeFeature)
+    }
+
+    $xml.Save($configurationFile)
+}
+
 if (!([System.IO.File]::Exists($setupPath))) {
     # Use the deployment tool to download the installer
     $packageArgs['packageName'] = 'Office365BusinessInstaller'
     $packageArgs['file'] = "$env:Temp\Office\Setup.exe"
-    $packageArgs['silentArgs'] = "/download $configurationFile $env:temp\Office\setup.exe"
+    $packageArgs['silentArgs'] = "/download ""$configurationFile"" $env:temp\Office\Setup.exe"
     Install-ChocolateyInstallPackage @packageArgs
 
     $packageArgs['file'] = "$env:Temp\Office\Setup.exe"
 }
 
 $packageArgs['packageName'] = $packageName
-$packageArgs['silentArgs'] = "/configure $configurationFile"
-InstallWithProcess $packageArgs
+$packageArgs['silentArgs'] = "/configure ""$configurationFile"""
+Install $packageArgs
 
 if (Test-Path "$env:temp\office") {
     Remove-Item -Recurse "$env:temp\Office"

@@ -9,6 +9,9 @@
     	<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
 		<description>
 		Office 365 Business Installer
+		
+		Access, Excel, Groove, InfoPath, Lync, OneDrive, OneNote, Outlook
+		PowerPoint, Project, Publisher, SharePointDesigner, Visio, Word
 		</description>
 		<dependencies>
       		<dependency id="boyan-choco.extension" />
