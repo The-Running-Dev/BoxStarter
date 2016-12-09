@@ -12,13 +12,13 @@ SetTitleMatchMode, 2
 
 WinWait, ESET NOD32 Antivirus ahk_class #32770,,
 WinActivate
-Sleep, 1000
+Sleep, 20000
 ; Click Continue
 MouseClick left, 50, 590
-Sleep, 15000
+Sleep, 20000
 ; Click 'I Accept'
 MouseClick left, 50, 590
-Sleep, 1000
+Sleep, 5000
 ; Click 'Enable ...'
 MouseClick left, 40, 410
 Sleep, 1000
