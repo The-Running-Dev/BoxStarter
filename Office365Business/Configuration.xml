@@ -7,6 +7,5 @@
       <Language ID="en-us" />
     </Product>
   </Add>
-  <Display AcceptEULA="TRUE" />
-  <!--<Display Level="None" AcceptEULA="TRUE" />-->
+  <Display Level="None" AcceptEULA="TRUE" />
 </Configuration>
