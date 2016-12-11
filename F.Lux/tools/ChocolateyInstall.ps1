@@ -16,5 +16,10 @@ Install $packageArgs
 
 Start-Sleep -s 5
 
-Stop-Process -processname microsoftedge
-Stop-Process -processname flux
+if (Get-Process -Name MicrosoftEdge) {
+  Stop-Process -processname MicrosoftEdge
+}
+
+if (Get-Process -Name flux) {
+  Stop-Process -processname flux
+}
