@@ -2,14 +2,14 @@ function Enable-WindowsFeatures([string] $file)
 {
     Write-Host "Enabling Windows Features from $file"
 
-    RunCommand $file "choco install ##token## -source WindowsFeatures -y"
+    Invoke-Command $file "choco install ##token## -source WindowsFeatures -y"
 }
 
 function Disable-WindowsFeatures([string] $file)
 {   
     Write-Host "Disabling Windows Features from $file"
 
-    RunCommand $file "choco uninstall ##token## -source WindowsFeatures -y"
+    Invoke-Command $file "choco uninstall ##token## -source WindowsFeatures -y"
 }
 
 function Install-IIS() {
