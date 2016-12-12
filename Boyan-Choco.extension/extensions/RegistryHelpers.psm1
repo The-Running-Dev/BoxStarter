@@ -19,7 +19,7 @@ function Test-RegistryValue
     }
 }
 
-function ImportRegistrySettings([string] $path)
+function Import-RegistrySettings([string] $path)
 {
     $files = Get-ChildItem -Path $path -Filter *.reg -Recurse
 
@@ -33,7 +33,7 @@ function ImportRegistrySettings([string] $path)
     }
 }
 
-function ImportRegistryFile
+function Import-RegistryFile
 {
     param (
         [parameter(Mandatory=$true)][ValidateNotNullOrEmpty()][Hashtable] $parameters

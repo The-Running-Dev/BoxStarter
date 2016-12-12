@@ -26,7 +26,7 @@ function ParseParameters ($s)
 }
 
 # Gets configuraiton file. Returns its path
-function GetConfigurationFile($parameters, $defaultConfigurationFile)
+function Get-ConfigurationFile($parameters, $defaultConfigurationFile)
 {
     $configurationFile = $parameters['ConfigurationFile']
 
@@ -118,7 +118,7 @@ param(
     $defaultConfigurationFile = (Join-Path $PSScriptRoot 'Configuration.ini')
 
     $packageParameters = ParseParameters $env:chocolateyPackageParameters
-    $configurationFile = GetConfigurationFile $packageParameters $defaultConfigurationFile
+    $configurationFile = Get-ConfigurationFile $packageParameters $defaultConfigurationFile
     $silentArgs = GenerateInstallArguments $packageParameters $configurationFile
 
     Write-Host "Installing with Arguments:

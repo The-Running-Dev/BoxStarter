@@ -1,4 +1,4 @@
-function Install()
+function Install-LocalOrRemote()
 {
     param(
         [Hashtable] $packageArgs
@@ -19,7 +19,7 @@ function Install()
     }
 }
 
-function InstallWithScheduledTaks()
+function Install-WithScheduledTask()
 {
     param(
         [Hashtable] $packageArgs
@@ -40,7 +40,7 @@ function InstallWithScheduledTaks()
     }
 }
 
-function InstallWithProcess() {
+function Install-WithProcess() {
     param(
         [Hashtable] $packageArgs
     )

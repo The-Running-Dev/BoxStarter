@@ -1,4 +1,4 @@
-function InstallApplications([string] $file)
+function Install-Applications([string] $file)
 {
     Write-Host "Installing Applications from $file"
 
@@ -9,7 +9,7 @@ function InstallApplications([string] $file)
     RunCommand $file "choco install ##token## --execution-timeout=14400 -y $packagesSource"
 }
 
-function UninstallApplications([string] $file)
+function Uninstall-Applications([string] $file)
 {
     Write-Host "Uninstalling Applications from $file"
 
@@ -20,7 +20,7 @@ function UninstallApplications([string] $file)
     RunCommand $file "choco uninstall ##token## --execution-timeout=14400 -y $packagesSource"
 }
 
-function RunCommand([string] $file, [string] $commandTemplate) {
+function Invoke-Commands([string] $file, [string] $commandTemplate) {
     try {
         foreach ($line in Get-Content -Path $file | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'})
         {
@@ -33,11 +33,10 @@ function RunCommand([string] $file, [string] $commandTemplate) {
     }
     catch {
          Write-Host "Failed: $($_.Exception.Message)"
-         throw
     }
 }
 
-function RunExecutables([string] $path) {
+function Invoke-Executables([string] $path) {
     $exes = Get-ChildItem -Path $path -Filter *.exe -Recurse
 
     foreach ($e in $exes) {

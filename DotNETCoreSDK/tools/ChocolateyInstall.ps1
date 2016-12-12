@@ -1,8 +1,9 @@
 $script           = $MyInvocation.MyCommand.Definition
+$version          = '1.0.1'
 $packageArgs      = @{
   packageName     = 'DotNetCoreSDK'
-  unzipLocation   = (GetCurrentDirectory $script)
-  file            = Join-Path (GetParentDirectory $script) 'DotNetCore.1.0.1-SDK.1.0.0.Preview2-003133-x64.exe'
+  unzipLocation   = (Get-CurrentDirectory $script)
+  file            = Join-Path (Get-ParentDirectory $script) 'DotNetCore.1.0.1-SDK.1.0.0.Preview2-003133-x64.exe'
   fileType        = 'exe'
   url             = 'https://go.microsoft.com/fwlink/?LinkID=827524'
   softwareName    = 'DotNetCoreSDK*'
@@ -12,17 +13,9 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-function CheckDotNetCliInstalled($value) {
-    $registryPath = 'HKLM:\SOFTWARE\Wow6432Node\dotnet\Setup\InstalledVersions\x64\sdk'
-
-    if (Test-RegistryValue -Path $registryPath -Value $value) {
-        return $true
-    }
-}
-
-if (CheckDotNetCliInstalled($version)) {
+if (Test-RegistryValue -Path 'HKLM:\SOFTWARE\Wow6432Node\dotnet\Setup\InstalledVersions\x64\sdk' -Value $value) {
     Write-Host "Microsoft .NET Core SDK is already installed on your machine."
 }
 else {
-    Install $packageArgs
+    Install-LocalOrRemote $packageArgs
 }

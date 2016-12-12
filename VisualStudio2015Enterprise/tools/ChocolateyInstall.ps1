@@ -1,11 +1,11 @@
 $script                 = $MyInvocation.MyCommand.Definition
-$defaultConfiguration   = Join-Path (GetParentDirectory $script) 'Configuration.xml'
+$defaultConfiguration   = Join-Path (Get-ParentDirectory $script) 'Configuration.xml'
 $parameters             = ParseParameters $env:chocolateyPackageParameters
-$configuration          = GetConfigurationFile $parameters['Configuration'] $defaultConfiguration
+$configuration          = Get-ConfigurationFile $parameters['Configuration'] $defaultConfiguration
 $packageArgs            = @{
     packageName         = 'VisualStudio2015Enterprise'
-    unzipLocation       = (GetCurrentDirectory $script)
-    file                = Join-Path (GetParentDirectory $script) 'vs_enterprise.exe'
+    unzipLocation       = (Get-CurrentDirectory $script)
+    file                = Join-Path (Get-ParentDirectory $script) 'vs_enterprise.exe'
     fileType            = 'exe'
     url                 = 'https://download.microsoft.com/download/6/4/7/647EC5B1-68BE-445E-B137-916A0AE51304/vs_enterprise.exe'
     checksum            = '2848DDD11A5DB48F801A846A4C7162027CA2ADE2EF252143ABDE82AD9C9FDD97'
@@ -38,4 +38,4 @@ if ($parameters['features']) {
     $xml.Save($configuration)
 }
 
-Install $packageArgs
+Install-LocalOrRemote $packageArgs

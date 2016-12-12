@@ -1,9 +1,9 @@
 $script           = $MyInvocation.MyCommand.Definition
 $packageArgs      = @{
   packageName     = 'Slack'
-  unzipLocation   = (GetCurrentDirectory $script)
+  unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'exe'
-  file            = Join-Path (GetParentDirectory $script) 'SlackSetup.exe'
+  file            = Join-Path (Get-ParentDirectory $script) 'SlackSetup.exe'
   url             = 'https://slack.com/ssb/download-win'
   url64           = 'https://slack.com/ssb/download-win64'
   softwareName    = 'Slack*'
@@ -13,4 +13,4 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install $packageArgs
+Install-LocalOrRemote $packageArgs

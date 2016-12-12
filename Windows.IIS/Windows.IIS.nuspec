@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
 	<metadata>
-		<id>WindowsIIS</id>
+		<id>Windows.IIS</id>
 		<version>2016.11.02</version>
 		<title>Windows Internet Information Server</title>
 		<authors>Microsoft</authors>

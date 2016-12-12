@@ -64,9 +64,9 @@ if ($addToPath)
 $script           = $MyInvocation.MyCommand.Definition
 $packageArgs      = @{
   packageName     = $packageName
-  unzipLocation   = (GetCurrentDirectory $script)
+  unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'exe'
-  file            = Join-Path (GetParentDirectory $script) 'VSCodeSetup-1.7.2.exe'
+  file            = Join-Path (Get-ParentDirectory $script) 'VSCodeSetup-1.7.2.exe'
   url             = 'https://go.microsoft.com/fwlink/?LinkID=623230'
   softwareName    = 'VisualStudioCode*'
   checksum        = 'CE706A90880DFC94F1C6B3911FFD66BE0EC4EC4C0FCB70EEC78B20357BDCEE23'
@@ -75,4 +75,4 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install $packageArgs
+Install-LocalOrRemote $packageArgs

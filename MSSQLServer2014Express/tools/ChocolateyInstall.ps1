@@ -1,9 +1,9 @@
 $script                     = $MyInvocation.MyCommand.Definition
-$defaultConfigurationFile   = Join-Path (GetParentDirectory $script) 'Configuration.ini'
+$defaultConfigurationFile   = Join-Path (Get-ParentDirectory $script) 'Configuration.ini'
 $packageName                = 'MSSQLServer2014Express'
-$installer                  = Join-Path (GetParentDirectory $script) 'SQLEXPR.exe'
+$installer                  = Join-Path (Get-ParentDirectory $script) 'SQLEXPR.exe'
 $parameters                 = ParseParameters $env:chocolateyPackageParameters
-$configurationFile          = GetConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
+$configurationFile          = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
 $silentArgs                 = "/IAcceptSQLServerLicenseTerms /ConfigurationFile=""$($configurationFile)"""
 $os                         = if ($IsSystem32Bit) { "x86" } else { "x64" }
 $installer                  = "SQLEXPR_$os_ENU.exe"
@@ -14,7 +14,7 @@ if (!$parameters.ContainsKey['sqlsysadminaccounts']) {
 
 $packageArgs = @{
     packageName             = 'MSSQLServer2014ExpressInstaller'
-    unzipLocation           = (GetCurrentDirectory $script)
+    unzipLocation           = (Get-CurrentDirectory $script)
     url                     = "https://download.microsoft.com/download/2/A/5/2A5260C3-4143-47D8-9823-E91BB0121F94/SQLEXPR_x86_ENU.exe"
     url64                   = "https://download.microsoft.com/download/2/A/5/2A5260C3-4143-47D8-9823-E91BB0121F94/SQLEXPR_x64_ENU.exe"
     checksum                = '0eff1354916410437c829e98989e5910d9605b2df31977bc33ca492405a0a9ab'
@@ -54,7 +54,7 @@ elseif (([System.IO.File]::Exists($installerPath))) {
 # Run the extracted setup
 $packageArgs['packageName'] = $packageName
 $packageArgs['silentArgs'] = $silentArgs
-Install $packageArgs
+Install-LocalOrRemote $packageArgs
 
 if (Test-Path "$env:Temp\MSSQLServer2014Express") {
     Remove-Item -Recurse "$env:Temp\MSSQLServer2014Express"

@@ -1,12 +1,12 @@
 $script                     = $MyInvocation.MyCommand.Definition
 $packageName                = 'Office365Business'
-$packageDir                 = GetParentDirectory $script
-$deploymentTool             = Join-Path (GetParentDirectory $script) 'officedeploymenttool_7614-3602.exe'
-$defaultConfigurationFile   = Join-Path (GetParentDirectory $script) 'Configuration.xml'
-$defaultConfigurationFile32 = Join-Path (GetParentDirectory $script) 'Configuration32.xml'
+$packageDir                 = Get-ParentDirectory $script
+$deploymentTool             = Join-Path (Get-ParentDirectory $script) 'officedeploymenttool_7614-3602.exe'
+$defaultConfigurationFile   = Join-Path (Get-ParentDirectory $script) 'Configuration.xml'
+$defaultConfigurationFile32 = Join-Path (Get-ParentDirectory $script) 'Configuration32.xml'
 $packageArgs                = @{
     packageName             = 'Office325DeploymentTool'
-    unzipLocation           = (GetCurrentDirectory $script)
+    unzipLocation           = (Get-CurrentDirectory $script)
     fileType                = 'exe'
     url                     = 'https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_7614-3602.exe'
     checksum                = 'CB9B41ABF4C3D67D082BA534F757A0C84F7CA4AF89D77590CC58290B7C875F5E'
@@ -23,7 +23,7 @@ $packageArgs                = @{
 
 $defaultConfigurationFile = if (IsSystem32Bit) { $defaultConfigurationFile32 } else { $defaultConfigurationFile }
 $parameters = ParseParameters $env:chocolateyPackageParameters
-$configurationFile = GetConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
+$configurationFile = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
 $setupPath = PrepareInstaller $parameters
 
 # If exclude features were passed in through the command line
@@ -57,7 +57,7 @@ if (!([System.IO.File]::Exists($setupPath))) {
 
 $packageArgs['packageName'] = $packageName
 $packageArgs['silentArgs'] = "/configure ""$configurationFile"""
-Install $packageArgs
+Install-LocalOrRemote $packageArgs
 
 if (Test-Path "$env:temp\office") {
     Remove-Item -Recurse "$env:temp\Office"

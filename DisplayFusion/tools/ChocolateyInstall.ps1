@@ -1,10 +1,10 @@
 ﻿$script           = $MyInvocation.MyCommand.Definition
-$installPath      = Join-Path (GetProgramFilesDirectory) 'DisplayFusion'
+$installPath      = Join-Path (Get-ProgramFilesDirectory) 'DisplayFusion'
 $localeTwoLetter  = (Get-Culture).TwoLetterISOLanguageName
 $packageArgs      = @{
   packageName     = 'DisplayFusion'
-  unzipLocation   = (GetCurrentDirectory $script)
-  file            = Join-Path (GetParentDirectory $script) 'DisplayFusionSetup-8.1.1.exe'
+  unzipLocation   = (Get-CurrentDirectory $script)
+  file            = Join-Path (Get-ParentDirectory $script) 'DisplayFusionSetup-8.1.1.exe'
   fileType        = 'exe'
   url             = 'https://www.binaryfortress.com/Data/Download/?package=displayfusion&log=101'
   softwareName    = 'DisplayFusion*'
@@ -14,4 +14,4 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install $packageArgs
+Install-LocalOrRemote $packageArgs

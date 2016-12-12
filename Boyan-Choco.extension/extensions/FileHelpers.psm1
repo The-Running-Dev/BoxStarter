@@ -1,21 +1,21 @@
-function GetCurrentDirectory([string] $scriptPath)
+function Get-CurrentDirectory([string] $scriptPath)
 {
     return $(Split-Path -parent $scriptPath)
 }
 
-function GetParentDirectory([string] $scriptPath)
+function Get-ParentDirectory([string] $scriptPath)
 {
     return Join-Path -Resolve $(Split-Path -parent $scriptPath) ..
 }
 
-function GetProgramFilesDirectory()
+function Get-ProgramFilesDirectory()
 {
     $programFiles = @{$true = "$env:programFiles (x86)"; $false = $env:programFiles}[64 -Match (get-processorBits)]
 
     return $programFiles
 }
 
-function GetConfigurationFile()
+function Get-ConfigurationFile()
 {
     param(
         [string] $configuration,
