@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Launchy</id>
+    <version>2.6.2.1</version>
+    <title>Launchy</title>
+    <authors>Josh Karlin, Simon Capewell</authors>
+    <projectUrl>http://www.launchy.net</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <description>Launchy is a free cross-platform utility designed to help you forget about your start menu,
+    the icons on your desktop, and even your file manager.
+    Launchy indexes the programs in your start menu and can launch your documents, project files, folders,
+    and bookmarks with just a few keystrokes!
+    </description>
+    <summary>Launchy - Open Source Keystroke Launcher</summary>
+    <releaseNotes>Launchy hasn't been updated in a while; for some people the 2.6 beta works better than the 2.5 release (which is available in its own Chocolatey package).</releaseNotes>
+    <tags>launchy productivity launcher beta</tags>
+    <dependencies>
+			<dependency id="boyan-choco.extension" />
+		</dependencies>
+  </metadata>
+</package>

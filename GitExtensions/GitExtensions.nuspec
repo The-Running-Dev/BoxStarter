@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>GitExtensions</id>
+    <version>2.49</version>
+    <title>Git Extensions</title>
+    <authors>Henk Westhuis</authors>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <licenseUrl>https://github.com/gitextensions/gitextensions/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>http://gitextensions.github.io/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/gitextensions.svg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Git Extensions is the only graphical user interface for Git that allows you control Git without using the commandline. It comes with a manual and video tutorials to get you started quickly.</description>
+    <summary>Git Extensions is the only graphical user interface for Git that allows you control Git without using the commandline.</summary>
+    <releaseNotes>https://github.com/gitextensions/gitextensions/blob/master/GitUI/Resources/ChangeLog.md</releaseNotes>
+    <docsUrl>https://git-extensions-documentation.readthedocs.org/en/latest/</docsUrl>
+    <mailingListUrl>http://groups.google.com/group/gitextensions</mailingListUrl>
+    <bugTrackerUrl>http://github.com/gitextensions/gitextensions/issues</bugTrackerUrl>
+    <tags>gitextensions git gui admin</tags>
+    <dependencies>
+			<dependency id="boyan-choco.extension" />
+		</dependencies>
+  </metadata>
+</package>
