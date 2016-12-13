@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>WebPI</id>
+    <version>5.0</version>
+    <title>WebPI</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.microsoft.com/web/downloads/platform.aspx?lang=</projectUrl>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    Installs Microsoft Web Platform Installer
+    </description>
+    <dependencies>
+			<dependency id="boyan-choco.extension" />
+		</dependencies>
+  </metadata>
+</package>
