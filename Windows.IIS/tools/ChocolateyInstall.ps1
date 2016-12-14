@@ -1,10 +1,10 @@
 $script             = $MyInvocation.MyCommand.Definition
 $defaultConfigFile  = Join-Path (Get-ParentDirectory $script) 'IIS.config'
-$parameters         = Parse-Parameters $evn:packageParameters
+$parameters         = Get-Parameters $evn:packageParameters
 $parameters['file'] = Get-ConfigurationFile $parameters['file'] $defaultConfigFile
 
 if ([System.Environment]::OSVersion.Version.Major -eq 6 -or $parameters['file'] -ne $defaultConfigFile){
-    Install-ChocoApplications $parameters['file']
+    Install-Applications $parameters['file']
 }
 else {
     # .NET and extensibility

@@ -1,4 +1,4 @@
-function Install-ChocoApplications([string] $file)
+function Install-Applications([string] $file)
 {
     Write-Host "Installing Applications from $file"
 
@@ -9,7 +9,7 @@ function Install-ChocoApplications([string] $file)
     Invoke-Commands $file "choco install ##token## -r --execution-timeout 14400 -y $packagesSource"
 }
 
-function Uninstall-ChocoApplications([string] $file)
+function UnInstall-Applications([string] $file)
 {
     Write-Host "Uninstalling Applications from $file"
 

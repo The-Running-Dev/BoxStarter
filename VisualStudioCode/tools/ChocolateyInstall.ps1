@@ -7,7 +7,7 @@ $addContextMenuFiles = $true
 $addContextMenuFolders = $true
 $addToPath = $true
 
-$parameters = Parse-Parameters $env:chocolateyPackageParameters
+$parameters = Get-Parameters $env:chocolateyPackageParameters
 
 if ($parameters.ContainsKey("nodesktopicon"))
 {

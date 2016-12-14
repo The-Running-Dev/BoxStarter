@@ -22,7 +22,7 @@ $packageArgs                = @{
 }
 
 $defaultConfigurationFile = if (IsSystem32Bit) { $defaultConfigurationFile32 } else { $defaultConfigurationFile }
-$parameters = Parse-Parameters $env:chocolateyPackageParameters
+$parameters = Get-Parameters $env:chocolateyPackageParameters
 $configurationFile = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
 $setupPath = PrepareInstaller $parameters
 

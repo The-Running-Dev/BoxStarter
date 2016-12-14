@@ -66,7 +66,7 @@ function PrepareInstaller()
         [Hashtable] $packageArgs
     )
 
-    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
+    $packageParameters = Get-Parameters $env:chocolateyPackageParameters
     $isoPath = $packageParameters["iso"]
     $setupPath = $packageParameters["setup"]
     $installerPath = $packageParameters['installer']
@@ -111,7 +111,7 @@ function PrepareInstaller()
     return $packageArgs['file']
 }
 
-function Parse-Parameters([string] $packageParameters)
+function Get-Parameters([string] $packageParameters)
 {
     $arguments = @{}
 
