@@ -8,9 +8,9 @@
     <licenseUrl>https://www.google.it/intl/en/chrome/browser/privacy/eula_text.html</licenseUrl>
     <projectUrl>https://www.google.com/chrome/browser/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/chocolatey/chocolatey-coreteampackages/e4a49519947c3cff55c17a0b08266c56b0613e64/icons/chrome.svg</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
 		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Chrome is a fast, simple, and secure web browser, built for the modern web.</description>
     <releaseNotes />
     <tags>google chrome web internet browser admin</tags>

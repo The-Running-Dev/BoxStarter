@@ -1,5 +1,5 @@
 $script           = $MyInvocation.MyCommand.Definition
-$os               = if ($IsSystem32Bit) { 'x86' } else { 'x64' }
+$os               = if (IsSystem32Bit) { 'x86' } else { 'x64' }
 $packageArgs      = @{
   packageName     = 'ConEmu'
   unzipLocation   = (Get-CurrentDirectory $script)

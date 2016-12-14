@@ -1,15 +1,5 @@
 $script = $MyInvocation.MyCommand.Definition
-$os     = if ($IsSystem32Bit) { '' } else { '64' }
-
-function Get-Chrome32bitInstalled {
-    $registryPath = 'HKLM:\SOFTWARE\WOW6432Node\Google\Update\ClientState\'
-
-    if (!(Test-Path $registryPath)) { return }
-
-    gi $registryPath | % {
-        if ((Get-ItemProperty $_.pspath).ap -eq '-multi-chrome') { return $true }
-    }
-}
+$os     = if (IsSystem32Bit) { '' } else { '64' }
 
 function Get-ChromeVersion() {
     $root   = 'HKLM:\SOFTWARE\Google\Update\Clients'
@@ -32,7 +22,7 @@ $packageArgs      = @{
   packageName     = 'GoogleChrome'
   unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'msi'
-  file            = Join-Path (Get-ParentDirectory $script) "googlechromestandaloneenterprise${$os}.msi"
+  file            = Join-Path (Get-ParentDirectory $script) "googlechromestandaloneenterprise$os.msi"
   url             = 'https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise.msi'
   url64           = 'https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi'
   softwareName    = 'GoogleChrome*'

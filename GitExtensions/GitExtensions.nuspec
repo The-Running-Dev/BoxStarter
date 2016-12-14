@@ -20,6 +20,7 @@
     <tags>gitextensions git gui admin</tags>
     <dependencies>
 			<dependency id="boyan-choco.extension" />
+      <dependency id="git" />
 		</dependencies>
   </metadata>
 </package>

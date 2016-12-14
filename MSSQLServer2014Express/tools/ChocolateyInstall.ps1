@@ -5,7 +5,7 @@ $installer                  = Join-Path (Get-ParentDirectory $script) 'SQLEXPR.e
 $parameters                 = ParseParameters $env:chocolateyPackageParameters
 $configurationFile          = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
 $silentArgs                 = "/IAcceptSQLServerLicenseTerms /ConfigurationFile=""$($configurationFile)"""
-$os                         = if ($IsSystem32Bit) { "x86" } else { "x64" }
+$os                         = if (IsSystem32Bit) { "x86" } else { "x64" }
 $installer                  = "SQLEXPR_$os_ENU.exe"
 
 if (!$parameters.ContainsKey['sqlsysadminaccounts']) {

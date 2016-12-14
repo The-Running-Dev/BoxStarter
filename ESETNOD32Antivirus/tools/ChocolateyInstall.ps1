@@ -1,5 +1,5 @@
 $script           = $MyInvocation.MyCommand.Definition
-$os               = if ($IsSystem32Bit) { "86" } else { "64" }
+$os               = if (IsSystem32Bit) { "86" } else { "64" }
 $packageArgs      = @{
     packageName     = 'ESETNod32Antivirus'
     unzipLocation   = (Get-CurrentDirectory $script)

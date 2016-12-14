@@ -31,9 +31,8 @@ function Install-IIS() {
         Enable-WindowsFeature IIS-ASPNET45
     }
 
-    # IIS modules
-    choco install UrlRewrite -y
-    choco install IIS-ARR -y
+    # IIS re-write module
+    choco install IIS.UrlRewrite -y
 }
 
 function Enable-WindowsFeature([string] $featureName) {

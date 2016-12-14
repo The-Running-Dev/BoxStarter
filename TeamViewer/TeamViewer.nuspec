@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>TeamViewer</id>
+    <version>11.0.66695</version>
+    <title>TeamViewer</title>
+    <authors>TeamViewer Inc.</authors>
+    <licenseUrl>http://www.teamviewer.com/</licenseUrl>
+    <projectUrl>http://www.teamviewer.com/</projectUrl>
+    <iconUrl>https://raw.github.com/jivkok/Chocolatey-AutomaticPackages/master/teamviewer/teamviewer.png</iconUrl>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>## Description
+    Remote control any computer or Mac over the internet within seconds or use TeamViewer for online meetings. Free for private use. Commercial users are welcome to use for trial purposes.
+
+    ### Installing specific major version
+    Scroll through the **Version History** and find the latest available package for the required major version. Click on it to see the versioned command needed to install the specific package. Example:
+    ```
+    choco install teamviewer -version xx.xx.xx
+    ```
+
+    ### Suppressing upgrades past specific versions
+    You can pin a package to suppress upgrading past specific versions - useful when you have purchased a license for version X and do not want to upgrade past it when you are bulk-upgrading your Chocolatey packages. Find the specific version you need and pin it to skip future upgrades:
+
+    ```
+    choco pin add -n=teamviewer --version xx.xx.xx
+    ```
+    </description>
+    <summary>TeamViewer – the All-In-One Software for Remote Support and Online Meetings</summary>
+    <tags>teamviewer team viewer remote control support online meeting</tags>
+    <dependencies>
+      <dependency id="boyan-choco.extension" />
+    </dependencies>
+  </metadata>
+</package>

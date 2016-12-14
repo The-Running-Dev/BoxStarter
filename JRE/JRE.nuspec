@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>JRE</id>
+    <version>8.0.111</version>
+    <title>Java SE Runtime Environment</title>
+    <authors>Oracle</authors>
+    <licenseUrl>http://www.oracle.com/technetwork/java/javase/terms/license/index.html</licenseUrl>
+    <projectUrl>http://www.java.com</projectUrl>
+    <iconUrl>http://cdn.rawgit.com/chocolatey/chocolatey-coreteampackages/50fd97744110dcbce1acde889c0870599c9d5584/icons/java.svg</iconUrl>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Java allows you to play online games, chat with people around the world, calculate your mortgage interest, and view images in 3D, just to name a few. It's also integral to the intranet applications and other e-business solutions that are the foundation of corporate computing.
+    ### Note
+    This package installs the Java version offered at https://www.java.com. It also sets `SPONSORS=0` and uninstalls previous versions of Java with REMOVEOUTOFDATEJRES=1 ([see docs](http://docs.oracle.com/javase/7/docs/webnotes/install/windows/jre-installer-options.html#running)).
+
+    If you wish to only install the 32-bit version of Java use the /exclude parameter. The switch to exclude 32-bit is /exclude:32 and to exclude 64-bit /exclude:64 
+    For example: choco install jre8 -PackageParameters "/exclude:64" -y
+    This package no longer manually adds an environment variable. 
+
+    This package can install 32-bit, 64-bit, or both versions.
+    </description>
+    <releaseNotes />
+    <tags>java runtime environment</tags>
+    <dependencies>
+			<dependency id="boyan-choco.extension" />
+		</dependencies>
+  </metadata>
+</package>

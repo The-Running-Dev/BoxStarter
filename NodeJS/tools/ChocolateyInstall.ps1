@@ -1,9 +1,10 @@
 $script           = $MyInvocation.MyCommand.Definition
+$os               = if (IsSystem32Bit) { 'x86' } else { 'x64' }
 $packageArgs      = @{
   packageName     = 'NodeJS'
   unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'msi'
-  file            = Join-Path (Get-ParentDirectory $script) 'ClipboardFusionSetup-4.2.exe'
+  file            = Join-Path (Get-ParentDirectory $script) "node-v7.2.1-$os.msi"
   url             = 'https://nodejs.org/dist/v7.2.1/node-v7.2.1-x86.msi'
   url64           = 'https://nodejs.org/dist/v7.2.1/node-v7.2.1-x64.msi'
   softwareName    = 'NodeJS*'
@@ -11,7 +12,7 @@ $packageArgs      = @{
   checksum64      = '789AF29EBA3A43213DFAB7A71ADA7E2C513A9FA023F0987B2076B10754DA907E'
   checksumType    = 'sha256'
   checksumType64  = 'sha256'
-  silentArgs      = '/quiet /LAUNCHAFTER=0'
+  silentArgs      = '/quiet'
   validExitCodes  = @(0, 3010, 1641)
 }
 
