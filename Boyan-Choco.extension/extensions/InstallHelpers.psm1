@@ -4,7 +4,7 @@ function Install-LocalOrRemote()
         [Hashtable] $packageArgs
     )
     
-    $packageArgs['file'] = PrepareInstaller $packageArgs
+    $packageArgs['file'] = Get-InstallerPath $packageArgs
 
     if ([System.IO.File]::Exists($packageArgs['file']))
     {
@@ -25,7 +25,7 @@ function Install-WithScheduledTask()
         [Hashtable] $packageArgs
     )
     
-    $packageArgs['file'] = PrepareInstaller $packageArgs
+    $packageArgs['file'] = Get-InstallerPath $packageArgs
     
     if ([System.IO.File]::Exists($packageArgs['file']))
     {
@@ -45,7 +45,7 @@ function Install-WithProcess() {
         [Hashtable] $packageArgs
     )
 
-    $packageArgs['file'] = PrepareInstaller $packageArgs
+    $packageArgs['file'] = Get-InstallerPath $packageArgs
     
     if ([System.IO.File]::Exists($packageArgs['file']))
     {
@@ -60,7 +60,7 @@ function Install-WithProcess() {
     }
 }
 
-function PrepareInstaller()
+function Get-InstallerPath()
 {
      param(
         [Hashtable] $packageArgs

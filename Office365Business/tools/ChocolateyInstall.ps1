@@ -24,7 +24,7 @@ $packageArgs                = @{
 $defaultConfigurationFile = if (IsSystem32Bit) { $defaultConfigurationFile32 } else { $defaultConfigurationFile }
 $parameters = Get-Parameters $env:chocolateyPackageParameters
 $configurationFile = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
-$setupPath = PrepareInstaller $parameters
+$installerPath = Get-InstallerPath $parameters
 
 # If exclude features were passed in through the command line
 if ($parameters['excludefeatures']) {
@@ -45,7 +45,7 @@ if ($parameters['excludefeatures']) {
     $xml.Save($configurationFile)
 }
 
-if (!([System.IO.File]::Exists($setupPath))) {
+if (!([System.IO.File]::Exists($installerPath))) {
     # Use the deployment tool to download the installer
     $packageArgs['packageName'] = 'Office365BusinessInstaller'
     $packageArgs['file'] = "$env:Temp\Office\Setup.exe"

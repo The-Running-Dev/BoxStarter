@@ -30,7 +30,7 @@ $packageArgs = @{
     )
 }
 
-$setupPath = PrepareInstaller $parameters
+$setupPath = Get-InstallerPath $parameters
 $installerPath = $parameters['installer']
 
 if (!([System.IO.File]::Exists($setupPath))) {
@@ -38,7 +38,7 @@ if (!([System.IO.File]::Exists($setupPath))) {
     Install-ChocolateyPackage @packageArgs
 
     # Set the path to the extracted setup 
-    $packageArgs['file'] = "$env:Temp\MSSQLServer2014Express\SQLEXPR\Setup.exe"
+    $packageArgs['file'] = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
 }
 elseif (([System.IO.File]::Exists($installerPath))) {
     # Installer was specified and it exists
@@ -48,7 +48,7 @@ elseif (([System.IO.File]::Exists($installerPath))) {
     Install-ChocolateyInstallPackage @packageArgs
 
     # Set the path to the extracted setup
-    $packageArgs['file'] = "$env:Temp\MSSQLServer2014Express\SQLEXPR\Setup.exe"
+    $packageArgs['file'] = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
 }
 
 # Run the extracted setup
@@ -56,6 +56,6 @@ $packageArgs['packageName'] = $packageName
 $packageArgs['silentArgs'] = $silentArgs
 Install-LocalOrRemote $packageArgs
 
-if (Test-Path "$env:Temp\MSSQLServer2014Express") {
-    Remove-Item -Recurse "$env:Temp\MSSQLServer2014Express"
+if (Test-Path "$env:Temp\$packageName") {
+    Remove-Item -Recurse "$env:Temp\$packageName"
 }
