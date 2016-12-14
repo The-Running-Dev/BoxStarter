@@ -1,6 +1,6 @@
 $script                 = $MyInvocation.MyCommand.Definition
 $defaultConfiguration   = Join-Path (Get-ParentDirectory $script) 'Configuration.xml'
-$parameters             = ParseParameters $env:chocolateyPackageParameters
+$parameters             = Parse-Parameters $env:chocolateyPackageParameters
 $configuration          = Get-ConfigurationFile $parameters['Configuration'] $defaultConfiguration
 $packageArgs            = @{
     packageName         = 'VisualStudio2015Enterprise'

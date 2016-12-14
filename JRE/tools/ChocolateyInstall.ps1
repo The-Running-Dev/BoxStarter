@@ -42,7 +42,7 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-$parameters = ParseParameters $env:chocolateyPackageParameters
+$parameters = Parse-Parameters $env:chocolateyPackageParameters
 if($parameters.ContainsKey("exclude")) {
     $exclude = $arguments["exclude"]
 }

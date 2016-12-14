@@ -1,6 +1,6 @@
 # Parse input argument string into a hashtable
 # Format: /param1=1234 /param2=1234
-function ParseParameters ($s)
+function Parse-Parameters ($s)
 {
     $parameters = @{ }
 
@@ -117,7 +117,7 @@ param(
 
     $defaultConfigurationFile = (Join-Path $PSScriptRoot 'Configuration.ini')
 
-    $packageParameters = ParseParameters $env:chocolateyPackageParameters
+    $packageParameters = Parse-Parameters $env:chocolateyPackageParameters
     $configurationFile = Get-ConfigurationFile $packageParameters $defaultConfigurationFile
     $silentArgs = GenerateInstallArguments $packageParameters $configurationFile
 

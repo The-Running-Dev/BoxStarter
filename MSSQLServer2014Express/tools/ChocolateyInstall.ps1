@@ -2,7 +2,7 @@ $script                     = $MyInvocation.MyCommand.Definition
 $defaultConfigurationFile   = Join-Path (Get-ParentDirectory $script) 'Configuration.ini'
 $packageName                = 'MSSQLServer2014Express'
 $installer                  = Join-Path (Get-ParentDirectory $script) 'SQLEXPR.exe'
-$parameters                 = ParseParameters $env:chocolateyPackageParameters
+$parameters                 = Parse-Parameters $env:chocolateyPackageParameters
 $configurationFile          = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
 $silentArgs                 = "/IAcceptSQLServerLicenseTerms /ConfigurationFile=""$($configurationFile)"""
 $os                         = if (IsSystem32Bit) { "x86" } else { "x64" }

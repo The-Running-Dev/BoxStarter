@@ -1,6 +1,6 @@
 $script                     = $MyInvocation.MyCommand.Definition
 $defaultConfigurationFile   = Join-Path (Get-ParentDirectory $script) 'Configuration.ini'
-$parameters                 = ParseParameters $env:chocolateyPackageParameters
+$parameters                 = Parse-Parameters $env:chocolateyPackageParameters
 $configurationFile          = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
 $silentArgs                 = "/IAcceptSQLServerLicenseTerms /ConfigurationFile=""$($configurationFile)"""
 

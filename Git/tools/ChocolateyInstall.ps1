@@ -15,7 +15,7 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-$parameters = ParseParameters $env:chocolateyPackageParameters
+$parameters = Parse-Parameters $env:chocolateyPackageParameters
 $registryKeyName = 'Git_is1'
 $useWindowsTerminal = $false
 $gitCmdOnly = $false

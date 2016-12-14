@@ -1,4 +1,4 @@
-function Install-Applications([string] $file)
+function Install-ChocoApplications([string] $file)
 {
     Write-Host "Installing Applications from $file"
 
@@ -6,10 +6,10 @@ function Install-Applications([string] $file)
         $packagesSource = "-s ""$env:packagesSource;chocolatey"""
     } 
 
-    Invoke-Commands $file "choco install ##token## --execution-timeout 14400 -y $packagesSource"
+    Invoke-Commands $file "choco install ##token## -r --execution-timeout 14400 -y $packagesSource"
 }
 
-function Uninstall-Applications([string] $file)
+function Uninstall-ChocoApplications([string] $file)
 {
     Write-Host "Uninstalling Applications from $file"
 
@@ -17,7 +17,7 @@ function Uninstall-Applications([string] $file)
         $packagesSource = "-s ""$env:packagesSource;chocolatey"""
     } 
 
-    Invoke-Commands $file "choco uninstall ##token## --execution-timeout 14400 -y $packagesSource"
+    Invoke-Commands $file "choco uninstall ##token## -r --execution-timeout 14400 -y $packagesSource"
 }
 
 function Invoke-Commands([string] $file, [string] $commandTemplate) {
