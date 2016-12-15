@@ -2,6 +2,9 @@ param(
     [string] $package
 )
 
+# Upgrade Chocolatey
+choco upgrade chocolatey
+
 Import-Module (Join-Path $PSScriptRoot 'build-helpers.psm1')
 
 $artifactsPath = Join-Path $PSScriptRoot 'Artifacts'
