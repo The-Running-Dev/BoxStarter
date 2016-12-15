@@ -12,7 +12,7 @@ if (!$parameters.ContainsKey['sqlsysadminaccounts']) {
     $silentArgs = $silentArgs + " /SQLSYSADMINACCOUNTS=""$(whoami)"""
 }
 
-$packageArgs = @{
+$arguments                  = @{
     packageName             = 'MSSQLServer2014ExpressInstaller'
     unzipLocation           = (Get-CurrentDirectory $script)
     url                     = "https://download.microsoft.com/download/2/A/5/2A5260C3-4143-47D8-9823-E91BB0121F94/SQLEXPR_x86_ENU.exe"
@@ -30,31 +30,31 @@ $packageArgs = @{
     )
 }
 
-$setupPath = Get-InstallerPath $parameters
-$installerPath = $parameters['installer']
+$installerPath = Get-InstallerPath $parameters
+$userInstallerPath = $parameters['installer']
 
-if (!([System.IO.File]::Exists($setupPath))) {
+if (!([System.IO.File]::Exists($installerPath))) {
     # Download and run the pre-installer
     Install-ChocolateyPackage @packageArgs
 
     # Set the path to the extracted setup 
-    $packageArgs['file'] = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
+    $arguments['file'] = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
 }
-elseif (([System.IO.File]::Exists($installerPath))) {
+elseif (([System.IO.File]::Exists($userInstallerPath))) {
     # Installer was specified and it exists
 
     # Run the pre-installer
-    $packageArgs['file'] = $installerPath
+    $arguments['file'] = $userInstallerPath
     Install-ChocolateyInstallPackage @packageArgs
 
     # Set the path to the extracted setup
-    $packageArgs['file'] = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
+    $arguments['file'] = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
 }
 
 # Run the extracted setup
-$packageArgs['packageName'] = $packageName
-$packageArgs['silentArgs'] = $silentArgs
-Install-LocalOrRemote $packageArgs
+$arguments['packageName'] = $packageName
+$arguments['silentArgs'] = $silentArgs
+Install-LocalOrRemote $arguments
 
 if (Test-Path "$env:Temp\$packageName") {
     Remove-Item -Recurse "$env:Temp\$packageName"

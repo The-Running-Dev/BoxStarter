@@ -1,16 +1,16 @@
 function Install-LocalOrRemote()
 {
     param(
-        [Hashtable] $packageArgs
+        [Hashtable] $arguments
     )
     
-    $packageArgs['file'] = Get-InstallerPath $packageArgs
+    $arguments['file'] = Get-InstallerPath $arguments
 
-    if ([System.IO.File]::Exists($packageArgs['file']))
+    if ([System.IO.File]::Exists($arguments['file']))
     {
-        Write-Debug "Installing from: $($packageArgs['file'])"
+        Write-Debug "Installing from: $($arguments['file'])"
         
-        Install-ChocolateyInstallPackage @packageArgs
+        Install-ChocolateyInstallPackage @arguments
 
         CleanUp
     }
@@ -22,16 +22,16 @@ function Install-LocalOrRemote()
 function Install-WithScheduledTask()
 {
     param(
-        [Hashtable] $packageArgs
+        [Hashtable] $arguments
     )
-    
-    $packageArgs['file'] = Get-InstallerPath $packageArgs
-    
-    if ([System.IO.File]::Exists($packageArgs['file']))
-    {
-        Write-Debug "Installing from: $($packageArgs['file'])"
 
-        StartAsScheduledTask $packageArgs['packageName'] $packageArgs['file'] $packageArgs['silentArgs']
+    $arguments['file'] = Get-InstallerPath $arguments
+    
+    if ([System.IO.File]::Exists($arguments['file']))
+    {
+        Write-Debug "Installing from: $($arguments['file'])"
+
+        Start-ScheduledTask @arguments
 
         CleanUp
     }
@@ -42,16 +42,16 @@ function Install-WithScheduledTask()
 
 function Install-WithProcess() {
     param(
-        [Hashtable] $packageArgs
+        [Hashtable] $arguments
     )
 
-    $packageArgs['file'] = Get-InstallerPath $packageArgs
+    $arguments['file'] = Get-InstallerPath $arguments
     
-    if ([System.IO.File]::Exists($packageArgs['file']))
+    if ([System.IO.File]::Exists($arguments['file']))
     {
-        Write-Debug "Installing from: $($packageArgs['file'])"
+        Write-Debug "Installing from: $($arguments['file'])"
  
-        Start-Process $packageArgs['file'] $packageArgs['silentArgs'] -Wait -NoNewWindow
+        Start-Process $arguments['file'] $arguments['silentArgs'] -Wait -NoNewWindow
 
         CleanUp
     }
@@ -63,15 +63,15 @@ function Install-WithProcess() {
 function Get-InstallerPath()
 {
      param(
-        [Hashtable] $packageArgs
+        [Hashtable] $arguments
     )
 
-    $packageParameters = Get-Parameters $env:chocolateyPackageParameters
-    $isoPath = $packageParameters["iso"]
-    $setupPath = $packageParameters["setup"]
-    $installerPath = $packageParameters['installer']
-    $installerExe = $packageParameters["exe"]
-    $packageInstaller = [System.IO.Path]::Combine($env:packagesInstallers, [System.IO.Path]::GetFileName($packageArgs['file']))
+    $parameters = Get-Parameters $env:chocolateyPackageParameters
+    $isoPath = $parameters['iso']
+    $setupPath = $parameters['setup']
+    $installerPath = $parameters['installer']
+    $installerExe = $parameters['exe']
+    $packageInstaller = [System.IO.Path]::Combine($env:packagesInstallers, [System.IO.Path]::GetFileName($arguments['file']))
 
     if ([System.IO.File]::Exists($setupPath)) {
         # If the provided setup executable exists
@@ -101,29 +101,29 @@ function Get-InstallerPath()
 
         return $setupPath
     }
-    elseif ($packageArgs.ContainsKey('url')) {
+    elseif ($arguments.ContainsKey('url')) {
         # Use The provided URL to get the installer
-        Write-Debug "Downloading Installer: $($packageArgs['url'])"
+        Write-Debug "Downloading Installer: $($arguments['url'])"
 
-        $packageArgs['file'] = Get-ChocolateyWebFile @packageArgs
+        $arguments['file'] = Get-ChocolateyWebFile @arguments
     }
 
-    return $packageArgs['file']
+    return $arguments['file']
 }
 
-function Get-Parameters([string] $packageParameters)
+function Get-Parameters([string] $parameters)
 {
     $arguments = @{}
 
-    if ($packageParameters)
+    if ($parameters)
     {
         $match_pattern = "\/(?<option>([a-zA-Z0-9]+))(:|=|-)([`"'])?(?<value>([a-zA-Z0-9- _\\:\.\!\@\#\$\%\^\&\*\(\)\+\,]+))([`"'])?|\/(?<option>([a-zA-Z0-9]+))"
         $option_name = 'option'
         $value_name = 'value'
 
-        if ($packageParameters -match $match_pattern)
+        if ($parameters -match $match_pattern)
         {
-            $results = $packageParameters | Select-String $match_pattern -AllMatches
+            $results = $parameters | Select-String $match_pattern -AllMatches
 
             $results.matches | % {
                 $arguments.Add(

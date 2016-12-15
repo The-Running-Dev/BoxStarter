@@ -1,8 +1,8 @@
 $script                 = $MyInvocation.MyCommand.Definition
 $defaultConfiguration   = Join-Path (Get-ParentDirectory $script) 'Configuration.xml'
-$parameters             = Parse-Parameters $env:chocolateyPackageParameters
+$parameters             = Get-Parameters $env:chocolateyPackageParameters
 $configuration          = Get-ConfigurationFile $parameters['Configuration'] $defaultConfiguration
-$packageArgs            = @{
+$arguments              = @{
     packageName         = 'VisualStudio2015Enterprise'
     unzipLocation       = (Get-CurrentDirectory $script)
     file                = Join-Path (Get-ParentDirectory $script) 'vs_enterprise.exe'
@@ -11,7 +11,7 @@ $packageArgs            = @{
     checksum            = '2848DDD11A5DB48F801A846A4C7162027CA2ADE2EF252143ABDE82AD9C9FDD97'
     checksumType        = 'sha256'
     softwareName        = 'VisualStudio2015Enterprise*'
-    silentArgs          = "/Quiet /NoRestart /NoRefresh /Log $env:Temp\VisualStudio.log /AdminFile $configuration"
+    silentArgs          = "/NoRestart /NoRefresh /Log $env:Temp\VisualStudio.log /AdminFile $configuration"
     validExitCodes      = @(
         0, # success
         3010, # success, restart required
@@ -38,4 +38,4 @@ if ($parameters['features']) {
     $xml.Save($configuration)
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments

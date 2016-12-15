@@ -1,5 +1,5 @@
 ﻿$script           = $MyInvocation.MyCommand.Definition
-$packageArgs      = @{
+$arguments        = @{
   packageName     = 'IIS.UrlRewrite'
   softwareName    = 'IIS URL Rewrite Module 2'
   unzipLocation   = (Get-CurrentDirectory $script)
@@ -15,4 +15,4 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments

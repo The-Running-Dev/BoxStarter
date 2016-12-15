@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Boyan-Choco.extension</id>
     <version>1.0.0</version>
-    <title>Install Helpers</title>
-    <authors>Boyan Kostadinov</authors>
+    <title>Chocolatey Install Helpers</title>
+    <authors>Boyan Kostadinov (boyank@gmail.com)</authors>
     <projectUrl>https://github.com/Boyan-Kostadinov/Packages</projectUrl>
     <owners>Boyan Kostadinov</owners>
     <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
-    <summary>Common Install Functionality</summary>
+    <summary>Encapsulates Common Install Functionality</summary>
     <description>
     Chocolatey installation extensions
     </description>

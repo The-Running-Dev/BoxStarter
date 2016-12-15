@@ -18,7 +18,7 @@ if ($version -eq (Get-ChromeVersion)) {
     return
 }
 
-$packageArgs      = @{
+$arguments      = @{
   packageName     = 'GoogleChrome'
   unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'msi'
@@ -34,4 +34,4 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments

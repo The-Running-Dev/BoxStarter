@@ -1,5 +1,5 @@
 $script             = $MyInvocation.MyCommand.Definition
-$packageArgs        = @{
+$arguments          = @{
     packageName     = 'DotNetCoreSDK'
     version         = '1.1.0'
     unzipLocation   = (Get-CurrentDirectory $script)
@@ -17,5 +17,5 @@ if (Test-RegistryValue -Path 'HKLM:\SOFTWARE\Wow6432Node\dotnet\Setup\InstalledV
     Write-Host "Microsoft .NET Core SDK is already installed on your machine."
 }
 else {
-    Install-LocalOrRemote $packageArgs
+    Install-LocalOrRemote $arguments
 }

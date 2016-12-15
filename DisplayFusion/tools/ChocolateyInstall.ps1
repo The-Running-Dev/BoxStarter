@@ -1,7 +1,7 @@
 ﻿$script           = $MyInvocation.MyCommand.Definition
 $installPath      = Join-Path (Get-ProgramFilesDirectory) 'DisplayFusion'
 $localeTwoLetter  = (Get-Culture).TwoLetterISOLanguageName
-$packageArgs      = @{
+$arguments        = @{
   packageName     = 'DisplayFusion'
   unzipLocation   = (Get-CurrentDirectory $script)
   file            = Join-Path (Get-ParentDirectory $script) 'DisplayFusionSetup-8.1.1.exe'
@@ -14,4 +14,4 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments

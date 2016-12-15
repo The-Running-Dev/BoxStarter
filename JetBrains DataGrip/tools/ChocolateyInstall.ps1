@@ -1,5 +1,5 @@
 $script           = $MyInvocation.MyCommand.Definition
-$packageArgs      = @{
+$arguments        = @{
   packageName     = 'DataGrip'
   unzipLocation   = (Get-CurrentDirectory $script)
   file            = Join-Path (Get-ParentDirectory $script) 'Datagrip-2016.3.1.exe'
@@ -12,4 +12,4 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments

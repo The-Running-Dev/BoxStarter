@@ -1,6 +1,6 @@
-$script           = $MyInvocation.MyCommand.Definition
-$os               = if (IsSystem32Bit) { "86" } else { "64" }
-$packageArgs      = @{
+$script             = $MyInvocation.MyCommand.Definition
+$os                 = if (IsSystem32Bit) { "86" } else { "64" }
+$arguments          = @{
     packageName     = 'ESETNod32Antivirus'
     unzipLocation   = (Get-CurrentDirectory $script)
     url             = 'https://download.eset.com/com/eset/apps/home/eav/windows/latest/eav_nt64_enu.exe'
@@ -17,4 +17,4 @@ $packageArgs      = @{
 # Launch the AutoHotkey script that install the application
 Start-Process (Join-Path (Get-ParentDirectory $script) 'Install.exe')
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments

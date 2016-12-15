@@ -1,5 +1,5 @@
 $script           = $MyInvocation.MyCommand.Definition
-$packageArgs      = @{
+$arguments        = @{
   packageName     = 'RazerSynapse'
   unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'exe'
@@ -16,4 +16,4 @@ Start-Process (Join-Path (Get-ParentDirectory $script) 'Install.exe')
 
 Start-Sleep 10
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments

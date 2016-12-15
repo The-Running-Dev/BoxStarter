@@ -4,8 +4,8 @@ $packageDir                 = Get-ParentDirectory $script
 $deploymentTool             = Join-Path (Get-ParentDirectory $script) 'officedeploymenttool_7614-3602.exe'
 $defaultConfigurationFile   = Join-Path (Get-ParentDirectory $script) 'Configuration.xml'
 $defaultConfigurationFile32 = Join-Path (Get-ParentDirectory $script) 'Configuration32.xml'
-$packageArgs                = @{
-    packageName             = 'Office325DeploymentTool'
+$arguments                  = @{
+    packageName             = 'Office365DeploymentTool'
     unzipLocation           = (Get-CurrentDirectory $script)
     fileType                = 'exe'
     url                     = 'https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_7614-3602.exe'
@@ -47,18 +47,18 @@ if ($parameters['excludefeatures']) {
 
 if (!([System.IO.File]::Exists($installerPath))) {
     # Use the deployment tool to download the installer
-    $packageArgs['packageName'] = 'Office365BusinessInstaller'
-    $packageArgs['file'] = "$env:Temp\Office\Setup.exe"
-    $packageArgs['silentArgs'] = "/download ""$configurationFile"" $env:temp\Office\Setup.exe"
+    $arguments['packageName'] = 'Office365BusinessInstaller'
+    $arguments['file'] = "$env:Temp\Office\Setup.exe"
+    $arguments['silentArgs'] = "/download ""$configurationFile"" $env:Temp\$packageName\Setup.exe"
     Install-ChocolateyInstallPackage @packageArgs
 
-    $packageArgs['file'] = "$env:Temp\Office\Setup.exe"
+    $arguments['file'] = "$env:Temp\$packageName\Setup.exe"
 }
 
-$packageArgs['packageName'] = $packageName
-$packageArgs['silentArgs'] = "/configure ""$configurationFile"""
-Install-LocalOrRemote $packageArgs
+$arguments['packageName'] = $packageName
+$arguments['silentArgs'] = "/configure ""$configurationFile"""
+Install-LocalOrRemote $arguments
 
-if (Test-Path "$env:temp\office") {
-    Remove-Item -Recurse "$env:temp\Office"
+if (Test-Path "$env:Temp\$packageName") {
+    Remove-Item -Recurse "$env:temp\$packageName"
 }

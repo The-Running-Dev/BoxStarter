@@ -1,5 +1,5 @@
 ﻿$script             = $MyInvocation.MyCommand.Definition
-$packageArgs        = @{
+$arguments          = @{
     packageName     = 'DotNETCore.Runtime'
     Version         = '1.1.0'
     softwareName    = 'Microsoft .NET Core 1.1.0 - Runtime*'
@@ -16,4 +16,4 @@ $packageArgs        = @{
     validExitCodes  = @(0, 3010, 1641)
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments

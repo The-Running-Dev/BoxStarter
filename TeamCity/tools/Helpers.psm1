@@ -117,9 +117,9 @@ param(
 
     $defaultConfigurationFile = (Join-Path $PSScriptRoot 'Configuration.ini')
 
-    $packageParameters = Get-Parameters $env:chocolateyPackageParameters
-    $configurationFile = Get-ConfigurationFile $packageParameters $defaultConfigurationFile
-    $silentArgs = GenerateInstallArguments $packageParameters $configurationFile
+    $parameters = Get-Parameters $env:chocolateyPackageParameters
+    $configurationFile = Get-ConfigurationFile $parameters $defaultConfigurationFile
+    $silentArgs = GenerateInstallArguments $parameters $configurationFile
 
     Write-Host "Installing with Arguments:
 $silentArgs"

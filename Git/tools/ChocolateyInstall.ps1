@@ -1,5 +1,5 @@
 ﻿$script           = $MyInvocation.MyCommand.Definition
-$packageArgs      = @{
+$arguments        = @{
   packageName     = 'Git'
   softwareName    = 'Git*'
   unzipLocation   = (Get-CurrentDirectory $script)
@@ -99,7 +99,7 @@ If ([bool](Get-Process ssh-agent -ErrorAction SilentlyContinue))
   (Get-Process ssh-agent | where {$_.Path -ilike "*\git\usr\bin\*"}) | Stop-Process
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments
 
 if (Test-Path $installKey) {
   $keyNames = Get-ItemProperty -Path $installKey

@@ -1,5 +1,5 @@
 ﻿$script           = $MyInvocation.MyCommand.Definition
-$packageArgs      = @{
+$arguments        = @{
   packageName     = 'VCRedist2015_x86'
   unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'exe'
@@ -12,10 +12,9 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments
 
-$script           = $MyInvocation.MyCommand.Definition
-$packageArgs      = @{
+$arguments        = @{
   packageName     = 'VCRedist2015_x64'
   unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'exe'
@@ -28,4 +27,4 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments

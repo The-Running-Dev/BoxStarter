@@ -1,5 +1,5 @@
 $script           = $MyInvocation.MyCommand.Definition
-$packageArgs      = @{
+$arguments        = @{
   packageName     = 'LogFusion'
   unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'exe'
@@ -12,4 +12,4 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments

@@ -1,6 +1,6 @@
 $script           = $MyInvocation.MyCommand.Definition
 $os               = if (IsSystem32Bit) { 'x86' } else { 'x64' }
-$packageArgs      = @{
+$arguments        = @{
   packageName     = 'NodeJS'
   unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'msi'
@@ -16,7 +16,7 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments
 
 $nodePath = "$(Get-ProgramFilesDirectory)\NodeJS"
 $env:Path = "$($env:Path);$nodePath"

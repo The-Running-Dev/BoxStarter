@@ -5,18 +5,16 @@ function IsSystem32Bit()
         ($Env:PROCESSOR_ARCHITEW6432 -eq $null)
 }
 
-function StartAsScheduledTask() {
+function Start-ScheduledTask() {
     param(
-        [string] $name,
-        [string] $executable,
-        [string] $arguments
+        [Hashtable] $arguments
     )
 
-    $action = New-ScheduledTaskAction -Execute $executable -Argument $arguments
+    $action = New-ScheduledTaskAction -Execute $arguments['file'] -Argument $arguments['silentArgs']
     $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date)
 
-    Register-ScheduledTask -TaskName $name -Action $action -Trigger $trigger
-    Start-ScheduledTask -TaskName $name
+    Register-ScheduledTask -TaskName $arguments['packageName'] -Action $action -Trigger $trigger
+    Start-ScheduledTask -TaskName $arguments['packageName']
     Start-Sleep -s 1
-    Unregister-ScheduledTask -TaskName $name -Confirm:$false
+    Unregister-ScheduledTask -TaskName $arguments['packageName'] -Confirm:$false
 }

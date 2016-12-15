@@ -1,5 +1,5 @@
 $script           = $MyInvocation.MyCommand.Definition
-$packageArgs      = @{
+$arguments        = @{
   packageName     = 'Spotify'
   unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'exe'
@@ -12,7 +12,7 @@ $packageArgs      = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install-WithScheduledTask $packageArgs
+Install-WithScheduledTask $arguments
 
 $done = $false
 do {

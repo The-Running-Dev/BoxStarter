@@ -25,7 +25,7 @@
 $script           = $MyInvocation.MyCommand.Definition
 $x86Installer     = Join-Path (Get-ParentDirectory $script) 'jre-8u111-windows-i586.exe'
 $x64Installer     = Join-Path (Get-ParentDirectory $script) 'jre-8u111-windows-x64.exe'
-$packageArgs      = @{
+$arguments      = @{
   packageName     = 'JRE'
   softwareName    = 'JRE*'
   version         = '8.0.1110.14'
@@ -50,20 +50,20 @@ if($parameters.ContainsKey("exclude")) {
 $thisJreInstalledHash = thisJreInstalled($version)
 
 if (!($thisJreInstalledHash[0]) -and !($thisJreInstalledHash[1])) {
-  Install-LocalOrRemote $packageArgs
+  Install-LocalOrRemote $arguments
 }
 else {
   if ((Get-ProcessorBits) -eq 64) {
     if (!($thisJreInstalledHash[1]) -and $exclude -ne '64') {
-      Install-LocalOrRemote $packageArgs
+      Install-LocalOrRemote $arguments
     } 
   }
 
   if (!($thisJreInstalledHash[0]) -and $exclude -ne '32') {
-    $packageArgs['file'] = $x86Installer
-    $packageArgs['url64'] = ''
-    $packageArgs['checksum64'] = ''
-    Install-LocalOrRemote $packageArgs
+    $arguments['file'] = $x86Installer
+    $arguments['url64'] = ''
+    $arguments['checksum64'] = ''
+    Install-LocalOrRemote $arguments
   }
 }
 

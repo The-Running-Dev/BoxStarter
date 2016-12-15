@@ -8,14 +8,14 @@ if (!$parameters.ContainsKey['sqlsysadminaccounts']) {
     $silentArgs = $silentArgs + " /SQLSYSADMINACCOUNTS=""$(whoami)"""
 }
 
-$packageArgs                = @{
-    packageName               = 'MSSQLServer2014Developer'
-    unzipLocation             = (Get-CurrentDirectory $script)
-    fileType                  = 'exe'
-    file                      = Join-Path (Get-ParentDirectory $script) 'Setup.exe'
-    softwareName              = 'MSSQLServer2014Developer*'
-    silentArgs                = $silentArgs
-    validExitCodes            = @(
+$arguments                  = @{
+    packageName             = 'MSSQLServer2014Developer'
+    unzipLocation           = (Get-CurrentDirectory $script)
+    fileType                = 'exe'
+    file                    = Join-Path (Get-ParentDirectory $script) 'Setup.exe'
+    softwareName            = 'MSSQLServer2014Developer*'
+    silentArgs              = $silentArgs
+    validExitCodes          = @(
         0, # success
         3010, # success, restart required
         2147781575, # pending restart required
@@ -23,4 +23,4 @@ $packageArgs                = @{
     )
 }
 
-Install-LocalOrRemote $packageArgs
+Install-LocalOrRemote $arguments
