@@ -11,7 +11,7 @@ $arguments              = @{
     checksum            = '2848DDD11A5DB48F801A846A4C7162027CA2ADE2EF252143ABDE82AD9C9FDD97'
     checksumType        = 'sha256'
     softwareName        = 'VisualStudio2015Enterprise*'
-    silentArgs          = "/NoRestart /NoRefresh /Log $env:Temp\VisualStudio.log /AdminFile $configuration"
+    silentArgs          = "/Quiet /NoRestart /NoRefresh /Log $env:Temp\VisualStudio.log /AdminFile $configuration"
     validExitCodes      = @(
         0, # success
         3010, # success, restart required

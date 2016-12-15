@@ -3,7 +3,6 @@ $packageName                = 'Office365Business'
 $packageDir                 = Get-ParentDirectory $script
 $deploymentTool             = Join-Path (Get-ParentDirectory $script) 'officedeploymenttool_7614-3602.exe'
 $defaultConfigurationFile   = Join-Path (Get-ParentDirectory $script) 'Configuration.xml'
-$defaultConfigurationFile32 = Join-Path (Get-ParentDirectory $script) 'Configuration32.xml'
 $arguments                  = @{
     packageName             = 'Office365DeploymentTool'
     unzipLocation           = (Get-CurrentDirectory $script)
@@ -21,7 +20,6 @@ $arguments                  = @{
     )
 }
 
-$defaultConfigurationFile = if (IsSystem32Bit) { $defaultConfigurationFile32 } else { $defaultConfigurationFile }
 $parameters = Get-Parameters $env:chocolateyPackageParameters
 $configurationFile = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
 $installerPath = Get-InstallerPath $parameters
@@ -50,7 +48,7 @@ if (!([System.IO.File]::Exists($installerPath))) {
     $arguments['packageName'] = 'Office365BusinessInstaller'
     $arguments['file'] = "$env:Temp\Office\Setup.exe"
     $arguments['silentArgs'] = "/download ""$configurationFile"" $env:Temp\$packageName\Setup.exe"
-    Install-ChocolateyInstallPackage @packageArgs
+    Install-ChocolateyInstallPackage @arguments
 
     $arguments['file'] = "$env:Temp\$packageName\Setup.exe"
 }

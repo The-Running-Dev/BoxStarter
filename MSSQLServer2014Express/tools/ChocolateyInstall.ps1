@@ -35,7 +35,7 @@ $userInstallerPath = $parameters['installer']
 
 if (!([System.IO.File]::Exists($installerPath))) {
     # Download and run the pre-installer
-    Install-ChocolateyPackage @packageArgs
+    Install-ChocolateyPackage @arguments
 
     # Set the path to the extracted setup 
     $arguments['file'] = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
@@ -45,7 +45,7 @@ elseif (([System.IO.File]::Exists($userInstallerPath))) {
 
     # Run the pre-installer
     $arguments['file'] = $userInstallerPath
-    Install-ChocolateyInstallPackage @packageArgs
+    Install-ChocolateyInstallPackage @arguments
 
     # Set the path to the extracted setup
     $arguments['file'] = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
