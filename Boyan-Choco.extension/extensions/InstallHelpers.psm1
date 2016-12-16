@@ -26,12 +26,12 @@ function Install-WithScheduledTask()
     )
 
     $arguments['file'] = Get-InstallerPath $arguments
-    
+
     if ([System.IO.File]::Exists($arguments['file']))
     {
         Write-Debug "Installing from: $($arguments['file'])"
 
-        Start-ScheduledTask @arguments
+        Invoke-ScheduledTask $arguments['packageName'] $arguments['file'] $arguments['silentArgs']
 
         CleanUp
     }
