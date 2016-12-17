@@ -90,26 +90,28 @@ function UnzipSafe()
     }
 }
 
-function UnzipFiles([string] $file, [string] $outputDir)
+function UnzipFiles([string] $configFile, [string] $baseDirectory)
 {
-    $packagePath = Split-Path -parent $PSScriptRoot
-    $filePath = Join-Path $packagePath $file
-
     try {
-        foreach ($line in Get-Content -Path $filePath | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'})
+        foreach ($line in Get-Content -Path $configFile | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'})
         {
-            $settingsPath = Join-Path (Join-Path $packagePath $outputDir) $line.split('=')[0]
-            $settingsDestinationPath = $line.split('=')[1]
+            $zipFile = Join-Path $baseDirectory $line.split('=')[0]
+            $destinationPath = $line.split('=')[1]
 
             try {
-                $settingsDestinationPath = Invoke-Expression $settingsDestinationPath
+                $destinationPath = Invoke-Expression $destinationPath
             }
             catch {}
 
-            if ($settingsPath -ne $null -and (Test-Path $settingsPath)) {
-                Write-Host "Unzipping $settingsPath to $($settingsDestinationPath)"
+            if ($zipFile -ne $null -and (Test-Path $zipFile)) {
+                Write-Host "Unzipping $zipFile to $($destinationPath)"
 
-                Unzip $settingsPath $($settingsDestinationPath)
+                $arguments = @{
+                    packageName   = [System.IO.Path]::GetFileNameWithoutExtension($zipFile)
+                    fileFullPath  = $zipFile
+                    destination   = $destinationPath
+                }
+                Get-ChocolateyUnzip @arguments
             }
         }
     }

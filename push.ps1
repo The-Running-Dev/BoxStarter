@@ -12,7 +12,7 @@ $artifactsPath = Join-Path $PSScriptRoot $artifacts -Resolve
 $config = (Get-Content $configPath -Raw) | ConvertFrom-Json
 
 if ($source -Match 'remote') {
-    $source = $config.remote.apiKey
+    $source = $config.remote.source
     $apiKey = $config.remote.apiKey
 }
 else {
