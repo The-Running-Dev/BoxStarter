@@ -22,7 +22,7 @@ $arguments                  = @{
 
 $parameters = Get-Parameters $env:chocolateyPackageParameters
 $configurationFile = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
-$installerPath = Get-InstallerPath $parameters
+$installerPath = Get-Installer $parameters
 
 # If exclude features were passed in through the command line
 if ($parameters['excludefeatures']) {

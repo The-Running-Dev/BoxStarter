@@ -30,7 +30,7 @@ $arguments                  = @{
     )
 }
 
-$installerPath = Get-InstallerPath $parameters
+$installerPath = Get-Installer $parameters
 $userInstallerPath = $parameters['installer']
 
 if (!([System.IO.File]::Exists($installerPath))) {

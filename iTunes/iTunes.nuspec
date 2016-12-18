@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>iTunes</id>
+    <version>12.5.4</version>
+    <title>iTunes</title>
+    <authors>Apple Inc.</authors>
+    <licenseUrl>http://www.apple.com/legal/terms/site.html</licenseUrl>
+    <projectUrl>http://www.apple.com/itunes</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/chocolatey/chocolatey-coreteampackages/e4a49519947c3cff55c17a0b08266c56b0613e64/icons/itunes.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    iTunes is a free app that lets you organize and play digital music and video on your computer. It’s also a store that has everything you need to be entertained. That makes it the perfect place to listen, watch, read, play, explore, and shop.
+    </description>
+    <summary>iTunes</summary>
+    <releaseNotes />
+    <copyright>Apple Inc. All rights reserved.</copyright>
+    <tags>iTunes</tags>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="boyan-choco.extension" />
+		</dependencies>
+  </metadata>
+</package>

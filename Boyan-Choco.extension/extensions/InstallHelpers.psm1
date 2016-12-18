@@ -4,7 +4,7 @@ function Install-LocalOrRemote()
         [Hashtable] $arguments
     )
     
-    $arguments['file'] = Get-InstallerPath $arguments
+    $arguments['file'] = Get-Installer $arguments
 
     if ([System.IO.File]::Exists($arguments['file']))
     {
@@ -25,7 +25,7 @@ function Install-WithScheduledTask()
         [Hashtable] $arguments
     )
 
-    $arguments['file'] = Get-InstallerPath $arguments
+    $arguments['file'] = Get-Installer $arguments
 
     if ([System.IO.File]::Exists($arguments['file']))
     {
@@ -45,7 +45,7 @@ function Install-WithProcess() {
         [Hashtable] $arguments
     )
 
-    $arguments['file'] = Get-InstallerPath $arguments
+    $arguments['file'] = Get-Installer $arguments
     
     if ([System.IO.File]::Exists($arguments['file']))
     {
@@ -60,7 +60,7 @@ function Install-WithProcess() {
     }
 }
 
-function Get-InstallerPath()
+function Get-Installer()
 {
      param(
         [Hashtable] $arguments
