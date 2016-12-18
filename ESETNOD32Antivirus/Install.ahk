@@ -10,24 +10,24 @@ SetWorkingDir %A_ScriptDir%
 
 SetTitleMatchMode, 2
 
-WinWait, ESET NOD32 Antivirus ahk_class #32770,,
+WinWait, ESET NOD32 Antivirus ahk_class #32770
 WinActivate
-Sleep, 30000
+Sleep 30000
 ; Click Continue
 MouseClick left, 50, 590
-Sleep, 30000
+Sleep 30000
 ; Click 'I Accept'
 MouseClick left, 50, 590
-Sleep, 5000
+Sleep 5000
 ; Click 'Enable ...'
 MouseClick left, 40, 410
-Sleep, 1000
+Sleep 1000
 ; Click 'Install'
 MouseClick left, 50, 590
 ; Wait for the install
-Sleep, 60000
+Sleep 60000
 ; Click 'Done'
 MouseClick left, 50, 590
-WinWait, ESET NOD32 Antivirus ahk_class ESET Main Frame,,
+WinWait ESET NOD32 Antivirus ahk_class ESET Main Frame
 WinActivate
-Send, !{F4}
+Send !{F4}
