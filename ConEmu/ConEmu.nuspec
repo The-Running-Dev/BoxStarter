@@ -6,8 +6,6 @@
 		<title>ConEmu</title>
 		<authors>ConEmu</authors>
 		<projectUrl>https://conemu.github.io</projectUrl>
-		<owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
 		<description>
 		ConEmu Installer
 		</description>
@@ -15,5 +13,7 @@
 		<dependencies>
 			<dependency id="boyan-choco.extension" />
 		</dependencies>
+		<owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
 	</metadata>
 </package>

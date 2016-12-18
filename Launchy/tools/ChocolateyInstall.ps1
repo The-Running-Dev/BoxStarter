@@ -12,4 +12,4 @@ $arguments        = @{
   validExitCodes  = @(0, 3010, 1641)
 }
 
-Install-LocalOrRemote $arguments 
+Install-LocalOrRemote $arguments
