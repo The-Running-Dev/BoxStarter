@@ -66,10 +66,10 @@ $arguments          = @{
   packageName     = $packageName
   unzipLocation   = (Get-CurrentDirectory $script)
   fileType        = 'exe'
-  file            = Join-Path (Get-ParentDirectory $script) 'VSCodeSetup-1.8.0.exe'
+  file            = Join-Path (Get-ParentDirectory $script) 'VSCodeSetup-1.8.1.exe'
   url             = 'https://go.microsoft.com/fwlink/?LinkID=623230'
   softwareName    = 'VisualStudioCode*'
-  checksum        = 'F39F5506301552662A705D141D5FF0BE33A9499BE3A17FAD73884555CEB6EDCD'
+  checksum        = 'B7A03C9B8D4DC92A40A53B156C3005E009C999900B5C490F4BD61FB9524F3331'
   checksumType    = 'sha256'
   silentArgs      = "/verysilent /suppressmsgboxes /mergetasks=$mergeTasks /log=""$env:temp\vscode.log"""
   validExitCodes  = @(0, 3010, 1641)

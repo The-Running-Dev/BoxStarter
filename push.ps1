@@ -1,5 +1,5 @@
 param(
-    [string] $package,
+    [string] $packages,
     [string] $source
 )
 
@@ -20,15 +20,15 @@ else {
     $apiKey = $config.local.apiKey
 }
 
-if ($package -eq '') {
+if ($packages -eq '') {
     foreach ($p in (Get-ChildItem -Path $artifactsPath -Filter *.nupkg)){
-        choco push $p.FullName -s $source -k=$apiKey
+        choco push $p.FullName -s $source -k="$apiKey"
     }
 }
 else {
-    $packages = Get-ChildItem -Path $artifactsPath | Where-Object { $_.Name -match "^$package.*"}
+    $foundPackages = Get-ChildItem -Path $artifactsPath | Where-Object { $_.Name -match "^$packages.*"}
 
-    foreach ($p in $packages) {
-        choco push $p.FullName -s $source -k=$apiKey
+    foreach ($p in $foundPackages) {
+        choco push $p.FullName -s $source -k="$apiKey"
     }
 }
