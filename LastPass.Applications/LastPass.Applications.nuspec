@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>LastPass</id>
+    <id>LastPass.Applications</id>
     <version>3.1.40</version>
-    <title>LastPass</title>
+    <title>LastPass for Applications</title>
     <authors>LastPass</authors>
     <licenseUrl>https://lastpass.com/aboutus_terms.php</licenseUrl>
     <projectUrl>https://lastpass.com/</projectUrl>
