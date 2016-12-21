@@ -15,13 +15,13 @@ WinActivate
 Sleep 1000
 ; Click Next
 ControlClick &Next >
-Sleep 1000
+Sleep 400
 ; Click 'Install'
 ControlClick &Install
 ; Wait for the Install
 Sleep 10000
 ; Unckeck 'Run...'
 ControlClick &Run LastPass for Applications
-Sleep 1000
+Sleep 400
 ; Click 'Finish'
 ControlClick &Finish
