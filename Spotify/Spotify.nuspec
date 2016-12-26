@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Spotify</id>
-    <version>1.0.44.100</version>
+    <version>1.0.45.186</version>
     <title>Spotify</title>
     <authors>Spotify</authors>
     <projectUrl>http://spotify.com</projectUrl>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
     <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
     <description>
-      This package installs Spotify Windows Client.
+    Installs the Spotify Windows Client.
     </description>
     <dependencies>
       <dependency id="boyan-choco.extension" />

@@ -25,7 +25,8 @@ function Import-RegistrySettings([string] $path)
 
     foreach ($f in $files) {
         try {
-            & regedit /s $f
+            Write-Host "Importing: $($f.FullName)"
+            & regedit /s $f.FullName
         }
         catch {
             Write-Host "Failed Importing: $f, Message: $($_.Exception.ToString())"
@@ -52,8 +53,9 @@ function Import-RegistryFile
                     Stop-Process -Name $parameters['process']
                 }
             }
-
+            
             # Import the provided settings
+            Write-Host "Importing: $($parameters['file'])"
             & regedit /s $parameters['file']
         }
     }

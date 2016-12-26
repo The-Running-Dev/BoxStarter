@@ -12,22 +12,22 @@ SetTitleMatchMode, 2
 
 WinWait ESET NOD32 Antivirus ahk_class #32770
 WinActivate
-Sleep 10000
+Sleep 1000
 ; Click Continue
-MouseClick left, 50, 590
+MouseClick left, 50, 580
 Sleep 10000
 ; Click 'I Accept'
-MouseClick left, 50, 590
-Sleep 5000
-; Click 'Enable ...'
-MouseClick left, 40, 410
-Sleep 1000
+MouseClick left, 50, 580
+Sleep 400
+; Click 'Uncheck Enable ...'
+MouseClick left, 40, 240
+Sleep 400
+; Click 'Check Disable ...'
+MouseClick left, 40, 440
+Sleep 400
 ; Click 'Install'
-MouseClick left, 50, 590
+MouseClick left, 50, 580
 ; Wait for the install
 Sleep 30000
 ; Click 'Done'
-MouseClick left, 50, 590
-WinWait ESET NOD32 Antivirus ahk_class ESET Main Frame
-WinActivate
-Send !{F4}
+MouseClick left, 50, 580

@@ -1,11 +1,19 @@
-function Get-CurrentDirectory([string] $scriptPath)
+function Get-CurrentDirectory([string] $path)
 {
-    return $(Split-Path -parent $scriptPath)
+    if ([System.IO.File]::Exists($path)) {
+        return $(Split-Path -Parent $path)
+    }
+
+    return $path
 }
 
-function Get-ParentDirectory([string] $scriptPath)
+function Get-ParentDirectory([string] $path)
 {
-    return Join-Path -Resolve $(Split-Path -parent $scriptPath) ..
+    if ([System.IO.File]::Exists($path)) {
+        return Join-Path -Resolve $(Split-Path -Parent $path) ..
+    }
+
+    return Join-Path -Resolve $path ..
 }
 
 function Get-ProgramFilesDirectory()
