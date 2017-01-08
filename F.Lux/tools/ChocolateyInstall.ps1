@@ -16,7 +16,7 @@ Install-LocalOrRemote $arguments
 
 Start-Sleep -s 5
 
-if (Get-Process -Name MicrosoftEdge) {
+if (Get-Process -Name MicrosoftEdge -ErrorAction SilentlyContinue) {
   Stop-Process -processname MicrosoftEdge
 }
 
