@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>ReSharper</id>
-    <version>2016.3</version>
+    <id>ReSharper.Platform</id>
+    <version>2016.3.1</version>
     <title>JetBrains ReSharper Ultimate</title>
     <authors>JetBrains</authors>
     <projectUrl>https://www.jetbrains.com/resharper</projectUrl>
