@@ -32,7 +32,7 @@ function Invoke-Commands([string] $file, [string] $commandTemplate) {
         }
     }
     catch {
-         Write-Host "Failed: $($_.Exception.Message)"
+         Write-Host "Invoke-Commands Failed: $($_.Exception.Message)"
     }
 }
 
@@ -46,8 +46,24 @@ function Invoke-Executables([string] $path) {
             & $e
         }
         catch {
-            Write-Host "Failed Running: $e, Message: $($_.Exception.Message)"
+            Write-Host "Invoke-Executables Failed: $e, Message: $($_.Exception.Message)"
         }
+    }
+}
+
+function Invoke-PinApplications([string] $pinTool, [string] $configFile) {
+    try {
+        foreach ($line in Get-Content -Path $file | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'})
+        {
+            $applicationPath = Invoke-Expression $line
+
+            if ([System.IO.File]::Exists($applicationPath)) {
+                & $pinTool $applicationPath c:"Pin to taskbar"
+            }
+        }
+    }
+    catch {
+         Write-Host "Invoke-PinApplications Failed: $($_.Exception.Message)"
     }
 }
 
