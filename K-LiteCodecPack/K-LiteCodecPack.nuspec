@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>K-LiteCodecPack</id>
-    <version>12.6.0</version>
+    <version>12.8.0</version>
     <title>K-Lite Codec Pack</title>
     <authors>Codec Guide</authors>
     <licenseUrl>http://www.codecguide.com/termsofuse.htm</licenseUrl>
@@ -22,11 +22,7 @@
     AC3Filter (as alternative choice for LAV and ffdshow audio decoders)
     Haali Matroska Muxer
     </description>
-    <summary>K-Lite Codec Pack Mega 12.6.0</summary>
-    <releaseNotes>Updated Icaros to version 3.0.1 RC1
-    CUVID now also supports 10-bit HEVC and 8-bit VP9. Latest NVIDIA driver (375.95) is required.
-    Minor changes and improvements
-    </releaseNotes>
+    <summary>K-Lite Codec Pack Mega 12.8.0</summary>
     <copyright>Codec Guide</copyright>
     <tags>k-litecodecpackmega codec video media player</tags>
   </metadata>
