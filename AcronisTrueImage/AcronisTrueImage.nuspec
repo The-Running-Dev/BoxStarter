@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>AcronisTrueImage</id>
+    <version>2017.5554</version>
+    <title>Acronis</title>
+    <authors>Acronis</authors>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <description>
+      This package installs Acronis True Image.
+    </description>
+    <dependencies>
+      <dependency id="boyan-choco.extension" />
+    </dependencies>
+  </metadata>
+</package>
