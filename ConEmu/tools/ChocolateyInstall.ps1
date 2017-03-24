@@ -1,16 +1,18 @@
-$script           = $MyInvocation.MyCommand.Definition
-$os               = if (IsSystem32Bit) { 'x86' } else { 'x64' }
-$arguments        = @{
-  packageName     = 'ConEmu'
-  unzipLocation   = (Get-CurrentDirectory $script)
-  fileType        = 'exe'
-  file            = Join-Path (Get-ParentDirectory $script) 'ConEmuSetup.161203.exe'
-  url             = 'https://github.com/Maximus5/ConEmu/releases/download/v16.12.03/ConEmuSetup.161203.exe'
-  softwareName    = 'ConEmu*'
-  checksum        = '08EF60D4A6DBB09EF382994BFC8D7E4DA363F8DCB4EF9B351B28686B5C757C88'
-  checksumType    = 'sha256'
-  silentArgs      = "/p:$os /quiet /norestart"
-  validExitCodes  = @(0, 3010, 1641)
+$installer          = 'ConEmuSetup.170305.exe'
+$url                = 'https://github.com/Maximus5/ConEmu/releases/download/v17.03.05/ConEmuSetup.170305.exe'
+$checksum           = '323450F87F24CCAF1B30D9E5794C87F5CEEE4DA699C0EDE73BD8EE869BD92455'
+$os                 = if (IsSystem32Bit) { 'x86' } else { 'x64' }
+$arguments          = @{
+    packageName     = $env:ChocolateyPackageName
+    softwareName    = $evn:ChocolateyPackageTitle
+    unzipLocation   = $env:ChocolateyPackageFolder
+    file            = Join-Path $env:ChocolateyPackageFolder $installer
+    url             = $url
+    checksum        = $checksum
+    fileType        = 'exe'
+    checksumType    = 'sha256'
+    silentArgs      = "/p:$os /quiet /norestart"
+    validExitCodes  = @(0, 1641, 3010)
 }
 
 Install-LocalOrRemote $arguments
