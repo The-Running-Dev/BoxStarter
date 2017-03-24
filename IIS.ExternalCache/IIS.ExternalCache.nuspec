@@ -3,7 +3,7 @@
   <metadata>
     <id>IIS.ExternalCache</id>
     <version>1.1.20151123</version>
-    <title>IIS ExternalCache</title>
+    <title>Microsoft IIS External Cache</title>
     <authors>Microsoft Inc.</authors>
     <licenseUrl>http://download.microsoft.com/download/3/4/1/3415F3F9-5698-44FE-A072-D4AF09728390/ExternalCache_RTW_EULA.htm</licenseUrl>
     <projectUrl>http://learn.iis.net/page.aspx/489/using-the-application-request-routing-module</projectUrl>

@@ -1,7 +1,7 @@
-$script         = $MyInvocation.MyCommand.Definition
+$installer      = 'MSBuild.Microsoft.zip'
 $arguments      = @{
   packageName   = 'MSBuild.Microsoft'
-  fileFullPath  = Join-Path (Get-ParentDirectory $script) 'MSBuild.Microsoft.zip'
+  fileFullPath  = Join-Path $env:ChocolateyPackageFolder $installer
   destination   = 'C:\Program Files (x86)\MSBuild'
 }
 

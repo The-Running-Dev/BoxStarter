@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
-  <metadata>  
+  <metadata>
     <id>Dropbox</id>
-    <version>19.4.12</version>
+    <version>22.4.24</version>
     <title>Dropbox</title>
     <authors>Dropbox</authors>
     <projectUrl>https://dropbox.com</projectUrl>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
     <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
     <description>
-    Installs Dropbox.
+    Dropbox
     </description>
     <dependencies>
       <dependency id="boyan-choco.extension" />

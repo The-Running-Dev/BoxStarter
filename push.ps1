@@ -16,7 +16,7 @@ if ($source -Match 'remote') {
     $apiKey = $config.remote.apiKey
 }
 else {
-    $source = $config.local.source
+    $source = Join-Path -Resolve . $config.local.source
     $apiKey = $config.local.apiKey
 }
 
@@ -26,7 +26,7 @@ if ($packages -eq '') {
     }
 }
 else {
-    $foundPackages = Get-ChildItem -Path $artifactsPath | Where-Object { $_.Name -match "^$packages.*"}
+    $foundPackages = Get-ChildItem -Path $artifactsPath -Exclude Drivers | Where-Object { $_.Name -match "^$packages.*"}
 
     foreach ($p in $foundPackages) {
         choco push $p.FullName -s $source -k="$apiKey"

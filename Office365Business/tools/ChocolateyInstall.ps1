@@ -1,16 +1,16 @@
-$script                     = $MyInvocation.MyCommand.Definition
-$packageName                = 'Office365Business'
-$packageDir                 = Get-ParentDirectory $script
-$deploymentTool             = Join-Path (Get-ParentDirectory $script) 'officedeploymenttool_7614-3602.exe'
-$defaultConfigurationFile   = Join-Path (Get-ParentDirectory $script) 'Configuration.xml'
+$installer                  = 'officedeploymenttool_7614-3602.exe'
+$url                        = 'https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_7614-3602.exe'
+$checksum                   = 'CB9B41ABF4C3D67D082BA534F757A0C84F7CA4AF89D77590CC58290B7C875F5E'
+$defaultConfigurationFile   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
 $arguments                  = @{
-    packageName             = 'Office365DeploymentTool'
-    unzipLocation           = (Get-CurrentDirectory $script)
+    packageName             = 'OfficeDeploymentTool'
+    softwareName            = $evn:ChocolateyPackageTitle
+    unzipLocation           = $env:ChocolateyPackageFolder
+    file                    = Join-Path $env:ChocolateyPackageFolder $installer
+    url                     = $url
+    checksum                = $checksum
     fileType                = 'exe'
-    url                     = 'https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_7614-3602.exe'
-    checksum                = 'CB9B41ABF4C3D67D082BA534F757A0C84F7CA4AF89D77590CC58290B7C875F5E'
     checksumType            = 'sha256'
-    softwareName            = 'Office365Business*'
     silentArgs              = "/extract:$env:Temp\Office /log:$env:Temp\OfficeInstall.log /quiet /norestart"
     validExitCodes          = @(
         0, # success
@@ -47,16 +47,18 @@ if (!([System.IO.File]::Exists($installerPath))) {
     # Use the deployment tool to download the installer
     $arguments['packageName'] = 'Office365BusinessInstaller'
     $arguments['file'] = "$env:Temp\Office\Setup.exe"
-    $arguments['silentArgs'] = "/download ""$configurationFile"" $env:Temp\$packageName\Setup.exe"
+    $arguments['silentArgs'] = "/download ""$configurationFile"" $env:Temp\$env:ChocolateyPackageName\Setup.exe"
+
     Install-ChocolateyInstallPackage @arguments
 
-    $arguments['file'] = "$env:Temp\$packageName\Setup.exe"
+    $arguments['file'] = "$env:Temp\$env:ChocolateyPackageName\Setup.exe"
 }
 
-$arguments['packageName'] = $packageName
+$arguments['packageName'] = $env:ChocolateyPackageName
 $arguments['silentArgs'] = "/configure ""$configurationFile"""
+
 Install-LocalOrRemote $arguments
 
-if (Test-Path "$env:Temp\$packageName") {
-    Remove-Item -Recurse "$env:temp\$packageName"
+if (Test-Path "$env:Temp\$env:ChocolateyPackageName") {
+    Remove-Item -Recurse "$env:Temp\$env:ChocolateyPackageName"
 }

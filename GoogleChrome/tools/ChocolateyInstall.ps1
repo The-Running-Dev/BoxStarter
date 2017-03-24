@@ -1,5 +1,6 @@
-$script = $MyInvocation.MyCommand.Definition
-$os     = if (IsSystem32Bit) { '' } else { '64' }
+$installer          = 'googlechromestandaloneenterprise64.msi'
+$url                = 'https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi'
+$checksum           = 'F954E930F52FD93C9FBB68B7BA60153B2E31F1FFBC6188E12B47CEBE7E34B29A'
 
 function Get-ChromeVersion() {
     $root   = 'HKLM:\SOFTWARE\Google\Update\Clients'
@@ -11,27 +12,22 @@ function Get-ChromeVersion() {
     }
 }
 
-$version = $env:ChocolateyPackageVersion
-
-if ($version -eq (Get-ChromeVersion)) {
+if ($env:ChocolateyPackageVersion -eq (Get-ChromeVersion)) {
     Write-Host "Google Chrome $version is already installed."
     return
 }
 
-$arguments      = @{
-  packageName     = 'GoogleChrome'
-  unzipLocation   = (Get-CurrentDirectory $script)
-  fileType        = 'msi'
-  file            = Join-Path (Get-ParentDirectory $script) "googlechromestandaloneenterprise$os.msi"
-  url             = 'https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise.msi'
-  url64           = 'https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi'
-  softwareName    = 'GoogleChrome*'
-  checksum        = 'f30e97b8bd48f9e0b9706f24461db6718a3b9bfc3ddb110cea5b952643c617c8'
-  checksum64      = 'e87064ecdb9583b2ce3b61dad2248952d15ecb031ee5ab70587c29ed6baf8bd1'
-  checksumType    = 'sha256'
-  checksumType64  = 'sha256'
-  silentArgs      = '/quiet'
-  validExitCodes  = @(0, 3010, 1641)
+$arguments          = @{
+    packageName     = $env:ChocolateyPackageName
+    softwareName    = $evn:ChocolateyPackageTitle
+    unzipLocation   = $env:ChocolateyPackageFolder
+    file            = Join-Path $env:ChocolateyPackageFolder $installer
+    url             = $url
+    checksum        = $checksum
+    fileType        = 'msi'
+    checksumType    = 'sha256'
+    silentArgs      = '/quiet'
+    validExitCodes  = @(0, 1641, 3010)
 }
 
 Install-LocalOrRemote $arguments

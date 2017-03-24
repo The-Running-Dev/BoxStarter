@@ -1,10 +1,11 @@
-$ErrorActionPreference = 'Stop';
-
-$createDesktopIcon = $false
-$createQuickLaunchIcon = $true
-$addContextMenuFiles = $true
-$addContextMenuFolders = $true
-$addToPath = $true
+$installerfile          = 'VSCodeSetup-1.10.2.exe'
+$url                    = 'https://go.microsoft.com/fwlink/?LinkID=623230'
+$checksum               = '9CC50045D7BD6E7A42516DE1A81D7FCC3CF93BDA58FEF48DBADB0D1C65533495'
+$createDesktopIcon      = $false
+$createQuickLaunchIcon  = $true
+$addContextMenuFiles    = $true
+$addContextMenuFolders  = $true
+$addToPath              = $true
 
 $parameters = Get-Parameters $env:chocolateyPackageParameters
 
@@ -50,18 +51,17 @@ if ($addToPath) {
     $mergeTasks = $mergeTasks + ",addtopath"
 }
 
-$script           = $MyInvocation.MyCommand.Definition
 $arguments          = @{
-    packageName     = $packageName
-    unzipLocation   = (Get-CurrentDirectory $script)
+    packageName     = $env:ChocolateyPackageName
+    softwareName    = $evn:ChocolateyPackageTitle
+    unzipLocation   = $env:ChocolateyPackageFolder
+    file            = Join-Path $env:ChocolateyPackageFolder $installer
+    url             = $url
+    checksum        = $checksum
     fileType        = 'exe'
-    file            = Join-Path (Get-ParentDirectory $script) 'VSCodeSetup-1.9.0.exe'
-    url             = 'https://go.microsoft.com/fwlink/?LinkID=623230'
-    softwareName    = 'VisualStudioCode*'
-    checksum        = 'CC463AD26D0816A9422F254FF33FB0F394CEB2C16AC4A42B8E1DA0C62A99173B'
     checksumType    = 'sha256'
     silentArgs      = "/verysilent /suppressmsgboxes /mergetasks=$mergeTasks /log=""$env:temp\vscode.log"""
-    validExitCodes  = @(0, 3010, 1641)
+    validExitCodes  = @(0, 1641, 3010)
 }
 
 Install-LocalOrRemote $arguments

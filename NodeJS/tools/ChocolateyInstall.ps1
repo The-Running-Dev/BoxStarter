@@ -1,22 +1,19 @@
-$script           = $MyInvocation.MyCommand.Definition
-$os               = if (IsSystem32Bit) { 'x86' } else { 'x64' }
-$arguments        = @{
-  packageName     = 'NodeJS'
-  unzipLocation   = (Get-CurrentDirectory $script)
-  fileType        = 'msi'
-  file            = Join-Path (Get-ParentDirectory $script) "node-v7.2.1-$os.msi"
-  url             = 'https://nodejs.org/dist/v7.2.1/node-v7.2.1-x86.msi'
-  url64           = 'https://nodejs.org/dist/v7.2.1/node-v7.2.1-x64.msi'
-  softwareName    = 'NodeJS*'
-  checksum        = '8302C95D26D343C131F403C088F8812540F4BEBC5A01A98972599C03658E547B'
-  checksum64      = '789AF29EBA3A43213DFAB7A71ADA7E2C513A9FA023F0987B2076B10754DA907E'
-  checksumType    = 'sha256'
-  checksumType64  = 'sha256'
-  silentArgs      = '/quiet'
-  validExitCodes  = @(0, 3010, 1641)
+$installer          = 'node-v7.7.3-x64.msi'
+$url                = 'https://nodejs.org/dist/v7.7.3/node-v7.7.3-x64.msi'
+$checksum           = '755128B0EDFC619B6655CB2A3DBE704504E8E32B775C63DEF6B0049B3E322AE7'
+$arguments = @{
+    packageName     = $env:ChocolateyPackageName
+    softwareName    = $evn:ChocolateyPackageTitle
+    unzipLocation   = $env:ChocolateyPackageFolder
+    file            = Join-Path $env:ChocolateyPackageFolder $installer
+    url             = $url
+    checksum        = $checksum
+    fileType         = 'msi'
+    checksumType    = 'sha256'
+    silentArgs      = '/quiet'
+    validExitCodes  = @(0, 1641, 3010)
 }
 
 Install-LocalOrRemote $arguments
 
-$nodePath = "$(Get-ProgramFilesDirectory)\NodeJS"
-$env:Path = "$($env:Path);$nodePath"
+$env:Path = "$($env:Path);$(Get-ProgramFilesDirectory)\NodeJS"

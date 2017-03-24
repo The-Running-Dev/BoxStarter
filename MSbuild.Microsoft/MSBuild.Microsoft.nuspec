@@ -3,7 +3,7 @@
   <metadata>
     <id>MSBuild.Microsoft</id>
     <version>1.0.0</version>
-    <title>MSBuild Microsoft</title>
+    <title>Microsoft MSBuild Visual Studio Targets</title>
     <authors>Microsoft</authors>
     <projectUrl>https://github.com/Boyan-Kostadinov/Packages</projectUrl>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>

@@ -6,7 +6,18 @@
   * Chocolatey, in PowerShell run
   ```
   Set-ExecutionPolicy Unrestricted
-  iex ((New-Object System.Net.WebClient).DownloadString('http://bit.ly/win10boxstarter-choco'))
+  $chocoInstallScriptUrl  = 'http://bit.ly/win10boxstarter-choco'
+  $chocoInstallScript     = Join-Path $env:Temp 'Install.Choco.ps1'
+
+  $downloader = New-Object System.Net.WebClient
+  $downloader.DownloadFile($chocoInstallScriptUrl, $chocoInstallScript)
+
+  & $chocoInstallScript
+
+  choco source add -n='BoxStarter' -s 'http://54.210.14.187/NuGet.Hosting/nuget' -priority=1
+  choco source add -n=Chocolatey -s "https://chocolatey.org/api/v2/" -priority=2
+
+  choco install Server.Prep -f
   ```
 
 ## Chocolatey Packages
@@ -23,8 +34,7 @@
     choco install DataGrip -s "https://www.myget.org/F/win10"
     ```
     ```
-    choco install DataGrip -s "https://www.myget.org/F/win10" `
-      -params='/SettingsPath="D:\Dropbox\Settings\.DataGrip2016.2.zip"'
+    choco install DataGrip -s "https://www.myget.org/F/win10"
     ```
   * JetBrains ReSharper
 
@@ -37,8 +47,7 @@
     choco install WebStorm -s "https://www.myget.org/F/win10"
     ```
     ```
-    choco install WebStorm -s "https://www.myget.org/F/win10" `
-      -params='/SettingsPath="D:\Dropbox\Settings\.WebStorm2016.3.zip"'
+    choco install WebStorm -s "https://www.myget.org/F/win10"
     ```
   * Microsoft SQL Server 2014 Developer
 
@@ -89,30 +98,23 @@
     choco install Slack -s "https://www.myget.org/F/win10"
     ```
     ```
-    choco install Slack `
-      -s "https://www.myget.org/F/win10" `
-      -params='/SettingsPath="D:\Dropbox\Settings\Slack.zip"'
-    ```
   * Spotify
     ```
     choco install Spotify -s "https://www.myget.org/F/win10"
     ```
 
 ## Short Links
-  * [Install BoxStarter.](http://bit.ly/win10boxstarter)
-  * [Install Chocolatey.](http://bit.ly/win10boxstarter-choco)
-  * [SQL Server Configuration.](http://bit.ly/win10boxstarter-sqlserverconfig)
-  * [Visual Studio AdminFile.](http://bit.ly/win10boxstarter-vsadmin)
-  * [Visual Studio BuildOnSave Add-In.](http://bit.ly/win10boxstarert-vs-buildonsave)
-  * [Visual Studio SaveAllTheTime Add-In.](http://bit.ly/win10boxstarert-vs-saveallthetime)
-  * [Visual Studio SpellChecker Add-In.](http://bit.ly/win10boxstarter-vs-spellchecker)
+  * [Install BoxStarter](http://bit.ly/win10boxstarter)
+  * [Install Chocolatey](http://bit.ly/win10boxstarter-choco)
+  * [SQL Server Configuration](http://bit.ly/win10boxstarter-sqlserverconfig)
+  * [Visual Studio AdminFile](http://bit.ly/win10boxstarter-vsadmin)
+  * [Visual Studio BuildOnSave Add-In](http://bit.ly/win10boxstarert-vs-buildonsave)
+  * [Visual Studio SaveAllTheTime Add-In](http://bit.ly/win10boxstarert-vs-saveallthetime)
+  * [Visual Studio SpellChecker Add-In](http://bit.ly/win10boxstarter-vs-spellchecker)
 
 ## References
-  * [Running Visual Studio Install from the Command Line.](https://msdn.microsoft.com/en-us/library/mt720584.aspx)
-  * [Visual Studio Package on Chocolatey.](https://chocolatey.org/packages/VisualStudio2015Enterprise)
-
-## Gotchas
-  * BOXSTARTER USES OLDER VERSION OF CHOCOLATEY. Big gotcha!
+  * [Running Visual Studio Install from the Command Line](https://msdn.microsoft.com/en-us/library/mt720584.aspx)
+  * [Visual Studio Package on Chocolatey](https://chocolatey.org/packages/VisualStudio2015Enterprise)
 
 ## Editor
 https://jbt.github.io/markdown-editor

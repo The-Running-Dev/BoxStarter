@@ -1,5 +1,4 @@
-$script             = $MyInvocation.MyCommand.Definition
-$defaultConfigFile  = Join-Path (Get-ParentDirectory $script) 'IIS.config'
+$defaultConfigFile  = Join-Path $env:ChocolateyPackageFolder 'IIS.config'
 $parameters         = Get-Parameters $evn:packageParameters
 $parameters['file'] = Get-ConfigurationFile $parameters['file'] $defaultConfigFile
 
@@ -19,5 +18,5 @@ else {
     Enable-WindowsFeature IIS-ASPNET45
 }
 
-# Install the Re-Write filter
+# Install the Rewrite filter
 choco install IIS.UrlRewrite -y

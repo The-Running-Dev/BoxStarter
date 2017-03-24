@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>DisplayFusion</id>
-    <version>8.1.1</version>
+    <version>8.1.2</version>
     <authors>Binary Fortress</authors>
     <title>DisplayFusion</title>
     <projectUrl>http://www.displayfusion.com</projectUrl>
@@ -26,7 +26,7 @@
     choco install choco install -s NewPc DisplayFusion
 
     # Install from local setup
-    choco install -s NewPc DisplayFusion -params '/setup="\\nas\data\\Applications\_NewPC\Installers\DisplayFusionSetup-8.1.1.exe"'
+    choco install -s NewPc DisplayFusion -params '/setup="...PathTo\DisplayFusionSetup-8.1.1.exe"'
     </description>
     <dependencies>
       <dependency id="boyan-choco.extension" />

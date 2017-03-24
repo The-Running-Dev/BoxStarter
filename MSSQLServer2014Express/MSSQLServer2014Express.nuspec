@@ -32,13 +32,13 @@
         -ia '/SECURITYMODE="SQL" /SAPWD="SetYourOwnComplex123" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData" /ConfigurationFile="http://bit.ly/2doxBU1"'
       ```
 
-      If you specify SECURITYMODE="SQL" you have to provide the SAPWD or the setup will fail. 
+      If you specify SECURITYMODE="SQL" you have to provide the SAPWD or the setup will fail.
       SAPWD should be a complex value or the setup will fail.
 
-      If you specify SECURITYMODE="SQL" but do not provide a value for SQLSYSADMINACCOUNTS, 
+      If you specify SECURITYMODE="SQL" but do not provide a value for SQLSYSADMINACCOUNTS,
       the current account will be added to SQL Server Express as a SQL Server admin.
 
-      choco install MSSQLServer2014Express -s NewPc -params '/installer=""\\nas\Data\Applications\_NewPC\Installers\SQLEXPR_x64_ENU.exe""' 
+      choco install MSSQLServer2014Express -s NewPc -params '/installer=""...PathTo\SQLEXPR_x64_ENU.exe""'
     </description>
     <summary>Installs SQL Server 2014 Express with SP2</summary>
     <releaseNotes>Update download url for SP2 release.</releaseNotes>

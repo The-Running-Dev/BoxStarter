@@ -1,18 +1,21 @@
-$script           = $MyInvocation.MyCommand.Definition
-$arguments        = @{
-  packageName     = 'RazerSynapse'
-  unzipLocation   = (Get-CurrentDirectory $script)
-  fileType        = 'exe'
-  file            = Join-Path (Get-ParentDirectory $script) 'Razer_Synapse_Framework_V2.20.15.1104.exe'
-  url             = 'https://www.razerzone.com/synapse/downloadpc'
-  softwareName    = 'RazerSynapse*'
-  checksum        = 'A568786FEE965F8AC2B8F9942521E1D2B08EFFC566D8471917C2233FEA49700F'
-  checksumType    = 'sha256'
-  silentArgs      = '/s'
-  validExitCodes  = @(0, 3010, 1641)
+$installer          = 'Razer_Synapse_Framework_V2.20.15.1104.exe'
+$url                = 'http://dl.razerzone.com/drivers/Synapse2/win/Razer_Synapse_Framework_V2.20.15.1104.exe'
+$checksum           = 'A568786FEE965F8AC2B8F9942521E1D2B08EFFC566D8471917C2233FEA49700F'
+$installerScript    = Join-Path $packageDir 'Install.exe'
+$arguments          = @{
+    packageName     = $env:ChocolateyPackageName
+    softwareName    = $evn:ChocolateyPackageTitle
+    unzipLocation   = $env:ChocolateyPackageFolder
+    file            = Join-Path $env:ChocolateyPackageFolder $installer
+    url             = $url
+    checksum        = $checksum
+    fileType        = 'exe'
+    checksumType    = 'sha256'
+    silentArgs      = '/s'
+    validExitCodes  = @(0, 1641, 3010)
 }
 
-Start-Process (Join-Path (Get-ParentDirectory $script) 'Install.exe')
+Start-Process $installerScript
 
 Start-Sleep 10
 

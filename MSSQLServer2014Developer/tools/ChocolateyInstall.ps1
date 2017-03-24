@@ -1,4 +1,8 @@
-$script                     = $MyInvocation.MyCommand.Definition
+$installerfile    = 'LogFusionSetup-5.2.1.exe'
+$url              = 'https://www.binaryfortress.com/Data/Download/?package=logfusion&log=117'
+$checksum         = '5EBAA729F3763F618961FD406ED5BD1828FEE656E2D330B76B699084623BE902'
+$script           = $MyInvocation.MyCommand.Definition
+$installer        = Join-Path $env:ChocolateyPackageFolder  $installerfile
 $defaultConfigurationFile   = Join-Path (Get-ParentDirectory $script) 'Configuration.ini'
 $parameters                 = Get-Parameters $env:chocolateyPackageParameters
 $configurationFile          = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
@@ -10,10 +14,10 @@ if (!$parameters.ContainsKey['sqlsysadminaccounts']) {
 
 $arguments                  = @{
     packageName             = 'MSSQLServer2014Developer'
-    unzipLocation           = (Get-CurrentDirectory $script)
-    fileType                = 'exe'
+    softwareName            = 'Microsoft SQL Server*'
+    unzipLocation           = $env:ChocolateyPackageFolder
     file                    = Join-Path (Get-ParentDirectory $script) 'Setup.exe'
-    softwareName            = 'MSSQLServer2014Developer*'
+    fileType                = 'exe'
     silentArgs              = $silentArgs
     validExitCodes          = @(
         0, # success

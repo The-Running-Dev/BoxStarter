@@ -1,16 +1,18 @@
-$script                 = $MyInvocation.MyCommand.Definition
-$defaultConfiguration   = Join-Path (Get-ParentDirectory $script) 'Configuration.xml'
+$installer              = 'vs_enterprise.exe'
+$url                    = 'https://download.microsoft.com/download/6/4/7/647EC5B1-68BE-445E-B137-916A0AE51304/vs_enterprise.exe'
+$checksum               = '2848DDD11A5DB48F801A846A4C7162027CA2ADE2EF252143ABDE82AD9C9FDD97'
+$defaultConfiguration   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
 $parameters             = Get-Parameters $env:chocolateyPackageParameters
 $configuration          = Get-ConfigurationFile $parameters['Configuration'] $defaultConfiguration
 $arguments              = @{
-    packageName         = 'VisualStudio2015Enterprise'
-    unzipLocation       = (Get-CurrentDirectory $script)
-    file                = Join-Path (Get-ParentDirectory $script) 'vs_enterprise.exe'
+    packageName         = $env:ChocolateyPackageName
+    softwareName        = $evn:ChocolateyPackageTitle
+    unzipLocation       = $env:ChocolateyPackageFolder
+    file                = Join-Path $env:ChocolateyPackageFolder $installer
+    url                 = $url
+    checksum            = $checksum
     fileType            = 'exe'
-    url                 = 'https://download.microsoft.com/download/6/4/7/647EC5B1-68BE-445E-B137-916A0AE51304/vs_enterprise.exe'
-    checksum            = '2848DDD11A5DB48F801A846A4C7162027CA2ADE2EF252143ABDE82AD9C9FDD97'
     checksumType        = 'sha256'
-    softwareName        = 'VisualStudio2015Enterprise*'
     silentArgs          = "/Quiet /NoRestart /NoRefresh /Log $env:Temp\VisualStudio.log /AdminFile $configuration"
     validExitCodes      = @(
         0, # success

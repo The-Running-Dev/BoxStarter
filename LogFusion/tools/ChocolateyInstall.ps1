@@ -1,15 +1,17 @@
-$script           = $MyInvocation.MyCommand.Definition
-$arguments        = @{
-  packageName     = 'LogFusion'
-  unzipLocation   = (Get-CurrentDirectory $script)
-  fileType        = 'exe'
-  file            = Join-Path (Get-ParentDirectory $script) 'LogFusionSetup-5.1.exe'
-  url             = 'https://www.binaryfortress.com/Data/Download/?package=logfusion&log=117'
-  softwareName    = 'LogFusion*'
-  checksum        = 'C490053837EA7B3661A0B75C30229EEB1D6FA62C41BE4F275892642E27C9690E'
-  checksumType    = 'sha256'
-  silentArgs      = '/VERYSILENT /LAUNCHAFTER=0 /MERGETASKS=`"!desktopicon,!desktopicon\common,!desktopicon\user`"'
-  validExitCodes  = @(0, 3010, 1641)
+$installer            = 'LogFusionSetup-5.2.1.exe'
+$url                  = 'https://www.binaryfortress.com/Data/Download/?package=logfusion&log=117'
+$checksum             = '5EBAA729F3763F618961FD406ED5BD1828FEE656E2D330B76B699084623BE902'
+$arguments            = @{
+    packageName       = $env:ChocolateyPackageName
+    softwareName      = $evn:ChocolateyPackageTitle
+    unzipLocation     = $env:ChocolateyPackageFolder
+    file              = Join-Path $env:ChocolateyPackageFolder $installer
+    url               = $url
+    checksum          = $checksum
+    fileType          = 'exe'
+    checksumType      = 'sha256'
+    silentArgs        = '/VERYSILENT /LAUNCHAFTER=0 /MERGETASKS=`"!desktopicon,!desktopicon\common,!desktopicon\user`"'
+    validExitCodes    = @(0, 1641, 3010)
 }
 
 Install-LocalOrRemote $arguments

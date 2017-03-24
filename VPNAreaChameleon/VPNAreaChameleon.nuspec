@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>VPNAreaChameleon</id>
+    <version>1.0.47.277</version>
+    <title>VPN Area Chameleon</title>
+    <authors>Offshore Securities Inc.</authors>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>VPNAreaChameleon is the Windows VPN client provided by VPN Area</description>
+    <tags>vpn admin security</tags>
+    <dependencies>
+			<dependency id="boyan-choco.extension" />
+		</dependencies>
+  </metadata>
+</package>

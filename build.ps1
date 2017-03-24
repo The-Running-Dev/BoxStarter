@@ -3,7 +3,7 @@ param(
 )
 
 # Upgrade Chocolatey
-choco upgrade chocolatey
+#choco upgrade chocolatey
 
 Import-Module (Join-Path $PSScriptRoot 'build-helpers.psm1')
 
@@ -23,7 +23,7 @@ if ($package -eq '') {
     }
 }
 else {
-    $packages = Get-ChildItem -Path $PSScriptRoot -Filter *.nuspec -Recurse | Where-Object { $_.Name -match "^$package.*"}
+    $packages = Get-ChildItem -Path $PSScriptRoot -Exclude Drivers -Filter *.nuspec -Recurse | Where-Object { $_.Name -match "^$package.*"}
 
     foreach ($p in $packages) {
         CompileAutoHotKey((Split-Path -Parent $p.FullName))

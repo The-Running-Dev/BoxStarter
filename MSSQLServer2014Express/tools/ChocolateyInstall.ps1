@@ -1,4 +1,8 @@
-$script                     = $MyInvocation.MyCommand.Definition
+$installerfile    = 'LogFusionSetup-5.2.1.exe'
+$url              = 'https://www.binaryfortress.com/Data/Download/?package=logfusion&log=117'
+$checksum         = '5EBAA729F3763F618961FD406ED5BD1828FEE656E2D330B76B699084623BE902'
+$installer        = Join-Path $env:ChocolateyPackageFolder $installerfile
+
 $defaultConfigurationFile   = Join-Path (Get-ParentDirectory $script) 'Configuration.ini'
 $packageName                = 'MSSQLServer2014Express'
 $installer                  = Join-Path (Get-ParentDirectory $script) 'SQLEXPR.exe'
@@ -37,7 +41,7 @@ if (!([System.IO.File]::Exists($installerPath))) {
     # Download and run the pre-installer
     Install-ChocolateyPackage @arguments
 
-    # Set the path to the extracted setup 
+    # Set the path to the extracted setup
     $arguments['file'] = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
 }
 elseif (([System.IO.File]::Exists($userInstallerPath))) {
