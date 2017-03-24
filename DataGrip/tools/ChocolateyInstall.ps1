@@ -1,15 +1,17 @@
-$script           = $MyInvocation.MyCommand.Definition
-$arguments        = @{
-    packageName     = 'DataGrip'
-    unzipLocation   = (Get-CurrentDirectory $script)
-    file            = Join-Path (Get-ParentDirectory $script) 'Datagrip-2016.3.3.exe'
+$installer          = 'datagrip-2016.3.4.exe'
+$url                = 'https://download.jetbrains.com/datagrip/datagrip-2016.3.4.exe'
+$checksum           = 'a44e3067f69c6b3322bd4b5b27940db1c17a2a536ce95c96981a0cfb9cb97179'
+$arguments          = @{
+    packageName     = $env:ChocolateyPackageName
+    softwareName    = $evn:ChocolateyPackageTitle
+    unzipLocation   = $env:ChocolateyPackageFolder
+    file            = Join-Path $env:ChocolateyPackageFolder $installer
+    url             = $url
+    checksum        = $checksum
     fileType        = 'exe'
-    url             = 'https://download.jetbrains.com/datagrip/datagrip-2016.3.3.exe'
-    softwareName    = 'DataGrip*'
-    checksum        = '010c8a7cb7b52ebc3f064738483acef4bf1aec12f6120392db3c566064bb5c44'
     checksumType    = 'sha256'
     silentArgs      = '/S'
-    validExitCodes  = @(0, 3010, 1641)
+    validExitCodes  = @(0, 1641, 3010)
 }
 
 Install-LocalOrRemote $arguments
