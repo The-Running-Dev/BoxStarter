@@ -1,3 +1,4 @@
+<#
 function Get-CurrentDirectory([string] $path)
 {
     if ([System.IO.File]::Exists($path)) {
@@ -132,3 +133,4 @@ function UnzipFiles([string] $configFile, [string] $baseDirectory)
         Write-Host "Failed: $($_.Exception.Message)"
     }
 }
+#>
