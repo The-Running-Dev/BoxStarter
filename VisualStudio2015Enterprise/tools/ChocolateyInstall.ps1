@@ -40,4 +40,4 @@ if ($parameters['features']) {
     $xml.Save($configuration)
 }
 
-Install-LocalOrRemote $arguments
+Install-CustomPackage $arguments

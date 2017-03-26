@@ -11,7 +11,7 @@ function global:Get-FirstBetaLink([string] $uri, [string] $regEx) {
   $progressPreference = 'silentlyContinue'
   $html = Invoke-WebRequest -UseBasicParsing -Uri $uri
   $progressPreference = 'Continue'
-   
+
   return $html.links | Where-Object { $_.href -match $regEx } | Select-Object -First 1
 }
 
@@ -27,7 +27,6 @@ function global:au_SearchReplace {
 
 function global:au_GetLatest {
   if ($global:getBetaVersion) {
-    
     $betaVersion = ((Get-FirstBetaLink $global:betaVersionReleasePageUri $global:betaVersionRegEx) -replace $global:betaVersionRegEx, '$1') -replace '-', '.'
     $betaVersionDownloadUri = $ExecutionContext.InvokeCommand.ExpandString($global:betaVersionDownloadUri)
 
@@ -40,4 +39,4 @@ function global:au_GetLatest {
   return @{ URL32 = $stableVersionDownloadUri; Version = $stableVersion }
 }
 
-update -ChecksumFor 32
+update -ChecksumFor none

@@ -50,12 +50,12 @@ if ($parameters.ContainsKey("exclude")) {
 $thisJreInstalledHash = thisJreInstalled($version)
 
 if (!($thisJreInstalledHash[0]) -and !($thisJreInstalledHash[1])) {
-    Install-LocalOrRemote $arguments
+    Install-CustomPackage $arguments
 }
 else {
     if ((Get-ProcessorBits) -eq 64) {
         if (!($thisJreInstalledHash[1]) -and $exclude -ne '64') {
-            Install-LocalOrRemote $arguments
+            Install-CustomPackage $arguments
         }
     }
 
@@ -63,7 +63,7 @@ else {
         $arguments['file'] = Join-Path $env:ChocolateyPackageFolder $x86Installer
         $arguments['url64'] = ''
         $arguments['checksum64'] = ''
-        Install-LocalOrRemote $arguments
+        Install-CustomPackage $arguments
     }
 }
 

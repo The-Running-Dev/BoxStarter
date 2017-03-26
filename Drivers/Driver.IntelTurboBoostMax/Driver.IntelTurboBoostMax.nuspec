@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Driver.IntelTurboBoostMax</id>
+    <version>1.0.0.1027</version>
+    <title>ntel Turbo Boost Max 3.0</title>
+    <authors>ACDSee</authors>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <description>
+      Intel Turbo Boost Max 3.0 for the AsRock X99 Motherboard
+    </description>
+    <dependencies>
+      <dependency id="boyan-choco.extension" />
+    </dependencies>
+  </metadata>
+</package>

@@ -18,4 +18,4 @@ $arguments          = @{
 # Launch the AutoHotkey script that install the application
 Start-Process $installerScript
 
-Install-LocalOrRemote $arguments
+Install-CustomPackage $arguments

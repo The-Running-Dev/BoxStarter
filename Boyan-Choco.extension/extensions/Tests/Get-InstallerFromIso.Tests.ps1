@@ -1,6 +1,7 @@
-$global:module = Join-Path $PSScriptRoot (Split-Path -Leaf $PSCommandPath).Replace(".Tests.ps1", ".psm1")
+$env:moduleName = 'InstallHelpers.psm1'
+$env:ModuleUnderTest = Join-Path (Split-Path -Parent $PSScriptRoot) $env:moduleName
 
-Import-Module $global:module
+Import-Module $env:ModuleUnderTest
 
 $global:mockedVolume = [pscustomobject] @{
     FileSystemLabel = 'FakeVolume'
@@ -9,42 +10,35 @@ $global:mockedVolume = [pscustomobject] @{
 
 Describe "Get-InstallerFromIso" {
     InModuleScope InstallHelpers {
-        $fakeIso = 'C:\Path\Some.iso'
-        $executable = 'Install.exe'
-
-        Mock Find-Executable { 'Z:\Install.exe' } -Verifiable
+        Mock Get-Executable { 'Z:\Install.exe' } -Verifiable
         Mock Get-DiskImage { [PSCustomObject] @{ DriveLetter = 'Z' } }
-        Mock Get-Volume { $global:mockedVolume } -Verifiable
-        Mock Expand-WindowsImage {}
-        Mock Mount-DiskImage { return [PSCustomObject] @{ ImagePath = $fakeIso } }
-        Mock Dismount-DiskImage { }
+
+        function Get-Volume {
+            Param
+            (
+                [CmdletBinding()][Parameter(ValueFromPipeline)] $partition,
+                [String] $driveLetter
+            )
+        }
+
+        $fakeIso = 'C:\Path\Some.iso'
+        $fakeExecutable = 'Install.exe'
+        $fakeInstaller = 'Z:\Install.exe'
 
         Context "When the File Exists" {
-            $exepected = 'Z:\Install.exe'
-            $result = Get-InstallerFromIso @{ 'file' = $fakeIso; 'executable' = $executable }
+            $result = Get-InstallerFromIso @{ 'file' = $fakeIso; 'executable' = $fakeExecutable }
 
             It "Should Call the Mocks" {
                 Assert-VerifiableMocks
             }
 
             It "Should Return the Path to the File" {
-                $result | Should Be $exepected
+                $result | Should Be $fakeInstaller
             }
         }
         Context "When the File Does Not Exists" {
-            $result = Get-InstallerFromIso @{ 'file' = $fakeIso; 'executable' = $executable }
-
-            It "Should Call the Mocks" {
-                Assert-VerifiableMocks
-            }
-
-            It "Should Return Nothing" {
-                $result | Should BeNullOrEmpty
-            }
-        }
-        Context "When the Executable Does Not Exists" {
-
-            $result = Get-InstallerFromIso @{ 'file' = $fakeIso; 'executable' = $executable }
+            Mock Get-Executable { } -Verifiable
+            $result = Get-InstallerFromIso @{ 'file' = $fakeIso; 'executable' = $fakeExecutable }
 
             It "Should Call the Mocks" {
                 Assert-VerifiableMocks

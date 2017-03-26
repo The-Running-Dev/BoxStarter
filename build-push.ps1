@@ -1,12 +1,8 @@
 param(
-    [string] $package
+    [string] $package,
+    [string] $source = 'local',
+    [string] $embed = ''
 )
 
-if ($package -eq '') {
-    & .\build.ps1
-    & .\push.ps1
-}
-else {
-    & .\build.ps1 $package
-    & .\push.ps1 $package
-}
+& .\build.ps1 $package $source $embed
+& .\push.ps1 $package $source

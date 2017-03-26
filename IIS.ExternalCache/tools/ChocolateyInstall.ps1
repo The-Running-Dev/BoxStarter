@@ -14,4 +14,4 @@ packageName         = $env:ChocolateyPackageName
     validExitCodes  = @(0, 1641, 3010)
 }
 
-Install-LocalOrRemote $arguments
+Install-CustomPackage $arguments

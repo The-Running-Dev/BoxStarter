@@ -27,4 +27,4 @@ $arguments                  = @{
     )
 }
 
-Install-LocalOrRemote $arguments
+Install-CustomPackage $arguments

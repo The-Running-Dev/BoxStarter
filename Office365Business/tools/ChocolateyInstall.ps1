@@ -57,7 +57,7 @@ if (!([System.IO.File]::Exists($installerPath))) {
 $arguments['packageName'] = $env:ChocolateyPackageName
 $arguments['silentArgs'] = "/configure ""$configurationFile"""
 
-Install-LocalOrRemote $arguments
+Install-CustomPackage $arguments
 
 if (Test-Path "$env:Temp\$env:ChocolateyPackageName") {
     Remove-Item -Recurse "$env:Temp\$env:ChocolateyPackageName"

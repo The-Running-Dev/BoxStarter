@@ -1,12 +1,7 @@
-$global:moduleName = 'InstallHelpers.psm1'
-$global:module = Join-Path (Split-Path -Parent $PSScriptRoot) $global:moduleName
+$env:moduleName = 'InstallHelpers.psm1'
+$env:ModuleUnderTest = Join-Path (Split-Path -Parent $PSScriptRoot) $env:moduleName
 
-Import-Module $global:module
-
-$global:mockedVolume = [pscustomobject] @{
-    FileSystemLabel = 'FakeVolume'
-    DriveLetter = 'Z'
-}
+Import-Module $env:ModuleUnderTest
 
 Describe "Get-FileExtension" {
     InModuleScope InstallHelpers {

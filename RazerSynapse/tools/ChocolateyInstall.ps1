@@ -19,4 +19,4 @@ Start-Process $installerScript
 
 Start-Sleep 10
 
-Install-LocalOrRemote $arguments
+Install-CustomPackage $arguments

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Driver.IntelRapidStorage</id>
+    <version>14.8.0.1042</version>
+    <title>Intel Rapid Storage Technology Driver</title>
+    <authors>Intel</authors>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <description>
+      Intel Rapid Storage Technology driver for the AsRock X99 Motherboard
+    </description>
+    <dependencies>
+      		<dependency id="boyan-choco.extension" />
+    </dependencies>
+  </metadata>
+</package>

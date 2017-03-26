@@ -1,10 +1,231 @@
 $global:ahkCompiler = Join-Path $PSScriptRoot "AutoHotKey\Ahk2Exe.exe"
 
-function CompileAutoHotKey([string] $directoryPath) {
-    $ahkFiles = Get-ChildItem -Path $directoryPath -Filter *.ahk -Recurse
+function CompileAutoHotKey {
+    param (
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $directoryPath,
+        [Parameter(Mandatory = $true, Position = 2)][object] $files = @{}
+    )
 
-    foreach ($f in $ahkFiles) {
+    if (!$files) {
+        $files = Get-ChildItem -Path $directoryPath -Filter *.ahk -Recurse
+    }
+
+    foreach ($f in $files) {
         Start-Process $global:ahkCompiler "/in $($f.FullName)" -Wait
+    }
+}
+
+function Get-Configuration {
+    param (
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir
+    )
+
+    $ecludeDirectoriesRegEx = 'tools|extensions|.vscode|tests|plugins'
+    $configuration = @{}
+    $configuration[$baseDir] = Get-DirectoryConfiguration $baseDir
+
+    # Get all the sub directories and set configuration default
+    # to the base directory unless the sub directory has it's own configuration
+    $subDirectories = Get-ChildItem -Recurse -Directory | Where-Object { $_.Name -notmatch $ecludeDirectoriesRegEx } | Select-Object Parent, Name, FullName
+    foreach ($dir in $subDirectories) {
+        $currentDir = $dir.FullName
+        $configuration[$currentDir] = Get-DirectoryConfiguration $currentDir $configuration[$baseDir]
+    }
+
+    return $configuration
+}
+
+function Get-DirectoryConfiguration() {
+    param (
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $directoryPath,
+        [Parameter(Mandatory = $false, Position = 1)][Hashtable] $baseConfiguration = @{}
+    )
+
+    $configFile = 'config.json'
+    $config = @{
+        artifacts = ''
+        local = @{
+            embed = $false
+            source = ''
+            apiKey = ''
+        }
+        remote = @{
+            embed = $false
+            source = ''
+            apiKey = ''
+        }
+    }
+
+    $configFilePath = Join-Path $directoryPath $configFile
+    if (Test-Path $configFilePath) {
+        $configJson = (Get-Content $configFilePath -Raw) | ConvertFrom-Json
+
+        if ($configJson.artifacts) {
+            $config.artifacts = Join-Path -Resolve $directoryPath $configJson.artifacts
+        }
+
+        if ($configJson.remote.embed) {
+            $config.remote.embed = $false
+
+            if ('1,true,yes' -Match $configJson.remote.embed) {
+                $config.remote.embed = $true
+            }
+        }
+
+        if ($configJson.remote.source) {
+            $config.remote.source = $configJson.remote.source
+        }
+
+        if ($configJson.remote.apiKey) {
+            $config.remote.apiKey = $configJson.remote.apiKey
+        }
+
+        if ($configJson.local.embed) {
+            $config.local.embed = $false
+
+            if ('1,true,yes' -Match $configJson.local.embed) {
+                $config.local.embed = $true
+            }
+        }
+
+        if ($configJson.local.source) {
+            $config.local.source = Join-Path -Resolve $directoryPath $configJson.local.source
+        }
+
+        if ($configJson.local.apiKey) {
+            $config.local.apiKey = $configJson.local.apiKey
+        }
+
+        return $config
+    }
+
+    return $baseConfiguration
+}
+
+function Get-SourceConfiguration() {
+    param (
+        [Parameter(Mandatory = $true, Position = 0)][Hashtable] $configuration,
+        [Parameter(Mandatory = $false, Position = 1)][String] $sourceType = 'local'
+    )
+
+    if ($sourceType -match 'remote') {
+        return $configuration.remote
+    }
+
+    return $configuration.local
+}
+
+function Package {
+    param (
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
+        [Parameter(Mandatory = $false, Position = 1)][String] $package = '',
+        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local',
+        [Parameter(Mandatory = $false, Position = 3)][String] $embed = ''
+    )
+
+    $filter = '*.nuspec'
+    $configuration = Get-Configuration $baseDir
+
+    if ($package -eq '') {
+        # Get all packages in the current directory and sub directories
+        $packages = (Get-ChildItem -Path $baseDir -Filter $filter -Recurse)
+    }
+    else {
+        # Find packages matching the package name provided
+        $packages = Get-ChildItem -Path $baseDir -Filter $filter -Recurse | Where-Object { $_.Name -match ".*?$package.*"}
+    }
+
+    foreach ($p in $packages) {
+        $currentDir = Split-Path -Parent $p.FullName
+        $sourceConfiguration = Get-SourceConfiguration $configuration[$currentDir] $sourceType
+
+        # Allow the embed paramter to be overwritten
+        if ($embed) {
+            # If it's set to 1, true or yes, it's true, otherwise false
+            $sourceConfiguration.embed = @{ $true = $true; $false = $false }['1,true,yes' -Match $embed]
+        }
+
+        Pack $p.FullName $sourceConfiguration $configuration[$currentDir]['artifacts']
+    }
+}
+
+function Pack {
+    param (
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $nuSpec,
+        [Parameter(Mandatory = $true, Position = 1)][ValidateNotNullOrEmpty()][Hashtable] $config,
+        [Parameter(Mandatory = $true, Position = 2)][ValidateNotNullOrEmpty()][string] $outputPath
+    )
+
+    $excludeFilter = @('*.nuspec', 'tools', 'extensions')
+    $excludeFilterForEmbeddedPackages = @('*.nuspec', 'tools', 'extensions', '*.zip', '*.msi', '*.exe')
+    $packageId = (Split-Path -Leaf $nuSpec) -replace '.nuspec', ''
+    $packageDir = Split-Path -Parent $nuSpec
+    $tempDir = Join-Path $env:Temp $packageId
+    $embedPackage = $config.embed
+
+    if ($embedPackage) {
+        $excludeFilter = $excludeFilterForEmbeddedPackages
+    }
+
+    if (![System.IO.Directory]::Exists($outputPath)) {
+        New-Item -Path $outputPath -ItemType Directory
+    }
+
+    # Create a temporaty directory for the package
+    # and move all the extra files from the package directory
+    # so they don't become part of the package
+    New-Item -ItemType Directory $tempDir -Force | Out-Null
+    $extraFiles = Get-ChildItem -Path $packageDir -Exclude $excludeFilter
+    foreach ($f in $extraFiles) {
+        Move-Item $f.FullName $tempDir
+    }
+
+    # Find and compile all .ahk files
+    $ahkFiles = Get-ChildItem -Path $packageDir -Filter *.ahk -Recurse
+    if ($ahkFiles) {
+        CompileAutoHotKey $packageDir $ahkFiles
+    }
+
+    # Delete the package from the output path if it exists
+    Remove-Item $outputPath -Include "$packageId**" -Force
+
+    choco pack $nuSpec --outputdirectory $outputPath
+
+    # Move all the extra files from the temp directory
+    # back to the package directory
+    $extraFiles = Get-ChildItem -Path $tempDir
+    foreach ($f in $extraFiles) {
+        Move-Item $f.FullName $packageDir
+    }
+    Remove-Item $tempDir -Recurse -Force
+}
+
+function Push {
+    param (
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
+        [Parameter(Mandatory = $false, Position = 1)][String] $package = '',
+        [Parameter(Mandatory = $false, Position = 2)][String] $source = 'local'
+    )
+
+    $filter = '*.nupkg'
+    $configuration = Get-Configuration $baseDir
+
+    if ($package -eq '') {
+        # Get all packages in the current directory and sub directories
+        $packages = (Get-ChildItem -Path $baseDir -Filter $filter -Recurse)
+    }
+    else {
+        # Find packages matching the package name provided
+        $packages = Get-ChildItem -Path $baseDir -Filter $filter -Recurse | Where-Object { $_.Name -match ".*?$package.*"}
+    }
+
+    foreach ($p in $packages) {
+        $packageDir = Find-Package $baseDir $p.FullName '(.*?)[0-9\.]+\.nupkg'
+
+        $source = $configs[$packageDir]['source']
+        $apiKey = $configs[$packageDir]['apiKey']
+
+        choco push $p.FullName -s $source -k="$apiKey"
     }
 }
 

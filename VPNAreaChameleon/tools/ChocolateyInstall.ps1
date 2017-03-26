@@ -19,7 +19,7 @@ $arguments          = @{
 # Launch the AutoHotkey script that will confirm the driver warning
 Start-Process $installHelper
 
-Install-LocalOrRemote $arguments
+Install-CustomPackage $arguments
 
 if (Get-Process -Name $process) {
     Stop-Process -processname $process

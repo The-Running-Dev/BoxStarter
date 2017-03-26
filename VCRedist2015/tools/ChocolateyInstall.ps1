@@ -14,7 +14,7 @@ $arguments          = @{
     validExitCodes  = @(0, 1641, 3010)
 }
 
-Install-LocalOrRemote $arguments
+Install-CustomPackage $arguments
 
 $installerfile      = 'vc_redist.x64.exe'
 $url                = 'https://download.microsoft.com/download/6/A/A/6AA4EDFF-645B-48C5-81CC-ED5963AEAD48/vc_redist.x64.exe'
@@ -32,4 +32,4 @@ $arguments          = @{
     validExitCodes  = @(0, 1641, 3010)
 }
 
-Install-LocalOrRemote $arguments
+Install-CustomPackage $arguments

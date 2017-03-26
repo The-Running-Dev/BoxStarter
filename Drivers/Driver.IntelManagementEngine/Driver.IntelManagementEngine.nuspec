@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Driver.IntelManagementEngine</id>
+    <version>11.0.4.1186</version>
+    <title>Intel Management Engine Driver</title>
+    <authors>Intel</authors>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+		<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <description>
+      Intel Management Engine Drive for the AsRock X99 motherboard
+    </description>
+    <dependencies>
+      		<dependency id="boyan-choco.extension" />
+    </dependencies>
+  </metadata>
+</package>

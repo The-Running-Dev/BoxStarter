@@ -1,25 +1,22 @@
-$global:moduleName = 'InstallHelpers.psm1'
-$global:module = Join-Path (Split-Path -Parent $PSScriptRoot) $global:moduleName
+$env:moduleName = 'InstallHelpers.psm1'
+$env:ModuleUnderTest = Join-Path (Split-Path -Parent $PSScriptRoot) $env:moduleName
 
-Import-Module $global:module
-
-$global:mockedVolume = [pscustomobject] @{
-    FileSystemLabel = 'FakeVolume'
-    DriveLetter = 'Z'
-}
+Import-Module $env:ModuleUnderTest
 
 Describe "Get-Installer" {
     InModuleScope InstallHelpers {
+        function Install-ChocolateyZipPackage {}
+
         $fakeIso = 'C:\Path\Some.iso'
-        $fakeUrl = 'http://some.place.com/file.zip'
+        $fakeUrl = 'http://some.place.com/file.exe'
         $fakeInstaller = 'C:\Path\Install.exe'
         $expectedFromIso = 'Z:\Install.exe'
         $expectedFromZip = 'C:\Path\Install.exe'
 
-        Mock Get-FileExtension { 'exe' } -Verifiable
-        Mock Test-FileExists { $true } -Verifiable
-
         Context "When the File Exists" {
+            Mock Test-FileExists { $true } -Verifiable
+            Mock Get-Executable { $fakeInstaller }
+
             $result = Get-Installer @{ 'file' = $fakeInstaller}
 
             It "Should Call the Mocks" {
@@ -27,23 +24,27 @@ Describe "Get-Installer" {
             }
 
             It "Should Return the Path to the File" {
-                $result | Should Be $fakeInstaller
+                $result | Should Be  $fakeInstaller
             }
         }
         Context "When the File Does Not Exist" {
+            Mock Get-FileExtension { } -Verifiable
             Mock Test-FileExists { $false } -Verifiable
+            Mock Get-InstallerFromWeb { $fakeInstaller } -Verifiable
+
             $result = Get-Installer @{}
 
             It "Should Call the Mocks" {
                 Assert-VerifiableMocks
             }
 
-            It "Should Return Nothing" {
-                $result | Should BeNullOrEmpty
+            It "Should Return the Downloaded File" {
+                $result | Should Be $fakeInstaller
             }
         }
         Context "When the File is a Zip" {
             Mock Get-FileExtension { '.zip' } -Verifiable
+            Mock Test-FileExists { $false } -Verifiable
             Mock Get-InstallerFromZip { $expectedFromZip } -Verifiable
 
             $result = Get-Installer @{ 'file' = $fakeZip; 'executableRegEx' = $executableRegEx }
@@ -56,11 +57,9 @@ Describe "Get-Installer" {
                 $result | Should Be $expectedFromZip
             }
         }
-        Context "When the File is a Zip but the Executable is Not EXE or MSI" {
-            $fakeInstaller = 'C:\Path\Install.crap'
-            $expectedFromZip = 'C:\Path\Install.crap'
-
+        Context "When the File is a Zip" {
             Mock Get-FileExtension { '.zip' } -Verifiable
+            Mock Test-FileExists { $true } -Verifiable
             Mock Get-InstallerFromZip { $expectedFromZip } -Verifiable
 
             $result = Get-Installer @{ 'file' = $fakeZip; 'executableRegEx' = $executableRegEx }
@@ -75,6 +74,7 @@ Describe "Get-Installer" {
         }
         Context "When the File is an ISO" {
             Mock Get-FileExtension { '.iso' } -Verifiable
+            Mock Test-FileExists { $true } -Verifiable
             Mock Get-InstallerFromIso { $expectedFromIso } -Verifiable
 
             $result = Get-Installer @{'file' = $fakeIso; 'executableRegEx' = $executableRegEx}
@@ -87,9 +87,10 @@ Describe "Get-Installer" {
                 $result | Should Be $expectedFromIso
             }
         }
-        Context "When an URL Exists" {
+        Context "When the File Does Not Exist" {
+            Mock Get-FileExtension { } -Verifiable
             Mock Test-FileExists { $false } -Verifiable
-            Mock Install-ChocolateyZipPackage {}
+            Mock Get-InstallerFromWeb { $fakeInstaller } -Verifiable
 
             $result = Get-Installer @{ 'packageName' = 'fake';  'url' = $fakeUrl}
 
@@ -104,7 +105,6 @@ Describe "Get-Installer" {
         Context "When the URL is a Zip File" {
             Mock Test-FileExists { $false } -Verifiable
             Mock Get-FileExtension { '.zip' } -Verifiable
-            Mock Get-ChocolateyWebFile { $fakeInstaller }
             Mock Get-InstallerFromZip { $expectedFromZip } -Verifiable
 
             $result = Get-Installer @{ 'packageName' = 'fake'; 'url' = $fakeUrl}

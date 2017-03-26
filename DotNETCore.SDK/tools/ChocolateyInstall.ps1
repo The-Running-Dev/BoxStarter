@@ -18,5 +18,5 @@ if (Test-RegistryValue -Path 'HKLM:\SOFTWARE\Wow6432Node\dotnet\Setup\InstalledV
     Write-Host "Microsoft .NET Core SDK is already installed on your machine."
 }
 else {
-    Install-LocalOrRemote $arguments
+    Install-CustomPackage $arguments
 }

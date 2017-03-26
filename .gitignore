@@ -2,3 +2,6 @@ config.json
 Artifacts/**
 Install.exe
 Configure.exe
+.vscode/**
+Drivers/**/*.zip
+Drivers/**/*.ignore
