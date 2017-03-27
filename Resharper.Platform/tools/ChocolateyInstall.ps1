@@ -6,6 +6,7 @@ $arguments          = @{
     softwareName    = $evn:ChocolateyPackageTitle
     unzipLocation   = $env:ChocolateyPackageFolder
     file            = Join-Path $env:ChocolateyPackageFolder $installer
+    executable      = $installer
     url             = $url
     checksum        = $checksum
     fileType        = 'exe'
@@ -14,4 +15,4 @@ $arguments          = @{
     validExitCodes  = @(0, 1641, 3010)
 }
 
-Install-LocalOrRemote $arguments
+Install-CustomPackage $arguments

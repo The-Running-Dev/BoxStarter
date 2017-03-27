@@ -13,13 +13,8 @@ $packageArgs        = @{
     validExitCodes = @(0, 1641, 3010)
 }
 
-Install-ChocolateyPackage @packageArgs
-
-<#
-Install-LocalOrRemote @packageArgs
-Install-ChocolateyPackage @packageArgs
+Install-CustomPackage @packageArgs
 
 if (Get-Process -Name Dropbox) {
     Stop-Process -processname Dropbox
 }
-#>
