@@ -1,20 +1,5 @@
 $global:ahkCompiler = Join-Path $PSScriptRoot "AutoHotKey\Ahk2Exe.exe"
 
-function CompileAutoHotKey {
-    param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $directoryPath,
-        [Parameter(Mandatory = $true, Position = 2)][object] $files = @{}
-    )
-
-    if (!$files) {
-        $files = Get-ChildItem -Path $directoryPath -Filter *.ahk -Recurse
-    }
-
-    foreach ($f in $files) {
-        Start-Process $global:ahkCompiler "/in $($f.FullName)" -Wait
-    }
-}
-
 function Get-Configuration {
     param (
         [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir
@@ -102,6 +87,50 @@ function Get-DirectoryConfiguration() {
     return $baseConfiguration
 }
 
+function Get-GitHubVersion {
+    Param (
+        [Parameter(Mandatory = $true)][string] $repository,
+        [Parameter(Mandatory = $true)][string] $downloadUrlRegEx
+    )
+    $release = @{
+        Version = ''
+        DownloadUrl = ''
+    }
+
+    $releaseParams = @{
+        Uri = "https://api.github.com/repos/$repository/releases/latest";
+        Method = 'GET';
+        ContentType = 'application/json';
+        Body = (ConvertTo-Json $releaseData -Compress)
+    }
+    $servicePoint = [System.Net.ServicePointManager]::FindServicePoint($($releaseParams.Uri))
+
+    $results = Invoke-RestMethod @releaseParams
+    $assets = $result.assets
+
+    ForEach ($result in $results) {
+        $release.Version = $result.tag_name -replace '^v', ''
+
+        foreach ($url in $result.assets.browser_download_url) {
+            if ($url -match  $downloadUrlRegEx) {
+                $release.DownloadUrl = $url
+            }
+        }
+    }
+
+    $servicePoint.CloseConnectionGroup('') | Out-Null
+
+    return $release
+}
+
+function Get-LatestVersion([string] $url, [string] $versionRegEx) {
+    return $(Get-Version (Get-RedirectUrl $url) $versionRegEx)
+}
+
+function Get-RedirectUrl([string] $url) {
+    return ((Get-WebURL -Url $url).ResponseUri).AbsoluteUri
+}
+
 function Get-SourceConfiguration() {
     param (
         [Parameter(Mandatory = $true, Position = 0)][Hashtable] $configuration,
@@ -115,37 +144,22 @@ function Get-SourceConfiguration() {
     return $configuration.local
 }
 
-function Package {
+function Get-Version([string] $url, [string] $versionRegEx) {
+    return $($url -replace $versionRegEx, '$1')
+}
+
+function CompileAutoHotKey {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
-        [Parameter(Mandatory = $false, Position = 1)][String] $package = '',
-        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local',
-        [Parameter(Mandatory = $false, Position = 3)][String] $embed = ''
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $directoryPath,
+        [Parameter(Mandatory = $true, Position = 2)][object] $files = @{}
     )
 
-    $filter = '*.nuspec'
-    $configuration = Get-Configuration $baseDir
-
-    if ($package -eq '') {
-        # Get all packages in the current directory and sub directories
-        $packages = (Get-ChildItem -Path $baseDir -Filter $filter -Recurse)
-    }
-    else {
-        # Find packages matching the package name provided
-        $packages = Get-ChildItem -Path $baseDir -Filter $filter -Recurse | Where-Object { $_.Name -match ".*?$package.*"}
+    if (!$files) {
+        $files = Get-ChildItem -Path $directoryPath -Filter *.ahk -Recurse
     }
 
-    foreach ($p in $packages) {
-        $currentDir = Split-Path -Parent $p.FullName
-        $sourceConfiguration = Get-SourceConfiguration $configuration[$currentDir] $sourceType
-
-        # Allow the embed paramter to be overwritten
-        if ($embed) {
-            # If it's set to 1, true or yes, it's true, otherwise false
-            $sourceConfiguration.embed = @{ $true = $true; $false = $false }['1,true,yes' -Match $embed]
-        }
-
-        Pack $p.FullName $sourceConfiguration $configuration[$currentDir]['artifacts']
+    foreach ($f in $files) {
+        Start-Process $global:ahkCompiler "/in $($f.FullName)" -Wait
     }
 }
 
@@ -198,6 +212,40 @@ function Pack {
         Move-Item $f.FullName $packageDir
     }
     Remove-Item $tempDir -Recurse -Force
+}
+
+function Package {
+    param (
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
+        [Parameter(Mandatory = $false, Position = 1)][String] $package = '',
+        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local',
+        [Parameter(Mandatory = $false, Position = 3)][String] $embed = ''
+    )
+
+    $filter = '*.nuspec'
+    $configuration = Get-Configuration $baseDir
+
+    if ($package -eq '') {
+        # Get all packages in the current directory and sub directories
+        $packages = (Get-ChildItem -Path $baseDir -Filter $filter -Recurse)
+    }
+    else {
+        # Find packages matching the package name provided
+        $packages = Get-ChildItem -Path $baseDir -Filter $filter -Recurse | Where-Object { $_.Name -match ".*?$package.*"}
+    }
+
+    foreach ($p in $packages) {
+        $currentDir = Split-Path -Parent $p.FullName
+        $sourceConfiguration = Get-SourceConfiguration $configuration[$currentDir] $sourceType
+
+        # Allow the embed paramter to be overwritten
+        if ($embed) {
+            # If it's set to 1, true or yes, it's true, otherwise false
+            $sourceConfiguration.embed = @{ $true = $true; $false = $false }['1,true,yes' -Match $embed]
+        }
+
+        Pack $p.FullName $sourceConfiguration $configuration[$currentDir]['artifacts']
+    }
 }
 
 function Push {

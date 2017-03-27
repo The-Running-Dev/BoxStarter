@@ -1,17 +1,11 @@
 Import-Module au
 
-$global:getBetaVersion = $false
-$global:stableVersionDownloadUri = 'https://www.dropbox.com/download?full=1&plat=win'
-$global:stableVersionRegEx = '.*Dropbox%20([0-9\.]+).*'
-$global:betaVersionReleasePageUri = 'https://www.dropboxforum.com/t5/Desktop-client-builds/bd-p/101003016'
-$global:betaVersionDownloadUri = 'https://clientupdates.dropboxstatic.com/client/Dropbox%20$($betaVersion)%20Offline%20Installer.exe'
-$global:betaVersionRegEx = '.*Beta-Build-([0-9\.\-]+).*'
+$global:stableVersionDownloadUri = 'https://www.binaryfortress.com/Data/Download/?package=clipboardfusion&log=104'
+$global:stableVersionRegEx = '.*ClipboardFusionSetup-([0-9\.\-]+)\.exe$'
 
-function global:Get-FirstBetaLink([string] $uri, [string] $regEx) {
-  $html = Invoke-WebRequest -UseBasicParsing -Uri $uri
-
-  return $html.links | Where-Object { $_.href -match $regEx } | Select-Object -First 1
-}
+$global:getBetaVersion = $true
+$global:betaVersionDownloadUri = 'https://www.binaryfortress.com/Data/Download/?package=clipboardfusion&beta=1&log=104'
+$global:betaVersionRegEx = '.*ClipboardFusionSetup-([0-9\.\-]+)-Beta([0-9]+).*'
 
 function au_BeforeUpdate() {
   $Latest.Checksum32 = Get-RemoteChecksum $Latest.Url32
@@ -30,8 +24,8 @@ function global:au_SearchReplace {
 
 function global:au_GetLatest {
   if ($global:getBetaVersion) {
-    $betaVersion = ((Get-FirstBetaLink $global:betaVersionReleasePageUri $global:betaVersionRegEx) -replace $global:betaVersionRegEx, '$1') -replace '-', '.'
-    $betaVersionDownloadUri = $ExecutionContext.InvokeCommand.ExpandString($global:betaVersionDownloadUri)
+    $betaVersionDownloadUri = ((Get-WebURL -Url $global:betaVersionDownloadUri).ResponseUri).AbsoluteUri
+    $betaVersion = $($betaVersionDownloadUri -replace $global:betaVersionRegEx, '$1.$2')
 
     return @{ Url32 = $betaVersionDownloadUri; Version = $betaVersion }
   }
