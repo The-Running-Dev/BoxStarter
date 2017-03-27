@@ -5,13 +5,13 @@ function Get-Configuration {
         [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir
     )
 
-    $ecludeDirectoriesRegEx = 'tools|extensions|.vscode|tests|plugins'
+    $ecludeDirectoriesRegEx = 'tools|\.git|\.vscode|^extensions|^tests|^plugins'
     $configuration = @{}
     $configuration[$baseDir] = Get-DirectoryConfiguration $baseDir
 
     # Get all the sub directories and set configuration default
     # to the base directory unless the sub directory has it's own configuration
-    $subDirectories = Get-ChildItem -Recurse -Directory | Where-Object { $_.Name -notmatch $ecludeDirectoriesRegEx } | Select-Object Parent, Name, FullName
+    $subDirectories = Get-ChildItem -Recurse -Directory | Where-Object { $_.FullName -notmatch $ecludeDirectoriesRegEx } | Select-Object Parent, Name, FullName
     foreach ($dir in $subDirectories) {
         $currentDir = $dir.FullName
         $configuration[$currentDir] = Get-DirectoryConfiguration $currentDir $configuration[$baseDir]
@@ -252,7 +252,7 @@ function Push {
     param (
         [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
         [Parameter(Mandatory = $false, Position = 1)][String] $package = '',
-        [Parameter(Mandatory = $false, Position = 2)][String] $source = 'local'
+        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
     )
 
     $filter = '*.nupkg'
@@ -268,10 +268,12 @@ function Push {
     }
 
     foreach ($p in $packages) {
-        $packageDir = Find-Package $baseDir $p.FullName '(.*?)[0-9\.]+\.nupkg'
+        $packageName = $($p.Name -replace '(.*?)[0-9\.]+\.nupkg', '$1')
+        $packageDir = Get-ChildItem -Recurse -Directory | Where-Object { $_.Name -eq $packageName } | Select-Object Parent, Name, FullName
+        $sourceConfiguration = Get-SourceConfiguration $configuration[$packageDir.FullName] $sourceType
 
-        $source = $configs[$packageDir]['source']
-        $apiKey = $configs[$packageDir]['apiKey']
+        $source = $sourceConfiguration['source']
+        $apiKey = $sourceConfiguration['apiKey']
 
         choco push $p.FullName -s $source -k="$apiKey"
     }
