@@ -1,21 +1,6 @@
-Import-Module au
+Import-Module AU
 
-$global:getBetaVersion = $false
-$global:stableVersionDownloadUri = 'https://www.dropbox.com/download?full=1&plat=win'
-$global:stableVersionRegEx = '.*Dropbox%20([0-9\.]+).*'
-$global:betaVersionReleasePageUri = 'https://www.dropboxforum.com/t5/Desktop-client-builds/bd-p/101003016'
-$global:betaVersionDownloadUri = 'https://clientupdates.dropboxstatic.com/client/Dropbox%20$($betaVersion)%20Offline%20Installer.exe'
-$global:betaVersionRegEx = '.*Beta-Build-([0-9\.\-]+).*'
-
-function global:Get-FirstBetaLink([string] $uri, [string] $regEx) {
-  $html = Invoke-WebRequest -UseBasicParsing -Uri $uri
-
-  return $html.links | Where-Object { $_.href -match $regEx } | Select-Object -First 1
-}
-
-function au_BeforeUpdate() {
-  $Latest.Checksum32 = Get-RemoteChecksum $Latest.Url32
-}
+$releasesUrl = 'https://vscode-update.azurewebsites.net/api/update/win32/stable/VERSION'
 
 function global:au_SearchReplace {
   return @{
@@ -28,17 +13,9 @@ function global:au_SearchReplace {
 }
 
 function global:au_GetLatest {
-  if ($global:getBetaVersion) {
-    $betaVersion = ((Get-FirstBetaLink $global:betaVersionReleasePageUri $global:betaVersionRegEx) -replace $global:betaVersionRegEx, '$1') -replace '-', '.'
-    $betaVersionDownloadUri = $ExecutionContext.InvokeCommand.ExpandString($global:betaVersionDownloadUri)
+    $json = Invoke-WebRequest -UseBasicParsing -Uri $releasesUrl | ConvertFrom-Json
 
-    return @{ Url32 = $betaVersionDownloadUri; Version = $betaVersion }
-  }
-
-  $stableVersionDownloadUri = ((Get-WebURL -Url $global:stableVersionDownloadUri).ResponseUri).AbsoluteUri
-  $stableVersion = $($stableVersionDownloadUri -replace $global:stableVersionRegEx, '$1')
-
-  return @{ Url32 = $stableVersionDownloadUri; Version = $stableVersion }
+    return @{ Url32 = $json.Url; Version = $json.productVersion }
 }
 
-update -ChecksumFor none
+Update-Package -ChecksumFor none -NoCheckChocoVersion

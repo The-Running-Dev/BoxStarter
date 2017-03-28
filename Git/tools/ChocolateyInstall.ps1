@@ -1,6 +1,6 @@
-﻿$installer          = 'Git-2.12.0-64-bit.exe'
-$url                = 'https://github.com/git-for-windows/git/releases/download/v2.12.0.windows.1/Git-2.12.0-64-bit.exe'
-$checksum           = '0224C1CF4FF48535FDFC2555175BE9A06C6D8B67FBF208B1C524F01252F8B13B'
+﻿$installer          = 'Git-2.12.2-64-bit.exe'
+$url                = 'https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.1/Git-2.12.2-64-bit.exe'
+$checksum           = '99492acd85bad097b5952ccfd5cb37658bf3301f5d8256f345dd10937ab07899'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $evn:ChocolateyPackageTitle
@@ -9,7 +9,7 @@ $arguments          = @{
     url             = $url
     checksum        = $checksum
     fileType        = 'exe'
-    checksumType    = 'sha256'
+    checksumType    = ''
     silentArgs      = '/VERYSILENT /NORESTART /NOCANCEL /SP- /COMPONENTS="icons,icons\quicklaunch,ext,ext\shellhere,ext\guihere,assoc,assoc_sh" /LOG'
     validExitCodes  = @(0, 1641, 3010)
 }

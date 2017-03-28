@@ -58,13 +58,17 @@
     ```
     choco install MSSQLServer2014Developer `
       -s "https://www.myget.org/F/win10;https://chocolatey.org/api/v2" `
-      -params='/SetupPath="E:\setup.exe"'
+      -params '/SetupPath="E:\setup.exe"'
     ````
 
     ```
     choco install MSSQLServer2014Developer `
       -s "https://www.myget.org/F/win10;https://chocolatey.org/api/v2" `
-      -params='/SetupPath="E:\setup.exe" /SECURITYMODE="SQL" /SAPWD="SetComplexPassword" /InstallSQLDataDir="D:\SQLData" /SQLBACKUPDIR="D:\SQLData\Backup" /SQLUSERDBDIR="D:\SQLData" /SQLTEMPDBDIR="D:\SQLData"'
+      -params '/SetupPath="E:\setup.exe" /SECURITYMODE="SQL" /SAPWD="SetComplexPassword" /InstallSQLDataDir="D:\SQLData" /SQLBACKUPDIR="D:\SQLData\Backup" /SQLUSERDBDIR="D:\SQLData" /SQLTEMPDBDIR="D:\SQLData"'
+
+    choco isnstall MSSQLServer2016Developer `
+      -s https://www.myget.org/F/win-boxstarter/api/v2/package `
+      -params "/file='Path\To\en_sql_server_2016_developer_with_service_pack_1_x64_dvd_9548071.iso'"
     ```
   * Microsoft SQL Server 2014 Express
 

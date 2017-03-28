@@ -1,8 +1,8 @@
 Import-Module AU
 
-$global:productName = 'WebStorm'
-$global:updatesUri = 'https://www.jetbrains.com/updates/updates.xml'
-$global:stableVersionDownloadUri = 'https://download.jetbrains.com/webstorm/WebStorm-$version.exe'
+$productName = 'WebStorm'
+$updatesUri = 'https://www.jetbrains.com/updates/updates.xml'
+$stableVersionDownloadUrl = 'https://download.jetbrains.com/webstorm/WebStorm-$($version).exe'
 
 function global:au_BeforeUpdate() {
   $checksumString = (New-Object System.Net.WebClient).DownloadString("$($Latest.Url32).sha256")
@@ -22,9 +22,9 @@ function global:au_SearchReplace {
 }
 
 function global:au_GetLatest {
-  [xml] $updates = (New-Object System.Net.WebClient).DownloadString($global:updatesUri)
+  [xml] $updates = (New-Object System.Net.WebClient).DownloadString($updatesUri)
   $versionInfo = $updates.products.product `
-    | ? { $_.name -eq $global:productName } `
+    | ? { $_.name -eq $productName } `
     | % { $_.channel } `
     | % { $_.build } `
     | Sort-Object { [version] $_.number } `
@@ -39,9 +39,9 @@ function global:au_GetLatest {
     $fullVersionNumber = "$($versionInfo.Version).0.0"
   }
   
-  $stableVersionDownloadUri = $ExecutionContext.InvokeCommand.ExpandString($global:stableVersionDownloadUri)
+  $stableVersionDownloadUrl = $ExecutionContext.InvokeCommand.ExpandString($stableVersionDownloadUrl)
 
-  return @{ Url32 = $stableVersionDownloadUri; Version = $fullVersionNumber }
+  return @{ Url32 = $stableVersionDownloadUrl; Version = $fullVersionNumber }
 }
 
 Update-Package -ChecksumFor none -NoCheckChocoVersion

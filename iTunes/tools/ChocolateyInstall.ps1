@@ -1,6 +1,6 @@
-$installer          = 'iTunes6464Setup.exe'
-$url                = 'https://secure-appldnld.apple.com/itunes12/031-94939-20170123-014E4004-DF1D-11E6-8CA3-56D3D55B5B9D/iTunes6464Setup.exe'
-$checksum           = '46DF29E6EEF6EEB26AFEC49BB3428AEA935EB4C8B4A79C8D1154B86FF3E02B51'
+﻿$installer          = 'iTunes6464Setup.exe'
+$url                = 'https://secure-appldnld.apple.com/itunes12/031-34005-20150916-98D38F1E-5C11-11E5-A6AD-C05A6DA99CB1/iTunes6464Setup.exe'
+$checksum           = 'f1a36984c02df41a3cfc6b2a2695fc4fae8b32bb88b4def53193870e462a7ef6'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $evn:ChocolateyPackageTitle

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>iTunes</id>
-    <version>12.5.5.20170204</version>
+    <version>12.6</version>
     <title>iTunes</title>
     <authors>Apple Inc.</authors>
     <licenseUrl>http://www.apple.com/legal/terms/site.html</licenseUrl>

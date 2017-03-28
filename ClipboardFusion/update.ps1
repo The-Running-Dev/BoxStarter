@@ -1,13 +1,13 @@
 Import-Module au
 
-$global:stableVersionDownloadUri = 'https://www.binaryfortress.com/Data/Download/?package=clipboardfusion&log=104'
-$global:stableVersionRegEx = '.*ClipboardFusionSetup-([0-9\.\-]+)\.exe$'
+$stableVersionDownloadUrl = 'https://www.binaryfortress.com/Data/Download/?package=clipboardfusion&log=104'
+$stableVersionRegEx = '.*ClipboardFusionSetup-([0-9\.\-]+)\.exe$'
 
-$global:getBetaVersion = $true
-$global:betaVersionDownloadUri = 'https://www.binaryfortress.com/Data/Download/?package=clipboardfusion&beta=1&log=104'
-$global:betaVersionRegEx = '.*ClipboardFusionSetup-([0-9\.\-]+)-Beta([0-9]+).*'
+$getBetaVersion = $true
+$betaVersionDownloadUrl = 'https://www.binaryfortress.com/Data/Download/?package=clipboardfusion&beta=1&log=104'
+$betaVersionRegEx = '.*ClipboardFusionSetup-([0-9\.\-]+)-Beta([0-9]+).*'
 
-function au_BeforeUpdate() {
+function global:au_BeforeUpdate() {
   $Latest.Checksum32 = Get-RemoteChecksum $Latest.Url32
 }
 
@@ -23,17 +23,17 @@ function global:au_SearchReplace {
 }
 
 function global:au_GetLatest {
-  if ($global:getBetaVersion) {
-    $betaVersionDownloadUri = ((Get-WebURL -Url $global:betaVersionDownloadUri).ResponseUri).AbsoluteUri
-    $betaVersion = $($betaVersionDownloadUri -replace $global:betaVersionRegEx, '$1.$2')
+  if ($getBetaVersion) {
+    $betaVersionDownloadUrl = ((Get-WebURL -Url $betaVersionDownloadUrl).ResponseUri).AbsoluteUri
+    $betaVersion = $($betaVersionDownloadUrl -replace $betaVersionRegEx, '$1.$2')
 
-    return @{ Url32 = $betaVersionDownloadUri; Version = $betaVersion }
+    return @{ Url32 = $betaVersionDownloadUrl; Version = $betaVersion }
   }
 
-  $stableVersionDownloadUri = ((Get-WebURL -Url $global:stableVersionDownloadUri).ResponseUri).AbsoluteUri
-  $stableVersion = $($stableVersionDownloadUri -replace $global:stableVersionRegEx, '$1')
+  $stableVersionDownloadUrl = ((Get-WebURL -Url $stableVersionDownloadUrl).ResponseUri).AbsoluteUri
+  $stableVersion = $($stableVersionDownloadUrl -replace $stableVersionRegEx, '$1')
 
-  return @{ Url32 = $stableVersionDownloadUri; Version = $stableVersion }
+  return @{ Url32 = $stableVersionDownloadUrl; Version = $stableVersion }
 }
 
-update -ChecksumFor none
+Update-Package -ChecksumFor none -NoCheckChocoVersion

@@ -1,4 +1,4 @@
-$installerfile      = 'VMware-workstation-full-12.5.4-5192485.exe'
+$installer          = 'VMware-workstation-full-12.5.4-5192485.exe'
 $url                = 'https://download3.vmware.com/software/wkst/file/VMware-workstation-full-12.5.4-5192485.exe'
 $checksum           = '79B88AA10A9CCD010D0FAF23F563CAA18F1BD6DDF2BA3F08CB0F92FBEA369B6D'
 $arguments          = @{
@@ -14,4 +14,4 @@ $arguments          = @{
     validExitCodes  = @(0, 1641, 3010)
 }
 
-Install-CustomPackage $arguments
+Install-LocalOrRemote $arguments

@@ -1,8 +1,10 @@
-Import-Module AU
-Import-Module (Join-Path .. 'build-helpers.psm1') -Force
+$currentDir = Split-Path -parent $MyInvocation.MyCommand.Definition
 
-$global:gitHubRepository = 'gitextensions/gitextensions'
-$global:downloadUrlRegEx = '.*SetupComplete\.msi$'
+Import-Module AU
+Import-Module (Join-Path (Split-Path -Parent $currentDir)  'build-helpers.psm1') -Force
+
+$gitHubRepository = 'gitextensions/gitextensions'
+$downloadUrlRegEx = '.*SetupComplete\.msi$'
 
 function au_BeforeUpdate() {
   $Latest.Checksum32 = Get-RemoteChecksum $Latest.Url32
@@ -20,9 +22,9 @@ function global:au_SearchReplace {
 }
 
 function global:au_GetLatest {
-  $release = GitHubVersion $global:gitHubRepository $global:downloadUrlRegEx
+  $release = Get-GitHubVersion $gitHubRepository $downloadUrlRegEx
 
   return @{ Url32 = $release.DownloadUrl; Version = $release.Version }
 }
 
-update -ChecksumFor none
+Update-Package -ChecksumFor none -NoCheckChocoVersion

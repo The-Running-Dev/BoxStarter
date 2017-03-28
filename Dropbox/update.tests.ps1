@@ -6,16 +6,16 @@ $updateScript = Join-Path $workingDir 'update.ps1'
 Describe "au_GetLatest Unit Tests" {
   BeforeAll {
     $progressPreference = 'silentlyContinue'
-    $stableVersionDownloadUri = 'https://clientupdates.dropboxstatic.com/client/Dropbox%2022.4.24%20Offline%20Installer.exe'
+    $stableVersionDownloadUrl = 'https://clientupdates.dropboxstatic.com/client/Dropbox%2022.4.24%20Offline%20Installer.exe'
     $stableVersion = '22.4.24'
     $stableVersionResponse = @{
       ResponseUri = @{
-        AbsoluteUri = $stableVersionDownloadUri
+        AbsoluteUri = $stableVersionDownloadUrl
       }
     }
     $betaVersion = '23.3.15'
     $firstBetaLink = "<a href=""/t5/Desktop-client-builds/Beta-Build-23-3-15/m-p/212932#M3806"" class=""page-link lia-link-navigation lia-custom-event"">Beta Build $($betaVersion)</a>"
-    $betaVersionDownloadUri = "https://clientupdates.dropboxstatic.com/client/Dropbox%20$($betaVersion)%20Offline%20Installer.exe"
+    $betaVersionDownloadUrl = "https://clientupdates.dropboxstatic.com/client/Dropbox%20$($betaVersion)%20Offline%20Installer.exe"
   }
 
   Context "When the Stable Version is Requsted" {
@@ -30,7 +30,7 @@ Describe "au_GetLatest Unit Tests" {
     }
 
     It "Should Parse the Stable Version" {
-        ($versionInfo | Out-String) | Should Be $(@{ URL32 = $stableVersionDownloadUri; Version = $stableVersion } | Out-String)
+        ($versionInfo | Out-String) | Should Be $(@{ URL32 = $stableVersionDownloadUrl; Version = $stableVersion } | Out-String)
     }
   }
   Context "When the Beta Version is Requsted" {
@@ -45,7 +45,7 @@ Describe "au_GetLatest Unit Tests" {
     }
 
     It "Should Parse the Beta Version" {
-        ($versionInfo | Out-String) | Should Be $(@{ URL32 = $betaVersionDownloadUri; Version = $betaVersion } | Out-String)
+        ($versionInfo | Out-String) | Should Be $(@{ URL32 = $betaVersionDownloadUrl; Version = $betaVersion } | Out-String)
     }
   }
   Context "When the Beta Version is Requsted" {
@@ -60,7 +60,7 @@ Describe "au_GetLatest Unit Tests" {
     }
 
     It "Should Parse the Beta Version" {
-        ($versionInfo | Out-String) | Should Be $(@{ URL32 = $betaVersionDownloadUri; Version = $betaVersion } | Out-String)
+        ($versionInfo | Out-String) | Should Be $(@{ URL32 = $betaVersionDownloadUrl; Version = $betaVersion } | Out-String)
     }
   }
   Context "When the Beta Version is Requsted" {
@@ -82,8 +82,8 @@ Describe "au_GetLatest Unit Tests" {
 Describe "au_GetLatest Integration Tests" {
   BeforeAll {
     $progressPreference = 'silentlyContinue'
-    $stableVersionDownloadUri = "https://clientupdates.dropboxstatic.com/client/Dropbox%20$($stableVersion)%20Offline%20Installer.exe"
-    $betaVersionDownloadUri = "https://clientupdates.dropboxstatic.com/client/Dropbox%20$($betaVersion)%20Offline%20Installer.exe"
+    $stableVersionDownloadUrl = "https://clientupdates.dropboxstatic.com/client/Dropbox%20$($stableVersion)%20Offline%20Installer.exe"
+    $betaVersionDownloadUrl = "https://clientupdates.dropboxstatic.com/client/Dropbox%20$($betaVersion)%20Offline%20Installer.exe"
   }
 
   Context "When the Stable Version is Requsted" {
@@ -92,7 +92,7 @@ Describe "au_GetLatest Integration Tests" {
     
     $versionInfo = au_GetLatest
     $stableVersion = $versionInfo.Version
-    $expectedUrl = $ExecutionContext.InvokeCommand.ExpandString($stableVersionDownloadUri)
+    $expectedUrl = $ExecutionContext.InvokeCommand.ExpandString($stableVersionDownloadUrl)
 
     It "Url and Version Should Be Valid" {
         $versionInfo.URL32 | Should Be $expectedUrl
@@ -104,7 +104,7 @@ Describe "au_GetLatest Integration Tests" {
 
     $versionInfo = au_GetLatest
     $betaVersion = $versionInfo.Version
-    $expectedUrl = $ExecutionContext.InvokeCommand.ExpandString($betaVersionDownloadUri)
+    $expectedUrl = $ExecutionContext.InvokeCommand.ExpandString($betaVersionDownloadUrl)
 
     It "Url and Version Should Be Valid" {
         $versionInfo.URL32 | Should Be $expectedUrl

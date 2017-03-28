@@ -1,6 +1,6 @@
-$installer          = 'node-v7.7.3-x64.msi'
-$url                = 'https://nodejs.org/dist/v7.7.3/node-v7.7.3-x64.msi'
-$checksum           = '755128B0EDFC619B6655CB2A3DBE704504E8E32B775C63DEF6B0049B3E322AE7'
+﻿$installer          = 'node-v7.7.4-x64.msi'
+$url                = 'https://nodejs.org/dist/v7.7.4/node-v7.7.4-x64.msi'
+$checksum           = '55738BB03D48318FE505847EB4675DEBE8BF90ADB1A572AD018B10702EA40819'
 $arguments = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $evn:ChocolateyPackageTitle
@@ -9,7 +9,7 @@ $arguments = @{
     url             = $url
     checksum        = $checksum
     fileType         = 'msi'
-    checksumType    = 'sha256'
+    checksumType    = ''
     silentArgs      = '/quiet'
     validExitCodes  = @(0, 1641, 3010)
 }

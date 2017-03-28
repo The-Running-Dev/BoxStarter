@@ -1,9 +1,11 @@
+$currentDir = Split-Path -parent $MyInvocation.MyCommand.Definition
+
 Import-Module AU
 
-$global:downloadUrl = 'https://download.spotify.com/SpotifyFullSetup.exe'
-$global:fileType = 'exe'
-$global:checksumType = 'sha256'
-$global:file = Join-Path . "\tools\$([System.IO.Path]::GetFileNameWithoutExtension($Latest.URL32))_x32.exe"
+$downloadUrl = 'https://download.spotify.com/SpotifyFullSetup.exe'
+$fileType = 'exe'
+$checksumType = 'sha256'
+$file = Join-Path $currentDir "tools\$([System.IO.Path]::GetFileNameWithoutExtension($Latest.URL32))_x32.exe"
 
 function global:au_SearchReplace {
   return @{
@@ -17,22 +19,22 @@ function global:au_SearchReplace {
 }
 
 function global:au_GetLatest {
-  $Latest.Url32 = $global:downloadUrl
-  $Latest.FileType = $global:fileType
-  $Latest.ChecksumType32 = $global:checksumType
+  $Latest.Url32 = $downloadUrl
+  $Latest.FileType = $fileType
+  $Latest.ChecksumType32 = $checksumType
 
   Get-RemoteFiles
 
-  if (Test-Path $global:file) {
-    $Latest.Checksum32 = (Get-FileHash $global:file -Algorithm $global:checksumType | ForEach Hash).ToLowerInvariant()
+  if (Test-Path $file) {
+    $Latest.Checksum32 = (Get-FileHash $file -Algorithm $checksumType | ForEach Hash).ToLowerInvariant()
 
-    $versionInfo = (Get-Item $global:file).VersionInfo
+    $versionInfo = (Get-Item $file).VersionInfo
     $stableVersion = $versionInfo.ProductVersion -replace '([0-9\.]+)\..*', '$1'
 
-    Remove-Item $global:file -Force
+    Remove-Item $file -Force
   }
 
   return @{ Url32 = $Latest.Url32; Version = $stableVersion }
 }
 
-update -ChecksumFor none -NoCheckChocoVersion
+Update-Package -ChecksumFor none -NoCheckChocoVersion
