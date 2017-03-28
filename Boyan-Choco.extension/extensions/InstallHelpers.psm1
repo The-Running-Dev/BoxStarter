@@ -7,12 +7,7 @@ function CleanUp([string] $isoPath) {
     }
 }
 
-function Get-Executable([string] $baseDir, [string] $fileName, [string] $regEx) {
-    if (!$fileName -and !$regEx) {
-        Write-Debug 'No filename or regular expression provided...aborting'
-        return
-    }
-
+function Get-BaseDirectory([string] $baseDir) {
     # If the base directory does not exist, try to find it
     if (!(Test-DirectoryExists $baseDir)) {
         # Set the base directory to the script grand parent
@@ -29,15 +24,27 @@ function Get-Executable([string] $baseDir, [string] $fileName, [string] $regEx) 
         }
     }
 
+    return $baseDir
+}
+
+function Get-Executable([string] $baseDir, [string] $fileName, [string] $regEx) {
+    if (!$fileName -and !$regEx) {
+        Write-Debug 'No filename or regular expression provided...aborting'
+        return
+    }
+
+    $baseDir = Get-BaseDirectory $baseDir
+
     # Set the regular expression, or use the file name as the default
     $regEx = @{ $true = $fileName; $false = $regEx }['' -ne $fileName]
 
     $files = Get-ChildItem -Path $baseDir -Recurse | Where-Object { $_.Name -match $regEx }
 
-    if ($files.Count -eq 1) {
+    # Always use the first file found
+    if ($files.Count -gt 0) {
         return $files[0].FullName
     }
-    elseif (!$files -or $files.Count -gt 1) {
+    elseif (!$files) {
         Write-Debug "No files matching ""$regEx"" found under ""$baseDir"""
         return
     }
@@ -65,7 +72,7 @@ function Get-Parameters([string] $parameters) {
             }
         }
         else {
-            Throw "Package Parameters Were Found but Were Invalid."
+            Throw "Package parameters were found but were invalid."
         }
     }
 
@@ -82,7 +89,7 @@ function Get-Installer {
     )
 
     $url = @{$true = $arguments['url']; $false = ''}[$null -ne $arguments['url']]
-    $file = @{$true = $arguments['file']; $false = (Get-FileName $url)}[(Test-FileExists $arguments['file'])]
+    $file = @{$true = $arguments['file']; $false = (Get-FileName $url)}[$null -ne $arguments['file']]
     $executable = @{$true = $arguments['executable']; $false = $file}[$null -ne $arguments['executable']]
     $executableRegEx = @{$true = $arguments['executableRegEx']; $false = ''}[$null -ne $arguments['executableRegEx']]
     $unzipLocation = @{$true = $arguments['unzipLocation']; $false = ''}[$null -ne $arguments['unzipLocation']]
@@ -107,17 +114,33 @@ function Get-Installer {
 
 function Get-InstallerFromIso([Hashtable] $arguments) {
     $file = @{$true = $arguments['file']; $false = ''}[$null -ne $arguments['file']]
+    $baseDir = @{$true = $arguments['unzipLocation']; $false = ''}[$null -ne $arguments['unzipLocation']]
     $executable = @{$true = $arguments['executable']; $false = ''}[$null -ne $arguments['executable']]
     $executableRegEx = @{$true = $arguments['executableRegEx']; $false = ''}[$null -ne $arguments['executableRegEx']]
+    $isoPath = $file
+
+    if (![System.IO.Path]::IsPathRooted($file)) {
+        $isoPath = Join-Path (Get-BaseDirectory) $file
+
+        # No ISO found in the package
+        if (!(Test-Path $isoPath)) {
+            # Reset the base directory
+            $isoPath = Join-Path (Get-BaseDirectory '') $file
+
+            if (!(Test-Path $isoPath)) {
+                return
+            }
+        }
+    }
 
     $global:mustDismountIso = $true
-    $global:isoPath = $path
+    $global:isoPath = $isoPath
 
-    #$mountedIso = Mount-DiskImage -PassThru $path
-    $diskImage = Get-DiskImage -ImagePath $file
-    $driveLetter = $diskImage | Get-Volume | Select-Object -expand DriveLetter
+    $iso = Mount-DiskImage $isoPath -PassThru
+    $driveLetter = ($iso | Get-Volume).DriveLetter
+    Get-PSDrive | Out-Null
 
-    return Get-Executable "^$driveLetter`:\" $executable $exeRegEx
+    return Get-Executable "$driveLetter`:\" $executable $exeRegEx
 }
 
 function Get-InstallerFromWeb([Hashtable] $arguments) {
@@ -157,7 +180,10 @@ function Install-CustomPackage() {
         [Hashtable] $arguments
     )
 
-    $arguments['file'] = Get-Installer $arguments
+    try {
+        $arguments['file'] = Get-Installer $arguments
+    }
+    catch {}
 
     if (Test-FileExists $arguments['file']) {
         Install-ChocolateyInstallPackage @arguments
@@ -165,6 +191,7 @@ function Install-CustomPackage() {
         CleanUp
     }
     else {
+        CleanUp
         throw 'No Installer or Url Provided. Aborting...'
     }
 }
@@ -194,7 +221,6 @@ function Install-WithScheduledTask() {
     )
 
     $arguments['file'] = Get-Installer $arguments
-    Write-Host "FROM: $($arguments['file'])"
 
     if (Test-FileExists $arguments['file']) {
         Write-Debug "Installing from: $($arguments['file'])"
