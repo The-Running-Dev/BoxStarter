@@ -1,25 +1,14 @@
-Import-Module au
+Import-Module AU
 
-$global:getBetaVersion = $false
-$global:stableVersionDownloadUri = 'https://www.dropbox.com/download?full=1&plat=win'
-$global:stableVersionRegEx = '.*Dropbox%20([0-9\.]+).*'
-$global:betaVersionReleasePageUri = 'https://www.dropboxforum.com/t5/Desktop-client-builds/bd-p/101003016'
-$global:betaVersionDownloadUri = 'https://clientupdates.dropboxstatic.com/client/Dropbox%20$($betaVersion)%20Offline%20Installer.exe'
-$global:betaVersionRegEx = '.*Beta-Build-([0-9\.\-]+).*'
-
-function global:Get-FirstBetaLink([string] $uri, [string] $regEx) {
-  $html = Invoke-WebRequest -UseBasicParsing -Uri $uri
-
-  return $html.links | Where-Object { $_.href -match $regEx } | Select-Object -First 1
-}
-
-function au_BeforeUpdate() {
-  $Latest.Checksum32 = Get-RemoteChecksum $Latest.Url32
-}
+$global:downloadUrl = 'https://download.spotify.com/SpotifyFullSetup.exe'
+$global:fileType = 'exe'
+$global:checksumType = 'sha256'
+$global:file = Join-Path . "\tools\$([System.IO.Path]::GetFileNameWithoutExtension($Latest.URL32))_x32.exe"
 
 function global:au_SearchReplace {
   return @{
     ".\tools\chocolateyInstall.ps1" = @{
+      "(?i)(^[$]installer\s*=\s*)('.*')" = "`$1'$([System.IO.Path]::GetFileName($Latest.URL32))'"
       "(?i)(^[$]url\s*=\s*)('.*')" = "`$1'$($Latest.URL32)'"
       "(?i)(^[$]checksum\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
       "(?i)(^\s*checksumType\s*=\s*)('.*')" = "`$1'$($Latest.ChecksumType32)'"
@@ -28,17 +17,22 @@ function global:au_SearchReplace {
 }
 
 function global:au_GetLatest {
-  if ($global:getBetaVersion) {
-    $betaVersion = ((Get-FirstBetaLink $global:betaVersionReleasePageUri $global:betaVersionRegEx) -replace $global:betaVersionRegEx, '$1') -replace '-', '.'
-    $betaVersionDownloadUri = $ExecutionContext.InvokeCommand.ExpandString($global:betaVersionDownloadUri)
+  $Latest.Url32 = $global:downloadUrl
+  $Latest.FileType = $global:fileType
+  $Latest.ChecksumType32 = $global:checksumType
 
-    return @{ Url32 = $betaVersionDownloadUri; Version = $betaVersion }
+  Get-RemoteFiles
+
+  if (Test-Path $global:file) {
+    $Latest.Checksum32 = (Get-FileHash $global:file -Algorithm $global:checksumType | ForEach Hash).ToLowerInvariant()
+
+    $versionInfo = (Get-Item $global:file).VersionInfo
+    $stableVersion = $versionInfo.ProductVersion -replace '([0-9\.]+)\..*', '$1'
+
+    Remove-Item $global:file -Force
   }
 
-  $stableVersionDownloadUri = ((Get-WebURL -Url $global:stableVersionDownloadUri).ResponseUri).AbsoluteUri
-  $stableVersion = $($stableVersionDownloadUri -replace $global:stableVersionRegEx, '$1')
-
-  return @{ Url32 = $stableVersionDownloadUri; Version = $stableVersion }
+  return @{ Url32 = $Latest.Url32; Version = $stableVersion }
 }
 
-update -ChecksumFor none
+update -ChecksumFor none -NoCheckChocoVersion

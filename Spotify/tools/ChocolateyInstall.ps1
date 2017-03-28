@@ -1,6 +1,6 @@
-$installer          = 'SpotifyFullSetup.exe'
+﻿$installer          = 'SpotifyFullSetup.exe'
 $url                = 'https://download.spotify.com/SpotifyFullSetup.exe'
-$checksum           = 'E69C3B92A6FBFEB8A43C5D66512DEB9F47EFADD57490E51658C4F066864FDE37'
+$checksum           = '56acd50df0d3e4706abb04f8952536dbb8fab627a54df53019e47884af024d0d'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $evn:ChocolateyPackageTitle
