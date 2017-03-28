@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>MSSQLServer2016Developer</id>
+    <version>13.0.4422.0</version>
+    <title>SQL Server 2016 Developer with SP1</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.microsoft.com/en-us/sql-server/sql-server-editions-developers</projectUrl>
+    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
+    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <iconUrl>https://github.com/Boyan-Kostadinov/Packages</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      This package installs SQL Server 2016 Developer with SP1.
+      You can use install arguments to add additional arguments or override arguments to supply specific arguments.
+    </description>
+    <summary>Installs SQL Server 2016 Developer with SP1</summary>
+    <tags>mssql sql server 2016 developer sp1</tags>
+    <dependencies>
+      <dependency id="boyan-choco.extension" />
+    </dependencies>
+  </metadata>
+</package>

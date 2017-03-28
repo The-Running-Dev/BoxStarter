@@ -112,7 +112,7 @@ function Get-GitHubVersion {
         $release.Version = $result.tag_name -replace '^v', ''
 
         foreach ($url in $result.assets.browser_download_url) {
-            if ($url -match  $downloadUrlRegEx) {
+            if ($url -match $downloadUrlRegEx) {
                 $release.DownloadUrl = $url
             }
         }
@@ -170,26 +170,30 @@ function Pack {
         [Parameter(Mandatory = $true, Position = 2)][ValidateNotNullOrEmpty()][string] $outputPath
     )
 
-    $excludeFilter = @('*.nuspec', 'tools', 'extensions')
-    $excludeFilterForEmbeddedPackages = @('*.nuspec', 'tools', 'extensions', '*.zip', '*.msi', '*.exe')
+    $packageFilesFilter = @('*.nuspec', 'tools', 'extensions', '*.ini')
+    $packageFilesFilterForEmbeddedPackages = @('*.nuspec', 'tools', 'extensions', '*.zip', '*.msi', '*.exe', '*.ini')
     $packageId = (Split-Path -Leaf $nuSpec) -replace '.nuspec', ''
     $packageDir = Split-Path -Parent $nuSpec
     $tempDir = Join-Path $env:Temp $packageId
     $embedPackage = $config.embed
 
     if ($embedPackage) {
-        $excludeFilter = $excludeFilterForEmbeddedPackages
+        $packageFilesFilter = $packageFilesFilterForEmbeddedPackages
     }
 
     if (![System.IO.Directory]::Exists($outputPath)) {
         New-Item -Path $outputPath -ItemType Directory
     }
 
+    if (Test-Path $tempDir) {
+        Remove-Item $tempDir -Force -Recurse
+    }
+
     # Create a temporaty directory for the package
     # and move all the extra files from the package directory
     # so they don't become part of the package
     New-Item -ItemType Directory $tempDir -Force | Out-Null
-    $extraFiles = Get-ChildItem -Path $packageDir -Exclude $excludeFilter
+    $extraFiles = Get-ChildItem -Path $packageDir -Exclude $packageFilesFilter
     foreach ($f in $extraFiles) {
         Move-Item $f.FullName $tempDir
     }
