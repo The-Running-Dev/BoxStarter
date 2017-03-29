@@ -10,7 +10,7 @@ $arguments          = @{
     url             = $url
     checksum        = $checksum
     fileType        = 'exe'
-    checksumType    = ''
+    checksumType    = 'sha256'
     silentArgs      = '-si'
     validExitCodes  = @(0, 1641, 3010)
 }

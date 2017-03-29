@@ -9,7 +9,7 @@ $arguments          = @{
     url             = $url
     checksum        = $checksum
     fileType        = 'exe'
-    checksumType    = ''
+    checksumType    = 'sha256'
     silentArgs      = '/VERYSILENT /NORESTART /NOCANCEL /SP- /COMPONENTS="icons,icons\quicklaunch,ext,ext\shellhere,ext\guihere,assoc,assoc_sh" /LOG'
     validExitCodes  = @(0, 1641, 3010)
 }

@@ -1,6 +1,6 @@
 ﻿$installer          = 'ClipboardFusionSetup-5.0-Beta4.exe'
 $url                = 'https://binaryfortressdownloads.com/Download/BFSFiles/104/ClipboardFusionSetup-5.0-Beta4.exe'
-$checksum           = '8bc560e85a844f6fd0412e6bd43028f30cb6acd14afe4092f02c70072e69bea9'
+$checksum           = '732A157BD32C1B7679103FD59CC07D60E251354ED000E082113D60BEEE8C1F56'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $evn:ChocolateyPackageTitle

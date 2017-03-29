@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>JRE</id>
-    <version>8.0.121</version>
+    <version>8.121</version>
     <title>Java SE Runtime Environment</title>
     <authors>Oracle</authors>
     <licenseUrl>http://www.oracle.com/technetwork/java/javase/terms/license/index.html</licenseUrl>
@@ -15,9 +15,9 @@
     ### Note
     This package installs the Java version offered at https://www.java.com. It also sets `SPONSORS=0` and uninstalls previous versions of Java with REMOVEOUTOFDATEJRES=1 ([see docs](http://docs.oracle.com/javase/7/docs/webnotes/install/windows/jre-installer-options.html#running)).
 
-    If you wish to only install the 32-bit version of Java use the /exclude parameter. The switch to exclude 32-bit is /exclude:32 and to exclude 64-bit /exclude:64 
+    If you wish to only install the 32-bit version of Java use the /exclude parameter. The switch to exclude 32-bit is /exclude:32 and to exclude 64-bit /exclude:64
     For example: choco install jre8 -PackageParameters "/exclude:64" -y
-    This package no longer manually adds an environment variable. 
+    This package no longer manually adds an environment variable.
 
     This package can install 32-bit, 64-bit, or both versions.
     </description>

@@ -1,22 +1,16 @@
 Import-Module AU
 
-$releasesUrl = 'http://www.filehorse.com/download-vmware-workstation/'
-$downloadUrl = 'https://download3.vmware.com/software/wkst/file/VMware-workstation-full-$($fileVersion).exe'
-$versionRegEx = '.*VMware Workstation ([0-9\.]+) Build ([0-9]+)'
-
 $currentDir = Split-Path -parent $MyInvocation.MyCommand.Definition
-$downloadFile = Join-Path $currentDir "tools\$([System.IO.Path]::GetFileNameWithoutExtension($Latest.URL32))_x32.exe"
 $packagesDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter'
 $installersDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter\Installers'
-$file = Join-Path $installersDir $([System.IO.Path]::GetFileName($Latest.Url32))
 
 function global:au_BeforeUpdate {
+    $downloadFile = Join-Path $currentDir "tools\$([System.IO.Path]::GetFileNameWithoutExtension($Latest.URL32))_x32.exe"
+    $file = Join-Path $installersDir $([System.IO.Path]::GetFileName($Latest.Url32))
+
     Get-RemoteFiles
 
     Move-Item $downloadFile $file -Force
-
-    $Latest.ChecksumType32 = 'sha256'
-    $Latest.Checksum32 = (Get-FileHash $file -Algorithm $Latest.ChecksumType32 | ForEach-Object Hash).ToLowerInvariant()
 }
 
 function global:au_AfterUpdate {
@@ -29,12 +23,15 @@ function global:au_SearchReplace {
             "(?i)(^[$]installer\s*=\s*)('.*')" = "`$1'$([System.IO.Path]::GetFileName($Latest.Url32))'"
             "(?i)(^[$]url\s*=\s*)('.*')" = "`$1'$($Latest.Url32)'"
             "(?i)(^[$]checksum\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
-            "(?i)(^\s*checksumType\s*=\s*)('.*')" = "`$1'$($Latest.ChecksumType32)'"
         }
     }
 }
 
 function global:au_GetLatest {
+    $releasesUrl = 'http://www.filehorse.com/download-vmware-workstation/'
+    $downloadUrl = 'https://download3.vmware.com/software/wkst/file/VMware-workstation-full-$($fileVersion).exe'
+    $versionRegEx = '.*VMware Workstation ([0-9\.]+) Build ([0-9]+)'
+
     $html = Invoke-WebRequest -UseBasicParsing -Uri $releasesUrl
     $versionInfo = [regex]::match($html.Content, $versionRegEx)
     $version = $versionInfo.Groups[1].Value
