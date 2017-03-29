@@ -9,7 +9,7 @@
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
     <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
     <description>
-    Installs the Spotify Windows Client.
+    Spotify Windows Client
     </description>
     <dependencies>
       <dependency id="boyan-choco.extension" />

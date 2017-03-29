@@ -1,13 +1,26 @@
-$currentDir = Split-Path -parent $MyInvocation.MyCommand.Definition
-
 Import-Module AU
-Import-Module (Join-Path (Split-Path -Parent $currentDir)  'build-helpers.psm1') -Force
+Import-Module (Join-Path (Split-Path -Parent ( Split-Path -parent $MyInvocation.MyCommand.Definition)) 'build-helpers.psm1')
 
 $gitHubRepository = 'gitextensions/gitextensions'
 $downloadUrlRegEx = '.*SetupComplete\.msi$'
 
-function au_BeforeUpdate() {
-  $Latest.Checksum32 = Get-RemoteChecksum $Latest.Url32
+$currentDir = Split-Path -parent $MyInvocation.MyCommand.Definition
+$downloadFile = Join-Path $currentDir "tools\$([System.IO.Path]::GetFileNameWithoutExtension($Latest.URL32))_x32.exe"
+$packagesDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter'
+$installersDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter\Installers'
+$file = Join-Path $installersDir $([System.IO.Path]::GetFileName($Latest.Url32))
+
+function global:au_BeforeUpdate {
+    Get-RemoteFiles
+
+    Move-Item $downloadFile $file -Force
+
+    $Latest.ChecksumType32 = 'sha256'
+    $Latest.Checksum32 = (Get-FileHash $file -Algorithm $Latest.ChecksumType32 | ForEach-Object Hash).ToLowerInvariant()
+}
+
+function global:au_AfterUpdate {
+    Get-ChildItem $currentDir -Filter '*.nupkg' | ForEach-Object { Move-Item $_.FullName $packagesDir -Force }
 }
 
 function global:au_SearchReplace {

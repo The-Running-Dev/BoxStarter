@@ -1,6 +1,6 @@
-$installer          = 'Razer_Synapse_Framework_V2.20.15.1104.exe'
-$url                = 'http://dl.razerzone.com/drivers/Synapse2/win/Razer_Synapse_Framework_V2.20.15.1104.exe'
-$checksum           = 'A568786FEE965F8AC2B8F9942521E1D2B08EFFC566D8471917C2233FEA49700F'
+﻿$installer          = 'Razer_Synapse_Framework_V2.20.17.302.exe'
+$url                = 'http://dl.razerzone.com/drivers/Synapse2/win/Razer_Synapse_Framework_V2.20.17.302.exe'
+$checksum           = 'af4c3b0607aacef6d4496f9b8e4f37f2a9d01c965435a708c5d8faff7bb26435'
 $installerScript    = Join-Path $packageDir 'Install.exe'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
@@ -10,7 +10,7 @@ $arguments          = @{
     url             = $url
     checksum        = $checksum
     fileType        = 'exe'
-    checksumType    = 'sha256'
+    checksumType    = ''
     silentArgs      = '/s'
     validExitCodes  = @(0, 1641, 3010)
 }

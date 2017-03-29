@@ -1,1 +1,0 @@
-https://lastpass.com/download/cdn/lastappinstall_x64.exe.*Version 3.1.40

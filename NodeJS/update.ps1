@@ -3,21 +3,23 @@ Import-Module AU
 $releasesUrl = 'https://nodejs.org/en/download/current/'
 $versionRegEx = 'node-v(.+)-x64.msi'
 
+$currentDir = Split-Path -parent $MyInvocation.MyCommand.Definition
+$downloadFile = Join-Path $currentDir "tools\$([System.IO.Path]::GetFileNameWithoutExtension($Latest.URL32))_x32.exe"
+$packagesDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter'
+$installersDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter\Installers'
+$file = Join-Path $installersDir $([System.IO.Path]::GetFileName($Latest.Url32))
+
 function global:au_BeforeUpdate {
-    Remove-Item "$PSScriptRoot\tools\*.msi"
+    Get-RemoteFiles
 
-    $client = New-Object System.Net.WebClient
-    try
-    {
-        $filePath32 = "$PSScriptRoot\tools\$($Latest.FileName32)"
-        $client.DownloadFile($Latest.Url32, $filePath32)
-    }
-    finally
-    {
-        $client.Dispose()
-    }
+    Move-Item $downloadFile $file -Force
 
-    $Latest.Checksum32 = Get-FileHash -Algorithm $Latest.ChecksumType -Path $filePath32 | ForEach-Object Hash
+    $Latest.ChecksumType32 = 'sha256'
+    $Latest.Checksum32 = (Get-FileHash $file -Algorithm $Latest.ChecksumType32 | ForEach-Object Hash).ToLowerInvariant()
+}
+
+function global:au_AfterUpdate {
+    Get-ChildItem $currentDir -Filter '*.nupkg' | ForEach-Object { Move-Item $_.FullName $packagesDir -Force }
 }
 
 function global:au_SearchReplace {
@@ -35,9 +37,6 @@ function global:au_GetLatest {
   $downloadPage = Invoke-WebRequest -Uri $releasesUrl -UseBasicParsing
   $url = $downloadPage.links | Where-Object href -match $versionRegEx | Select-Object -First 1 -expand href
   $version = $matches[1]
-  
-  $Latest.ChecksumType = 'sha256'  
-  $Latest.FileName32 = [IO.Path]::GetFileName($url)
 
   return @{ Url32 = $url; Version = $version }
 }

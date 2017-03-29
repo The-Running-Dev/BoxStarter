@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>WebStorm</id>
-    <version>2017.1.0.0</version>
+    <version>2017.1</version>
     <title>JetBrains Web Storm</title>
     <authors>JetBrains</authors>
     <projectUrl>https://www.jetbrains.com/webstorm</projectUrl>
     <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
     <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
     <description>
-      This package installs JetBrains Web Storm.
+    JetBrains WebStorm
     </description>
     <dependencies>
       <dependency id="boyan-choco.extension" />

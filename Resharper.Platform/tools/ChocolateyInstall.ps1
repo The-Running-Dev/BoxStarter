@@ -1,5 +1,5 @@
-$installer          = 'JetBrains.ReSharperUltimate.2016.3.2.exe'
-$url                = 'https://download.jetbrains.com/resharper/JetBrains.ReSharperUltimate.2016.3.2.exe'
+﻿$installer          = 'JetBrains.ReSharperUltimate.2016.3.2.exe'
+$url                = 'https://download-cf.jetbrains.com/resharper/JetBrains.ReSharperUltimate.2016.3.2.exe'
 $checksum           = '81a83904e0afb1724ff3191941aae22ffc923538f99f004a1ffa968d09982f52'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName

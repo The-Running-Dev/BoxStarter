@@ -1,6 +1,6 @@
-$installer          = 'SlackSetup.exe'
-$url                = 'https://slack.com/ssb/download-win64'
-$checksum           = '93550137712F4D5E6D6F5E0ED17F5AE2DA561CDC8A2A43FE64F64024B14F01E8'
+﻿$installer          = 'SlackSetup.exe'
+$url                = 'https://downloads.slack-edge.com/releases_x64/SlackSetup.exe'
+$checksum           = 'ea1d6a7f8ea1b6b18fdfa6387a21ae3f56666c8423ab5e7744c3d4b4337baf18'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $evn:ChocolateyPackageTitle
