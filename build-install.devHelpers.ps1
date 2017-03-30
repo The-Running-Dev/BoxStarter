@@ -1,4 +1,3 @@
-& .\build.ps1 DevHelpers
+& .\build-push.ps1 DevHelpers.extension
 
-choco uninstall DevHelpers.extension -f
-choco install DevHelpers.extension -s .\Artifacts
+choco install DevHelpers.extension -f
