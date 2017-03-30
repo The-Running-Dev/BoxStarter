@@ -6,7 +6,7 @@ $installersDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter\Installers'
 
 function global:au_BeforeUpdate {
     $downloadFile = Join-Path $currentDir "tools\$([System.IO.Path]::GetFileNameWithoutExtension($Latest.URL32))_x32.exe"
-$file = Join-Path $installersDir $([System.IO.Path]::GetFileName($Latest.Url32))
+    $file = Join-Path $installersDir $([System.IO.Path]::GetFileName($Latest.Url32))
 
     Get-RemoteFiles
 
