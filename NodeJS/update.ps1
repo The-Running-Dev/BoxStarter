@@ -5,7 +5,7 @@ $packagesDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter'
 $installersDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter\Installers'
 
 function global:au_BeforeUpdate {
-    $downloadFile = Join-Path $currentDir "tools\$([System.IO.Path]::GetFileNameWithoutExtension($Latest.URL32))_x32.exe"
+    $downloadFile = Join-Path $currentDir "tools\$([System.IO.Path]::GetFileNameWithoutExtension($Latest.URL32))_x32.msi"
     $file = Join-Path $installersDir $([System.IO.Path]::GetFileName($Latest.Url32))
 
     Get-RemoteFiles
@@ -38,4 +38,4 @@ function global:au_GetLatest {
     return @{ Url32 = $url; Version = $version }
 }
 
-Update-Package -ChecksumFor none -NoCheckChocoVersion -force
+Update-Package -ChecksumFor none -NoCheckChocoVersion

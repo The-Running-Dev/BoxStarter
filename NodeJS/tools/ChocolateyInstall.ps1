@@ -1,6 +1,6 @@
-﻿$installer          = 'node-v7.7.4-x64.msi'
-$url                = 'https://nodejs.org/dist/v7.7.4/node-v7.7.4-x64.msi'
-$checksum           = '55738BB03D48318FE505847EB4675DEBE8BF90ADB1A572AD018B10702EA40819'
+﻿$installer          = 'node-v7.8.0-x64.msi'
+$url                = 'https://nodejs.org/dist/v7.8.0/node-v7.8.0-x64.msi'
+$checksum           = 'F66A1774086F31E6E9480F6DD67E31F1853A58D26970A19672B40BA0B318A442'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $evn:ChocolateyPackageTitle

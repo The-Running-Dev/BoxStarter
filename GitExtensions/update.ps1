@@ -1,11 +1,11 @@
 Import-Module AU
 Import-Module (Join-Path (Split-Path -Parent ( Split-Path -parent $MyInvocation.MyCommand.Definition)) 'build-helpers.psm1')
 
+$currentDir = Split-Path -parent $MyInvocation.MyCommand.Definition
 $packagesDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter'
 $installersDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter\Installers'
 
 function global:au_BeforeUpdate {
-    $currentDir = Split-Path -parent $MyInvocation.MyCommand.Definition
     $downloadFile = Join-Path $currentDir "tools\$([System.IO.Path]::GetFileNameWithoutExtension($Latest.Url32))_x32.msi"
     $file = Join-Path $installersDir $([System.IO.Path]::GetFileName($Latest.Url32))
 

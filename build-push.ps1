@@ -1,8 +1,8 @@
-param(
-    [string] $package,
-    [string] $source = 'local',
-    [string] $embed = ''
+param (
+    [string] $searchTerm,
+    [ValidateSet('Remote', 'Local')][String] $sourceType = 'local',
+    [ValidateSet('true', 'false')][string] $embed = 'true'
 )
 
-& .\build.ps1 $package $source $embed
-& .\push.ps1 $package $source
+& .\build.ps1 $searchTerm $sourceType $embed
+& .\push.ps1 $searchTerm $sourceType

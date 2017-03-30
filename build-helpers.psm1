@@ -11,7 +11,7 @@ function Get-Configuration {
 
     # Get all the sub directories and set configuration default
     # to the base directory unless the sub directory has it's own configuration
-    $subDirectories = Get-ChildItem -Recurse -Directory | Where-Object { $_.FullName -notmatch $ecludeDirectoriesRegEx } | Select-Object Parent, Name, FullName
+    $subDirectories = Get-ChildItem -Path $baseDir -Recurse -Directory | Where-Object { $_.FullName -notmatch $ecludeDirectoriesRegEx } | Select-Object Parent, Name, FullName
     foreach ($dir in $subDirectories) {
         $currentDir = $dir.FullName
         $configuration[$currentDir] = Get-DirectoryConfiguration $currentDir $configuration[$baseDir]
@@ -42,6 +42,7 @@ function Get-DirectoryConfiguration() {
     }
 
     $configFilePath = Join-Path $directoryPath $configFile
+
     if (Test-Path $configFilePath) {
         $configJson = (Get-Content $configFilePath -Raw) | ConvertFrom-Json
 
@@ -103,8 +104,8 @@ function Get-GitHubVersion {
         ContentType = 'application/json';
         Body = (ConvertTo-Json $releaseData -Compress)
     }
-    $servicePoint = [System.Net.ServicePointManager]::FindServicePoint($($releaseParams.Uri))
 
+    $servicePoint = [System.Net.ServicePointManager]::FindServicePoint($($releaseParams.Uri))
     $results = Invoke-RestMethod @releaseParams
     $assets = $result.assets
 
@@ -121,6 +122,22 @@ function Get-GitHubVersion {
     $servicePoint.CloseConnectionGroup('') | Out-Null
 
     return $release
+}
+
+function Get-Packages([string] $searchTerm, [string] $baseDir) {
+    if ($searchTerm -eq '') {
+        # Get all packages in the current directory and sub directories
+        $packages = (Get-ChildItem -Path $baseDir -Filter $filter -Recurse)
+    }
+    else {
+        $packages = @()
+
+        foreach ($p in $searchTerm.split(' ')) {
+            $packages += Get-ChildItem -Path $baseDir -Filter $filter -Recurse | Where-Object { $_.Name -match ".*?$p.*"}
+        }
+    }
+
+    return $packages
 }
 
 function Get-LatestVersion([string] $url, [string] $versionRegEx) {
@@ -148,14 +165,14 @@ function Get-Version([string] $url, [string] $versionRegEx) {
     return $($url -replace $versionRegEx, '$1')
 }
 
-function CompileAutoHotKey {
+function Invoke-AutoHotKey {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $directoryPath,
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
         [Parameter(Mandatory = $true, Position = 2)][object] $files = @{}
     )
 
     if (!$files) {
-        $files = Get-ChildItem -Path $directoryPath -Filter *.ahk -Recurse
+        $files = Get-ChildItem -Path $baseDir -Filter *.ahk -Recurse
     }
 
     foreach ($f in $files) {
@@ -163,22 +180,48 @@ function CompileAutoHotKey {
     }
 }
 
-function Pack {
+function New-Packages {
+    param (
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
+        [Parameter(Mandatory = $false, Position = 1)][String] $searchTerm = '',
+        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local',
+        [Parameter(Mandatory = $false, Position = 3)][String] $embed = ''
+    )
+
+    $filter = '*.nuspec'
+    $configuration = Get-Configuration $baseDir
+    $packages = Get-Packages $searchTerm $baseDir
+
+    foreach ($p in $packages) {
+        $currentDir = Split-Path -Parent $p.FullName
+        $sourceConfiguration = Get-SourceConfiguration $configuration[$currentDir] $sourceType
+
+        # Allow the embed paramter to be overwritten
+        if ($embed) {
+            # If it's set to 1, true or yes, it's true, otherwise false
+            $sourceConfiguration.embed = @{ $true = $true; $false = $false }['1,true,yes' -Match $embed]
+        }
+
+        Invoke-ChocoPack $p.FullName $sourceConfiguration $configuration[$currentDir]['artifacts']
+    }
+}
+
+function Invoke-ChocoPack {
     param (
         [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $nuSpec,
         [Parameter(Mandatory = $true, Position = 1)][ValidateNotNullOrEmpty()][Hashtable] $config,
         [Parameter(Mandatory = $true, Position = 2)][ValidateNotNullOrEmpty()][string] $outputPath
     )
 
-    $packageFilesFilter = @('*.nuspec', 'tools', 'extensions', '*.ini')
-    $packageFilesFilterForEmbeddedPackages = @('*.nuspec', 'tools', 'extensions', '*.zip', '*.msi', '*.exe', '*.ini')
+    $packageFilesFilter = @('*.nuspec', 'tools', 'extensions', '*.ini', '*.ahk')
+    $packageFilesFilterForEmbeddedPackages = @('*.zip', '*.msi', '*.exe', '*.ini')
     $packageId = (Split-Path -Leaf $nuSpec) -replace '.nuspec', ''
     $packageDir = Split-Path -Parent $nuSpec
     $tempDir = Join-Path $env:Temp $packageId
     $embedPackage = $config.embed
 
     if ($embedPackage) {
-        $packageFilesFilter = $packageFilesFilterForEmbeddedPackages
+        $packageFilesFilter += $packageFilesFilterForEmbeddedPackages
     }
 
     if (![System.IO.Directory]::Exists($outputPath)) {
@@ -201,7 +244,7 @@ function Pack {
     # Find and compile all .ahk files
     $ahkFiles = Get-ChildItem -Path $packageDir -Filter *.ahk -Recurse
     if ($ahkFiles) {
-        CompileAutoHotKey $packageDir $ahkFiles
+        Invoke-AutoHotKey $packageDir $ahkFiles
     }
 
     # Delete the package from the output path if it exists
@@ -218,62 +261,20 @@ function Pack {
     Remove-Item $tempDir -Recurse -Force
 }
 
-function Package {
+function Push-Packages {
     param (
         [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
-        [Parameter(Mandatory = $false, Position = 1)][String] $package = '',
-        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local',
-        [Parameter(Mandatory = $false, Position = 3)][String] $embed = ''
-    )
-
-    $filter = '*.nuspec'
-    $configuration = Get-Configuration $baseDir
-
-    if ($package -eq '') {
-        # Get all packages in the current directory and sub directories
-        $packages = (Get-ChildItem -Path $baseDir -Filter $filter -Recurse)
-    }
-    else {
-        # Find packages matching the package name provided
-        $packages = Get-ChildItem -Path $baseDir -Filter $filter -Recurse | Where-Object { $_.Name -match ".*?$package.*"}
-    }
-
-    foreach ($p in $packages) {
-        $currentDir = Split-Path -Parent $p.FullName
-        $sourceConfiguration = Get-SourceConfiguration $configuration[$currentDir] $sourceType
-
-        # Allow the embed paramter to be overwritten
-        if ($embed) {
-            # If it's set to 1, true or yes, it's true, otherwise false
-            $sourceConfiguration.embed = @{ $true = $true; $false = $false }['1,true,yes' -Match $embed]
-        }
-
-        Pack $p.FullName $sourceConfiguration $configuration[$currentDir]['artifacts']
-    }
-}
-
-function Push {
-    param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
-        [Parameter(Mandatory = $false, Position = 1)][String] $package = '',
+        [Parameter(Mandatory = $false, Position = 1)][String] $searchTerm = '',
         [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
     )
 
     $filter = '*.nupkg'
     $configuration = Get-Configuration $baseDir
-
-    if ($package -eq '') {
-        # Get all packages in the current directory and sub directories
-        $packages = (Get-ChildItem -Path $baseDir -Filter $filter -Recurse)
-    }
-    else {
-        # Find packages matching the package name provided
-        $packages = Get-ChildItem -Path $baseDir -Filter $filter -Recurse | Where-Object { $_.Name -match ".*?$package.*"}
-    }
+    $packages = Get-Packages $searchTerm $baseDir
 
     foreach ($p in $packages) {
         $packageName = $($p.Name -replace '(.*?)[0-9\.]+\.nupkg', '$1')
-        $packageDir = Get-ChildItem -Recurse -Directory | Where-Object { $_.Name -eq $packageName } | Select-Object Parent, Name, FullName
+        $packageDir = Get-ChildItem -Path $baseDir -Recurse -Directory | Where-Object { $_.Name -eq $packageName } | Select-Object Parent, Name, FullName
         $sourceConfiguration = Get-SourceConfiguration $configuration[$packageDir.FullName] $sourceType
 
         $source = $sourceConfiguration['source']

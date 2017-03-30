@@ -1,9 +1,8 @@
-param(
-    [string] $package,
-    [string] $source = 'local',
-    [string] $embed = ''
+param (
+    [string] $searchTerm,
+    [ValidateSet('Remote', 'Local')][String] $sourceType = 'local',
+    [ValidateSet('true', 'false')][string] $embed = 'true'
 )
-
 Import-Module (Join-Path $PSScriptRoot 'build-helpers.psm1') -Force
 
-Package $PSScriptRoot $package $source $embed
+New-Packages $PSScriptRoot $searchTerm $sourceType $embed
