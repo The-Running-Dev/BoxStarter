@@ -1,11 +1,11 @@
 $installer            = 'Acronis True Image 2017.exe'
 $installerScript      = Join-Path $env:ChocolateyPackageFolder 'Install.exe'
 $defaultSettingsFile  = Join-Path $env:ChocolateyPackageFolder 'Settings.reg'
-$parameters           = Get-Parameters $evn:packageParameters
+$parameters           = Get-Parameters $env:packageParameters
 $parameters['file']   = Get-ConfigurationFile $parameters['file'] $defaultSettingsFile
 $arguments            = @{
     packageName       = $env:ChocolateyPackageName
-    softwareName      = $evn:ChocolateyPackageTitle
+    softwareName      = $env:ChocolateyPackageTitle
     unzipLocation     = $env:ChocolateyPackageFolder
     file              = Join-Path $env:ChocolateyPackageFolder $installer
     fileType          = 'exe'

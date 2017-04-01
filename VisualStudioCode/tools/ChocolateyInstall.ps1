@@ -53,7 +53,7 @@ if ($addToPath) {
 
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
-    softwareName    = $evn:ChocolateyPackageTitle
+    softwareName    = $env:ChocolateyPackageTitle
     unzipLocation   = $env:ChocolateyPackageFolder
     file            = Join-Path $env:ChocolateyPackageFolder $installer
     url             = $url

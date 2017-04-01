@@ -10,7 +10,7 @@ if (!$parameters.ContainsKey['sqlsysadminaccounts']) {
 
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
-    softwareName    = $evn:ChocolateyPackageTitle
+    softwareName    = $env:ChocolateyPackageTitle
     unzipLocation   = $env:ChocolateyPackageFolder
     file            = 'Microsoft SQL Server 2016 Developer SP1.iso'
     executable      = 'Setup.exe'

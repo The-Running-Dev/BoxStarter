@@ -3,7 +3,7 @@ $url                = 'https://www.binaryfortress.com/Data/Download/?package=itu
 $checksum           = '2CE11CE6F3C5ED6A6B24D47C9EA346488BA5FA46AE525B31F9ADF7246E06FA1F'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
-    softwareName    = $evn:ChocolateyPackageTitle
+    softwareName    = $env:ChocolateyPackageTitle
     unzipLocation   = $env:ChocolateyPackageFolder
     file            = Join-Path $env:ChocolateyPackageFolder $installer
     url             = $url

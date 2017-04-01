@@ -3,7 +3,7 @@ $url                = 'https://go.microsoft.com/fwlink/?LinkID=835014'
 $checksum           = '0C15A66958B1FA593129E5FFCFCD0558B756187EB4767B0B06F718D0AA6F4FCE'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
-    softwareName    = $evn:ChocolateyPackageTitle
+    softwareName    = $env:ChocolateyPackageTitle
     unzipLocation   = $env:ChocolateyPackageFolder
     file            = Join-Path $env:ChocolateyPackageFolder $installer
     url             = $url

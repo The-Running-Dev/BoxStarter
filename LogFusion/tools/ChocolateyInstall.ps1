@@ -3,7 +3,7 @@ $url                  = 'https://www.binaryfortress.com/Data/Download/?package=l
 $checksum             = '5EBAA729F3763F618961FD406ED5BD1828FEE656E2D330B76B699084623BE902'
 $arguments            = @{
     packageName       = $env:ChocolateyPackageName
-    softwareName      = $evn:ChocolateyPackageTitle
+    softwareName      = $env:ChocolateyPackageTitle
     unzipLocation     = $env:ChocolateyPackageFolder
     file              = Join-Path $env:ChocolateyPackageFolder $installer
     url               = $url
