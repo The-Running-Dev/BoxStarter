@@ -150,24 +150,6 @@ param(
   if ($wrappedStatements -eq $null) { $wrappedStatements = ''}
 
   if ($exeToRun -eq 'powershell') {
-  if ($alreadyElevated) {
-        $block = @"
-      try {
-        $statements
-      } catch {
-       throw
-      }
-"@
-  
-      & $block
-      $scriptSuccess = $?
-      if (-not $scriptSuccess) {
-        return 1
-      }
-
-      return 0
-    }
-
     $exeToRun = "$($env:SystemRoot)\System32\WindowsPowerShell\v1.0\powershell.exe"
     $importChocolateyHelpers = "& import-module -name '$helpersPath\chocolateyInstaller.psm1' -Verbose:`$false | Out-Null;"
     $block = @"
@@ -311,8 +293,8 @@ Set-Alias Invoke-ChocolateyProcess Start-ChocolateyProcessAsAdmin
 # SIG # Begin signature block
 # MIIcpwYJKoZIhvcNAQcCoIIcmDCCHJQCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCA3r/YePX/khrHr
-# knxbVY9pfNU2EpoJa6IBoSOivtiWIqCCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCDy9LrFMPxuFmdU
+# jBmBiOH35ISPJbACKaKkwPbsnt6VnqCCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
 # ZnVTQ7VvlVAIMA0GCSqGSIb3DQEBCwUAMGUxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xJDAiBgNV
 # BAMTG0RpZ2lDZXJ0IEFzc3VyZWQgSUQgUm9vdCBDQTAeFw0xMzEwMjIxMjAwMDBa
@@ -444,22 +426,22 @@ Set-Alias Invoke-ChocolateyProcess Start-ChocolateyProcessAsAdmin
 # QTIgQXNzdXJlZCBJRCBDb2RlIFNpZ25pbmcgQ0ECEAawEVu18JDT8NoOYixifVgw
 # DQYJYIZIAWUDBAIBBQCggYQwGAYKKwYBBAGCNwIBDDEKMAigAoAAoQKAADAZBgkq
 # hkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgorBgEEAYI3AgELMQ4wDAYKKwYBBAGC
-# NwIBFTAvBgkqhkiG9w0BCQQxIgQgGzawVu+wbaLmvUcLDsV5mEcSvbrkSfLADwSF
-# hB0yxfYwDQYJKoZIhvcNAQEBBQAEggEAmCEz1E44woKAmQgBoJs1fwnZyyjQUJLL
-# vXOPe2/mC/qkA9ARsZU0+i6quag8cduMbJHl9qY3Uu+SWOzVMFKcqIeH/J+Mi54P
-# BPYSAQn8weDzv7iBz6U6xnwxM5oPv0vWsCKYyVYKOOKq8zRkGSqwQrj8+HlshsGM
-# FdBv9WU1xoO1FsW7FQDqIgeBPQ8xqjN+N7vdn00MMi3iTidcsE3zHfSvECbqgYa8
-# Ktl56VKzXCD7D4dNV9IljAKR56qnoCr2ukkL8b5bGTN676pWjx/qzAFLMnK3agU2
-# Iu6/YtDlZfhMR1i+evQ5G+1TWOdV/2NLZt+0/4tnPOwY2dWYaQfYPKGCAg8wggIL
+# NwIBFTAvBgkqhkiG9w0BCQQxIgQghsv5329BEhDXuS3P05UECD8SGzDIlTzBLgrZ
+# H/90FGowDQYJKoZIhvcNAQEBBQAEggEAo4TgKXtxgjZCo4cUIAy5JWYKo3CqUvt9
+# XzYc7QgQPIbPT4KPbB5n+/kkNxOimI4bZ8bauQ5sc4UDwZHNdIzVnSgKj26XwjMa
+# udIoeuLeCmtA1sMCtfw8yeG13uE/t5ArqlxFq5raBW7Ruj/x38mhP3ahMItMia+A
+# xepG4mu3sL1A/sPHLzmnvyjQuQAgFtrLxnLz1am4AgyX9hwWRUJRSpVFaEcKw48Z
+# MIe5Yo5Udh8dJQJGEHhfKAXFOfh9ph7mKFy6dHF056BIXEUTvccEQ0mQ83g9a6Zs
+# EKBY7lmlfmclr3lSo4qqLU8JJNPaGsU61iv1WumwguFn1JFqcTZm8aGCAg8wggIL
 # BgkqhkiG9w0BCQYxggH8MIIB+AIBATB2MGIxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xITAfBgNV
 # BAMTGERpZ2lDZXJ0IEFzc3VyZWQgSUQgQ0EtMQIQAwGaAjr/WLFr1tXq5hfwZjAJ
 # BgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0B
-# CQUxDxcNMTcwMzMwMDUwMDU4WjAjBgkqhkiG9w0BCQQxFgQUNmr/1+sN3AB5odKh
-# /P5nMwOnn/AwDQYJKoZIhvcNAQEBBQAEggEAElyi1xtF2vHa8KozjuhGi0WEUuO5
-# TQ5u9orINQgiLvV3V3D22RfK3FFPcf8Bd9WhYqmZPnFD24mhjucoJW0zRzX2Vv+V
-# yf7YBXiTpG1vPMwL2dEB6mo5JbH4MNhixfHuGJf0IvFcm/fYHLI/ajWHk7EO1oQZ
-# MsWutBRMcWcrWPhYP/Xy4DqalNm/ZM5W3ICM0UkNBkUfa+zdvP62rzxVG19WoXLN
-# DjmBJPPkSazS1lf61F1GWU6BrZ4L7UJ0bIwEs8ToSojEaMK70hLfa3CheW2h1z2t
-# C3E5ByxkkRbgM6Vp3ui5nVrOZ3TH7GPFlAmro/n/WMEaLF7r4X3jlAbHuA==
+# CQUxDxcNMTcwMzMwMjIxMjAxWjAjBgkqhkiG9w0BCQQxFgQUpPe6JVQyn4sKh3gO
+# FSk58MFMfZgwDQYJKoZIhvcNAQEBBQAEggEASbn3gasC8fns0MWtXkAV91uAnOfj
+# KEvG5EnL4eKjfzHOWLt5oZ/6qFqMGBNl7mYyUzdMcMDXOq2jweW7Nw4l21/cRJpL
+# +URFjaSoBSLD9aa7b6gK9UlzOqBh7QDVNAsmRHBfjq1Ki8NcQsgSb/7tz5fIrMzW
+# iilfyHVYzW0VmE7R2PzsmA32TTEfcq+HJKpa547VpuSujwjXEsA0p7NV0NgaL3PC
+# GnzG1rRHLQ7wgpFzFYWeHg9PUx1aOdp3aSplklV/0SnFUkBkjw2z6eKiI24XijbE
+# xw4Jz8v9bLGwTMQ+xdqg1tuHx97foA7ANTL2QsijMNXY43dVw9PROoNlDA==
 # SIG # End signature block

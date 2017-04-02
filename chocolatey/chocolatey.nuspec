@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>chocolatey</id>
-    <version>0.10.4</version>
+    <version>0.10.5</version>
     <title>Chocolatey</title>
     <authors>Rob Reynolds,  The Chocolatey Team</authors>
     <owners>Rob Reynolds,  The Chocolatey Team</owners>
@@ -45,9 +45,21 @@ In that mess there is a link to the [PowerShell Chocolatey module reference](htt
     <summary>Chocolatey is the package manager for Windows (like apt-get but for Windows)</summary>
     <releaseNotes>See all - https://github.com/chocolatey/choco/blob/stable/CHANGELOG.md
 
+## 0.10.5
+
+### BUG FIXES
+
+ * Fix - Start-ChocolateyProcessAsAdmin errors when running PowerShell scripts - see [#1220](https://github.com/chocolatey/choco/issues/1220)
+ * Fix - Chocolatey timed out immediately when execution timeout was infinite - see [#1224](https://github.com/chocolatey/choco/issues/1224)
+
+### IMPROVEMENTS
+
+* Show machine readable output with `choco outdated -r` - see [#1222](https://github.com/chocolatey/choco/issues/1222)
+
+
 ## 0.10.4
 
-We're dubbing this the "10-4 good buddy" release. We've added some major functionality and fixes we think you are going to find top notch - dare we say as smooth as really expensive chocolate? A lot of work for this release has been provided by the community. Remember that Chocolatey is only as good as the support that comes from the community! Be sure to thank other community members for the awesome that is Chocolatey and Chocolatey 10-4. We've closed over 30 bugs and added 39 enhancements!
+We're dubbing this the "10-4 good buddy" release. We've added some major functionality and fixes we think you are going to find top notch - dare we say as smooth as really expensive chocolate? A lot of work for this release has been provided by the community. Remember that Chocolatey is only as good as the support that comes from the community! Be sure to thank other community members for the awesome that is Chocolatey and Chocolatey 10-4. We've closed over 30 bugs and added over 40 enhancements (75 tickets in total)!
 
 Proxy support just got some major enhancements with the ability to not only [specify proxy information at runtime](https://github.com/chocolatey/choco/issues/1173), but also to [set bypass lists and bypassing on local connections](https://github.com/chocolatey/choco/issues/1165) and [configure source repositories to bypass proxies](https://github.com/chocolatey/choco/issues/262). A major issue with [changing command execution timeout](https://github.com/chocolatey/choco/issues/1059) was just fixed. And there used to be a tiny chance you might [corrupt the choco config when running multiple choco processes](https://github.com/chocolatey/choco/issues/1047) -but now that is much better handled.
 
@@ -563,7 +575,7 @@ This further restricts the default installation location by removing all permiss
  * API - Add paging to list command - see [#427](https://github.com/chocolatey/choco/issues/427)
  * API - Choco search should sort by version - see [#668](https://github.com/chocolatey/choco/issues/668)
  * API - Switch dll to .NET Client Profile - see [#680](https://github.com/chocolatey/choco/issues/680)</releaseNotes>
-    <copyright>RealDimensions Software, LLC - 2011-Present</copyright>
+    <copyright>2017 Chocolatey Software, Inc, 2011- 2017 RealDimensions Software, LLC</copyright>
     <tags>nuget apt-get machine repository chocolatey</tags>
   </metadata>
 </package>
