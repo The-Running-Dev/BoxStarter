@@ -2,7 +2,7 @@ $global:mustDismountIso = $false
 
 function CleanUp([string] $isoPath) {
     if ($global:mustDismountIso) {
-		Write-Verbose "CleanUp: Dismoutning $($global:isoPath)"
+		Write-Verbose "CleanUp: Dismoutning '$($global:isoPath)'"
         Dismount-DiskImage -ImagePath $global:isoPath
     }
 }
@@ -12,19 +12,19 @@ function Get-BaseDirectory([string] $baseDir) {
 
     # Overwrite the base directory with ChocolateyPackageFolder,
     # if ChocolateyPackageFolder exists
-    if (Test-Path $env:ChocolateyPackageFolder) {
-		Write-Verbose 'Get-BaseDirectory: $env:ChocolateyPackageFolder exists'
+    if (Test-DirectoryExists $env:ChocolateyPackageFolder) {
+		Write-Verbose "Get-BaseDirectory: 'ChocolateyPackageFolder' is $($env:ChocolateyPackageFolder)"
         $baseDir = $env:ChocolateyPackageFolder
     }
 
     # Overwrite the base directory with packagesInstallers,
     # if packagesInstallers exists
-    if (Test-Path $env:packagesInstallers) {
-		Write-Verbose 'Get-BaseDirectory: $env:packagesInstallers exists'
+    if (Test-DirectoryExists $env:packagesInstallers) {
+		Write-Verbose "Get-BaseDirectory: 'packagesInstallers' is $($env:packagesInstallers)"
         $baseDir = $env:packagesInstallers
     }
 	
-	Write-Verbose "Get-BaseDirectory: Returning base dir at $baseDir"
+	Write-Verbose "Get-BaseDirectory: Base directory is '$baseDir'"
     return $baseDir
 }
 
@@ -38,14 +38,14 @@ function Get-Executable([string] $baseDir, [string] $fileName, [string] $regEx) 
 
     # Set the regular expression, or use the file name as the default
     $regEx = @{ $true = (Split-Path -Leaf $fileName); $false = $regEx }['' -ne $fileName]
-	Write-Verbose "Get-Executable: RegEx is $regEx"
+	Write-Verbose "Get-Executable: RegEx is '$regEx'"
 	
     $files = Get-ChildItem -Path $baseDir -Recurse | Where-Object { $_.Name -match $regEx }
-	Write-Verbose "Get-Executable: Found $($files.Count) files matching ""$regEx"" in $baseDir"
+	Write-Verbose "Get-Executable: Found '$($files.Count)' file(s) matching '$regEx' in '$baseDir'"
 	
     # Always use the first file found
     if ($files.Count -gt 0) {
-		Write-Verbose "Get-Executable: Returning file $($files[0].FullName)"
+		Write-Verbose "Get-Executable: Executable is '$($files[0].FullName)'"
 
         return $files[0].FullName
     }
@@ -88,16 +88,11 @@ function Get-FileExtension([string] $file) {
 }
 
 function Get-Argument([Hashtable] $arguments, [string] $key, [string] $defaultValue = $null) {
-	Write-Verbose "Get-Argument: Looking for Key $key"
-	Write-Verbose "Get-Argument: Default value for key is $defaultValue"
-
 	if ($arguments.ContainsKey($key)) {
 		$value = @{$true = $arguments[$key]; $false = $defaultValue}[$arguments[$key] -ne '']
-		Write-Verbose "Get-Argument: Returning $value"
 		return $value
 	}
 
-	Write-Verbose "Get-Argument: Returning default value for $key of $defaultValue"
 	return $defaultValue
 }
 
@@ -107,22 +102,22 @@ function Get-Installer {
     )
 
     $url = Get-Argument $arguments 'url'
-	Write-Verbose "Get-Installer: Url is $url"
+	Write-Verbose "Get-Installer: Url is '$url'"
 
 	$arguments['unzipLocation'] = Get-Argument $arguments 'unzipLocation' $env:ChocolateyPackageFolder
-	Write-Verbose "Get-Installer: Unzip Location is $($arguments['unzipLocation'])"
+	Write-Verbose "Get-Installer: Unzip Location is '$($arguments['unzipLocation'])'"
 
     $arguments['file'] = Get-Argument $arguments 'file' (Join-Path $arguments['unzipLocation'] ([System.IO.Path]::GetFileName($url)))
-	Write-Verbose "Get-Installer: File is $($arguments['file'])"
+	Write-Verbose "Get-Installer: File is '$($arguments['file'])'"
 	
     $arguments['executable'] = Get-Argument $arguments 'executable' ([System.IO.Path]::GetFileName($arguments['file']))
-	Write-Verbose "Get-Installer: Executable is $($arguments['executable'])"
+	Write-Verbose "Get-Installer: Executable is '$($arguments['executable'])'"
 
     $arguments['executableRegEx'] = Get-Argument $arguments 'executableRegEx'
-	Write-Verbose "Get-Installer: Executable Reg Ex is $($arguments['executableRegEx'])"
+	Write-Verbose "Get-Installer: Executable Reg Ex is '$($arguments['executableRegEx'])'"
 
     $extension = Get-FileExtension $arguments['file']
-	Write-Verbose "Get-Installer: Extension is $extension"
+	Write-Verbose "Get-Installer: Extension is '$extension'"
 
     if ($extension -eq '.zip') {
         return Get-InstallerFromZip $arguments
@@ -134,8 +129,8 @@ function Get-Installer {
     $installer = Get-Executable $arguments['unzipLocation'] $arguments['executable'] $arguments['executableRegEx']
 
     if (Test-FileExists $installer) {
-		Write-Verbose "Get-Installer: Found installer at $installer"
-        return $foundInstaller
+		Write-Verbose "Get-Installer: Installer is '$installer'"
+        return $installer
     }
 
     return Get-InstallerFromWeb $arguments
@@ -174,7 +169,7 @@ function Get-InstallerFromIso([Hashtable] $arguments) {
 
 function Get-InstallerFromWeb([Hashtable] $arguments) {
     if ($arguments['url']) {
-		Write-Verbose "Get-InstallerFromWeb: Getting installer from url $($arguments['url'])"
+		Write-Verbose "Get-InstallerFromWeb: Downloading from '$($arguments['url'])'"
 
         return Get-ChocolateyWebFile `
             -PackageName $arguments['packageName'] `
@@ -194,12 +189,12 @@ function Get-InstallerFromZip([Hashtable] $arguments) {
         Get-ChocolateyUnzip -FileFullPath $file -Destination $unzipLocation -Force
     }
     elseif ($arguments['url']) {
-		Write-Verbose 'Get-InstallerFromZip: Calling Install-ChocolateyZipPackage'
+		Write-Verbose 'Get-InstallerFromZip: Calling 'Install-ChocolateyZipPackage''
         Install-ChocolateyZipPackage @arguments
     }
 
 	$installer = Get-Executable $extractLocation $executable $executableRegEx
-	Write-Verbose "Get-InstallerFromZip: Found installer at $installer"
+	Write-Verbose "Get-InstallerFromZip: Installer is '$installer'"
     
 	return $installer
 }
@@ -242,7 +237,7 @@ function Install-WithProcess() {
     $arguments['file'] = Get-Installer $arguments
 
     if (Test-FileExists $arguments['file']) {
-        Write-Verbose "Install-WithProcess: Installing from $($arguments['file'])"
+        Write-Verbose "Install-WithProcess: Installing '$($arguments['file'])'"
 
         Start-Process $arguments['file'] $arguments['silentArgs'] -Wait -NoNewWindow
 
@@ -262,7 +257,7 @@ function Install-WithScheduledTask() {
     $arguments['file'] = Get-Installer $arguments
 
     if (Test-FileExists $arguments['file']) {
-		Write-Verbose "Install-WithScheduledTask: Installing from $($arguments['file'])"
+		Write-Verbose "Install-WithScheduledTask: Installing '$($arguments['file'])'"
 
         Invoke-ScheduledTask $arguments['packageName'] $arguments['file'] $arguments['silentArgs']
 

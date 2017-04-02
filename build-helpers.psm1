@@ -1,18 +1,81 @@
+$global:configFile = 'config.json'
 $global:ahkCompiler = Join-Path $PSScriptRoot "AutoHotKey\Ahk2Exe.exe"
+$global:defaultFilter = 'tools,extensions,*.ignore,*.nuspec'
+$global:excludeDirectoriesFromConfigurationRegEx = 'tools|\.git|\.vscode|^extensions|^tests|^plugins'
+$global:gitHubApiUrl = 'https://api.github.com/repos/$repository/releases/latest'
+$global:config = @{
+    artifacts = ''
+    local = @{
+        embed = $false
+        source = ''
+        apiKey = ''
+        include = $global:defaultFilter | Split-String ','
+    }
+    remote = @{
+        embed = $false
+        source = ''
+        apiKey = ''
+        include = $global:defaultFilter | Split-String ','
+    }
+}
+
+function Get-ConfigurationSetting {
+    [cmdletbinding()]
+    param (
+        [parameter(Mandatory = $true)][PSCustomObject] $config,
+        [parameter(Mandatory = $true)][string] $key,
+        [parameter(Mandatory = $false)][string] $defaultValue = $null
+    )
+
+    if ($config.$key) {
+        return @{$true = $config.$key; $false = $defaultValue}[$config.$key -ne '']
+    }
+
+    return $defaultValue
+}
+
+function Resolve-Path {
+    param (
+        [parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $path,
+        [parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $basePath
+    )
+
+    if ([System.IO.Path]::IsPathRooted($path) -or $path.StartsWith('http')) {
+        return $path
+    }
+
+    return Join-Path -Resolve $basePath $path
+}
+
+function ConvertTo-Boolean {
+    param (
+        [parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $value
+    )
+
+    if ('1,true,yes' -Match $value) {
+        return $true
+    }
+
+    return $false;
+}
 
 function Get-Configuration {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir
+        [Parameter(Mandatory = $true)][ValidateNotNullOrEmpty()][String] $baseDir
     )
 
-    $ecludeDirectoriesRegEx = 'tools|\.git|\.vscode|^extensions|^tests|^plugins'
     $configuration = @{}
     $configuration[$baseDir] = Get-DirectoryConfiguration $baseDir
 
-    # Get all the sub directories and set configuration default
-    # to the base directory unless the sub directory has it's own configuration
-    $subDirectories = Get-ChildItem -Path $baseDir -Recurse -Directory | Where-Object { $_.FullName -notmatch $ecludeDirectoriesRegEx } | Select-Object Parent, Name, FullName
+    # Get all the sub directories not matching the excluded directories filter
+    $subDirectories = Get-ChildItem -Path $baseDir -Recurse -Directory `
+        | Where-Object { $_.FullName -notmatch $global:excludeDirectoriesFromConfigurationRegEx } `
+        | Select-Object Parent, Name, FullName
+
     foreach ($dir in $subDirectories) {
+        # Get the configuration for each directory
+        # but use the base directory as the default configuration,
+        # if the current directory doesn't have it's own configuration
         $currentDir = $dir.FullName
         $configuration[$currentDir] = Get-DirectoryConfiguration $currentDir $configuration[$baseDir]
     }
@@ -22,65 +85,22 @@ function Get-Configuration {
 
 function Get-DirectoryConfiguration() {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $directoryPath,
-        [Parameter(Mandatory = $false, Position = 1)][Hashtable] $baseConfiguration = @{}
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][string] $directoryPath,
+        [Parameter(Mandatory = $false, Position = 1)][hashtable] $baseConfiguration = @{}
     )
 
-    $configFile = 'config.json'
-    $config = @{
-        artifacts = ''
-        local = @{
-            embed = $false
-            source = ''
-            apiKey = ''
-        }
-        remote = @{
-            embed = $false
-            source = ''
-            apiKey = ''
-        }
-    }
-
-    $configFilePath = Join-Path $directoryPath $configFile
+    $configFilePath = Join-Path $directoryPath $global:configFile
 
     if (Test-Path $configFilePath) {
         $configJson = (Get-Content $configFilePath -Raw) | ConvertFrom-Json
 
-        if ($configJson.artifacts) {
-            $config.artifacts = Join-Path -Resolve $directoryPath $configJson.artifacts
-        }
-
-        if ($configJson.remote.embed) {
-            $config.remote.embed = $false
-
-            if ('1,true,yes' -Match $configJson.remote.embed) {
-                $config.remote.embed = $true
-            }
-        }
-
-        if ($configJson.remote.source) {
-            $config.remote.source = $configJson.remote.source
-        }
-
-        if ($configJson.remote.apiKey) {
-            $config.remote.apiKey = $configJson.remote.apiKey
-        }
-
-        if ($configJson.local.embed) {
-            $config.local.embed = $false
-
-            if ('1,true,yes' -Match $configJson.local.embed) {
-                $config.local.embed = $true
-            }
-        }
-
-        if ($configJson.local.source) {
-            $config.local.source = Join-Path -Resolve $directoryPath $configJson.local.source
-        }
-
-        if ($configJson.local.apiKey) {
-            $config.local.apiKey = $configJson.local.apiKey
-        }
+        $config.artifacts = Get-ConfigurationSetting $configJson 'artifacts' | Resolve-Path -BasePath $directoryPath
+        $config.remote.source = Get-ConfigurationSetting $configJson.remote 'source' | Resolve-Path -BasePath $directoryPath
+        $config.remote.apiKey = Get-ConfigurationSetting $configJson.remote 'apiKey'
+        $config.remote.include = $global:config.remote.include + ((Get-ConfigurationSetting $configJson.remote 'include') -replace ' ', '' | Split-String ',')
+        $config.local.source = Get-ConfigurationSetting $configJson.local 'source' | Resolve-Path -BasePath $directoryPath
+        $config.local.apiKey = Get-ConfigurationSetting $configJson.local 'apiKey'
+        $config.local.include = $global:config.local.include + ((Get-ConfigurationSetting $configJson.local 'include') -replace ' ', '' | Split-String ',')
 
         return $config
     }
@@ -99,7 +119,7 @@ function Get-GitHubVersion {
     }
 
     $releaseParams = @{
-        Uri = "https://api.github.com/repos/$repository/releases/latest";
+        Uri = $global:gitHubApiUrl
         Method = 'GET';
         ContentType = 'application/json';
         Body = (ConvertTo-Json $releaseData -Compress)
@@ -124,9 +144,15 @@ function Get-GitHubVersion {
     return $release
 }
 
-function Get-Packages([string] $searchTerm, [string] $baseDir) {
-    if ($searchTerm -eq '') {
-        # Get all packages in the current directory and sub directories
+function Get-Packages {
+    param (
+        [parameter(Mandatory = $true)][string] $searchTerm,
+        [parameter(Mandatory = $true)][string] $baseDir,
+        [parameter(Mandatory = $false)][string] $filter = ''
+    )
+
+    if ($searchTerm) {
+        # Get all packages in the base directory and sub directories
         $packages = (Get-ChildItem -Path $baseDir -Filter $filter -Recurse)
     }
     else {
@@ -188,19 +214,12 @@ function New-Packages {
         [Parameter(Mandatory = $false, Position = 3)][String] $embed = ''
     )
 
-    $filter = '*.nuspec'
     $configuration = Get-Configuration $baseDir
-    $packages = Get-Packages $searchTerm $baseDir
+    $packages = Get-Packages $searchTerm $baseDir '*.nuspec'
 
     foreach ($p in $packages) {
         $currentDir = Split-Path -Parent $p.FullName
         $sourceConfiguration = Get-SourceConfiguration $configuration[$currentDir] $sourceType
-
-        # Allow the embed paramter to be overwritten
-        if ($embed) {
-            # If it's set to 1, true or yes, it's true, otherwise false
-            $sourceConfiguration.embed = @{ $true = $true; $false = $false }['1,true,yes' -Match $embed]
-        }
 
         Invoke-ChocoPack $p.FullName $sourceConfiguration $configuration[$currentDir]['artifacts']
     }
@@ -213,16 +232,9 @@ function Invoke-ChocoPack {
         [Parameter(Mandatory = $true, Position = 2)][ValidateNotNullOrEmpty()][string] $outputPath
     )
 
-    $packageFilesFilter = @('*.nuspec', 'tools', 'extensions', '*.ini', '*.ahk')
-    $packageFilesFilterForEmbeddedPackages = @('*.zip', '*.msi', '*.exe', '*.ini')
     $packageId = (Split-Path -Leaf $nuSpec) -replace '.nuspec', ''
     $packageDir = Split-Path -Parent $nuSpec
     $tempDir = Join-Path $env:Temp $packageId
-    $embedPackage = $config.embed
-
-    if ($embedPackage) {
-        $packageFilesFilter += $packageFilesFilterForEmbeddedPackages
-    }
 
     if (![System.IO.Directory]::Exists($outputPath)) {
         New-Item -Path $outputPath -ItemType Directory
@@ -236,7 +248,7 @@ function Invoke-ChocoPack {
     # and move all the extra files from the package directory
     # so they don't become part of the package
     New-Item -ItemType Directory $tempDir -Force | Out-Null
-    $extraFiles = Get-ChildItem -Path $packageDir -Exclude $packageFilesFilter
+    $extraFiles = Get-ChildItem -Path $packageDir -Exclude $config['include']
     foreach ($f in $extraFiles) {
         Move-Item $f.FullName $tempDir
     }
@@ -268,9 +280,8 @@ function Push-Packages {
         [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
     )
 
-    $filter = '*.nupkg'
     $configuration = Get-Configuration $baseDir
-    $packages = Get-Packages $searchTerm $baseDir
+    $packages = Find-Packages $searchTerm $baseDir '*.nupkg'
 
     foreach ($p in $packages) {
         $packageName = $($p.Name -replace '(.*?)[0-9\.]+\.nupkg', '$1')
