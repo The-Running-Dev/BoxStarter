@@ -1,18 +1,16 @@
 $global:configFile = 'config.json'
 $global:ahkCompiler = Join-Path $PSScriptRoot "AutoHotKey\Ahk2Exe.exe"
-$global:defaultFilter = 'tools,extensions,*.ignore,*.nuspec'
+$global:defaultFilter = 'tools,extensions,*.ignore,*.nuspec,*.reg,*.xml"'
 $global:excludeDirectoriesFromConfigurationRegEx = 'tools|\.git|\.vscode|^extensions|^tests|^plugins'
 $global:gitHubApiUrl = 'https://api.github.com/repos/$repository/releases/latest'
 $global:config = @{
     artifacts = ''
     local = @{
-        embed = $false
         source = ''
         apiKey = ''
         include = $global:defaultFilter | Split-String ','
     }
     remote = @{
-        embed = $false
         source = ''
         apiKey = ''
         include = $global:defaultFilter | Split-String ','
@@ -34,7 +32,7 @@ function Get-ConfigurationSetting {
     return $defaultValue
 }
 
-function Resolve-Path {
+function Convert-ToFullPath {
     param (
         [parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $path,
         [parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $basePath
@@ -94,11 +92,11 @@ function Get-DirectoryConfiguration() {
     if (Test-Path $configFilePath) {
         $configJson = (Get-Content $configFilePath -Raw) | ConvertFrom-Json
 
-        $config.artifacts = Get-ConfigurationSetting $configJson 'artifacts' | Resolve-Path -BasePath $directoryPath
-        $config.remote.source = Get-ConfigurationSetting $configJson.remote 'source' | Resolve-Path -BasePath $directoryPath
+        $config.artifacts = Get-ConfigurationSetting $configJson 'artifacts' | Convert-ToFullPath -BasePath $directoryPath
+        $config.remote.source = Get-ConfigurationSetting $configJson.remote 'source' | Convert-ToFullPath -BasePath $directoryPath
         $config.remote.apiKey = Get-ConfigurationSetting $configJson.remote 'apiKey'
         $config.remote.include = $global:config.remote.include + ((Get-ConfigurationSetting $configJson.remote 'include') -replace ' ', '' | Split-String ',')
-        $config.local.source = Get-ConfigurationSetting $configJson.local 'source' | Resolve-Path -BasePath $directoryPath
+        $config.local.source = Get-ConfigurationSetting $configJson.local 'source' | Convert-ToFullPath -BasePath $directoryPath
         $config.local.apiKey = Get-ConfigurationSetting $configJson.local 'apiKey'
         $config.local.include = $global:config.local.include + ((Get-ConfigurationSetting $configJson.local 'include') -replace ' ', '' | Split-String ',')
 
@@ -146,12 +144,12 @@ function Get-GitHubVersion {
 
 function Get-Packages {
     param (
-        [parameter(Mandatory = $true)][string] $searchTerm,
         [parameter(Mandatory = $true)][string] $baseDir,
+        [parameter(Mandatory = $false)][string] $searchTerm = '',
         [parameter(Mandatory = $false)][string] $filter = ''
     )
 
-    if ($searchTerm) {
+    if (!$searchTerm) {
         # Get all packages in the base directory and sub directories
         $packages = (Get-ChildItem -Path $baseDir -Filter $filter -Recurse)
     }
@@ -206,16 +204,15 @@ function Invoke-AutoHotKey {
     }
 }
 
-function New-Packages {
+function Invoke-Pack {
     param (
         [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
         [Parameter(Mandatory = $false, Position = 1)][String] $searchTerm = '',
-        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local',
-        [Parameter(Mandatory = $false, Position = 3)][String] $embed = ''
+        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
     )
 
     $configuration = Get-Configuration $baseDir
-    $packages = Get-Packages $searchTerm $baseDir '*.nuspec'
+    $packages = Get-Packages $baseDir $searchTerm '*.nuspec'
 
     foreach ($p in $packages) {
         $currentDir = Split-Path -Parent $p.FullName
@@ -281,17 +278,19 @@ function Push-Packages {
     )
 
     $configuration = Get-Configuration $baseDir
-    $packages = Find-Packages $searchTerm $baseDir '*.nupkg'
+    $packages = Get-Packages $baseDir $searchTerm '*.nuspec'
 
     foreach ($p in $packages) {
-        $packageName = $($p.Name -replace '(.*?)[0-9\.]+\.nupkg', '$1')
-        $packageDir = Get-ChildItem -Path $baseDir -Recurse -Directory | Where-Object { $_.Name -eq $packageName } | Select-Object Parent, Name, FullName
-        $sourceConfiguration = Get-SourceConfiguration $configuration[$packageDir.FullName] $sourceType
-
+        $packageDir = Split-Path -Parent $p.FullName
+        $sourceConfiguration = Get-SourceConfiguration $configuration[$packageDir] $sourceType
         $source = $sourceConfiguration['source']
         $apiKey = $sourceConfiguration['apiKey']
 
-        choco push $p.FullName -s $source -k="$apiKey"
+        $packageAritifactRegEx = $($p.Name -replace '(.*?).nuspec', '$1.[0-9\.]+\.nupkg')
+        Get-ChildItem -Path $baseDir -Recurse -File `
+            | Where-Object { $_.Name -match $packageAritifactRegEx } `
+            | Select-Object FullName `
+            | ForEach-Object { choco push $_.FullName -s $source -k="$apiKey" }
     }
 }
 
