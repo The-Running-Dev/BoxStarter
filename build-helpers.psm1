@@ -1,7 +1,7 @@
 $global:configFile = 'config.json'
 $global:ahkCompiler = Join-Path $PSScriptRoot "AutoHotKey\Ahk2Exe.exe"
 $global:defaultFilter = 'tools,extensions,*.ignore,*.nuspec,*.reg,*.xml"'
-$global:excludeDirectoriesFromConfigurationRegEx = 'tools|\.git|\.vscode|^extensions|^tests|^plugins'
+$global:excludeDirectoriesFromConfigurationRegEx = '\.git|\.vscode|artifacts|extensions|plugins|tools|tests'
 $global:gitHubApiUrl = 'https://api.github.com/repos/$repository/releases/latest'
 $global:config = @{
     artifacts = ''
@@ -65,17 +65,21 @@ function Get-Configuration {
     $configuration = @{}
     $configuration[$baseDir] = Get-DirectoryConfiguration $baseDir
 
+	Write-Host "Base Config: $($configuration[$baseDir].local | out-string)"
+	
     # Get all the sub directories not matching the excluded directories filter
     $subDirectories = Get-ChildItem -Path $baseDir -Recurse -Directory `
         | Where-Object { $_.FullName -notmatch $global:excludeDirectoriesFromConfigurationRegEx } `
-        | Select-Object Parent, Name, FullName
+        | Select-Object Parent, Name, FullName | Sort-Object FullName
 
     foreach ($dir in $subDirectories) {
-        # Get the configuration for each directory
-        # but use the base directory as the default configuration,
-        # if the current directory doesn't have it's own configuration
-        $currentDir = $dir.FullName
-        $configuration[$currentDir] = Get-DirectoryConfiguration $currentDir $configuration[$baseDir]
+		write-Host "Base Dir: $baseDir"
+		write-Host "Current Dir: $($dir.FullName)"
+		Write-Host "Base Config: $($configuration[$baseDir].local | out-string)"
+	
+		if ($baseDir -ne $dir.FullName) {
+			$configuration[$dir.FullName] = Get-DirectoryConfiguration $dir.FullName $configuration[$baseDir]
+		}
     }
 
     return $configuration
@@ -84,12 +88,14 @@ function Get-Configuration {
 function Get-DirectoryConfiguration() {
     param (
         [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][string] $directoryPath,
-        [Parameter(Mandatory = $false, Position = 1)][hashtable] $baseConfiguration = @{}
+        [Parameter(Mandatory = $false, Position = 1)][Hashtable] $baseConfiguration = @{}
     )
 
+	$configFilePath = ''
     $configFilePath = Join-Path $directoryPath $global:configFile
 
     if (Test-Path $configFilePath) {
+		$configJson = @{}
         $configJson = (Get-Content $configFilePath -Raw) | ConvertFrom-Json
 
         $config.artifacts = Get-ConfigurationSetting $configJson 'artifacts' | Convert-ToFullPath -BasePath $directoryPath
@@ -279,18 +285,21 @@ function Push-Packages {
 
     $configuration = Get-Configuration $baseDir
     $packages = Get-Packages $baseDir $searchTerm '*.nuspec'
-
+	
     foreach ($p in $packages) {
         $packageDir = Split-Path -Parent $p.FullName
+		Write-Host "packageDir: $packageDir"
         $sourceConfiguration = Get-SourceConfiguration $configuration[$packageDir] $sourceType
         $source = $sourceConfiguration['source']
         $apiKey = $sourceConfiguration['apiKey']
-
+		
         $packageAritifactRegEx = $($p.Name -replace '(.*?).nuspec', '$1.[0-9\.]+\.nupkg')
         Get-ChildItem -Path $baseDir -Recurse -File `
             | Where-Object { $_.Name -match $packageAritifactRegEx } `
-            | Select-Object FullName `
-            | ForEach-Object { choco push $_.FullName -s $source -k="$apiKey" }
+            | Select-Object FullName
+        #    | ForEach-Object { choco push $_.FullName -s $source -k="$apiKey" }
+		
+		write-host "Pusing to: $source"
     }
 }
 
