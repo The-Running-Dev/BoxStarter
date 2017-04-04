@@ -1,6 +1,6 @@
 ﻿$installer          = 'WebStorm-2017.1.exe'
 $url                = 'https://download.jetbrains.com/webstorm/WebStorm-2017.1.exe'
-$checksum           = '9a3f7a8ce59a4183d6a75470bc17624240e1d5a88c97df39233ce5462a0bd5e7'
+$checksum           = '9A3F7A8CE59A4183D6A75470BC17624240E1D5A88C97DF39233CE5462A0BD5E7'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $env:ChocolateyPackageTitle

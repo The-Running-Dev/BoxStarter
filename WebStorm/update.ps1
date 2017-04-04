@@ -13,10 +13,6 @@ function global:au_BeforeUpdate {
     Move-Item $downloadFile $file -Force
 }
 
-function global:au_AfterUpdate {
-    Get-ChildItem $currentDir -Filter '*.nupkg' | ForEach-Object { Move-Item $_.FullName $packagesDir -Force }
-}
-
 function global:au_SearchReplace {
     return @{
         ".\tools\chocolateyInstall.ps1" = @{
@@ -35,7 +31,7 @@ function global:au_GetLatest {
     [xml] $updates = (New-Object System.Net.WebClient).DownloadString($releasesUrl)
     $versionInfo = $updates.products.product `
     | Where-Object { $_.name -eq $productName } `
-    | ForEach-Object { $_.channel } `
+    | ForEach-Object { $_.channel } | Where-Object { $_.id -eq 'WS_Release' } `
     | ForEach-Object { $_.build } `
     | Sort-Object { [version] $_.number } `
     | Select-Object -Last 1
@@ -55,3 +51,4 @@ function global:au_GetLatest {
 }
 
 Update-Package -ChecksumFor none -NoCheckChocoVersion
+Get-ChildItem $currentDir -Filter '*.nupkg' | ForEach-Object { Move-Item $_.FullName $packagesDir -Force }

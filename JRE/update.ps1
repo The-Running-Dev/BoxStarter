@@ -27,10 +27,6 @@ function global:au_BeforeUpdate {
     $Latest.Checksum64 = (Get-FileHash $file64 -Algorithm $Latest.ChecksumType64 | ForEach Hash).ToLowerInvariant()
 }
 
-function global:au_AfterUpdate {
-    Get-ChildItem $currentDir -Filter '*.nupkg' | ForEach-Object { Move-Item $_.FullName $packagesDir -Force }
-}
-
 function global:au_SearchReplace {
     return @{
         ".\tools\chocolateyInstall.ps1" = @{
@@ -72,3 +68,4 @@ function global:au_GetLatest {
 }
 
 Update-Package -ChecksumFor none -NoCheckChocoVersion
+Get-ChildItem $currentDir -Filter '*.nupkg' | ForEach-Object { Move-Item $_.FullName $packagesDir -Force }

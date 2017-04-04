@@ -4,4 +4,4 @@ param (
 )
 Import-Module (Join-Path $PSScriptRoot 'build-helpers.psm1') -Force
 
-Push-Packages $PSScriptRoot $searchTerm $sourceType
+Invoke-Push $PSScriptRoot $searchTerm $sourceType

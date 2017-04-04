@@ -1,6 +1,6 @@
-﻿$installer          = 'ConEmuSetup.170326.exe'
-$url                = 'https://github.com/Maximus5/ConEmu/releases/download/v17.03.26/ConEmuSetup.170326.exe'
-$checksum           = '3868ceaf105c4bc57601396818edd5e1af404161016211b30cb605e143635089'
+﻿$installer          = 'ConEmuSetup.170402.exe'
+$url                = 'https://github.com/Maximus5/ConEmu/releases/download/v17.04.02/ConEmuSetup.170402.exe'
+$checksum           = 'E45D38BA862B0798A59E19A050CD0A9DCC7567DE7CC2E79627303AC597CA6CDE'
 $os                 = if (IsSystem32Bit) { 'x86' } else { 'x64' }
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName

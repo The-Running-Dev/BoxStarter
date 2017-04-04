@@ -17,7 +17,7 @@ $global:config = @{
     }
 }
 
-function Get-ConfigurationSetting {
+function Get-ConfigSetting {
     [cmdletbinding()]
     param (
         [parameter(Mandatory = $true)][PSCustomObject] $config,
@@ -57,59 +57,41 @@ function ConvertTo-Boolean {
     return $false;
 }
 
-function Get-Configuration {
+function Get-DirectoryConfig {
     param (
-        [Parameter(Mandatory = $true)][ValidateNotNullOrEmpty()][String] $baseDir
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $path,
+        [Parameter(Mandatory = $false, Position = 1)][Hashtable] $baseConfig = $global:config
     )
 
-    $configuration = @{}
-    $configuration[$baseDir] = Get-DirectoryConfiguration $baseDir
+    $configFile = Join-Path $path $global:configFile
 
-	Write-Host "Base Config: $($configuration[$baseDir].local | out-string)"
-	
-    # Get all the sub directories not matching the excluded directories filter
-    $subDirectories = Get-ChildItem -Path $baseDir -Recurse -Directory `
-        | Where-Object { $_.FullName -notmatch $global:excludeDirectoriesFromConfigurationRegEx } `
-        | Select-Object Parent, Name, FullName | Sort-Object FullName
-
-    foreach ($dir in $subDirectories) {
-		write-Host "Base Dir: $baseDir"
-		write-Host "Current Dir: $($dir.FullName)"
-		Write-Host "Base Config: $($configuration[$baseDir].local | out-string)"
-	
-		if ($baseDir -ne $dir.FullName) {
-			$configuration[$dir.FullName] = Get-DirectoryConfiguration $dir.FullName $configuration[$baseDir]
-		}
+    if (!(Test-Path $configFile)) {
+        $configFile = Join-Path (Split-Path -Parent $path) $global:configFile
     }
 
-    return $configuration
-}
+    if (Test-Path $configFile) {
+        $dir = Split-Path -Parent $configFile
+        $configJson = (Get-Content $configFile -Raw) | ConvertFrom-Json
 
-function Get-DirectoryConfiguration() {
-    param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][string] $directoryPath,
-        [Parameter(Mandatory = $false, Position = 1)][Hashtable] $baseConfiguration = @{}
-    )
+        $config = $global:config
+        $config.artifacts = Get-ConfigSetting $configJson 'artifacts' | Convert-ToFullPath -BasePath $dir
 
-	$configFilePath = ''
-    $configFilePath = Join-Path $directoryPath $global:configFile
+        if ($configJson.remote) {
+            $config.remote.source = Get-ConfigSetting $configJson.remote 'source' | Convert-ToFullPath -BasePath $dir
+            $config.remote.apiKey = Get-ConfigSetting $configJson.remote 'apiKey'
+            $config.remote.include = $global:config.remote.include + ((Get-ConfigSetting $configJson.remote 'include') -replace ' ', '' | Split-String ',')
+        }
 
-    if (Test-Path $configFilePath) {
-		$configJson = @{}
-        $configJson = (Get-Content $configFilePath -Raw) | ConvertFrom-Json
-
-        $config.artifacts = Get-ConfigurationSetting $configJson 'artifacts' | Convert-ToFullPath -BasePath $directoryPath
-        $config.remote.source = Get-ConfigurationSetting $configJson.remote 'source' | Convert-ToFullPath -BasePath $directoryPath
-        $config.remote.apiKey = Get-ConfigurationSetting $configJson.remote 'apiKey'
-        $config.remote.include = $global:config.remote.include + ((Get-ConfigurationSetting $configJson.remote 'include') -replace ' ', '' | Split-String ',')
-        $config.local.source = Get-ConfigurationSetting $configJson.local 'source' | Convert-ToFullPath -BasePath $directoryPath
-        $config.local.apiKey = Get-ConfigurationSetting $configJson.local 'apiKey'
-        $config.local.include = $global:config.local.include + ((Get-ConfigurationSetting $configJson.local 'include') -replace ' ', '' | Split-String ',')
+        if ($configJson.local) {
+            $config.local.source = Get-ConfigSetting $configJson.local 'source' | Convert-ToFullPath -BasePath $dir
+            $config.local.apiKey = Get-ConfigSetting $configJson.local 'apiKey'
+            $config.local.include = $global:config.local.include + ((Get-ConfigSetting $configJson.local 'include') -replace ' ', '' | Split-String ',')
+        }
 
         return $config
     }
 
-    return $baseConfiguration
+    return $baseConfig
 }
 
 function Get-GitHubVersion {
@@ -123,7 +105,7 @@ function Get-GitHubVersion {
     }
 
     $releaseParams = @{
-        Uri = $global:gitHubApiUrl
+        Uri = $ExecutionContext.InvokeCommand.ExpandString($global:gitHubApiUrl)
         Method = 'GET';
         ContentType = 'application/json';
         Body = (ConvertTo-Json $releaseData -Compress)
@@ -178,17 +160,17 @@ function Get-RedirectUrl([string] $url) {
     return ((Get-WebURL -Url $url).ResponseUri).AbsoluteUri
 }
 
-function Get-SourceConfiguration() {
+function Get-SourceConfig() {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][Hashtable] $configuration,
-        [Parameter(Mandatory = $false, Position = 1)][String] $sourceType = 'local'
+        [Parameter(Mandatory = $true, Position = 0)][Hashtable] $config,
+        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
     )
 
     if ($sourceType -match 'remote') {
-        return $configuration.remote
+        return $config.remote
     }
 
-    return $configuration.local
+    return $config.local
 }
 
 function Get-Version([string] $url, [string] $versionRegEx) {
@@ -217,14 +199,15 @@ function Invoke-Pack {
         [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
     )
 
-    $configuration = Get-Configuration $baseDir
+    $baseConfig = Get-DirectoryConfig $baseDir
     $packages = Get-Packages $baseDir $searchTerm '*.nuspec'
 
     foreach ($p in $packages) {
         $currentDir = Split-Path -Parent $p.FullName
-        $sourceConfiguration = Get-SourceConfiguration $configuration[$currentDir] $sourceType
+        $config = Get-DirectoryConfig $currentDir $baseConfig
+        $sourceConfig = Get-SourceConfig $config $sourceType
 
-        Invoke-ChocoPack $p.FullName $sourceConfiguration $configuration[$currentDir]['artifacts']
+        Invoke-ChocoPack $p.FullName $sourceConfig $config.artifacts
     }
 }
 
@@ -276,30 +259,30 @@ function Invoke-ChocoPack {
     Remove-Item $tempDir -Recurse -Force
 }
 
-function Push-Packages {
+function Invoke-Push {
     param (
         [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
         [Parameter(Mandatory = $false, Position = 1)][String] $searchTerm = '',
         [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
     )
 
-    $configuration = Get-Configuration $baseDir
+    $baseConfig = Get-DirectoryConfig $baseDir
     $packages = Get-Packages $baseDir $searchTerm '*.nuspec'
-	
+
     foreach ($p in $packages) {
-        $packageDir = Split-Path -Parent $p.FullName
-		Write-Host "packageDir: $packageDir"
-        $sourceConfiguration = Get-SourceConfiguration $configuration[$packageDir] $sourceType
-        $source = $sourceConfiguration['source']
-        $apiKey = $sourceConfiguration['apiKey']
-		
+        $currentDir = Split-Path -Parent $p.FullName
+
+        $config = Get-DirectoryConfig $currentDir $baseConfig
+        $sourceConfig = Get-SourceConfig $config $sourceType
+
+        $source = $sourceConfig['source']
+        $apiKey = $sourceConfig['apiKey']
+
         $packageAritifactRegEx = $($p.Name -replace '(.*?).nuspec', '$1.[0-9\.]+\.nupkg')
         Get-ChildItem -Path $baseDir -Recurse -File `
             | Where-Object { $_.Name -match $packageAritifactRegEx } `
-            | Select-Object FullName
-        #    | ForEach-Object { choco push $_.FullName -s $source -k="$apiKey" }
-		
-		write-host "Pusing to: $source"
+            | Select-Object FullName `
+            | ForEach-Object { choco push $_.FullName -s $source -k="$apiKey" }
     }
 }
 
@@ -366,7 +349,7 @@ function Register-WatcherEventHandler {
         $writeOutput = {
             if ($EventArgs.Data -ne $null) {
                 $line = $EventArgs.Data
-                Write-Verbose "$line"
+
                 if ($line.StartsWith("- ")) {
                     $global:zipFileList.AppendLine($global:zipDestinationFolder + "\" + $line.Substring(2))
                 }

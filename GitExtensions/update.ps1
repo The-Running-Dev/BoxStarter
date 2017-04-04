@@ -14,10 +14,6 @@ function global:au_BeforeUpdate {
     Move-Item $downloadFile $file -Force
 }
 
-function global:au_AfterUpdate {
-    Get-ChildItem $currentDir -Filter '*.nupkg' | ForEach-Object { Move-Item $_.FullName $packagesDir -Force }
-}
-
 function global:au_SearchReplace {
     return @{
         ".\tools\chocolateyInstall.ps1" = @{
@@ -35,3 +31,4 @@ function global:au_GetLatest {
 }
 
 Update-Package -ChecksumFor none -NoCheckChocoVersion
+Get-ChildItem $currentDir -Filter '*.nupkg' | ForEach-Object { Move-Item $_.FullName $packagesDir -Force }
