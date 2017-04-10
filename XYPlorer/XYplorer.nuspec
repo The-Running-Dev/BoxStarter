@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>XYPlorer</id>
+    <version>17.90.0</version>
+    <title>XYPlorer</title>
+    <authors>Cologne Code Company</authors>
+    <projectUrl>https://www.xyplorer.com</projectUrl>
+    <iconUrl>https://www.xyplorer.com/index.php</iconUrl>
+    <owners>The Running Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    XYplorer is a file manager for Windows. It features tabbed browsing, a powerful file search,
+    a versatile preview, a highly customizable interface, optional dual pane, and a large array
+    of unique ways to efficiently automate frequently recurring tasks.
+    It’s fast, light, and portable.
+    </description>
+    <copyright>2017 Cologne Code Company</copyright>
+    <tags>XYPlorer file filemanger</tags>
+    <dependencies>
+			<dependency id="Chocolatey-PackageHelpers.extension" />
+		</dependencies>
+  </metadata>
+</package>
