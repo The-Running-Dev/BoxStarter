@@ -371,3 +371,5 @@ function Register-WatcherEventHandler {
         Register-ObjectEvent -InputObject $fileSystemWatcher -SourceIdentifier "$($eventIdentifier)_Errors" -EventName Error -Action  $writeError | Out-Null
     }
 }
+
+Export-ModuleMember *

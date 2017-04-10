@@ -4,4 +4,6 @@ param (
 )
 Import-Module (Join-Path $PSScriptRoot 'build-helpers.psm1') -Force
 
-Invoke-Pack $PSScriptRoot $searchTerm $sourceType
+$parentDir = Split-Path -Parent $PSScriptRoot
+
+Invoke-Push $parentDir $searchTerm $sourceType

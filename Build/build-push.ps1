@@ -4,5 +4,5 @@ param (
     [ValidateSet('true', 'false')][string] $embed = 'true'
 )
 
-& .\build.ps1 $searchTerm $sourceType $embed
-& .\push.ps1 $searchTerm $sourceType
+& $PSScriptRoot\build.ps1 $searchTerm $sourceType $embed
+& $PSScriptRoot\push.ps1 $searchTerm $sourceType
