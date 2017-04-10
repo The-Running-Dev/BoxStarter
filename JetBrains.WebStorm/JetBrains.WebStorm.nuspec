@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>JetBrains.WebStorm</id>
+    <version>2017.1</version>
+    <title>JetBrains Web Storm</title>
+    <authors>JetBrains</authors>
+    <projectUrl>https://www.jetbrains.com/webstorm</projectUrl>
+    <owners>Boyan Kostadinov</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
+    <description>
+    JetBrains WebStorm
+    </description>
+    <dependencies>
+      <dependency id="Chocolatey-PackageHelpers.extension" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,6 +1,6 @@
-﻿$installer          = 'datagrip-2017.1.exe'
-$url                = 'https://download.jetbrains.com/datagrip/datagrip-2017.1.exe'
-$checksum           = '7360ce2e21a9f8602c9cc5edc281d8ed773cbb05b23ef4bcc1ba930e98b24f23'
+﻿$installer          = 'datagrip-2017.1.1.exe'
+$url                = 'https://download.jetbrains.com/datagrip/datagrip-2017.1.1.exe'
+$checksum           = '6AA8F4B0803B67B9A9C4616FE15DA8EE51F9488569D98162A41E52E1A5DDB92B'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $env:ChocolateyPackageTitle
