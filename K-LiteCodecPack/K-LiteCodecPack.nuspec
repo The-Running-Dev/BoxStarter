@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>K-LiteCodecPack</id>
-    <version>13.0.0</version>
+    <version>12.0.0</version>
     <title>K-Lite Codec Pack</title>
     <authors>Codec Guide</authors>
     <licenseUrl>http://www.codecguide.com/termsofuse.htm</licenseUrl>
     <projectUrl>http://www.codecguide.com/</projectUrl>
     <iconUrl>https://rawgit.com/zersh01/chocolatey-k-litecodecpackmega/master/KLite.png</iconUrl>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The K-Lite Codec Pack is a collection of DirectShow filters, VFW/ACM codecs, and tools.
     Codecs and DirectShow filters are needed for encoding and decoding audio and video formats.

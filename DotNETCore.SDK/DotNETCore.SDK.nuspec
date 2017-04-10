@@ -6,8 +6,8 @@
     <title>.NET Core</title>
     <authors>Microsoft</authors>
     <projectUrl>https://www.microsoft.com/net/core</projectUrl>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
     Istalls .NET Core SDK
@@ -15,7 +15,7 @@
     <summary>Installs .NET Core SDK</summary>
     <tags>.net core sdk</tags>
     <dependencies>
-      <dependency id="boyan-choco.extension" />
+      <dependency id="Chocolatey-PackageHelpers.extension" />
       <dependency id="DotNETCore.Runtime" version="1.1.0"/>
     </dependencies>
   </metadata>

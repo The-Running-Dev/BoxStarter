@@ -16,10 +16,10 @@
     <releaseNotes />
     <copyright>Apple Inc. All rights reserved.</copyright>
     <tags>iTunes</tags>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
     <dependencies>
-			<dependency id="boyan-choco.extension" />
+			<dependency id="Chocolatey-PackageHelpers.extension" />
 		</dependencies>
   </metadata>
 </package>

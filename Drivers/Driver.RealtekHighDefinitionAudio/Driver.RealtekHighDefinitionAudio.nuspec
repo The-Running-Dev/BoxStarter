@@ -5,13 +5,13 @@
     <version>6.0.1.7874</version>
     <title>Realtek High Definition Audio Driver</title>
     <authors>Realtek</authors>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-		<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Packages</packageSourceUrl>
     <description>
       Realtek High Definition Audio driver for the AsRock X99 motherboard
     </description>
     <dependencies>
-      <dependency id="boyan-choco.extension" />
+      <dependency id="Chocolatey-PackageHelpers.extension" />
     </dependencies>
   </metadata>
 </package>

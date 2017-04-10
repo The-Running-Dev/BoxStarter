@@ -9,8 +9,8 @@
     <projectUrl>https://git-for-windows.github.io/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/git.svg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
     <description>Git (for Windows) – Git is a powerful distributed Source Code Management tool. If you just want to use Git to do your version control in Windows, you will need to download Git for Windows, run the installer, and you are ready to start.
     Note: Git for Windows is a project run by volunteers, so if you want it to improve, volunteer!
 
@@ -31,7 +31,7 @@
     <summary>Git (for Windows) – Fast Version Control</summary>
     <tags>git vcs dvcs version control msysgit admin</tags>
     <dependencies>
-			<dependency id="boyan-choco.extension" />
+			<dependency id="Chocolatey-PackageHelpers.extension" />
 		</dependencies>
   </metadata>
 </package>

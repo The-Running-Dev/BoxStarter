@@ -5,13 +5,13 @@
     <version>1.0.47.277</version>
     <title>VPN Area Chameleon</title>
     <authors>Offshore Securities Inc.</authors>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>VPNAreaChameleon is the Windows VPN client provided by VPN Area</description>
     <tags>vpn admin security</tags>
     <dependencies>
-			<dependency id="boyan-choco.extension" />
+			<dependency id="Chocolatey-PackageHelpers.extension" />
 		</dependencies>
   </metadata>
 </package>

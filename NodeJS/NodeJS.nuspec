@@ -2,21 +2,21 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>NodeJS</id>
-    <version>7.8.0</version>
+    <version>7.0</version>
     <title>Node JS</title>
     <authors>Node.js Foundation</authors>
     <licenseUrl>https://raw.github.com/nodejs/node/master/LICENSE</licenseUrl>
     <projectUrl>http://nodejs.org</projectUrl>
     <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/nodejs.png</iconUrl>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-		<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Node JS - Evented I/O for v8 JavaScript. Node's goal is to provide an easy way to build scalable network programs.
     This package runs the official Node JS installer, resulting in Node.exe and NPM being installed under Program Files, and added to the SYSTEM PATH environment variable.</description>
     <summary>Node JS - Evented I/O for v8 JavaScript.</summary>
     <tags>nodejs node javascript admin npm</tags>
     <dependencies>
-			<dependency id="boyan-choco.extension" />
+			<dependency id="Chocolatey-PackageHelpers.extension" />
 		</dependencies>
   </metadata>
 </package>

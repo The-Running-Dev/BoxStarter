@@ -5,13 +5,13 @@
     <version>1.16.35.1</version>
     <title>Asmedia USB Driver</title>
     <authors>Boyan Kostadinov</authors>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-		<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Packages</packageSourceUrl>
     <description>
       Asmedia USB 3.0,3.1 XHCI driver for the AsRock X99 motherboard
     </description>
     <dependencies>
-      		<dependency id="boyan-choco.extension" />
+      		<dependency id="Chocolatey-PackageHelpers.extension" />
     </dependencies>
   </metadata>
 </package>

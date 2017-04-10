@@ -5,13 +5,13 @@
     <version>2017.5554</version>
     <title>Acronis</title>
     <authors>Acronis</authors>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-		<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Packages</packageSourceUrl>
     <description>
       This package installs Acronis True Image.
     </description>
     <dependencies>
-      <dependency id="boyan-choco.extension" />
+      <dependency id="Chocolatey-PackageHelpers.extension" />
     </dependencies>
   </metadata>
 </package>

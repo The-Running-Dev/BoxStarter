@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>LastPass.Applications</id>
-    <version>3.1.40</version>
+    <version>3.1</version>
     <title>LastPass for Applications</title>
     <authors>LastPass</authors>
     <licenseUrl>https://lastpass.com/aboutus_terms.php</licenseUrl>
@@ -14,9 +14,9 @@
     <releaseNotes>https://lastpass.com/upgrade.php?fromwebsite=1&amp;releasenotes=1</releaseNotes>
     <tags>lastpass password admin</tags>
     <dependencies>
-      <dependency id="boyan-choco.extension" />
+      <dependency id="Chocolatey-PackageHelpers.extension" />
     </dependencies>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-		<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Packages</packageSourceUrl>
   </metadata>
 </package>

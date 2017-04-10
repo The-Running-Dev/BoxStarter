@@ -9,8 +9,8 @@
     <projectUrl>https://justgetflux.com/</projectUrl>
     <iconUrl>http://dl.herf.org/flux-icon-sm.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
     <description>Ever notice how people texting at night have that eerie blue glow?
 
 Or wake up ready to write down the Next Great Idea, and get blinded by your computer screen?
@@ -25,7 +25,7 @@ It's even possible that you're staying up too late because of your computer. You
     <copyright />
     <tags>f.lux flux lighting monitor color</tags>
     <dependencies>
-			<dependency id="boyan-choco.extension" />
+			<dependency id="Chocolatey-PackageHelpers.extension" />
 		</dependencies>
   </metadata>
 </package>

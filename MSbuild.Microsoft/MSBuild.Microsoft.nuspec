@@ -5,9 +5,9 @@
     <version>1.0.0</version>
     <title>Microsoft MSBuild Visual Studio Targets</title>
     <authors>Microsoft</authors>
-    <projectUrl>https://github.com/Boyan-Kostadinov/Packages</projectUrl>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    <packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+    <projectUrl>https://github.com/The-Running-Dev/Packages</projectUrl>
+    <owners>Boyan Kostadinov</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       This package installs the MSBuild targets provided by Visual Studio
@@ -18,7 +18,7 @@
     <language>en-US</language>
     <tags>.net msbuild</tags>
     <dependencies>
-      <dependency id="boyan-choco.extension" />
+      <dependency id="Chocolatey-PackageHelpers.extension" />
     </dependencies>
   </metadata>
 </package>

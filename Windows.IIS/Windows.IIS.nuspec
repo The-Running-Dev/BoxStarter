@@ -5,13 +5,13 @@
 		<version>2016.11.02</version>
 		<title>Windows Internet Information Server</title>
 		<authors>Microsoft</authors>
-		<owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-    	<packageSourceUrl>https://github.com/Boyan-Kostadinov/BoxStarter</packageSourceUrl>
+		<owners>Boyan Kostadinov</owners>
+    	<packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
 		<description>
 		Installs Windows Internet Information Server.
 		</description>
 		<dependencies>
-      		<dependency id="boyan-choco.extension" />
+      		<dependency id="Chocolatey-PackageHelpers.extension" />
     	</dependencies>
 	</metadata>
 </package>

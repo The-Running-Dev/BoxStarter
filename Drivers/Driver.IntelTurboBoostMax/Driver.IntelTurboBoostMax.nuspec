@@ -5,13 +5,13 @@
     <version>1.0.0.1027</version>
     <title>ntel Turbo Boost Max 3.0</title>
     <authors>ACDSee</authors>
-    <owners>Boyan Kostadinov (boyank@gmail.com)</owners>
-		<packageSourceUrl>https://github.com/Boyan-Kostadinov/Packages</packageSourceUrl>
+    <owners>Boyan Kostadinov</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Packages</packageSourceUrl>
     <description>
       Intel Turbo Boost Max 3.0 for the AsRock X99 Motherboard
     </description>
     <dependencies>
-      <dependency id="boyan-choco.extension" />
+      <dependency id="Chocolatey-PackageHelpers.extension" />
     </dependencies>
   </metadata>
 </package>
