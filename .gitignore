@@ -5,3 +5,5 @@ Configure.exe
 .vscode/**
 Drivers/**/*.zip
 Drivers/**/*.ignore
+**/*.ignore
+**/*.exe

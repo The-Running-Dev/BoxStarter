@@ -23,7 +23,7 @@ function Get-BaseDirectory([string] $baseDir) {
 		Write-Verbose "Get-BaseDirectory: 'packagesInstallers' is $($env:packagesInstallers)"
         $baseDir = $env:packagesInstallers
     }
-	
+
 	Write-Verbose "Get-BaseDirectory: Base directory is '$baseDir'"
     return $baseDir
 }
@@ -39,10 +39,10 @@ function Get-Executable([string] $baseDir, [string] $fileName, [string] $regEx) 
     # Set the regular expression, or use the file name as the default
     $regEx = @{ $true = (Split-Path -Leaf $fileName); $false = $regEx }['' -ne $fileName]
 	Write-Verbose "Get-Executable: RegEx is '$regEx'"
-	
+
     $files = Get-ChildItem -Path $baseDir -Recurse | Where-Object { $_.Name -match $regEx }
 	Write-Verbose "Get-Executable: Found '$($files.Count)' file(s) matching '$regEx' in '$baseDir'"
-	
+
     # Always use the first file found
     if ($files.Count -gt 0) {
 		Write-Verbose "Get-Executable: Executable is '$($files[0].FullName)'"
@@ -109,7 +109,7 @@ function Get-Installer {
 
     $arguments['file'] = Get-Argument $arguments 'file' (Join-Path $arguments['unzipLocation'] ([System.IO.Path]::GetFileName($url)))
 	Write-Verbose "Get-Installer: File is '$($arguments['file'])'"
-	
+
     $arguments['executable'] = Get-Argument $arguments 'executable' ([System.IO.Path]::GetFileName($arguments['file']))
 	Write-Verbose "Get-Installer: Executable is '$($arguments['executable'])'"
 
@@ -183,19 +183,19 @@ function Get-InstallerFromZip([Hashtable] $arguments) {
     $executable = $arguments['executable']
     $executableRegEx = $arguments['executableRegEx']
     $unzipLocation = $arguments['unzipLocation']
- 
+
     if (Test-FileExists $file) {
         # We don't care abuot the return of the unzip
         Get-ChocolateyUnzip -FileFullPath $file -Destination $unzipLocation -Force
     }
     elseif ($arguments['url']) {
-		Write-Verbose 'Get-InstallerFromZip: Calling 'Install-ChocolateyZipPackage''
+		Write-Verbose "Get-InstallerFromZip: Calling 'Install-ChocolateyZipPackage'"
         Install-ChocolateyZipPackage @arguments
     }
 
 	$installer = Get-Executable $extractLocation $executable $executableRegEx
 	Write-Verbose "Get-InstallerFromZip: Installer is '$installer'"
-    
+
 	return $installer
 }
 
@@ -203,6 +203,8 @@ function Install-CustomPackage() {
     param(
         [Hashtable] $arguments
     )
+
+	$unzipOnly = Get-Argument $arguments 'unzipOnly'
 
     try {
         $arguments['file'] = Get-Installer $arguments
@@ -216,9 +218,9 @@ function Install-CustomPackage() {
 
         CleanUp
     }
-    else {
+    elseif (!$unzipOnly) {
         CleanUp
-		
+
 		Write-Verbose 'Install-CustomPackage: No installer or url provided. Aborting...'
         throw 'No installer or url provided. Aborting...'
     }
@@ -229,11 +231,6 @@ function Install-WithProcess() {
         [Hashtable] $arguments
     )
 
-	$url = Get-Argument $arguments 'url'
-	if ($url -eq $null) {
-		#throw 'No Installer or url provided. Aborting...'
-	}
-	
     $arguments['file'] = Get-Installer $arguments
 
     if (Test-FileExists $arguments['file']) {
