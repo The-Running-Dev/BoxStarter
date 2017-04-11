@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>DotNETCore.Runtime</id>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <title>Microsoft .NET Core Runtime (Install)</title>
     <authors>Microsoft</authors>
-    <owners>Boyan Kostadinov</owners>
-    <packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
+    <owners>The Running Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://cdn.rawgit.com/dotnet/core/290743955c7dec3315e72da5dcd589b2bd177e71/LICENSE</licenseUrl>
     <projectUrl>https://dot.net/core</projectUrl>
@@ -26,7 +26,7 @@
     <copyright>.NET Foundation and Contributors</copyright>
     <tags>Microsoft .NET Core Runtime Redistributable admin</tags>
     <dependencies>
-      <dependency id="Chocolatey-PackageHelpers.extension" />
+      <dependency id="Chocolatey-Package.extension" />
       <dependency id="vcredist2015" version="14.0.23506" />
     </dependencies>
   </metadata>

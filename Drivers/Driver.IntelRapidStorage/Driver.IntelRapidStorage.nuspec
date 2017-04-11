@@ -5,13 +5,13 @@
     <version>14.8.0.1042</version>
     <title>Intel Rapid Storage Technology Driver</title>
     <authors>Intel</authors>
-    <owners>Boyan Kostadinov</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Packages</packageSourceUrl>
+    <owners>The Running Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <description>
       Intel Rapid Storage Technology driver for the AsRock X99 Motherboard
     </description>
     <dependencies>
-      		<dependency id="Chocolatey-PackageHelpers.extension" />
+      		<dependency id="Chocolatey-Package.extension" />
     </dependencies>
   </metadata>
 </package>

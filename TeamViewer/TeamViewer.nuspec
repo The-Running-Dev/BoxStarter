@@ -8,8 +8,8 @@
     <licenseUrl>http://www.teamviewer.com/</licenseUrl>
     <projectUrl>http://www.teamviewer.com/</projectUrl>
     <iconUrl>https://raw.github.com/jivkok/Chocolatey-AutomaticPackages/master/teamviewer/teamviewer.png</iconUrl>
-    <owners>Boyan Kostadinov</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
+    <owners>The Running Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>## Description
     Remote control any computer or Mac over the internet within seconds or use TeamViewer for online meetings. Free for private use. Commercial users are welcome to use for trial purposes.
@@ -17,7 +17,7 @@
     <summary>TeamViewer – the All-In-One Software for Remote Support and Online Meetings</summary>
     <tags>teamviewer team viewer remote control support online meeting</tags>
     <dependencies>
-      <dependency id="Chocolatey-PackageHelpers.extension" />
+      <dependency id="Chocolatey-Package.extension" />
     </dependencies>
   </metadata>
 </package>

@@ -8,8 +8,8 @@
     <licenseUrl>http://www.oracle.com/technetwork/java/javase/terms/license/index.html</licenseUrl>
     <projectUrl>http://www.java.com</projectUrl>
     <iconUrl>http://cdn.rawgit.com/chocolatey/chocolatey-coreteampackages/50fd97744110dcbce1acde889c0870599c9d5584/icons/java.svg</iconUrl>
-    <owners>Boyan Kostadinov</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
+    <owners>The Running Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Java allows you to play online games, chat with people around the world, calculate your mortgage interest, and view images in 3D, just to name a few. It's also integral to the intranet applications and other e-business solutions that are the foundation of corporate computing.
     ### Note
@@ -24,7 +24,7 @@
     <releaseNotes />
     <tags>java runtime environment</tags>
     <dependencies>
-			<dependency id="Chocolatey-PackageHelpers.extension" />
+			<dependency id="Chocolatey-Package.extension" />
 		</dependencies>
   </metadata>
 </package>

@@ -6,8 +6,8 @@
     <authors>Binary Fortress</authors>
     <title>DisplayFusion</title>
     <projectUrl>http://www.displayfusion.com</projectUrl>
-    <owners>Boyan Kostadinov</owners>
-    <packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
+    <owners>The Running Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <iconUrl>https://github.com/logo.png</iconUrl>
     <licenseUrl>http://www.binaryfortress.com/data/download/?package=displayFusion&amp;licenseEN=1&amp;log=0</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -29,7 +29,7 @@
     choco install -s NewPc DisplayFusion -params '/setup="...PathTo\DisplayFusionSetup-8.1.1.exe"'
     </description>
     <dependencies>
-      <dependency id="Chocolatey-PackageHelpers.extension" />
+      <dependency id="Chocolatey-Package.extension" />
     </dependencies>
   </metadata>
 </package>

@@ -6,13 +6,13 @@
     <title>JetBrains Web Storm</title>
     <authors>JetBrains</authors>
     <projectUrl>https://www.jetbrains.com/webstorm</projectUrl>
-    <owners>Boyan Kostadinov</owners>
-    <packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
+    <owners>The Running Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <description>
     JetBrains WebStorm
     </description>
     <dependencies>
-      <dependency id="Chocolatey-PackageHelpers.extension" />
+      <dependency id="Chocolatey-Package.extension" />
     </dependencies>
   </metadata>
 </package>

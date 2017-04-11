@@ -6,9 +6,9 @@
     <title>SQL Server 2014 Developer with SP2</title>
     <authors>Microsoft</authors>
     <projectUrl>https://www.microsoft.com/en-us/sql-server/sql-server-editions-developers</projectUrl>
-    <owners>Boyan Kostadinov</owners>
-    <packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
-    <iconUrl>https://github.com/The-Running-Dev/Packages</iconUrl>
+    <owners>The Running Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <iconUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       This package installs SQL Server 2014 Developer with SP2.
@@ -17,7 +17,7 @@
     <summary>Installs SQL Server 2014 Developer with SP2</summary>
     <tags>mssql sql server 2014 developer sp2</tags>
     <dependencies>
-      <dependency id="Chocolatey-PackageHelpers.extension" />
+      <dependency id="Chocolatey-Package.extension" />
       <dependency id="DotNet3.5" version="3.5.20160716"/>
     </dependencies>
   </metadata>
