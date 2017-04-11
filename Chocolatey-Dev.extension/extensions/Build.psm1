@@ -1,5 +1,3 @@
-Import-Module (Join-Path -Resolve $PSScriptRoot 'TeamCity.psm1')
-
 # Wrapper for reporting progress on the command line
 # or to TeamCity via TeamCity.psm1/TeamCityReportBuildProgress
 function Write-Progress

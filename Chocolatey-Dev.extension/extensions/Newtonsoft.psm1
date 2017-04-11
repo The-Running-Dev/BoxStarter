@@ -51,4 +51,4 @@ function ConvertFrom-JObject($obj) {
     }
 }
 
-Export-ModuleMember -Function ConvertFrom-JsonNewtonsoft, ConvertTo-JsonNewtonsoft
+Export-ModuleMember -Function *
