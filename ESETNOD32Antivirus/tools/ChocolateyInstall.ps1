@@ -1,6 +1,6 @@
 ﻿$installer          = 'eav_nt64_enu.exe'
 $url                = 'https://download.eset.com/com/eset/apps/home/eav/windows/latest/eav_nt64_enu.exe'
-$checksum           = '208f3d1904b89fee7fcb72a0e877ae3e7d240a8a9f105b1f39b7106c9b11f5a9'
+$checksum           = '208F3D1904B89FEE7FCB72A0E877AE3E7D240A8A9F105B1F39B7106C9B11F5A9'
 $os                 = if (IsSystem32Bit) { "86" } else { "64" }
 $installScript      = Join-Path $env:ChocolateyPackageFolder 'Install.exe'
 $arguments          = @{

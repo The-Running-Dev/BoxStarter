@@ -1,6 +1,6 @@
-﻿$installer          = 'Git-2.12.2-64-bit.exe'
-$url                = 'https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.1/Git-2.12.2-64-bit.exe'
-$checksum           = '99492acd85bad097b5952ccfd5cb37658bf3301f5d8256f345dd10937ab07899'
+﻿$installer          = 'Git-2.12.2.2-64-bit.exe'
+$url                = 'https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.2/Git-2.12.2.2-64-bit.exe'
+$checksum           = '4E753B00595C0BB0D1BC50C2FEA61A60A26B326D8A59AACDB79DFB087B4FC2A7'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $env:ChocolateyPackageTitle
