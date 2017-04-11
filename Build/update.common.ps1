@@ -1,5 +1,3 @@
-Import-Module (Join-Path $PSScriptRoot 'build-helpers.psm1')
-
 function global:au_BeforeUpdate {
     $toolsPath = Resolve-Path tools
     $currentDir = Resolve-Path .
