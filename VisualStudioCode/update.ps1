@@ -1,4 +1,4 @@
-. (Join-Path $PSScriptRoot '..\update.common.ps1')
+. (Join-Path $PSScriptRoot '..\Build\update.common.ps1')
 
 function global:au_GetLatest {
     $releasesUrl = 'https://vscode-update.azurewebsites.net/api/update/win32/stable/VERSION'

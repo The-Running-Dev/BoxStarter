@@ -1,4 +1,4 @@
-. (Join-Path $PSScriptRoot '..\update.common.ps1')
+. (Join-Path $PSScriptRoot '..\Build\update.common.ps1')
 
 function global:au_GetLatest {
     $downloadEndPoint = 'https://www.binaryfortress.com/Data/Download/?package=voicebot&log=123'

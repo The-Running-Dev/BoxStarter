@@ -1,6 +1,6 @@
-$installer          = 'dotnet-dev-win-x64.1.0.0-preview2-1-003177.exe'
-$url                = 'https://go.microsoft.com/fwlink/?LinkID=835014'
-$checksum           = '0C15A66958B1FA593129E5FFCFCD0558B756187EB4767B0B06F718D0AA6F4FCE'
+﻿$installer          = 'dotnet-dev-win-x64.1.0.1.exe'
+$url                = 'https://download.microsoft.com/download/8/F/9/8F9659B9-E628-4D1A-B6BF-C3004C8C954B/dotnet-dev-win-x64.1.0.1.exe'
+$checksum           = '8F252094A8A572A10AB75E923EE5905748990D2CE4DE3E5F065356D509DFEF43'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $env:ChocolateyPackageTitle

@@ -1,6 +1,6 @@
-﻿$installer          = 'iTunesFusionSetup-2.6.exe'
-$url                = 'https://binaryfortressdownloads.com/Download/BFSFiles/102/iTunesFusionSetup-2.6.exe'
-$checksum           = '2CE11CE6F3C5ED6A6B24D47C9EA346488BA5FA46AE525B31F9ADF7246E06FA1F'
+﻿$installer          = 'gsync_enterprise.msi'
+$url                = 'https://dl.google.com/drive/gsync_enterprise.msi'
+$checksum           = '0A30C0A5782C063EF42D049C798BEF739B4C0CB7D5FCBBECA965C0B97C9AC941'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $env:ChocolateyPackageTitle
@@ -8,9 +8,9 @@ $arguments          = @{
     file            = Join-Path $env:ChocolateyPackageFolder $installer
     url             = $url
     checksum        = $checksum
-    fileType        = 'exe'
+    fileType        = 'msi'
     checksumType    = 'sha256'
-    silentArgs      = '/VERYSILENT /LAUNCHAFTER=0'
+    silentArgs      = '/quiet'
     validExitCodes  = @(0, 1641, 3010)
 }
 

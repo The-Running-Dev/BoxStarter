@@ -1,6 +1,6 @@
-﻿$installer          = 'dotnet-win-x64.1.1.0.exe'
-$url                = 'https://download.microsoft.com/download/1/4/1/141760B3-805B-4583-B17C-8C5BC5A876AB/Installers/dotnet-win-x64.1.1.0.exe'
-$checksum           = '6F3CE7234A427DFB6280D2C725329F3217B8439DF48CE83C6780E9EFB30AA7F5'
+﻿$installer          = 'dotnet-win-x64.1.1.1.exe'
+$url                = 'https://download.microsoft.com/download/9/5/1/95198156-644E-4CCE-8DA1-C41F7658510C/dotnet-win-x64.1.1.1.exe'
+$checksum           = 'C0B2344526033907B6F2F0BD3FB0F776C9FC1FD20114075BAF987012E2390E36'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $env:ChocolateyPackageTitle

@@ -1,9 +1,9 @@
 . (Join-Path $PSScriptRoot '..\Build\update.common.ps1')
 
 function global:au_GetLatest {
-    $releasesUrl = 'http://www.filehorse.com/download-flux/'
-    $downloadUrl = 'https://justgetflux.com/flux-setup.exe'
-    $versionRegEx = '.*f.lux ([0-9\.]+)'
+    $releasesUrl = 'http://www.filehorse.com/download-google-drive/'
+    $downloadUrl = 'https://dl.google.com/drive/gsync_enterprise.msi'
+    $versionRegEx = '.*Google Drive ([0-9\.]+)'
 
     $html = Invoke-WebRequest -UseBasicParsing -Uri $releasesUrl
 

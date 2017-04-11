@@ -1,4 +1,4 @@
-. (Join-Path $PSScriptRoot '..\update.common.ps1')
+. (Join-Path $PSScriptRoot '..\Build\update.common.ps1')
 
 $global:downloadFile = 'jre-$($fileVersion)-windows-i586.exe'
 $global:downloadFile64 = 'jre-$($fileVersion)-windows-x64.exe'

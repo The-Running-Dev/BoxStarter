@@ -1,4 +1,4 @@
-. (Join-Path $PSScriptRoot '..\update.common.ps1')
+. (Join-Path $PSScriptRoot '..\Build\update.common.ps1')
 
 $releasesUrl = 'https://www.xyplorer.com/download.php'
 $versionRegEx = '([0-9\.]+), released'
