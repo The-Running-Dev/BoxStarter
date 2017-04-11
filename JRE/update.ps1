@@ -1,15 +1,11 @@
-Import-Module AU -Force
-
-$currentDir = Split-Path -parent $MyInvocation.MyCommand.Definition
-$packagesDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter'
-$installersDir = Join-Path -Resolve $currentDir '..\..\..\BoxStarter\Installers'
+. (Join-Path $PSScriptRoot '..\update.common.ps1')
 
 $global:downloadFile = 'jre-$($fileVersion)-windows-i586.exe'
 $global:downloadFile64 = 'jre-$($fileVersion)-windows-x64.exe'
 
 function global:au_BeforeUpdate {
-    $file = Join-Path $installersDir $downloadFile
-    $file64 = Join-Path $installersDir $downloadFile64
+    $file = Join-Path $currentDir $downloadFile
+    $file64 = Join-Path $currentDir $downloadFile64
 
     $downloadFilePath = (Join-Path $currentDir $global:downloadFile)
     $downloadFile64Path = (Join-Path $currentDir $global:downloadFile64)
@@ -68,4 +64,3 @@ function global:au_GetLatest {
 }
 
 Update-Package -ChecksumFor none -NoCheckChocoVersion
-Get-ChildItem $currentDir -Filter '*.nupkg' | ForEach-Object { Move-Item $_.FullName $packagesDir -Force }
