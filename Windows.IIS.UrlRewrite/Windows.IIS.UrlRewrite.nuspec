@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>IIS.UrlRewrite</id>
+    <id>Windows.IIS.UrlRewrite</id>
     <version>2.0.20160209</version>
     <title>URL Rewrite for IIS</title>
     <authors>Microsoft Inc.</authors>

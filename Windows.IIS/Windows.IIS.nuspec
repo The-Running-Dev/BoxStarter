@@ -8,7 +8,7 @@
 		<owners>Boyan Kostadinov</owners>
     	<packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
 		<description>
-		Installs Windows Internet Information Server.
+		Installs Windows Internet Information Server
 		</description>
 		<dependencies>
       		<dependency id="Chocolatey-PackageHelpers.extension" />
