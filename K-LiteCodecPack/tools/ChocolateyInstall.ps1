@@ -1,6 +1,6 @@
-﻿$installer          = 'K-Lite_Codec_Pack_1295_Mega.exe'
+﻿$installer          = 'K-Lite_Codec_Pack_1300_Mega.exe'
 $url                = 'http://files2.codecguide.com/K-Lite_Codec_Pack_1300_Mega.exe'
-$checksum           = '49c08d091c4ce703df5200afa326a7d6f35977dc4ff72a5c9265ddb6e848897a'
+$checksum           = '49C08D091C4CE703DF5200AFA326A7D6F35977DC4FF72A5C9265DDB6E848897A'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $env:ChocolateyPackageTitle

@@ -1,6 +1,6 @@
 ﻿$installer            = 'xyplorer_full_noinstall.zip'
 $url                  = 'https://www.xyplorer.com/download/xyplorer_full_noinstall.zip'
-$checksum             = '170758F2C8D0FAD745CAF6A913F76B1ABA39FE8D99E3EE52EA5BC848511EA9D4'
+$checksum             = '1221906C44485F0446B32BEBC7AF6C9F08A20672EF2D4787C09BC5C1744BC21F'
 $arguments            = @{
     packageName       = $env:ChocolateyPackageName
     softwareName      = $env:ChocolateyPackageTitle

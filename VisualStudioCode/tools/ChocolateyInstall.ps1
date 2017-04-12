@@ -1,4 +1,4 @@
-﻿$installerfile          = 'VSCodeSetup-1.10.2.exe'
+﻿$installer              = 'VSCodeSetup-1.11.1.exe'
 $url                    = 'https://az764295.vo.msecnd.net/stable/d9484d12b38879b7f4cdd1150efeb2fd2c1fbf39/VSCodeSetup-1.11.1.exe'
 $checksum               = '209EF6584ACD2C492A2A3088085F01DA8636611C97FF009D4C79C143AC85E36E'
 $createDesktopIcon      = $false

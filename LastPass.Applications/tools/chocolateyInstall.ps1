@@ -1,6 +1,6 @@
 ﻿$installer          = 'lastappinstall_x64.exe'
 $url                = 'https://lastpass.com/download/cdn/lastappinstall_x64.exe'
-$checksum           = '29cb9f2e69cfed90dcefbec8a13615ba7db9c1b74ae6effad1d0e0a078a30bb9'
+$checksum           = '29CB9F2E69CFED90DCEFBEC8A13615BA7DB9C1B74AE6EFFAD1D0E0A078A30BB9'
 $installerScript    = Join-Path $packageDir 'Install.exe'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName

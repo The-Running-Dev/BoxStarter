@@ -4,6 +4,8 @@ $global:downloadFile = 'jre-$($fileVersion)-windows-i586.exe'
 $global:downloadFile64 = 'jre-$($fileVersion)-windows-x64.exe'
 
 function global:au_BeforeUpdate {
+    $currentDir = Resolve-Path .
+
     $file = Join-Path $currentDir $downloadFile
     $file64 = Join-Path $currentDir $downloadFile64
 
@@ -19,8 +21,8 @@ function global:au_BeforeUpdate {
 
     $Latest.ChecksumType32 = 'sha256'
     $Latest.ChecksumType64 = 'sha256'
-    $Latest.Checksum32 = (Get-FileHash $file -Algorithm $Latest.ChecksumType32 | ForEach Hash).ToLowerInvariant()
-    $Latest.Checksum64 = (Get-FileHash $file64 -Algorithm $Latest.ChecksumType64 | ForEach Hash).ToLowerInvariant()
+    $Latest.Checksum32 = (Get-FileHash $file -Algorithm $Latest.ChecksumType32 | ForEach-Object Hash).ToLowerInvariant()
+    $Latest.Checksum64 = (Get-FileHash $file64 -Algorithm $Latest.ChecksumType64 | ForEach-Object Hash).ToLowerInvariant()
 }
 
 function global:au_SearchReplace {

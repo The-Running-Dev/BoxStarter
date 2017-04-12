@@ -27,7 +27,7 @@ $arguments          = @{
     fileType        = 'msi'
     checksumType    = 'sha256'
     silentArgs      = '/quiet'
-    validExitCodes  = @(0, 1641, 3010)
+    validExitCodes  = @(0, 1603, 1641, 3010)
 }
 
 Install-CustomPackage $arguments
