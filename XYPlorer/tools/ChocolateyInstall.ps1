@@ -4,7 +4,7 @@ $checksum             = '1221906C44485F0446B32BEBC7AF6C9F08A20672EF2D4787C09BC5C
 $arguments            = @{
     packageName       = $env:ChocolateyPackageName
     softwareName      = $env:ChocolateyPackageTitle
-    unzipLocation     = Join-Path ${env:ProgramFiles(x86)} 'XYplorer'
+    unzipLocation     = Join-Path $env:AppData 'XYplorer'
     unzipOnly         = $true
     file              = Join-Path $env:ChocolateyPackageFolder $installer
     url               = $url
@@ -15,3 +15,5 @@ $arguments            = @{
 }
 
 Install-CustomPackage $arguments
+
+Invoke-PinApplication (Join-Path $arguments['unzipLocation'] 'XYplorer.exe')

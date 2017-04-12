@@ -1,4 +1,4 @@
-. (Join-Path $PSScriptRoot '..\Build\update.common.ps1')
+. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 function global:au_GetLatest {
     $release = Get-GitHubVersion 'gitextensions/gitextensions' '.*SetupComplete\.msi$'

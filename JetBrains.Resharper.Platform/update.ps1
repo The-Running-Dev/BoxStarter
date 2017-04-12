@@ -1,4 +1,4 @@
-. (Join-Path $PSScriptRoot '..\Build\update.common.ps1')
+. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 function global:au_GetLatest {
     $releasesUrl = 'https://resharper-support.jetbrains.com/hc/en-us/articles/207242355-Where-can-I-download-an-old-previous-ReSharper-version-'

@@ -1,4 +1,4 @@
-. (Join-Path $PSScriptRoot '..\Build\update.common.ps1')
+. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 function global:au_GetLatest {
     $releasesUrl = 'http://codecguide.com/download_k-lite_codec_pack_mega.htm'
