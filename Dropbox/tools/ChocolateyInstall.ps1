@@ -1,4 +1,4 @@
-﻿$installer          = 'Dropbox%2023.4.18%20Offline%20Installer.exe'
+﻿$installer          = 'Dropbox 23.4.18 Offline Installer.exe'
 $url                = 'https://clientupdates.dropboxstatic.com/client/Dropbox%2023.4.18%20Offline%20Installer.exe'
 $checksum           = 'C6D521B7A8DA60B358CCAB02A4F663F5175E5B0D0241197A6177BBF7ECEA2E67'
 $arguments        	= @{

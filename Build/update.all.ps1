@@ -1,4 +1,4 @@
-param([string] $name, [string] $forcedPackages, [string] $root = $PSScriptRoot)
+param([string] $name, [string] $forcedPackages, [string] $root = (Join-Path -Resolve $PSScriptRoot ..))
 
 $options = [ordered]@{
     Timeout = 100
@@ -24,8 +24,8 @@ $options = [ordered]@{
         $installerFile = Join-Path $packageDir ($Latest.FileName32 -replace '_x32', '')
 
         Get-ChildItem $packageDir *.nupkg | ForEach-Object { Move-Item $_.FullName $options.publishDir -Force }
-        Get-ChildItem $packageDir *.ignore | Remove-Item
-        #Remove-Item $installerFile
+        Get-ChildItem $packageDir "$($installerFile).ignore" | Remove-Item
+        Remove-Item $installerFile
     }
 }
 

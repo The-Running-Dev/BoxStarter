@@ -9,7 +9,7 @@ function global:au_BeforeUpdate {
     $downloadedFile = (Get-ChildItem -Recurse *.exe, *.msi, *.zip | Select-Object -First 1)
 
     # Remove the _32 and any HTML encoded space
-    $installerFile = Join-Path $currentDir (((Split-Path -Leaf $downloadedFile) -replace '_x32', '') -replace '%20', '')
+    $installerFile = Join-Path $currentDir (((Split-Path -Leaf $downloadedFile) -replace '_x32', '') -replace '%20', ' ')
 
     # Move the installer to the package directory
     # because I don't like it under the tools directory
@@ -22,7 +22,7 @@ function global:au_BeforeUpdate {
 function global:au_SearchReplace {
     return @{
         ".\tools\chocolateyInstall.ps1" = @{
-            "(?i)(^[$]installer\s*=\s*)('.*')" = "`$1'$([System.IO.Path]::GetFileName($Latest.Url32))'"
+            "(?i)(^[$]installer\s*=\s*)('.*')" = "`$1'$([System.IO.Path]::GetFileName($Latest.Url32) -replace '%20', ' ')'"
             "(?i)(^[$]url\s*=\s*)('.*')" = "`$1'$($Latest.Url32)'"
             "(?i)(^[$]checksum\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
         }

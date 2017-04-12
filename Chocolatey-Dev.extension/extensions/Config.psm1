@@ -1,4 +1,4 @@
-$global:defaultFilter = 'tools,extensions,*.ignore,*.nuspec,*.reg,*.xml"'
+$global:defaultFilter = 'config.json,extensions,tools,*.png,*.svg,*.ignore,*.nuspec,*.reg,*.xml"'
 $global:config = @{
     artifacts = ''
     local = @{
