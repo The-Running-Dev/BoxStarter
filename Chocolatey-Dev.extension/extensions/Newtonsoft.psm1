@@ -1,5 +1,4 @@
 $newtonsoftJsonDll = Join-Path -resolve $PSScriptRoot 'Newtonsoft.Json.dll'
-$asm = [Reflection.Assembly]::LoadFile($newtonsoftJsonDll)
 
 function ConvertFrom-JsonNewtonsoft
 {
@@ -18,10 +17,18 @@ function ConvertTo-JsonNewtonsoft
         [Parameter(Mandatory = $true, ValueFromPipeline = $true)] [object] $obj
     )
 
+    if (!$asm) {
+        $asm = [Reflection.Assembly]::LoadFile($newtonsoftJsonDll)
+    }
+
     return [Newtonsoft.Json.JsonConvert]::SerializeObject($obj, [Newtonsoft.Json.Formatting]::Indented)
 }
 
 function ConvertFrom-JObject($obj) {
+    if (!$asm) {
+        $asm = [Reflection.Assembly]::LoadFile($newtonsoftJsonDll)
+    }
+    
     if ($obj -is [Newtonsoft.Json.Linq.JArray]) {
         $a = @()
 

@@ -4,7 +4,7 @@ function Install-Applications([string] $file)
 
     if ($env:packagesSource) {
         $packagesSource = "-s ""$env:packagesSource;Chocolatey"""
-    } 
+    }
 
     Invoke-Commands $file "choco install ##token## -r --execution-timeout 14400 -y $packagesSource"
 }
@@ -15,7 +15,7 @@ function UnInstall-Applications([string] $file)
 
     if ($env:packagesSource) {
         $packagesSource = "-s ""$env:packagesSource;Chocolatey"""
-    } 
+    }
 
     Invoke-Commands $file "choco uninstall ##token## -r --execution-timeout 14400 -y $packagesSource"
 }
@@ -48,22 +48,6 @@ function Invoke-Executables([string] $path) {
         catch {
             Write-Host "Invoke-Executables Failed: $e, Message: $($_.Exception.Message)"
         }
-    }
-}
-
-function Invoke-PinApplications([string] $pinTool, [string] $configFile) {
-    try {
-        foreach ($line in Get-Content -Path $file | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'})
-        {
-            $applicationPath = Invoke-Expression $line
-
-            if ([System.IO.File]::Exists($applicationPath)) {
-                & $pinTool $applicationPath c:"Pin to taskbar"
-            }
-        }
-    }
-    catch {
-         Write-Host "Invoke-PinApplications Failed: $($_.Exception.Message)"
     }
 }
 

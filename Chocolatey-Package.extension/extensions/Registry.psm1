@@ -53,7 +53,7 @@ function Import-RegistryFile
                     Stop-Process -Name $parameters['process']
                 }
             }
-            
+
             # Import the provided settings
             Write-Host "Importing: $($parameters['file'])"
             & regedit /s $parameters['file']
@@ -63,3 +63,5 @@ function Import-RegistryFile
         Write-Host "Failed Importing: $($parameters['file']), Message: $($_.Exception.Message)"
     }
 }
+
+Export-ModuleMember *

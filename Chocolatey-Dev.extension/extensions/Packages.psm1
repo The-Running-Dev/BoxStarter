@@ -58,48 +58,77 @@ function New-ChocoPackageWithConfig {
     param (
         [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $nuSpec,
         [Parameter(Mandatory = $true, Position = 1)][ValidateNotNullOrEmpty()][Hashtable] $config,
-        [Parameter(Mandatory = $true, Position = 2)][ValidateNotNullOrEmpty()][string] $outputPath
+        [Parameter(Mandatory = $true, Position = 2)][ValidateNotNullOrEmpty()][string] $outputPath,
+        [Parameter(Mandatory = $false, Position = 3)][switch] $force
     )
 
     $packageId = (Split-Path -Leaf $nuSpec) -replace '.nuspec', ''
     $packageDir = Split-Path -Parent $nuSpec
+    $updateScript = Join-Path $packageDir 'update.ps1'
     $tempDir = Join-Path $env:Temp $packageId
 
-    if (![System.IO.Directory]::Exists($outputPath)) {
-        New-Item -Path $outputPath -ItemType Directory
+    # If update script exists for the package
+    # run it instead of packing it yourself
+    if (Test-Path $updateScript) {
+        Write-Host "Updating Package with $updateScript"
+
+        if ($force) {
+            & $updateScript -Force
+        }
+        else {
+            & $updateScript
+        }
+
+        Get-ChildItem *.nupkg | Select-Object -First 1 -ExpandProperty FullName `
+            | Move-Item -Destination $outputPath -Force
     }
+    else {
+        if (![System.IO.Directory]::Exists($outputPath)) {
+            New-Item -Path $outputPath -ItemType Directory
+        }
 
-    if (Test-Path $tempDir) {
-        Remove-Item $tempDir -Force -Recurse
+        if (Test-Path $tempDir) {
+            Remove-Item $tempDir -Force -Recurse
+        }
+
+        # Create a temporaty directory for the package
+        # and move all the extra files from the package directory
+        # so they don't become part of the package
+        New-Item -ItemType Directory $tempDir -Force | Out-Null
+        $extraFiles = Get-ChildItem -Path $packageDir -Exclude $config['include']
+        foreach ($f in $extraFiles) {
+            Move-Item $f.FullName $tempDir
+        }
+
+        # Find and compile all .ahk files
+        $ahkFiles = Get-ChildItem -Path $packageDir -Filter *.ahk -Recurse
+        if ($ahkFiles) {
+            Invoke-AutoHotKey $packageDir $ahkFiles
+        }
+
+        # Delete the package from the output path if it exists
+        Remove-Item $outputPath -Include "$packageId**" -Force
+
+        choco pack $nuSpec --outputdirectory $outputPath
+
+        # Move all the extra files from the temp directory
+        # back to the package directory
+        $extraFiles = Get-ChildItem -Path $tempDir
+        foreach ($f in $extraFiles) {
+            Move-Item $f.FullName $packageDir
+        }
+        Remove-Item $tempDir -Recurse -Force
     }
+}
 
-    # Create a temporaty directory for the package
-    # and move all the extra files from the package directory
-    # so they don't become part of the package
-    New-Item -ItemType Directory $tempDir -Force | Out-Null
-    $extraFiles = Get-ChildItem -Path $packageDir -Exclude $config['include']
-    foreach ($f in $extraFiles) {
-        Move-Item $f.FullName $tempDir
-    }
+function Invoke-Pack {
+    param (
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $nuSpec,
+        [Parameter(Mandatory = $true, Position = 1)][ValidateNotNullOrEmpty()][Hashtable] $config,
+        [Parameter(Mandatory = $true, Position = 2)][ValidateNotNullOrEmpty()][string] $outputPath
+    )
 
-    # Find and compile all .ahk files
-    $ahkFiles = Get-ChildItem -Path $packageDir -Filter *.ahk -Recurse
-    if ($ahkFiles) {
-        Invoke-AutoHotKey $packageDir $ahkFiles
-    }
 
-    # Delete the package from the output path if it exists
-    Remove-Item $outputPath -Include "$packageId**" -Force
-
-    choco pack $nuSpec --outputdirectory $outputPath
-
-    # Move all the extra files from the temp directory
-    # back to the package directory
-    $extraFiles = Get-ChildItem -Path $tempDir
-    foreach ($f in $extraFiles) {
-        Move-Item $f.FullName $packageDir
-    }
-    Remove-Item $tempDir -Recurse -Force
 }
 
 function New-NuGetPackageFromBuild {
@@ -125,7 +154,8 @@ function Invoke-ChocoPackWithConfig {
     param (
         [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
         [Parameter(Mandatory = $false, Position = 1)][String] $searchTerm = '',
-        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
+        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local',
+        [Parameter(Mandatory = $false, Position = 3)][switch] $force
     )
 
     $baseConfig = Get-DirectoryConfig $baseDir
@@ -136,7 +166,9 @@ function Invoke-ChocoPackWithConfig {
         $config = Get-DirectoryConfig $currentDir $baseConfig
         $sourceConfig = Get-SourceConfig $config $sourceType
 
-        New-ChocoPackageWithConfig $p.FullName $sourceConfig $config.artifacts
+        Set-Location $currentDir
+        New-ChocoPackageWithConfig $p.FullName $sourceConfig $config.artifacts $force
+        Set-Location $baseDir
     }
 }
 

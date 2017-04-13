@@ -119,3 +119,5 @@ function UnzipFiles([string] $configFile, [string] $baseDirectory) {
         Write-Host "Failed: $($_.Exception.Message)"
     }
 }
+
+Export-ModuleMember *
