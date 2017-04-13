@@ -1,6 +1,6 @@
-$installer                  = 'officedeploymenttool_7614-3602.exe'
-$url                        = 'https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_7614-3602.exe'
-$checksum                   = 'CB9B41ABF4C3D67D082BA534F757A0C84F7CA4AF89D77590CC58290B7C875F5E'
+﻿$installer                  = 'officedeploymenttool_8008-3601.exe'
+$url                        = 'https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_8008-3601.exe'
+$checksum                   = 'A7F8CD73AD61EDDB42303E7D2A0D4F4080B8330267E7B6AD63C17F12926F04DD'
 $defaultConfigurationFile   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
 $arguments                  = @{
     packageName             = 'OfficeDeploymentTool'

@@ -1,6 +1,6 @@
-﻿$installer              = 'VSCodeSetup-1.11.1.exe'
-$url                    = 'https://az764295.vo.msecnd.net/stable/d9484d12b38879b7f4cdd1150efeb2fd2c1fbf39/VSCodeSetup-1.11.1.exe'
-$checksum               = '209EF6584ACD2C492A2A3088085F01DA8636611C97FF009D4C79C143AC85E36E'
+﻿$installer              = 'VSCodeSetup-1.11.2.exe'
+$url                    = 'https://az764295.vo.msecnd.net/stable/6eaebe3b9c70406d67c97779468c324a7a95db0e/VSCodeSetup-1.11.2.exe'
+$checksum               = '3FC0D5C5FEFB51EE861310C5A521BC2064B5A26F5785731EBD88CB5F8B7644C5'
 $createDesktopIcon      = $false
 $createQuickLaunchIcon  = $true
 $addContextMenuFiles    = $true

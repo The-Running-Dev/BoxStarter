@@ -1,6 +1,6 @@
 param([switch] $force)
 
-. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $releasesUrl = 'https://vscode-update.azurewebsites.net/api/update/win32/stable/VERSION'
@@ -14,4 +14,4 @@ function global:au_GetLatest {
     return @{ Url32 = $json.Url; Version = $json.productVersion }
 }
 
-. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

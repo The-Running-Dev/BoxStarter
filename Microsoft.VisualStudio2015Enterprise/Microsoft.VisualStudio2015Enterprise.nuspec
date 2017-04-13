@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
 	<metadata>
-		<id>VisualStudio2015Enterprise</id>
-		<version>2015.03.02</version>
+		<id>Microsoft.VisualStudio2015Enterprise</id>
+		<version>2015.03.20160727</version>
 		<title>Visual Studio 2015 Enterprise Update 3</title>
 		<authors>Microsoft</authors>
 		<licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>

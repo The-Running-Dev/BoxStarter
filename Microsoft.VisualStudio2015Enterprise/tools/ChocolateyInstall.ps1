@@ -1,6 +1,6 @@
-$installer              = 'vs_enterprise.exe'
-$url                    = 'https://download.microsoft.com/download/6/4/7/647EC5B1-68BE-445E-B137-916A0AE51304/vs_enterprise.exe'
-$checksum               = '2848DDD11A5DB48F801A846A4C7162027CA2ADE2EF252143ABDE82AD9C9FDD97'
+$installer              = 'en_visual_studio_enterprise_2015_with_update_3_x86_x64_web_installer_8922986.exe'
+$url                    = 'https://download.my.visualstudio.com/pr/en_visual_studio_enterprise_2015_with_update_3_x86_x64_web_installer_8922986.exe?t=76368aea-bbfd-4488-825c-921f8913f18e&e=1492142627&h=85b56a83096ad6300bf670cf6c2bedc8&su=1'
+$checksum               = ''
 $defaultConfiguration   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
 $parameters             = Get-Parameters $env:chocolateyPackageParameters
 $configuration          = Get-ConfigurationFile $parameters['Configuration'] $defaultConfiguration

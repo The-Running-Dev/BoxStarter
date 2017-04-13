@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>GoogleDrive</id>
+    <id>Google.Drive</id>
     <version>2.34.5075.1619</version>
     <title>Google Drive</title>
     <authors>Google</authors>
