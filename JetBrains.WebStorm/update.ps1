@@ -1,13 +1,13 @@
 param([switch] $force)
 
-. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $productName = 'WebStorm'
-    $releasesUrl = 'https://www.jetbrains.com/updates/updates.xml'
+    $releaseUrl = 'https://www.jetbrains.com/updates/updates.xml'
     $downloadUrl = 'https://download.jetbrains.com/webstorm/WebStorm-$($version).exe'
 
-    [xml] $updates = (New-Object System.Net.WebClient).DownloadString($releasesUrl)
+    [xml] $updates = (New-Object System.Net.WebClient).DownloadString($releaseUrl)
     $versionInfo = $updates.products.product `
     | Where-Object { $_.name -eq $productName } `
     | ForEach-Object { $_.channel } | Where-Object { $_.id -eq 'WS_Release' } `
@@ -33,4 +33,4 @@ function global:au_GetLatest {
     return @{ Url32 = $downloadUrl; Version = $fullVersionNumber }
 }
 
-. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

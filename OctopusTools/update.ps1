@@ -1,6 +1,6 @@
 param([switch] $force)
 
-. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $releaseUrl = 'https://octopus.com/downloads'
@@ -17,4 +17,4 @@ function global:au_GetLatest {
     return @{ Url32 = $url; Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

@@ -1,5 +1,5 @@
 param([switch] $force)
-. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 $getBetaVersion = $false
 
@@ -23,7 +23,7 @@ function global:au_GetLatest {
     }
 
     $stableVersionDownloadUrl = ((Get-WebURL -Url $stableVersionDownloadUrl).ResponseUri).AbsoluteUri
-    $stableVersion = $($stableVersionDownloadUrl -replace $stableVersionRegEx, '$1')
+    $stableVersion = [regex]::match($stableVersionDownloadUrl, $versionRegEx).Groups[1].Value
 
     if ($force) {
         $global:au_Version = $stableVersion
@@ -38,4 +38,4 @@ function Get-FirstBetaLink([string] $uri, [string] $regEx) {
     return $html.links | Where-Object { $_.href -match $regEx } | Select-Object -First 1
 }
 
-. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

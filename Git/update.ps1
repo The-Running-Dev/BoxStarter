@@ -1,6 +1,6 @@
 param([switch] $force)
 
-. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $gitHubRepository = 'git-for-windows/git'
@@ -8,7 +8,7 @@ function global:au_GetLatest {
     $versionRegEx = '([0-9\.]+)\..*'
 
     $release = Get-GitHubVersion $gitHubRepository $downloadUrlRegEx
-    $version = $release.Version -replace $versionRegEx, '$1'
+    $version = [regex]::match($release.Version, $versionRegEx).Groups[1].Value
 
     if ($force) {
         $global:au_Version = $version
@@ -17,4 +17,4 @@ function global:au_GetLatest {
     return @{ Url32 = $release.DownloadUrl; Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

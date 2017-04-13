@@ -1,6 +1,6 @@
 param([switch] $force)
 
-. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $releasesUrl = 'http://www.filehorse.com/download-teamviewer/'
@@ -23,4 +23,4 @@ function Get-CustomVersion([string] $file) {
     }
 }
 
-. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

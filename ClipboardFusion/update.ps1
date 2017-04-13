@@ -1,12 +1,12 @@
 param([switch] $force)
 
-. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 $getBetaVersion = $true
 
 function global:au_GetLatest {
     $stableVersionDownloadUrl = 'https://www.binaryfortress.com/Data/Download/?package=clipboardfusion&log=104'
-    $stableVersionRegEx = '.*ClipboardFusionSetup-([0-9\.\-]+)\.exe$'
+    $stableVersionRegEx = 'ClipboardFusionSetup-([0-9\.\-]+)\.exe$'
 
     $betaVersionDownloadUrl = 'https://www.binaryfortress.com/Data/Download/?package=clipboardfusion&beta=1&log=104'
     $betaVersionRegEx = '.*ClipboardFusionSetup-([0-9\.\-]+)-Beta([0-9]+).*'
@@ -23,7 +23,7 @@ function global:au_GetLatest {
     }
 
     $stableVersionDownloadUrl = ((Get-WebURL -Url $stableVersionDownloadUrl).ResponseUri).AbsoluteUri
-    $stableVersion = $($stableVersionDownloadUrl -replace $stableVersionRegEx, '$1')
+    $stableVersion = [regex]::match($stableVersionDownloadUrl, $stableVersionRegEx).Groups[1].Value
 
     if ($force) {
         $global:au_Version = $stableVersion
@@ -32,4 +32,4 @@ function global:au_GetLatest {
     return @{ Url32 = $stableVersionDownloadUrl; Version = $stableVersion }
 }
 
-. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

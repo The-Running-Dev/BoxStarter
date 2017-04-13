@@ -1,13 +1,13 @@
 param([switch] $force)
 
-. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $downloadEndPointUrl = 'https://www.binaryfortress.com/Data/Download/?package=displayfusion&log=101'
-    $versionRegEx = '.*DisplayFusionSetup-([0-9\.\-]+)\.exe$'
+    $versionRegEx = 'DisplayFusionSetup-([0-9\.\-]+)\.exe$'
 
     $downloadUrl = ((Get-WebURL -Url $downloadEndPointUrl).ResponseUri).AbsoluteUri
-    $version = $($downloadUrl -replace $versionRegEx, '$1')
+    $version = [regex]::match($downloadUrl, $versionRegEx).Groups[1].Value
 
     if ($force) {
         $global:au_Version = $version
@@ -16,4 +16,4 @@ function global:au_GetLatest {
     return @{ Url32 = $downloadUrl; Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
