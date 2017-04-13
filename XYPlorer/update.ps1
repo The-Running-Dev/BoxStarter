@@ -1,10 +1,10 @@
 param([switch] $force)
 
+. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
+
 $releasesUrl = 'https://www.xyplorer.com/download.php'
 $versionRegEx = '([0-9\.]+), released'
 $downloadUrl = 'https://www.xyplorer.com/download/xyplorer_full_noinstall.zip'
-
-. (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 function global:au_SearchReplace {
     return @{
@@ -26,9 +26,4 @@ function global:au_GetLatest {
     return @{ Url32 = $downloadUrl; Version = $version }
 }
 
-if ($force) {
-    Update-Package -Force -ChecksumFor none -NoCheckChocoVersion
-}
-else {
-    Update-Package -ChecksumFor none -NoCheckChocoVersion
-}
+. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')

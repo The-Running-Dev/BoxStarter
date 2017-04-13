@@ -1,3 +1,5 @@
+param([switch] $force)
+
 . (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 function global:au_GetLatest {
@@ -7,4 +9,4 @@ function global:au_GetLatest {
     }
 }
 
-Update-Package -ChecksumFor none -NoCheckChocoVersion
+. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')

@@ -1,3 +1,5 @@
+param([switch] $force)
+
 . (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 $getBetaVersion = $true
@@ -13,13 +15,21 @@ function global:au_GetLatest {
         $betaVersionDownloadUrl = ((Get-WebURL -Url $betaVersionDownloadUrl).ResponseUri).AbsoluteUri
         $betaVersion = $($betaVersionDownloadUrl -replace $betaVersionRegEx, '$1.$2')
 
+        if ($force) {
+            $global:au_Version = $betaVersion
+        }
+
         return @{ Url32 = $betaVersionDownloadUrl; Version = $betaVersion }
     }
 
     $stableVersionDownloadUrl = ((Get-WebURL -Url $stableVersionDownloadUrl).ResponseUri).AbsoluteUri
     $stableVersion = $($stableVersionDownloadUrl -replace $stableVersionRegEx, '$1')
 
+    if ($force) {
+        $global:au_Version = $stableVersion
+    }
+
     return @{ Url32 = $stableVersionDownloadUrl; Version = $stableVersion }
 }
 
-Update-Package -ChecksumFor none -NoCheckChocoVersion
+. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')

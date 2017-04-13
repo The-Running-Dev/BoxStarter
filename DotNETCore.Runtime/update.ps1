@@ -1,3 +1,5 @@
+param([switch] $force)
+
 . (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 function global:au_GetLatest {
@@ -8,10 +10,14 @@ function global:au_GetLatest {
     $downloadPage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl
     $downloadLink = $downloadPage.Links | Where-Object outerHTML -match $downloadLinkRegEx | Select-Object -First 1 -Skip 3 -Expand href
 
-    $version = [regex]::match($downloadPage.Content, $versionRegEx).Groups[1].Value
     $url = ((Get-WebURL -Url $downloadLink).ResponseUri).AbsoluteUri
+    $version = [regex]::match($downloadPage.Content, $versionRegEx).Groups[1].Value
+
+    if ($force) {
+        $global:au_Version = $version
+    }
 
     return @{ Url32 = $url; Version = $version }
 }
 
-Update-Package -ChecksumFor none -NoCheckChocoVersion
+. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')

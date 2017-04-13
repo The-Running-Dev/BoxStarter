@@ -1,10 +1,18 @@
+param([switch] $force)
+
 . (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 function global:au_GetLatest {
+    $version = '5.0'
+
+    if ($force) {
+        $global:au_Version = $version
+    }
+
     return @{
-        Url32 = 'https://go.microsoft.com/fwlink/?LinkId=255386';
-        Version = '5.0'
+        Url32 = 'http://download.microsoft.com/download/F/4/2/F42AB12D-C935-4E65-9D98-4E56F9ACBC8E/wpilauncher.exe';
+        Version = $version
     }
 }
 
-Update-Package -ChecksumFor none -NoCheckChocoVersion
+. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')

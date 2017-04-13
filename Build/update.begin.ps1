@@ -1,7 +1,9 @@
-function global:au_BeforeUpdate {
-    $toolsPath = Resolve-Path tools
-    $currentDir = Resolve-Path .
+$toolsPath = Resolve-Path 'tools'
+$packageDir = Resolve-Path .
 
+#function global:choco {}
+
+function global:au_BeforeUpdate {
     # Use the AU function to get the installer
     Get-RemoteFiles
 
@@ -9,7 +11,7 @@ function global:au_BeforeUpdate {
     $downloadedFile = (Get-ChildItem -Recurse *.exe, *.msi, *.zip | Select-Object -First 1)
 
     # Remove the _32 and any HTML encoded space
-    $installerFile = Join-Path $currentDir (((Split-Path -Leaf $downloadedFile) -replace '_x32', '') -replace '%20', ' ')
+    $installerFile = Join-Path $packageDir (((Split-Path -Leaf $downloadedFile) -replace '_x32', '') -replace '%20', ' ')
 
     # Move the installer to the package directory
     # because I don't like it under the tools directory

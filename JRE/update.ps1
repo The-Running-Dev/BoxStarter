@@ -1,3 +1,5 @@
+param([switch] $force)
+
 . (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 $global:downloadFile = 'jre-$($fileVersion)-windows-i586.exe'
@@ -62,7 +64,11 @@ function global:au_GetLatest {
     $global:downloadFile = $ExecutionContext.InvokeCommand.ExpandString($global:downloadFile)
     $global:downloadFile64 = $ExecutionContext.InvokeCommand.ExpandString($global:downloadFile64)
 
+    if ($force) {
+        $global:au_Version = $version
+    }
+
     return @{ Url32 = $downloadUrl; Url64 = $downloadUrl64; Version = $version }
 }
 
-Update-Package -ChecksumFor none -NoCheckChocoVersion
+. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')

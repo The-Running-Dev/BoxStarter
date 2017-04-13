@@ -1,3 +1,5 @@
+param([switch] $force)
+
 . (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 function global:au_GetLatest {
@@ -24,7 +26,11 @@ function global:au_GetLatest {
 
     $downloadUrl = $ExecutionContext.InvokeCommand.ExpandString($downloadUrl)
 
+    if ($force) {
+        $global:au_Version = $version
+    }
+
     return @{ Url32 = $downloadUrl; Version = $fullVersionNumber }
 }
 
-Update-Package -ChecksumFor none -NoCheckChocoVersion
+. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')

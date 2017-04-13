@@ -1,3 +1,5 @@
+param([switch] $force)
+
 . (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 function global:au_GetLatest {
@@ -6,8 +8,13 @@ function global:au_GetLatest {
     $versionRegEx = '([0-9\.]+)\..*'
 
     $release = Get-GitHubVersion $gitHubRepository $downloadUrlRegEx
+    $version = $release.Version -replace $versionRegEx, '$1'
 
-    return @{ Url32 = $release.DownloadUrl; Version = $release.Version -replace $versionRegEx, '$1' }
+    if ($force) {
+        $global:au_Version = $version
+    }
+
+    return @{ Url32 = $release.DownloadUrl; Version = $version }
 }
 
-Update-Package -ChecksumFor none -NoCheckChocoVersion
+. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')

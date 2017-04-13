@@ -1,3 +1,5 @@
+param([switch] $force)
+
 . (Join-Path $PSScriptRoot '..\Build\update.begin.ps1')
 
 function global:au_GetLatest {
@@ -5,7 +7,11 @@ function global:au_GetLatest {
 
     $json = Invoke-WebRequest -UseBasicParsing -Uri $releasesUrl | ConvertFrom-Json
 
+    if ($force) {
+        $global:au_Version = $json.productVersion
+    }
+
     return @{ Url32 = $json.Url; Version = $json.productVersion }
 }
 
-Update-Package -ChecksumFor none -NoCheckChocoVersion
+. (Join-Path $PSScriptRoot '..\Build\update.end.ps1')

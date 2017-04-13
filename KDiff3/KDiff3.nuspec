@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>KDiff3</id>
-    <version>0.9.98</version>
+    <version>0.9.98.20170412</version>
     <title>KDiff3</title>
     <authors>Joachim Eibl</authors>
     <licenseUrl>http://kdiff3.sourceforge.net/COPYING</licenseUrl>
