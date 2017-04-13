@@ -9,28 +9,25 @@ function global:au_GetLatest {
 
     [xml] $updates = (New-Object System.Net.WebClient).DownloadString($releaseUrl)
     $versionInfo = $updates.products.product `
-    | Where-Object { $_.name -eq $productName } `
-    | ForEach-Object { $_.channel } | Where-Object { $_.id -eq 'WS_Release' } `
-    | ForEach-Object { $_.build } `
-    | Sort-Object { [version] $_.number } `
-    | Select-Object -Last 1
+        | Where-Object { $_.name -eq $productName } `
+        | ForEach-Object { $_.channel } | Where-Object { $_.id -eq 'WS_Release' } `
+        | ForEach-Object { $_.build } `
+        | Sort-Object { [version] $_.number } `
+        | Select-Object -Last 1
 
     $version = $versionInfo.Version
 
-    if ($versionInfo.ReleaseDate) {
-        $fullVersionNumber = "$($versionInfo.Version).$($versionInfo.ReleaseDate)"
-    }
-    else {
-        $fullVersionNumber = "$($versionInfo.Version)"
+    if (!($version -match '\d+\.\d+')) {
+        $version = "$($version).$($versionInfo.ReleaseDate)"
     }
 
     $downloadUrl = $ExecutionContext.InvokeCommand.ExpandString($downloadUrl)
 
     if ($force) {
-        $global:au_Version = $fullVersionNumber
+        $global:au_Version = $version
     }
 
-    return @{ Url32 = $downloadUrl; Version = $fullVersionNumber }
+    return @{ Url32 = $downloadUrl; Version = $version }
 }
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
