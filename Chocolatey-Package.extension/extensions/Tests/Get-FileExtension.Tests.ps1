@@ -1,3 +1,4 @@
+<#
 $env:moduleName = 'InstallHelpers.psm1'
 $env:ModuleUnderTest = Join-Path (Split-Path -Parent $PSScriptRoot) $env:moduleName
 
@@ -23,3 +24,4 @@ Describe "Get-FileExtension" {
         }
     }
 }
+#>
