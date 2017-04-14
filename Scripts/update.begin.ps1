@@ -1,7 +1,11 @@
+if ($MyInvocation.InvocationName -eq '.') {
+    $publishDir = Resolve-Path ..\..\..\BoxStarter
+}
+
+$global:au_Force = $false
+
 $toolsPath = Resolve-Path 'tools'
 $packageDir = Resolve-Path .
-
-#function global:choco {}
 
 function global:au_BeforeUpdate {
     # Use the AU function to get the installer

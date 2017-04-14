@@ -54,7 +54,9 @@
   * Microsoft.VisualStudio2015Enterprise
   * Microsoft.VisualStudioCode
   * Microsoft.WebPI
+  * MySQL.Workbench
   * NodeJS
+  * NTLite
   * OctopusTools
   * RazerSynapse
   * Slack

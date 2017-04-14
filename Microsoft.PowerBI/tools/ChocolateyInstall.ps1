@@ -10,7 +10,7 @@ $arguments          = @{
     checksum        = $checksum
     fileType        = 'msi'
     checksumType    = 'sha256'
-    silentArgs      = "/qb ACCEPT_EULA=1 /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
+    silentArgs      = "/quiet ACCEPT_EULA=1 /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
     validExitCodes  = @(0, 1641, 3010)
 }
 
