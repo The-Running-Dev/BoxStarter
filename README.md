@@ -1,11 +1,12 @@
-## Chocolatey Custom Packages
+## Chocolatey Packages
 
   * Packages are updated faster than the same packages on the Chocoloatey community feed
   * Packages support custom installer location through a Chocolatey extension
-    * As part of the package itself
-    * A local or network location where to look for the installer
-    * Downloading the installer from the internet
-    * Installer inside a zip file
+    * The installer can embedded into the package
+    * The installer can be in a local or network location (by setting $env:packagesInstallers)
+    * The installer can be downloaded from the internet (like most packages on the Community feed)
+    * The installer can be inside a zip file (local or downloaded from the internet)
+    * The installer can be inside an ISO image
   * Most packages support automatic updates through the AU module, with the provided ```update.ps1``` script
   * AutoHotkey is used whenver full silent installation is not possible (Example ESET Nod32 Antivirus)
 
@@ -15,7 +16,7 @@
   Set-ExecutionPolicy Unrestricted
   ```
 
-## Chocolatey Packages
+## Packages
   * AcronisTrueImage
   * Artifacts
   * Chocolatey-Dev.extension
@@ -74,7 +75,7 @@
   * Windows.IIS.UrlRewrite
   * XYPlorer
 
-## Microsoft SQl Server Instructions
+## Microsoft SQL Server Instructions
   * Microsoft SQL Server 2014 Developer
 
     Features installed through the default configuraiton file
