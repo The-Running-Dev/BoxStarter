@@ -10,49 +10,76 @@
   * AutoHotkey is used whenver full silent installation is not possible (Example ESET Nod32 Antivirus)
 
 ## To Run as Is
-  * Chocolatey, in PowerShell run
+  * Coming...
   ```
   Set-ExecutionPolicy Unrestricted
-
-  choco source add -n='BoxStarter' -s 'http://54.210.14.187/NuGet.Hosting/nuget' -priority=1
-  choco source add -n=Chocolatey -s "https://chocolatey.org/api/v2/" -priority=2
   ```
 
 ## Chocolatey Packages
+  * AcronisTrueImage
+  * Artifacts
+  * Chocolatey-Dev.extension
+  * Chocolatey-Package.extension
+  * ClipboardFusion
   * ConEmu
-    ```
-    choco install ConEmu
-    ```
-  * Internet Information Service (IIS)
-    ```
-    choco install Windows.IIS
-    ```
-  * JetBrains DataGrip
-    ```
-    choco install JetBrains.DataGrip
-    ```
-  * JetBrains ReSharper
+  * DisplayFusion
+  * DotNET
+  * DotNETCore.Runtime
+  * DotNETCore.SDK
+  * Drivers
+  * Dropbox
+  * ESETNOD32Antivirus
+  * F.Lux
+  * Git
+  * GitExtensions
+  * Google.Chrome
+  * Google.Drive
+  * iTunes
+  * iTunesFusion
+  * JetBrains.DataGrip
+  * JetBrains.Resharper.Platform
+  * JetBrains.WebStorm
+  * JRE
+  * KDiff3
+  * K-LiteCodecPack
+  * LastPass.Applications
+  * Launchy
+  * LogFusion
+  * Microsoft.MSBuild.Microsoft
+  * Microsoft.Office365Business
+  * Microsoft.PowerBI
+  * Microsoft.SQLServer2014Developer
+  * Microsoft.SQLServer2014Express
+  * Microsoft.SQLServer2016Developer
+  * Microsoft.VisualStudio2015Enterprise
+  * Microsoft.VisualStudioCode
+  * Microsoft.WebPI
+  * NodeJS
+  * OctopusTools
+  * RazerSynapse
+  * Slack
+  * Spotify
+  * TeamCity
+  * TeamViewer
+  * VisualCRedistributable2015
+  * VisualCRedistributable2015x64
+  * VisualCRedistributable2015x86
+  * VMWareWorkstation
+  * VoiceBot
+  * VPNAreaChameleon
+  * Windows.IIS
+  * Windows.IIS.ExternalCache
+  * Windows.IIS.UrlRewrite
+  * XYPlorer
 
-    Installs ReShraper and all other applications. Plus the Visual Studio 2015 addin.
-    ```
-    choco install JetBrains.ReSharper
-    ```
-  * JetBrains WebStorm
-    ```
-    choco install JetBrains.WebStorm
-    ```
-    ```
-    choco install WebStorm
-    ```
+## Microsoft SQl Server Instructions
   * Microsoft SQL Server 2014 Developer
 
     Features installed through the default configuraiton file
     ```
     Database Engine Services, Data Qualty Client, Client Tools Connectivity, Integration Services, ManagemetnT Tools - Basic, ManagemetnT Tools - Complete.
     ```
-    ```
     choco install MSSQLServer2014Developer -params '/SetupPath="E:\setup.exe"'
-    ````
     ```
     choco install MSSQLServer2014Developer `
       -params '/SetupPath="E:\setup.exe" /SECURITYMODE="SQL" /SAPWD="SetComplexPassword" /InstallSQLDataDir="D:\SQLData" /SQLBACKUPDIR="D:\SQLData\Backup" /SQLUSERDBDIR="D:\SQLData" /SQLTEMPDBDIR="D:\SQLData"'
@@ -81,15 +108,6 @@
     ```
     choco install MSSQLServer2014Express `
       -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData" /ConfigurationFile="http://bit.ly/2doxBU1"'
-    ```
-  * Slack
-    ```
-    choco install Slack
-    ```
-    ```
-  * Spotify
-    ```
-    choco install Spotify
     ```
 
 ## Short Links

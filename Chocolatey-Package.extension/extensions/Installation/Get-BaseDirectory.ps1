@@ -1,20 +1,17 @@
 function Get-BaseDirectory([string] $baseDir) {
-    $originalBase = $baseDir
-
-    # Overwrite the base directory with ChocolateyPackageFolder,
-    # if ChocolateyPackageFolder exists
-    if (Test-DirectoryExists $env:ChocolateyPackageFolder) {
-		Write-Verbose "Get-BaseDirectory: 'ChocolateyPackageFolder' is $($env:ChocolateyPackageFolder)"
-        $baseDir = $env:ChocolateyPackageFolder
+    if (Test-DirectoryExists $baseDir) {
+        return $baseDir
     }
 
-    # Overwrite the base directory with packagesInstallers,
-    # if packagesInstallers exists
+    # Overwrite the base directory with packagesInstallers
     if (Test-DirectoryExists $env:packagesInstallers) {
-		Write-Verbose "Get-BaseDirectory: 'packagesInstallers' is $($env:packagesInstallers)"
-        $baseDir = $env:packagesInstallers
+		Write-Verbose "Get-BaseDirectory: Using 'PackagesInstallers' $($env:packagesInstallers)"
+        return $env:packagesInstallers
     }
 
-	Write-Verbose "Get-BaseDirectory: Base directory is '$baseDir'"
-    return $baseDir
+    # Overwrite the base directory with ChocolateyPackageFolder
+    if (Test-DirectoryExists $env:ChocolateyPackageFolder) {
+		Write-Verbose "Get-BaseDirectory: Using 'ChocolateyPackageFolder' $($env:ChocolateyPackageFolder)"
+        return $env:ChocolateyPackageFolder
+    }
 }

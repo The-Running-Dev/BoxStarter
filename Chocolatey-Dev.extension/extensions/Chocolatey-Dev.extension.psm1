@@ -6,7 +6,7 @@ Import-Module WebAdministration -Force
 
 $global:newtonsoftJsonDll = Join-Path -resolve $PSScriptRoot 'Tools\DLLs\Newtonsoft.Json.dll'
 $global:ahkCompiler = Join-Path $PSScriptRoot 'Tools\AutoHotKey\Ahk2Exe.exe'
-$global:defaultFilter = 'config.json,extensions,tools,*.png,*.svg,*.ignore,*.nuspec,*.reg,*.xml"'
+$global:defaultFilter = 'config.json,extensions,tools,*.ini,*.png,*.svg,*.ignore,*.nuspec,*.reg,*.xml"'
 $global:config = @{
     artifacts = ''
     local = @{
