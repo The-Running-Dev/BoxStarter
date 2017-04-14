@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>MSBuild.Microsoft</id>
+    <id>Microsoft.MSBuild</id>
     <version>1.0.0</version>
     <title>Microsoft MSBuild Visual Studio Targets</title>
     <authors>Microsoft</authors>
     <projectUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</projectUrl>
-    <owners>The Running Dev</owners>
+    <owners>The-Running-Dev</owners>
     <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>

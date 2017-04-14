@@ -1,4 +1,4 @@
-$installer      = 'MSBuild.Microsoft.zip'
+$installer      = 'Microsoft.MSBuild.zip'
 $arguments      = @{
   packageName   = 'MSBuild.Microsoft'
   fileFullPath  = Join-Path $env:ChocolateyPackageFolder $installer
