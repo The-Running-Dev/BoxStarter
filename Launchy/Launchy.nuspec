@@ -7,7 +7,7 @@
     <authors>Josh Karlin, Simon Capewell</authors>
     <projectUrl>http://www.launchy.net</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <owners>The Running Dev</owners>
+    <owners>The-Running-Dev</owners>
 		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <description>Launchy is a free cross-platform utility designed to help you forget about your start menu,
     the icons on your desktop, and even your file manager.

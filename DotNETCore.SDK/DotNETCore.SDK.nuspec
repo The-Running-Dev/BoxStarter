@@ -6,7 +6,7 @@
     <title>.NET Core</title>
     <authors>Microsoft</authors>
     <projectUrl>https://www.microsoft.com/net/core</projectUrl>
-    <owners>The Running Dev</owners>
+    <owners>The-Running-Dev</owners>
     <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>

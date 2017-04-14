@@ -8,7 +8,7 @@
     <licenseUrl>https://www.google.it/intl/en/chrome/browser/privacy/eula_text.html</licenseUrl>
     <projectUrl>https://www.google.com/chrome/browser/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/chocolatey/chocolatey-coreteampackages/e4a49519947c3cff55c17a0b08266c56b0613e64/icons/chrome.svg</iconUrl>
-    <owners>The Running Dev</owners>
+    <owners>The-Running-Dev</owners>
 		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Chrome is a fast, simple, and secure web browser, built for the modern web.</description>
