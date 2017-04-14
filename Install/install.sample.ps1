@@ -1,7 +1,7 @@
 Set-ExecutionPolicy Unrestricted
 
 # Download and install Chocolatey
-$chocoInstallScriptUrl = '/Install/install.choco.ps1'
+$chocoInstallScriptUrl = 'https://raw.githubusercontent.com/The-Running-Dev/Chocolatey-BoxStarter/master/Install/install.choco.ps1'
 $chocoInstallScript = Join-Path $env:Temp 'Install.Choco.ps1'
 $downloader = New-Object System.Net.WebClient
 $downloader.DownloadFile($chocoInstallScriptUrl, $chocoInstallScript)

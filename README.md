@@ -10,10 +10,10 @@
   * Most packages support automatic updates through the AU module, with the provided ```update.ps1``` script
   * AutoHotkey is used whenver full silent installation is not possible (Example ESET Nod32 Antivirus)
 
-## To Run as Is
-  * Coming...
+## Sample Install Script
   ```
-  # iwr http://54.210.14.187/NuGet.Hosting/install/install.ps1 -UseBasicParsing | iex
+  # Execute https://raw.githubusercontent.com/The-Running-Dev/Chocolatey-BoxStarter/master/Install/install.sample.ps1
+  iwr http://bit.ly/2pj2nQb -UseBasicParsing | iex
   ```
 
 ## Packages
@@ -26,7 +26,7 @@
   * DotNET
   * DotNETCore Runtime
   * DotNETCore SDK
-  * Drivers
+  * Drivers (ASRock Fatal1ty X99 Professional Gaming i7 Motherboard)
   * Dropbox
   * ESETNOD32 Antivirus
   * F.Lux
