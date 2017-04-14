@@ -1,5 +1,4 @@
 function Invoke-UnZip {
-    [Alias("uz")]
     [CmdletBinding()]
     param(
         [Parameter(Position = 0, Mandatory = $true)] [string] $file

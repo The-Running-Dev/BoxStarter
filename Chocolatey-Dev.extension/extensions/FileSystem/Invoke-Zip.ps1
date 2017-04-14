@@ -1,5 +1,4 @@
 function Invoke-Zip {
-    [Alias("zip")]
     [CmdletBinding()]
     param(
         [Parameter(Position = 0, Mandatory = $true)][string] $fileOrDirectory
