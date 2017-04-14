@@ -13,49 +13,48 @@
 ## To Run as Is
   * Coming...
   ```
-  Set-ExecutionPolicy Unrestricted
+  # iwr http://54.210.14.187/NuGet.Hosting/install/install.ps1 -UseBasicParsing | iex
   ```
 
 ## Packages
-  * AcronisTrueImage
-  * Artifacts
+  * Acronis True Image
   * Chocolatey-Dev.extension
   * Chocolatey-Package.extension
   * ClipboardFusion
   * ConEmu
   * DisplayFusion
   * DotNET
-  * DotNETCore.Runtime
-  * DotNETCore.SDK
+  * DotNETCore Runtime
+  * DotNETCore SDK
   * Drivers
   * Dropbox
-  * ESETNOD32Antivirus
+  * ESETNOD32 Antivirus
   * F.Lux
   * Git
   * GitExtensions
-  * Google.Chrome
-  * Google.Drive
+  * Google Chrome
+  * Google Drive
   * iTunes
   * iTunesFusion
-  * JetBrains.DataGrip
-  * JetBrains.Resharper.Platform
-  * JetBrains.WebStorm
+  * JetBrains DataGrip
+  * JetBrains Resharper Platform
+  * JetBrains WebStorm
   * JRE
   * KDiff3
   * K-LiteCodecPack
-  * LastPass.Applications
+  * LastPass for Applications
   * Launchy
   * LogFusion
-  * Microsoft.MSBuild.Microsoft
-  * Microsoft.Office365Business
-  * Microsoft.PowerBI
-  * Microsoft.SQLServer2014Developer
-  * Microsoft.SQLServer2014Express
-  * Microsoft.SQLServer2016Developer
-  * Microsoft.VisualStudio2015Enterprise
-  * Microsoft.VisualStudioCode
-  * Microsoft.WebPI
-  * MySQL.Workbench
+  * Microsoft MSBuild Targets
+  * Microsoft Office 365 Business
+  * Microsoft PowerBI
+  * Microsoft SQL Server 2014 Developer
+  * Microsoft SQL Server 2014 Express
+  * Microsoft SQL Server 2016 Developer
+  * Microsoft Visual Studio 2015 Enterprise
+  * Microsoft Visual Studio Code
+  * Microsoft WebPI
+  * MySQL Workbench
   * NodeJS
   * NTLite
   * OctopusTools
@@ -64,15 +63,15 @@
   * Spotify
   * TeamCity (In Progress)
   * TeamViewer
-  * VisualCRedistributable2015
-  * VisualCRedistributable2015x64
-  * VisualCRedistributable2015x86
-  * VMWareWorkstation
+  * Visual C Redistributable 2015
+  * Visual C Redistributable 2015 x64
+  * Visual C Redistributable 2015 x86
+  * VMWare Workstation
   * VoiceBot
   * VPNAreaChameleon
-  * Windows.IIS
-  * Windows.IIS.ExternalCache
-  * Windows.IIS.UrlRewrite
+  * Windows IIS
+  * Windows IIS ExternalCache module
+  * Windows IIS UrlRewrite module
   * XYPlorer
 
 ## Microsoft SQL Server Instructions

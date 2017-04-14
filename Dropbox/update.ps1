@@ -5,7 +5,7 @@ $getBetaVersion = $false
 
 function global:au_GetLatest {
     $stableVersionDownloadUrl = 'https://www.dropbox.com/download?full=1&plat=win'
-    $stableVersionRegEx = '.*Dropbox%20([0-9\.]+).*'
+    $stableVersionRegEx = 'Dropbox%20([0-9\.]+)%20Offline'
 
     $betaVersionReleasePageUri = 'https://www.dropboxforum.com/t5/Desktop-client-builds/bd-p/101003016'
     $betaVersionDownloadUrl = 'https://clientupdates.dropboxstatic.com/client/Dropbox%20$($betaVersion)%20Offline%20Installer.exe'
@@ -23,7 +23,7 @@ function global:au_GetLatest {
     }
 
     $stableVersionDownloadUrl = ((Get-WebURL -Url $stableVersionDownloadUrl).ResponseUri).AbsoluteUri
-    $stableVersion = [regex]::match($stableVersionDownloadUrl, $versionRegEx).Groups[1].Value
+    $stableVersion = [regex]::match($stableVersionDownloadUrl, $stableVersionRegEx).Groups[1].Value
 
     if ($force) {
         $global:au_Version = $stableVersion

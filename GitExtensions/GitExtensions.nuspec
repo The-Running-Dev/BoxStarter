@@ -20,8 +20,8 @@
     <tags>gitextensions git gui admin</tags>
     <dependencies>
 			<dependency id="Chocolatey-Package.extension" />
-      <dependency id="git" />
-      <dependency id="kdiff3" />
+      <dependency id="Git" />
+      <dependency id="KDiff3" />
 		</dependencies>
   </metadata>
 </package>

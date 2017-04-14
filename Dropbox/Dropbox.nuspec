@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Dropbox</id>
-    <version>23.4.18</version>
+    <version>23.4.19</version>
     <title>Dropbox</title>
     <authors>Dropbox</authors>
     <projectUrl>https://dropbox.com</projectUrl>

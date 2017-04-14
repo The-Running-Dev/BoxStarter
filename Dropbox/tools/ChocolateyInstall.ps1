@@ -1,6 +1,6 @@
-﻿$installer          = 'Dropbox 23.4.18 Offline Installer.exe'
-$url                = 'https://clientupdates.dropboxstatic.com/client/Dropbox%2023.4.18%20Offline%20Installer.exe'
-$checksum           = 'C6D521B7A8DA60B358CCAB02A4F663F5175E5B0D0241197A6177BBF7ECEA2E67'
+﻿$installer          = 'Dropbox 23.4.19 Offline Installer.exe'
+$url                = 'https://clientupdates.dropboxstatic.com/client/Dropbox%2023.4.19%20Offline%20Installer.exe'
+$checksum           = 'B0EF95B799DE483559FCD40871186A5E0C56C9971B99D17D51BA21DCB22FC8B2'
 $arguments        	= @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $env:ChocolateyPackageTitle
