@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>VisualCRedistributable2015x86</id>
-    <version>14.0.24215.20170412</version>
+    <version>14.0.24215.20160928</version>
     <title>Visual C++ Redistributable for Visual Studio 2015</title>
     <authors>Microsoft</authors>
     <licenseUrl>https://msdn.microsoft.com/cc300389</licenseUrl>

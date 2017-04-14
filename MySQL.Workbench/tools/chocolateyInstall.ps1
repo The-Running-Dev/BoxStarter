@@ -1,6 +1,6 @@
-﻿$installer          = 'PBIDesktop_x64.msi'
-$url                = 'https://download.microsoft.com/download/9/B/A/9BAEFFEF-1A68-4102-8CDF-5D28BFFE6A61/PBIDesktop_x64.msi'
-$checksum           = 'DF156C1ECCF1C934DB55F9E49E93CA87C0BA7C67585319C0F47FC18CA66EA42A'
+﻿$installer          = 'mysql-workbench-community-6.3.9-winx64.msi'
+$url                = 'https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-6.3.9-winx64.msi'
+$checksum           = 'FA93CFF0124F65E94DAC4749A4C2BCDF5F79E1ECAE3777E5D276B4D5491B7FC5'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $env:ChocolateyPackageTitle
@@ -10,7 +10,7 @@ $arguments          = @{
     checksum        = $checksum
     fileType        = 'msi'
     checksumType    = 'sha256'
-    silentArgs      = "/qb ACCEPT_EULA=1 /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
+    silentArgs      = "/quiet /norestart /l*v `"$($env:TEMP)\$($env:ChocolateyPackageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
     validExitCodes  = @(0, 1641, 3010)
 }
 

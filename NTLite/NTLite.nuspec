@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>NTLite</id>
+    <version>1.2.2.4984</version>
+    <title>NTLite</title>
+    <authors>Nlitesoft</authors>
+    <owners>Nlitesoft</owners>
+    <licenseUrl>https://www.ntlite.com/shop/</licenseUrl>
+    <projectUrl>https://www.ntlite.com/</projectUrl>
+    <iconUrl>https://www.ntlite.com/wp-content/uploads/2014/10/72-web-logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>![Screenshot of NTLite](https://www.ntlite.com/wp-content/uploads/screen_components.png)
+
+##Welcome to NTLite
+###For Windows IT Professionals and Enthusiasts
+
+###Integrate and automate
+
+Integrate updates, drivers, automate Windows and application setup, speedup Windows deployment process and have it all set for the next time.
+
+###Reduce footprint
+
+Optionally remove Windows components, simplify your installation, reduce attack vectors and free up drive space.
+
+###In-place editing
+
+Next to editing images, you can also do the same actions on your existing Windows installation in-place, without reinstallation.
+*ISO creation only for existing images
+
+###MAIN FEATURES
+* LIVE INSTALL MODIFICATIONS
+* COMPONENT REMOVAL
+* HARDWARE TARGETING
+* DRIVER, UPDATE, LANGUAGE PACK AND APPLICATION INTEGRATION
+* TWEAKS
+* UNATTENDED SETUP
+* DISK PARTITIONING
+* APPLICATION INSTALLATION AUTOMATION
+* PENDING CHANGES OVERVIEW
+* AND MANY MORE
+
+More details at: https://www.ntlite.com/features/
+See license link for Free, Home, Professional, and Business version comparisons.</description>
+    <summary>Windows deployment tool</summary>
+    <releaseNotes />
+    <copyright>© 2014-2017 Nlitesoft</copyright>
+    <tags>nlitesoft ntlite windows depoyment admin</tags>
+    <packageSourceUrl>https://github.com/bcurran3/ChocolateyPackages/tree/master/ntlite-free</packageSourceUrl>
+    <docsUrl>https://www.ntlite.com/support/</docsUrl>
+    <mailingListUrl>https://www.ntlite.com/discussions/#/categories</mailingListUrl>
+    <bugTrackerUrl>https://www.ntlite.com/changelog/</bugTrackerUrl>
+    <dependencies>
+      <dependency id="chocolatey-uninstall.extension" />
+    </dependencies>
+  </metadata>
+</package>
