@@ -8,7 +8,7 @@
     <licenseUrl>http://download.microsoft.com/download/3/4/1/3415F3F9-5698-44FE-A072-D4AF09728390/ExternalCache_RTW_EULA.htm</licenseUrl>
     <projectUrl>http://learn.iis.net/page.aspx/489/using-the-application-request-routing-module</projectUrl>
     <iconUrl>http://www.microsoft.com/web/media/gallery/apps-screenshots/IIS_WebPlatformInstaller_GenericWizardArt.png</iconUrl>
-    <owners>The Running Dev</owners>
+    <owners>The-Running-Dev</owners>
 		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>External Cache is a disk-based cache module for IIS. External Cache can be used to manage the host name affinity data between multiple instances of Application Request Routing (ARR) servers.</description>

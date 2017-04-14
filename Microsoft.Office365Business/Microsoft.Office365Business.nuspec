@@ -5,7 +5,7 @@
 		<version>1703.7967.2082</version>
 		<title>Office 365 Business</title>
 		<authors>Microsoft</authors>
-		<owners>The Running Dev</owners>
+		<owners>The-Running-Dev</owners>
     	<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
 		<description>
 		Office 365 Business Installer

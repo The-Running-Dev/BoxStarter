@@ -1,5 +1,5 @@
 ﻿$installer          = 'VPNAreaChameleon.exe'
-$url                = 'http://vpnarea.com/VPNAreaChameleon.exe'
+$url                = 'https://vpnarea.com/VPNAreaChameleon.exe'
 $checksum           = '51B2904DA65ACD1FB57C9677CD09D26981C3C7326317FC1D631198E2ABC29AD6'
 $installScript      = Join-Path $env:ChocolateyPackageFolder 'Install.exe'
 $process            = 'VPNManager'
