@@ -62,7 +62,7 @@
   * RazerSynapse
   * Slack
   * Spotify
-  * TeamCity
+  * TeamCity (In Progress)
   * TeamViewer
   * VisualCRedistributable2015
   * VisualCRedistributable2015x64
