@@ -1,13 +1,17 @@
-param([switch] $force)
+param([switch] $force, [switch] $push)
+
+$originalLocation = Get-Location
+$packageDir = $PSScriptRoot
+
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $releasesUrl = 'http://www.filehorse.com/download-flux/'
+    $releaseUrl = 'http://www.filehorse.com/download-flux/'
     $downloadUrl = 'https://justgetflux.com/flux-setup.exe'
     $versionRegEx = '.*f.lux ([0-9\.]+)'
 
-    $html = Invoke-WebRequest -UseBasicParsing -Uri $releasesUrl
-    $version = [regex]::match($html.Content, $versionRegEx).Groups[1].Value
+    $releasePage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl
+    $version = [regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value
 
     if ($force) {
         $global:au_Version = $version

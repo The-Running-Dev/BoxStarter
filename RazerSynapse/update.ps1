@@ -1,4 +1,4 @@
-param([switch] $force)
+param([switch] $force, [switch] $push)
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 

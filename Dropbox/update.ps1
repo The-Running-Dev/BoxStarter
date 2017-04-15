@@ -1,4 +1,8 @@
-param([switch] $force)
+param([switch] $force, [switch] $push)
+
+$originalLocation = Get-Location
+$packageDir = $PSScriptRoot
+
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 $getBetaVersion = $false
@@ -33,9 +37,9 @@ function global:au_GetLatest {
 }
 
 function Get-FirstBetaLink([string] $uri, [string] $regEx) {
-    $html = Invoke-WebRequest -UseBasicParsing -Uri $uri
+    $releasePage = Invoke-WebRequest -UseBasicParsing -Uri $uri
 
-    return $html.links | Where-Object { $_.href -match $regEx } | Select-Object -First 1
+    return $releasePage.links | Where-Object { $_.href -match $regEx } | Select-Object -First 1
 }
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

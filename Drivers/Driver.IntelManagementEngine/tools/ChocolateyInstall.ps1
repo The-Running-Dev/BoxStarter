@@ -1,6 +1,7 @@
 $installer          = 'ME(v11.0.4.1186_MEI).zip'
 $url                = 'http://asrock.pc.cdn.bitgravity.com/Drivers/Intel/Others/ME(v11.0.4.1186_MEI).zip'
 $checksum           = '06F32B8994158FD3674DAAD67E93B612ED4162426D660F9A1EDAF1D93224E380'
+$packageChecksum    = ''
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $env:ChocolateyPackageTitle

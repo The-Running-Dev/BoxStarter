@@ -1,10 +1,17 @@
+param([switch] $force)
+
 $currentDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $installLatestBeta = $false
 $installLocalFile = $true
 $chocoPackage = 'chocolatey.0.10.5.nupkg'
 $currentDirChocoPackage = Join-Path $currentDir $chocoPackage
-$localChocoPackage = "D:\Dropbox\Boxstarter\$chocoPackage"
-$nasChocoPackage = "\\nas\Applications\_BoxStarter\$chocoPackage"
+$localChocoPackage = 'D:\Dropbox\Boxstarter\$chocoPackage'
+$nasChocoPackage = '\\nas\Applications\_BoxStarter\External\$chocoPackage'
+
+$externalSourceBase = '\\nas\Applications\_BoxStarter'
+$externalSource = '\\nas\Applications\_BoxStarter\External'
+$personalSource = '\\nas\Applications\_BoxStarter\Personal'
+$extensionsSource = '\\nas\Applications\_BoxStarter\Extensions'
 
 if ([System.IO.File]::Exists($currentDirChocoPackage)) {
     $chocolateyPackagePath = $currentDirChocoPackage
@@ -74,7 +81,7 @@ function Install-ChocolateyPackage {
     }
 }
 
-if (!(Test-Path $chocoInstallPath)) {
+if (!(Test-Path $chocoInstallPath) -or $force) {
     # Install Chocolatey
     if ($installLocalFile) {
         Install-ChocolateyPackage $chocolateyPackagePath
@@ -87,10 +94,15 @@ if (!(Test-Path $chocoInstallPath)) {
             Invoke-Expression ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
         }
     }
-}
 
-choco config set commandExecutionTimeoutSeconds 14400
-choco feature enable -n allowGlobalConfirmation
-choco feature enable -n allowEmptyChecksums
-choco feature enable -n autouninstaller
-choco feature enable -n logEnvironmentValues
+    choco feature enable -n allowGlobalConfirmation
+
+    # Add temporary sources if they are accessable
+    if (Test-Path $externalSourceBase) {
+        choco source add -n 'External-Temp' -s $externalSource -priority 100
+        choco source add -n 'Personal-Temp' -s $personalSource -priority 101
+        choco source add -n 'Extensions-Temp' -s $extensionsSource -priority 102
+
+        choco install Chocolatey-Personal
+    }
+}

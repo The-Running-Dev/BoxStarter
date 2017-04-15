@@ -1,10 +1,13 @@
-param([switch] $force)
+param([switch] $force, [switch] $push)
+
+$originalLocation = Get-Location
+$packageDir = $PSScriptRoot
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $releasesUrl = 'https://www.apple.com/itunes/download/'
-    $downloadPage = Invoke-WebRequest -Uri $releasesUrl -UseBasicParsing
+    $releaseUrl = 'https://www.apple.com/itunes/download/'
+    $downloadPage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
 
     $downloadPage.Content -match "\<iframe src=`"([^`"]+)`"[^\>\/]+title=`"Please select a download" | Out-Null
     $iframeLink = $Matches[1]

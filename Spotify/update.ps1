@@ -1,13 +1,16 @@
-param([switch] $force)
+param([switch] $force, [switch] $push)
+
+$originalLocation = Get-Location
+$packageDir = $PSScriptRoot
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $releasesUrl = 'http://www.filehorse.com/download-spotify/'
+    $releaseUrl = 'http://www.filehorse.com/download-spotify/'
     $downloadUrl = 'https://download.spotify.com/SpotifyFullSetup.exe'
     $versionRegEx = 'Spotify ([\d]+\.[\d\.]+)'
 
-    $downloadPage = Invoke-WebRequest -UseBasicParsing -Uri $releasesUrl
+    $downloadPage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
     $version = ([regex]::match($downloadPage.Content, $versionRegEx).Groups[1].Value)
 
     if ($force) {

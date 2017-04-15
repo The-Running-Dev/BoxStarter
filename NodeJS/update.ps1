@@ -1,12 +1,15 @@
-param([switch] $force)
+param([switch] $force, [switch] $push)
+
+$originalLocation = Get-Location
+$packageDir = $PSScriptRoot
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $releasesUrl = 'https://nodejs.org/en/download/current/'
+    $releaseUrl = 'https://nodejs.org/en/download/current/'
     $versionRegEx = 'node-v(.+)-x64.msi'
 
-    $downloadPage = Invoke-WebRequest -Uri $releasesUrl -UseBasicParsing
+    $downloadPage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
     $url = $downloadPage.links | Where-Object href -match $versionRegEx | Select-Object -First 1 -Expand href
     $version = $matches[1]
 

@@ -1,18 +1,14 @@
-if ($MyInvocation.InvocationName -eq '.') {
-    $publishDir = Resolve-Path ..\..\..\BoxStarter
-}
+# packageDir is defined in the individual update script
+Set-Location $packageDir
 
-$global:au_Force = $false
-
-$toolsPath = Resolve-Path 'tools'
-$packageDir = Resolve-Path .
+$toolsPath = Join-Path $packageDir 'tools'
 
 function global:au_BeforeUpdate {
     # Use the AU function to get the installer
     Get-RemoteFiles
 
     # Find the downloaded file
-    $downloadedFile = (Get-ChildItem -Recurse *.exe, *.msi, *.zip | Select-Object -First 1)
+    $downloadedFile = Get-ChildItem -Recurse *.exe, *.msi, *.zip | Select-Object -First 1
 
     # Remove the _32 and any HTML encoded space
     $installerFile = Join-Path $packageDir (((Split-Path -Leaf $downloadedFile) -replace '_x32', '') -replace '%20', ' ')

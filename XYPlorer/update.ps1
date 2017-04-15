@@ -1,10 +1,9 @@
-param([switch] $force)
+param([switch] $force, [switch] $push)
+
+$originalLocation = Get-Location
+$packageDir = $PSScriptRoot
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
-
-$releasesUrl = 'https://www.xyplorer.com/download.php'
-$versionRegEx = '([0-9\.]+), released'
-$downloadUrl = 'https://www.xyplorer.com/download/xyplorer_full_noinstall.zip'
 
 function global:au_SearchReplace {
     return @{
@@ -15,8 +14,12 @@ function global:au_SearchReplace {
 }
 
 function global:au_GetLatest {
-    $html = Invoke-WebRequest -UseBasicParsing -Uri $releasesUrl
-    $version = [version]([regex]::match($html.Content, $versionRegEx).Groups[1].Value)
+    $releaseUrl = 'https://www.xyplorer.com/download.php'
+    $versionRegEx = '([0-9\.]+), released'
+    $downloadUrl = 'https://www.xyplorer.com/download/xyplorer_full_noinstall.zip'
+
+    $releasePage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl
+    $version = [version]([regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value)
 
     if ($force) {
         $global:au_Version = $version

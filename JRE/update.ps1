@@ -1,4 +1,7 @@
-param([switch] $force)
+param([switch] $force, [switch] $push)
+
+$originalLocation = Get-Location
+$packageDir = $PSScriptRoot
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
@@ -56,9 +59,9 @@ function global:au_GetLatest {
 
     $version = @{ $true = "$major.0.$build"; $false = "$major.$build"}[1 -eq $version.length]
 
-    $html = Invoke-WebRequest -UseBasicParsing -Uri $downloadEndPointUrl
-    $downloadUrl = $html.links | Where-Object { $_.title -match $donwloadUrlRegEx } | Select-Object -First 1 -Expand href
-    $downloadUrl64 = $html.links | Where-Object { $_.title -match $donwloadUrlRegEx64 } | Select-Object -First 1 -Expand href
+    $releasePage = Invoke-WebRequest -UseBasicParsing -Uri $downloadEndPointUrl
+    $downloadUrl = $releasePage.links | Where-Object { $_.title -match $donwloadUrlRegEx } | Select-Object -First 1 -Expand href
+    $downloadUrl64 = $releasePage.links | Where-Object { $_.title -match $donwloadUrlRegEx64 } | Select-Object -First 1 -Expand href
 
     $fileVersion = "$($major)u$($build)"
     $global:downloadFile = $ExecutionContext.InvokeCommand.ExpandString($global:downloadFile)

@@ -1,13 +1,16 @@
-param([switch] $force)
+param([switch] $force, [switch] $push)
+
+$originalLocation = Get-Location
+$packageDir = $PSScriptRoot
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $releasesUrl = 'https://slack.com/downloads/windows'
+    $releaseUrl = 'https://slack.com/downloads/windows'
     $downloadUrl = 'https://downloads.slack-edge.com/releases_x64/SlackSetup.exe'
     $versionRegEx = '.*Version ([\d]+\.[\d\.]+)'
 
-    $downloadPage = Invoke-WebRequest -UseBasicParsing -Uri $releasesUrl
+    $downloadPage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
     $version = ([regex]::match($downloadPage.Content, $versionRegEx).Groups[1].Value)
 
     if ($force) {

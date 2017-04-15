@@ -1,6 +1,7 @@
 $installer          = 'WLAN(v18.40.4).zip'
 $url                = 'http://asrock.pc.cdn.bitgravity.com/Drivers/Intel/WLAN/WLAN(v18.40.4).zip'
 $checksum           = 'F2D5E50376DFC46FD5FEC062F996AEE12EEC5327CEC1A64D109B1625EFB9ECF9'
+$packageChecksum    = ''
 $installerConfig    = Join-Path $packageDir 'Setup.xml'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName

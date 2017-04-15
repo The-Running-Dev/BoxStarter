@@ -9,6 +9,9 @@ $installer = Join-Path $packageDir ($Latest.FileName32 -replace '_x32', '')
 Remove-Item $installer -ErrorAction SilentlyContinue
 Remove-Item "$($installer).ignore" -ErrorAction SilentlyContinue
 
-if ($MyInvocation.InvocationName -eq '.') {
-    Get-ChildItem *.nupkg | Select-Object -ExpandProperty FullName | Move-Item -Destination $publishDir -Force
+if ($push) {
+    & (Join-Path $PSScriptRoot ..\push.ps1) $Latest.PackageName
 }
+
+# Original location is defined in the individual update script
+Set-Location $originalLocation
