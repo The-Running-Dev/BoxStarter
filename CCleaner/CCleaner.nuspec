@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>CCleaner</id>
+    <version>5.28.6005</version>
+    <title>CCleaner</title>
+    <authors>Piriform</authors>
+    <licenseUrl>http://www.piriform.com/legal/software-license/ccleaner</licenseUrl>
+    <projectUrl>http://www.piriform.com/ccleaner</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/chocolatey/chocolatey-coreteampackages/182294b9b95166915fdc2265a90ef37c6b24efd9/icons/ccleaner.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    The number-one tool for cleaning your Windows PC.
+
+    It protects your privacy online and makes your computer faster and more secure.
+    </description>
+    <summary>The number-one tool for cleaning your Windows PC.</summary>
+    <releaseNotes>https://www.piriform.com/ccleaner/version-history</releaseNotes>
+    <copyright />
+    <tags>ccleaner system cleanup freeware trial registry admin</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+  </metadata>
+</package>
