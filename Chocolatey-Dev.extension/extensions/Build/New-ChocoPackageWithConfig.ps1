@@ -1,7 +1,7 @@
 function New-ChocoPackageWithConfig {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $nuSpec,
-        [Parameter(Mandatory = $true, Position = 1)][ValidateNotNullOrEmpty()][Hashtable] $config,
+        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][string] $nuSpec,
+        [Parameter(Mandatory = $true, Position = 1)][ValidateNotNullOrEmpty()][array] $includeFilter,
         [Parameter(Mandatory = $true, Position = 2)][ValidateNotNullOrEmpty()][string] $outputPath,
         [Parameter(Mandatory = $false, Position = 3)][switch] $force
     )
@@ -39,7 +39,7 @@ function New-ChocoPackageWithConfig {
         # and move all the extra files from the package directory
         # so they don't become part of the package
         New-Item -ItemType Directory $tempDir -Force | Out-Null
-        $extraFiles = Get-ChildItem -Path $packageDir -Exclude $config['include']
+        $extraFiles = Get-ChildItem -Path $packageDir -Exclude $includeFilter
         foreach ($f in $extraFiles) {
             Move-Item $f.FullName $tempDir
         }

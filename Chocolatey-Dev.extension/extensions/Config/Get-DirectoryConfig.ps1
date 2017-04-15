@@ -6,6 +6,7 @@ function Get-DirectoryConfig {
 
     $configFile = Join-Path $path $global:configFile
 
+    # No config file found, look for it in the parent directory
     if (!(Test-Path $configFile)) {
         $configFile = Join-Path (Split-Path -Parent $path) $global:configFile
     }
@@ -16,17 +17,30 @@ function Get-DirectoryConfig {
 
         $config = $global:config
         $config.artifacts = Get-ConfigSetting $configJson 'artifacts' | Convert-ToFullPath -BasePath $dir
+        $defaultFilter = $global:defaultFilter | Split-String ','
 
         if ($configJson.remote) {
-            $config.remote.source = Get-ConfigSetting $configJson.remote 'source' | Convert-ToFullPath -BasePath $dir
-            $config.remote.apiKey = Get-ConfigSetting $configJson.remote 'apiKey'
-            $config.remote.include = $global:config.remote.include + ((Get-ConfigSetting $configJson.remote 'include') -replace ' ', '' | Split-String ',')
+            $config.remote.include = $defaultFilter + ((Get-ConfigSetting $configJson.remote 'include') -replace ' ', '' | Split-String ',')
+            $config.remote.sources = @()
+
+            foreach ($source in $configJson.remote.sources) {
+                $config.remote.sources += @{
+                    pushTo = Get-ConfigSetting $source 'pushTo' | Convert-ToFullPath -BasePath $dir
+                    apiKey = Get-ConfigSetting $source 'apiKey'
+                }
+            }
         }
 
         if ($configJson.local) {
-            $config.local.source = Get-ConfigSetting $configJson.local 'source' | Convert-ToFullPath -BasePath $dir
-            $config.local.apiKey = Get-ConfigSetting $configJson.local 'apiKey'
-            $config.local.include = $global:config.local.include + ((Get-ConfigSetting $configJson.local 'include') -replace ' ', '' | Split-String ',')
+            $config.local.include = $defaultFilter + ((Get-ConfigSetting $configJson.local 'include') -replace ' ', '' | Split-String ',')
+            $config.local.sources = @()
+
+            foreach ($source in $configJson.local.sources) {
+                $config.local.sources += @{
+                    pushTo = Get-ConfigSetting $source 'pushTo' | Convert-ToFullPath -BasePath $dir
+                    apiKey = Get-ConfigSetting $source 'apiKey'
+                }
+            }
         }
 
         return $config

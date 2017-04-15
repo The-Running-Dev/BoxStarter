@@ -10,14 +10,18 @@ $global:defaultFilter = 'config.json,extensions,tools,*.ini,*.png,*.svg,*.ignore
 $global:config = @{
     artifacts = ''
     local = @{
-        source = ''
-        apiKey = ''
         include = $global:defaultFilter | Split-String ','
+        sources = @(@{
+            pushTo = ''
+            apiKey = ''
+        })
     }
     remote = @{
-        source = ''
-        apiKey = ''
         include = $global:defaultFilter | Split-String ','
+        sources = @(@{
+            pushTo = ''
+            apiKey = ''
+        })
     }
 }
 $global:configFile = 'config.json'

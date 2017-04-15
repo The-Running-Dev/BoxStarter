@@ -11,11 +11,14 @@ function Invoke-ChocoPackWithConfig {
 
     foreach ($p in $packages) {
         $currentDir = Split-Path -Parent $p.FullName
-        $config = Get-DirectoryConfig $currentDir $baseConfig
-        $sourceConfig = Get-SourceConfig $config $sourceType
+        $directoryConfig = Get-DirectoryConfig $currentDir $baseConfig
+        $config = Get-SourceConfig $directoryConfig $sourceType
+        $includeFilter = $config.include
 
         Set-Location $currentDir
-        New-ChocoPackageWithConfig $p.FullName $sourceConfig $config.artifacts $force
+
+        New-ChocoPackageWithConfig $p.FullName $includeFilter $directoryConfig.artifacts $force
+
         Set-Location $baseDir
     }
 }
