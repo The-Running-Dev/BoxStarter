@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MetaX</id>
+    <version>2.57</version>
+    <title>MetaX</title>
+    <authors>Knowledge Design Software</authors>
+    <projectUrl>http://danhinsley.com/metax/metax.html</projectUrl>
+    <description>
+    Tag Your Movies To Look Perfect in iTunes, Apple TV or other Media Players.
+
+    With only a mouse click or two, MetaX will scour all the major sources of movie
+    and TV information on the web: TVDB, TheMovieDB, iTunes as well as IMDB and
+    Yahoo posters and display the information. You can select from multiple entries
+    to get just the look you want, then quickly write the tags into the file so that
+    it shows up in iTunes, Apple TV or whatever media play you use, just like it would
+    if you had purchased the movie from iTunes.
+    MetaX supports MP4, M4V, MOV, AVI, MKV and WMV files.
+    Not all formats support all tags. AVI files in particular don't support most tags,
+    including not supporting cover art.
+    </description>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+  </metadata>
+</package>

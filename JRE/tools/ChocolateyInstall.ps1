@@ -22,19 +22,15 @@
 
 $x86Installer       = 'jre-8u121-windows-i586.exe'
 $x64Installer       = 'jre-8u121-windows-x64.exe'
-$url                = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=218831_e9e7ea248e2c4826b92b3f075a80e441'
-$url64              = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=218833_e9e7ea248e2c4826b92b3f075a80e441'
-$checksum           = '13d5ed94fe40d9403d5d25b1ef46593dc7f96993df735ea36a32db3dc8ed8ec7'
-$checksum64         = '6741acefeb3845964534b3821d459b95c7dfa079f104c5041d1f95d3b6b7a502'
 $arguments          = @{
     packageName     = $env:ChocolateyPackageName
     softwareName    = $env:ChocolateyPackageTitle
-    unzipLocation   = $env:ChocolateyPackageFolder
+    destination   = $env:ChocolateyPackageFolder
     file            = Join-Path $env:ChocolateyPackageFolder $x64Installer
-    url             = $url
-    url64           = $url64
-    checksum        = $checksum
-    checksum64      = $checksum64
+    url             = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=218831_e9e7ea248e2c4826b92b3f075a80e441'
+    url64           = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=218833_e9e7ea248e2c4826b92b3f075a80e441'
+    checksum        = '13d5ed94fe40d9403d5d25b1ef46593dc7f96993df735ea36a32db3dc8ed8ec7'
+    checksum64      = '6741acefeb3845964534b3821d459b95c7dfa079f104c5041d1f95d3b6b7a502'
     fileType        = 'exe'
     checksumType    = 'sha256'
     checksumType64  = 'sha256'

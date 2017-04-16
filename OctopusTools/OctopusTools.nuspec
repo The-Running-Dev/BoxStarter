@@ -15,5 +15,8 @@
     <releaseNotes />
     <language>en-US</language>
     <tags>automation deployment</tags>
+    <dependencies>
+      <dependency id="Chocolatey-Package.extension" />
+    </dependencies>
   </metadata>
 </package>

@@ -1,7 +1,5 @@
 function Install-WithScheduledTask() {
-    param(
-        [Hashtable] $arguments
-    )
+    param([Hashtable] $arguments)
 
     $arguments['file'] = Get-Installer $arguments
 

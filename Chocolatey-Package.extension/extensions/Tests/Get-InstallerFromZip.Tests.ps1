@@ -8,7 +8,7 @@ Describe "Get-InstallerFromZip" {
     InModuleScope InstallHelpers {
         $fakeZip = 'C:\Path\Some.zip'
         $executableRegEx = 'Install.exe'
-        $fakeUnzipLocation = 'C:\Path'
+        $fakedestination = 'C:\Path'
         $expected = 'C:\Path\Install.exe'
 
         Mock Get-Executable { 'C:\Path\Install.exe' } -Verifiable
@@ -20,7 +20,7 @@ Describe "Get-InstallerFromZip" {
         Context "When the Unzip Location Exists" {
             Mock Test-FileExists { $true } -Verifiable
 
-            $result = Get-InstallerFromZip @{ 'file' = $fakeZip; 'unzipLocation' = $fakeUnzipLocation; 'executableRegEx' = $executableRegEx }
+            $result = Get-InstallerFromZip @{ 'file' = $fakeZip; 'destination' = $fakedestination; 'executableRegEx' = $executableRegEx }
 
             It "Should Call the Mocks" {
                 Assert-VerifiableMocks
@@ -34,7 +34,7 @@ Describe "Get-InstallerFromZip" {
             Mock Test-DirectoryExists { $false } -Verifiable
             Mock Get-Executable { 'C:\Users\Boyan\AppData\Local\Temp' } -Verifiable
 
-            $result = Get-InstallerFromZip @{ 'file' = $fakeZip; 'unzipLocation' = $fakeUnzipLocation; 'executableRegEx' = $executableRegEx }
+            $result = Get-InstallerFromZip @{ 'file' = $fakeZip; 'destination' = $fakedestination; 'executableRegEx' = $executableRegEx }
 
             It "Should Call the Mocks" {
                 Assert-VerifiableMocks
@@ -47,7 +47,7 @@ Describe "Get-InstallerFromZip" {
         Context "When the URL is Provided" {
             Mock Test-FileExists { $false } -Verifiable
 
-            $result = Get-InstallerFromZip @{ 'url' = $fakeUrl; 'unzipLocation' = $fakeUnzipLocation; 'executableRegEx' = $executableRegEx }
+            $result = Get-InstallerFromZip @{ 'url' = $fakeUrl; 'destination' = $fakedestination; 'executableRegEx' = $executableRegEx }
 
             It "Should Call the Mocks" {
                 Assert-VerifiableMocks

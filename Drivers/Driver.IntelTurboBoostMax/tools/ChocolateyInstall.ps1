@@ -1,19 +1,10 @@
-﻿$installer          = 'ITBM_v1.0.0.1027.zip'
-$url                = 'http://asrock.pc.cdn.bitgravity.com/Drivers/Intel/Others/ITBM_v1.0.0.1027.zip'
-$checksum           = 'F63F64610A842CC4B3BB2D006389C4358E4018492D07AE046626DC745A4C6014'
-$packageChecksum    = '91876FC1141052D83265FDC846077526069B9918439433ACC0DB1B63A9C7231FF63F64610A842CC4B3BB2D006389C4358E4018492D07AE046626DC745A4C6014'
+﻿$packageChecksum    = '91876FC1141052D83265FDC846077526069B9918439433ACC0DB1B63A9C7231FF63F64610A842CC4B3BB2D006389C4358E4018492D07AE046626DC745A4C6014'
 $arguments          = @{
-    packageName     = $env:ChocolateyPackageName
-    softwareName    = $env:ChocolateyPackageTitle
-    unzipLocation   = $env:ChocolateyPackageFolder
-    file            = Join-Path $env:ChocolateyPackageFolder $installer
-    url             = $url
-    checksum        = $checksum
+    file            = 'ITBM_v1.0.0.1027.zip'
+    url             = 'http://asrock.pc.cdn.bitgravity.com/Drivers/Intel/Others/ITBM_v1.0.0.1027.zip'
+    checksum        = 'F63F64610A842CC4B3BB2D006389C4358E4018492D07AE046626DC745A4C6014'
     executable      = 'ITBM_v1.0.0.1027\ITBM_Setup(v1.0.0.1027).exe'
-    fileType        = 'exe'
-    checksumType    = 'sha256'
     silentArgs      = '/SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /NOCLOSEAPPLICATIONS /NORESTARTAPPLICATIONS /NOICONS'
-    validExitCodes  = @(0, 1641, 3010)
 }
 
 Install-CustomPackage $arguments

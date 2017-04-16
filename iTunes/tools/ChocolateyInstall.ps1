@@ -1,17 +1,8 @@
-﻿$installer          = 'iTunes6464Setup.exe'
-$url                = 'https://secure-appldnld.apple.com/itunes12/031-34005-20150916-98D38F1E-5C11-11E5-A6AD-C05A6DA99CB1/iTunes6464Setup.exe'
-$checksum           = 'F1A36984C02DF41A3CFC6B2A2695FC4FAE8B32BB88B4DEF53193870E462A7EF6'
-$arguments          = @{
-    packageName     = $env:ChocolateyPackageName
-    softwareName    = $env:ChocolateyPackageTitle
-    unzipLocation   = $env:ChocolateyPackageFolder
-    file            = Join-Path $env:ChocolateyPackageFolder $installer
-    url             = $url
-    checksum        = $checksum
-    fileType        = 'msi'
-    checksumType    = 'sha256'
+﻿$arguments          = @{
+    file            = 'iTunes6464Setup.exe'
+    url             = 'https://secure-appldnld.apple.com/itunes12/031-34005-20150916-98D38F1E-5C11-11E5-A6AD-C05A6DA99CB1/iTunes6464Setup.exe'
+    checksum        = 'F1A36984C02DF41A3CFC6B2A2695FC4FAE8B32BB88B4DEF53193870E462A7EF6'
     silentArgs      = '/qn /norestart'
-    validExitCodes  = @(0, 1641, 3010)
 }
 
 # Check if the same version of iTunes is already installed

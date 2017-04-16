@@ -24,5 +24,8 @@
 * FIXED: Modify installer to also install 32-bit WoW files when installing on 64-bit platforms. See [discussion](https://chocolatey.org/packages/vcredist2013/12.0.30501.20150616#comment-2078552116) for more info about the issue.</releaseNotes>
     <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
     <tags>visual c++ redistributable 2013 studio</tags>
+    <dependencies>
+      <dependency id="Chocolatey-Package.extension" />
+    </dependencies>
   </metadata>
 </package>

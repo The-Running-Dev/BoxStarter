@@ -25,6 +25,7 @@
     <copyright>http://www.microsoft.com/about/legal/en/us/IntellectualProperty/Copyright/Default.aspx</copyright>
     <tags>visual c++ redistributable 2013 studio</tags>
     <dependencies>
+      <dependency id="Chocolatey-Package.extension" />
       <dependency id="VisualCRedistributable2013x86" />
       <dependency id="VisualCRedistributable2013x64" />
     </dependencies>

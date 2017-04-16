@@ -32,5 +32,8 @@
     <docsUrl>https://trac.handbrake.fr/wiki</docsUrl>
     <mailingListUrl>https://handbrake.fr/community.php</mailingListUrl>
     <bugTrackerUrl>https://github.com/HandBrake/HandBrake/issues</bugTrackerUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
   </metadata>
 </package>

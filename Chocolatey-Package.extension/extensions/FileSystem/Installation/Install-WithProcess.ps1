@@ -1,7 +1,5 @@
 function Install-WithProcess() {
-    param(
-        [Hashtable] $arguments
-    )
+    param([PSCustomObject] $arguments)
 
     $arguments['file'] = Get-Installer $arguments
 

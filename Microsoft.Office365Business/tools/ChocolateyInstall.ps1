@@ -1,23 +1,11 @@
-﻿$installer                  = 'officedeploymenttool_8008-3601.exe'
-$url                        = 'https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_8008-3601.exe'
-$checksum                   = 'A7F8CD73AD61EDDB42303E7D2A0D4F4080B8330267E7B6AD63C17F12926F04DD'
-$defaultConfigurationFile   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
+﻿$defaultConfigurationFile   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
 $arguments                  = @{
     packageName             = 'OfficeDeploymentTool'
-    softwareName            = $env:ChocolateyPackageTitle
-    unzipLocation           = $env:ChocolateyPackageFolder
-    file                    = Join-Path $env:ChocolateyPackageFolder $installer
-    url                     = $url
-    checksum                = $checksum
-    fileType                = 'exe'
-    checksumType            = 'sha256'
+    file                    = 'officedeploymenttool_8008-3601.exe'
+    url                     = 'https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_8008-3601.exe'
+    checksum                = 'A7F8CD73AD61EDDB42303E7D2A0D4F4080B8330267E7B6AD63C17F12926F04DD'
     silentArgs              = "/extract:$env:Temp\Office /log:$env:Temp\OfficeInstall.log /quiet /norestart"
-    validExitCodes          = @(
-        0, # success
-        3010, # success, restart required
-        2147781575, # pending restart required
-        2147205120  # pending restart required for setup update
-    )
+    validExitCodes          = @(2147781575, 2147205120)
 }
 
 $parameters = Get-Parameters $env:chocolateyPackageParameters

@@ -103,6 +103,6 @@ if (!(Test-Path $chocoInstallPath) -or $force) {
         choco source add -n 'Personal-Temp' -s $personalSource -priority 101
         choco source add -n 'Extensions-Temp' -s $extensionsSource -priority 102
 
-        choco install Chocolatey-Personal
+        choco install Chocolatey-Personal -s $personalSource
     }
 }

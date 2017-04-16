@@ -1,17 +1,8 @@
-﻿$installer          = 'ccsetup528.exe'
-$url                = 'http://download.piriform.com/ccsetup528.exe'
-$checksum           = 'C0095229FE2E0C9BDE8EF960B6FED40A71F5F2D9CC17D4C53EE9CA30C5B032A9'
-$arguments          = @{
-    packageName     = $env:ChocolateyPackageName
-    softwareName    = $env:ChocolateyPackageTitle
-    unzipLocation   = $env:ChocolateyPackageFolder
-    file            = Join-Path $env:ChocolateyPackageFolder $installer
-    url             = $url
-    checksum        = $checksum
-    fileType        = 'exe'
-    checksumType    = 'sha256'
+﻿$arguments          = @{
+    file            = 'ccsetup528.exe'
+    url             = 'http://download.piriform.com/ccsetup528.exe'
+    checksum        = 'C0095229FE2E0C9BDE8EF960B6FED40A71F5F2D9CC17D4C53EE9CA30C5B032A9'
     silentArgs      = '/S'
-    validExitCodes  = @(0, 1641, 3010)
 }
 
 Install-CustomPackage $arguments

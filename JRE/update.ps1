@@ -35,10 +35,10 @@ function global:au_SearchReplace {
         ".\tools\chocolateyInstall.ps1" = @{
             "(?i)(^[$]x86Installer\s*=\s*)('.*')" = "`$1'$($global:downloadFile)'"
             "(?i)(^[$]x64Installer\s*=\s*)('.*')" = "`$1'$($global:downloadFile64)'"
-            "(?i)(^[$]url\s*=\s*)('.*')" = "`$1'$($Latest.Url32)'"
-            "(?i)(^[$]url64\s*=\s*)('.*')" = "`$1'$($Latest.Url64)'"
-            "(?i)(^[$]checksum\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
-            "(?i)(^[$]checksum64\s*=\s*)('.*')" = "`$1'$($Latest.Checksum64)'"
+            "(?i)(url\s*=\s*)('.*')" = "`$1'$($Latest.Url32)'"
+            "(?i)(url64\s*=\s*)('.*')" = "`$1'$($Latest.Url64)'"
+            "(?i)(checksum\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
+            "(?i)(checksum64\s*=\s*)('.*')" = "`$1'$($Latest.Checksum64)'"
         }
     }
 }

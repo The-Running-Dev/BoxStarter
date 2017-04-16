@@ -1,4 +1,4 @@
-$packageChecksum = ''
+﻿$packageChecksum = '3FCAEA01072C159AC252CDCB37A2E98CD0EE73A9E3CE906C87EED02A72A0510F38FE3828609329BDFDF7839B01420BC8EE8AE2FB408B156584D6870EB01382C8'
 
 if(-not (test-path "hklm:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5")) {
     if((wmic os get caption | Out-String).Contains("Server")) {

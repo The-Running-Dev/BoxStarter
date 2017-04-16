@@ -1,4 +1,8 @@
-function Get-Parameters([string] $parameters) {
+function Get-Parameters {
+    param(
+		[string] $parameters
+	)
+    
     $arguments = @{}
 
     if ($parameters) {

@@ -1,17 +1,8 @@
-﻿$installer          = 'ExternalDiskCache_amd64.msi'
-$url                = 'http://download.microsoft.com/download/C/A/5/CA5FAD87-1E93-454A-BB74-98310A9C523C/ExternalDiskCache_amd64.msi'
-$checksum           = '6BF8E5FDA2B993193B922C977AA8D41F78262C5DB0F04305EC19434C2AB5FA53'
-$arguments          = @{
-packageName         = $env:ChocolateyPackageName
-    softwareName    = $env:ChocolateyPackageTitle
-    unzipLocation   = $env:ChocolateyPackageFolder
-    file            = Join-Path $env:ChocolateyPackageFolder $installer
-    url             = $url
-    checksum        = $checksum
-    fileType        = 'msi'
-    checksumType    = 'sha256'
+﻿$arguments          = @{
+    file            = 'ExternalDiskCache_amd64.msi'
+    url             = 'http://download.microsoft.com/download/C/A/5/CA5FAD87-1E93-454A-BB74-98310A9C523C/ExternalDiskCache_amd64.msi'
+    checksum        = '6BF8E5FDA2B993193B922C977AA8D41F78262C5DB0F04305EC19434C2AB5FA53'
     silentArgs      = "/qn /norestart /l*v `"$env:TEMP\chocolatey\$($packageName)\$($packageName).MsiInstall.log`""
-    validExitCodes  = @(0, 1641, 3010)
 }
 
 Install-CustomPackage $arguments

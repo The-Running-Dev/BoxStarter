@@ -1,4 +1,6 @@
-function Get-BaseDirectory([string] $baseDir) {
+function Get-BaseDirectory {
+    param([string] $baseDir)
+
     if (Test-DirectoryExists $baseDir) {
         return $baseDir
     }

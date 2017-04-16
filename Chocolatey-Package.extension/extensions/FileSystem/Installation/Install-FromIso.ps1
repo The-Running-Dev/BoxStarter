@@ -1,20 +1,16 @@
-function Get-InstallerFromIso([Hashtable] $arguments) {
-    $file = $arguments['file']
-    $baseDir = $arguments['unzipLocation']
-    $executable = $arguments['executable']
-    $executableRegEx = $arguments['executableRegEx']
-    $isoPath = $file
+function Get-InstallerFromIso {
+    param([PSCustomObject] $arguments)
 
-    if (![System.IO.Path]::IsPathRooted($file)) {
-        Write-Verbose "Get-InstallerFromIso: $file is a relative path"
-        $isoPath = Join-Path (Get-BaseDirectory) $file
+    if (![System.IO.Path]::IsPathRooted($arguments.file)) {
+        Write-Verbose "Get-InstallerFromIso: $arguments.file is a relative path"
+        $isoPath = Join-Path (Get-BaseDirectory) $arguments.file
 
         # No ISO found in the package
         if (!(Test-Path $isoPath)) {
             Write-Verbose "Get-InstallerFromIso: No ISO in package"
 
             # Reset the base directory
-            $isoPath = Join-Path (Get-BaseDirectory '') $file
+            $isoPath = Join-Path (Get-BaseDirectory '') $arguments.file
 
             Write-Verbose "Get-InstallerFromIso: ISO set to $isoPath"
 
@@ -32,5 +28,5 @@ function Get-InstallerFromIso([Hashtable] $arguments) {
     $driveLetter = ($iso | Get-Volume).DriveLetter
     Get-PSDrive | Out-Null
 
-    return Get-Executable "$driveLetter`:\" $executable $exeRegEx
+    return Get-Executable "$driveLetter`:\" $arguments.executableRegEx
 }

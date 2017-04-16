@@ -1,23 +1,14 @@
-$installer              = 'en_visual_studio_enterprise_2015_with_update_3_x86_x64_web_installer_8922986.exe'
-$url                    = 'https://download.my.visualstudio.com/pr/en_visual_studio_enterprise_2015_with_update_3_x86_x64_web_installer_8922986.exe?t=76368aea-bbfd-4488-825c-921f8913f18e&e=1492142627&h=85b56a83096ad6300bf670cf6c2bedc8&su=1'
-$packageChecksum        = ''
-$checksum               = ''
 $defaultConfiguration   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
 $parameters             = Get-Parameters $env:chocolateyPackageParameters
 $configuration          = Get-ConfigurationFile $parameters['Configuration'] $defaultConfiguration
 $arguments              = @{
-    packageName         = $env:ChocolateyPackageName
-    softwareName        = $env:ChocolateyPackageTitle
-    unzipLocation       = $env:ChocolateyPackageFolder
-    file                = Join-Path $env:ChocolateyPackageFolder $installer
+    file                = 'en_visual_studio_enterprise_2015_with_update_3_x86_x64_web_installer_8922986.exe'
     url                 = $url
-    checksum            = $checksum
+    checksum            = 'https://download.my.visualstudio.com/pr/en_visual_studio_enterprise_2015_with_update_3_x86_x64_web_installer_8922986.exe?t=76368aea-bbfd-4488-825c-921f8913f18e&e=1492142627&h=85b56a83096ad6300bf670cf6c2bedc8&su=1'
     fileType            = 'exe'
     checksumType        = 'sha256'
     silentArgs          = "/Quiet /NoRestart /NoRefresh /Log $env:Temp\VisualStudio.log /AdminFile $configuration"
     validExitCodes      = @(
-        0, # success
-        3010, # success, restart required
         2147781575, # pending restart required
         2147205120  # pending restart required for setup update
     )

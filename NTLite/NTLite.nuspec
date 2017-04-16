@@ -52,6 +52,7 @@ See license link for Free, Home, Professional, and Business version comparisons.
     <bugTrackerUrl>https://www.ntlite.com/changelog/</bugTrackerUrl>
     <dependencies>
       <dependency id="chocolatey-uninstall.extension" />
+      <dependency id="Chocolatey-Package.extension" />
     </dependencies>
   </metadata>
 </package>

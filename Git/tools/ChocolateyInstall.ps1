@@ -1,17 +1,8 @@
-﻿$installer          = 'Git-2.12.2.2-64-bit.exe'
-$url                = 'https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.2/Git-2.12.2.2-64-bit.exe'
-$checksum           = '4E753B00595C0BB0D1BC50C2FEA61A60A26B326D8A59AACDB79DFB087B4FC2A7'
-$arguments          = @{
-    packageName     = $env:ChocolateyPackageName
-    softwareName    = $env:ChocolateyPackageTitle
-    unzipLocation   = $env:ChocolateyPackageFolder
-    file            = Join-Path $env:ChocolateyPackageFolder $installer
-    url             = $url
-    checksum        = $checksum
-    fileType        = 'exe'
-    checksumType    = 'sha256'
+﻿$arguments          = @{
+    file            = 'Git-2.12.2.2-64-bit.exe'
+    url             = 'https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.2/Git-2.12.2.2-64-bit.exe'
+    checksum        = '4E753B00595C0BB0D1BC50C2FEA61A60A26B326D8A59AACDB79DFB087B4FC2A7'
     silentArgs      = '/VERYSILENT /NORESTART /NOCANCEL /SP- /COMPONENTS="icons,icons\quicklaunch,ext,ext\shellhere,ext\guihere,assoc,assoc_sh" /LOG'
-    validExitCodes  = @(0, 1641, 3010)
 }
 
 $parameters = Get-Parameters $env:chocolateyPackageParameters
@@ -92,7 +83,7 @@ If ($IsRunningUnderSystemAccount) {
 If ([bool](Get-Process ssh-agent -ErrorAction SilentlyContinue)) {
     Write-Output "Killing any git ssh-agent instances for install."
 
-    (Get-Process ssh-agent | where {$_.Path -ilike "*\git\usr\bin\*"}) | Stop-Process
+    (Get-Process ssh-agent | Where-Object {$_.Path -ilike "*\git\usr\bin\*"}) | Stop-Process
 }
 
 Install-CustomPackage $arguments

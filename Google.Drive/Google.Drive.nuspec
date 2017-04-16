@@ -15,5 +15,8 @@
     <copyright>Google</copyright>
     <tags>googledrive google drive files admin</tags>
     <packageSourceUrl>https://github.com/ferventcoder/chocolatey-packages/</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
   </metadata>
 </package>
