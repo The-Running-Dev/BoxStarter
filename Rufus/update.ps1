@@ -1,5 +1,8 @@
 param([switch] $force, [switch] $push)
 
+$originalLocation = Get-Location
+$packageDir = $PSScriptRoot
+
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
