@@ -1,4 +1,5 @@
 $script                     = $MyInvocation.MyCommand.Definition
+$packageChecksum            = ''
 $defaultConfigurationFile   = Join-Path (Get-ParentDirectory $script) 'Configuration.ini'
 $packageName                = 'MSSQLServer2014Express'
 $installer                  = Join-Path (Get-ParentDirectory $script) 'SQLEXPR.exe'

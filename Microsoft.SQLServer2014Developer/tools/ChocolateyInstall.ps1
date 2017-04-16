@@ -1,4 +1,5 @@
 $script                     = $MyInvocation.MyCommand.Definition
+$packageChecksum            = ''
 $defaultConfigurationFile   = Join-Path (Get-ParentDirectory $script) 'Configuration.ini'
 $parameters                 = Get-Parameters $env:chocolateyPackageParameters
 $configurationFile          = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile

@@ -1,3 +1,4 @@
+$packageChecksum    = ''
 $defaultConfigFile  = Join-Path $env:ChocolateyPackageFolder 'IIS.config'
 $parameters         = Get-Parameters $env:packageParameters
 $parameters['file'] = Get-ConfigurationFile $parameters['file'] $defaultConfigFile

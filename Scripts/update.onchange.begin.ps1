@@ -12,7 +12,11 @@ function global:au_BeforeUpdate {
 }
 
 function global:au_GetLatest {
-    $version = [version]'0.0.0'
+    # Get the version from the nuspec as we want it to always be the same
+    # unless we manually update it
+    $version = (Get-Item "$($Latest.PackageName).nuspec" `
+        | Select-String "(?i)<version>([0-9\.]+)</version>") `
+        | ForEach-Object { $_.Matches[0].Groups[1].Value }
     $oldChecksum = (Get-Item $packageDir\tools\chocolateyInstall.ps1 | Select-String "(?i)^[$]packageChecksum\s*=\s*'.*'") -split "=|'" | Select-Object -Last 1 -Skip 1
 
     # $settingsDir is defined in the individual update script
@@ -21,7 +25,6 @@ function global:au_GetLatest {
         | ForEach-Object { $_.Hash } | Join-String
 
     if (($currentChecksum -ne $oldChecksum) -or $force) {
-        $version = [version][DateTime]::Now.ToString('yyyy.MM.dd')
         $global:au_Version = $version
     }
 

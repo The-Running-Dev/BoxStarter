@@ -28,7 +28,10 @@ function Invoke-ChocoPushWithConfig {
             Get-ChildItem -Path $baseDir -Recurse -File `
                 | Where-Object { $_.Name -match $packageAritifactRegEx } `
                 | Select-Object FullName `
-                | ForEach-Object { choco push $_.FullName -s $pushTo -k="$apiKey" }
+                | ForEach-Object {
+                    choco push $_.FullName -s $pushTo -k="$apiKey"
+                    Remove-Item $_.FullName
+                }
         }
     }
 }
