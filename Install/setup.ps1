@@ -6,4 +6,4 @@ $env:packagesSourcePath = Join-Path -Resolve $parentDir '..\BoxStarter'
 
 & $currentDir\install.choco.ps1
 
-choco install Chocolatey.Personal -s $env:packagesSourcePath
+choco install Chocolatey-Personal -s $env:packagesSourcePath

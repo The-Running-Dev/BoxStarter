@@ -10,6 +10,7 @@ function New-ChocoPackageWithConfig {
     $packageDir = Split-Path -Parent $nuSpec
     $updateScript = Join-Path $packageDir 'update.ps1'
     $tempDir = Join-Path $env:Temp $packageId
+    $packageBuiltFromUpdate = $false
 
     # If update script exists for the package
     # run it instead of packing it yourself
@@ -23,10 +24,16 @@ function New-ChocoPackageWithConfig {
             & $updateScript
         }
 
-        Get-ChildItem *.nupkg | Select-Object -First 1 -ExpandProperty FullName `
-            | Move-Item -Destination $outputPath -Force
+        $package = Get-ChildItem *.nupkg | Select-Object -First 1 -ExpandProperty FullName
+
+        if ([System.IO.File]::Exists($package)) {
+            $packageBuiltFromUpdate = $true
+            Move-Item $package $outputPath -Force
+        }
     }
-    else {
+
+
+    if (!$packageBuiltFromUpdate) {
         if (![System.IO.Directory]::Exists($outputPath)) {
             New-Item -Path $outputPath -ItemType Directory
         }
