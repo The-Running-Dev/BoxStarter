@@ -10,17 +10,14 @@ function global:au_BeforeUpdate {
     $downloadedFile = Join-Path $packageDir $Latest.FileName32
     $downloader.DownloadFile($Latest.Url32, $downloadedFile)
 
-    # Create a .ignore file for each found executable
-    New-Item "$($downloadedFile).ignore" -ErrorAction SilentlyContinue
-
     $Latest.Checksum32 = (Get-FileHash $downloadedFile).Hash
 }
 
 function global:au_GetLatest {
-    $releaseUrl = 'https://handbrake.fr/downloads.php'
+    $releaseUrl = 'https://handbrake.fr/downloads2.php'
     $versionRegEx = 'Current Version: ([0-9\.]+)'
     $downloadUrlPrefix = 'https://handbrake.fr'
-    $downloadUrlRegEx = '\.exe'
+    $downloadUrlRegEx = '\.zip'
 
     $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
     $version = [version]([regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value)
