@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>MySQL-Workbench</id>
+    <version>6.3.9</version>
+    <title>MySQL Workbench</title>
+    <authors>Oracle</authors>
+    <licenseUrl>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html</licenseUrl>
+    <projectUrl>http://mysql.com/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/TomOne/various/72d54ae11b091cac82fec7bf198c24cc3ed53418/mysql-workbench.png</iconUrl>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MySQL Workbench provides DBAs and developers an integrated tools environment for:
+    - Database Design and Modeling
+    - SQL Development (replacing MySQL Query Browser)
+    - Database Administration (replacing MySQL Administrator)</description>
+    <summary>MySQL Workbench (GUI Tool)</summary>
+    <tags>mysql workbench sql database query browser administrator</tags>
+    <dependencies>
+      <dependency id="VisualCRedistributable2013" />
+    </dependencies>
+  </metadata>
+</package>

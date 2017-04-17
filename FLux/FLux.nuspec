@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>FLux</id>
+    <version>3.12</version>
+    <title>F.Lux</title>
+    <authors>Stereopsis</authors>
+    <licenseUrl>http://stereopsis.com/flux/privacy.html</licenseUrl>
+    <projectUrl>https://justgetflux.com/</projectUrl>
+    <iconUrl>http://dl.herf.org/flux-icon-sm.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    Ever notice how people texting at night have that eerie blue glow?
+    Or wake up ready to write down the Next Great Idea, and get blinded by your computer screen?
+    During the day, computer screens look good—they're designed to look like the sun. But, at 9PM, 10PM, or 3AM, you probably shouldn't be looking at the sun.
+    f.lux fixes this: it makes the color of your computer's display adapt to the time of day, warm at night and like sunlight during the day.
+    It's even possible that you're staying up too late because of your computer. You could use f.lux because it makes you sleep better, or you could just use it just because it makes your computer look better.</description>
+    <summary>Better lighting...for your computer</summary>
+    <releaseNotes />
+    <copyright />
+    <tags>f.lux flux lighting monitor color</tags>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+  </metadata>
+</package>

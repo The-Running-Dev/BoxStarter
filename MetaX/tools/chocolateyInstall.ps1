@@ -8,7 +8,7 @@
 Install-CustomPackage $arguments
 
 $arguments          = @{
-    file            = 'MetaXSetup.msi'
+    file            = 'MetaXSetup.exe'
 }
 
 Install-CustomPackage $arguments

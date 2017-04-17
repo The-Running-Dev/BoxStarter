@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>DotNETCore-SDK</id>
+    <version>1.0.1</version>
+    <title>.NET Core</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.microsoft.com/net/core</projectUrl>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    Istalls .NET Core SDK
+    </description>
+    <summary>Installs .NET Core SDK</summary>
+    <tags>.net core sdk</tags>
+    <dependencies>
+      <dependency id="Chocolatey-Package.extension" />
+      <dependency id="DotNETCore-Runtime" />
+    </dependencies>
+  </metadata>
+</package>

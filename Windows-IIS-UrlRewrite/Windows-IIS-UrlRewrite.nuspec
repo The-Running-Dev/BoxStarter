@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Windows-IIS-UrlRewrite</id>
+    <version>2.0.20160209</version>
+    <title>URL Rewrite for IIS</title>
+    <authors>Microsoft Inc.</authors>
+    <licenseUrl>http://download.microsoft.com/download/6/9/C/69C1195A-123E-4BE8-8EDF-371CDCA4EC6C/License_rtw.htm</licenseUrl>
+    <projectUrl>http://www.iis.net/extensions/URLRewrite</projectUrl>
+    <iconUrl>http://www.microsoft.com/web/media/gallery/apps-screenshots/Microsoft-URLRewrite.png</iconUrl>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>IIS URL Rewrite 2.0 enables Web administrators to create powerful rules to implement URLs that are easier for users to remember and easier for search engines to find. By using rule templates, rewrite maps, .NET providers, and other functionality integrated into IIS Manager, Web administrators can easily set up rules to define URL rewriting behavior based on HTTP headers, HTTP response or request headers, IIS server variables, and even complex programmatic rules. In addition, Web administrators can perform redirects, send custom responses, or stop HTTP requests based on the logic expressed in the rewrite rules.</description>
+    <summary>Installs URL Rewrite for IIS</summary>
+    <releaseNotes>#### 2.0.20160107
+    * Renaming unreleased package to UrlRewrite for compatibility with existing chocolatey.org package.
+    * Installs rewrite.dll 7.1.1952 (May 2015), updating 7.1.0761 (February 2010) from the 2.0.2 chocolatey package.
+    * Installation is now silent.
+
+    #### 2.0.20160209
+    * Added github URLs to manifest.
+    * Cosmetic package name change for consistency with previous chocolatey.org versions.
+    </releaseNotes>
+    <copyright>Microsoft</copyright>
+    <tags>microsoft iis urlrewrite url rewrite admin</tags>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+      <dependency id="IIS.ExternalCache" />
+		</dependencies>
+  </metadata>
+</package>

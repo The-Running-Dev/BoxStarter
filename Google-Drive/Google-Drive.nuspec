@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Google-Drive</id>
+    <version>2.34.5075.1619</version>
+    <title>Google Drive</title>
+    <authors>Google</authors>
+    <owners>Google</owners>
+    <licenseUrl>http://www.google.com/policies/terms/</licenseUrl>
+    <projectUrl>https://drive.google.com/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/gdrive.svg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Google Drive – All your files – everywhere. Put files in Google Drive and you can access them on your desktop, mobile phone or tablet, and drive.google.com. Always up to date. Make changes to a file in one place and it automatically updates everywhere.</description>
+    <summary>Google Drive for Windows – Access files on your computer from anywhere.</summary>
+    <copyright>Google</copyright>
+    <tags>googledrive google drive files admin</tags>
+    <packageSourceUrl>https://github.com/ferventcoder/chocolatey-packages/</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>
