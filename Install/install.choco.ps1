@@ -8,11 +8,6 @@ $currentDirChocoPackage = Join-Path $currentDir $chocoPackage
 $localChocoPackage = 'D:\Dropbox\Boxstarter\$chocoPackage'
 $nasChocoPackage = '\\nas\Applications\_BoxStarter\External\$chocoPackage'
 
-$externalSourceBase = '\\nas\Applications\_BoxStarter'
-$externalSource = '\\nas\Applications\_BoxStarter\External'
-$personalSource = '\\nas\Applications\_BoxStarter\Personal'
-$extensionsSource = '\\nas\Applications\_BoxStarter\Extensions'
-
 if ([System.IO.File]::Exists($currentDirChocoPackage)) {
     $chocolateyPackagePath = $currentDirChocoPackage
 }
