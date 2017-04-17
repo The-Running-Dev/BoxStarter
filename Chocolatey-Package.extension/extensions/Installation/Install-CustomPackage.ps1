@@ -4,7 +4,6 @@ function Install-CustomPackage {
     $packageArgs = Get-Arguments $arguments
 
     if ($packageArgs.fileType -eq 'zip') {
-        write-host 'Install-FromZip'
         Install-FromZip $packageArgs
     }
     elseif ($packageArgs.fileType -eq 'iso') {
@@ -16,7 +15,7 @@ function Install-CustomPackage {
     }
     else {
         #$installer = Get-Executable $packageArgs.destination $packageArgs.executable $packageArgs.executableRegEx
-        #Install-ChocolateyInstallPackage @args
+        Install-ChocolateyInstallPackage @args
     }
 
     #Write-Verbose 'Install-CustomPackage: No installer or url provided. Aborting...'
