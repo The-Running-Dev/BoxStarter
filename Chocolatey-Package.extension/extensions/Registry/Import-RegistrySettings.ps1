@@ -1,14 +1,17 @@
-function Import-RegistrySettings([string] $path)
-{
+function Import-RegistrySettings {
+    param(
+		[string] $path
+	)
+
     $files = Get-ChildItem -Path $path -Filter *.reg -Recurse
 
     foreach ($f in $files) {
         try {
-            Write-Host "Importing: $($f.FullName)"
+            Write-Message "Importing: $($f.FullName)"
             & regedit /s $f.FullName
         }
         catch {
-            Write-Host "Failed Importing: $f, Message: $($_.Exception.ToString())"
+            Write-Message "Failed Importing: $f, Message: $($_.Exception.ToString())"
         }
     }
 }

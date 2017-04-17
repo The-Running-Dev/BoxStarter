@@ -18,6 +18,7 @@
 
 ## Packages
   * Acronis True Image
+  * CCleaner
   * Chocolatey-Dev.extension
   * Chocolatey-Package.extension
   * ClipboardFusion
@@ -34,6 +35,8 @@
   * GitExtensions
   * Google Chrome
   * Google Drive
+  * HandBrake
+  * HandBrake CLI
   * iTunes
   * iTunesFusion
   * JetBrains DataGrip
@@ -45,6 +48,7 @@
   * LastPass for Applications
   * Launchy
   * LogFusion
+  * MetaX
   * Microsoft MSBuild Targets
   * Microsoft Office 365 Business
   * Microsoft PowerBI
@@ -57,15 +61,15 @@
   * MySQL Workbench
   * NodeJS
   * NTLite
-  * OctopusTools
-  * RazerSynapse
+  * Octopus Tools
+  * Razer Synapse
+  * Rufus
   * Slack
   * Spotify
   * TeamCity (In Progress)
   * TeamViewer
-  * Visual C Redistributable 2015
-  * Visual C Redistributable 2015 x64
-  * Visual C Redistributable 2015 x86
+  * Visual C Redistributable 2013 (x86 & x64)
+  * Visual C Redistributable 2015 (x86 & x64)
   * VMWare Workstation
   * VoiceBot
   * VPNAreaChameleon

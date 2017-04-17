@@ -1,5 +1,7 @@
 function Get-Arguments {
-    param([PSCustomObject] $arguments)
+    param(
+        [PSCustomObject] $arguments
+    )
 
     $packageArgs = @{
         packageName = Get-Argument $arguments 'packageName' $env:ChocolateyPackageName
@@ -22,7 +24,7 @@ function Get-Arguments {
         $packageArgs.silentArgs = '/quiet'
     }
 
-    Write-Host "Get-Arguments: $($packageArgs | Out-String)"
+    Write-Message "Get-Arguments: $($packageArgs | Out-String)"
 
     return $packageArgs
 }

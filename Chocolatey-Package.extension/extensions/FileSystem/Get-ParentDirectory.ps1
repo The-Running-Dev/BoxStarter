@@ -1,4 +1,8 @@
-function Get-ParentDirectory([string] $path) {
+function Get-ParentDirectory {
+    param(
+		[string] $path
+	)
+
     if ([System.IO.File]::Exists($path)) {
         return Join-Path -Resolve $(Split-Path -Parent $path) ..
     }

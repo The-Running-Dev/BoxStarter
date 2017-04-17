@@ -1,8 +1,10 @@
 function Install-FromWeb {
-    param([PSCustomObject] $arguments)
+    param(
+        [PSCustomObject] $arguments
+    )
 
     if ($arguments.url) {
-        Write-Verbose "Get-InstallerFromWeb: Downloading from '$($arguments.url)'"
+        Write-Message "Get-InstallerFromWeb: Downloading from '$($arguments.url)'"
 
         # Download the file
         $arguments.file = Get-ChocolateyWebFile @arguments

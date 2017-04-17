@@ -1,3 +1,7 @@
-function Get-FileName([string] $file) {
+function Get-FileName {
+    param(
+		[string] $file
+	)
+
     return [System.IO.Path]::GetFileName($file)
 }

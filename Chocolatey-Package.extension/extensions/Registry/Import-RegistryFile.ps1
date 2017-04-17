@@ -19,11 +19,11 @@ function Import-RegistryFile
             }
 
             # Import the provided settings
-            Write-Host "Importing: $($parameters['file'])"
+            Write-Message "Importing: $($parameters['file'])"
             & regedit /s $parameters['file']
         }
     }
     catch {
-        Write-Host "Failed Importing: $($parameters['file']), Message: $($_.Exception.Message)"
+        Write-Message "Failed Importing: $($parameters['file']), Message: $($_.Exception.Message)"
     }
 }

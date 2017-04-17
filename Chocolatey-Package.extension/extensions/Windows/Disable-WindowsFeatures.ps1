@@ -1,6 +1,10 @@
-function Disable-WindowsFeatures([string] $file)
+function Disable-WindowsFeatures
 {
-    Write-Host "Disabling Windows Features from $file"
+    param(
+		[string] $file
+	)
+
+    Write-Message "Disabling Windows Features from $file"
 
     Invoke-Commands $file "choco uninstall ##token## -r -source WindowsFeatures -y"
 }

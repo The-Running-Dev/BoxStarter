@@ -1,4 +1,8 @@
-function Invoke-PinApplication([string] $applicationPath) {
+function Invoke-PinApplication {
+    param(
+		[string] $applicationPath
+	)
+
     try {
         if ($applicationPath.Contains('$')) {
             $applicationPath = Invoke-Expression $applicationPath
@@ -9,6 +13,6 @@ function Invoke-PinApplication([string] $applicationPath) {
         }
     }
     catch {
-        Write-Host "Invoke-PinApplication Failed: $($_.Exception.Message)"
+        Write-Message "Invoke-PinApplication Failed: $($_.Exception.Message)"
     }
 }

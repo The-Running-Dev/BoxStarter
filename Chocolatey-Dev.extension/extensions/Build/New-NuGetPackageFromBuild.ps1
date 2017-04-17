@@ -9,7 +9,8 @@ function New-NuGetPackageFromBuild {
 
     $args = Initialize-Package @PSBoundParameters
 
-    Write-Progress 'Creating NuGet Package'
+    Write-BuildProgress 'Creating NuGet Package'
+
     & nuGet pack $args.spec `
         -OutputDirectory $args.outputDirectory `
         -Properties Configuration=Release `

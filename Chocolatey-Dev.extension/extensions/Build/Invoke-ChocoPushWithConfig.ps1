@@ -5,6 +5,7 @@ function Invoke-ChocoPushWithConfig {
         [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
     )
 
+    $searchTerm = $searchTerm -replace '\\|\.', ''
     $baseConfig = Get-DirectoryConfig $baseDir
     $packages = Get-Packages $baseDir $searchTerm '*.nuspec'
 
@@ -19,7 +20,7 @@ function Invoke-ChocoPushWithConfig {
             $apiKey = $source.apiKey
 
             # Make sure we can access the source directory
-            if (!$pushTo.StartsWith('http') -and !(Test-Path $pushTo)){
+            if (!$pushTo.StartsWith('http') -and !(Test-Path $pushTo)) {
                 return
             }
 
@@ -29,9 +30,9 @@ function Invoke-ChocoPushWithConfig {
                 | Where-Object { $_.Name -match $packageAritifactRegEx } `
                 | Select-Object FullName `
                 | ForEach-Object {
-                    choco push $_.FullName -s $pushTo -k="$apiKey"
-                    Remove-Item $_.FullName
-                }
+                choco push $_.FullName -s $pushTo -k="$apiKey"
+                Remove-Item $_.FullName
+            }
         }
     }
 }

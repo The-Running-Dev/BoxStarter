@@ -1,4 +1,8 @@
-function Get-CurrentDirectory([string] $path) {
+function Get-CurrentDirectory {
+    param(
+		[string] $path
+	)
+
     if ([System.IO.File]::Exists($path)) {
         return $(Split-Path -Parent $path)
     }

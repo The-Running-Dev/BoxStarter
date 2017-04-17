@@ -1,5 +1,7 @@
 function Install-CustomPackage {
-    param([PSCustomObject] $arguments)
+    param(
+        [PSCustomObject] $arguments
+    )
 
     $packageArgs = Get-Arguments $arguments
 

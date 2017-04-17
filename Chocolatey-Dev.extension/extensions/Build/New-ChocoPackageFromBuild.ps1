@@ -9,7 +9,8 @@ function New-ChocoPackageFromBuild {
 
     $args = Initialize-Package @PSBoundParameters
 
-    Write-Progress 'Creating Chocolatey Package'
+    Write-BuildProgress 'Creating Chocolatey Package'
+
     choco pack $args.spec `
         --OutputDirectory $args.outputDirectory `
         --Version $args.version

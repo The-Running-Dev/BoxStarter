@@ -2,7 +2,7 @@ function Get-Parameters {
     param(
 		[string] $parameters
 	)
-    
+
     $arguments = @{}
 
     if ($parameters) {
@@ -13,7 +13,7 @@ function Get-Parameters {
         if ($parameters -match $match_pattern) {
             $results = $parameters | Select-String $match_pattern -AllMatches
 
-            $results.matches | % {
+            $results.matches | ForEach-Object {
                 $arguments.Add(
                     $_.Groups[$option_name].Value.Trim(),
                     $_.Groups[$value_name].Value.Trim())

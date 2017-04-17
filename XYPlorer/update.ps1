@@ -5,14 +5,6 @@ $packageDir = $PSScriptRoot
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
-function global:au_SearchReplace {
-    return @{
-        ".\tools\chocolateyInstall.ps1" = @{
-            "(?i)(^[$]checksum\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
-        }
-    }
-}
-
 function global:au_GetLatest {
     $releaseUrl = 'https://www.xyplorer.com/download.php'
     $versionRegEx = '([0-9\.]+), released'
