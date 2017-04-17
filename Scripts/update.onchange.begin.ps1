@@ -6,7 +6,7 @@ Set-Location $packageDir
 $toolsPath = Join-Path $packageDir 'tools'
 
 function global:au_BeforeUpdate {
-    if ((Test-DirectoryExists $settingsDir) -and $settingsZip) {
+    if ([System.IO.Directory]::Exists($settingsDir) -and $settingsZip) {
         Compress-Archive -Path $settingsDir -DestinationPath $settingsZip -Force
     }
 }

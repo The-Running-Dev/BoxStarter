@@ -1,23 +1,13 @@
 param([switch] $force)
 
-$currentDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $installLatestBeta = $false
 $installLocalFile = $true
-$chocoPackage = 'chocolatey.0.10.5.nupkg'
-$currentDirChocoPackage = Join-Path $currentDir $chocoPackage
-$localChocoPackage = 'D:\Dropbox\Boxstarter\$chocoPackage'
-$nasChocoPackage = '\\nas\Applications\_BoxStarter\External\$chocoPackage'
+$baseDir = Join-Path $PSScriptRoot .. -Resolve
 
-if ([System.IO.File]::Exists($currentDirChocoPackage)) {
-    $chocolateyPackagePath = $currentDirChocoPackage
-}
-elseif ([System.IO.File]::Exists($localChocoPackage)) {
-    $chocolateyPackagePath = $localChocoPackage
-}
-elseif ([System.IO.File]::Exists($nasChocoPackage)) {
-    $chocolateyPackagePath = $nasChocoPackage
-}
-else {
+$localChocoPackage = Get-ChildItem $baseDir -Recurse -File | Where-Object { $_.Name -match 'Chocolatey\.([0-9\.]+).nupkg' } | Select-Object -Last 1
+$chocoPersonalPackage = Get-ChildItem $baseDir -Recurse -File | Where-Object { $_.Name -match 'Chocolatey.Personal\.([0-9\.]+).nupkg' } | Select-Object -Last 1
+
+if (![System.IO.File]::Exists($localChocoPackage)) {
     $installLocalFile = $false
 }
 
@@ -27,7 +17,7 @@ $env:Path += ";$chocoInstallPath"
 
 function Install-ChocolateyPackage {
     param (
-        [string]$chocolateyPackageFilePath = ''
+        [string] $chocolateyPackageFilePath = ''
     )
 
     if ($chocolateyPackageFilePath -eq $null -or $chocolateyPackageFilePath -eq '') {
@@ -79,7 +69,7 @@ function Install-ChocolateyPackage {
 if (!(Test-Path $chocoInstallPath) -or $force) {
     # Install Chocolatey
     if ($installLocalFile) {
-        Install-ChocolateyPackage $chocolateyPackagePath
+        Install-ChocolateyPackage $localChocoPackage
     }
     else {
         if ($installLatestBeta) {
@@ -92,12 +82,9 @@ if (!(Test-Path $chocoInstallPath) -or $force) {
 
     choco feature enable -n allowGlobalConfirmation
 
-    # Add temporary sources if they are accessable
-    if (Test-Path $externalSourceBase) {
-        choco source add -n 'External-Temp' -s $externalSource -priority 100
-        choco source add -n 'Personal-Temp' -s $personalSource -priority 101
-        choco source add -n 'Extensions-Temp' -s $extensionsSource -priority 102
-
-        choco install Chocolatey-Personal -s $personalSource
+    if ($chocoPersonalPackage)
+    {
+        choco install Chocolatey.Personal -s .
     }
 }
+#>
