@@ -5,4 +5,4 @@
     silentArgs      = '/VERYSILENT /LAUNCHAFTER=0'
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments

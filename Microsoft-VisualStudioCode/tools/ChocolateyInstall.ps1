@@ -55,4 +55,4 @@ $arguments  = @{
     silentArgs  = "/verysilent /suppressmsgboxes /mergetasks=$mergeTasks /log=""$env:temp\vscode.log"""
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments

@@ -5,4 +5,4 @@
     silentArgs  = '/S'
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments

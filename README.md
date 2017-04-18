@@ -63,6 +63,7 @@
   * NTLite
   * Octopus Tools
   * Razer Synapse
+  * Recuva
   * Rufus
   * Slack
   * Spotify

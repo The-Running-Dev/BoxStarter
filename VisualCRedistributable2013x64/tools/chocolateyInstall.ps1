@@ -5,4 +5,4 @@
     silentArgs      = '/Q /norestart'
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments

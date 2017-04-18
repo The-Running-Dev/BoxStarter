@@ -86,7 +86,7 @@ If ([bool](Get-Process ssh-agent -ErrorAction SilentlyContinue)) {
     (Get-Process ssh-agent | Where-Object {$_.Path -ilike "*\git\usr\bin\*"}) | Stop-Process
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments
 
 if (Test-Path $installKey) {
     $keyNames = Get-ItemProperty -Path $installKey

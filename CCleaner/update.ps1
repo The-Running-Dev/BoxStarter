@@ -7,7 +7,7 @@ $packageDir = $PSScriptRoot
 
 function global:au_GetLatest {
     $relasePageUrl = 'https://www.piriform.com/ccleaner/version-history'
-    $downloadPageUrl = 'http://www.piriform.com/ccleaner/download/standard'
+    $downloadPageUrl = 'https://www.piriform.com/ccleaner/download/standard'
     $executableRegEx = '\.exe$'
     $versionRegEx = '\<h6\>v((?:[\d]\.)[\d\.]+)'
 

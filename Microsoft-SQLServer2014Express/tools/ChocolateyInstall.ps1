@@ -45,7 +45,8 @@ elseif (([System.IO.File]::Exists($userInstallerPath))) {
 # Run the extracted setup
 $arguments['packageName'] = $packageName
 $arguments['silentArgs'] = $silentArgs
-Install-CustomPackage $arguments
+
+Install-Package $arguments
 
 if (Test-Path "$env:Temp\$packageName") {
     Remove-Item -Recurse "$env:Temp\$packageName"

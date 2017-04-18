@@ -9,8 +9,8 @@ Install-WithScheduledTask $arguments
 
 $done = $false
 do {
-    if (Get-Process Spotify -ErrorAction SilentlyContinue) {
-        Stop-Process -name Spotify
+    if (Get-Process 'Spotify' -ErrorAction SilentlyContinue) {
+        Stop-Process -name 'Spotify'
         $done = $true
     }
 

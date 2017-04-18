@@ -5,4 +5,4 @@
     silentArgs  = "/quiet /norestart /l*v `"$($env:TEMP)\$($env:ChocolateyPackageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments

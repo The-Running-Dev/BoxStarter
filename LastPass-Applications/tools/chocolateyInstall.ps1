@@ -9,4 +9,4 @@ $arguments          = @{
 # Launch the AutoHotkey script that install the application
 Start-Process $installerScript
 
-Install-CustomPackage $arguments
+Install-Package $arguments

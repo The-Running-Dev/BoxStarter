@@ -5,4 +5,4 @@
     destination = Join-Path $env:ProgramFiles 'HandBrake'
 }
 
-Install-CustomPackage $arguments
+Install-WithCopy $arguments

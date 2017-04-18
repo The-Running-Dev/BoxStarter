@@ -7,34 +7,51 @@ $packageDir = $PSScriptRoot
 
 $global:downloadFile = 'jre-$($fileVersion)-windows-i586.exe'
 $global:downloadFile64 = 'jre-$($fileVersion)-windows-x64.exe'
+$installersPath = Join-Path $packageDir '..\..\..\BoxStarter\Installers' -Resolve
 
 function global:au_BeforeUpdate {
-    $currentDir = Resolve-Path .
-
-    $file = Join-Path $currentDir $downloadFile
-    $file64 = Join-Path $currentDir $downloadFile64
-
-    $downloadFilePath = (Join-Path $currentDir $global:downloadFile)
-    $downloadFile64Path = (Join-Path $currentDir $global:downloadFile64)
-
+    $existingPackageInstaller = Join-Path $installersPath $global:downloadFile
+    $existingPackageInstaller64 = Join-Path $installersPath $global:downloadFile64
     $client = New-Object System.Net.WebClient
-    $client.DownloadFile($Latest.Url32, $downloadFilePath)
-    $client.DownloadFile($Latest.Url64, $downloadFile64Path)
 
-    Move-Item $downloadFilePath $file -Force
-    Move-Item $downloadFile64Path $file64 -Force
+    if (!(Test-Path $existingPackageInstaller)) {
+        $file = Join-Path $packageDir $downloadFile
+        $downloadFilePath = (Join-Path $packageDir $global:downloadFile)
+        $client.DownloadFile($Latest.Url32, $downloadFilePath)
+        Move-Item $downloadFilePath $file -Force
 
-    $Latest.ChecksumType32 = 'sha256'
-    $Latest.ChecksumType64 = 'sha256'
-    $Latest.Checksum32 = (Get-FileHash $file -Algorithm $Latest.ChecksumType32 | ForEach-Object Hash).ToLowerInvariant()
-    $Latest.Checksum64 = (Get-FileHash $file64 -Algorithm $Latest.ChecksumType64 | ForEach-Object Hash).ToLowerInvariant()
+        $Latest.ChecksumType32 = 'sha256'
+        $Latest.Checksum32 = (Get-FileHash $file).Hash
+    }
+    else {
+        Copy-Item $existingPackageInstaller $packageDir -Force
+        Copy-Item "$($existingPackageInstaller).ignore" $packageDir -Force
+
+        $Latest.Checksum32 = (Get-FileHash $existingPackageInstaller).Hash
+    }
+
+    if (!(Test-Path $existingPackageInstaller64)) {
+        $file64 = Join-Path $packageDir $downloadFile64
+        $downloadFile64Path = (Join-Path $packageDir $global:downloadFile64)
+        $client.DownloadFile($Latest.Url64, $downloadFile64Path)
+        Move-Item $downloadFile64Path $file64 -Force
+
+        $Latest.ChecksumType64 = 'sha256'
+        $Latest.Checksum64 = (Get-FileHash $file64).Hash
+    }
+    else {
+        Copy-Item $existingPackageInstaller64 $packageDir -Force
+        Copy-Item "$($existingPackageInstaller).ignore" $existingPackageInstaller64 -Force
+
+        $Latest.Checksum64 = (Get-FileHash $existingPackageInstaller64).Hash
+    }
 }
 
 function global:au_SearchReplace {
     return @{
         ".\tools\chocolateyInstall.ps1" = @{
             "(?i)(^[$]x86Installer\s*=\s*)('.*')" = "`$1'$($global:downloadFile)'"
-            "(?i)(^[$]x64Installer\s*=\s*)('.*')" = "`$1'$($global:downloadFile64)'"
+            "(?i)(file\s*=\s*)('.*')" = "`$1'$($global:downloadFile64)'"
             "(?i)(url\s*=\s*)('.*')" = "`$1'$($Latest.Url32)'"
             "(?i)(url64\s*=\s*)('.*')" = "`$1'$($Latest.Url64)'"
             "(?i)(checksum\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"

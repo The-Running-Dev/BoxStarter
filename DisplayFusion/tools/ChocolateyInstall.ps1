@@ -7,4 +7,4 @@ $arguments          = @{
     silentArgs      = "/VERYSILENT /LANG=$localeTwoLetter /DIR=`"$$programFiles`" /STARTUPALL=1 /CONTEXTMENU=0 /LAUNCHAFTER=0 /MERGETASKS=`"!desktopicon,!desktopicon\common,!desktopicon\user`""
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments

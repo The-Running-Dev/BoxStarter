@@ -1,15 +1,15 @@
 ﻿$arguments          = @{
-    file            = 'ccsetup528.exe'
-    url             = 'http://download.piriform.com/ccsetup528.exe'
-    checksum        = 'C0095229FE2E0C9BDE8EF960B6FED40A71F5F2D9CC17D4C53EE9CA30C5B032A9'
+    file            = 'ccsetup529.exe'
+    url             = 'http://download.piriform.com/ccsetup529.exe'
+    checksum        = '3E0B1FAF12FC72445E48251731BC6F4B4687B1F154A9A66890040F8091655339'
     silentArgs      = '/S'
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments
 
 # This adds a registry keys which prevent Google Chrome from getting installed together with Piriform software products.
-$regDirChrome    = 'HKLM:\SOFTWARE\Google\No Chrome Offer Until'
-$regDirToolbar   = 'HKLM:\SOFTWARE\Google\No Toolbar Offer Until'
+$regDirChrome = 'HKLM:\SOFTWARE\Google\No Chrome Offer Until'
+$regDirToolbar = 'HKLM:\SOFTWARE\Google\No Toolbar Offer Until'
 
 if (Get-ProcessorBits 64) {
     $regDirChrome  = $regDirChrome -replace 'SOFTWARE', 'SOFTWARE\Wow6432Node'

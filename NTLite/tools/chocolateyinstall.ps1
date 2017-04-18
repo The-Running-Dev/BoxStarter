@@ -5,4 +5,4 @@
     silentArgs  = '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments

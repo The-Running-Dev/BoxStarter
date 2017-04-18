@@ -5,4 +5,4 @@
     silentArgs      = "/install /quiet /norestart /log ""${env:temp}\$($data.PackageName).log"""
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments

@@ -13,22 +13,19 @@ if ($app -and ([version]$app.Version -ge [version]$arguments['version'])) {
     )
 }
 else {
-    $parameters = Get-Parameters $env:chocolateyPackageParameters
-    $arguments['file'] = Get-Installer $arguments
+    $packageArgs = Get-Arguments $arguments
 
-    Get-ChocolateyUnzip @arguments
+    Get-ChocolateyUnzip @packageArgs
 
-    $msiFilesList = (Get-ChildItem -Path $arguments['destination'] -Filter '*.msi' | Where-Object {
+    $msiFilesList = (Get-ChildItem -Path $arguments.destination. -Filter '*.msi' | Where-Object {
             $_.Name -notmatch 'AppleSoftwareUpdate*.msi'
         }).Name
 
     # Loop over each file and install it. iTunes requires all of them to be installed
     foreach ($msiFileName in $msiFilesList) {
-        Install-ChocolateyInstallPackage `
-      -packageName $msiFileName `
-      -fileType $arguments['fileType'] `
-      -silentArgs $arguments['silentArgs'] `
-      -file (Join-Path $arguments['destination'] $msiFileName) `
-      -validExitCodes $arguments['validExitCodes']
+        $arguments.fileType = 'msi'
+        $arguments.file = Join-Path $arguments.destination $msiFileName
+
+        Install-ChocolateyInstallPackage @arguments
     }
 }

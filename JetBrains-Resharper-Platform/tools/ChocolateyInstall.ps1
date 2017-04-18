@@ -5,4 +5,4 @@
     silentArgs      = '/VsVersion=14.0;15.0 /SpecificProductNames=dotCover;dotMemory;dotPeek;dotTrace;ReSharperCpp;teamCityAddin;ReSharper /Silent=True'
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments

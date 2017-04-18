@@ -21,16 +21,12 @@
 }
 
 $x86Installer       = 'jre-8u121-windows-i586.exe'
-$x64Installer       = 'jre-8u121-windows-x64.exe'
 $arguments          = @{
-    packageName     = $env:ChocolateyPackageName
-    softwareName    = $env:ChocolateyPackageTitle
-    destination   = $env:ChocolateyPackageFolder
-    file            = Join-Path $env:ChocolateyPackageFolder $x64Installer
+    file            = 'jre-8u121-windows-x64.exe'
     url             = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=218831_e9e7ea248e2c4826b92b3f075a80e441'
     url64           = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=218833_e9e7ea248e2c4826b92b3f075a80e441'
-    checksum        = '13d5ed94fe40d9403d5d25b1ef46593dc7f96993df735ea36a32db3dc8ed8ec7'
-    checksum64      = '6741acefeb3845964534b3821d459b95c7dfa079f104c5041d1f95d3b6b7a502'
+    checksum        = '13D5ED94FE40D9403D5D25B1EF46593DC7F96993DF735EA36A32DB3DC8ED8EC7'
+    checksum64      = '6741ACEFEB3845964534B3821D459B95C7DFA079F104C5041D1F95D3B6B7A502'
     fileType        = 'exe'
     checksumType    = 'sha256'
     checksumType64  = 'sha256'
@@ -46,20 +42,21 @@ if ($parameters.ContainsKey("exclude")) {
 $thisJreInstalledHash = thisJreInstalled($version)
 
 if (!($thisJreInstalledHash[0]) -and !($thisJreInstalledHash[1])) {
-    Install-CustomPackage $arguments
+    Install-Package $arguments
 }
 else {
     if ((Get-ProcessorBits) -eq 64) {
         if (!($thisJreInstalledHash[1]) -and $exclude -ne '64') {
-            Install-CustomPackage $arguments
+            Install-Package $arguments
         }
     }
 
     if (!($thisJreInstalledHash[0]) -and $exclude -ne '32') {
-        $arguments['file'] = Join-Path $env:ChocolateyPackageFolder $x86Installer
-        $arguments['url64'] = ''
-        $arguments['checksum64'] = ''
-        Install-CustomPackage $arguments
+        $arguments.file = Join-Path $env:ChocolateyPackageFolder $x86Installer
+        $arguments.url64 = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=218833_e9e7ea248e2c4826b92b3f075a80e441'
+        $arguments.checksum64 = '6741ACEFEB3845964534B3821D459B95C7DFA079F104C5041D1F95D3B6B7A502'
+
+        Install-Package $arguments
     }
 }
 

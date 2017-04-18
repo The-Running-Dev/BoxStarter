@@ -10,4 +10,4 @@ Start-Process $installerScript
 
 Start-Sleep 10
 
-Install-CustomPackage $arguments
+Install-Package $arguments

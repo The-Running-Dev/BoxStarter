@@ -5,6 +5,6 @@
     destination = Join-Path $env:AppData 'XYplorer'
 }
 
-Install-CustomPackage $arguments
+Install-FromZip $arguments
 
 Invoke-PinApplication (Join-Path $arguments.destination 'XYplorer.exe')

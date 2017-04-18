@@ -9,7 +9,7 @@ function Get-ChromeVersion() {
     $root64 = 'HKLM:\SOFTWARE\Wow6432Node\Google\Update\Clients'
 
     foreach ($r in $root,$root64) {
-        $gcb = gci $r -ea 0 | ? { (gp $_.PSPath) -match 'Google Chrome binaries' }
+        $gcb = Get-ChildItem $r -ea 0 | ? { (gp $_.PSPath) -match 'Google Chrome binaries' }
         if ($gcb) { return $gcb.GetValue('pv') }
     }
 }
@@ -19,4 +19,4 @@ if ($env:ChocolateyPackageVersion -eq (Get-ChromeVersion)) {
     return
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments

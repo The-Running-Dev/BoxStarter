@@ -5,6 +5,6 @@
     silentArgs      = '/s /nsr /v/qn EULAS_AGREED=1'
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments
 
 Invoke-PinApplication (Join-Path ${env:ProgramFiles(x86)} 'VMware\VMware Workstation\vmware.exe')

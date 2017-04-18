@@ -5,6 +5,6 @@
     silentArgs  = '/quiet'
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments
 
 $env:Path = "$($env:Path);$(Get-ProgramFilesDirectory)\NodeJS"

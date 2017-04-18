@@ -1,13 +1,13 @@
 ﻿$arguments      = @{
-    file        = 'Dropbox 23.4.19 Offline Installer.exe'
-    url         = 'https://clientupdates.dropboxstatic.com/client/Dropbox%2023.4.19%20Offline%20Installer.exe'
-    checksum    = 'B0EF95B799DE483559FCD40871186A5E0C56C9971B99D17D51BA21DCB22FC8B2'
+    file        = 'Dropbox 24.4.16 Offline Installer.exe'
+    url         = 'https://clientupdates.dropboxstatic.com/client/Dropbox%2024.4.16%20Offline%20Installer.exe'
+    checksum    = '314938406172646F961BE0A511120786DA30719B32B3F50211CEBA40C8E712ED'
     silentArgs  = '/s'
 
 }
 
-Install-CustomPackage $arguments
+Install-Package $arguments
 
-if (Get-Process -Name Dropbox -ErrorAction SilentlyContinue) {
-    Stop-Process -processname Dropbox
+if (Get-Process -Name 'Dropbox' -ErrorAction SilentlyContinue) {
+    Stop-Process -processname 'Dropbox'
 }
