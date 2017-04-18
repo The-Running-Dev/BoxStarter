@@ -2,7 +2,7 @@ param([switch] $force)
 
 $installLatestBeta = $false
 $installLocalFile = $true
-$baseDir = Join-Path $PSScriptRoot .. -Resolve
+$baseDir = Join-Path $PSScriptRoot . -Resolve
 
 $localChocoPackage = Get-ChildItem $baseDir -Recurse -File | Where-Object { $_.Name -match 'Chocolatey\.([0-9\.]+).nupkg' } | Select-Object -Last 1
 $chocoPersonalPackage = Get-ChildItem $baseDir -Recurse -File | Where-Object { $_.Name -match 'Chocolatey-Personal\.([0-9\.]+).nupkg' } | Select-Object -Last 1
