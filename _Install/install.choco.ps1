@@ -4,12 +4,14 @@ $installLatestBeta = $false
 $installLocalFile = $true
 $baseDir = Join-Path $PSScriptRoot . -Resolve
 
-$localChocoPackage = Get-ChildItem $baseDir -Recurse -File | Where-Object { $_.Name -match 'Chocolatey\.([0-9\.]+).nupkg' } | Select-Object -Last 1
-$chocoPersonalPackage = Get-ChildItem $baseDir -Recurse -File | Where-Object { $_.Name -match 'Chocolatey-Personal\.([0-9\.]+).nupkg' } | Select-Object -Last 1
+$localChocoPackage = Get-ChildItem $baseDir -Recurse -File | Where-Object { $_.Name -match 'Chocolatey\.([0-9\.]+).nupkg' } | Select-Object -Last 1 -ExpandProperty FullName
+$chocoPersonalPackage = Get-ChildItem $baseDir -Recurse -File | Where-Object { $_.Name -match 'Chocolatey-Personal\.([0-9\.]+).nupkg' } | Select-Object -Last 1 -ExpandProperty FullName
 
 if (![System.IO.File]::Exists($localChocoPackage)) {
     $installLocalFile = $false
 }
+
+write-host $chocoPersonalPackage
 
 $chocoInstallPath = "$($env:SystemDrive)\ProgramData\Chocolatey\bin"
 $env:ChocolateyInstall = "$($env:SystemDrive)\ProgramData\Chocolatey"

@@ -4,4 +4,6 @@ param (
     [switch] $force
 )
 
+Import-Module '.\Chocolatey-Dev.extension\extensions\Chocolatey-Dev.extension.psm1' -Force
+
 Invoke-ChocoPackWithConfig $PSScriptRoot $searchTerm $sourceType $force

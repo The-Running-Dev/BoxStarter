@@ -1,9 +1,8 @@
-config.json
-_Artifacts/**
-Install.exe
-Configure.exe
 .vscode/**
-_Drivers/**/*.zip
-_Drivers/**/*.ignore
+_Artifacts/**
+**/*.zip
 **/*.ignore
 **/*.exe
+**/*.msi
+**/*.nupkg
+config.json
