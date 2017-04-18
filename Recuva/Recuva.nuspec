@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Recuva</id>
+    <version>1.53.1087</version>
+    <title>Recuva</title>
+    <authors>Piriform</authors>
+    <licenseUrl>http://www.piriform.com/legal/software-license/recuva</licenseUrl>
+    <projectUrl>http://www.piriform.com/recuva</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    Accidentally deleted an important file? Lost files after a computer crash?
+    No problem - Recuva recovers files from your Windows computer, recycle bin,
+    digital camera card, or MP3 player!
+    </description>
+    <summary>The number-one tool for cleaning your Windows PC.</summary>
+    <releaseNotes>https://www.piriform.com/ccleaner/version-history</releaseNotes>
+    <copyright />
+    <tags>recuva system freeware trial admin</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>
