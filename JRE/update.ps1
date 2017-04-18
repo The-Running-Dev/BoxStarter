@@ -3,7 +3,7 @@ param([switch] $force, [switch] $push)
 $originalLocation = Get-Location
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\_Scripts\update.begin.ps1')
 
 $global:downloadFile = 'jre-$($fileVersion)-windows-i586.exe'
 $global:downloadFile64 = 'jre-$($fileVersion)-windows-x64.exe'
@@ -74,4 +74,4 @@ function global:au_GetLatest {
     return @{ Url32 = $downloadUrl; Url64 = $downloadUrl64; Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\_Scripts\update.end.ps1')

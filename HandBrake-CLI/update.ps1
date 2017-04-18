@@ -3,7 +3,7 @@ param([switch] $force, [switch] $push)
 $originalLocation = Get-Location
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\_Scripts\update.begin.ps1')
 
 function global:au_BeforeUpdate {
     $downloader = New-Object System.Net.WebClient
@@ -44,4 +44,4 @@ function global:au_SearchReplace {
     return @{ Url32 = $url; Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\_Scripts\update.end.ps1')

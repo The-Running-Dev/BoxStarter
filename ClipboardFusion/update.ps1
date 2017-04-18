@@ -3,7 +3,7 @@ param([switch] $force, [switch] $push)
 $originalLocation = Get-Location
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\_Scripts\update.begin.ps1')
 
 $getBetaVersion = $true
 
@@ -35,4 +35,4 @@ function global:au_GetLatest {
     return @{ Url32 = $stableVersionDownloadUrl; Version = $stableVersion }
 }
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\_Scripts\update.end.ps1')

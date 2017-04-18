@@ -1,3 +1,4 @@
+﻿$packageChecksum        = '4D1F9DA096BD54BFB30C945386350C4CFC3A4F7B278ED0639C047E75275F8C49EF124C6BC9F5AA29929994BE1C670AE971FF2EF97CD4B22D6A09C724C0E6617DD970DFE1230A8E46B2543C60EA468663AE1511C2043A0B9714F99BF1A1BF35FB1DE3DD8F24639548191B20551C796B16A8EE570D361EAB878C1624DB186027E3'
 $defaultConfiguration   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
 $parameters             = Get-Parameters $env:chocolateyPackageParameters
 $configuration          = Get-ConfigurationFile $parameters['Configuration'] $defaultConfiguration

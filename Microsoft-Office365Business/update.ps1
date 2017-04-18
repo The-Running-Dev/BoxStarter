@@ -3,10 +3,10 @@ param([switch] $force, [switch] $push)
 $originalLocation = Get-Location
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\_Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $releaseUrl = 'https://technet.microsoft.com/en-us/library/mt592918.aspx'
+    $releaseUrl = 'https://support.office.com/en-us/article/Version-and-build-numbers-of-update-channel-releases-ae942449-1fca-4484-898b-a933ea23def7?ui=en-US&rs=en-US&ad=US'
     $downloadUrl = 'https://www.microsoft.com/en-us/download/confirmation.aspx?id=49117'
     $versionRegEx = 'Version ([0-9]+) \(Build ([0-9\.]+)\)'
     $installerRegEx = 'officedeploymenttool_([0-9\-]+).exe'
@@ -25,4 +25,4 @@ function global:au_GetLatest {
     return @{ Url32 = $url; Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\_Scripts\update.end.ps1')

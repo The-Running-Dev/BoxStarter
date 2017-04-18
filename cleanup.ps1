@@ -1,4 +1,4 @@
-$baseDir = 'D:\Dropbox\BoxStarter'
+$baseDir = Join-Path $PSScriptRoot '..\..\BoxStarter' -Resolve
 
 $packages = @{}
 $duplicatePackages = @()
@@ -16,11 +16,3 @@ Get-ChildItem $baseDir -R -File -Filter *.nupkg | Sort-Object CreationTime -Desc
 $duplicatePackages | ForEach-Object {
     Remove-Item $_
 }
-
-<#
-$s.Keys | % {
-    if ($h[$_] -like 'c:\s\includes*') {
-        $h[$_]
-    }
-}
-#>

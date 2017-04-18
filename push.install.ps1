@@ -1,8 +1,11 @@
 $boxstarterInstallScripts = Join-Path -Resolve $PSSCriptRoot '..\..\BoxStarter'
 $nasInstallScripts = '\\nas\Applications\_BoxStarter'
 
-Copy-Item -Recurse $PSSCriptRoot\Install $boxstarterInstallScripts -Force
+New-Item -ItemType Directory $boxstarterInstallScripts\Install -Force | Out-Null
+
+Copy-Item -Recurse $PSSCriptRoot\_Install\** $boxstarterInstallScripts\Install\ -Force
 
 if (Test-Path $nasInstallScripts) {
-    Copy-Item -Recurse $PSSCriptRoot\Install $nasInstallScripts -Force
+    New-Item -ItemType Directory $nasInstallScripts\Install -Force | Out-Null
+    Copy-Item -Recurse $PSSCriptRoot\_Install\** $nasInstallScripts\Install\ -Force
 }
