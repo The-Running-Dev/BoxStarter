@@ -1,19 +1,23 @@
 function Install-WithProcess() {
     param(
-        [PSCustomObject] $arguments
+        [PSCustomObject] $arguments,
+        [switch] $wait
     )
 
-    $arguments.file = Get-Installer $arguments
+    $packageArgs = Get-Arguments $arguments
 
-    if (Test-FileExists $arguments['file']) {
-        Write-Message "Install-WithProcess: Installing '$($arguments['file'])'"
+    if ((Test-FileExists $packageArgs.file)) {
+        Write-Message "Install-WithProcess: Installing $($arguments.file)"
 
-        Start-Process $arguments['file'] $arguments['silentArgs'] -Wait -NoNewWindow
-
-        CleanUp
+        if ($wait) {
+            Start-Process $packageArgs.file $arguments.silentArgs -Wait -NoNewWindow
+        }
+        else {
+            Start-Process $packageArgs.file $arguments.silentArgs -NoNewWindow
+        }
     }
     else {
-		Write-Message 'Install-WithProcess: No installer or url provided. Aborting...'
+        Write-Message 'Install-WithProcess: No installer or url provided. Aborting...'
         throw 'No installer or url provided. Aborting...'
     }
 }

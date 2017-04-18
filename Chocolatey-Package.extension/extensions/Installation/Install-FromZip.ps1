@@ -3,37 +3,39 @@ function Install-FromZip {
         [PSCustomObject] $arguments
     )
 
-    $originalFile = $arguments.file
+    $packageArgs = Get-Arguments $arguments
 
-    if (Test-FileExists $arguments.file) {
+    $originalFile = $packageArgs.file
+
+    if (Test-FileExists $packageArgs.file) {
         Write-Message "Install-FromZip: Unzipping to $($arguments.destination)"
 
-         Get-ChocolateyUnzip @arguments
+        Get-ChocolateyUnzip @packageArgs
     }
-    elseif ($arguments.url) {
+    elseif ($packageArgs.url) {
         Write-Message "Install-FromZip: Installing zip with Install-ChocolateyZipPackage"
-        Install-ChocolateyZipPackage @arguments
+        Install-ChocolateyZipPackage @packageArgs
     }
 
-    if ($arguments.executableRegEx) {
-        Write-Message "Install-FromZip: No executable specified, using regex '$($arguments.executableRegEx)'"
-        $arguments.file = Get-Executable $arguments.destination $arguments.executableRegEx
+    if ($packageArgs.executableRegEx) {
+        Write-Message "Install-FromZip: No executable specified, using regex '$($packageArgs.executableRegEx)'"
+        $arguments.file = Get-Executable $packageArgs.destination $packageArgs.executableRegEx
 
         # Re-map the file type
-        $arguments.fileType = Get-FileExtension $arguments.file
+        $packageArgs.fileType = Get-FileExtension $packageArgs.file
     }
-    elseif ($arguments.executable) {
-        Write-Message "Install-FromZip: Finding executable '$($arguments.executable)' in $arguments.destination"
+    elseif ($packageArgs.executable) {
+        Write-Message "Install-FromZip: Finding executable '$($packageArgs.executable)' in $packageArgs.destination"
         # Re-map the file to the unzip executable
-        $arguments.file = Join-Path $arguments.destination $arguments.executable
+        $packageArgs.file = Join-Path $packageArgs.destination $packageArgs.executable
 
         # Re-map the file type
-        $arguments.fileType = Get-FileExtension $arguments.file
+        $packageArgs.fileType = Get-FileExtension $packageArgs.file
     }
 
     # The original zip was extracted and the file was re-maped
-    if ($originalFile -ne $arguments.file) {
-        Write-Message "Install-FromZip: Installing with $($arguments.file)"
-        Install-ChocolateyInstallPackage @arguments
+    if ($originalFile -ne $packageArgs.file) {
+        Write-Message "Install-FromZip: Installing with $($packageArgs.file)"
+        Install-ChocolateyInstallPackage @packageArgs
     }
 }

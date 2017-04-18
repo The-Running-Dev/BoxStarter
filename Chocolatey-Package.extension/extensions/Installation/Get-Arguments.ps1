@@ -10,6 +10,7 @@ function Get-Arguments {
         url = Get-Argument $arguments 'url'
         file = Join-Path $env:ChocolateyPackageFolder (Get-Argument $arguments 'file' ([System.IO.Path]::GetFileName($arguments['url'])))
         executable = Get-Argument $arguments 'executable'
+        executableArgs = Get-Argument $arguments 'executableArgs'
         executableRegEx = Get-Argument $arguments 'executableRegEx'
         checksum = Get-Argument $arguments 'checksum'
         checksumType = Get-Argument $arguments 'checksumType' 'sha256'
@@ -19,9 +20,14 @@ function Get-Arguments {
 
     [Array]$packageArgs.validExitCodes += $global:defaultValidExitCodes
     $packageArgs.fileType = Get-FileExtension $packageArgs.file
+    $packageArgs.executableType = Get-FileExtension $executable.file
 
     if (!$packageArgs.silentArgs -and $packageArgs.fileType -eq 'msi') {
         $packageArgs.silentArgs = '/quiet'
+    }
+
+    if (!$packageArgs.executableArgs -and $packageArgs.executableType -eq 'msi') {
+        $packageArgs.executableArgs = '/quiet'
     }
 
     Write-Message "Get-Arguments: $($packageArgs | Out-String)"

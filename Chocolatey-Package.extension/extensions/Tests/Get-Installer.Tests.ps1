@@ -76,7 +76,7 @@ Describe "Get-Installer" {
         Context "When the File is an ISO" {
             Mock Get-FileExtension { '.iso' } -Verifiable
             Mock Test-FileExists { $true } -Verifiable
-            Mock Get-InstallerFromIso { $expectedFromIso } -Verifiable
+            Mock Install-FromIso { $expectedFromIso } -Verifiable
 
             $result = Get-Installer @{'file' = $fakeIso; 'executableRegEx' = $executableRegEx}
 

@@ -9,7 +9,7 @@ $global:mockedVolume = [pscustomobject] @{
     DriveLetter = 'Z'
 }
 
-Describe "Get-InstallerFromIso" {
+Describe "Install-FromIso" {
     InModuleScope InstallHelpers {
         Mock Get-Executable { 'Z:\Install.exe' } -Verifiable
         Mock Get-DiskImage { [PSCustomObject] @{ DriveLetter = 'Z' } }
@@ -27,7 +27,7 @@ Describe "Get-InstallerFromIso" {
         $fakeInstaller = 'Z:\Install.exe'
 
         Context "When the File Exists" {
-            $result = Get-InstallerFromIso @{ 'file' = $fakeIso; 'executable' = $fakeExecutable }
+            $result = Install-FromIso @{ 'file' = $fakeIso; 'executable' = $fakeExecutable }
 
             It "Should Call the Mocks" {
                 Assert-VerifiableMocks
@@ -39,7 +39,7 @@ Describe "Get-InstallerFromIso" {
         }
         Context "When the File Does Not Exists" {
             Mock Get-Executable { } -Verifiable
-            $result = Get-InstallerFromIso @{ 'file' = $fakeIso; 'executable' = $fakeExecutable }
+            $result = Install-FromIso @{ 'file' = $fakeIso; 'executable' = $fakeExecutable }
 
             It "Should Call the Mocks" {
                 Assert-VerifiableMocks

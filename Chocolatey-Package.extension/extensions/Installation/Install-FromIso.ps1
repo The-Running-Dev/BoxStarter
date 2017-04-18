@@ -1,23 +1,23 @@
-function Get-InstallerFromIso {
+function Install-FromIso {
     param(
         [PSCustomObject] $arguments
     )
 
     if (![System.IO.Path]::IsPathRooted($arguments.file)) {
-        Write-Message "Get-InstallerFromIso: $arguments.file is a relative path"
+        Write-Message "Install-FromIso: $arguments.file is a relative path"
         $isoPath = Join-Path (Get-BaseDirectory) $arguments.file
 
         # No ISO found in the package
         if (!(Test-Path $isoPath)) {
-            Write-Message "Get-InstallerFromIso: No ISO in package"
+            Write-Message "Install-FromIso: No ISO in package"
 
             # Reset the base directory
             $isoPath = Join-Path (Get-BaseDirectory '') $arguments.file
 
-            Write-Message "Get-InstallerFromIso: ISO set to $isoPath"
+            Write-Message "Install-FromIso: ISO set to $isoPath"
 
             if (!(Test-Path $isoPath)) {
-                Write-Message "Get-InstallerFromIso: No ISO found"
+                Write-Message "Install-FromIso: No ISO found"
                 return
             }`
         }
