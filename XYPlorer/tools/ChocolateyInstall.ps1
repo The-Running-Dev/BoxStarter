@@ -6,5 +6,3 @@
 }
 
 Install-FromZip $arguments
-
-Invoke-PinApplication (Join-Path $arguments.destination 'XYplorer.exe')

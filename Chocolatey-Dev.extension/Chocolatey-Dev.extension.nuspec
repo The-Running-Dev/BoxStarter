@@ -13,10 +13,10 @@
     Provides PowerShell functions for building and and deploying applications through a CI/CD pipeline
     </description>
     <dependencies>
+      <dependency id="NuGet-Commandline" />
+      <dependency id="Octopus-Tools" />
       <dependency id="pscx" />
       <dependency id="psake" />
-      <dependency id="NuGet.Commandline" />
-      <dependency id="OctopusTools" />
     </dependencies>
   </metadata>
 </package>

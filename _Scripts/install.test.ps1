@@ -2,10 +2,12 @@ param (
     [string] $package
 )
 
+$packageDir = Split-Path -Parent (Get-ChildItem -Recurse "$package.nuspec")
+
 $env:ChocoDebug = $true
 $env:ChocolateyPackageName = $package
 $env:ChocolateyPackageTitle = $package
-$env:ChocolateyPackageFolder = Join-Path $PSScriptRoot "..\$package" -Resolve
+$env:ChocolateyPackageFolder = $packageDir
 
 Import-Module '..\BoxStarter\Chocolatey-Package.extension\extensions\Chocolatey-Package.extension.psm1' -Force
 

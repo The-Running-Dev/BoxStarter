@@ -6,5 +6,3 @@
 }
 
 Install-Package $arguments
-
-Invoke-PinApplication (Join-Path ${env:ProgramFiles(x86)} 'VMware\VMware Workstation\vmware.exe')

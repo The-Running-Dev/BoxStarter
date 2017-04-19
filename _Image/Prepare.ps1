@@ -39,8 +39,10 @@ if (Test-Path $setupDir) {
 New-Item -ItemType Directory $setupDir -Force | Out-Null
 
 # Copy extensions, external packages and the choco install script
-Copy-Item "$boxStarterPublishDir\Extensions\**" $setupDir\
-Copy-Item "$boxStarterPublishDir\External\**" $setupDir\
+Copy-Item "$boxStarterPublishDir\*.nupkg" $setupDir\
+Copy-Item "$boxStarterPublishDir\Extensions\*.nupkg" $setupDir\
+Copy-Item "$boxStarterPublishDir\External\*.nupkg" $setupDir\
+Copy-Item "$boxStarterPublishDir\Personal\*.nupkg" $setupDir\
 Copy-Item "$boxStarterPublishDir\Install\install.choco.ps1" $setupDir\
 Copy-Item "$boxStarterProjectDir\_Image\Setup.ps1" $imageWorkingPath\
 
