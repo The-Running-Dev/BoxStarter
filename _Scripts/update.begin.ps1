@@ -8,7 +8,7 @@ function global:au_BeforeUpdate {
     $packageInstaller = [System.IO.Path]::GetFileName($Latest.Url32)
     $existingPackageInstaller = Join-Path $installersPath $packageInstaller
 
-    if (!(Test-Path $existingPackageInstaller)) {
+    if (![System.IO.File]::Exists($existingPackageInstaller)) {
         # Use the AU function to get the installer
         Get-RemoteFiles
 
