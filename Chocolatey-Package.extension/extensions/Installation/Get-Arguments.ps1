@@ -22,6 +22,11 @@ function Get-Arguments {
     $packageArgs.fileType = Get-FileExtension $packageArgs.file
     $packageArgs.executableType = Get-FileExtension $executable.file
 
+    # No file provided, find the first executable or zip in the package directory
+    if (![System.IO.File]::Exists($arguments.file)) {
+        $arguments.file = (Get-ChildItem $env:ChocolateyPackageFolder *.exe, *.msi, *.zip | Select-Object -First 1 -ExpandProperty FullName)
+    }
+
     if (!$packageArgs.silentArgs -and $packageArgs.fileType -eq 'msi') {
         $packageArgs.silentArgs = '/quiet'
     }
