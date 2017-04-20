@@ -4,4 +4,4 @@ $baseDir = Join-Path $PSScriptRoot .. -Resolve
 
 $baseConfig = Get-DirectoryConfig $baseDir
 
-Write-Host $($baseConfig.remote.sources | out-string)
+Write-Host $($baseConfig.remote.sources | Out-String)

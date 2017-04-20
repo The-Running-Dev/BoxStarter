@@ -14,7 +14,21 @@ function Install-Package {
     Install-ChocolateyInstallPackage @packageArgs
 
     if ($packageArgs.executable) {
-        $packageArgs.file = Join-Path $packageArgs.destination $packageArgs.executable
+        # The file parameter does not contain a full path
+        if (![System.IO.Path]::IsPathRooted($packageArgs.executable)) {
+            $packageArgs.executable = Join-Path $packageArgs.destination $packageArgs.executable
+        }
+
+        # Recreate the arguments using the executable parameters
+        $packageArgs = @{
+            packageName = $packageArgs.executablePackageName
+            file = $packageArgs.executable
+            silentArgs = $packageArgs.executableArgs
+            fileType = Get-FileExtension $packageArgs.file
+            validExitCodes = $packageArgs.validExitCodes
+        }
+
+        Write-Message "Install-Package: $($packageArgs | Out-String)"
 
         Install-ChocolateyInstallPackage @packageArgs
     }

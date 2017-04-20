@@ -1,52 +1,39 @@
-﻿$defaultConfigurationFile   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
+﻿. (Join-Path $env:ChocolateyPackageFolder 'tools\Helpers.ps1')
+
+$parameters = Get-Parameters $env:chocolateyPackageParameters
+$defaultConfigurationFile   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
+$configurationFile = Get-ConfigurationFile $parameters.ConfigurationFile $defaultConfigurationFile
+
+$installer                  = $parameters.file
 $arguments                  = @{
-    packageName             = 'OfficeDeploymentTool'
+    packageName             = 'Office Deployment Tool'
     file                    = 'officedeploymenttool_8008-3601.exe'
+    executablePackageName   = 'Office Setup Files'
+    executable              = "$env:Temp\Office\Setup.exe"
+    executableArgs          = "/download ""$configurationFile"""
     url                     = 'https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_8008-3601.exe'
     checksum                = 'A7F8CD73AD61EDDB42303E7D2A0D4F4080B8330267E7B6AD63C17F12926F04DD'
-    silentArgs              = "/extract:$env:Temp\Office /log:$env:Temp\OfficeInstall.log /quiet /norestart"
+    silentArgs              = "/extract:""$env:Temp\Office"" /log:""$env:Temp\OfficeInstall.log"" /quiet /norestart"
     validExitCodes          = @(2147781575, 2147205120)
 }
 
-$parameters = Get-Parameters $env:chocolateyPackageParameters
-$configurationFile = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
-$installerPath = Get-Installer $parameters
+Set-Features $parameters
 
-# If exclude features were passed in through the command line
-if ($parameters['excludefeatures']) {
-    Write-Host "Excluding: $($parameters['excludefeatures'])"
+if (![System.IO.File]::Exists($installer)) {
+    Get-SetupFiles $arguments
 
-    [xml] $xml = Get-Content $configurationFile
-    $features = $parameters['excludefeatures'].Split(',')
-
-    foreach ($feature in $features)
-    {
-        $excludeFeature = $xml.CreateElement('ExcludeApp')
-        $excludeFeature.SetAttribute('ID', $feature)
-
-        $office = $xml.SelectSingleNode("Configuration/Add/Product[@ID=""O365ProPlusRetail""]")
-        $office.AppendChild($excludeFeature)
-    }
-
-    $xml.Save($configurationFile)
+    # The installer should be the local downloaded setup file
+    $installer = $arguments.executable
 }
 
-if (!([System.IO.File]::Exists($installerPath))) {
-    # Use the deployment tool to download the installer
-    $arguments['packageName'] = 'Office365BusinessInstaller'
-    $arguments['file'] = "$env:Temp\Office\Setup.exe"
-    $arguments['silentArgs'] = "/download ""$configurationFile"" $env:Temp\$env:ChocolateyPackageName\Setup.exe"
-
-    Install-ChocolateyInstallPackage @arguments
-
-    $arguments['file'] = "$env:Temp\$env:ChocolateyPackageName\Setup.exe"
+$arguments                  = @{
+    file                    = $installer
+    silentArgs              = "/configure ""$configurationFile"""
+    validExitCodes          = @(2147781575, 2147205120)
 }
 
-$arguments['packageName'] = $env:ChocolateyPackageName
-$arguments['silentArgs'] = "/configure ""$configurationFile"""
+Install-Package $arguments
 
-Install-CustomPackage $arguments
-
-if (Test-Path "$env:Temp\$env:ChocolateyPackageName") {
-    Remove-Item -Recurse "$env:Temp\$env:ChocolateyPackageName"
+if (Test-Path "$env:Temp\Office") {
+    Remove-Item -Recurse "$env:Temp\Office"
 }
