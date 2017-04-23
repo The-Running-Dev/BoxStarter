@@ -5,12 +5,12 @@ $toolsPath = Join-Path $packageDir 'tools'
 $installersPath = Join-Path $packageDir '..\..\..\BoxStarter\Installers' -Resolve
 
 function global:au_BeforeUpdate {
-    $packageInstaller = $Latest.FileName32
+    $packageInstaller = [System.IO.Path]::GetFileName($Latest.Url32) -replace '%20', ' '
     $existingPackageInstaller = Join-Path $installersPath $packageInstaller
 
     if (![System.IO.File]::Exists($existingPackageInstaller)) {
         # Use the AU function to get the installer
-        Get-RemoteFiles -Purge -FileNameBase $packageInstaller
+        Get-RemoteFiles
 
         # Find the downloaded file
         $downloadedFile = Get-ChildItem -Recurse *.exe, *.msi, *.zip | Select-Object -First 1
@@ -33,6 +33,8 @@ function global:au_BeforeUpdate {
 
         $Latest.Checksum32 = (Get-FileHash $existingPackageInstaller).Hash
     }
+
+    $Latest.FileName32 = $packageInstaller
 }
 
 function global:au_SearchReplace {

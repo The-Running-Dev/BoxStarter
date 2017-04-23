@@ -8,7 +8,7 @@ function Get-Arguments {
         softwareName = Get-Argument $arguments 'softwareName' $env:ChocolateyPackageTitle
         destination = Get-Argument $arguments 'destination' $env:ChocolateyPackageFolder
         url = Get-Argument $arguments 'url'
-        file = Get-Argument $arguments 'file' ([System.IO.Path]::GetFileName($arguments.url))
+        file = Get-Argument $arguments 'file' ([System.IO.Path]::GetFileName($arguments.url) -replace '%20', ' ')
         executablePackageName = Get-Argument $arguments 'executablePackageName'
         executable = Get-Argument $arguments 'executable'
         executableArgs = Get-Argument $arguments 'executableArgs'
