@@ -15,15 +15,15 @@ WinActivate
 Sleep 1000
 ; Click Continue
 MouseClick left, 50, 580
-Sleep 10000
-; Click 'I Accept'
+Sleep 5000
+; Click 'Accept'
 MouseClick left, 50, 580
 Sleep 400
 ; Click 'Uncheck Enable ...'
-MouseClick left, 40, 240
+MouseClick left, 40, 210
 Sleep 400
 ; Click 'Check Disable ...'
-MouseClick left, 40, 440
+MouseClick left, 40, 390
 Sleep 400
 ; Click 'Install'
 MouseClick left, 50, 580

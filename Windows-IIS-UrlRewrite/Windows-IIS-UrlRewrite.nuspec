@@ -26,7 +26,7 @@
     <tags>microsoft iis urlrewrite url rewrite admin</tags>
     <dependencies>
 			<dependency id="Chocolatey-Package.extension" />
-      <dependency id="IIS.ExternalCache" />
+      <dependency id="Windows-IIS-ExternalCache" />
 		</dependencies>
   </metadata>
 </package>

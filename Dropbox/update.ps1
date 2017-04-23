@@ -35,7 +35,7 @@ function global:au_GetLatest {
 
     $fileName = [System.IO.Path]::GetFileName($stableVersionDownloadUrl) -replace '%20', ' '
 
-    return @{ Url32 = $stableVersionDownloadUrl; Version = $stableVersion; FileName32 = $fileName }
+    return @{ Url32 = $stableVersionDownloadUrl; Version = $stableVersion; }
 }
 
 function Get-FirstBetaLink([string] $uri, [string] $regEx) {
