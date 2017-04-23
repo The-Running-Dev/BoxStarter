@@ -27,8 +27,5 @@ function Get-SetupFiles {
         [PSCustomObject] $arguments
     )
 
-    if (!([System.IO.File]::Exists($arguments.file))) {
-        # Downlaod and install the deployment tool
-        Install-Package $arguments
-    }
+    Install-Package $arguments
 }

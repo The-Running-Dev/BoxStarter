@@ -8,11 +8,10 @@ $packageDir = $PSScriptRoot
 function global:au_GetLatest {
     $releaseUrl = 'http://danhinsley.com/metax/metax.html'
     $versionRegEx = 'DOWNLOAD&nbsp;MetaX&nbsp;V([0-9\.]+)'
-    $downloadUrlRegEx = '\.exe'
+    $url = 'http://www.danhinsley.com/downloads/MetaXSetup.msi'
 
     $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
     $version = ([regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value)
-    $url = $releasePage.Links | Where-Object href -match $downloadUrlRegEx | Select-Object -First 1 -Expand href
 
     if ($force) {
         $global:au_Version = $version

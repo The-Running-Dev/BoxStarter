@@ -15,8 +15,8 @@ $arguments          = @{
     validExitCodes  = @(2147781575, 2147205120)
 }
 
-if ($parameters['file']) {
-    $arguments['file'] = $parameters['file']
+if ($parameters.file) {
+    $arguments.file = $parameters.file
 }
 
 Install-CustomPackage $arguments

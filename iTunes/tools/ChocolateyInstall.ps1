@@ -1,7 +1,6 @@
 ﻿$arguments          = @{
-    file            = 'iTunes6464Setup.exe'
-    url             = 'https://secure-appldnld.apple.com/itunes12/031-34005-20150916-98D38F1E-5C11-11E5-A6AD-C05A6DA99CB1/iTunes6464Setup.exe'
-    checksum        = 'F1A36984C02DF41A3CFC6B2A2695FC4FAE8B32BB88B4DEF53193870E462A7EF6'
+    url             = 'https://secure-appldnld.apple.com/itunes12/091-04060-20170323-F8B6662A-39E9-46EE-BA40-BDA0CCD05F40/iTunes64Setup.exe'
+    checksum        = 'E8337FB4D96C530E3B63E243D29D59645EDA5B86087A4D06823B16C113D46653'
     silentArgs      = '/qn /norestart'
 }
 
@@ -9,7 +8,7 @@
 $app = Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -match 'iTunes'}
 if ($app -and ([version]$app.Version -ge [version]$arguments['version'])) {
     Write-Output $(
-        'iTunes ' + $version + ' or higher is already installed. '
+        "iTunes is already installed."
     )
 }
 else {
@@ -17,15 +16,15 @@ else {
 
     Get-ChocolateyUnzip @packageArgs
 
-    $msiFilesList = (Get-ChildItem -Path $arguments.destination. -Filter '*.msi' | Where-Object {
+    $msiFilesList = (Get-ChildItem -Path $packageArgs.destination -Filter '*.msi' | Where-Object {
             $_.Name -notmatch 'AppleSoftwareUpdate*.msi'
-        }).Name
+        }).FullName
 
     # Loop over each file and install it. iTunes requires all of them to be installed
-    foreach ($msiFileName in $msiFilesList) {
-        $arguments.fileType = 'msi'
-        $arguments.file = Join-Path $arguments.destination $msiFileName
+    foreach ($msiFile in $msiFilesList) {
+        $packageArgs.file = $msiFile
+        $packageArgs.fileType = 'msi'
 
-        Install-ChocolateyInstallPackage @arguments
+        Install-ChocolateyInstallPackage @packageArgs
     }
 }

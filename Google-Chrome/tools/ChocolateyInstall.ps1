@@ -1,5 +1,4 @@
 ﻿$arguments      = @{
-    file        = 'googlechromestandaloneenterprise64.msi'
     url         = 'https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi'
     checksum    = '104AEAF81D04E448FB9D8817C9F993A6F59D47658F5356F10660D3CF6416586F'
 }

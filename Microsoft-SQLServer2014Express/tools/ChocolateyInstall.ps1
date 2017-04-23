@@ -12,11 +12,8 @@ if (!$parameters.ContainsKey['sqlsysadminaccounts']) {
 }
 
 $arguments          = @{
-    file            = "SQLEXPR_$os_ENU.exe"
-    url             = "https://download.microsoft.com/download/2/A/5/2A5260C3-4143-47D8-9823-E91BB0121F94/SQLEXPR_x86_ENU.exe"
-    url64           = "https://download.microsoft.com/download/2/A/5/2A5260C3-4143-47D8-9823-E91BB0121F94/SQLEXPR_x64_ENU.exe"
-    checksum        = '0eff1354916410437c829e98989e5910d9605b2df31977bc33ca492405a0a9ab'
-    checksum64      = 'cc35e94030a24093a62e333e900c2e3c8f1eb253a5d73230a9f5527f1046825b'
+    url             = "https://download.microsoft.com/download/2/A/5/2A5260C3-4143-47D8-9823-E91BB0121F94/SQLEXPR_x64_ENU.exe"
+    checksum        = 'cc35e94030a24093a62e333e900c2e3c8f1eb253a5d73230a9f5527f1046825b'
     silentArgs      = "/Q /x:`"$env:Temp\MSSQLServer2014Express\SQLEXPR`""
     validExitCodes  = @(2147781575, 2147205120)
 }
@@ -29,22 +26,22 @@ if (!([System.IO.File]::Exists($installerPath))) {
     Install-ChocolateyPackage @arguments
 
     # Set the path to the extracted setup
-    $arguments['file'] = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
+    $arguments.file = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
 }
 elseif (([System.IO.File]::Exists($userInstallerPath))) {
     # Installer was specified and it exists
 
     # Run the pre-installer
-    $arguments['file'] = $userInstallerPath
+    $arguments.file = $userInstallerPath
     Install-ChocolateyInstallPackage @arguments
 
     # Set the path to the extracted setup
-    $arguments['file'] = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
+    $arguments.file = "$env:Temp\$packageName\SQLEXPR\Setup.exe"
 }
 
 # Run the extracted setup
-$arguments['packageName'] = $packageName
-$arguments['silentArgs'] = $silentArgs
+$arguments.packageName = $packageName
+$arguments.silentArgs = $silentArgs
 
 Install-Package $arguments
 

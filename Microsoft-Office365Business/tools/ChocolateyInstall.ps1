@@ -7,7 +7,6 @@ $configurationFile = Get-ConfigurationFile $parameters.ConfigurationFile $defaul
 $installer                  = $parameters.file
 $arguments                  = @{
     packageName             = 'Office Deployment Tool'
-    file                    = 'officedeploymenttool_8008-3601.exe'
     executablePackageName   = 'Office Setup Files'
     executable              = "$env:Temp\Office\Setup.exe"
     executableArgs          = "/download ""$configurationFile"""

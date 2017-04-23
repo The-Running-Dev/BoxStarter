@@ -41,7 +41,6 @@ function global:au_SearchReplace {
             "(?i)(checksum\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
         }
     }
-    return @{ Url32 = $url; Version = $version }
 }
 
 . (Join-Path $PSScriptRoot '..\_Scripts\update.end.ps1')

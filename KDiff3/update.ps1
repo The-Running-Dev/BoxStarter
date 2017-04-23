@@ -13,7 +13,7 @@ function global:au_GetLatest {
     }
 
     return @{
-        Url32 = 'http://downloads.sourceforge.net/project/kdiff3/kdiff3/0.9.98/KDiff3-64bit-Setup_0.9.98-2.exe';
+        Url32 = 'https://downloads.sourceforge.net/project/kdiff3/kdiff3/0.9.98/KDiff3-64bit-Setup_0.9.98-2.exe';
         Version = $version
     }
 }

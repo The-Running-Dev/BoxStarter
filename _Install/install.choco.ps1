@@ -11,8 +11,6 @@ if (![System.IO.File]::Exists($localChocoPackage)) {
     $installLocalFile = $false
 }
 
-write-host $chocoPersonalPackage
-
 $chocoInstallPath = "$($env:SystemDrive)\ProgramData\Chocolatey\bin"
 $env:ChocolateyInstall = "$($env:SystemDrive)\ProgramData\Chocolatey"
 $env:Path += ";$chocoInstallPath"

@@ -8,13 +8,13 @@
     <licenseUrl>https://raw.github.com/nodejs/node/master/LICENSE</licenseUrl>
     <projectUrl>http://nodejs.org</projectUrl>
     <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/nodejs.png</iconUrl>
-    <owners>The-Running-Dev</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Node JS - Evented I/O for v8 JavaScript. Node's goal is to provide an easy way to build scalable network programs.
     This package runs the official Node JS installer, resulting in Node.exe and NPM being installed under Program Files, and added to the SYSTEM PATH environment variable.</description>
     <summary>Node JS - Evented I/O for v8 JavaScript.</summary>
     <tags>nodejs node javascript admin npm</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
 			<dependency id="Chocolatey-Package.extension" />
 		</dependencies>

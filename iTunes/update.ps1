@@ -14,7 +14,7 @@ function global:au_GetLatest {
     $matches = $null
 
     $downloadPage = Invoke-WebRequest -Uri $iframeLink -UseBasicParsing
-    $downloadPage.Content -match "[`"'](https:\/\/[^`"']+iTunes6464Setup\.exe)[`"']" | Out-Null
+    $downloadPage.Content -match "[`"'](https:\/\/[^`"']+iTunes64Setup\.exe)[`"']" | Out-Null
     $downloadUrl = $Matches[1]
     $matches = $null
 

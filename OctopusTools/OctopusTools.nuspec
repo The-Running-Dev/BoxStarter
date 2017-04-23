@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>OctopusTools</id>
-    <version>4.13.13</version>
+    <version>4.13.14</version>
     <title>Octopus Deploy Command Line</title>
     <authors>Octopus Deploy</authors>
     <owners>Octopus Deploy</owners>
