@@ -13,8 +13,8 @@ if ([System.IO.File]::Exists($packageInstaller) -and ![System.IO.File]::Exists($
     Move-Item "$($packageInstaller).ignore" $installersPath -Force
 }
 
-Remove-Item $packageInstaller -ErrorAction SilentlyContinue
-Remove-Item "$($packageInstaller).ignore" -ErrorAction SilentlyContinue
+#Remove-Item $packageInstaller -ErrorAction SilentlyContinue
+#Remove-Item "$($packageInstaller).ignore" -ErrorAction SilentlyContinue
 
 if ($push) {
     & (Join-Path $PSScriptRoot ..\push.ps1) $Latest.PackageName

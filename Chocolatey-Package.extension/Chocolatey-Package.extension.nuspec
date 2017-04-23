@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Chocolatey-Package.extension</id>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <title>Chocolatey Package Helpers</title>
     <authors>The-Running-Dev</authors>
     <projectUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</projectUrl>
@@ -15,6 +15,9 @@
 
     v1.0.6 (2017.04.20)
     - Fixed argument handling for partial file and partial executable
+
+    v1.0.7 (2017.04.21)
+    -
     </releaseNotes>
     <description>
     Functions for installing custom Chocolatey packages

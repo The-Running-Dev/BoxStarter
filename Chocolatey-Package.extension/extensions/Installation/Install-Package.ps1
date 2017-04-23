@@ -11,7 +11,12 @@ function Install-Package {
         $arguments.file = Get-ChocolateyWebFile @packageArgs
     }
 
-    Install-ChocolateyInstallPackage @packageArgs
+    Install-ChocolateyInstallPackage `
+        -PackageName $packageArgs.packageName `
+        -File $packageArgs.file `
+        -FileType $packageArgs.fileType `
+        -SilentArgs $packageArgs.silentArgs `
+        -ValidExitCodes $packageArgs.validExitCodes
 
     if ($packageArgs.executable) {
         # The file parameter does not contain a full path

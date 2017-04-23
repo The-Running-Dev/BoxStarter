@@ -26,6 +26,7 @@ function Install-FromZip {
     }
     elseif ($packageArgs.executable) {
         Write-Message "Install-FromZip: Finding executable '$($packageArgs.executable)' in $packageArgs.destination"
+
         # Re-map the file to the unzip executable
         $packageArgs.file = Join-Path $packageArgs.destination $packageArgs.executable
 

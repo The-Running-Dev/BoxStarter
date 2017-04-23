@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Paint.NET</id>
+    <version>4.0.16</version>
+    <title>Paint.NET</title>
+    <authors>Rick Brewster, dotPDN</authors>
+    <licenseUrl>http://www.getpaint.net/license.html</licenseUrl>
+    <projectUrl>http://www.getpaint.net/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/paint.net.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Paint.NET is free image and photo editing software for computers that run Windows. It features an intuitive and innovative user interface with support for layers, unlimited undo, special effects, and a wide variety of useful and powerful tools. An active and growing online community provides friendly help, tutorials, and plugins.</description>
+    <summary>Paint.NET is image and photo manipulation software designed to be used on computers that run Windows.</summary>
+    <tags>paint.net photo editing paint admin</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>

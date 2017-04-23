@@ -1,29 +1,38 @@
 function Import-RegistryFile
 {
     param (
-        [parameter(Mandatory = $true)][ValidateNotNullOrEmpty()][Hashtable] $parameters
+        [parameter(Mandatory = $false)][ValidateNotNullOrEmpty()][Hashtable] $arguments = @{}
     )
+    
+    $packageArgs = Get-Arguments $arguments
 
     try {
         # If settings are provided and the file exists
-        if ([System.IO.File]::Exists($parameters.file)) {
-            if ([System.IO.File]::Exists($parameters.executable)) {
-                & $($parameters.executable)
+        if ([System.IO.File]::Exists($packageArgs.file)) {
+            Write-Message "Import-RegistryFile: '$($packageArgs.file)' exists."
+
+            if ([System.IO.File]::Exists($packageArgs.executable)) {
+                Write-Message "Import-RegistryFile: Starting '$($packageArgs.executable).'"
+                & $($packageArgs.executable)
             }
 
-            if ($parameters.process) {
-                if (Get-Process -Name $($parameters.process)) {
+            Write-Message "Import-RegistryFile: Finding process '$($packageArgs.processName).'"
+
+            if ($packageArgs.processName) {
+                if (Get-Process -Name $($packageArgs.processName) -ErrorAction SilentlyContinue) {
+                    Write-Message "Import-RegistryFile: Trying to kill '$($packageArgs.processName).'"
+
                     # Kill the started application
-                    Stop-Process -Name $($parameters.process)
+                    Stop-Process -Name $packageArgs.processName
                 }
             }
 
             # Import the provided settings
-            Write-Message "Importing: $($parameters.file)"
-            & regedit /s $($parameters.file)
+            Write-Message "Import-RegistryFile: Importing '$($packageArgs.file).'"
+            & regedit /s $($packageArgs.file)
         }
     }
     catch {
-        Write-Message "Failed Importing: $($parameters.file), Message: $($_.Exception.Message)"
+        Write-Message "Import-RegistryFile: Import failed with '$($_.Exception.Message).'"
     }
 }

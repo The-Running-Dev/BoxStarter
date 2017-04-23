@@ -2,6 +2,7 @@ function Get-Arguments {
     param(
         [PSCustomObject] $arguments
     )
+
     $packageArgs = @{
         packageName = Get-Argument $arguments 'packageName' $env:ChocolateyPackageName
         softwareName = Get-Argument $arguments 'softwareName' $env:ChocolateyPackageTitle
@@ -12,6 +13,7 @@ function Get-Arguments {
         executable = Get-Argument $arguments 'executable'
         executableArgs = Get-Argument $arguments 'executableArgs'
         executableRegEx = Get-Argument $arguments 'executableRegEx'
+        processName = Get-Argument $arguments 'processName'
         checksum = Get-Argument $arguments 'checksum'
         checksumType = Get-Argument $arguments 'checksumType' 'sha256'
         silentArgs = Get-Argument $arguments 'silentArgs'
@@ -23,8 +25,6 @@ function Get-Arguments {
     $packageArgs.fileType = Get-FileExtension $packageArgs.file
     $packageArgs.executableType = Get-FileExtension $executable.file
 
-    write-host "packageArgs.file: $($packageArgs.file)"
-
     # The file parameter does not contain a full path
     if (![System.IO.Path]::IsPathRooted($packageArgs.file)) {
         $packageArgs.file = Join-Path $env:ChocolateyPackageFolder $packageArgs.file
@@ -32,7 +32,8 @@ function Get-Arguments {
 
     # No file provided, find the first executable or zip in the package directory
     if (![System.IO.File]::Exists($packageArgs.file) -and !$packageArgs.url) {
-        $packageArgs.file = (Get-ChildItem -Path $env:ChocolateyPackageFolder -Include *.zip, *.exe, *.msi -Recurse -File `
+        $packageArgs.file = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
+            -Include *.zip, *.exe, *.msi, *.reg -Recurse -File `
             | Select-Object -First 1 -ExpandProperty FullName)
     }
 

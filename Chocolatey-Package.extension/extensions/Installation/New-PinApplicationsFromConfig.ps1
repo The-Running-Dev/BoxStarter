@@ -5,7 +5,7 @@ function Invoke-PinApplications {
 
     try {
         foreach ($line in Get-Content -Path $configFile | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'}) {
-            Invoke-PinApplication $line
+            New-PinnedApplication $line
         }
     }
     catch {

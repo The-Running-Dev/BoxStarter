@@ -1,14 +1,27 @@
-function New-PinnedApplication() {
+function New-PinnedApplication {
     param(
-        [PSCustomObject] $shortcutTargetPath
+        [PSCustomObject] $applicationPath
     )
 
-    $shortcutFilePath = $shortcutTargetPath -replace '\.\w+$', '.lnk'
+    try {
+        if ($applicationPath.Contains('$')) {
+            $applicationPath = Invoke-Expression $applicationPath
+        }
 
-    Install-ChocolateyShortcut `
-        -ShortcutFilePath $shortcutFilePath `
-        -TargetPath $shortcutTargetPath `
-        -WindowStyle 3 `
-        -RunAsAdmin `
-        -PinToTaskbar
+        if ([System.IO.File]::Exists($applicationPath)) {
+            $applicationShortcutPath = $applicationPath -replace '\.\w+$', '.lnk'
+
+            Write-Message "New-PinnedApplication: Pinning $applicationPath with $applicationShortcutPath"
+
+            Install-ChocolateyShortcut `
+                -ShortcutFilePath $applicationShortcutPath `
+                -TargetPath $applicationPath `
+                -RunAsAdmin
+
+            & $global:pinTool $applicationPath c:"Pin to taskbar" | Out-Null
+        }
+    }
+    catch {
+        Write-Message "Invoke-PinApplication Failed: $($_.Exception.Message)"
+    }
 }
