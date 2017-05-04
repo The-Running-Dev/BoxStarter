@@ -1,10 +1,18 @@
 param([switch] $force, [switch] $push)
 
-$originalLocation = Get-Location
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\_Scripts\update.onchange.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
-$settingsDir = $PSScriptRoot
+function global:au_GetLatest {
+    $version = '1.0.47.277'
+    $url = 'https://vpnarea.com/VPNAreaChameleon.exe'
 
-. (Join-Path $PSScriptRoot '..\_Scripts\update.onchange.end.ps1')
+    if ($force) {
+        $global:au_Version = $version
+    }
+
+    return @{ Url32 = $url; Version = $version; }
+}
+
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
