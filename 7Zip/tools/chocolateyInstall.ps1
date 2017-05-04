@@ -1,31 +1,11 @@
-﻿$ErrorActionPreference = 'Stop'
-
-$toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$filePath = if ((Get-ProcessorBits 64) -and $env:chocolateyForceX86 -ne $true) {
-       Write-Host "Installing 64 bit version" ; gi $toolsDir\*_x64.exe }
-else { Write-Host "Installing 32 bit version" ; gi $toolsDir\*_x32.exe }
-
-$packageArgs = @{
-  packageName    = '7zip.install'
-  fileType       = 'exe'
-  softwareName   = '7-zip*'
-  file           = $filePath
-  silentArgs     = '/S'
-  validExitCodes = @(0)
-}
-Install-ChocolateyInstallPackage @packageArgs
-rm $toolsDir\*.exe -ea 0 -force
-
-# 7z installer may close explorer
-if (!(ps explorer -ea 0)) {
-    # Only start explorer if the file exists; Server Core installs do not have it.
-    if (!(Test-Path "$env:windir\explorer.exe")) {
-        start explorer.exe
-    }
+﻿$arguments          = @{
+    url             = 'http://www.7-zip.org/a/7z1604-x64.exe'
+    checksum        = '9BB4DC4FAB2A2A45C15723C259DC2F7313C89A5AC55AB7C3F76BBA26EDC8BCAA'
+    silentArgs      = '/S'
 }
 
-$installLocation = Get-AppInstallLocation $packageArgs.softwareName
-if (!$installLocation)  { Write-Warning "Can't find 7zip install location"; return }
-Write-Host "7zip installed to '$installLocation'"
+Install-Package $arguments
+
+$installLocation = Get-AppInstallLocation $env:ChocolateyPackageTitle
 
 Install-BinFile '7z' $installLocation\7z.exe

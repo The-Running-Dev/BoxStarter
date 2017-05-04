@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>NuGet-CommandLine</id>
+    <version>4.14.1</version>
+    <title>Nuget.CommandLine</title>
+    <authors>Microsoft</authors>
+    <licenseUrl>https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/NuGet/NuGet.Client</projectUrl>
+    <projectSourceUrl>https://github.com/NuGet/NuGet.Client</projectSourceUrl>
+    <docsUrl>https://docs.microsoft.com/en-us/nuget</docsUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>NuGet is the package manager for the Microsoft development platforms including .NET. NuGet gives you access to thousands of packages from other developers on [nuget.org](http://nuget.org), and the NuGet tools let you create, share, and host packages of your own.</description>
+    <summary>NuGet is the package manager for the Microsoft development platforms</summary>
+    <copyright>Â© .NET Foundation. All rights reserved.</copyright>
+    <tags>nuget dot.net microsoft foss cross-platform</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <iconUrl>https://cdn.rawgit.com/chocolatey/chocolatey-coreteampackages/27f780622b37514680f86c7f5e5f7f9bb0a32fe9/icons/nuget.commandline.png</iconUrl>
+  </metadata>
+</package>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>pscx</id>
+    <version>3.2.0</version>
+    <title>PowerShell Community Extensions</title>
+    <authors>PowerShell Community Extensions</authors>
+    <licenseUrl>http://pscx.codeplex.com/license</licenseUrl>
+    <projectUrl>http://pscx.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>PowerShell Community Extensions (PSCX) is aimed at providing a widely useful set of additional cmdlets, providers, aliases, filters, functions and scripts for Windows PowerShell that members of the community have expressed interest in.</description>
+    <summary>PowerShell Community Extensions (PSCX) is aimed at providing a widely useful set of additional cmdlets, providers, aliases, filters, functions and scripts for Windows PowerShell that members of the community have expressed interest in.</summary>
+    <tags>powershell pscx admin</tags>
+    <iconUrl>http://cdn.rawgit.com/bdukes/Chocolatey-Packages/master/pscx/icon.png</iconUrl>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+  </metadata>
+</package>
