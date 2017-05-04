@@ -1,12 +1,13 @@
 if ($force) {
-    Update-Package -Force -ChecksumFor none -NoCheckChocoVersion -NoCheckUrl
+    Update-Package -Force -ChecksumFor none -NoCheckChocoVersion
 }
 else {
-    Update-Package -ChecksumFor none -NoCheckChocoVersion -NoCheckUrl
+    Update-Package -ChecksumFor none -NoCheckChocoVersion
 }
 
 if ($push) {
     & (Join-Path $PSScriptRoot ..\push.ps1) $Latest.PackageName
 }
 
-Pop-Location
+# Original location is defined in the individual update script
+Set-Location $originalLocation

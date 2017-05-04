@@ -1,4 +1,4 @@
-$packagesDir = Join-Path $PSScriptRoot '..\..\..\BoxStarter' -Resolve
+$packagesDir = Join-Path $PSScriptRoot '..\..\..\BoxStarter\Extensions' -Resolve
 
 choco uninstall Chocolatey-Dev.extension -f
 Remove-Item -Recurse C:\ProgramData\Chocolatey\extensions\chocolatey-Dev -ErrorAction SilentlyContinue

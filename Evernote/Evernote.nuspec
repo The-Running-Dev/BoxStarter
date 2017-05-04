@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>Evernote</id>
+    <id>evernote</id>
     <version>6.5.4.4720</version>
     <title>Evernote</title>
     <authors>Evernote Corporation</authors>
+    <owners>Evernote Corporation</owners>
     <licenseUrl>http://evernote.com/eula/</licenseUrl>
     <projectUrl>http://evernote.com/evernote/</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/mikecole/chocolatey-packages/master/Evernote.png</iconUrl>
@@ -20,10 +21,6 @@ PRESENT: Have fast, effective meetings by presenting your work as it evolves. No
     <releaseNotes />
     <copyright>Copyright 2016 Evernote Corporation</copyright>
     <tags>Evernote notes admin</tags>
-    <owners>The-Running-Dev</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
-    <dependencies>
-      <dependency id="Chocolatey-Package.extension" />
-    </dependencies>
+    <packageSourceUrl>https://github.com/mikecole/chocolatey-packages/</packageSourceUrl>
   </metadata>
 </package>

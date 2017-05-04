@@ -20,4 +20,5 @@ if ($push) {
     & (Join-Path $PSScriptRoot ..\push.ps1) $Latest.PackageName
 }
 
-Pop-Location
+# Original location is defined in the individual update script
+Set-Location $originalLocation

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>LTspiceXVII</id>
+    <version>17.0</version>
+    <title>LTspiceXVII</title>
+    <authors>LTspiceXVII</authors>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/BNMSoft/BoxStarter</packageSourceUrl>
+    <description>
+      This package installs LTspiceXVII
+    </description>
+  </metadata>
+</package>

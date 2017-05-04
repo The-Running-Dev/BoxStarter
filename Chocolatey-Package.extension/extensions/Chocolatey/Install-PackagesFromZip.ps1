@@ -1,12 +1,12 @@
 function Install-PackagesFromZip {
     param(
-       [parameter(Mandatory = $false)][ValidateNotNullOrEmpty()][string] $packagesZip = ''
+       [parameter(Mandatory = $false)][string] $packagesZip = ''
     )
 
     # No file provided, find the Packages zip in the package directory
     if (![System.IO.File]::Exists($packagesZip)) {
         $packagesZip = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
-            -Include 'Packages.zip' | Select-Object -First 1 -ExpandProperty FullName)
+            -Filter 'Packages.zip' | Select-Object -First 1 -ExpandProperty FullName)
     }
 
     # Still no file found, find the first zip in the package directory
