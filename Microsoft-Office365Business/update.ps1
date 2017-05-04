@@ -1,8 +1,18 @@
 param([switch] $force, [switch] $push)
 
 $packageDir = $PSScriptRoot
+$setupDir = Join-Path $packageDir 'Setup'
+$setupFiles = Join-Path $PSScriptRoot '..\..\..\BoxStarter\Installers\Office365Business' -Resolve
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
+
+function global:au_BeforeUpdate {
+    if (-not (Test-Path "$setupDir\setup.exe")) {
+        New-Item -ItemType Directory $setupDir
+        Copy-Item -Recurse $setupFiles\* $setupDir\
+        New-Item -ItemType File "$setupDir\setup.exe.ignore"
+    }
+}
 
 function global:au_GetLatest {
     $releaseUrl = 'https://support.office.com/en-us/article/Version-and-build-numbers-of-update-channel-releases-ae942449-1fca-4484-898b-a933ea23def7?ui=en-US&rs=en-US&ad=US'
