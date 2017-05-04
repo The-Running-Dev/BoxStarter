@@ -1,15 +1,7 @@
-﻿$checksum = '2a0a4d133197650ef8506ca26ce86927e4e3191a044ea2a08bfe696b1f18a9a2'
-
-$packageArgs = @{
-  packageName   = 'evernote'
-  unzipLocation = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-  fileType      = 'exe'
-  url           = 'https://evernote.com/download/get.php?file=Win'
-  silentArgs    = '/quiet'
-  validExitCodes= @(0)
-  softwareName  = 'evernote*'
-  checksum      = $checksum
-  checksumType  = 'sha256'
+﻿$arguments      = @{
+    url         = 'https://cdn1.evernote.com/win6/public/Evernote_6.5.4.4720.exe'
+    checksum    = '2A0A4D133197650EF8506CA26CE86927E4E3191A044EA2A08BFE696B1F18A9A2'
+    silentArgs  = '/quiet'
 }
 
-Install-ChocolateyPackage @packageArgs
+Install-Package $arguments

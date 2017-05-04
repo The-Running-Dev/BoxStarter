@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>JetBrains-WebStorm</id>
-    <version>2017.1.1</version>
+    <version>2017.1.2</version>
     <title>JetBrains Web Storm</title>
     <authors>JetBrains</authors>
     <projectUrl>https://www.jetbrains.com/webstorm</projectUrl>
-    <owners>The-Running-Dev</owners>
-    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <description>
     JetBrains WebStorm
     </description>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
       <dependency id="Chocolatey-Package.extension" />
     </dependencies>

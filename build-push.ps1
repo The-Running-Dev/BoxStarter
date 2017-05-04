@@ -4,6 +4,8 @@ param (
     [switch] $force
 )
 
+Clear-Host
+
 if ($force) {
     & $PSScriptRoot\build.ps1 $searchTerm $sourceType -Force
 }

@@ -6,4 +6,4 @@
 
 Install-Package $arguments
 
- New-StartMenuShortcut (Join-Path $env:ProgramFiles 'HandBrake\HandBrake.exe')
+New-StartMenuShortcut (Join-Path $env:ProgramFiles 'HandBrake\HandBrake.exe')

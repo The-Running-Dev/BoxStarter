@@ -6,11 +6,11 @@
     <title>Visual Studio Code</title>
     <authors>Microsoft</authors>
     <projectUrl>http://code.visualstudio.com/</projectUrl>
-    <owners>The-Running-Dev</owners>
-    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <description>
       This package installs Visual Studio Code.
     </description>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
       <dependency id="Chocolatey-Package.extension" />
     </dependencies>

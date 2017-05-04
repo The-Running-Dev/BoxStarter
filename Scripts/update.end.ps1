@@ -1,11 +1,11 @@
 if ($force) {
-    Update-Package -Force -ChecksumFor none -NoCheckChocoVersion
+    Update-Package -Force -ChecksumFor none -NoCheckChocoVersion -NoCheckUrl
 }
 else {
-    Update-Package -ChecksumFor none -NoCheckChocoVersion
+    Update-Package -ChecksumFor none -NoCheckChocoVersion -NoCheckUrl
 }
 
-$packageInstaller = Join-Path $packageDir ($Latest.FileName32 -replace '_x32', '')
+$packageInstaller = Join-Path $packageDir $Latest.FileName32
 $existingPackageInstaller = Join-Path $installersPath $Latest.FileName32
 
 if ([System.IO.File]::Exists($packageInstaller) -and ![System.IO.File]::Exists($existingPackageInstaller)) {
@@ -20,5 +20,4 @@ if ($push) {
     & (Join-Path $PSScriptRoot ..\push.ps1) $Latest.PackageName
 }
 
-# Original location is defined in the individual update script
-Set-Location $originalLocation
+Pop-Location

@@ -5,12 +5,11 @@ $packageDir = $PSScriptRoot
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $releaseUrl = 'https://nodejs.org/en/download/current/'
-    $versionRegEx = 'node-v(.+)-x64.msi'
+    $downloadEndpointUrl = 'https://evernote.com/download/get.php?file=Win'
+    $versionRegEx = 'Evernote_([0-9\.]+).exe'
 
-    $downloadPage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
-    $url = $downloadPage.links | Where-Object href -match $versionRegEx | Select-Object -First 1 -Expand href
-    $version = $matches[1]
+    $url = Get-RedirectUrl $downloadEndpointUrl
+    $version = ([regex]::match($url, $versionRegEx).Groups[1].Value)
 
     if ($force) {
         $global:au_Version = $version

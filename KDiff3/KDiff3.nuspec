@@ -8,12 +8,12 @@
     <licenseUrl>http://kdiff3.sourceforge.net/COPYING</licenseUrl>
     <projectUrl>http://kdiff3.sourceforge.net/</projectUrl>
     <iconUrl>http://cdn.rawgit.com/ferventcoder/chocolatey-packages/bd3902ea9e357d5d1b3ece2977f02e5ef60ca84a/icons/kdiff3.png</iconUrl>
-    <owners>The-Running-Dev</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>KDiff3 is a graphical text difference analyzer for up to 3 input files, provides character-by-character analysis and a text merge tool with integrated editor. It can also compare and merge directories. Platform-independant.</description>
     <summary>KDiff3 - graphical text difference analyzer (Diff / Merge tool)</summary>
     <tags>kdiff3 diff diffing merge difference admin</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
 			<dependency id="Chocolatey-Package.extension" />
 		</dependencies>

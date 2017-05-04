@@ -5,7 +5,6 @@
     <version>2.34.5075.1619</version>
     <title>Google Drive</title>
     <authors>Google</authors>
-    <owners>Google</owners>
     <licenseUrl>http://www.google.com/policies/terms/</licenseUrl>
     <projectUrl>https://drive.google.com/</projectUrl>
     <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/gdrive.svg</iconUrl>
@@ -14,7 +13,8 @@
     <summary>Google Drive for Windows – Access files on your computer from anywhere.</summary>
     <copyright>Google</copyright>
     <tags>googledrive google drive files admin</tags>
-    <packageSourceUrl>https://github.com/ferventcoder/chocolatey-packages/</packageSourceUrl>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
 			<dependency id="Chocolatey-Package.extension" />
 		</dependencies>

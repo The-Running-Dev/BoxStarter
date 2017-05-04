@@ -1,4 +1,4 @@
-﻿$packageChecksum        = 'E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855EF124C6BC9F5AA29929994BE1C670AE971FF2EF97CD4B22D6A09C724C0E6617D1DE3DD8F24639548191B20551C796B16A8EE570D361EAB878C1624DB186027E3'
+﻿$packageChecksum        = 'E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855EF124C6BC9F5AA29929994BE1C670AE971FF2EF97CD4B22D6A09C724C0E6617D07DDD22F961EF9B2B06FB0B78E566F517EE27CE43EC8A05EA94692C923723A61'
 $defaultConfiguration   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
 $parameters             = Get-Parameters $env:chocolateyPackageParameters
 $configuration          = Get-ConfigurationFile $parameters['Configuration'] $defaultConfiguration
@@ -9,7 +9,7 @@ $arguments              = @{
     validExitCodes      = @(2147781575, 2147205120)
 }
 
-# If features were passed in through the command line
+# If features are passed in through the command line
 if ($parameters['features']) {
     $features = $parameters.Split(',')
     [xml]$xml = Get-Content $configuration

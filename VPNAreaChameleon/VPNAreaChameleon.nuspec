@@ -5,11 +5,11 @@
     <version>1.0.47.277</version>
     <title>VPN Area Chameleon</title>
     <authors>Offshore Securities Inc.</authors>
-    <owners>The-Running-Dev</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>VPNAreaChameleon is the Windows VPN client provided by VPN Area</description>
     <tags>vpn admin security</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
 			<dependency id="Chocolatey-Package.extension" />
 		</dependencies>

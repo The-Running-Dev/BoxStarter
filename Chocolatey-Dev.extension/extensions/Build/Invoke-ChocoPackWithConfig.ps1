@@ -6,7 +6,7 @@ function Invoke-ChocoPackWithConfig {
         [Parameter(Mandatory = $false, Position = 3)][switch] $force
     )
 
-    $searchTerm = $searchTerm -replace '\\|\.', ''
+    $searchTerm = Get-SearchTerm $searchTerm
     $baseConfig = Get-DirectoryConfig $baseDir
     $packages = Get-Packages $baseDir $searchTerm '*.nuspec'
 

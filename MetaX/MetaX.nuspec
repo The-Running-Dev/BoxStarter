@@ -19,10 +19,10 @@
     Not all formats support all tags. AVI files in particular don't support most tags,
     including not supporting cover art.
     </description>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
 			<dependency id="Chocolatey-Package.extension" />
 		</dependencies>
-    <owners>The-Running-Dev</owners>
-    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
   </metadata>
 </package>

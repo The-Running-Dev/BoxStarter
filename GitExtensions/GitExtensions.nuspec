@@ -5,11 +5,8 @@
     <version>2.49.03</version>
     <title>Git Extensions</title>
     <authors>Henk Westhuis</authors>
-    <owners>The-Running-Dev</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <licenseUrl>https://github.com/gitextensions/gitextensions/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>http://gitextensions.github.io/</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/gitextensions.svg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Git Extensions is the only graphical user interface for Git that allows you control Git without using the commandline. It comes with a manual and video tutorials to get you started quickly.</description>
     <summary>Git Extensions is the only graphical user interface for Git that allows you control Git without using the commandline.</summary>
@@ -18,6 +15,9 @@
     <mailingListUrl>http://groups.google.com/group/gitextensions</mailingListUrl>
     <bugTrackerUrl>http://github.com/gitextensions/gitextensions/issues</bugTrackerUrl>
     <tags>gitextensions git gui admin</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/gitextensions.svg</iconUrl>
     <dependencies>
 			<dependency id="Chocolatey-Package.extension" />
       <dependency id="Git" />

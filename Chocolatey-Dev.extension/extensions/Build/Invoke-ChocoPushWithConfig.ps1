@@ -5,7 +5,7 @@ function Invoke-ChocoPushWithConfig {
         [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
     )
 
-    $searchTerm = $searchTerm -replace '\\|\.', ''
+    $searchTerm = Get-SearchTerm $searchTerm
     $baseConfig = Get-DirectoryConfig $baseDir
     $packages = Get-Packages $baseDir $searchTerm '*.nuspec'
 

@@ -20,7 +20,7 @@ else {
             $_.Name -notmatch 'AppleSoftwareUpdate*.msi'
         }).FullName
 
-    # Loop over each file and install it. iTunes requires all of them to be installed
+    # Istall all MSI files besides the Update
     foreach ($msiFile in $msiFilesList) {
         $packageArgs.file = $msiFile
         $packageArgs.fileType = 'msi'

@@ -5,9 +5,12 @@
     <version>1.0.7</version>
     <title>HandBrake CLI</title>
     <authors>The Handbrake Team</authors>
-    <owners>The Handbrake Team</owners>
     <licenseUrl>https://github.com/HandBrake/HandBrake/blob/master/COPYING</licenseUrl>
     <projectUrl>http://handbrake.fr/</projectUrl>
+    <projectSourceUrl>https://github.com/HandBrake/HandBrake</projectSourceUrl>
+    <docsUrl>https://trac.handbrake.fr/wiki</docsUrl>
+    <mailingListUrl>https://handbrake.fr/community.php</mailingListUrl>
+    <bugTrackerUrl>https://github.com/HandBrake/HandBrake/issues</bugTrackerUrl>
     <iconUrl>https://cdn.rawgit.com/dtgm/chocolatey-packages/a9745b5bde6672b15e1495fdda70fc14e3260226/icons/handbrake.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
@@ -23,11 +26,8 @@
     </releaseNotes>
     <copyright>© The HandBrake Team</copyright>
     <tags>video transcoder encoder conversion</tags>
-    <projectSourceUrl>https://github.com/HandBrake/HandBrake</projectSourceUrl>
-    <packageSourceUrl>https://github.com/dtgm/chocolatey-packages/tree/master/automatic/_output/handbrake.install/0.10.5.20160304</packageSourceUrl>
-    <docsUrl>https://trac.handbrake.fr/wiki</docsUrl>
-    <mailingListUrl>https://handbrake.fr/community.php</mailingListUrl>
-    <bugTrackerUrl>https://github.com/HandBrake/HandBrake/issues</bugTrackerUrl>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
 			<dependency id="Chocolatey-Package.extension" />
 		</dependencies>

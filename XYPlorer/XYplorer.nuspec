@@ -7,8 +7,6 @@
     <authors>Cologne Code Company</authors>
     <projectUrl>https://www.xyplorer.com</projectUrl>
     <iconUrl>https://www.xyplorer.com/index.php</iconUrl>
-    <owners>The-Running-Dev</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
     XYplorer is a file manager for Windows. It features tabbed browsing, a powerful file search,
@@ -18,6 +16,8 @@
     </description>
     <copyright>2017 Cologne Code Company</copyright>
     <tags>XYPlorer file filemanger</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
 			<dependency id="Chocolatey-Package.extension" />
 		</dependencies>

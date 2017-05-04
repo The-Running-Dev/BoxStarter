@@ -13,10 +13,10 @@
     <summary>Password Manager, Form Filler, Password Management.</summary>
     <releaseNotes>https://lastpass.com/upgrade.php?fromwebsite=1&amp;releasenotes=1</releaseNotes>
     <tags>lastpass password admin</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
       <dependency id="Chocolatey-Package.extension" />
     </dependencies>
-    <owners>The-Running-Dev</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
   </metadata>
 </package>

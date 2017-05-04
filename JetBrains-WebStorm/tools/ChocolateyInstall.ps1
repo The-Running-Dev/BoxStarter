@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://download.jetbrains.com/webstorm/WebStorm-2017.1.1.exe'
-    checksum        = '794D23C1E0947C330EE2B6CFB0AF17AB62DBCFA6FFF83B2439AB3B6114F87B48'
+    url             = 'https://download.jetbrains.com/webstorm/WebStorm-2017.1.2.exe'
+    checksum        = '33A694290D808858253A61335D71F1FCE77B3B664697721C084CEC82EF1D0300'
     silentArgs      = '/S'
 }
 

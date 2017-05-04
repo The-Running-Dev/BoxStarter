@@ -8,12 +8,12 @@
     <licenseUrl>https://www.binaryfortress.com/Data/Download/?package=voicebot%26licenseen=1%26log=0</licenseUrl>
     <projectUrl>https://www.voicebot.net</projectUrl>
     <iconUrl>https://images.binaryfortress.com/ChocolateyIcons/VoiceBot.png</iconUrl>
-    <owners>The-Running-Dev</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Take command of your games with your voice using VoiceBot! Sending commands to your games and applications is as easy as saying the command out loud. Use your voice to run keyboard shortcuts, click and move your mouse, and even execute complicated macros and scripts.</description>
     <copyright>2014 Binary Fortress Software</copyright>
     <tags>voice control macros games</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
 			<dependency id="Chocolatey-Package.extension" />
 		</dependencies>
