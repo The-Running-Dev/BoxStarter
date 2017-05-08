@@ -1,7 +1,7 @@
 function Resolve-PathSafe
 {
     param(
-        [string] $path
+        [Parameter(Position = 0, Mandatory = $true)][string] $path
     )
 
     $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($path)

@@ -1,7 +1,6 @@
-function Add-Directory
-{
+function Add-Directory {
     param(
-        [string] $path
+        [Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true)][string] $path
     )
 
     if (Test-Path $path) {

@@ -1,9 +1,9 @@
 function New-ChocoPackageWithConfig {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][string] $nuSpec,
-        [Parameter(Mandatory = $true, Position = 1)][ValidateNotNullOrEmpty()][array] $includeFilter,
-        [Parameter(Mandatory = $true, Position = 2)][ValidateNotNullOrEmpty()][string] $outputPath,
-        [Parameter(Mandatory = $false, Position = 3)][switch] $force
+        [Parameter(Position = 0, Mandatory = $true)][ValidateNotNullOrEmpty()][string] $nuSpec,
+        [Parameter(Position = 1, Mandatory = $true)][ValidateNotNullOrEmpty()][array] $includeFilter,
+        [Parameter(Position = 2, Mandatory = $true)][ValidateNotNullOrEmpty()][string] $outputPath,
+        [Parameter(Position = 3, Mandatory = $false)][switch] $force
     )
 
     $packageId = (Split-Path -Leaf $nuSpec) -replace '.nuspec', ''
@@ -26,14 +26,15 @@ function New-ChocoPackageWithConfig {
 
         $package = Get-ChildItem *.nupkg | Select-Object -First 1 -ExpandProperty FullName
 
+        # Delete the package from the output path if it exists
+        Remove-Item $outputPath -Include "$packageId**" -Force
+
         if ([System.IO.File]::Exists($package)) {
-            $packageBuiltFromUpdate = $true
             Move-Item $package $outputPath -Force
         }
     }
-
-
-    if (!$packageBuiltFromUpdate) {
+    else {
+        <#
         if (![System.IO.Directory]::Exists($outputPath)) {
             New-Item -Path $outputPath -ItemType Directory
         }
@@ -50,6 +51,7 @@ function New-ChocoPackageWithConfig {
         foreach ($f in $extraFiles) {
             Move-Item $f.FullName $tempDir
         }
+        #>
 
         # Find and compile all .ahk files
         $ahkFiles = Get-ChildItem -Path $packageDir -Filter *.ahk -Recurse
@@ -62,12 +64,15 @@ function New-ChocoPackageWithConfig {
 
         choco pack $nuSpec --outputdirectory $outputPath
 
+        <#
         # Move all the extra files from the temp directory
         # back to the package directory
         $extraFiles = Get-ChildItem -Path $tempDir
         foreach ($f in $extraFiles) {
             Move-Item $f.FullName $packageDir
         }
+
         Remove-Item $tempDir -Recurse -Force
+        #>
     }
 }

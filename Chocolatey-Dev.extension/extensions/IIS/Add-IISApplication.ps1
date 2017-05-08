@@ -2,11 +2,11 @@ function Add-IISApplication
 {
 	[CmdletBinding()]
     param(
-        [Parameter(ValueFromPipeline = $true)] [string] $parentSite,
-        [Parameter(ValueFromPipeline = $true)] [string] $name,
-		[Parameter(ValueFromPipeline = $true)] [string] $physicalPath,
-		[Parameter(ValueFromPipeline = $true)] [string] $appPool,
-		[Parameter(ValueFromPipeline = $true)] [string] $isSubApplication
+        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $parentSite,
+        [Parameter(Position = 1, ValueFromPipeline = $true)][string] $name,
+		[Parameter(Position = 2, ValueFromPipeline = $true)][string] $physicalPath,
+		[Parameter(Position = 3, ValueFromPipeline = $true)][string] $appPool,
+		[Parameter(Position = 4, ValueFromPipeline = $true)][string] $isSubApplication
     )
 
     if ($isSubApplication) {

@@ -1,8 +1,8 @@
 function Invoke-ChocoPushWithConfig {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
-        [Parameter(Mandatory = $false, Position = 1)][String] $searchTerm = '',
-        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
+        [Parameter(Position = 0, Mandatory = $true)][ValidateNotNullOrEmpty()][String] $baseDir,
+        [Parameter(Position = 1, Mandatory = $false)][String] $searchTerm = '',
+        [Parameter(Position = 2, Mandatory = $false)][String] $sourceType = 'local'
     )
 
     $searchTerm = Get-SearchTerm $searchTerm
@@ -21,10 +21,14 @@ function Invoke-ChocoPushWithConfig {
 
             # Make sure we can access the source directory
             if (!$pushTo.StartsWith('http') -and !(Test-Path $pushTo)) {
-                return
+                break
             }
 
-            $packageAritifactRegEx = $($p.Name -replace '(.*?).nuspec', '$1.[0-9\.]+\.nupkg')
+            $packageAritifactRegEx = $p.Name -replace '(.*?).nuspec', '$1([0-9\.]+)\.nupkg'
+
+            # Delete any previous versions of the same package
+            Get-ChildItem $pushTo -Recurse -File `
+                | Where-Object { $_.Name -match $packageAritifactRegEx } | Remove-Item
 
             Get-ChildItem -Path $baseDir -Recurse -File `
                 | Where-Object { $_.Name -match $packageAritifactRegEx } `

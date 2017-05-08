@@ -2,7 +2,7 @@ function Get-FromJson
 {
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true)] [string] $file
+        [Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true)] [string] $file
     )
 
     try {

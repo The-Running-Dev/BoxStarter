@@ -2,8 +2,8 @@ function Set-IISApplicationPoolIdentity
 {
 	[CmdletBinding()]
     param(
-        [Parameter(ValueFromPipeline = $true)] [string] $appPool,
-        [Parameter(ValueFromPipeline = $true)] [string] $appPoolIdentityType
+        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $appPool,
+        [Parameter(Position = 1, ValueFromPipeline = $true)][string] $appPoolIdentityType
     )
 
 	Write-Host "Setting Application Pool Identity: $appPoolIdentityType"

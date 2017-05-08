@@ -2,7 +2,7 @@ function Start-IISWebSite()
 {
 	[CmdletBinding()]
     param(
-        [Parameter(ValueFromPipeline = $true)] [string] $webSite
+        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $webSite
     )
 
     $pool = Get-Item "IIS:\$webSite" -ErrorAction SilentlyContinue

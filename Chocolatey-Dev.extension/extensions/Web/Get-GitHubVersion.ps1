@@ -1,7 +1,7 @@
 function Get-GitHubVersion {
     Param (
-        [Parameter(Mandatory = $true)][string] $repository,
-        [Parameter(Mandatory = $false)][string] $downloadUrlRegEx
+        [Parameter(Position = 0, Mandatory = $true)][string] $repository,
+        [Parameter(Position = 1, Mandatory = $false)][string] $downloadUrlRegEx
     )
     $release = @{
         Version = ''

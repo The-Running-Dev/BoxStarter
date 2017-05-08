@@ -1,9 +1,9 @@
 function Get-ConfigSetting {
     [cmdletbinding()]
     param (
-        [parameter(Mandatory = $true)][PSCustomObject] $config,
-        [parameter(Mandatory = $true)][string] $key,
-        [parameter(Mandatory = $false)][string] $defaultValue = $null
+        [parameter(Position = 0, Mandatory = $true)][PSCustomObject] $config,
+        [parameter(Position = 1, Mandatory = $true)][string] $key,
+        [parameter(Position = 2, Mandatory = $false)][string] $defaultValue = $null
     )
 
     if ($config.$key) {

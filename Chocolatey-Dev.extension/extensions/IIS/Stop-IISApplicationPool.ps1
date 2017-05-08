@@ -2,7 +2,7 @@ function Stop-IISApplicationPool
 {
 	[CmdletBinding()]
     param(
-        [Parameter(ValueFromPipeline = $true)] [string] $appPool
+        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $appPool
     )
 
     $pool = Get-Item "IIS:\AppPools\$appPool" -ErrorAction SilentlyContinue

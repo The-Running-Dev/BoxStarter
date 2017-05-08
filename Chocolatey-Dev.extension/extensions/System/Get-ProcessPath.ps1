@@ -1,7 +1,7 @@
 function Get-ProcessPath {
     [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory = $true)] [string] $name
+        [Parameter(Position = 0, Mandatory = $true)][string] $name
     )
 
     $path = ''

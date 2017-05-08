@@ -1,6 +1,6 @@
 function Get-SearchTerm {
     param (
-        [Parameter(Mandatory = $false, Position = 1)][String] $searchTerm = ''
+        [Parameter(Position = 0, Mandatory = $false)][String] $searchTerm = ''
     )
 
     return $searchTerm -replace '\.\\(.*?)\\', '$1'

@@ -1,9 +1,9 @@
 function Invoke-ChocoPackWithConfig {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
-        [Parameter(Mandatory = $false, Position = 1)][String] $searchTerm = '',
-        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local',
-        [Parameter(Mandatory = $false, Position = 3)][switch] $force
+        [Parameter(Position = 0, Mandatory = $true)][ValidateNotNullOrEmpty()][String] $baseDir,
+        [Parameter(Position = 1, Mandatory = $false)][String] $searchTerm = '',
+        [Parameter(Position = 2, Mandatory = $false)][String] $sourceType = 'local',
+        [Parameter(Position = 3, Mandatory = $false)][switch] $force
     )
 
     $searchTerm = Get-SearchTerm $searchTerm

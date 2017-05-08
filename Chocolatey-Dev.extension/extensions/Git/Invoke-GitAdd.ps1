@@ -2,7 +2,7 @@ function Invoke-GitAdd
 {
     [CmdletBinding()]
     param(
-        [Parameter(ValueFromPipeline = $true)] [string] $file
+        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $file
     )
 
     GitConfig

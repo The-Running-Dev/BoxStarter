@@ -2,7 +2,7 @@ function Get-NextVersion
 {
     [CmdletBinding()]
     param(
-        [Parameter(ValueFromPipeline = $true)] [object] $version
+        [Parameter(Position = 0, ValueFromPipeline = $true)] [object] $version
     )
 
     $buildDate = $([DateTime]::Now.ToString("yyy.MM.dd"))

@@ -4,7 +4,7 @@ function Write-BuildProgress
 {
     [CmdletBinding()]
     param(
-        [Parameter(ValueFromPipeline = $true)] [string] $message
+        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $message
     )
 
     # If the build is running inside TeamCity

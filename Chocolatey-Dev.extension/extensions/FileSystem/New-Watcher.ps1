@@ -1,10 +1,9 @@
 function New-Watcher {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param (
-        [Parameter(Mandatory = $true, Position = 0)]
-        [ValidateNotNullOrEmpty()] [String] $path,
-        [Parameter(Mandatory = $false, Position = 1)] [String] $filter = '*.*',
-        [Parameter(Mandatory = $false)] [System.IO.NotifyFilters] $notifyFilter = ('FileName', 'LastWrite', 'LastAccess'),
+        [Parameter(Position = 0, Mandatory = $true)][ValidateNotNullOrEmpty()] [String] $path,
+        [Parameter(Position = 1, Mandatory = $false)][string] $filter = '*.*',
+        [Parameter(Position = 2, Mandatory = $false)] [System.IO.NotifyFilters] $notifyFilter = ('FileName', 'LastWrite', 'LastAccess'),
         [Switch] $recurse
     )
 

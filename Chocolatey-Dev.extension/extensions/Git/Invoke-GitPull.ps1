@@ -2,7 +2,7 @@ function Invoke-GitPull
 {
     [CmdletBinding()]
     param(
-        [Parameter(ValueFromPipeline = $true)] [string] $branch
+        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $branch
     )
 
     $logicalBranch = $branch.replace("refs/heads/", "")

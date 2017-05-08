@@ -1,7 +1,7 @@
 function Remove-Directory
 {
     param(
-        [string] $path
+        [Parameter(Position = 0, Mandatory = $true)][string] $path
     )
 
     Remove-Item -Recurse -Force -Path $path -ErrorAction SilentlyContinue

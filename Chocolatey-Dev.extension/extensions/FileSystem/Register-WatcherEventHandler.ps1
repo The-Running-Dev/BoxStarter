@@ -1,11 +1,11 @@
 function Register-WatcherEventHandler {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param (
-        [Parameter(Mandatory = $true, Position = 0)] [Alias('FSW')] [ValidateNotNullOrEmpty()] [System.IO.FileSystemWatcher] $fileSystemWatcher,
-        [Parameter(Mandatory = $true, Position = 1)] [ValidateSet('Changed', 'Created', 'Deleted', 'Disposed', 'Error', 'Renamed')] [String] $eventName,
-        [Parameter(Mandatory = $true, Position = 2)] [Alias('Identifier')] [String] $eventIdentifier,
-        [Parameter(Mandatory = $true, Position = 3)] [Alias('Action')] [Scriptblock] $eventAction,
-        [Parameter(Mandatory = $false, Position = 4)] [Alias('MessageData')] [PSObject] $data
+        [Parameter(Position = 0, Mandatory = $true)] [Alias('FSW')] [ValidateNotNullOrEmpty()] [System.IO.FileSystemWatcher] $fileSystemWatcher,
+        [Parameter(Position = 1, Mandatory = $true)] [ValidateSet('Changed', 'Created', 'Deleted', 'Disposed', 'Error', 'Renamed')] [String] $eventName,
+        [Parameter(Position = 2, Mandatory = $true)] [Alias('Identifier')] [string] $eventIdentifier,
+        [Parameter(Position = 3, Mandatory = $true)] [Alias('Action')] [scriptblock] $eventAction,
+        [Parameter(Position = 4, Mandatory = $false)] [Alias('MessageData')] [PSObject] $data
     )
 
     if ($PSCmdlet.ShouldProcess("$($FileSystemWatcher.Path)", "Register Event Handler (for File $EventName)")) {

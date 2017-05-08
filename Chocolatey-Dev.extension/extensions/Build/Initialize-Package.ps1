@@ -1,10 +1,10 @@
 function Initialize-Package() {
     param(
-        [parameter(Mandatory = $true, Position = 0)][string] $spec,
-        [parameter(Mandatory = $true, Position = 1)][string] $packageId,
-        [parameter(Mandatory = $false)][string] $outputDirectory = '',
-        [parameter(Mandatory = $false)][string] $version = '',
-        [Parameter(Mandatory = $false)][string] $releaseNotes = ''
+        [parameter(Position = 0, Mandatory = $true)][string] $spec,
+        [parameter(Position = 1, Mandatory = $true)][string] $packageId,
+        [parameter(Position = 2, Mandatory = $false)][string] $outputDirectory = '',
+        [parameter(Position = 3, Mandatory = $false)][string] $version = '',
+        [Parameter(Position = 4, Mandatory = $false)][string] $releaseNotes = ''
     )
 
     if (-not(Test-Path $spec)) {

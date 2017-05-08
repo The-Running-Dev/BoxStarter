@@ -1,8 +1,8 @@
 function Copy-Files
 {
     param(
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $source,
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $destination
+        [Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true)][string] $source,
+        [Parameter(Position = 1, Mandatory = $true, ValueFromPipeline = $true)][string] $destination
     )
 
     Write-Host "Starting to Copy $source to $destination"

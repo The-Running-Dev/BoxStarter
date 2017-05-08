@@ -1,7 +1,7 @@
 function Test-Url {
     param(
-        [Parameter(ValueFromPipeline = $true)] [string] $uri,
-        [Parameter(ValueFromPipeline = $true)] [string] $expectedResponse
+        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $uri,
+        [Parameter(Position = 1, ValueFromPipeline = $true)][string] $expectedResponse
     )
 
     $expectedCode = 200

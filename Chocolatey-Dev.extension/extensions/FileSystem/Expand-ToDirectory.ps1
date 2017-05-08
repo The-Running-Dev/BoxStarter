@@ -1,8 +1,8 @@
 function Expand-ToDirectory()
 {
     param(
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $file,
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $destination
+        [Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true)][string] $file,
+        [Parameter(Position = 1, Mandatory = $true, ValueFromPipeline = $true)][string] $destination
     )
 
     try {

@@ -1,8 +1,8 @@
 function Clear-Directory
 {
     param(
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $path,
-        [Parameter(ValueFromPipeline = $true)][string[]] $exclude
+        [Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true)][string] $path,
+        [Parameter(Position = 1, ValueFromPipeline = $true)][string[]] $exclude
     )
 
     Remove-Item -Path $path\** -exclude $exclude -recurse -force

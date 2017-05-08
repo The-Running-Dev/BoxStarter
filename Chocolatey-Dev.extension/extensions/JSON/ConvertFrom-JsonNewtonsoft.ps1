@@ -1,7 +1,7 @@
 function ConvertFrom-JsonNewtonsoft
 {
     param(
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true)] [string] $string
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $string
     )
 
     if (!$global:asm) {

@@ -1,7 +1,7 @@
 function Invoke-AutoHotKey {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $baseDir,
-        [Parameter(Mandatory = $true, Position = 2)][object] $files = @{}
+        [Parameter(Position = 0, Mandatory = $true)][ValidateNotNullOrEmpty()][String] $baseDir,
+        [Parameter(Position = 1, Mandatory = $true)][object] $files = @{}
     )
 
     if (!$files) {

@@ -1,7 +1,7 @@
 function Get-SourceConfig() {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][Hashtable] $config,
-        [Parameter(Mandatory = $false, Position = 2)][String] $sourceType = 'local'
+        [Parameter(Position = 0, Mandatory = $true)][Hashtable] $config,
+        [Parameter(Position = 1, Mandatory = $false)][String] $sourceType = 'local'
     )
 
     if ($sourceType -match 'remote') {

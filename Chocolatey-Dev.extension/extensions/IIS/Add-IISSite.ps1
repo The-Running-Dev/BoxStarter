@@ -2,9 +2,9 @@ function Add-IISSite
 {
 	[CmdletBinding()]
     param(
-        [Parameter(ValueFromPipeline = $true)] [string] $siteName,
-        [Parameter(ValueFromPipeline = $true)] [string] $physicalPath,
-		[Parameter(ValueFromPipeline = $true)] [string] $applicationPool
+        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $siteName,
+        [Parameter(Position = 1, ValueFromPipeline = $true)][string] $physicalPath,
+		[Parameter(Position = 2, ValueFromPipeline = $true)][string] $applicationPool
     )
 
 	if(!(Test-Path IIS:\Sites\$siteName))

@@ -2,9 +2,9 @@ function Get-XmlValue
 {
     [CmdletBinding()]
     param(
-        [Parameter(ValueFromPipeline = $true)] [string] $file,
-        [string] $xpath,
-        [string] $value
+        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $file,
+        [Parameter(Position = 1, ValueFromPipeline = $true)][string] $xpath,
+        [Parameter(Position = 2, ValueFromPipeline = $true)][string] $value
     )
 
     $xml = New-Object System.Xml.XmlDocument

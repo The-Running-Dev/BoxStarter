@@ -1,7 +1,7 @@
 function Get-DirectoryConfig {
     param (
-        [Parameter(Mandatory = $true, Position = 0)][ValidateNotNullOrEmpty()][String] $path,
-        [Parameter(Mandatory = $false, Position = 1)][Hashtable] $baseConfig = $global:config
+        [Parameter(Position = 0, Mandatory = $true)][ValidateNotNullOrEmpty()][String] $path,
+        [Parameter(Position = 1, Mandatory = $false)][Hashtable] $baseConfig = $global:config
     )
 
     $configFile = Join-Path $path $global:configFile

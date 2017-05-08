@@ -1,8 +1,8 @@
 function Get-Packages {
     param (
-        [parameter(Mandatory = $true)][string] $baseDir,
-        [parameter(Mandatory = $false)][string] $searchTerm = '',
-        [parameter(Mandatory = $false)][string] $filter = ''
+        [parameter(Position = 0, Mandatory = $true)][string] $baseDir,
+        [parameter(Position = 1, Mandatory = $false)][string] $searchTerm = '',
+        [parameter(Position = 2, Mandatory = $false)][string] $filter = ''
     )
 
     if (!$searchTerm) {

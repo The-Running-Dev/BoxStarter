@@ -2,8 +2,8 @@ function Save-ToJson
 {
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true)][object] $json,
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string] $file
+        [Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true)][object] $json,
+        [Parameter(Position = 1, Mandatory = $true, ValueFromPipeline = $true)][string] $file
     )
 
     try {
