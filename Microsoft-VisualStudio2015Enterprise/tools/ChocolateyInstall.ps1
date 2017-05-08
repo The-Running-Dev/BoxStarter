@@ -1,30 +1,16 @@
-﻿$packageChecksum        = 'E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855EF124C6BC9F5AA29929994BE1C670AE971FF2EF97CD4B22D6A09C724C0E6617D07DDD22F961EF9B2B06FB0B78E566F517EE27CE43EC8A05EA94692C923723A61'
-$defaultConfiguration   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
-$parameters             = Get-Parameters $env:chocolateyPackageParameters
-$configuration          = Get-ConfigurationFile $parameters['Configuration'] $defaultConfiguration
-$arguments              = @{
-    url                 = 'https://download.my.visualstudio.com/pr/en_visual_studio_enterprise_2015_with_update_3_x86_x64_web_installer_8922986.exe?t=76368aea-bbfd-4488-825c-921f8913f18e&e=1492142627&h=85b56a83096ad6300bf670cf6c2bedc8&su=1'
-    checksum            = ''
-    silentArgs          = "/Quiet /NoRestart /NoRefresh /Log $env:Temp\VisualStudio.log /AdminFile $configuration"
-    validExitCodes      = @(2147781575, 2147205120)
+﻿. (Join-Path $env:ChocolateyPackageFolder 'tools\Helpers.ps1')
+
+$packageChecksum            = '42BD8BE2EA0E87C239610FED4FCC24D0B65711181E760CC326942B1078E7CB9DEF124C6BC9F5AA29929994BE1C670AE971FF2EF97CD4B22D6A09C724C0E6617D07DDD22F961EF9B2B06FB0B78E566F517EE27CE43EC8A05EA94692C923723A61'
+$defaultConfigurationFile   = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
+$parameters                 = Get-Parameters $env:chocolateyPackageParameters
+$configurationFile          = Get-ConfigurationFile $parameters['Configuration'] $defaultConfigurationFile
+$arguments                  = @{
+    url                     = 'https://download.my.visualstudio.com/pr/en_visual_studio_enterprise_2015_with_update_3_x86_x64_web_installer_8922986.exe?t=da3749e0-d090-49b5-98d2-399aa43565d2&e=1494202187&h=a5bc8a9169826e69a6065ae7ec6971d7&su=1'
+    checksum                = 'D970DFE1230A8E46B2543C60EA468663AE1511C2043A0B9714F99BF1A1BF35FB'
+    silentArgs              = "/Quiet /NoRestart /NoRefresh /Log $env:Temp\VisualStudio.log /AdminFile $configuration"
+    validExitCodes          = @(2147781575, 2147205120)
 }
 
-# If features are passed in through the command line
-if ($parameters['features']) {
-    $features = $parameters.Split(',')
-    [xml]$xml = Get-Content $configuration
-
-    foreach ($feature in $features)
-    {
-        $node = $xml.DocumentElement.SelectableItemCustomizations.ChildNodes | ? {$_.Id -eq $feature}
-
-        if ($node -ne $null)
-        {
-            $node.Selected = "yes"
-        }
-    }
-
-    $xml.Save($configuration)
-}
+Set-Features $parameters $configurationFile
 
 Install-Package $arguments

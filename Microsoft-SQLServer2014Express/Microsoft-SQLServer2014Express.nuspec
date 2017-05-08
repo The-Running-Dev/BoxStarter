@@ -6,8 +6,6 @@
     <title>SQL Server 2014 Express with SP2</title>
     <authors>Microsoft</authors>
     <projectUrl>http://msdn.microsoft.com/nl-nl/evalcenter/dn434042.aspx</projectUrl>
-    <owners>The-Running-Dev</owners>
-    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/59ad5e2e32c52fd2a45a9735f95a81368f9e5e85/icons/microsoft-sql-server.svg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
@@ -44,6 +42,8 @@
     <releaseNotes>Update download url for SP2 release.</releaseNotes>
     <language>en-US</language>
     <tags>mssql sql server 2014 express sp2</tags>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
       <dependency id="Chocolatey-Package.extension" />
     </dependencies>
