@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>VMWare-Workstation</id>
+    <version>12.5.5</version>
+    <title>VMware Workstation</title>
+    <authors>VMware, Inc.</authors>
+    <licenseUrl>https://www.vmware.com/download/eula/universal_eula.html</licenseUrl>
+    <projectUrl>https://www.vmware.com/products/workstation/</projectUrl>
+    <iconUrl>https://pbs.twimg.com/profile_images/517202882097987584/uMQ0p3g__400x400.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>VMware Workstation enables technical professionals to develop, test, demonstrate, and deploy software by running multiple x86-based Windows, Linux, and other operating systems simultaneously on the same PC.</description>
+    <summary>VMware Workstation - Desktop virtualization software</summary>
+    <releaseNotes>http://pubs.vmware.com/Release_Notes/en/workstation/12pro/workstation-1211-release-notes.html</releaseNotes>
+    <copyright>Copyright © 2015 VMware, Inc. All rights reserved.</copyright>
+    <tags>vmware workstation virtual machine virtualization</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>
