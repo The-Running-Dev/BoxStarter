@@ -1,16 +1,16 @@
 function Set-Features {
     param(
-        [PSCustomObject] $parameters
+        [PSCustomObject] $parameters,
+        [string] $configurationFile
     )
 
     # If exclude features were passed in through the command line
     if ($parameters.excludefeatures) {
+        [xml] $xml = Get-Content $configurationFile
+
         Write-Host "Excluding: $($parameters.excludefeatures)"
 
-        [xml] $xml = Get-Content $configurationFile
-        $features = $parameters.excludefeatures.Split(',')
-
-        foreach ($feature in $features) {
+        foreach ($feature in $parameters.excludefeatures.Split(',')) {
             $excludeFeature = $xml.CreateElement('ExcludeApp')
             $excludeFeature.SetAttribute('ID', $feature)
 
