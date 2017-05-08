@@ -1,9 +1,9 @@
 ﻿$arguments      = @{
-    url         = 'https://nodejs.org/dist/v7.9.0/node-v7.9.0-x64.msi'
-    checksum    = '9722D751E9D5DD54E2F4384D4259486971B3F073F6CABD32066668D6ABEF4B17'
+    url         = 'https://nodejs.org/dist/v7.10.0/node-v7.10.0-x64.msi'
+    checksum    = '24A9170BAB2F9F0AFD54B1CA019F249CF30308D682151EB23DCA3918DC6AFFF6'
     silentArgs  = '/quiet'
 }
 
 Install-Package $arguments
 
-$env:Path = "$($env:Path);$(Get-ProgramFilesDirectory)\NodeJS"
+$env:Path += ";$(Get-ProgramFilesDirectory)\NodeJS"
