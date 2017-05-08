@@ -46,13 +46,13 @@ function global:au_BeforeUpdate {
         Copy-Item $existingPackageInstaller $packageDir -Force
 
         if ($existingPackageInstaller -match '\.(exe|msi)$') {
-            Copy-Item "$($existingPackageInstaller).ignore" $packageDir -Force
+            # Create a .ignore file for each found executable
+            New-Item "$packageDir\$(Split-Path -Leaf $existingPackageInstaller).ignore" -Force
         }
 
         $Latest.Checksum32 = (Get-FileHash $existingPackageInstaller).Hash
         $Latest.FileName32 = $packageInstaller
     }
-
 
     if ([System.IO.Directory]::Exists($settingsDir) -and $settingsZip) {
         Compress-Archive -Path $settingsDir -DestinationPath $settingsZip -Force

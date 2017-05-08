@@ -23,7 +23,8 @@ function global:au_BeforeUpdate {
             -FileNameBase $([System.IO.Path]::GetFileNameWithoutExtension($existingPackageInstaller))
 
         # Find the downloaded file
-        $downloadedFile = Get-ChildItem -Recurse *.exe, *.msi, *.zip | Select-Object -First 1
+        $downloadedFile = Get-ChildItem `
+            -Recurse *.7z, *.zip, *.tar.gz, *.exe, *.msi | Select-Object -First 1
 
         # Remove the _32 and any HTML encoded space
         $installer = Join-Path $packageDir ((Split-Path -Leaf $downloadedFile) -replace '%20', ' ')
@@ -44,7 +45,8 @@ function global:au_BeforeUpdate {
         Copy-Item $existingPackageInstaller $packageDir -Force
 
         if ($existingPackageInstaller -match '\.(exe|msi)$') {
-            Copy-Item "$($existingPackageInstaller).ignore" $packageDir -Force
+            # Create a .ignore file for each found executable
+            New-Item "$packageDir\$(Split-Path -Leaf $existingPackageInstaller).ignore" -Force
         }
 
         $Latest.Checksum32 = (Get-FileHash $existingPackageInstaller).Hash
