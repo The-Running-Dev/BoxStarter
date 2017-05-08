@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Docker</id>
+    <version>17.05.0</version>
+    <title>Docker</title>
+    <authors>Docker Contributors</authors>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://www.docker.com/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/ahmetalpbalkan/docker-chocolatey/d9d3bd5a750d03fc8933e1bee4c3755f361e2797/docker.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    Docker is an open platform for developers and sysadmins to build, ship,
+    and run distributed applications. This package contains the docker client
+    for Windows and not the Docker engine to run containers on Windows hosts.
+
+    NOTE: Docker client for Windows is not a Docker container engine for Windows.
+    You can use this to manage your Linux and Windows machines running as Docker hosts.
+    You might want to have a look at the "docker-for-windows" package.
+    </description>
+    <summary>Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications.</summary>
+    <releaseNotes>Updated to the latest Docker version.</releaseNotes>
+    <tags>docker devops containers</tags>
+    <docsUrl>https://docs.docker.com/engine/getstarted/</docsUrl>
+    <mailingListUrl>https://github.com/docker/docker#talking-to-other-docker-users-and-contributors</mailingListUrl>
+    <bugTrackerUrl>https://github.com/docker/docker/issues</bugTrackerUrl>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+      <dependency id="Chocolatey-Package.extension" />
+    </dependencies>
+  </metadata>
+</package>

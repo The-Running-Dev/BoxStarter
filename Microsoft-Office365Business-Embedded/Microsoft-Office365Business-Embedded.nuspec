@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+	<metadata>
+		<id>Microsoft-Office365Business-Embedded</id>
+		<version>1703.7967.2139</version>
+		<title>Office 365 Business</title>
+		<authors>Microsoft</authors>
+		<description>
+		Office 365 Business Installer
+
+		Access, Excel, Groove, InfoPath, Lync, OneDrive, OneNote, Outlook
+		PowerPoint, Project, Publisher, SharePointDesigner, Visio, Word
+		</description>
+		<owners>The-Running-Dev</owners>
+    	<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+		<dependencies>
+      		<dependency id="Chocolatey-Package.extension" />
+    	</dependencies>
+	</metadata>
+</package>
