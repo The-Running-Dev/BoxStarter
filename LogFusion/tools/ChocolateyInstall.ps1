@@ -5,3 +5,5 @@
 }
 
 Install-Package $arguments
+
+Install-BinFile LogFusion 'C:\Program Files (x86)\LogFusion\LogFusion.exe'
