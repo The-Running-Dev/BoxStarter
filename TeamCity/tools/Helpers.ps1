@@ -13,3 +13,31 @@ function Set-ChocolateyPackageOptions {
         }
     }
 }
+
+function Get-TeamCityService() {
+    param(
+        [Parameter(Position = 0, Mandatory = $true)][string] $serviceName
+    )
+
+    $service = Get-Service $serviceName -ErrorAction SilentlyContinue
+
+    if ($service) {
+        return $true
+    }
+
+    return $false
+}
+
+function Uninstall-Service {
+    param(
+        [Parameter(Position = 0, Mandatory = $true)][string] $serviceName
+    )
+
+    if (Get-TeamCityService $serviceName) {
+        Stop-Service $service
+    }
+
+    if ($service) {
+        & sc.exe delete $serviceName
+    }
+}
