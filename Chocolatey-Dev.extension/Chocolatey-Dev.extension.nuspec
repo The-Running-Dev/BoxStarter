@@ -17,7 +17,7 @@
       <dependency id="NuGet-Commandline" />
       <dependency id="Octopus-Tools" />
       <dependency id="psake" />
-      <dependency id="pscx" />
+      <dependency id="Powershell-CommunityExtensions" />
     </dependencies>
   </metadata>
 </package>
