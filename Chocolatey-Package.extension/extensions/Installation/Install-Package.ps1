@@ -8,7 +8,10 @@ function Install-Package {
     if (!(Test-FileExists $packageArgs.file)) {
         Write-Message "Install-Package: Downloading from '$($arguments.url)'"
 
-        $arguments.file = Get-ChocolateyWebFile @packageArgs
+        $arguments.file = Get-ChocolateyWebFile `
+            -PackageName $packageArgs.packageName `
+            -FileFullPath $packageArgs.url `
+            -Destination $packageArgs.destination
     }
 
     Install-ChocolateyInstallPackage `
@@ -24,20 +27,14 @@ function Install-Package {
             $packageArgs.executable = Join-Path $packageArgs.destination $packageArgs.executable
         }
 
-        # Recreate the arguments using the executable parameters
-        $packageArgs = @{
-            packageName = $packageArgs.executablePackageName
-            file = $packageArgs.executable
-            silentArgs = $packageArgs.executableArgs
-            fileType = Get-FileExtension $packageArgs.file
-            validExitCodes = $packageArgs.validExitCodes
-        }
-
-        Write-Message "Install-Package: $($packageArgs | Out-String)"
-
-        Install-ChocolateyInstallPackage @packageArgs
+        Install-ChocolateyInstallPackage `
+            -PackageName $packageArgs.packageName `
+            -File $packageArgs.executable `
+            -FileType (Get-FileExtension $packageArgs.executable) `
+            -SilentArgs $packageArgs.executableArgs `
+            -ValidExitCodes $packageArgs.validExitCodes
     }
 
     Get-ChildItem -Path $env:ChocolateyPackageFolder `
-        -Include *.zip, *.7z, *.exe, *.msi, *.reg -Recurse -File | Remove-Item
+        -Include *.zip, *.7z, *.tar.gz, *.exe, *.msi, *.reg -Recurse -File | Remove-Item
 }
