@@ -17,7 +17,7 @@
   ```
 
 ## Packages
-  * Acronis True Image
+  * 7 Zip
   * CCleaner
   * Chocolatey-Dev.extension
   * Chocolatey-Package.extension
@@ -30,6 +30,7 @@
   * Drivers (ASRock Fatal1ty X99 Professional Gaming i7 Motherboard)
   * Dropbox
   * ESETNOD32 Antivirus
+  * Evernote
   * F.Lux
   * Git
   * GitExtensions
@@ -41,36 +42,46 @@
   * iTunesFusion
   * JetBrains DataGrip
   * JetBrains Resharper Platform
+  * JetBrains TeamCity
   * JetBrains WebStorm
   * JRE
-  * KDiff3
   * K-LiteCodecPack
+  * KDiff3
   * LastPass for Applications
   * Launchy
   * LogFusion
   * MetaX
   * Microsoft MSBuild Targets
   * Microsoft Office 365 Business
+  * Microsoft-Office365Business-Embedded
   * Microsoft PowerBI
   * Microsoft SQL Server 2014 Developer
   * Microsoft SQL Server 2014 Express
   * Microsoft SQL Server 2016 Developer
+  * Microsoft SQL Server 2016 Express
+  * Microsoft SQL Server Management Studio
   * Microsoft Visual Studio 2015 Enterprise
+  * Microsoft-VisualStudio2015Enterprise-Embedded
   * Microsoft Visual Studio Code
   * Microsoft WebPI
   * MySQL Workbench
   * NodeJS
   * NTLite
+  * NuGet-CommandLine
+  * Octopus-Deploy
   * Octopus Tools
+  * Paint.NET
+  * Powershell-CommunityExtensions
   * Razer Synapse
   * Recuva
   * Rufus
   * Slack
   * Spotify
-  * TeamCity (In Progress)
   * TeamViewer
   * Visual C Redistributable 2013 (x86 & x64)
   * Visual C Redistributable 2015 (x86 & x64)
+  * VMWare-PowerCLI
+  * VMWare-RemoteConsole
   * VMWare Workstation
   * VoiceBot
   * VPNAreaChameleon

@@ -10,12 +10,10 @@ if (!$parameters.ContainsKey['sqlsysadminaccounts']) {
 
 $installerBase      = 'Microsoft SQL Server 2014 Express'
 $arguments          = @{
-    file            = 'SQLEXPR_x64_ENU.exe'
-    url             = 'https://download.microsoft.com/download/2/A/5/2A5260C3-4143-47D8-9823-E91BB0121F94/SQLEXPR_x64_ENU.exe'
-    checksum        = 'cc35e94030a24093a62e333e900c2e3c8f1eb253a5d73230a9f5527f1046825b'
+    file            = 'Microsoft SQL Server 2014 Express.exe'
     silentArgs      = "/Q /x:`"$env:Temp\$installerBase`""
-    executable      = '$env:Temp\$installerBase\Setup.exe'
-    executableArgs  = '$env:Temp\Setup.exe'
+    executable      = "$env:Temp\$installerBase\Setup.exe"
+    executableArgs  = $silentArgs
     validExitCodes  = @(2147781575, 2147205120)
 }
 

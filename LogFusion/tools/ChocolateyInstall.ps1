@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
-    url         = 'https://binaryfortressdownloads.com/Download/BFSFiles/117/LogFusionSetup-5.2.1.exe'
-    checksum    = '5EBAA729F3763F618961FD406ED5BD1828FEE656E2D330B76B699084623BE902'
+    url         = 'https://binaryfortressdownloads.com/Download/BFSFiles/117/LogFusionSetup-6.0.exe'
+    checksum    = '995FFF6D2819F1B1B8B3929CED8142DE02E4909F170E812E93C71AE0C768C08B'
     silentArgs  = '/VERYSILENT /LAUNCHAFTER=0 /MERGETASKS=`"!desktopicon,!desktopicon\common,!desktopicon\user`"'
 }
 

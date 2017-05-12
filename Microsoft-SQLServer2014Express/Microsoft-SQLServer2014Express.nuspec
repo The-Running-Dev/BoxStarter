@@ -3,7 +3,7 @@
   <metadata>
     <id>Microsoft-SQLServer2014Express</id>
     <version>12.2.5000.20160811</version>
-    <title>SQL Server 2014 Express with SP2</title>
+    <title>Microsoft SQL Server 2014 Express with SP2</title>
     <authors>Microsoft</authors>
     <projectUrl>http://msdn.microsoft.com/nl-nl/evalcenter/dn434042.aspx</projectUrl>
     <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/59ad5e2e32c52fd2a45a9735f95a81368f9e5e85/icons/microsoft-sql-server.svg</iconUrl>

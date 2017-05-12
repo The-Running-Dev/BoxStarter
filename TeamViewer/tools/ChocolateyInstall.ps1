@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
     url             = 'https://download.teamviewer.com/download/TeamViewer_Setup_en.exe'
-    checksum        = 'A99042E54EC68839AA375A2A205BAF0DFF02160B4A99CE2C887FE5EC7EF69A41'
+    checksum        = '009868767950256D823B0E9C6A89B8A7B2CEF63424ADC1840D1350FFA0BD3E42'
     silentArgs      = '/S'
 }
 
