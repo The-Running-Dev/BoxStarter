@@ -1,10 +1,18 @@
+param([switch] $force)
+
 $baseDir = Join-Path $PSScriptRoot 'Base'
 $baseZip = Join-Path $PSScriptRoot 'Base.zip'
 
 if (Test-Path $baseZip) {
+    New-Item -ItemType Directory $baseDir -Force | Out-Null
     Expand-Archive $baseZip $baseDir
 
-    & "$baseDir\install.choco.ps1"
+    if ($force) {
+        & "$baseDir\install.choco.ps1" -Force
+    }
+    else {
+        & "$baseDir\install.choco.ps1"
+    }
 
     Remove-Item $baseZip -Force
     Remove-Item $baseDir -Recurse -Force

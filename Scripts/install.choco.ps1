@@ -82,9 +82,8 @@ if (!(Test-Path $chocoInstallPath) -or $force) {
 
     choco feature enable -n allowGlobalConfirmation
 
-    if ($chocoPersonalPackage)
-    {
-        choco install Chocolatey-Personal -s (Split-Path -Parent $chocoPersonalPackage)
+    if ($chocoPersonalPackage) {
+        choco upgrade Chocolatey-Personal -s (Split-Path -Parent $chocoPersonalPackage)
     }
 }
 #>
