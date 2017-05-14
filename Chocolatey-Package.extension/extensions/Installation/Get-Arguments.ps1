@@ -5,8 +5,10 @@ function Get-Arguments {
 
     $packageArgs = @{}
 
-    $arguments.GetEnumerator() | ForEach-Object {
-        $packageArgs[$_.Key] = $_.Value
+    if ($arguments) {
+        $arguments.GetEnumerator() | ForEach-Object {
+            $packageArgs[$_.Key] = $_.Value
+        }
     }
 
     $packageArgs.packageName = Get-Argument $arguments 'packageName' $env:ChocolateyPackageName
@@ -34,8 +36,8 @@ function Get-Arguments {
     # No file provided, find the first executable or zip in the package directory
     if (![System.IO.File]::Exists($packageArgs.file) -and !$packageArgs.url) {
         $packageArgs.file = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
-            -Include *.zip, *.7z, *.tar.gz, *.exe, *.msi, *.reg -Recurse -File `
-            | Select-Object -First 1 -ExpandProperty FullName)
+                -Include *.zip, *.7z, *.tar.gz, *.exe, *.msi, *.reg -Recurse -File `
+                | Select-Object -First 1 -ExpandProperty FullName)
     }
 
     $packageArgs.fileType = Get-FileExtension $packageArgs.file
