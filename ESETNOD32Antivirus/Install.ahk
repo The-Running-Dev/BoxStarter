@@ -15,7 +15,7 @@ WinActivate
 Sleep 1000
 ; Click Continue
 MouseClick left, 50, 580
-Sleep 5000
+Sleep 7000
 ; Click 'Accept'
 MouseClick left, 50, 580
 Sleep 400

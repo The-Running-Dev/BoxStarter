@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>ProGet</id>
+    <version>4.7.11</version>
+    <title>ProGet</title>
+    <authors>Inedo</authors>
+    <owners>Inedo</owners>
+    <licenseUrl>http://inedo.com/proget/license-agreement</licenseUrl>
+    <projectUrl>http://inedo.com/proget</projectUrl>
+    <iconUrl>http://inedo.com/resources/images/icons/proget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package sets up a ProGet instance on this server.</description>
+    <summary>NuGet server.</summary>
+    <releaseNotes />
+    <copyright />
+    <tags>proget nuget admin</tags>
+  </metadata>
+</package>

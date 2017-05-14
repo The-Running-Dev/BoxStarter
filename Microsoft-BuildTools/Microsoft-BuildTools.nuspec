@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft-BuildTools</id>
+    <version>15.0.26208.0</version>
+    <title>Microsoft Build Tools for Visual Studio 2017</title>
+    <authors>Microsoft Corporation</authors>
+    <owners>Microsoft Corporation</owners>
+    <licenseUrl>https://www.microsoft.com/en-us/download/details.aspx?id=48159</licenseUrl>
+    <projectUrl>https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017</projectUrl>
+    <iconUrl>https://openmerchantaccount.com/img/MSBuild.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    If you don't already have Visual Studio installed on your computer,
+    Microsoft Build Tools for Visual Studio 2017 provides the essential
+    tools for building managed applications.
+
+    These tools previously were included in the .NET Framework, but they are now available as
+    this separate download. The Visual Basic and C# compilers are also included in this download.
+
+    ### Note
+    This package installs MSBuild only. For Visual C++ Build Tools
+    see [visualcpp-build-tools](https://chocolatey.org/packages/visualcpp-build-tools) package.
+    </description>
+    <summary>These Build Tools allow you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE.</summary>
+    <releaseNotes>https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes</releaseNotes>
+    <tags>Microsoft Build Tools for Visual Studio 2017 MSBuild Compiler admin</tags>
+    <projectSourceUrl>https://github.com/Microsoft/msbuild</projectSourceUrl>
+    <dependencies>
+      <dependency id="dotnet4.5.2" version="4.5.2.20140902" />
+      <dependency id="kb2919355" version="1.0.20160915" />
+    </dependencies>
+  </metadata>
+</package>
