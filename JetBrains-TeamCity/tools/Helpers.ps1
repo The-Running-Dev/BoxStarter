@@ -1,6 +1,54 @@
-function Set-ChocolateyPackageOptions {
+function Assert-ValidTeamCityArguments {
     param(
-        [Parameter(Position = 0, Mandatory = $true)][hashtable] $options
+        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
+    )
+
+    if ((Get-Service $arguments.serviceName -ErrorAction SilentlyContinue)) {
+        Write-Host 'TeamCity service is alredy installed...aborting.'
+
+        return
+    }
+
+    if (-not (Assert-TcpPortIsOpen $arguments.servicePortNumber)) {
+        return
+    }
+}
+
+function Get-TeamCityInstallArguments {
+    param(
+        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
+    )
+
+    $packageArgs = Get-Arguments $arguments
+
+    Set-InstallOptions $packageArgs
+
+    if ([System.IO.Directory]::Exists($parameters.installDir)) {
+        $packageArgs.installDir = $parameters.installDir
+    }
+
+    if ([System.IO.Directory]::Exists($parameters.dataDir)) {
+        $packageArgs.dataDir = $parameters.dataDir
+    }
+
+    if ([System.IO.Directory]::Exists($parameters.javaDir)) {
+        $packageArgs.javaDir = $parameters.javaDir
+    }
+
+    if ($packageArgs.userName -and $packageArgs.password) {
+        $packageArgs.runAsSystem = $false
+    }
+
+    if (![System.IO.File]::Exists($packageArgs.file)) {
+        $packageArgs.file = Get-ChocolateyWebFile @packageArgs
+    }
+
+    return $packageArgs
+}
+
+function Set-InstallOptions {
+    param(
+        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
     )
 
     $packageParameters = $env:chocolateyPackageParameters
@@ -9,143 +57,135 @@ function Set-ChocolateyPackageOptions {
         $parameters = ConvertFrom-StringData -StringData $env:chocolateyPackageParameters.Replace(" ", "`n")
 
         $parameters.GetEnumerator() | ForEach-Object {
-            $options[($_.Key)] = ($_.Value)
+            $arguments[($_.Key)] = ($_.Value)
         }
     }
 }
 
-function Get-TeamCityService() {
+function Initialize-TeamCityDataDirectory {
     param(
-        [Parameter(Position = 0, Mandatory = $true)][string] $serviceName
+        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
     )
 
-    $service = Get-Service $serviceName -ErrorAction SilentlyContinue
+    $packageDir = $env:ChocolateyPackageFolder
+    $confDir = Join-Path $packageArgs.installDir 'conf'
 
-    if ($service) {
-        return $true
-    }
+    Remove-Item "$($arguments.installDir)\`$PLUGINSDIR" -Recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item "$($arguments.installDir)\`$TEMP" -Recurse -Force -ErrorAction SilentlyContinue
 
-    return $false
-}
-
-function New-TeamCityDatabase {
-    [CmdletBinding(SupportsShouldProcess = $true)]
-    param(
-        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $server,
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)][string] $database,
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $false)][string] $user = '',
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $false)][secureString] $password
-    )
-
-    [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.SMO") | Out-Null
-    [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.SmoExtended") | Out-Null
-
-    $sqlServer = New-Object Microsoft.SqlServer.Management.Smo.Server $server
-    $sqlServerDatabase = New-Object Microsoft.SqlServer.Management.Smo.Database $sqlServer, $database
-    $sqlServerDatabase.Create()
-
-    Add-UserToRole $server 'TeamCity' 'NT AUTHORITY\SYSTEM' 'db_owner'
-
-    Write-Host 'Database' $database 'created...done.'
-}
-
-Function Add-UserToRole {
-    [CmdletBinding(SupportsShouldProcess = $true)]
-    param(
-        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $server,
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)][string] $database,
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $false)][string] $user,
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $false)][string] $role
-    )
-
-    $sqlServer = New-Object Microsoft.SqlServer.Management.Smo.Server $server
-    $sqlServerDatabase = $sqlServer.Databases[$database]
-
-    if (-not $sqlServerDatabase) {
-        Write-Host "Database '$Database' does not exist on server '$server'...aborting."
-
-        Write-Host "Available Database on '$server': "
-        $sqlServer.Databases | Select-Object name
-
-        break
-    }
-
-    # Check if role exists in the database
-    $sqlServerRole = $sqlServerDatabase.Roles[$role]
-
-    if (-not $sqlServerRole) {
-        Write-Host "Role '$role' is not a valid role in the '$database' database...aborting."
-        Write-Host "Available Roles in '$database':"
-
-        $sqlServerDatabase.Roles | Select-Object name
-
-        break
-    }
-
-    if (!($sqlServer.Logins.Contains($user))) {
-        Write-Host "User '$user' does not exist on server '$server'...aborting."
-
-        break
-    }
-
-    if (-not $sqlServerDatabase.Users.Contains($user)) {
-        $login = New-Object Microsoft.SqlServer.Management.Smo.User $sqlServerDatabase, $user
-        $login.Login = $user
-        $login.Create()
-
-        $sqlServerRole = $sqlServerDatabase.Roles[$role]
-        $sqlServerRole.AddMember($user)
-
-        Write-Host "User '$user' added to role '$role' in database '$database'...done."
+    if (Test-Path $confDir) {
     }
     else {
-        $sqlServerRole = $sqlServerDatabase.Roles[$role]
-        $sqlServerRole.AddMember($user)
+        Get-ChocolateyUnzip -FileFullPath $packageArgs.configurationZip -Destination $packageArgs.installDir | Out-Null
+    }
 
-        Write-Host "User '$user' added to role '$role' in database '$database'...done."
+    if (Test-Path $($arguments.dataDir)) {
+    }
+    else {
+        Get-ChocolateyUnzip -FileFullPath $packageArgs.dataZip -Destination $packageArgs.installDir | Out-Null
+    }
+
+    if (-not (Test-Path (Join-Path $confDir 'server.xml'))) {
+        Copy-Item $arguments.serverConfig (Join-Path $confDir 'server.xml')
+    }
+    else {
+        # Set the port number in server.xml
+    }
+
+    $dataDir = ($packageArgs.dataDir -replace '\\', '\\') -replace ':', '\:'
+    Set-Content "$($packageArgs.installDir)\conf\teamcity-startup.properties" "teamcity.data.path=$dataDir"
+
+    <#
+    $configDir = "$($arguments.dataDir)\config"
+    if (-not (Test-Path $configDir)) {
+        New-Item -ItemType Directory $configDir | Out-Null
+    }
+
+    $jdbcDir = "$($arguments.dataDir)\lib\jdbc"
+    if (-not (Test-Path $jdbcDir)) {
+        New-Item -ItemType Directory $jdbcDir | Out-Null
+    }
+
+    $pluginsDir = "$($arguments.dataDir)\plugins"
+    if (-not (Test-Path $pluginsDir)) {
+        New-Item -ItemType Directory $pluginsDir | Out-Null
+        Copy-Item "$packageDir\Plugins\**" "$pluginsDir\" | Out-Null
+    }
+
+    $mySqlConnector = "$($arguments.dataDir)\lib\jdbc\mysql-connector-java-5.1.42-bin.jar"
+    if (-not (Test-Path $mySqlConnector)) {
+        Copy-Item "$packageDir\Database\mysql-connector-java-5.1.42-bin.jar" $mySqlConnector | Out-Null
+    }
+
+    $sqlServerConnector = "$($arguments.dataDir)\lib\jdbc\sqljdbc42.jar"
+    if (-not (Test-Path $sqlServerConnector)) {
+        Copy-Item "$packageDir\Database\sqljdbc42.jar" $sqlServerConnector | Out-Null
+    }
+    #>
+
+    $sqlServerIntegratedAuth = "$($arguments.javaDir)\bin\sqljdbc_auth.dll"
+    if (-not (Test-Path $sqlServerIntegratedAuth)) {
+        Copy-Item "$packageDir\Database\sqljdbc_auth_x86.dll" $sqlServerIntegratedAuth | Out-Null
     }
 }
 
-function Invoke-SqlNonQuery {
-    [CmdletBinding(SupportsShouldProcess = $true)]
+function Install-TeamCityDatabase {
     param(
-        [Parameter(Position = 0, ValueFromPipeline = $true)][string] $server,
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)][string] $database,
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)][string] $sql,
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $false)][string] $user = '',
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $false)][secureString] $password
+        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
     )
 
-    $credentials = "Integrated Security=SSPI"
+    if (-not (Assert-SqlServerDatabaseExists $packageArgs.databaseServer $packageArgs.databaseName)) {
+        #New-SqlServerDatabase $packageArgs.databaseServer $packageArgs.databaseName
+        #Add-SqlServerUserToRole  $packageArgs.databaseServer $packageArgs.databaseName 'NT AUTHORITY\SYSTEM' 'db_owner'
 
-    if ($user -and $password) {
-        $passwordAsPlainText = Convert-SecureStringToString $password
-        $credentials = "User=$user;Password=$passwordAsPlainText"
+        Restore-SqlServerBackup $packageArgs.databaseServer $packageArgs.databaseName $packageArgs$databaseBackup
     }
 
-    $connectionString = "Data Source=$server;$credentials;Initial Catalog=$database"
-
-    $connection = New-Object System.Data.SqlClient.SQLConnection($connectionString)
-    $command = New-Object System.Data.SqlClient.SQLCommand($sql, $connection)
-    $message = "`nServer: $server`nDatabase: $database`nSQL: `n$sql"
-
-    if ($PSCmdlet.ShouldProcess("$message")) {
-        $connection.Open()
-        $command.ExecuteNonQuery()
-        $connection.Close()
-    }
+    # Build and set the JDBC connection string in the database.properties
+    $connectionString = Get-JdbcSqlServerConnectionString `
+        -Server $packageArgs.databaseServer `
+        -Port $packageArgs.databaseServerPort `
+        -Database $packageArgs.databaseName
+    Set-Content "$($packageArgs.dataDir)\config\database.properties" $connectionString
 }
 
-function Uninstall-Service {
+function Install-TeamCityBuildAgent {
     param(
-        [Parameter(Position = 0, Mandatory = $true)][string] $serviceName
+        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
     )
 
-    if (Get-TeamCityService $serviceName) {
-        Stop-Service $service
+    $packageDir = $env:ChocolateyPackageFolder
+
+    $buildAgentProperties = "$($arguments.installDir)\buildAgent\conf\buildAgent.properties"
+    if (-not (Test-Path $buildAgentProperties)) {
+        Copy-Item "$packageDir\BuildAgent\buildAgent.properties" $buildAgentProperties | Out-Null
+
+        (Get-Content $buildAgentProperties) -replace 'serverUrl=.*', $arguments. | Set-Content $buildAgentProperties
     }
 
-    if ($service) {
-        & sc.exe delete $serviceName
+    Start-ChocolateyProcessAsAdmin "$($arguments.installDir)\buildAgent\bin\service.install.bat" | Out-Null
+}
+
+function Install-TeamCityServices {
+    param(
+        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
+    )
+
+    $installArgs = @()
+    if ($arguments.runAsSystem) {
+        $installArgs += '/runAsSystem'
     }
+    else {
+        $installArgs += "/user=`"$($arguments.userName)`""
+        $installArgs += "/password=`"$($arguments.password)`""
+
+        if ($packageArgs.domain) {
+            $installArgs += "/domain=`"$($arguments.domain)`""
+        }
+    }
+
+    Start-ChocolateyProcessAsAdmin "$($arguments.installDir)\bin\teamcity-server.bat configure" | Out-Null
+    Start-ChocolateyProcessAsAdmin "$($arguments.installDir)\bin\teamcity-server.bat service install $($installArgs -join ' ')" | Out-Null
+
+    Start-Service $arguments.serviceName
 }
