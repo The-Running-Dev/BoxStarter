@@ -17,6 +17,9 @@ function New-ChocoPackageWithConfig {
     if (Test-Path $updateScript) {
         Write-Host "Updating Package with $updateScript"
 
+        # Compile all .ahk files
+        Invoke-AutoHotKey $packageDir
+
         if ($force) {
             & $updateScript -Force
         }
@@ -53,11 +56,8 @@ function New-ChocoPackageWithConfig {
         }
         #>
 
-        # Find and compile all .ahk files
-        $ahkFiles = Get-ChildItem -Path $packageDir -Filter *.ahk -Recurse
-        if ($ahkFiles) {
-            Invoke-AutoHotKey $packageDir $ahkFiles
-        }
+        # Compile all .ahk files
+        Invoke-AutoHotKey $packageDir
 
         # Delete the package from the output path if it exists
         Remove-Item $outputPath -Include "$packageId**" -Force

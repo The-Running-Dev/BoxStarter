@@ -2,7 +2,7 @@ function convertFrom-JObject($obj) {
     if ($obj -is [Newtonsoft.Json.Linq.JArray]) {
         $a = @()
 
-        foreach($entry in $obj.GetEnumerator()) {
+        foreach ($entry in $obj.GetEnumerator()) {
             $a += @(convertFrom-JObject $entry)
         }
 
@@ -11,8 +11,8 @@ function convertFrom-JObject($obj) {
     elseif ($obj -is [Newtonsoft.Json.Linq.JObject]) {
         $h = [ordered]@{}
 
-        foreach($kvp in $obj.GetEnumerator()) {
-            $val =  ConvertFrom-JObject $kvp.value
+        foreach ($kvp in $obj.GetEnumerator()) {
+            $val = ConvertFrom-JObject $kvp.value
 
             if ($kvp.value -is [Newtonsoft.Json.Linq.JArray]) { $val = @($val) }
             $h += @{ "$($kvp.key)" = $val }

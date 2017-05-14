@@ -8,15 +8,7 @@ function Invoke-SqlNonQuery {
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $false)][secureString] $password
     )
 
-    $credentials = "Integrated Security=SSPI"
-
-    if ($user -and $password) {
-        $passwordAsPlainText = Convert-SecureStringToString $password
-        $credentials = "User=$user;Password=$passwordAsPlainText"
-    }
-
-    $connectionString = "Data Source=$server;$credentials;Initial Catalog=$database"
-
+    $connectionString = Get-SqlServerConnectionString $server $database $user $password
     $connection = New-Object System.Data.SqlClient.SQLConnection($connectionString)
     $command = New-Object System.Data.SqlClient.SQLCommand($sql, $connection)
     $message = "`nServer: $server`nDatabase: $database`nSQL: `n$sql"

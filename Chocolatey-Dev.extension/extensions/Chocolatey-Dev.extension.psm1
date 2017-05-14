@@ -4,7 +4,6 @@ $scriptRoot = Split-Path $MyInvocation.MyCommand.Definition
 
 Import-Module WebAdministration -Force
 
-$global:newtonsoftJsonDll = Join-Path -resolve $PSScriptRoot 'Tools\DLLs\Newtonsoft.Json.dll'
 $global:ahkCompiler = Join-Path $PSScriptRoot 'Tools\AutoHotKey\Ahk2Exe.exe'
 $global:defaultFilter = 'config.json,extensions,tools,*.ini,*.png,*.svg,*.ignore,*.nuspec,*.reg,*.xml"'
 $global:config = @{
@@ -27,6 +26,10 @@ $global:config = @{
 $global:configFile = 'config.json'
 $global:excludeDirectoriesFromConfigurationRegEx = '\.git|\.vscode|artifacts|extensions|plugins|tools|tests'
 $global:gitHubApiUrl = 'https://api.github.com/repos/$repository/releases/latest'
+
+Add-Type -Path (Join-Path -Resolve $PSScriptRoot 'Tools\DLLs\Microsoft.SqlServer.SMO.dll')
+Add-Type -Path (Join-Path -Resolve $PSScriptRoot 'Tools\DLLs\Microsoft.SqlServer.SmoExtended.dll')
+Add-Type -Path (Join-Path -Resolve $PSScriptRoot 'Tools\DLLs\Newtonsoft.Json.dll')
 
 $pre = Get-ChildItem Function:\*
 
