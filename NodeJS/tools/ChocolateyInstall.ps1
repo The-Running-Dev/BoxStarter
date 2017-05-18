@@ -6,4 +6,4 @@
 
 Install-Package $arguments
 
-$env:Path += ";$(Get-ProgramFilesDirectory)\NodeJS"
+Install-ChocolateyPath "$(Get-ProgramFilesDirectory)\NodeJS" -PathType 'Machine'

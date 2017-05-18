@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://binaryfortressdownloads.com/Download/BFSFiles/102/iTunesFusionSetup-2.6.exe'
-    checksum        = '2CE11CE6F3C5ED6A6B24D47C9EA346488BA5FA46AE525B31F9ADF7246E06FA1F'
+    url             = 'https://binaryfortressdownloads.com/Download/BFSFiles/102/iTunesFusionSetup-3.0.1.exe'
+    checksum        = '1B60DDC5AD0246433BB05085F67F19F103B66EF4B8A1706DED48E862614422EF'
     silentArgs      = '/VERYSILENT /LAUNCHAFTER=0'
 }
 

@@ -6,4 +6,4 @@
 
 Install-FromZip $arguments
 
-$env:Path = "$($env:Path);$($argumnets.destination)"
+Install-ChocolateyPath "$($argumnets.destination)" -PathType 'Machine'

@@ -4,4 +4,6 @@
     destination = Join-Path $env:AppData 'NuGet'
 }
 
-$env:Path = "$($env:Path);$($argumnets.destination)"
+Install-WithCopy $arguments
+
+Install-ChocolateyPath "$($arguments.destination)" -PathType 'Machine'
