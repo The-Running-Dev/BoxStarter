@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>DotNET</id>
+    <id>Microsoft-DotNET3.5</id>
     <version>3.5.20160716</version>
-    <title>Dot NET 3.5</title>
+    <title>Microsoft Dot NET 3.5</title>
     <authors>Microsoft</authors>
     <owners>Matt Wrock</owners>
     <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>

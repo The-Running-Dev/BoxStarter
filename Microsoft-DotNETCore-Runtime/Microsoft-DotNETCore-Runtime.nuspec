@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>DotNETCore-Runtime</id>
-    <version>1.1.1</version>
-    <title>Microsoft .NET Core Runtime (Install)</title>
+    <id>Microsoft-DotNETCore-Runtime</id>
+    <version>1.1.2</version>
+    <title>Microsoft .NET Core Runtime</title>
     <authors>Microsoft</authors>
     <owners>The-Running-Dev</owners>
     <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>

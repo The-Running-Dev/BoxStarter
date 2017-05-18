@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft-DotNET4.6.2</id>
+    <version>4.6.01590.20170129</version>
+    <title>Microsoft .NET Framework 4.6.2</title>
+    <authors>Microsoft</authors>
+    <licenseUrl>http://msdn.microsoft.com/en-US/cc300389.aspx</licenseUrl>
+    <projectUrl>https://blogs.msdn.microsoft.com/dotnet/2016/08/02/announcing-net-framework-4-6-2/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/jberezanski/ChocolateyPackages/f0b24b6aef7a58ec03550035644ce872aba13c23/icons/dotnet.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    The Microsoft .NET Framework 4.6.2 is a highly compatible in-place update to
+    the Microsoft .NET Framework 4, the .NET Framework 4.5, the .NET Framework 4.5.1,
+    the .NET Framework 4.5.2, the .NET Framework 4.6, and the .NET Framework 4.6.1.
+
+    You can see the full set of changes in the .NET Framework 4.6.2 in the
+    [change list](https://github.com/Microsoft/dotnet/blob/master/releases/net462/dotnet462-changes.md)
+    and [API diff](https://github.com/Microsoft/dotnet/blob/master/releases/net462/dotnet462-api-changes.md)
+    on [GitHub](https://github.com/microsoft/dotnet).
+
+    The matching Developer Pack can be installed using
+    [this package](https://chocolatey.org/packages/netfx-4.6.2-devpack).
+    </description>
+    <summary>
+    The Microsoft .NET Framework 4.6.2 is a highly compatible in-place update
+    to the Microsoft .NET Framework 4, the .NET Framework 4.5, the .NET Framework 4.5.1,
+    the .NET Framework 4.5.2, the .NET Framework 4.6, and the .NET Framework 4.6.1.
+    </summary>
+    <releaseNotes>
+    ##### Software
+    https://support.microsoft.com/en-us/kb/3151796
+
+    ##### Package
+    4.6.01590.20170129: Switched to Quiet mode to fix installation on Windows Server Core.</releaseNotes>
+    <tags>Microsoft .NET Framework 4.6.2 Redistributable admin</tags>
+    <docsUrl>https://msdn.microsoft.com/en-us/library/w0x726c2.aspx</docsUrl>
+    <bugTrackerUrl>http://connect.microsoft.com/VisualStudio</bugTrackerUrl>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>
