@@ -35,6 +35,8 @@
       <dependency id="Chocolatey-Package.extension" />
       <dependency id="Chocolatey-Dev.extension" />
       <dependency id="Microsoft-SQLServer2016Express" />
+      <dependency id="Microsoft-BuildTools" />
+      <dependency id="NodeJS" />
     </dependencies>
   </metadata>
 </package>

@@ -1,4 +1,4 @@
-function Add-IISSite
+function New-IISSite
 {
 	[CmdletBinding()]
     param(

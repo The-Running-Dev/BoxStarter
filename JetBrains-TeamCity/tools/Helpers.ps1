@@ -149,23 +149,6 @@ function Install-TeamCityDatabase {
     Set-Content "$($packageArgs.dataDir)\config\database.properties" $connectionString
 }
 
-function Install-TeamCityBuildAgent {
-    param(
-        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
-    )
-
-    $packageDir = $env:ChocolateyPackageFolder
-
-    $buildAgentProperties = "$($arguments.installDir)\buildAgent\conf\buildAgent.properties"
-    if (-not (Test-Path $buildAgentProperties)) {
-        Copy-Item "$packageDir\BuildAgent\buildAgent.properties" $buildAgentProperties | Out-Null
-
-        (Get-Content $buildAgentProperties) -replace 'serverUrl=.*', $arguments. | Set-Content $buildAgentProperties
-    }
-
-    Start-ChocolateyProcessAsAdmin "$($arguments.installDir)\buildAgent\bin\service.install.bat" | Out-Null
-}
-
 function Install-TeamCityServices {
     param(
         [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
@@ -188,4 +171,23 @@ function Install-TeamCityServices {
     Start-ChocolateyProcessAsAdmin "$($arguments.installDir)\bin\teamcity-server.bat service install $($installArgs -join ' ')" | Out-Null
 
     Start-Service $arguments.serviceName
+}
+
+function Install-TeamCityBuildAgent {
+    param(
+        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
+    )
+
+    $packageDir = $env:ChocolateyPackageFolder
+
+    $buildAgentProperties = "$($arguments.installDir)\buildAgent\conf\buildAgent.properties"
+    if (-not (Test-Path $buildAgentProperties)) {
+        Copy-Item "$packageDir\BuildAgent\buildAgent.properties" $buildAgentProperties | Out-Null
+
+        $serverUrl = "serverUrl=$arguments.serverUrl"
+
+        (Get-Content $buildAgentProperties) -replace 'serverUrl=.*', $serverUrl | Set-Content $buildAgentProperties
+    }
+
+    Start-ChocolateyProcessAsAdmin "$($arguments.installDir)\buildAgent\bin\service.install.bat" | Out-Null
 }

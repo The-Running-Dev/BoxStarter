@@ -1,4 +1,4 @@
-function Add-IISApplicationPool
+function New-IISApplicationPool
 {
 	[CmdletBinding()]
     param(

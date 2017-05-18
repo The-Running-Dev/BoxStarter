@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>TeamCityAgent</id>
+    <version>2.0.0</version>
+    <title>TeamCity Build Agent</title>
+    <authors>JetBrains</authors>
+    <owners>JetBrains</owners>
+    <projectUrl>http://www.jetbrains.com/teamcity</projectUrl>
+    <iconUrl>http://sirenofshame.com/Images/CiServers/teamcity.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>TeamCity Build Agent for jetbrains.com/teamcity. It is a piece of software which listens for the commands from the TeamCity server and starts the actual build processes. Install with parameters, e.g. -params 'serverurl=http://...'</description>
+    <summary>TeamCity Build Agent for jetbrains.com/teamcity. It is a piece of software which listens for the commands from the TeamCity server and starts the actual build processes. Install with parameters, e.g.</summary>
+    <copyright>JetBrains s.r.o.</copyright>
+    <tags>teamcity build agent ci continuous integration</tags>
+    <packageSourceUrl>https://github.com/maartenba/ChocolateyPackages/tree/master/packages/TeamCityAgent</packageSourceUrl>
+    <dependencies>
+      <dependency id="server-jre" />
+    </dependencies>
+  </metadata>
+</package>

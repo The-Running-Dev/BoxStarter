@@ -5,7 +5,6 @@
     <version>15.0.26208.0</version>
     <title>Microsoft Build Tools for Visual Studio 2017</title>
     <authors>Microsoft Corporation</authors>
-    <owners>Microsoft Corporation</owners>
     <licenseUrl>https://www.microsoft.com/en-us/download/details.aspx?id=48159</licenseUrl>
     <projectUrl>https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017</projectUrl>
     <iconUrl>https://openmerchantaccount.com/img/MSBuild.png</iconUrl>
@@ -25,10 +24,11 @@
     <summary>These Build Tools allow you to build native and managed MSBuild-based applications without requiring the Visual Studio IDE.</summary>
     <releaseNotes>https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes</releaseNotes>
     <tags>Microsoft Build Tools for Visual Studio 2017 MSBuild Compiler admin</tags>
-    <projectSourceUrl>https://github.com/Microsoft/msbuild</projectSourceUrl>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
-      <dependency id="dotnet4.5.2" version="4.5.2.20140902" />
-      <dependency id="kb2919355" version="1.0.20160915" />
-    </dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+      <dependency id="Microsoft-DotNET4.6.2" />
+		</dependencies>
   </metadata>
 </package>

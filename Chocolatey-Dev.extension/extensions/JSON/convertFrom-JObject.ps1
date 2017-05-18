@@ -1,4 +1,4 @@
-function convertFrom-JObject($obj) {
+function ConvertFrom-JObject($obj) {
     if ($obj -is [Newtonsoft.Json.Linq.JArray]) {
         $a = @()
 

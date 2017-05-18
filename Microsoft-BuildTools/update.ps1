@@ -9,6 +9,7 @@ function global:au_GetLatest {
     $releaseUrl = 'https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools'
     $versionRegEx = '(15\.[0-9\.]+)'
     $downloadRegEx = 'var downloadUrl = "(.*/vs_BuildTools.exe)'
+    $fileName32 = 'Microsoft-Build-Tools.7z'
 
     $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
     $version = ([regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value)
@@ -20,7 +21,7 @@ function global:au_GetLatest {
         $global:au_Version = $version
     }
 
-    return @{ Version = $version; Url32 = $url }
+    return @{ Url32 = $url; Version = $version; FileName32 = $fileName32 }
 }
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

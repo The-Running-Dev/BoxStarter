@@ -8,7 +8,7 @@ if (-not $source) {
     return
 }
 
-if ( (Test-Path -Path $installPath -PathType Container) ) {
+if ((Test-Path -Path $installPath -PathType Container)) {
     $newName = 'Carbon{0}' -f [IO.Path]::GetRandomFileName()
 
     Write-Verbose ('Renaming existing Carbon module: {0} -> {1}' -f $installPath, $newName)
@@ -18,7 +18,7 @@ if ( (Test-Path -Path $installPath -PathType Container) ) {
     $oldModulePath = Join-Path -Path (Get-PowerShellModuleInstallPath) -ChildPath $newName
 
     if ( Test-Path -Path $oldModulePath -PathType Container ) {
-        Write-Verbose ('Removing old Carbon module: {0}' -f $oldModulePath)
+        Write-Verbose ('Removing Old Carbon Module: {0}' -f $oldModulePath)
         Remove-Item -Path $oldModulePath -Force -Recurse
     }
     else {

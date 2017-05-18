@@ -1,6 +1,6 @@
 function Get-Parameters {
     param(
-		[string] $parameters
+        [string] $parameters = $env:ChocolateyPackageParameters
 	)
 
     $arguments = @{}

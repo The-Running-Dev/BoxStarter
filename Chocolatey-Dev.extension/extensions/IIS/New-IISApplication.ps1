@@ -1,4 +1,4 @@
-function Add-IISApplication
+function New-IISApplication
 {
 	[CmdletBinding()]
     param(

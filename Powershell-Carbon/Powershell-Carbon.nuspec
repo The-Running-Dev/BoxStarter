@@ -5,7 +5,6 @@
     <version>2.4.1</version>
     <title>Carbon</title>
     <authors>Aaron Jensen</authors>
-    <owners>Aaron Jensen</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectUrl>http://get-carbon.org/</projectUrl>
     <iconUrl>http://get-carbon.org/icon.png</iconUrl>
@@ -52,5 +51,10 @@
     <copyright>Copyright 2011 - 2016 Aaron Jensen.</copyright>
     <language>en-us</language>
     <tags>.net acl active-directory certificates com compression computer credential cryptography directory dsc dsc-resources encryption environment file-system firewall groups hosts-file http identity iis ini installers internet-explorer ip junctions msi msmq netsh networking ntfs operating-system os path performance-counters powershell principal privileges programs registry rsa scheduled-tasks security service shares sid smb ssl text trusted-host users wcf windows windows-features xml zip PSModule DscResources setup automation admin</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
   </metadata>
 </package>

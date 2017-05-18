@@ -1,134 +1,121 @@
 ## Chocolatey Packages
-
-  * Packages are updated faster than the same packages on the Chocoloatey community feed
   * Packages support custom installer location through a Chocolatey extension
     * The installer can embedded into the package
-    * The installer can be in a local or network location (by setting $env:packagesInstallers)
+    * The installer can be in a local or network location (by setting )
     * The installer can be downloaded from the internet (like most packages on the Community feed)
     * The installer can be inside a zip file (local or downloaded from the internet)
     * The installer can be inside an ISO image
-  * Most packages support automatic updates through the AU module, with the provided ```update.ps1``` script
-  * AutoHotkey is used whenver full silent installation is not possible (Example ESET Nod32 Antivirus)
+  * Most packages support automatic updates through the AU module, with the provided `update.ps1` script
+  * AutoHotkey is used whenever full silent installation is not possible (Example ESET Nod32 Antivirus)
 
 ## Sample Install Script
-  ```
+  `
   # Execute https://raw.githubusercontent.com/The-Running-Dev/Chocolatey-BoxStarter/master/Install/install.sample.ps1
   iwr http://bit.ly/2pj2nQb -UseBasicParsing | iex
-  ```
+  `
 
 ## Packages
-  * 7 Zip
+  * 7Zip
   * CCleaner
+  * chocolatey
+  * chocolatey-core.extension
   * Chocolatey-Dev.extension
   * Chocolatey-Package.extension
+  * chocolatey.extension
   * ClipboardFusion
   * ConEmu
   * DisplayFusion
-  * DotNET
-  * DotNETCore Runtime
-  * DotNETCore SDK
-  * Drivers (ASRock Fatal1ty X99 Professional Gaming i7 Motherboard)
+  * Docker
+  * KB2919355
+  * KB2919442
+  * Driver-AsmediaUSB
+  * Driver-INF
+  * Driver-IntelBluetooth
+  * Driver-IntelLan
+  * Driver-IntelManagementEngine
+  * Driver-IntelRapidStorage
+  * Driver-IntelTurboBoostMax
+  * Driver-IntelWirelessLan
+  * Driver-RealtekHighDefinitionAudio
   * Dropbox
-  * ESETNOD32 Antivirus
+  * ESETNOD32Antivirus
   * Evernote
-  * F.Lux
+  * FLux
   * Git
   * GitExtensions
-  * Google Chrome
-  * Google Drive
+  * Google-Chrome
+  * Google-Drive
   * HandBrake
-  * HandBrake CLI
+  * HandBrake-CLI
   * iTunes
   * iTunesFusion
-  * JetBrains DataGrip
-  * JetBrains Resharper Platform
-  * JetBrains TeamCity
-  * JetBrains WebStorm
+  * JetBrains-DataGrip
+  * JetBrains-ReSharper-Platform
+  * JetBrains-TeamCity
+  * TeamCityAgent
+  * JetBrains-WebStorm
   * JRE
   * K-LiteCodecPack
   * KDiff3
-  * LastPass for Applications
+  * LastPass-Applications
   * Launchy
   * LogFusion
   * MetaX
-  * Microsoft MSBuild Targets
-  * Microsoft Office 365 Business
+  * Microsoft-BuildTools
+  * Microsoft-DotNET3.5
+  * Microsoft-DotNET4.5.2
+  * Microsoft-DotNET4.6.2
+  * Microsoft-DotNETCore-Runtime
+  * Microsoft-DotNETCore-SDK
+  * Microsoft-MSBuild
+  * Microsoft-Office365Business
   * Microsoft-Office365Business-Embedded
-  * Microsoft PowerBI
-  * Microsoft SQL Server 2014 Developer
-  * Microsoft SQL Server 2014 Express
-  * Microsoft SQL Server 2016 Developer
-  * Microsoft SQL Server 2016 Express
-  * Microsoft SQL Server Management Studio
-  * Microsoft Visual Studio 2015 Enterprise
+  * Microsoft-PowerBI
+  * Microsoft-SQLServer2014Developer
+  * Microsoft-SQLServer2014Express
+  * Microsoft-SQLServer2016Developer
+  * Microsoft-SQLServer2016Express
+  * Microsoft-SQLServerManagementStudio
+  * Microsoft-VisualStudio2015Enterprise
   * Microsoft-VisualStudio2015Enterprise-Embedded
-  * Microsoft Visual Studio Code
-  * Microsoft WebPI
-  * MySQL Workbench
+  * Microsoft-VisualStudioCode
+  * Microsoft-WebPI
+  * MySQL-Workbench
   * NodeJS
   * NTLite
   * NuGet-CommandLine
   * Octopus-Deploy
-  * Octopus Tools
+  * Octopus-Deploy-Tentacle
+  * Octopus-Tools
   * Paint.NET
+  * Powershell-Carbon
   * Powershell-CommunityExtensions
-  * Razer Synapse
+  * Powershell-Psake
+  * ProGet
+  * RazerSynapse
   * Recuva
   * Rufus
   * Slack
   * Spotify
   * TeamViewer
-  * Visual C Redistributable 2013 (x86 & x64)
-  * Visual C Redistributable 2015 (x86 & x64)
+  * VisualCRedistributable2013
+  * VisualCRedistributable2013x64
+  * VisualCRedistributable2013x86
+  * VisualCRedistributable2015
+  * VisualCRedistributable2015x64
+  * VisualCRedistributable2015x86
   * VMWare-PowerCLI
   * VMWare-RemoteConsole
-  * VMWare Workstation
+  * VMWare-Workstation
   * VoiceBot
   * VPNAreaChameleon
-  * Windows IIS
-  * Windows IIS ExternalCache module
-  * Windows IIS UrlRewrite module
-  * XYPlorer
+  * Windows-IIS
+  * Windows-IIS-ExternalCache
+  * Windows-IIS-UrlRewrite
+  * XYplorer
 
-## Microsoft SQL Server Instructions
-  * Microsoft SQL Server 2014 Developer
 
-    Features installed through the default configuraiton file
-    ```
-    Database Engine Services, Data Qualty Client, Client Tools Connectivity, Integration Services, ManagemetnT Tools - Basic, ManagemetnT Tools - Complete.
-    ```
-    choco install MSSQLServer2014Developer -params '/SetupPath="E:\setup.exe"'
-    ```
-    choco install MSSQLServer2014Developer `
-      -params '/SetupPath="E:\setup.exe" /SECURITYMODE="SQL" /SAPWD="SetComplexPassword" /InstallSQLDataDir="D:\SQLData" /SQLBACKUPDIR="D:\SQLData\Backup" /SQLUSERDBDIR="D:\SQLData" /SQLTEMPDBDIR="D:\SQLData"'
-
-    choco isnstall MSSQLServer2016Developer `
-      -params "/file='Path\To\en_sql_server_2016_developer_with_service_pack_1_x64_dvd_9548071.iso'"
-    ```
-  * Microsoft SQL Server 2014 Express
-
-    Install with the default parameters from the Configuration.ini inside the package.
-    ```
-    choco install MSSQLServer2014Express
-    ```
-    Install with SQL Authentication. You have to specify the "sa" password.
-    ```
-    choco install MSSQLServer2014Express `
-      -params='/SECURITYMODE="SQL" /SAPWD="SetYourOwn"'
-    ```
-    Install overriding some parameters.
-    ```
-    choco install MSSQLServer2014Express `
-      -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData" /SQLSYSADMINACCOUNTS="Boyan"'
-    ```
-
-    Install with overriding some parameters, and your own Configuraiton.ini (by specifing the URL to Configuration.ini).
-    ```
-    choco install MSSQLServer2014Express `
-      -params='/SAPWD="SetYourOwn" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData" /ConfigurationFile="http://bit.ly/2doxBU1"'
-    ```
-
-## Short Links
+## Links
   * [Install BoxStarter](http://bit.ly/win10boxstarter)
   * [Install Chocolatey](http://bit.ly/win10boxstarter-choco)
   * [SQL Server Configuration](http://bit.ly/win10boxstarter-sqlserverconfig)
