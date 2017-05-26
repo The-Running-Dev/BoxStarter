@@ -1,6 +1,6 @@
 function Get-CurrentDirectory {
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateScript( {Test-Path $_})][string] $path
+        [Parameter(Position = 0, ValueFromPipeline)][string] $path
     )
 
     if ([System.IO.File]::Exists($path)) {

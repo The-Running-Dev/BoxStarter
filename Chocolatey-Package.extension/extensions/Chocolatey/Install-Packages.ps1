@@ -1,10 +1,10 @@
 function Install-Packages {
     [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $packagesFile
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateScript( {Test-Path $_ -PathType Leaf})][string] $file
     )
 
-    Write-Message "Installing packages from $packagesFile"
+    Write-Message "Installing packages from '$file'..."
 
     if ($env:packagesSource) {
         $packagesSource = "-s ""$env:packagesSource;Chocolatey"""

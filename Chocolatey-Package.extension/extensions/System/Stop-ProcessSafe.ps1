@@ -4,6 +4,6 @@ function Stop-ProcessSafe {
     )
 
     if (Get-Process -Name $name -ErrorAction SilentlyContinue) {
-        Stop-Process -processname $name
+        Stop-Process -Name $name
     }
 }

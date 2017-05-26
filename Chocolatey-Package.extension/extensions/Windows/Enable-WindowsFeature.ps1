@@ -7,7 +7,7 @@ function Enable-WindowsFeature {
     $feature = Get-WindowsOptionalFeature -FeatureName $featureName -Online
 
     if ($feature.State -ne 'Enabled') {
-        Write-Message "Enabling $featureName"
+        Write-Message "Enabling '$featureName'..."
 
         Enable-WindowsOptionalFeature -FeatureName $featureName -Online -All
     }

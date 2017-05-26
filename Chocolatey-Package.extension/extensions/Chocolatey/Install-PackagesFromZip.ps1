@@ -1,21 +1,21 @@
 function Install-PackagesFromZip {
     param(
-        [Parameter(Position = 0, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $packagesFile
+        [Parameter(Position = 0, ValueFromPipeline)][string] $file
     )
 
     # No file provided, find the Packages zip in the package directory
-    if (![System.IO.File]::Exists($packagesZip)) {
-        $packagesZip = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
+    if (![System.IO.File]::Exists($file)) {
+        $file = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
                 -Filter 'Packages.zip' | Select-Object -First 1 -ExpandProperty FullName)
     }
 
     # Still no file found, find the first zip in the package directory
-    if (![System.IO.File]::Exists($packagesZip)) {
-        $packagesZip = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
-                -Include *.zip | Select-Object -First 1 -ExpandProperty FullName)
+    if (![System.IO.File]::Exists($file)) {
+        $file = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
+                -Include *.zip, *.7z | Select-Object -First 1 -ExpandProperty FullName)
     }
 
-    Write-Message "Installing packages from $packagesZip"
+    Write-Message "Installing packages from '$file'..."
 
     $packagesDir = Join-Path $env:ChocolateyPackageFolder 'Packages'
 
@@ -31,7 +31,7 @@ function Install-PackagesFromZip {
         ForEach-Object {
         $package = $_.Name -replace '(\.[0-9\.]+\.nupkg)', ''
 
-        Write-Message "Installing $package"
+        Write-Message "Installing '$package'..."
 
         choco install $package -s $packagesDir
     }

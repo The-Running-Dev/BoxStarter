@@ -17,7 +17,7 @@
       <dependency id="Octopus-Deploy-CommandLine" />
       <dependency id="PowerShell-Carbon" />
       <dependency id="PowerShell-CommunityExtensions" />
-      <dependency id="PowerShell-Psake" />
+      <dependency id="PowerShell-PSake" />
     </dependencies>
   </metadata>
 </package>

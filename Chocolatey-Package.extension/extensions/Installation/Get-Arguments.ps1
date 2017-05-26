@@ -41,13 +41,8 @@ function Get-Arguments {
                 | Select-Object -First 1 -ExpandProperty FullName)
     }
 
-    if ($packageArgs.file) {
-        $packageArgs.fileType = Get-FileExtension $packageArgs.file
-    }
-
-    if ($packageArgs.executable) {
-        $packageArgs.executableType = Get-FileExtension $packageArgs.executable
-    }
+    $packageArgs.fileType = Get-FileExtension $packageArgs.file
+    $packageArgs.executableType = Get-FileExtension $packageArgs.executable
 
     # No silent arguments provided and the file type is MSI
     if (!$packageArgs.silentArgs -and $packageArgs.fileType -eq 'msi') {

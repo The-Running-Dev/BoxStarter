@@ -3,11 +3,8 @@ function Uninstall-Service {
         [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $serviceName
     )
 
-    $service = Get-Service $serviceName -ErrorAction SilentlyContinue
-
-    if ($service) {
-        Stop-Service $service
-
+    if (Get-Service $serviceName -ErrorAction SilentlyContinue) {
+        Stop-Service $serviceName
         & sc.exe delete $serviceName
     }
 }

@@ -1,7 +1,7 @@
 function Get-BaseDirectory {
     [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $baseDir
+        [Parameter(Position = 0, ValueFromPipeline)][string] $baseDir
     )
 
     if (Test-DirectoryExists $baseDir) {

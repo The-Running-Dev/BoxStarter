@@ -1,4 +1,9 @@
-function ConvertFrom-JObject($obj) {
+function ConvertFrom-JObject {
+    [CmdletBinding()]
+    param(
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][Object] $obj
+    )
+
     if ($obj -is [Newtonsoft.Json.Linq.JArray]) {
         $a = @()
 
