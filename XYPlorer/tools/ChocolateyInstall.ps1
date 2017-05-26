@@ -4,4 +4,14 @@
     destination = Join-Path $env:AppData 'XYplorer'
 }
 
+$process = (Get-Process -name 'XYplorer' -ErrorAction SilentlyContinue)
+
+if ($process) {
+    Stop-Process $process
+}
+
 Install-FromZip $arguments
+
+if ($process) {
+    & (Join-Path $arguments.destination 'XYPlorer.exe')
+}
