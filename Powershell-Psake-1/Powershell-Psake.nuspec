@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>Powershell-Psake</id>
+    <id>PowerShell-Psake</id>
     <version>4.6.0</version>
-    <title />
+    <title>PowerShell Psake Module</title>
     <authors>James Kovacs</authors>
     <projectUrl>https://github.com/psake/psake</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
