@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>chocolatey.extension</id>
+    <id>Chocolatey.extension</id>
     <version>1.9.8</version>
     <title>Chocolatey Licensed Edition</title>
     <authors>RealDimensions Software, LLC</authors>
@@ -29,7 +29,7 @@
 
 ## 1.9.7 (March 20, 2017)
 
-### BUG FIXES 
+### BUG FIXES
 
  * Fix - Support automatic decompression on downloads - see [#1056](https://github.com/chocolatey/choco/issues/1056)
  * Fix - Package Builder - Restrict Get-UninstallRegistryKey params in chocolateyUninstall.ps1
