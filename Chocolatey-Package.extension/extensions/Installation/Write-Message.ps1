@@ -1,9 +1,13 @@
 function Write-Message {
-    param([string] $message)
+    [CmdletBinding()]
+    param(
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $message
+    )
 
     if ($env:ChocoDebug) {
         Write-Host $message
-    } else {
+    }
+    else {
         Write-Verbose $message
     }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Octopus-Deploy-CommandLine</id>
+    <version>4.15.5</version>
+    <title>Octopus Deploy Command Line</title>
+    <authors>Octopus Deploy</authors>
+    <licenseUrl>https://octopus.com/</licenseUrl>
+    <projectUrl>https://octopus.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Octopus Deploy is an automated deployment tool powered by NuGet. This package contains Octo.exe, a command line tool for creating and deploying releases with Octopus Deploy.</description>
+    <summary>Create, deploy and promote releases using Octopus Deploy.</summary>
+    <releaseNotes />
+    <language>en-US</language>
+    <tags>automation deployment</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <iconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</iconUrl>
+    <dependencies>
+      <dependency id="Chocolatey-Package.extension" />
+    </dependencies>
+  </metadata>
+</package>

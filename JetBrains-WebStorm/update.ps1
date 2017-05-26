@@ -15,6 +15,7 @@ function global:au_GetLatest {
         | ForEach-Object { $_.channel } | Where-Object { $_.id -eq 'WS_Release' } `
         | ForEach-Object { $_.build } `
         | Sort-Object { [version] $_.number } `
+        | Where-Object { $_.version -notmatch 'EAP' } `
         | Select-Object -Last 1
 
     $version = $versionInfo.Version

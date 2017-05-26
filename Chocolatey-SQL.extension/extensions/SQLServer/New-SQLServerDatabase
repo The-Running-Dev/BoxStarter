@@ -1,0 +1,18 @@
+function New-SQLServerDatabase {
+    [CmdletBinding(SupportsShouldProcess = $true)]
+    param(
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][string] $server,
+        [Parameter(Position = 1, Mandatory, ValueFromPipelineByPropertyName)][string] $database,
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName)][string] $user,
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName)][secureString] $password
+    )
+    $message = "`nCreating '$database' on '$server'"
+
+    if ($PSCmdlet.ShouldProcess("$message")) {
+        Write-Host $message
+
+        $sqlServer = New-Object Microsoft.SqlServer.Management.Smo.Server $server
+        $sqlServerDatabase = New-Object Microsoft.SqlServer.Management.Smo.Database $sqlServer, $database
+        $sqlServerDatabase.Create()
+    }
+}

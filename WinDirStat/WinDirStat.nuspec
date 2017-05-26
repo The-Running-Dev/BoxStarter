@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>WinDirStat</id>
+    <version>1.1.2</version>
+    <title>WinDirStat</title>
+    <authors>Bernhard Seifert, Oliver Schneider, WDS Team</authors>
+    <licenseUrl>http://www.gnu.org/licenses/gpl-2.0.html</licenseUrl>
+    <projectUrl>https://windirstat.net/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/windirstat.svg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>WinDirStat is a disk usage statistics viewer and cleanup tool for Microsoft Windows.</description>
+    <summary>WinDirStat - Windows Directory Statistics</summary>
+    <copyright>© 2003-2007 WDS Team</copyright>
+    <tags>windirstat disk usage admin</tags>
+    <projectSourceUrl>https://bitbucket.org/windirstat/windirstat</projectSourceUrl>
+    <docsUrl>https://windirstat.net/index.html</docsUrl>
+    <bugTrackerUrl>https://bitbucket.org/windirstat/windirstat/issues?status=new&amp;status=open</bugTrackerUrl>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>

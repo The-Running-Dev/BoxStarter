@@ -2,22 +2,22 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Chocolatey-Dev.extension</id>
-    <version>1.0.7</version>
-    <title></title>
+    <version>1.0.13</version>
+    <title>Chocolatey Development Extensions</title>
     <authors>The-Running-Dev</authors>
     <projectUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</projectUrl>
     <owners>The-Running-Dev</owners>
     <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <summary>Encapsulates development build and deploy PowerShell functions</summary>
     <description>
-    Provides PowerShell functions for building and and deploying applications through a CI/CD pipeline
+    Extensions for building and and deploying applications through a CI/CD pipeline
     </description>
     <dependencies>
       <dependency id="NuGet-Commandline" />
-      <dependency id="Octopus-Tools" />
-      <dependency id="Powershell-Carbon" />
-      <dependency id="Powershell-CommunityExtensions" />
-      <dependency id="Powershell-Psake" />
+      <dependency id="Octopus-Deploy-CommandLine" />
+      <dependency id="PowerShell-Carbon" />
+      <dependency id="PowerShell-CommunityExtensions" />
+      <dependency id="PowerShell-Psake" />
     </dependencies>
   </metadata>
 </package>

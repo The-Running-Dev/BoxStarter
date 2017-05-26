@@ -1,7 +1,8 @@
 function Get-DirectoryConfig {
+    [CmdletBinding()]
     param (
-        [Parameter(Position = 0, Mandatory = $true)][ValidateNotNullOrEmpty()][String] $path,
-        [Parameter(Position = 1, Mandatory = $false)][Hashtable] $baseConfig = $global:config
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateScript( {Test-Path $_ -PathType Container})][string] $path,
+        [Parameter(Position = 1)][Hashtable] $baseConfig = $global:config
     )
 
     $configFile = Join-Path $path $global:configFile
@@ -17,10 +18,10 @@ function Get-DirectoryConfig {
 
         $config = $global:config
         $config.artifacts = Get-ConfigSetting $configJson 'artifacts' | Convert-ToFullPath -BasePath $dir
-        $defaultFilter = $global:defaultFilter | Split-String ','
+        $defaultFilter = $global:defaultFilter -split ','
 
         if ($configJson.remote) {
-            $config.remote.include = $defaultFilter + ((Get-ConfigSetting $configJson.remote 'include') -replace ' ', '' | Split-String ',')
+            $config.remote.include = $defaultFilter + (((Get-ConfigSetting $configJson.remote 'include') -replace ' ', '') -Split ',')
             $config.remote.sources = @()
 
             foreach ($source in $configJson.remote.sources) {
@@ -32,7 +33,7 @@ function Get-DirectoryConfig {
         }
 
         if ($configJson.local) {
-            $config.local.include = $defaultFilter + ((Get-ConfigSetting $configJson.local 'include') -replace ' ', '' | Split-String ',')
+            $config.local.include = $defaultFilter + (((Get-ConfigSetting $configJson.local 'include') -replace ' ', '') -Split ',')
             $config.local.sources = @()
 
             foreach ($source in $configJson.local.sources) {

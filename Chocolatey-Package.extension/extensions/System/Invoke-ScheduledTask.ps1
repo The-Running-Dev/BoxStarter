@@ -1,8 +1,8 @@
 function Invoke-ScheduledTask() {
     param(
-        [string] $name,
-        [string] $executable,
-        [string] $arguments
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $name,
+        [Parameter(Position = 1, Mandatory, ValueFromPipelineByPropertyName)][ValidateNotNullOrEmpty()][string] $executable,
+        [Parameter(Position = 2, Mandatory, ValueFromPipelineByPropertyName)][ValidateNotNullOrEmpty()][string] $arguments
     )
 
     $action = New-ScheduledTaskAction -Execute $executable -Argument $arguments

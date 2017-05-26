@@ -1,6 +1,6 @@
 function Assert-ValidTeamCityArguments {
     param(
-        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
+        [Parameter(Position = 0, Mandatory)][hashtable] $arguments
     )
 
     if ((Get-Service $arguments.serviceName -ErrorAction SilentlyContinue)) {
@@ -16,7 +16,7 @@ function Assert-ValidTeamCityArguments {
 
 function Get-TeamCityInstallArguments {
     param(
-        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
+        [Parameter(Position = 0, Mandatory)][hashtable] $arguments
     )
 
     $packageArgs = Get-Arguments $arguments
@@ -48,7 +48,7 @@ function Get-TeamCityInstallArguments {
 
 function Set-InstallOptions {
     param(
-        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
+        [Parameter(Position = 0, Mandatory)][hashtable] $arguments
     )
 
     $packageParameters = $env:chocolateyPackageParameters
@@ -64,7 +64,7 @@ function Set-InstallOptions {
 
 function Initialize-TeamCityDataDirectory {
     param(
-        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
+        [Parameter(Position = 0, Mandatory)][hashtable] $arguments
     )
 
     $packageDir = $env:ChocolateyPackageFolder
@@ -131,7 +131,7 @@ function Initialize-TeamCityDataDirectory {
 
 function Install-TeamCityDatabase {
     param(
-        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
+        [Parameter(Position = 0, Mandatory)][hashtable] $arguments
     )
 
     if (-not (Assert-SqlServerDatabaseExists $packageArgs.databaseServer $packageArgs.databaseName)) {
@@ -151,7 +151,7 @@ function Install-TeamCityDatabase {
 
 function Install-TeamCityServices {
     param(
-        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
+        [Parameter(Position = 0, Mandatory)][hashtable] $arguments
     )
 
     $installArgs = @()
@@ -175,7 +175,7 @@ function Install-TeamCityServices {
 
 function Install-TeamCityBuildAgent {
     param(
-        [Parameter(Position = 0, Mandatory = $true)][hashtable] $arguments
+        [Parameter(Position = 0, Mandatory)][hashtable] $arguments
     )
 
     $packageDir = $env:ChocolateyPackageFolder

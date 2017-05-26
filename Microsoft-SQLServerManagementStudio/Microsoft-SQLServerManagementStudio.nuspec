@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Microsoft-SQLServerManagementStudio</id>
-    <version>14.0.17099.0</version>
+    <version>14.0.17119.0</version>
     <title>Microsoft SQL Server Management Studio</title>
     <authors>Microsoft</authors>
     <projectUrl>https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms</projectUrl>

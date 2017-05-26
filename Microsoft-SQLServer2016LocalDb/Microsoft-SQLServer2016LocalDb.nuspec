@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft-SQLServer2016LocalDb</id>
+    <version>14.0.17099.0</version>
+    <title>Microsoft SQL Server 2016 LocalDb</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.microsoft.com/en-us/download/details.aspx?id=52676</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    Microsoft SQL Server 2016 LocalDb
+    </description>
+    <summary>Installs SQL Server 2016 localdb</summary>
+    <language>en-US</language>
+    <tags>mssql sql server 2016 localdb</tags>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+      <dependency id="Chocolatey-Package.extension" />
+    </dependencies>
+  </metadata>
+</package>

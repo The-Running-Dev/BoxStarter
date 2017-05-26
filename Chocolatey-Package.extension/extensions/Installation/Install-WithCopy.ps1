@@ -1,6 +1,7 @@
 function Install-WithCopy {
+    [CmdletBinding()]
     param(
-        [PSCustomObject] $arguments
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][PSCustomObject] $arguments
     )
 
     $packageArgs = Get-Arguments $arguments

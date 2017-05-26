@@ -1,7 +1,7 @@
 function Test-FileExists {
     param(
-		[string] $file
-	)
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $file
+    )
 
     return [System.IO.File]::Exists($file)
 }

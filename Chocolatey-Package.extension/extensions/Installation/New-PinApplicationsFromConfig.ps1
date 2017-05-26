@@ -1,14 +1,10 @@
 function Invoke-PinApplications {
+    [CmdletBinding()]
     param(
-		[string] $configFile
-	)
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $configFile
+    )
 
-    try {
-        foreach ($line in Get-Content -Path $configFile | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'}) {
-            New-PinnedApplication $line
-        }
-    }
-    catch {
-        Write-Message "Invoke-PinApplications Failed: $($_.Exception.Message)"
+    foreach ($line in Get-Content -Path $configFile | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'}) {
+        New-PinnedApplication $line
     }
 }

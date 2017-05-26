@@ -1,13 +1,9 @@
 function Get-Executable {
+    [CmdletBinding()]
     param(
-        [string] $baseDir,
-        [string] $regEx
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $baseDir,
+        [Parameter(Position = 1, Mandatory, ValueFromPipelineByPropertyName)][ValidateNotNullOrEmpty()][string] $regEx
     )
-
-    if (!$fileName -and !$regEx) {
-        Write-Message 'Get-Executable: No file name or regular expression provided. Aborting...'
-        return
-    }
 
     $searchDir = Get-BaseDirectory $baseDir
     $files = Get-ChildItem -Path $searchDir -Recurse | Where-Object { $_.Name -match $regEx }

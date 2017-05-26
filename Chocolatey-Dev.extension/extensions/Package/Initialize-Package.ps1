@@ -1,19 +1,12 @@
-function Initialize-Package() {
+function Initialize-Package {
+    [CmdletBinding()]
     param(
-        [parameter(Position = 0, Mandatory = $true)][string] $spec,
-        [parameter(Position = 1, Mandatory = $true)][string] $packageId,
-        [parameter(Position = 2, Mandatory = $false)][string] $outputDirectory = '',
-        [parameter(Position = 3, Mandatory = $false)][string] $version = '',
-        [Parameter(Position = 4, Mandatory = $false)][string] $releaseNotes = ''
+        [parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateScript( {Test-Path $_ -PathType Leaf})][string] $spec,
+        [parameter(Position = 1, Mandatory, ValueFromPipelineByPropertyName)][ValidateNotNullOrEmpty()][string] $packageId,
+        [parameter(Position = 2, ValueFromPipelineByPropertyName)][string] $outputDirectory,
+        [parameter(Position = 3, ValueFromPipelineByPropertyName)][string] $version,
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName)][string] $releaseNotes
     )
-
-    if (-not(Test-Path $spec)) {
-        throw "Could Not Find Spec at $spec"
-    }
-
-    if (-not($packageId)) {
-        throw 'No PackageId Specified'
-    }
 
     # Provide a default for the output path
     $o = @{$true = $outputDirectory; $false = [System.IO.Path]::GetDirectoryName($spec)}[[System.IO.Directory]::Exists($outputDirectory)]
@@ -35,9 +28,9 @@ function Initialize-Package() {
     Set-XmlValue $spec '//ns:id' $packageId
 
     return @{
-        spec = $spec
-        packageId = $packageId
+        spec            = $spec
+        packageId       = $packageId
         outputDirectory = $o
-        version = $v
+        version         = $v
     }
 }

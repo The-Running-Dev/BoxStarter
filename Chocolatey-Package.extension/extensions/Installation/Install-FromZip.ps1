@@ -1,6 +1,7 @@
 function Install-FromZip {
+    [CmdletBinding()]
     param(
-        [PSCustomObject] $arguments
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][PSCustomObject] $arguments
     )
 
     $packageArgs = Get-Arguments $arguments
@@ -19,7 +20,7 @@ function Install-FromZip {
 
     if ($packageArgs.executableRegEx) {
         Write-Message "Install-FromZip: No executable specified, using regex '$($packageArgs.executableRegEx)'"
-        $arguments.file = Get-Executable $packageArgs.destination $packageArgs.executableRegEx
+        $packageArgs.file = Get-Executable $packageArgs.destination $packageArgs.executableRegEx
 
         # Re-map the file type
         $packageArgs.fileType = Get-FileExtension $packageArgs.file

@@ -1,7 +1,7 @@
 function Invoke-GitCommit {
     [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory = $true)][string] $message
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $message
     )
 
     git add .

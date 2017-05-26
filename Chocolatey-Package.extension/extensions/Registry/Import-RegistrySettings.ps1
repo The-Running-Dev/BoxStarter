@@ -1,7 +1,7 @@
 function Import-RegistrySettings {
-    param(
-		[string] $path
-	)
+    param (
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateScript( {Test-Path $_ -PathType Container})][string] $path
+    )
 
     $files = Get-ChildItem -Path $path -Filter *.reg -Recurse
 

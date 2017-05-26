@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>chocolatey</id>
+    <id>Chocolatey</id>
     <version>0.10.5</version>
     <title>Chocolatey</title>
     <authors>Rob Reynolds,  The Chocolatey Team</authors>
