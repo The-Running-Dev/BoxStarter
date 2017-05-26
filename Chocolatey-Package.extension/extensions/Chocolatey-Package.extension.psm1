@@ -1,8 +1,6 @@
 $global:mustDismountIso         = $false
-$global:pinTool                 = Join-Path $PSScriptRoot 'Bin\syspin.exe' -Resolve
+$global:pinTool                 = (Join-Path $PSScriptRoot 'Tools\syspin.exe')
 $global:defaultValidExitCodes   =  @(0, 1603, 1641, 3010)
-
-Import-Module WebAdministration -Force
 
 $pre = Get-ChildItem Function:\*
 Get-ChildItem -Recurse "$PSScriptRoot\*.ps1" | Where-Object { $_.Name -cmatch '^[A-Z]+' } | ForEach-Object { . $_  }

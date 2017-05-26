@@ -1,12 +1,33 @@
-﻿. (Join-Path $PSScriptRoot 'Helpers.ps1')
-
-$packageArgs    = Get-ProGetInstallArguments
-$arguments      = @{
-    url         = 'https://s3.amazonaws.com/cdn.inedo.com/downloads/proget/ProGetSetup4.7.12.exe'
-    checksum    = 'DC227F14CC798C9D4C070ACDEA2B5E58519DBDB9D20A00DC355279D4A0DC4B15'
-    silentArgs  = $packageArgs.silentArgs
+﻿$arguments      = @{
+    url         = ''
+    checksum    = ''
+    silentArgs  = '/S'
 }
 
 Install-Package $arguments
 
-Set-ProGetWebSiteBindings $packageArgs
+$packageParameters = $env:chocolateyPackageParameters
+$arguments = @{
+    Port = 82
+    Edition = 'LicenseKey'
+    ConnectionString = 'Data Source=localhost; Initial Catalog=ProGet; Integrated Security=SSPI;'
+}
+
+If ($packageParameters) {
+    $MATCH_PATTERN = "/([a-zA-Z]+):([`"'])?([a-zA-Z0-9- _]+)([`"'])?"
+    $PARAMATER_NAME_INDEX = 1
+    $VALUE_INDEX = 3
+
+    if ($packageParameters -match $MATCH_PATTERN ) {
+        $results = $packageParameters | Select-String $MATCH_PATTERN -AllMatches
+        $results.matches | % {
+            $arguments.Set_Item(
+                $_.Groups[$PARAMATER_NAME_INDEX].Value.Trim(),
+                $_.Groups[$VALUE_INDEX].Value.Trim())
+        }
+    }
+}
+
+$arguments.Keys | % {
+    $silentArgs += ' "/' + $_ + ':' + $arguments[$_] + '"'
+}

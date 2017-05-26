@@ -1,7 +1,6 @@
 function Get-Arguments {
-    [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][PSCustomObject] $arguments
+        [PSCustomObject] $arguments
     )
 
     $packageArgs = @{}
@@ -41,22 +40,17 @@ function Get-Arguments {
                 | Select-Object -First 1 -ExpandProperty FullName)
     }
 
-    if ($packageArgs.file) {
-        $packageArgs.fileType = Get-FileExtension $packageArgs.file
-    }
-
-    if ($packageArgs.executable) {
-        $packageArgs.executableType = Get-FileExtension $packageArgs.executable
-    }
+    $packageArgs.fileType = Get-FileExtension $packageArgs.file
+    $packageArgs.executableType = Get-FileExtension $executable.file
 
     # No silent arguments provided and the file type is MSI
     if (!$packageArgs.silentArgs -and $packageArgs.fileType -eq 'msi') {
-        $packageArgs.silentArgs = '/quiet /norestart'
+        $packageArgs.silentArgs = '/quiet'
     }
 
     # No executable silent arguments provided and the executable file type is MSI
     if (!$packageArgs.executableArgs -and $packageArgs.executableType -eq 'msi') {
-        $packageArgs.executableArgs = '/quiet /norestart'
+        $packageArgs.executableArgs = '/quiet'
     }
 
     Write-Message "Get-Arguments: $($packageArgs | Out-String)"

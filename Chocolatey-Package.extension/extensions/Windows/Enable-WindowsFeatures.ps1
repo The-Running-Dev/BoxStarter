@@ -1,10 +1,9 @@
 function Enable-WindowsFeatures {
-    [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $configFile
+        [string] $file
     )
 
-    Write-Message "Enabling Windows Features from $configFile"
+    Write-Message "Enabling Windows Features from $file"
 
-    Invoke-Commands $configFile "choco install ##token## -r -source WindowsFeatures -y"
+    Invoke-Commands $file "choco install ##token## -r -source WindowsFeatures -y"
 }

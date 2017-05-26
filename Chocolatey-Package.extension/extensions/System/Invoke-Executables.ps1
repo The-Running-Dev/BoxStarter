@@ -1,7 +1,7 @@
 function Invoke-Executables {
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateScript( {Test-Path $_ -PathType Container})][string] $path
-    )
+		[string] $path
+	)
 
     $exes = Get-ChildItem -Path $path -Filter *.exe -Recurse
 

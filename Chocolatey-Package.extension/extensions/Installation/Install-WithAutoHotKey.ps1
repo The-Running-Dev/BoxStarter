@@ -1,13 +1,12 @@
 function Install-WithAutoHotKey {
-    [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][PSCustomObject] $arguments
+        [PSCustomObject] $arguments
     )
 
     # No executable script provided, find the Install.exe in the package directory
     if (![System.IO.File]::Exists($arguments.executable)) {
         $arguments.executable = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
-                -Filter 'Install.exe' | Select-Object -First 1 -ExpandProperty FullName)
+            -Filter 'Install.exe' | Select-Object -First 1 -ExpandProperty FullName)
     }
 
     # The executable parameter does not contain a full path

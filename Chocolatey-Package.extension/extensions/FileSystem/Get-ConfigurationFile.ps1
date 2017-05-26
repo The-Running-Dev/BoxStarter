@@ -1,7 +1,7 @@
 function Get-ConfigurationFile() {
     param(
-        [Parameter(Position = 0, ValueFromPipeline)][string] $configuration,
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName)][string] $defaultConfiguration
+        [string] $configuration,
+        [string] $defaultConfiguration
     )
 
     if ([System.IO.File]::Exists($configuration)) {

@@ -1,7 +1,7 @@
 function Get-FileName {
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $file
-    )
+		[string] $file
+	)
 
     return [System.IO.Path]::GetFileName($file)
 }

@@ -1,12 +1,11 @@
 function Get-Packages {
-    [CmdletBinding()]
     param (
-        [parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $baseDir,
-        [parameter(Position = 1, ValueFromPipelineByPropertyName)][string] $searchTerm,
-        [parameter(Position = 2, ValueFromPipelineByPropertyName)][string] $filter
+        [parameter(Position = 0, Mandatory = $true)][string] $baseDir,
+        [parameter(Position = 1, Mandatory = $false)][string] $searchTerm = '',
+        [parameter(Position = 2, Mandatory = $false)][string] $filter = ''
     )
 
-    if (-not $searchTerm) {
+    if (!$searchTerm) {
         # Get all packages in the base directory and sub directories
         $packages = (Get-ChildItem -Path $baseDir -Filter $filter -Recurse)
     }

@@ -1,12 +1,11 @@
 function Install-Package {
-    [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][PSCustomObject] $arguments
+        [PSCustomObject] $arguments
     )
 
     $packageArgs = Get-Arguments $arguments
 
-    if (-not (Test-FileExists $packageArgs.file) -and $packageArgs.url) {
+    if (!(Test-FileExists $packageArgs.file -and $packageArgs.url)) {
         Write-Message "Install-Package: Downloading from '$($arguments.url)'"
 
         $arguments.file = Get-ChocolateyWebFile @packageArgs

@@ -1,9 +1,8 @@
 function Enable-WindowsFeature {
-    [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $featureName
+        [string] $featureName
     )
-
+    
     $feature = Get-WindowsOptionalFeature -FeatureName $featureName -Online
 
     if ($feature.State -ne 'Enabled') {

@@ -1,25 +1,24 @@
 function New-PinnedApplication {
-    [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateScript( {Test-Path $_ -PathType Leaf})][string] $path
+        [PSCustomObject] $applicationPath
     )
 
     try {
-        if ($path -match '\$') {
-            $path = Invoke-Expression $path
+        if ($applicationPath.Contains('$')) {
+            $applicationPath = Invoke-Expression $applicationPath
         }
 
-        if ([System.IO.File]::Exists($path)) {
-            $applicationShortcutPath = $path -replace '\.\w+$', '.lnk'
+        if ([System.IO.File]::Exists($applicationPath)) {
+            $applicationShortcutPath = $applicationPath -replace '\.\w+$', '.lnk'
 
-            Write-Message "New-PinnedApplication: Pinning '$path' with '$applicationShortcutPath'..."
+            Write-Message "New-PinnedApplication: Pinning $applicationPath with $applicationShortcutPath"
 
             Install-ChocolateyShortcut `
                 -ShortcutFilePath $applicationShortcutPath `
-                -TargetPath $path `
+                -TargetPath $applicationPath `
                 -RunAsAdmin
 
-            & $global:pinTool $path c:"Pin to taskbar" | Out-Null
+            & $global:pinTool $applicationPath c:"Pin to taskbar" | Out-Null
         }
     }
     catch {

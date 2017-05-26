@@ -1,5 +1,5 @@
 function Invoke-GitPush {
-    $branch = git rev-parse --abbrev-ref HEAD
+    $branchName = git rev-parse --abbrev-ref HEAD
 
-    git push --set-upstream origin $branch
+    git push --set-upstream origin $branchName
 }

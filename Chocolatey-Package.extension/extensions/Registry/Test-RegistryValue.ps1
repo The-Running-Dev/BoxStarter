@@ -1,16 +1,20 @@
-function Test-RegistryValue {
+function Test-RegistryValue
+{
     param (
-        [parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()] $path,
-        [parameter(Position = 1, Mandatory, ValueFromPipelineByPropertyName)][ValidateNotNullOrEmpty()] $value
+        [parameter(Mandatory=$true)] [ValidateNotNullOrEmpty()] $path,
+        [parameter(Mandatory=$true)] [ValidateNotNullOrEmpty()] $value
     )
 
-    try {
-        if (Test-Path $path) {
-            Get-ItemProperty -Path $path | Select-Object -ExpandProperty $value -ErrorAction Stop | Out-Null
+    try
+    {
+        if (Test-Path -Path $Path)
+        {
+            Get-ItemProperty -Path $Path | Select-Object -ExpandProperty $Value -ErrorAction Stop | Out-Null
             return $true
         }
     }
-    catch {
+    catch
+    {
         return $false
     }
 }

@@ -8,14 +8,12 @@ function global:au_GetLatest {
     $releaseUrl = 'https://handbrake.fr/downloads2.php'
     $versionRegEx = 'Current Version: ([0-9\.]+)'
     $downloadUrlPrefix = 'https://handbrake.fr'
-    $downloadUrlRegEx = '<iframe src="(.*?\.zip).*'
+    $downloadUrlRegEx = '\.zip'
 
     $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
     $version = [version]([regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value)
     $partialUrl = $releasePage.Links | Where-Object href -match $downloadUrlRegEx | Select-Object -First 1 -Expand href
-    $downloadPage = Invoke-WebRequest -Uri "$downloadUrlPrefix/$partialUrl" -UseBasicParsing
-    $downloadPage.content -match $downloadUrlRegEx | out-null
-    $url = $matches[1]
+    $url = Get-RedirectUrl "$downloadUrlPrefix/$partialUrl"
 
     if ($force) {
         $global:au_Version = $version

@@ -1,10 +1,10 @@
-﻿$packageChecksum    = '1C9C88AA6CE208766833D8BC212EA9FDE4726A10AFB28AEF0A9ACBE7D1478768A199435613D8317BC48470CF9B51FDB7C8620D0094B966F4DD19436DCBBA1BCB'
+﻿$packageChecksum    = '3D642AC84DE9AA97B14C06562C0E25D84DD0B5C34B1D74CFF0E3739C22FFF5EBADF999C1D4177371A5668A90C83AA4F5941CFEE03C05641F4794197B5DD830F0'
 $defaultConfigFile  = Join-Path $env:ChocolateyPackageFolder 'IIS.config'
 $parameters         = Get-Parameters $env:packageParameters
 $configurationFile  = Get-ConfigurationFile $parameters['file'] $defaultConfigFile
 
 if ([System.Environment]::OSVersion.Version.Major -eq 6){
-    Enable-WindowsFeatures $configurationFile
+    Install-Applications $configurationFile
 }
 else {
     # .NET and extensibility
@@ -13,7 +13,6 @@ else {
 
     # Web server
     Enable-WindowsFeature IIS-WebServer
-    Enable-WindowsFeature IIS-ManagementConsole
 
     # ASP.NET
     Enable-WindowsFeature IIS-ASPNET

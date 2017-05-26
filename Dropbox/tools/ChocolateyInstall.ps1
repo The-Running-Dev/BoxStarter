@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
-    url         = 'https://clientupdates.dropboxstatic.com/client/Dropbox%2026.4.24%20Offline%20Installer.exe'
-    checksum    = 'BD206A5FFA720EE79107EF2CAA27F6B3DD63F08A9D9171B4A672E5EE04636259'
+    url         = 'https://clientupdates.dropboxstatic.com/client/Dropbox%2026.4.23%20Offline%20Installer.exe'
+    checksum    = 'C4FDD705FBE5293FAC9BDD084CE4F6E4FB58155F2DC824CFF92735B2DE324C5F'
     silentArgs  = '/s'
 
 }

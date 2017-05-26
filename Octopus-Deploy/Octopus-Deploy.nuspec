@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Octopus-Deploy</id>
-    <version>3.13.7</version>
-    <title>Octopus Deploy Server</title>
+    <version>3.13.3</version>
+    <title>Octopus Deploy - Server</title>
     <authors>Octopus Deploy</authors>
     <licenseUrl>http://octopusdeploy.com/pricing</licenseUrl>
     <projectUrl>http://octopusdeploy.com/</projectUrl>
@@ -11,6 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
     Octopus Deploy is a user-friendly automated deployment tool for .NET developers.
+
     This package installs the central Octopus Deploy server.
     </description>
     <summary>Octopus Deploy is an automated deployment server for .NET developers.</summary>

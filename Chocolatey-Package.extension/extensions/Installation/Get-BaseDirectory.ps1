@@ -1,7 +1,6 @@
 function Get-BaseDirectory {
-    [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $baseDir
+        [string] $baseDir
     )
 
     if (Test-DirectoryExists $baseDir) {
@@ -10,13 +9,13 @@ function Get-BaseDirectory {
 
     # Overwrite the base directory with packagesInstallers
     if (Test-DirectoryExists $env:packagesInstallers) {
-        Write-Message "Get-BaseDirectory: Using 'PackagesInstallers' $($env:packagesInstallers)"
+		Write-Message "Get-BaseDirectory: Using 'PackagesInstallers' $($env:packagesInstallers)"
         return $env:packagesInstallers
     }
 
     # Overwrite the base directory with ChocolateyPackageFolder
     if (Test-DirectoryExists $env:ChocolateyPackageFolder) {
-        Write-Message "Get-BaseDirectory: Using 'ChocolateyPackageFolder' $($env:ChocolateyPackageFolder)"
+		Write-Message "Get-BaseDirectory: Using 'ChocolateyPackageFolder' $($env:ChocolateyPackageFolder)"
         return $env:ChocolateyPackageFolder
     }
 }
