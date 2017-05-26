@@ -1,6 +1,6 @@
 ﻿$arguments = @{
-    url      = 'https://download.octopusdeploy.com/octopus/Octopus.Tentacle.3.13.6-x64.msi'
-    checksum = '16ACDF45D5683BCB3A2E2C7B81693DF6A08BFBB75028583F62A31A07B9A29D52'
+    url      = 'https://download.octopusdeploy.com/octopus/Octopus.Tentacle.3.13.7-x64.msi'
+    checksum = '945B7F430D26173FD39F50DE2ED87679ECF5FB27135D8EBA6354F6AFC259CA9F'
 }
 
 Install-Package $arguments
