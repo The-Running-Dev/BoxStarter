@@ -1,6 +1,7 @@
 function Install-FromIso {
+    [CmdletBinding()]
     param(
-        [PSCustomObject] $arguments
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][PSCustomObject] $arguments
     )
 
     if (![System.IO.Path]::IsPathRooted($arguments.file)) {
@@ -20,6 +21,7 @@ function Install-FromIso {
                 Write-Message "Install-FromIso: No ISO found"
                 return
             }`
+
         }
     }
 

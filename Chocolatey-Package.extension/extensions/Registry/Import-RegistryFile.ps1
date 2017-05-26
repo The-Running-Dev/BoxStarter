@@ -1,9 +1,8 @@
-function Import-RegistryFile
-{
+function Import-RegistryFile {
     param (
-        [parameter(Mandatory = $false)][ValidateNotNullOrEmpty()][Hashtable] $arguments = @{}
+        [parameter(Position = 0, ValueFromPipeline)][Hashtable] $arguments
     )
-    
+
     $packageArgs = Get-Arguments $arguments
 
     try {

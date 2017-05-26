@@ -1,10 +1,10 @@
-function Disable-WindowsFeatures
-{
+function Disable-WindowsFeatures {
+    [CmdletBinding()]
     param(
-		[string] $file
-	)
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $configFile
+    )
 
-    Write-Message "Disabling Windows Features from $file"
+    Write-Message "Disabling Windows Features from $configFile"
 
-    Invoke-Commands $file "choco uninstall ##token## -r -source WindowsFeatures -y"
+    Invoke-Commands $configFile "choco uninstall ##token## -r -source WindowsFeatures -y"
 }

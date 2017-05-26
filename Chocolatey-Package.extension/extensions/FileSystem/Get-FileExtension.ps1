@@ -1,7 +1,7 @@
 function Get-FileExtension {
     param(
-		[string] $file
-	)
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $file
+    )
 
     return [System.IO.Path]::GetExtension($file).ToLower().Replace('.', '')
 }

@@ -1,7 +1,8 @@
-function Get-SourceConfig() {
+function Get-SourceConfig {
+    [CmdletBinding()]
     param (
-        [Parameter(Position = 0, Mandatory = $true)][Hashtable] $config,
-        [Parameter(Position = 1, Mandatory = $false)][String] $sourceType = 'local'
+        [Parameter(Position = 0, Mandatory)][ValidateNotNullOrEmpty()][Hashtable] $config,
+        [Parameter(Position = 1)][String] $sourceType = 'local'
     )
 
     if ($sourceType -match 'remote') {

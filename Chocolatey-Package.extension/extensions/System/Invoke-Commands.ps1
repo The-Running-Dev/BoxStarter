@@ -1,12 +1,12 @@
 function Invoke-Commands {
+    [CmdletBinding()]
     param(
-		[string] $file,
-        [string] $commandTemplate
-	)
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $configFile,
+        [Parameter(Position = 1, Mandatory, ValueFromPipelineByPropertyName)][ValidateNotNullOrEmpty()][string] $commandTemplate
+    )
 
     try {
-        foreach ($line in Get-Content -Path $file | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'})
-        {
+        foreach ($line in Get-Content -Path $configFile | Where-Object {$_.trim() -notmatch '(^\s*$)|(^#)'}) {
             $commmand = $commandTemplate.replace("##token##", $line)
 
             Write-Message "Running: $commmand"
@@ -15,6 +15,6 @@ function Invoke-Commands {
         }
     }
     catch {
-         Write-Message "Invoke-Commands Failed: $($_.Exception.Message)"
+        Write-Message "Invoke-Commands Failed: $($_.Exception.Message)"
     }
 }

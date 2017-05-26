@@ -1,6 +1,7 @@
 function Install-WithScheduledTask() {
+    [CmdletBinding()]
     param(
-        [Hashtable] $arguments
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][Hashtable] $arguments
     )
 
     $packageArgs = Get-Arguments $arguments

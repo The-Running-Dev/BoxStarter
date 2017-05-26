@@ -1,0 +1,52 @@
+function Show-BalloonTip {
+    [CmdletBinding(SupportsShouldProcess)]
+    param
+    (
+        [Parameter(Mandatory)][string] $text,
+        [Parameter(Mandatory)][sring] $title,
+        [ValidateSet('None', 'Info', 'Warning', 'Error')]$icon = 'Info',
+        $timeout = 10000
+    )
+
+    Add-Type -AssemblyName System.Windows.Forms
+
+    if ($script:balloon -eq $null) {
+        $script:balloon = New-Object System.Windows.Forms.NotifyIcon
+    }
+
+    $path = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $balloon.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($path)
+    $balloon.BalloonTipIcon = $Icon
+    $balloon.BalloonTipText = $Text
+    $balloon.BalloonTipTitle = $Title
+    $balloon.Visible = $true
+
+    $balloon.ShowBalloonTip($Timeout)
+
+    #$script:balloon.Dispose()
+    #Remove–Variable –Scope script –Name balloon
+}
+
+function Show-BalloonTip {
+    [CmdletBinding()]
+    param(
+        [parameter(Mandatory)][string] $title,
+        [ValidateSet("Info", "Warning", "Error")][string] $messageType = "Info",
+        [parameter(Mandatory)][string] $message,
+        [string] $duration = 10000
+    )
+
+    [system.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms') | Out-Null
+    $balloon = New-Object System.Windows.Forms.NotifyIcon
+    $path = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $icon = [System.Drawing.Icon]::ExtractAssociatedIcon($path)
+    $balloon.Icon = $icon
+    $balloon.BalloonTipIcon = $MessageType
+    $balloon.BalloonTipText = $Message
+    $balloon.BalloonTipTitle = $Title
+    $balloon.Visible = $true
+    $balloon.ShowBalloonTip($Duration)
+
+    #Show-BalloonTip -Title “my message” -MessageType Warning -Message “you have a warning dude” -Duration 1000
+    #Show-BalloonTip -Title “Error occurred” -MessageType Error -Message “you have a Error dude” -Duration 1000
+}
