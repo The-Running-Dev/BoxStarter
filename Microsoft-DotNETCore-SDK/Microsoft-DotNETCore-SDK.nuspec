@@ -16,7 +16,7 @@
     <tags>.net core sdk</tags>
     <dependencies>
       <dependency id="Chocolatey-Package.extension" />
-      <dependency id="DotNETCore-Runtime" />
+      <dependency id="Microsoft-DotNETCore-Runtime" />
     </dependencies>
   </metadata>
 </package>

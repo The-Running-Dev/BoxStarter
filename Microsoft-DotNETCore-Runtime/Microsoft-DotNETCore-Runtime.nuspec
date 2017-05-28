@@ -27,7 +27,7 @@
     <tags>Microsoft .NET Core Runtime Redistributable admin</tags>
     <dependencies>
       <dependency id="Chocolatey-Package.extension" />
-      <dependency id="VisualCRedistributable2015" />
+      <dependency id="Microsoft-VisualCRedistributable2015" />
     </dependencies>
   </metadata>
 </package>
