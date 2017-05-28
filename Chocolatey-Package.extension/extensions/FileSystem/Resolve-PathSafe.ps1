@@ -1,7 +1,17 @@
 function Resolve-PathSafe {
-    param(
-        [Parameter(Position = 0, ValueFromPipeline)][string] $path
+    param (
+        [parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $path,
+        [parameter(Position = 1, ValueFromPipelineByPropertyName)][ValidateNotNullOrEmpty()][string] $basePath
     )
 
-    $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($path)
+    if ([System.IO.Path]::IsPathRooted($path) -or $path.StartsWith('http')) {
+        return $path
+    }
+
+    if ($basePath) {
+        return Join-Path -Resolve $basePath $path
+
+    }
+
+    return $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($path)
 }

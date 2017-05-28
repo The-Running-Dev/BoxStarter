@@ -68,9 +68,14 @@ function global:au_GetLatest {
     $oldChecksum = (Get-Item $packageDir\tools\chocolateyInstall.ps1 | Select-String "(?i)^[$]packageChecksum\s*=\s*'.*'") -split "=|'" | Select-Object -Last 1 -Skip 1
 
     # $settingsDir is defined in the individual update script
+    <#
     $currentChecksum = Get-ChildItem -Exclude $excludeFiles $settingsDir -Recurse `
         | ForEach-Object { Get-FileHash $_.FullName } `
         | ForEach-Object { $_.Hash } | Join-String
+    #>
+
+    # Get the last write time of the appSettingsDir and convert it to a SHA256 checksum
+    $currentChecksum += ((Get-Item $settingsDir).LastWriteTime.ToString() | Get-Hash -Algorithm sha256).HashString
 
     if (($currentChecksum -ne $oldChecksum) -or $force) {
         $global:au_Version = $version

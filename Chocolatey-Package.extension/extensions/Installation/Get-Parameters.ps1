@@ -1,7 +1,7 @@
 function Get-Parameters {
     [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $parameters = $env:ChocolateyPackageParameters
+        [Parameter(Position = 0, ValueFromPipeline)][string] $parameters = $env:ChocolateyPackageParameters
     )
 
     $arguments = @{}

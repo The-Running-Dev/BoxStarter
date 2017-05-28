@@ -1,7 +1,7 @@
 function Install-FromIso {
     [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][PSCustomObject] $arguments
+        [Parameter(Position = 0, ValueFromPipeline)][PSCustomObject] $arguments
     )
 
     if (![System.IO.Path]::IsPathRooted($arguments.file)) {

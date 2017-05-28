@@ -4,8 +4,7 @@
     <id>Packer</id>
     <version>1.0.0</version>
     <title>Packer</title>
-    <authors>Mitchell Hashimoto,  Jack Pearkes,  Mark Peek,  Ross Smith II,  Rickard von Essen</authors>
-    <owners>Mitchell Hashimoto,  Jack Pearkes,  Mark Peek,  Ross Smith II,  Rickard von Essen</owners>
+    <authors>Mitchell Hashimoto, Jack Pearkes, Mark Peek, Ross Smith II, Rickard von Essen</authors>
     <licenseUrl>https://github.com/mitchellh/packer/blob/master/LICENSE</licenseUrl>
     <projectUrl>http://packer.io/</projectUrl>
     <iconUrl>https://github.com/hashicorp/packer/raw/master/website/source/assets/images/favicons/apple-touch-icon.png</iconUrl>
@@ -13,7 +12,6 @@
     <description>Packer is an open source tool for creating identical machine images for multiple platforms from a single source configuration. Packer is lightweight, runs on every major operating system, and is highly performant, creating machine images for multiple platforms in parallel. Packer does not replace configuration management like Chef or Puppet. In fact, when building images, Packer is able to use tools like Chef or Puppet to install software onto the image.</description>
     <summary>Packer is an open source tool for creating identical machine images for multiple platforms from a single source configuration.</summary>
     <tags>packer vagrant virtual machine VM VirtualBox VMware puppet chef</tags>
-    <packageSourceUrl>https://github.com/StefanScherer/choco-packer</packageSourceUrl>
     <docsUrl>https://packer.io/docs</docsUrl>
     <mailingListUrl>https://groups.google.com/forum/#!forum/packer-tool</mailingListUrl>
     <bugTrackerUrl>https://github.com/mitchellh/packer/issues</bugTrackerUrl>

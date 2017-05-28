@@ -8,7 +8,7 @@ function Get-DirectoryConfig {
     $configFile = Join-Path $path $global:configFile
 
     # No config file found, look for it in the parent directory
-    if (!(Test-Path $configFile)) {
+    if (-not (Test-Path $configFile)) {
         $configFile = Join-Path (Split-Path -Parent $path) $global:configFile
     }
 
@@ -17,7 +17,7 @@ function Get-DirectoryConfig {
         $configJson = (Get-Content $configFile -Raw) | ConvertFrom-Json
 
         $config = $global:config
-        $config.artifacts = Get-ConfigSetting $configJson 'artifacts' | ConvertTo-FullPath -BasePath $dir
+        $config.artifacts = Get-ConfigSetting $configJson 'artifacts' | Resolve-PathSafe -BasePath $dir
         $defaultFilter = $global:defaultFilter -split ','
 
         if ($configJson.remote) {
@@ -26,7 +26,7 @@ function Get-DirectoryConfig {
 
             foreach ($source in $configJson.remote.sources) {
                 $config.remote.sources += @{
-                    pushTo = Get-ConfigSetting $source 'pushTo' | ConvertTo-FullPath -BasePath $dir
+                    pushTo = Get-ConfigSetting $source 'pushTo' | Resolve-PathSafe -BasePath $dir
                     apiKey = Get-ConfigSetting $source 'apiKey'
                 }
             }
@@ -38,7 +38,7 @@ function Get-DirectoryConfig {
 
             foreach ($source in $configJson.local.sources) {
                 $config.local.sources += @{
-                    pushTo = Get-ConfigSetting $source 'pushTo' | ConvertTo-FullPath -BasePath $dir
+                    pushTo = Get-ConfigSetting $source 'pushTo' | Resolve-PathSafe -BasePath $dir
                     apiKey = Get-ConfigSetting $source 'apiKey'
                 }
             }

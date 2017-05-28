@@ -17,17 +17,18 @@
 ## Packages
   * 7Zip
   * CCleaner
-  * chocolatey
-  * chocolatey-core.extension
+  * Chocolatey
+  * Chocolatey-Core.extension
   * Chocolatey-Dev.extension
+  * Chocolatey-IIS.extension
   * Chocolatey-Package.extension
-  * chocolatey.extension
+  * Chocolatey-SQL.extension
+  * Chocolatey.extension
   * ClipboardFusion
   * ConEmu
+  * DatabaseDoTNET
   * DisplayFusion
   * Docker
-  * KB2919355
-  * KB2919442
   * Driver-AsmediaUSB
   * Driver-INF
   * Driver-IntelBluetooth
@@ -56,6 +57,8 @@
   * JetBrains-WebStorm
   * JRE
   * K-LiteCodecPack
+  * KB2919355
+  * KB2919442
   * KDiff3
   * LastPass-Applications
   * Launchy
@@ -75,7 +78,15 @@
   * Microsoft-SQLServer2014Express
   * Microsoft-SQLServer2016Developer
   * Microsoft-SQLServer2016Express
+  * Microsoft-SQLServer2016LocalDb
+  * Microsoft-SQLServer2016SharedManagementObjects
   * Microsoft-SQLServerManagementStudio
+  * Microsoft-VisualCRedistributable2013
+  * Microsoft-VisualCRedistributable2013x64
+  * Microsoft-VisualCRedistributable2013x86
+  * Microsoft-VisualCRedistributable2015
+  * Microsoft-VisualCRedistributable2015x64
+  * Microsoft-VisualCRedistributable2015x86
   * Microsoft-VisualStudio2015Enterprise
   * Microsoft-VisualStudio2015Enterprise-Embedded
   * Microsoft-VisualStudioCode
@@ -85,12 +96,13 @@
   * NTLite
   * NuGet-CommandLine
   * Octopus-Deploy
+  * Octopus-Deploy-CommandLine
   * Octopus-Deploy-Tentacle
-  * Octopus-Tools
+  * Packer
   * Paint.NET
-  * Powershell-Carbon
-  * Powershell-CommunityExtensions
-  * Powershell-Psake
+  * PowerShell-Carbon
+  * PowerShell-CommunityExtensions
+  * PowerShell-PSake
   * ProGet
   * RazerSynapse
   * Recuva
@@ -98,20 +110,17 @@
   * Slack
   * Spotify
   * TeamViewer
-  * VisualCRedistributable2013
-  * VisualCRedistributable2013x64
-  * VisualCRedistributable2013x86
-  * VisualCRedistributable2015
-  * VisualCRedistributable2015x64
-  * VisualCRedistributable2015x86
+  * VMWare-Converter
   * VMWare-PowerCLI
   * VMWare-RemoteConsole
   * VMWare-Workstation
   * VoiceBot
   * VPNAreaChameleon
+  * WinDirStat
   * Windows-IIS
   * Windows-IIS-ExternalCache
   * Windows-IIS-UrlRewrite
+  * WSUS-Offline-Update
   * XYplorer
 
 

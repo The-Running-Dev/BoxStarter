@@ -1,7 +1,7 @@
 function Get-Arguments {
     [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][PSCustomObject] $arguments
+        [Parameter(Position = 0, ValueFromPipeline)][PSCustomObject] $arguments
     )
 
     $packageArgs = @{}

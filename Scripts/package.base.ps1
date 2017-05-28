@@ -13,23 +13,22 @@ New-Item -ItemType Directory $baseDir -Force | Out-Null
 
 & $parentDir\Scripts\build.chocolatey-dev.extension.ps1
 & $parentDir\Scripts\build.chocolatey-package.extension.ps1
-
-& $boxstarterPrivateDir\build-push.ps1 Windows-Powershell-Personal -f
+& $boxstarterPrivateDir\build-push.ps1 PowerShell-Profile -f
 & $boxstarterPrivateDir\build-push.ps1 Chocolatey-Personal -f
 
 $include = @()
-$include += 'chocolatey'
+$include += 'Chocolatey'
 $include += 'Chocolatey.extension'
 $include += 'Chocolatey-Core.extension'
 $include += 'Chocolatey-Dev.extension'
 $include += 'Chocolatey-Package.extension'
 $include += 'Chocolatey-Personal'
 $include += 'NuGet-CommandLine'
-$include += 'Octopus-Tools'
-$include += 'Powershell-Carbon'
-$include += 'Powershell-PSake'
-$include += 'Powershell-CommunityExtensions'
-$include += 'Windows-Powershell-Personal'
+$include += 'Octopus-Deploy-CommandLine'
+$include += 'PowerShell-Carbon'
+$include += 'PowerShell-CommunityExtensions'
+$include += 'PowerShell-Profile'
+$include += 'PowerShell-PSake'
 
 Remove-Item -Recurse $baseDir -ErrorAction SilentlyContinue
 New-Item -ItemType Directory $baseDir -force | Out-Null

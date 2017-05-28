@@ -1,7 +1,7 @@
 function Install-WithAutoHotKey {
     [CmdletBinding()]
     param(
-        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][PSCustomObject] $arguments
+        [Parameter(Position = 0, ValueFromPipeline)][PSCustomObject] $arguments
     )
 
     # No executable script provided, find the Install.exe in the package directory

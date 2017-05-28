@@ -4,7 +4,7 @@
     silentArgs      = '/VERYSILENT /NORESTART /NOCANCEL /SP- /COMPONENTS="icons,icons\quicklaunch,ext,ext\shellhere,ext\guihere,assoc,assoc_sh" /LOG'
 }
 
-$parameters = Get-Parameters $env:chocolateyPackageParameters
+$parameters = Get-Parameters
 $registryKeyName = 'Git_is1'
 $useWindowsTerminal = $false
 $gitCmdOnly = $false

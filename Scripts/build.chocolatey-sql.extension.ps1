@@ -1,7 +1,7 @@
 $packagesDir = Join-Path $PSScriptRoot '..\..\..\BoxStarter' -Resolve
 $parentDir = Join-Path $PSScriptRoot '..\' -Resolve
 
-if ((choco list Chocolatey-SQL -lo -r)) {
+if ((choco list Chocolatey-SQL.extension -lo -r)) {
     choco uninstall Chocolatey-SQL.extension -f
     Remove-Item -Recurse C:\ProgramData\Chocolatey\extensions\Chocolatey-SQL -ErrorAction SilentlyContinue
 }

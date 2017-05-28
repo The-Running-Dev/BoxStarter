@@ -1,6 +1,6 @@
 function Import-RegistryFile {
     param (
-        [parameter(Position = 0, ValueFromPipeline)][Hashtable] $arguments
+        [parameter(Position = 0, ValueFromPipeline)][PSCustomObject] $arguments
     )
 
     $packageArgs = Get-Arguments $arguments
