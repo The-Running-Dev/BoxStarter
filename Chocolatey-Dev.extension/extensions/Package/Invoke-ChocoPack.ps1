@@ -19,7 +19,7 @@ function Invoke-ChocoPack {
 
         Set-Location $currentDir
 
-        New-ChocoPackage $p.FullName $includeFilter $directoryConfig.artifacts $force
+        New-ChocoPackage $p.FullName $directoryConfig.artifacts $includeFilter $force
 
         Set-Location $baseDir
     }

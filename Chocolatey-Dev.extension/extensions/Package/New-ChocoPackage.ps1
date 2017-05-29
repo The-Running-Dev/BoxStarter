@@ -2,8 +2,8 @@ function New-ChocoPackage {
     [CmdletBinding()]
     param (
         [parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateScript( {Test-Path $_ -PathType Leaf})][string] $spec,
-        [Parameter(Position = 1, Mandatory, ValueFromPipelineByPropertyName)][ValidateNotNullOrEmpty()][array] $includeFilter,
-        [parameter(Position = 2, Mandatory, ValueFromPipelineByPropertyName)][ValidateScript( {Test-Path $_ -PathType Container})][string] $outputPath,
+        [parameter(Position = 1, Mandatory, ValueFromPipelineByPropertyName)][ValidateScript( {Test-Path $_ -PathType Container})][string] $outputPath,
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName)][array] $includeFilter,
         [Parameter(Position = 3)][switch] $force
     )
 

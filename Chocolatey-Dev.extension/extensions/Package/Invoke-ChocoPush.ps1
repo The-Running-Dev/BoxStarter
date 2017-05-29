@@ -21,15 +21,18 @@ function Invoke-ChocoPush {
             $apiKey = $source.apiKey
 
             # Make sure we can access the source directory
-            if (!$pushTo.StartsWith('http') -and !(Test-Path $pushTo)) {
+            if (-not ($pushTo -match '^http') -and -not (Test-Path $pushTo)) {
                 break
             }
 
             $packageAritifactRegEx = $p.Name -replace '(.*?).nuspec', '$1([0-9\.]+)\.nupkg'
 
-            # Delete any previous versions of the same package
-            Get-ChildItem $pushTo -Recurse -File `
-                | Where-Object { $_.Name -match $packageAritifactRegEx } | Remove-Item
+            # If the path is a local path
+            if (Test-Path $pushTo) {
+                # Delete any previous versions of the same package
+                Get-ChildItem $pushTo -Recurse -File `
+                    | Where-Object { $_.Name -match $packageAritifactRegEx } | Remove-Item
+            }
 
             Get-ChildItem -Path $baseDir -Recurse -File `
                 | Where-Object { $_.Name -match $packageAritifactRegEx } `
