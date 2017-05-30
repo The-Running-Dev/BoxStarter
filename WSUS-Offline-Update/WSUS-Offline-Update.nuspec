@@ -5,7 +5,6 @@
     <version>10.9.2</version>
     <title>WSUS Offline Update</title>
     <authors>Torsten Wittrock</authors>
-    <owners>Torsten Wittrock</owners>
     <licenseUrl>http://www.gnu.org/copyleft/gpl.html</licenseUrl>
     <projectUrl>http://www.wsusoffline.net/</projectUrl>
     <iconUrl>https://rawgit.com/aronovgj/chocolatey/a153cf8e06fa9c06d2f15b31b7086d40d986c665/icons/wsus_offline_update.png</iconUrl>
@@ -14,6 +13,10 @@
     <summary>Using "WSUS Offline Update", you can update any computer running Microsoft Windows and Office safely, quickly and without an Internet connection.</summary>
     <copyright />
     <tags>windows update offline wsus office service pack</tags>
-    <packageSourceUrl>https://github.com/aronovgj/choco-auto</packageSourceUrl>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+      <dependency id="Chocolatey-Package.extension" />
+    </dependencies>
   </metadata>
 </package>

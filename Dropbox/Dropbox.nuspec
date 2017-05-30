@@ -6,11 +6,11 @@
     <title>Dropbox</title>
     <authors>Dropbox</authors>
     <projectUrl>https://dropbox.com</projectUrl>
-    <owners>The-Running-Dev</owners>
-    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <description>
     Dropbox
     </description>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
       <dependency id="Chocolatey-Package.extension" />
     </dependencies>
