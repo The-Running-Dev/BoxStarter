@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>XYPlorer</id>
-    <version>17.90.300</version>
+    <version>17.90.400</version>
     <title>XYPlorer</title>
     <authors>Cologne Code Company</authors>
     <projectUrl>https://www.xyplorer.com</projectUrl>
