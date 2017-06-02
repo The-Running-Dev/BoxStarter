@@ -1,5 +1,5 @@
-<?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>NuGet-CommandLine</id>
     <version>4.1.0</version>
@@ -17,5 +17,10 @@
     <owners>The-Running-Dev</owners>
 		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <iconUrl>https://cdn.rawgit.com/chocolatey/chocolatey-coreteampackages/27f780622b37514680f86c7f5e5f7f9bb0a32fe9/icons/nuget.commandline.png</iconUrl>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+      <dependency id="Chocolatey-Package.extension" />
+    </dependencies>
   </metadata>
 </package>

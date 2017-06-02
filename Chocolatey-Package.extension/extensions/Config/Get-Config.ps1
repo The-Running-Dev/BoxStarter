@@ -8,16 +8,18 @@ function Get-Config {
 
     if (-not $configFile) {
         Write-Host "Config file not provided...trying to find one"
-        $configFile = Get-ChildItem (Join-Path $PSScriptRoot ..) *.config -Recurse | Select-Object -First 1
+
+        $scriptDir = Split-Path -Parent $MyInvocation.PSCommandPath
+        $configFile = Get-ChildItem (Join-Path $scriptDir ..) -Filter 'Config.json' -Recurse | Select-Object -First 1 -ExpandProperty FullName
     }
 
-    Write-Host "Using $configFile..."
+    Write-Host "Using '$configFile'..."
 
     if (-not $baseDir) {
         $baseDir = Split-Path -Parent $configFile
     }
 
-    $config = Get-Content $configFile | ConvertFrom-Json
+    $config = Get-Content $configFile | Out-String | ConvertFrom-Json
     $configFileDir = Split-Path -Path $configFile
     $configFileName = [System.IO.Path]::GetFileNameWithoutExtension($configFile)
     $configFileExt = [System.IO.Path]::GetExtension($configFile)

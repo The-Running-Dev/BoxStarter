@@ -18,14 +18,14 @@ $global:config = @{
     local     = @{
         include = $global:defaultFilter -split ','
         sources = @(@{
-                pushTo = ''
+                source = ''
                 apiKey = ''
             })
     }
     remote    = @{
         include = $global:defaultFilter -split ','
         sources = @(@{
-                pushTo = ''
+                source = ''
                 apiKey = ''
             })
     }

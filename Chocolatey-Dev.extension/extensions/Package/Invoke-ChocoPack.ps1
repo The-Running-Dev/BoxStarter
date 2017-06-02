@@ -3,24 +3,20 @@ function Invoke-ChocoPack {
     param (
         [parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateScript( {Test-Path $_ -PathType Container})][string] $baseDir,
         [Parameter(Position = 1, ValueFromPipelineByPropertyName)][String] $searchTerm,
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName)][String] $sourceType = 'local',
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName)][switch] $remote,
         [Parameter(Position = 3, ValueFromPipelineByPropertyName)][switch] $force
     )
 
     $searchTerm = Get-SearchTerm $searchTerm
-    $baseConfig = Get-DirectoryConfig $baseDir
     $packages = Get-Packages $baseDir $searchTerm '*.nuspec'
 
     foreach ($p in $packages) {
         $currentDir = Split-Path -Parent $p.FullName
-        $directoryConfig = Get-DirectoryConfig $currentDir $baseConfig
-        $config = Get-SourceConfig $directoryConfig $sourceType
-        $includeFilter = $config.include
+        $config = Get-DirectoryConfig $currentDir $baseConfig
+        $sourceConfig = @{$true = $config.remote; $false = $config.local}[$remote -eq $true]
 
-        Set-Location $currentDir
-
-        New-ChocoPackage $p.FullName $directoryConfig.artifacts $includeFilter $force
-
-        Set-Location $baseDir
+        Push-Location $currentDir
+        New-ChocoPackage $p.FullName $config.artifacts $sourceConfig.include $force
+        Pop-Location
     }
 }

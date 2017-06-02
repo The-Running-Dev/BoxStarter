@@ -60,34 +60,36 @@ function global:au_BeforeUpdate {
 }
 
 function global:au_GetLatest {
-    # Get the version from the nuspec as we want it to always be the same
-    # unless we manually update it
+    # Get the version from the nuspec
     $version = (Get-Item "$($Latest.PackageName).nuspec" `
         | Select-String "(?i)<version>([0-9\.]+)</version>") `
         | ForEach-Object { $_.Matches[0].Groups[1].Value }
-    $oldChecksum = (Get-Item $packageDir\tools\chocolateyInstall.ps1 | Select-String "(?i)^[$]packageChecksum\s*=\s*'.*'") -split "=|'" | Select-Object -Last 1 -Skip 1
 
-    # $settingsDir is defined in the individual update script
-    <#
-    $currentChecksum = Get-ChildItem -Exclude $excludeFiles $settingsDir -Recurse `
-        | ForEach-Object { Get-FileHash $_.FullName } `
-        | ForEach-Object { $_.Hash } | Join-String
-    #>
+    try {
+        # Get the last updated on date from the ChocolateyInstall file
+        $updatedOn = [DateTime]((Get-Item $packageDir\tools\ChocolateyInstall.ps1 | Select-String "(?i)^[$]updatedOn\s*=\s*'.*'") -split "=|'" | Select-Object -Last 1 -Skip 1)
+    }
+    catch {}
 
-    # Get the last write time of the appSettingsDir and convert it to a SHA256 checksum
-    $currentChecksum += ((Get-Item $settingsDir).LastWriteTime.ToString() | Get-Hash -Algorithm sha256).HashString
+    # Get a list of updated files after the last updated on date
+    $updatedFiles = Get-ChildItem $packageDir -Recurse -File -Exclude '*.nuspec', 'ChocolateyInstall.ps1' | Where-Object { Test-Path -Path $_.FullName -NewerThan $updatedOn }
 
-    if (($currentChecksum -ne $oldChecksum) -or $force) {
-        $global:au_Version = $version
+    if ($updatedFiles -or $force) {
+        $newVersion = ([version]$version)
+        $newVersion = "$($newVersion.Major).$($newVersion.Minor).$($newVersion.Build + 1)"
+
+        $updatedOn = (get-date).ToString('yyyy.MM.dd HH:mm:ss')
+        $version = $newVersion
+        $global:au_Version = $newVersion
     }
 
-    return @{ Version = $version; Checksum32 = $currentChecksum }
+    return @{ Version = $version; UpdatedOn = $updatedOn }
 }
 
 function global:au_SearchReplace {
     return @{
         ".\tools\chocolateyInstall.ps1" = @{
-            "(?i)(^[$]packageChecksum\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
+            "(?i)(^[$]updatedOn\s*=\s*)('.*')" = "`$1'$($Latest.UpdatedOn)'"
         }
     }
 }

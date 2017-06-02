@@ -1,4 +1,4 @@
-function New-WebSite {
+function Install-WebSite {
     [CmdletBinding()]
     param(
         [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $name,

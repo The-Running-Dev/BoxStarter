@@ -16,7 +16,7 @@ function New-ChocoPackage {
     # If update script exists for the package
     # run it instead of packing it yourself
     if (Test-Path $updateScript) {
-        Write-Host "Updating Package with $updateScript"
+        Write-Host "Updating Package with '$updateScript'..."
 
         # Compile all .ahk files
         Invoke-AutoHotKey $packageDir

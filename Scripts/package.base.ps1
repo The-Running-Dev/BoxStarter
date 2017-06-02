@@ -1,7 +1,7 @@
 $parentDir = Join-Path $PSScriptRoot '..\' -Resolve
 $boxstarterPrivateDir = Join-Path $PSScriptRoot '..\..\Boxstarter-Private' -Resolve
 $packagesDir = Join-Path $PSScriptRoot '..\..\..\BoxStarter' -Resolve
-$baseDir = Resolve-FullPath (Join-Path $PSScriptRoot '..\Base')
+$baseDir = Resolve-PathSafe (Join-Path $PSScriptRoot '..\Base')
 $baseZip = Join-Path $baseDir 'Base.zip'
 
 $originalLocation = Get-Location

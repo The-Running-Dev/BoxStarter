@@ -9,6 +9,11 @@ function Set-ConnectionStrings {
     $config | ForEach-Object { ($_ | Get-Member -MemberType *Property).Name } | Where-Object { $_ -match 'Connection' } | `
         ForEach-Object {
         $currentXPath = $ExecutionContext.InvokeCommand.ExpandString($xPath)
-        Set-XmlValue $webConfig $currentXPath $config[$_]
+
+        Write-Host "Web Config: $webConfig"
+        Write-Host "CurrentXPath: $currentXPath"
+        Write-Host "Value: $($config.$_)"
+
+        Set-XmlValue $webConfig $currentXPath $config.$_
     }
 }

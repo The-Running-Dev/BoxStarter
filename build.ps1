@@ -1,7 +1,7 @@
 param (
-    [string] $searchTerm,
-    [ValidateSet('Remote', 'Local')][string] $sourceType = 'local',
-    [switch] $force
+    [Parameter(Position = 0)][String] $searchTerm,
+    [Parameter(Position = 1)][switch] $remote,
+    [Parameter(Position = 2)][switch] $force
 )
 
-Invoke-ChocoPack $PSScriptRoot $searchTerm $sourceType $force
+Invoke-ChocoPack $PSScriptRoot $searchTerm $remote $force
