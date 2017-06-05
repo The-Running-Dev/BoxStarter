@@ -1,3 +1,3 @@
 function Write-TeamCityBuildStart([string]$message) {
-	Write-TeamCityServiceMessage 'progressStart' $message
+    Write-TeamCityServiceMessage 'progressStart' $message
 }

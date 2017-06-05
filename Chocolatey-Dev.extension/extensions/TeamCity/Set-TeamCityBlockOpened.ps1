@@ -1,9 +1,9 @@
 function Set-TeamCityBlockOpened([string]$name, [string]$description) {
-	$messageAttributes = @{ name=$name }
+    $messageAttributes = @{ name = $name }
 
-	if ($description) {
-		$messageAttributes.description = $description
-	}
+    if ($description) {
+        $messageAttributes.description = $description
+    }
 
-	Write-TeamCityServiceMessage 'blockOpened' $messageAttributes
+    Write-TeamCityServiceMessage 'blockOpened' $messageAttributes
 }

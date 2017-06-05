@@ -1,3 +1,3 @@
 function Enable-TeamCityServiceMessages() {
-	Write-TeamCityServiceMessage 'enableServiceMessages'
+    Write-TeamCityServiceMessage 'enableServiceMessages'
 }

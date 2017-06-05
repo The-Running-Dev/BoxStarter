@@ -1,9 +1,9 @@
-function Set-TeamCityBuildProblem([string]$description, [string]$identity=$null) {
-	$messageAttributes = @{ description=$description }
+function Set-TeamCityBuildProblem([string]$description, [string]$identity = $null) {
+    $messageAttributes = @{ description = $description }
 
-	if (![string]::IsNullOrEmpty($identity)) {
-		$messageAttributes.identity=$identity
-	}
+    if (![string]::IsNullOrEmpty($identity)) {
+        $messageAttributes.identity = $identity
+    }
 
-	Write-TeamCityServiceMessage 'buildProblem' $messageAttributes
+    Write-TeamCityServiceMessage 'buildProblem' $messageAttributes
 }

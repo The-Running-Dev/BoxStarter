@@ -1,3 +1,3 @@
 function Disable-TeamCityServiceMessages() {
-	Write-TeamCityServiceMessage 'disableServiceMessages'
+    Write-TeamCityServiceMessage 'disableServiceMessages'
 }
