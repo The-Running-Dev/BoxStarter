@@ -22,12 +22,12 @@ function Get-XmlValue {
         $node = $xml.SelectSingleNode($xpath)
     }
 
-    Assert ($null -ne $node) "Could Not Find Node @ $xpath"
-
-    if ($node.NodeType -eq "Element") {
-        return $node.InnerText
-    }
-    else {
-        return $node.Value
+    if ($node) {
+        if ($node.NodeType -eq "Element") {
+            return $node.InnerText
+        }
+        else {
+            return $node.Value
+        }
     }
 }

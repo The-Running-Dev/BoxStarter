@@ -10,7 +10,6 @@ Remove-Item -Recurse $baseDir -Force -ErrorAction SilentlyContinue | Out-Null
 New-Item -ItemType Directory $baseDir -Force | Out-Null
 
 & $parentDir\build-push.ps1 Chocolatey
-
 & $parentDir\Scripts\build.chocolatey-dev.extension.ps1
 & $parentDir\Scripts\build.chocolatey-package.extension.ps1
 & $boxstarterPrivateDir\build-push.ps1 PowerShell-Profile -f

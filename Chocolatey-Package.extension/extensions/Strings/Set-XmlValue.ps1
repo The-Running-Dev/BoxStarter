@@ -22,14 +22,14 @@ function Set-XmlValue {
         $node = $xml.SelectSingleNode($xpath)
     }
 
-    Assert ($null -ne $node) "Could Not Find Node @ $xpath"
+    if ($node) {
+        if ($node.NodeType -eq "Element") {
+            $node.InnerText = $value
+        }
+        else {
+            $node.Value = $value
+        }
 
-    if ($node.NodeType -eq "Element") {
-        $node.InnerText = $value
+        $xml.Save($file)
     }
-    else {
-        $node.Value = $value
-    }
-
-    $xml.Save($file)
 }

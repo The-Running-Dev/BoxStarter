@@ -12,5 +12,7 @@ if ((choco list Chocolatey-Dev.exension -lo -r)) {
 & $parentDir\build-push.ps1 PowerShell-CommunityExtensions
 & $parentDir\build-push.ps1 PowerShell-PSake
 
-& $parentDir\build-push.ps1 Chocolatey-Dev.extension -f
-choco upgrade Chocolatey-Dev.extension -f -s $packagesDir
+& $parentDir\build-push.ps1 Chocolatey-Dev.extension
+choco upgrade Chocolatey-Dev.extension -s $packagesDir
+
+Import-Module 'C:\ProgramData\Chocolatey\extensions\Chocolatey-Dev\Chocolatey-Dev.extension.psm1' -Force

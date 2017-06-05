@@ -19,7 +19,7 @@ function Get-Config {
         $baseDir = Split-Path -Parent $configFile
     }
 
-    $config = Get-Content $configFile | Out-String | ConvertFrom-Json
+    $config = Get-Content $configFile -Raw | ConvertFrom-Json
     $configFileDir = Split-Path -Path $configFile
     $configFileName = [System.IO.Path]::GetFileNameWithoutExtension($configFile)
     $configFileExt = [System.IO.Path]::GetExtension($configFile)
@@ -29,7 +29,7 @@ function Get-Config {
     if ($environment) {
         # Construct the name of the environment file and read it
         $envConfigFile = $ExecutionContext.InvokeCommand.ExpandString($envConfigFileString)
-        $envConfig = Get-Content $envConfigFile | ConvertFrom-Json
+        $envConfig = Get-Content $envConfigFile -Raw | ConvertFrom-Json
 
         # For each property you find in the environment file,
         # replace the property in the base configuration
