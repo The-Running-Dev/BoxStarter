@@ -15,13 +15,14 @@ function Install-WebSite {
     Stop-IISApplicationPool $appPool
     Stop-IISWebSite $name
 
-    Install-IISAppPool -Name $appPool -ServiceAccount NetworkService
+    Install-IISAppPool -Name $appPool -ServiceAccount NetworkService -Force
 
     Install-IISWebsite `
         -Name $name `
         -PhysicalPath $physicalPath `
         -AppPoolName $appPool `
         -Binding $binding
+        -Force
 
     if ((Test-Path $physicalPath) -and $cleanPath) {
         Get-ChildItem $physicalPath -Exclude $excludeFromCleaning -Recurse | Remove-Item -Recurse -Force
