@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft-SQLServerJDBCDriver</id>
+    <version>6.0.8112.100</version>
+    <title>Microsoft JDBC Driver for SQL Server</title>
+    <authors>Microsoft</authors>
+    <licenseUrl>https://download.microsoft.com/download/0/2/A/02AAE597-3865-456C-AE7F-613F99F850A8/enu/license60.txt</licenseUrl>
+    <projectUrl>https://msdn.microsoft.com/library/mt484311.aspx</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/AnthonyMastrean/chocolateypackages/973d6f98f4472b88b19989811d6fad890c0475c5/public/icons/microsoft.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>In our continued commitment to interoperability, Microsoft provides a Java Database Connectivity (JDBC) driver
+    for use with SQL Server, and Azure SQL Database. The driver is available at no additional charge and provides
+    Java database connectivity from any Java application, application server, or Java-enabled applet.
+    This driver is a Type 4 JDBC driver that provides database connectivity through the standard JDBC application
+    program interfaces (APIs).
+
+    The Microsoft JDBC Driver for SQL Server has been tested against major application servers such as IBM WebSphere,
+    and SAP NetWeaver.</description>
+    <summary>A Type 4 JDBC driver that provides database connectivity through the standard JDBC application program interfaces (APIs) available in Java Platform, Enterprise Edition 5 and 6.</summary>
+    <releaseNotes>https://msdn.microsoft.com/en-us/library/aa342325(v=sql.110).aspx</releaseNotes>
+    <tags>sql server jdbc java admin not-silent</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+		<dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>
