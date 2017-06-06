@@ -16,6 +16,13 @@
 
 ## Packages
   * 7Zip
+  * Apache-Httpd
+  * BoxStarter
+  * Boxstarter.Bootstrapper
+  * Boxstarter.Chocolatey
+  * BoxStarter.Common
+  * Boxstarter.HyperV
+  * BoxStarter.WinConfig
   * CCleaner
   * Chocolatey
   * Chocolatey-Core.extension
@@ -26,7 +33,6 @@
   * Chocolatey.extension
   * ClipboardFusion
   * ConEmu
-  * DatabaseDoTNET
   * DisplayFusion
   * Docker
   * Driver-AsmediaUSB
@@ -53,7 +59,7 @@
   * JetBrains-DataGrip
   * JetBrains-ReSharper-Platform
   * JetBrains-TeamCity
-  * TeamCityAgent
+  * JetBrains-TeamCity-Agent
   * JetBrains-WebStorm
   * JRE
   * K-LiteCodecPack
@@ -68,6 +74,7 @@
   * Microsoft-DotNET3.5
   * Microsoft-DotNET4.5.2
   * Microsoft-DotNET4.6.2
+  * Microsoft-DotNET4.6.2-DevPack
   * Microsoft-DotNETCore-Runtime
   * Microsoft-DotNETCore-SDK
   * Microsoft-MSBuild
@@ -93,6 +100,7 @@
   * Microsoft-WebPI
   * MySQL-Workbench
   * NodeJS
+  * NotepadPlusPlus
   * NTLite
   * NuGet-CommandLine
   * Octopus-Deploy
@@ -106,10 +114,12 @@
   * ProGet
   * RazerSynapse
   * Recuva
+  * RemoteDesktopManager
   * Rufus
   * Slack
   * Spotify
   * TeamViewer
+  * uTorrent
   * VMWare-Converter
   * VMWare-PowerCLI
   * VMWare-RemoteConsole
