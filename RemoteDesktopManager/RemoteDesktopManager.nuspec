@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>RemoteDesktopManager</id>
+    <version>12.5.6.0</version>
+    <title>Remote Desktop Manager</title>
+    <authors>Devolutions inc.</authors>
+    <licenseUrl>http://cdn.devolutions.net/download/Documents/Software License Agreement.pdf</licenseUrl>
+    <projectUrl>http://remotedesktopmanager.com/</projectUrl>
+    <iconUrl>http://webdevolutions.blob.core.windows.net/images/chocolatey/RDM.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    Remote Desktop Manager Enterprise Edition lets you centralize and manage all your remote tools and protocols into one easy-to-use platform.
+    * Powerful
+
+    Centralize and manage your remote connections. Create synergy within your team by sharing information. Empower individual and team performance and productivity. Give the power to your IT team.
+
+    * Productive
+    Say goodbye to spending valuable time trying to remember or locate passwords, credentials and connection settings. Focus on tasks that add value to your organization. Save time and simplify your life.
+
+    * Intelligent
+    Enjoy the industry’s most complete and easy-to-use remote connections management solution. Leverage integrated technologies to manage your connections, tools and entire IT infrastructure. Customize to meet your specific requirements.
+
+    The software will start with a 30-day trial. Licenses can be purchased here: http://remotedesktopmanager.com/
+    </description>
+    <summary>Remote Desktop Manager Enterprise Edition lets you centralize and manage all your remote tools and protocols into one easy-to-use platform.</summary>
+    <releaseNotes>http://remotedesktopmanager.com/Home/ChangeHistory</releaseNotes>
+    <copyright>Copyright © 2006-2017</copyright>
+    <tags>rdm RemoteDesktopManager enterprise remote desktop manager rdp connect vnc azure ssh telnet vpn web http https ftp sftp hyperv vmware citrix admin logmein teamviewer pvm password credential trial commercial</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>
