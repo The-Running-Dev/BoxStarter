@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>DatabaseDotNET</id>
+    <version>22.0.6364</version>
+    <title>Database .NET</title>
+    <authors>fish</authors>
+    <projectUrl>http://fishcodelib.com/Database.htm</projectUrl>
+    <iconUrl>http://fishcodelib.com/images/128.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Database .NET is an innovative, powerful and intuitive multiple database management tool. With it you can Browse objects, Design tables, Edit rows, Export data and Run queries with a consistent interface. Free for non-commercial, All-In-One, Portable, Standalone (No Installation) and Multi-language.</description>
+    <summary>An Intuitive Multiple Database Manager</summary>
+    <tags>sqlite sqlce firebird sqlserver azure localdb oracle mysql postgresql db2 informix vertica sybase nuodb teradata access excel foxpro dbase odata oledb odbc csv sql database</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+		<dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>
