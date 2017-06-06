@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>DatabaseMaster</id>
+    <version>9.1</version>
+    <title>Database Master</title>
+    <authors>Nucleon Software</authors>
+    <licenseUrl>http://www.nucleonsoftware.com/product/dm/license.rtf</licenseUrl>
+    <projectUrl>http://nucleonsoftware.com/products/database-master</projectUrl>
+    <iconUrl>http://www.nucleonsoftware.com/product/dm/databasemaster.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    Nucleon Databsae Master is a modern and powerfull database management and admin tool for MongoDB, NuoDB, Oracle,
+    MySQL, PostgreSQL, FireBird, SQLite, SQL Server, SQL Azure,
+
+    Apache Hive, DB2, Informix, Netezza, TeraData, Ingres, OData, Plant3D, Google Analytics, Rest/Soap/Web Services,
+    .NET Objects, SharePoint, ShapeFile and XML files.
+
+  	It enables you to browse and edit data, create and edit tables, views, procedures, triggers and other database objects.
+    </description>
+    <summary>Nucleon Software</summary>
+    <releaseNotes />
+    <copyright>Nucleon Software</copyright>
+    <tags>MongoDB MySQL PostgreSQL Oracle SQLServer Azure SQLite FireBird ODBC OleDB OData Hive Xml MSAccess DB2 Informix ShapeFile SQL JSON LINQ Reports ER Diagram Data Export Import</tags>
+    <bugTrackerUrl>http://nucleonsoftware.com/support/</bugTrackerUrl>
+     <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+		<dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>
