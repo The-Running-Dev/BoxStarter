@@ -2,11 +2,10 @@
 <!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
-    <id>apache-httpd</id>
+    <id>Apache-Httpd</id>
     <version>2.4.25</version>
     <title>Apache HTTP Server Project</title>
-     <authors>Apache Software Foundation</authors>
-    <owners>chocolatey</owners>
+    <authors>Apache Software Foundation</authors>
     <licenseUrl>http://www.apache.org/licenses</licenseUrl>
     <projectUrl>http://httpd.apache.org</projectUrl>
     <docsUrl>http://httpd.apache.org/docs/2.4</docsUrl>
@@ -17,7 +16,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>The Apache HTTP Server Project is a collaborative software development effort aimed at creating a robust, commercial-grade, featureful, and freely-available source code implementation of an HTTP (Web) server.</summary>
     <description>
-Apache HTTP Web Server for Windows.
+    Apache HTTP Web Server for Windows.
 
 ### Notes
 
@@ -37,11 +36,9 @@ Apache will be installed as a service under the default name 'Apache'
 </description>
     <tags>apache httpd webserver admin</tags>
     <dependencies>
-       <dependency id="vcredist2015" />
-       <dependency id="chocolatey-core.extension" />
+       <dependency id="Microsoft-VisualCRedistributable2015" />
+       <dependency id="Chocolatey-Core.extension" />
+       <dependency id="Chocolatey-Package.extension" />
    </dependencies>
   </metadata>
-  <files>
-    <file src="tools\**" target="tools" />
-  </files>
 </package>

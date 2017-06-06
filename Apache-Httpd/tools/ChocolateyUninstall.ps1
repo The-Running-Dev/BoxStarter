@@ -1,3 +1,3 @@
-& $($config.httpdPath) -k uninstall -n "$($config.serviceName)"
+. (Join-Path (Split-Path -parent $MyInvocation.MyCommand.Definition) 'Helpers.ps1')
 
-Remove-Item $config.destination -Recurse -Force
+Uninstall-Apache

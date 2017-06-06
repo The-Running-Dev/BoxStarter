@@ -1,7 +1,3 @@
-$configFile = Join-Path $env:chocolateyPackageFolder 'config.json'
-$config = Get-Content $configFile -Raw | ConvertFrom-Json
+. (Join-Path (Split-Path -parent $MyInvocation.MyCommand.Definition) 'Helpers.ps1')
 
-$service = Get-Service | Where-Object Name -eq $config.serviceName
-if ($service) {
-    Stop-Service $config.serviceName
-}
+Stop-ApacheService
