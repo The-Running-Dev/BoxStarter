@@ -33,6 +33,7 @@
   * Chocolatey.extension
   * ClipboardFusion
   * ConEmu
+  * DatabaseDotNET
   * DisplayFusion
   * Docker
   * Driver-AsmediaUSB
@@ -63,8 +64,6 @@
   * JetBrains-WebStorm
   * JRE
   * K-LiteCodecPack
-  * KB2919355
-  * KB2919442
   * KDiff3
   * LastPass-Applications
   * Launchy
@@ -87,6 +86,7 @@
   * Microsoft-SQLServer2016Express
   * Microsoft-SQLServer2016LocalDb
   * Microsoft-SQLServer2016SharedManagementObjects
+  * Microsoft-SQLServerJDBCDriver
   * Microsoft-SQLServerManagementStudio
   * Microsoft-VisualCRedistributable2013
   * Microsoft-VisualCRedistributable2013x64
