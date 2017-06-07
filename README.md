@@ -34,6 +34,8 @@
   * ClipboardFusion
   * ConEmu
   * DatabaseDotNET
+  * DatabaseMaster
+  * DbMigration
   * DisplayFusion
   * Docker
   * Driver-AsmediaUSB
