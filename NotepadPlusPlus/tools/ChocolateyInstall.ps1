@@ -1,6 +1,6 @@
 ﻿$arguments = @{
-    url                    = 'https://notepad-plus-plus.org/repository/7.x/7.4.1/npp.7.4.1.Installer.x64.exe'
-    checksum               = '7E63B7FB06EC318089193072485E96AC4EDEE5D277E1639D3F1A613885326CBC'
+    url                    = 'https://notepad-plus-plus.org/repository/7.x/7.3.3/npp.7.3.3.Installer.x64.exe'
+    checksum               = '656E7A31EE07D7FEBCB49822DD166CB72AFE23D4DCCF546F2C6B45BCD959E5A1'
     silentArgs             = '/S'
 }
 

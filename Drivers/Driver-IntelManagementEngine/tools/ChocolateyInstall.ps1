@@ -1,4 +1,4 @@
-﻿$updatedOn = '623EEADD273F06714AA89AE75F06E2A4778A3BE86399D304DEEA60275EB13F8806F32B8994158FD3674DAAD67E93B612ED4162426D660F9A1EDAF1D93224E380'
+﻿$updatedOn = '2017.06.08 12:25:11'
 $arguments = @{
     file       = 'ME(v11.0.4.1186_MEI).zip'
     url        = 'http://asrock.pc.cdn.bitgravity.com/Drivers/Intel/Others/ME(v11.0.4.1186_MEI).zip'

@@ -1,4 +1,4 @@
-﻿$updatedOn = '2017.06.08 09:09:33'
+﻿$updatedOn = '2017.06.08 12:33:09'
 $defaultConfigurationFile = Join-Path $env:chocolateyPackageFolder 'Configuration.ini'
 $parameters = Get-Parameters $env:chocolateyPackageParameters
 $configurationFile = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile

@@ -5,20 +5,17 @@ $packageDir = $PSScriptRoot
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $releaseUrl = 'https://resharper-support.jetbrains.com/hc/en-us/articles/207242355-Where-can-I-download-an-old-previous-ReSharper-version-'
-    $downloadUrl = 'https://download-cf.jetbrains.com/resharper/JetBrains.ReSharperUltimate.$($version).exe'
-    $versionRegEx = 'ReSharper ([0-9\.]+) \(release date'
+    $releasesUrl = 'https://data.services.jetbrains.com/products/releases?code=RSU&latest=true&type=release'
 
-    $downloadPage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl
-    $version = [regex]::match($downloadPage.Content, $versionRegEx).Groups[1].Value
+    $releases = (Invoke-WebRequest -Uri $releasesUrl -UseBasicParsing).Content | ConvertFrom-Json
+    $version = $releases.RSU.Version
+    $url = $releases.RSU.Downloads.Windows.Link
 
     if ($force) {
         $global:au_Version = $version
     }
 
-    $downloadUrl = $ExecutionContext.InvokeCommand.ExpandString($downloadUrl)
-
-    return @{ Url32 = $downloadUrl; Version = $version }
+    return @{ Url32 = $url; Version = $version }
 }
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

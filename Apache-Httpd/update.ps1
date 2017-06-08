@@ -8,6 +8,7 @@ function global:au_GetLatest {
     $downloadPageUrl = 'http://www.apachehaus.com/cgi-bin/download.plx'
     $versionRegEx = 'httpd\-([0-9\.]+)\-x\d+\-(.*)\.zip'
     $url = 'https://www.apachehaus.com/downloads/httpd-$version-x64-$vcNumber.zip'
+    $fileName32 = 'httpd-$version-x64-$vcNumber.zip'
 
     $downloadPage = Invoke-WebRequest $downloadPageUrl -UseBasicParsing
     $matches = [regex]::match($downloadPage.Content, $versionRegEx)
@@ -15,12 +16,21 @@ function global:au_GetLatest {
     $vcNumber = $matches.Groups[2].Value
 
     $url = $ExecutionContext.InvokeCommand.ExpandString($url)
+    $fileName32 = $ExecutionContext.InvokeCommand.ExpandString($fileName32)
 
     if ($force) {
         $global:au_Version = $version
     }
 
-    return @{ Url32 = $url; Version = $version }
+    return @{ Url32 = $url; FileName32 = $fileName32; Version = $version }
+}
+
+function global:au_SearchReplace {
+    return @{
+        ".\tools\chocolateyInstall.ps1" = @{
+            "(?i)(file\s*=\s*)('.*')" = "`$1'$($Latest.FileName32)'"
+        }
+    }
 }
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

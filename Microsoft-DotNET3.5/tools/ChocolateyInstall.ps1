@@ -1,4 +1,4 @@
-﻿$updatedOn = '2017.06.08 09:09:18'
+﻿$updatedOn = '2017.06.08 12:29:17'
 
 if (-not (test-path "hklm:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5")) {
     if ((wmic os get caption | Out-String).Contains("Server")) {

@@ -8,14 +8,16 @@ function global:au_GetLatest {
     $downloadEndPointUrl = 'https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15'
     $releaseUrl = 'https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools'
     $versionRegEx = '(15\.[0-9\.]+)'
-    $downloadRegEx = 'var downloadUrl = "(.*/vs_BuildTools.exe)'
+    $downloadRegEx = '(https://download.microsoft.com.*/vs_BuildTools.exe)'
     $fileName32 = 'Microsoft-Build-Tools.7z'
 
     $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
-    $version = ([regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value)
+    $releasePage.Content -match $versionRegEx
+    $version = $matches[1]
 
     $downloadPage = Invoke-WebRequest -Uri $downloadEndPointUrl -UseBasicParsing
-    $url = ([regex]::match($downloadPage.Content, $downloadRegEx).Groups[1].Value)
+    $downloadPage.Content -match $downloadRegEx
+    $url = $matches[1]
 
     if ($force) {
         $global:au_Version = $version
