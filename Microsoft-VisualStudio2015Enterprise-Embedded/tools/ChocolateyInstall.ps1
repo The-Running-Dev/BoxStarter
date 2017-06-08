@@ -1,6 +1,6 @@
 ﻿. (Join-Path $env:ChocolateyPackageFolder 'tools\Helpers.ps1')
 
-$updatedOn = '871EBBDB1DB77E4A39A00B01B9EE5B92440DC8FCFBC5879D97D581A5251C41CA'
+$updatedOn = '2017.06.08 09:09:43'
 $installerBase = 'Microsoft Visual Studio 2015 Enterprise'
 
 # The file is defined explictely so the update script can find it and embed it

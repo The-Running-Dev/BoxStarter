@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>NodeJS</id>
-    <version>7.10.0</version>
+    <version>8.1.0</version>
     <title>Node JS</title>
     <authors>Node.js Foundation</authors>
     <licenseUrl>https://raw.github.com/nodejs/node/master/LICENSE</licenseUrl>

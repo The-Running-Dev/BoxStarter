@@ -16,7 +16,7 @@ function Restore-SQLServerBackup {
     $dbRestoreFile.PhysicalFileName = "$($sqlServer.Information.MasterDBPath)\$($dbRestore.Database)_Data.mdf"
 
     $dbRestoreLog = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile
-    $dbRestoreLog.LogicalFileName = "$database_Log"
+    $dbRestoreLog.LogicalFileName = "$($database)_Log"
     $dbRestoreLog.PhysicalFileName = "$($sqlServer.Information.MasterDBLogPath)\$($dbRestore.Database)_Log.ldf"
 
     $dbRestore.Devices.AddDevice($backup, 'File')
@@ -24,8 +24,17 @@ function Restore-SQLServerBackup {
     $dbRestore.RelocateFiles.Add($dbRestoreFile)
     $dbRestore.RelocateFiles.Add($dbRestoreLog)
 
-    $sqlServer.KillAllProcesses($database)
-    $dbRestore.SqlRestore($sqlServer)
+    try {
+        $sqlServer.KillAllProcesses($database)
+        $dbRestore.SqlRestore($sqlServer)
 
-    Write-Host "Database $database restored successfully..."
+        Write-Host "Database $database restored successfully..."
+
+        return $true
+    }
+    catch {
+        Write-Host "Database $database restore failed..."
+
+        return $false
+    }
 }

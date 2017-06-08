@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'http://files2.codecguide.com/K-Lite_Codec_Pack_1320_Mega.exe'
-    checksum        = '1C5E021BCE8E2905C6658A387614B57291BB5508CC9B048731EC188E9E3E76D1'
+    url             = 'http://files2.codecguide.com/K-Lite_Codec_Pack_1324_Mega.exe'
+    checksum        = 'AE1FCFFC4F5B7ABABB0E0D83E9C6007C140354EB5AB1D8C47061E713A257F6E9'
     silentArgs      = '/VERYSILENT'
 }
 

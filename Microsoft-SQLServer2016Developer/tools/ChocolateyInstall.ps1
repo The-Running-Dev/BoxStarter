@@ -1,4 +1,4 @@
-﻿$updatedOn = 'DC21B4AFD36F4D7A106810030C347514EF3085BDF33A31908B3B4EA8A6211B14'
+﻿$updatedOn = '2017.06.08 09:09:34'
 $installerBase = 'Microsoft SQL Server 2016 Developer SP1'
 $defaultConfigurationFile = Join-Path $env:chocolateyPackageFolder 'Configuration.ini'
 $parameters = Get-Parameters $env:chocolateyPackageParameters

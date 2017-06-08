@@ -1,4 +1,4 @@
-function Assert-SqlServerDatabaseExists {
+function Assert-SQLServerDatabaseExists {
     [CmdletBinding()]
     param(
         [Parameter(Position = 0, ValueFromPipeline = $true)][string] $server,

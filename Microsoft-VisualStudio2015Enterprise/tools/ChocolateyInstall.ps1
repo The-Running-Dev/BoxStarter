@@ -1,6 +1,6 @@
 ﻿. (Join-Path $env:ChocolateyPackageFolder 'tools\Helpers.ps1')
 
-$updatedOn = '42BD8BE2EA0E87C239610FED4FCC24D0B65711181E760CC326942B1078E7CB9D0A1B8D1768490C2F45E2DE7735A59712B2E48C6AFEAE368C1D32D2A245862D1C5EC1DF5BF165DBE513E4E54436D7BD77BEF321AEAD07B11D7DBBEACD07B7EA67'
+$updatedOn = '2017.06.08 09:09:42'
 $defaultConfigurationFile = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'
 $parameters = Get-Parameters $env:chocolateyPackageParameters
 $configurationFile = Get-ConfigurationFile $parameters['Configuration'] $defaultConfigurationFile

@@ -1,4 +1,4 @@
-function Assert-ValidTeamCityArguments {
+function Assert-TeamCityValidArguments {
     param(
         [Parameter(Position = 0, Mandatory)][hashtable] $arguments
     )
@@ -21,13 +21,13 @@ function Get-TeamCityInstallArguments {
 
     $packageArgs = Get-Arguments $arguments
 
-    Set-InstallOptions $packageArgs
+    Set-TeamCityInstallOptions $packageArgs
 
-    if ([System.IO.Directory]::Exists($parameters.installDir)) {
+    if ($parameters.installDir) {
         $packageArgs.installDir = $parameters.installDir
     }
 
-    if ([System.IO.Directory]::Exists($parameters.dataDir)) {
+    if ($parameters.dataDir) {
         $packageArgs.dataDir = $parameters.dataDir
     }
 
@@ -46,87 +46,26 @@ function Get-TeamCityInstallArguments {
     return $packageArgs
 }
 
-function Set-InstallOptions {
+function Install-TeamCityBuildAgent {
     param(
         [Parameter(Position = 0, Mandatory)][hashtable] $arguments
     )
 
-    $packageParameters = $env:chocolateyPackageParameters
+    $buildAgentDir = Join-Path $arguments.installDir 'BuildAgent'
 
-    if ($packageParameters) {
-        $parameters = ConvertFrom-StringData -StringData $env:chocolateyPackageParameters.Replace(" ", "`n")
-
-        $parameters.GetEnumerator() | ForEach-Object {
-            $arguments[($_.Key)] = ($_.Value)
-        }
-    }
-}
-
-function Initialize-TeamCityDataDirectory {
-    param(
-        [Parameter(Position = 0, Mandatory)][hashtable] $arguments
-    )
-
-    $packageDir = $env:ChocolateyPackageFolder
-    $confDir = Join-Path $packageArgs.installDir 'conf'
-
-    Remove-Item "$($arguments.installDir)\`$PLUGINSDIR" -Recurse -Force -ErrorAction SilentlyContinue
-    Remove-Item "$($arguments.installDir)\`$TEMP" -Recurse -Force -ErrorAction SilentlyContinue
-
-    if (Test-Path $confDir) {
-    }
-    else {
-        Get-ChocolateyUnzip -FileFullPath $packageArgs.configurationZip -Destination $packageArgs.installDir | Out-Null
+    if (Test-Path $buildAgentDir) {
+        return
     }
 
-    if (Test-Path $($arguments.dataDir)) {
-    }
-    else {
-        Get-ChocolateyUnzip -FileFullPath $packageArgs.dataZip -Destination $packageArgs.installDir | Out-Null
-    }
+    $buildAgentProperties = Join-Path $buildAgentDir 'Conf\buildAgent.properties'
+    $serverUrl = "serverUrl=$arguments.serverUrl"
+    (Get-Content $buildAgentProperties) -replace 'serverUrl=.*', $serverUrl | Set-Content $buildAgentProperties
 
-    if (-not (Test-Path (Join-Path $confDir 'server.xml'))) {
-        Copy-Item $arguments.serverConfig (Join-Path $confDir 'server.xml')
-    }
-    else {
-        # Set the port number in server.xml
-    }
+    $buildAgentNewDir = Join-Path $arguments.installDir 'BuildAgent-1'
+    Move-Item $buildAgentDir $buildAgentNewDir
+    $buildAgentDir = $buildAgentNewDir
 
-    $dataDir = ($packageArgs.dataDir -replace '\\', '\\') -replace ':', '\:'
-    Set-Content "$($packageArgs.installDir)\conf\teamcity-startup.properties" "teamcity.data.path=$dataDir"
-
-    <#
-    $configDir = "$($arguments.dataDir)\config"
-    if (-not (Test-Path $configDir)) {
-        New-Item -ItemType Directory $configDir | Out-Null
-    }
-
-    $jdbcDir = "$($arguments.dataDir)\lib\jdbc"
-    if (-not (Test-Path $jdbcDir)) {
-        New-Item -ItemType Directory $jdbcDir | Out-Null
-    }
-
-    $pluginsDir = "$($arguments.dataDir)\plugins"
-    if (-not (Test-Path $pluginsDir)) {
-        New-Item -ItemType Directory $pluginsDir | Out-Null
-        Copy-Item "$packageDir\Plugins\**" "$pluginsDir\" | Out-Null
-    }
-
-    $mySqlConnector = "$($arguments.dataDir)\lib\jdbc\mysql-connector-java-5.1.42-bin.jar"
-    if (-not (Test-Path $mySqlConnector)) {
-        Copy-Item "$packageDir\Database\mysql-connector-java-5.1.42-bin.jar" $mySqlConnector | Out-Null
-    }
-
-    $sqlServerConnector = "$($arguments.dataDir)\lib\jdbc\sqljdbc42.jar"
-    if (-not (Test-Path $sqlServerConnector)) {
-        Copy-Item "$packageDir\Database\sqljdbc42.jar" $sqlServerConnector | Out-Null
-    }
-    #>
-
-    $sqlServerIntegratedAuth = "$($arguments.javaDir)\bin\sqljdbc_auth.dll"
-    if (-not (Test-Path $sqlServerIntegratedAuth)) {
-        Copy-Item "$packageDir\Database\sqljdbc_auth_x86.dll" $sqlServerIntegratedAuth | Out-Null
-    }
+    Start-ChocolateyProcessAsAdmin "$buildAgentDir\bin\service.install.bat" | Out-Null
 }
 
 function Install-TeamCityDatabase {
@@ -134,19 +73,46 @@ function Install-TeamCityDatabase {
         [Parameter(Position = 0, Mandatory)][hashtable] $arguments
     )
 
-    if (-not (Assert-SqlServerDatabaseExists $packageArgs.databaseServer $packageArgs.databaseName)) {
-        #New-SqlServerDatabase $packageArgs.databaseServer $packageArgs.databaseName
-        #Add-SqlServerUserToRole  $packageArgs.databaseServer $packageArgs.databaseName 'NT AUTHORITY\SYSTEM' 'db_owner'
+    if (-not (Assert-SQLServerDatabaseExists $arguments.databaseServer $arguments.databaseName)) {
+        #New-SqlServerDatabase $arguments.databaseServer $arguments.databaseName
+        #Add-SqlServerUserToRole $arguments.databaseServer $arguments.databaseName 'NT AUTHORITY\SYSTEM' 'db_owner'
 
-        Restore-SqlServerBackup $packageArgs.databaseServer $packageArgs.databaseName $packageArgs$databaseBackup
+        Restore-SQLServerBackupNew $arguments.databaseServer $arguments.databaseName $arguments.databaseBackup
     }
 
     # Build and set the JDBC connection string in the database.properties
-    $connectionString = Get-JdbcSqlServerConnectionString `
-        -Server $packageArgs.databaseServer `
-        -Port $packageArgs.databaseServerPort `
-        -Database $packageArgs.databaseName
-    Set-Content "$($packageArgs.dataDir)\config\database.properties" $connectionString
+    $connectionString = Get-JDBCSQLServerConnectionString `
+        -Server $arguments.databaseServer `
+        -Port $arguments.databaseServerPort `
+        -Database $arguments.databaseName
+    Set-Content "$($arguments.dataDir)\config\database.properties" $connectionString
+}
+
+function Initialize-TeamCityConfiguration {
+    param(
+        [Parameter(Position = 0, Mandatory)][hashtable] $arguments
+    )
+
+    if (Test-Path $arguments.dataDir) {
+        return
+    }
+
+    $packageTeamCityDir = Join-Path $env:ChocolateyPackageFolder 'TeamCity'
+
+    Copy-Item $packageTeamCityDir\** "$($arguments.installDir)\" -Recurse -Force
+
+    $serverXml = Join-Path $arguments.installDir 'Conf\server.xml'
+    $teamcityStartup = Join-Path $arguments.installDir 'Conf\teamcity-startup.properties'
+
+    # Set the port number in server.xml
+    Set-XmlValue $serverXml '//ns:Server/Service/Connector/@port' $arguments.port
+
+    # Set the data directory path
+    $dataDir = ($arguments.dataDir -replace '\\', '\\') -replace ':', '\:'
+    Set-Content $teamcityStartup "teamcity.data.path=$dataDir"
+
+    Remove-Item "$($arguments.installDir)\`$PLUGINSDIR" -Recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item "$($arguments.installDir)\`$TEMP" -Recurse -Force -ErrorAction SilentlyContinue
 }
 
 function Install-TeamCityServices {
@@ -162,7 +128,7 @@ function Install-TeamCityServices {
         $installArgs += "/user=`"$($arguments.userName)`""
         $installArgs += "/password=`"$($arguments.password)`""
 
-        if ($packageArgs.domain) {
+        if ($arguments.domain) {
             $installArgs += "/domain=`"$($arguments.domain)`""
         }
     }
@@ -173,21 +139,60 @@ function Install-TeamCityServices {
     Start-Service $arguments.serviceName
 }
 
-function Install-TeamCityBuildAgent {
+function Set-TeamCityInstallOptions {
     param(
         [Parameter(Position = 0, Mandatory)][hashtable] $arguments
     )
 
-    $packageDir = $env:ChocolateyPackageFolder
+    $packageParameters = $env:chocolateyPackageParameters
 
-    $buildAgentProperties = "$($arguments.installDir)\buildAgent\conf\buildAgent.properties"
-    if (-not (Test-Path $buildAgentProperties)) {
-        Copy-Item "$packageDir\BuildAgent\buildAgent.properties" $buildAgentProperties | Out-Null
+    if ($packageParameters) {
+        $parameters = ConvertFrom-StringData -StringData $env:chocolateyPackageParameters.Replace(" ", "`n")
 
-        $serverUrl = "serverUrl=$arguments.serverUrl"
-
-        (Get-Content $buildAgentProperties) -replace 'serverUrl=.*', $serverUrl | Set-Content $buildAgentProperties
+        $parameters.GetEnumerator() | ForEach-Object {
+            $arguments[($_.Key)] = ($_.Value)
+        }
     }
+}
 
-    Start-ChocolateyProcessAsAdmin "$($arguments.installDir)\buildAgent\bin\service.install.bat" | Out-Null
+function Restore-SQLServerBackup {
+    [CmdletBinding(SupportsShouldProcess = $true)]
+    param(
+        [Parameter(Position = 0, Mandatory, ValueFromPipeline)][ValidateNotNullOrEmpty()][string] $server,
+        [Parameter(Position = 1, Mandatory, ValueFromPipelineByPropertyName)][ValidateNotNullOrEmpty()][string] $database,
+        [Parameter(Position = 2, Mandatory, ValueFromPipelineByPropertyName)][ValidateNotNullOrEmpty()][string] $backup
+    )
+
+    $sqlServer = New-Object Microsoft.SqlServer.Management.Smo.Server $server
+
+    $dbRestore = New-Object Microsoft.SqlServer.Management.Smo.Restore
+    $dbRestore.Database = $database
+
+    $dbRestoreFile = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile
+    $dbRestoreFile.LogicalFileName = $database
+    $dbRestoreFile.PhysicalFileName = "$($sqlServer.DefaultFile)\$($dbRestore.Database)_Data.mdf"
+    $sqlServer.Information
+
+    $dbRestoreLog = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile
+    $dbRestoreLog.LogicalFileName = "$($database)_Log"
+    $dbRestoreLog.PhysicalFileName = "$($sqlServer.DefaultLog)\$($dbRestore.Database)_Log.ldf"
+
+    $dbRestore.Devices.AddDevice($backup, 'File')
+    $dbRestore.ReplaceDatabase = $true
+    $dbRestore.RelocateFiles.Add($dbRestoreFile)
+    $dbRestore.RelocateFiles.Add($dbRestoreLog)
+
+    try {
+        $sqlServer.KillAllProcesses($database)
+        $dbRestore.SqlRestore($sqlServer)
+
+        Write-Host "Database $database restored successfully..."
+
+        return $true
+    }
+    catch {
+        Write-Host "Database $database restore failed..."
+
+        return $false
+    }
 }

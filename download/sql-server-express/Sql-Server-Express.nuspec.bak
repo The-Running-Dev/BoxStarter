@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Sql-Server-Express</id>
+    <version>13.1.4001.0</version>
+    <title>Microsoft SQL Server 2016 Express with SP1</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://download.microsoft.com/download/F/D/5/FD5E5C28-6973-4273-8737-D69AA3BEA243/SQL_Server_2016_Licensing_Datasheet_EN_US.pdf</licenseUrl>
+    <projectUrl>https://www.microsoft.com/en-us/sql-server/sql-server-editions-express</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/59ad5e2e32c52fd2a45a9735f95a81368f9e5e85/icons/microsoft-sql-server.svg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Entry-level, free database that is ideal for deploying small databases in production environments. Build desktop and small server, data-driven applications up to 10 GB of disk size.</description>
+    <summary>Installs SQL Server 2016 Express with SP1 database engine.</summary>
+    <releaseNotes>https://support.microsoft.com/en-us/kb/3182545</releaseNotes>
+    <copyright>2016 Microsoft</copyright>
+    <tags>sql server express admin 2016 SP1</tags>
+    <packageSourceUrl>https://github.com/riezebosch/BoxstarterPackages</packageSourceUrl>
+    <dependencies>
+      <dependency id="vcredist2013" version="12.0.30501.20150616" />
+      <dependency id="KB2919355" version="1.0.20160719" />
+    </dependencies>
+  </metadata>
+</package>

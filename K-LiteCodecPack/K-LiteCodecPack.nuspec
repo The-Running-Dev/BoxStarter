@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>K-LiteCodecPack</id>
-    <version>13.2.0</version>
+    <version>13.2.4</version>
     <title>K-Lite Codec Pack</title>
     <authors>Codec Guide</authors>
     <licenseUrl>http://www.codecguide.com/termsofuse.htm</licenseUrl>
