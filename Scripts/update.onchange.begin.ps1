@@ -3,7 +3,7 @@ $excludeFiles = $('update.ps1', 'chocolateyInstall.ps1', '*.nupkg')
 # packageDir is defined in the individual update script
 Push-Location $packageDir
 
-$toolsPath = Join-Path $packageDir 'tools'
+$keepVersionTheSame = $false
 $installersPath = Join-Path $PSScriptRoot '..\..\..\BoxStarter\Installers' -Resolve
 
 function global:au_BeforeUpdate {
@@ -75,8 +75,10 @@ function global:au_GetLatest {
     $updatedFiles = Get-ChildItem $packageDir -Recurse -File -Exclude '*.nuspec', 'ChocolateyInstall.ps1' | Where-Object { Test-Path -Path $_.FullName -NewerThan $updatedOn }
 
     if ($updatedFiles -or $force) {
-        $newVersion = ([version]$version)
-        $newVersion = "$($newVersion.Major).$($newVersion.Minor).$($newVersion.Build + 1)"
+        if (-not $keepVersionTheSame) {
+            $newVersion = ([version]$version)
+            $newVersion = "$($newVersion.Major).$($newVersion.Minor).$($newVersion.Build + 1)"
+        }
 
         $updatedOn = (get-date).ToString('yyyy.MM.dd HH:mm:ss')
         $version = $newVersion

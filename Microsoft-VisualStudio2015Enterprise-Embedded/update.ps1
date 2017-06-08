@@ -1,6 +1,7 @@
 param([switch] $force, [switch] $push)
 
 $packageDir = $PSScriptRoot
+$keepVersionTheSame = $true
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.onchange.begin.ps1')
 
