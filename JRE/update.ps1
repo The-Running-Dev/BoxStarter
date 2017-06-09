@@ -24,7 +24,7 @@ function global:au_BeforeUpdate {
     }
     else {
         Copy-Item $existingPackageInstaller $packageDir -Force
-        Copy-Item "$($existingPackageInstaller).ignore" $packageDir -Force
+        New-Item "$(Join-Path $packageDir (Split-Path -Leaf $existingPackageInstaller)).ignore" -Force
 
         $Latest.Checksum32 = (Get-FileHash $existingPackageInstaller).Hash
     }
@@ -40,7 +40,7 @@ function global:au_BeforeUpdate {
     }
     else {
         Copy-Item $existingPackageInstaller64 $packageDir -Force
-        Copy-Item "$($existingPackageInstaller).ignore" $existingPackageInstaller64 -Force
+        New-Item "$(Join-Path $packageDir (Split-Path -Leaf $existingPackageInstaller)).ignore" -Force
 
         $Latest.Checksum64 = (Get-FileHash $existingPackageInstaller64).Hash
     }

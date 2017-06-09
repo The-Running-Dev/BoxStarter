@@ -5,12 +5,11 @@ $packageDir = $PSScriptRoot
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $downloadUrl = 'https://download.jetbrains.com/teamcity/TeamCity-$version.exe'
-    $downloadEndPointUrl = 'http://data.services.jetbrains.com/products/download?code=TC&platform=windows'
-    $downloadLinkRegEx = '.*TeamCity\-([0-9\.]+)\.exe'
+    $releasesUrl = 'https://data.services.jetbrains.com/products/releases?code=TC&latest=true&type=release'
 
-    $url = Get-RedirectUrl $downloadEndPointUrl
-    $version = Get-String $url $downloadLinkRegEx
+    $releases = (Invoke-WebRequest -Uri $releasesUrl -UseBasicParsing).Content | ConvertFrom-Json
+    $version = $releases.TC.Version
+    $url = $releases.TC.Downloads.Windows.Link
 
     if ($force) {
         $global:au_Version = $version
