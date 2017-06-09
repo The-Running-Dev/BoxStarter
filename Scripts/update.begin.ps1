@@ -1,8 +1,10 @@
+$excludeFiles = $('update.ps1', 'chocolateyInstall.ps1', '*.nupkg', '*.nuspec')
+
 # packageDir is defined in the individual update script
 Push-Location $packageDir
 
-$toolsPath = Join-Path $packageDir 'tools'
 $installersPath = Join-Path $PSScriptRoot '..\..\..\BoxStarter\Installers' -Resolve
+$isFixedVersion = $true
 
 function global:au_BeforeUpdate {
     if ($Latest.FileName32) {
@@ -54,10 +56,51 @@ function global:au_BeforeUpdate {
     }
 }
 
+function global:au_GetLatest {
+    # Get the version from the nuspec
+    $version = (Get-Item "$($Latest.PackageName).nuspec" `
+            | Select-String "(?i)<version>([0-9\.]+)</version>") `
+        | ForEach-Object { $_.Matches[0].Groups[1].Value }
+
+    # Force the version to be the same by default
+    $global:au_Version = $version
+
+    $url = (Get-Item $packageDir\tools\chocolateyInstall.ps1 | Select-String "(?i)url\s*=\s*'.*'") -split "=|'" | Select-Object -Last 1 -Skip 1
+    $checksum = (Get-Item $packageDir\tools\chocolateyInstall.ps1 | Select-String "(?i)checksum\s*=\s*'.*'") -split "=|'" | Select-Object -Last 1 -Skip 1
+
+    try {
+        # Get the last updated on date from the ChocolateyInstall file
+        $updatedOn = [DateTime]((Get-Item $packageDir\tools\ChocolateyInstall.ps1 | Select-String "(?i)^[$]updatedOn\s*=\s*'.*'") -split "=|'" | Select-Object -Last 1 -Skip 1)
+    }
+    catch {}
+
+    # Get a list of updated files after the last updated on date
+    $updatedFiles = Get-ChildItem $packageDir -Recurse -File -Exclude $excludeFiles | Where-Object { $_.LastWriteTime -ge $updatedOn }
+
+    if (($updatedFiles -or $force) -and (-not $isFixedVersion)) {
+        $newVersion = ([version]$version)
+        $newVersion = "$($newVersion.Major).$($newVersion.Minor).$($newVersion.Build + 1)"
+
+        $updatedOn = (get-date).ToString('yyyy.MM.dd HH:mm:ss')
+        $version = $newVersion
+        $global:au_Version = $newVersion
+    }
+
+    $latestData = @{ Version = $version; UpdatedOn = $updatedOn }
+    if ($url) { $latestData.Url32 = $url }
+    if ($checksum) { $latestData.Checksum32 = $checksum }
+
+    return $latestData
+}
+
 function global:au_SearchReplace {
+    if (Get-Item (Join-Path $packageDir 'tools\chocolateyInstall.ps1')) {
+        return @{}
+    }
+
     return @{
         ".\tools\chocolateyInstall.ps1" = @{
-            "(?i)(url\s*=\s*)('.*')" = "`$1'$($Latest.Url32)'"
+            "(?i)(url\s*=\s*)('.*')"      = "`$1'$($Latest.Url32)'"
             "(?i)(checksum\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
         }
     }
