@@ -1,10 +1,17 @@
 param([switch] $force, [switch] $push)
 
-$originalLocation = Get-Location
 $packageDir = $PSScriptRoot
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.onchange.begin.ps1')
 
-$settingsDir = $PSScriptRoot
+function global:au_GetLatest {
+    $version = '3.5.20160716'
+
+    if ($force) {
+        $global:au_Version = $version
+    }
+
+    return @{ Version = $version }
+}
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

@@ -1,4 +1,4 @@
-﻿$updatedOn = '2017.06.08 12:30:14'
+﻿$updatedOn = '2017.06.09 09:25:55'
 $arguments = @{
     destination = 'C:\Program Files (x86)\MSBuild'
 }
