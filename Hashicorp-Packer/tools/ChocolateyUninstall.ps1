@@ -1,0 +1,1 @@
+﻿Remove-Item (Join-Path $env:AppData 'Packer') -Force -Recurse

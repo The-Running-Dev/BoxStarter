@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Hashicorp-Terraform</id>
+    <version>0.9.8</version>
+    <title>Terraform</title>
+    <authors>Mitchell Hashimoto,  HashiCorp</authors>
+    <owners>Mitchell Hashimoto,  HashiCorp</owners>
+    <licenseUrl>https://github.com/hashicorp/terraform/blob/master/LICENSE</licenseUrl>
+    <projectUrl>http://www.terraform.io/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/jamestoyer/chocolatey-packages/58ab86c08224c2ba79af2080346c53c1cc440afc/terraform/icons/terraform.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.
+
+    The key features of Terraform are:
+
+    * **Infrastructure as Code**: Infrastructure is described using a high-level configuration syntax. This allows a blueprint of your datacenter to be versioned and treated as you would any other code. Additionally, infrastructure can be shared and re-used.
+    * **Execution Plans**: Terraform has a "planning" step where it generates an *execution plan*. The execution plan shows what Terraform will do when you call apply. This lets you avoid any surprises when Terraform manipulates infrastructure.
+    * **Resource Graph**: Terraform builds a graph of all your resources, and parallelizes the creation and modification of any non-dependent resources. Because of this, Terraform builds infrastructure as efficiently as possible, and operators get insight into dependencies in their infrastructure.
+    * **Change Automation**: Complex changesets can be applied to your infrastructure with minimal human interaction. With the previously mentioned execution plan and resource graph, you know exactly what Terraform will change and in what order, avoiding many possible human errors.
+
+    For more information, see the [introduction section](http://www.terraform.io/intro) of the Terraform website.
+    </description>
+    <summary>Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.</summary>
+    <releaseNotes>
+    ## 0.9.8 (June 7, 2017)
+
+    NOTE:
+
+    * The 0.9.7 release had a bug with its new feature of periodically persisting state to the backend during an apply, as part of [[#14834](https://github.com/hashicorp/terraform/issues/14834)]. This change has been reverted in this release and will be re-introduced at a later time once it has been made to work properly.
+
+    IMPROVEMENTS:
+
+    * provider/google: `network` argument in `google_compute_instance_group` is now optional ([#13493](https://github.com/hashicorp/terraform/issues/13493))
+    * provider/google: Add support for `draining_timeout_sec` to `google_compute_backend_service`. ([#14559](https://github.com/hashicorp/terraform/issues/14559))
+
+    BUG FIXES:
+
+    * provider/aws: fixed reading network configurations for `spot_fleet_request` ([#13748](https://github.com/hashicorp/terraform/issues/13748))
+
+    ## Previous Releases
+    For more information on previous releases, check out the changelog on [GitHub](https://github.com/hashicorp/terraform/blob/v0.9.8/CHANGELOG.md).
+    </releaseNotes>
+    <copyright>HashiCorp 2015-2017</copyright>
+    <tags>terraform hashicorp</tags>
+    <projectSourceUrl>https://github.com/hashicorp/terraform</projectSourceUrl>
+    <packageSourceUrl>https://github.com/jamestoyer/chocolatey-packages</packageSourceUrl>
+    <docsUrl>https://www.terraform.io/docs/index.html</docsUrl>
+    <bugTrackerUrl>https://github.com/hashicorp/terraform/issues</bugTrackerUrl>
+  </metadata>
+</package>
