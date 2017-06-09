@@ -2,7 +2,7 @@ param([switch] $force, [switch] $push)
 
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $downloadEndPointUrl = 'https://www.binaryfortress.com/Data/Download/?package=displayfusion&log=101'
@@ -18,4 +18,4 @@ function global:au_GetLatest {
     return @{ Url32 = $downloadUrl; Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.end.ps1')

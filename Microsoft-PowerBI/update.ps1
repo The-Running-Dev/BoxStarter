@@ -2,7 +2,7 @@ param([switch] $force, [switch] $push)
 
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $releaseUrl = 'https://www.microsoft.com/en-us/download/details.aspx?id=45331'
@@ -23,4 +23,4 @@ function global:au_GetLatest {
     return @{ Url32 = $url; Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.end.ps1')

@@ -2,7 +2,7 @@ param([switch] $force, [switch] $push)
 
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $relasePageUrl = 'http://www.7-zip.org/'
@@ -21,4 +21,4 @@ function global:au_GetLatest {
     return @{ Url32 = "$urlPrefix/$url"; Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.end.ps1')

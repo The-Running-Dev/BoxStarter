@@ -2,7 +2,7 @@ param([switch] $force, [switch] $push)
 
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $releaseUrl = 'http://danhinsley.com/metax/metax.html'
@@ -19,4 +19,4 @@ function global:au_GetLatest {
     return @{ Version = $version; Url32 = $url }
 }
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.end.ps1')

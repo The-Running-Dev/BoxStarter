@@ -1,7 +1,7 @@
 ﻿$updatedOn = ''
 $arguments = @{
     url        = 'https://vpnarea.com/VPNAreaChameleon.exe'
-    checksum   = '51B2904DA65ACD1FB57C9677CD09D26981C3C7326317FC1D631198E2ABC29AD6'
+    checksum   = '4BBDB5464AE6EBA6C407F74A61789B31C06D48941A846BB897C56CDAFACA3CEA'
     silentArgs = '/S'
 }
 

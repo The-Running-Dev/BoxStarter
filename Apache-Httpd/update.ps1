@@ -2,7 +2,7 @@ param([switch] $force, [switch] $push)
 
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $downloadPageUrl = 'http://www.apachehaus.com/cgi-bin/download.plx'
@@ -25,4 +25,4 @@ function global:au_GetLatest {
     return @{ Url32 = $url; FileName32 = $fileName32; Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.end.ps1')

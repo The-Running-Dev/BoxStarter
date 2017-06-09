@@ -2,7 +2,7 @@ param([switch] $force, [switch] $push)
 
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.begin.ps1')
 
 $getBetaVersion = $false
 
@@ -43,4 +43,4 @@ function Get-FirstBetaLink([string] $uri, [string] $regEx) {
     return $releasePage.links | Where-Object { $_.href -match $regEx } | Select-Object -First 1
 }
 
-. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.end.ps1')
