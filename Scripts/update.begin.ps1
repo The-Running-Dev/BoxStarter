@@ -94,14 +94,22 @@ function global:au_GetLatest {
 }
 
 function global:au_SearchReplace {
-    if (Get-Item (Join-Path $packageDir 'tools\chocolateyInstall.ps1')) {
+    if (-not (Test-Path (Join-Path $packageDir 'tools\chocolateyInstall.ps1'))) {
         return @{}
     }
 
-    return @{
+    $searchReplace = @{
         ".\tools\chocolateyInstall.ps1" = @{
-            "(?i)(url\s*=\s*)('.*')"      = "`$1'$($Latest.Url32)'"
-            "(?i)(checksum\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
         }
     }
+
+    $file = (Get-Item $packageDir\tools\chocolateyInstall.ps1 | Select-String "(?i)file\s*=\s*'.*'") -split "=|'" | Select-Object -Last 1 -Skip 1
+    $url = (Get-Item $packageDir\tools\chocolateyInstall.ps1 | Select-String "(?i)url\s*=\s*'.*'") -split "=|'" | Select-Object -Last 1 -Skip 1
+    $checksum = (Get-Item $packageDir\tools\chocolateyInstall.ps1 | Select-String "(?i)checksum\s*=\s*'.*'") -split "=|'" | Select-Object -Last 1 -Skip 1
+
+    if ($file) { $searchReplace[".\tools\chocolateyInstall.ps1"]["(?i)(file\s*=\s*)('.*')"] = "`$1'$($Latest.FileName32)'" }
+    if ($url) { $searchReplace[".\tools\chocolateyInstall.ps1"]["(?i)(url\s*=\s*)('.*')"] = "`$1'$($Latest.Url32)'" }
+    if ($checksum) { $searchReplace[".\tools\chocolateyInstall.ps1"]["(?i)(checksum\s*=\s*)('.*')"] = "`$1'$($Latest.Checksum32)'" }
+
+    return $searchReplace
 }

@@ -25,12 +25,4 @@ function global:au_GetLatest {
     return @{ Url32 = $url; FileName32 = $fileName32; Version = $version }
 }
 
-function global:au_SearchReplace {
-    return @{
-        ".\tools\chocolateyInstall.ps1" = @{
-            "(?i)(file\s*=\s*)('.*')" = "`$1'$($Latest.FileName32)'"
-        }
-    }
-}
-
 . (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
