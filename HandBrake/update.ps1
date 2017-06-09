@@ -7,15 +7,15 @@ $packageDir = $PSScriptRoot
 function global:au_GetLatest {
     $releaseUrl = 'https://handbrake.fr/downloads.php'
     $versionRegEx = 'Current Version: ([0-9\.]+)'
-    $downloadUrlPrefix = 'https://handbrake.fr'
-    $downloadUrlRegEx = '<iframe src="(.*?\.exe).*'
+    $downloadUrlPrefix = 'https://handbrake.fr/mirror'
+    $fileRegEx = 'file=(.*x86_64\-Win_GUI\.exe)'
 
     $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
-    $version = [version]([regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value)
-    $partialUrl = $releasePage.Links | Where-Object href -match $downloadUrlRegEx | Select-Object -First 1 -Expand href
-    $downloadPage = Invoke-WebRequest -Uri "$downloadUrlPrefix/$partialUrl" -UseBasicParsing
-    $downloadPage.content -match $downloadUrlRegEx | out-null
-    $url = $matches[1]
+    $releasePage.Content -match $versionRegEx
+    $version = [version]$matches[1]
+
+    $releasePage.Content -match $fileRegEx
+    $url = "$downloadUrlPrefix/$($matches[1])"
 
     if ($force) {
         $global:au_Version = $version
