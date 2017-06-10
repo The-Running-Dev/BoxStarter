@@ -8,7 +8,7 @@ function global:au_GetLatest {
     $downloadEndPointUrl = 'https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15'
     $releaseUrl = 'https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools'
     $versionRegEx = '(15\.[0-9\.]+)'
-    $downloadRegEx = '(https://download.microsoft.com.*/vs_BuildTools.exe)'
+    $downloadRegEx = '(https\:.*/vs_BuildTools.exe)'
     $fileName32 = 'Microsoft-Build-Tools.7z'
 
     $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
