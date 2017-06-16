@@ -6,7 +6,7 @@ $packageDir = $PSScriptRoot
 
 function global:au_GetLatest {
     $releaseUrl = 'http://danhinsley.com/metax/metax.html'
-    $versionRegEx = 'DOWNLOAD&nbsp;MetaX&nbsp;V([0-9\.]+)'
+    $versionRegEx = 'V([0-9\.]+)\sReleased'
     $url = 'http://www.danhinsley.com/downloads/MetaXSetup.msi'
 
     $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing

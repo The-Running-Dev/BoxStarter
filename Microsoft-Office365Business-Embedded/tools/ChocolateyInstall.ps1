@@ -17,6 +17,6 @@ $arguments = @{
 
 Set-Features $parameters $configurationFile
 
-Install-Package $arguments
+Install-FromZip $arguments
 
 Get-ChildItem $env:Temp -Filter $installerBase | Remove-Item -Recurse -Force
