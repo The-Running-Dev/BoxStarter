@@ -7,4 +7,4 @@ $arguments = @{
     silentArgs = "-s -norestart -c ""default"""
 }
 
-Install-CustomPackage $arguments
+Install-FromZip $arguments

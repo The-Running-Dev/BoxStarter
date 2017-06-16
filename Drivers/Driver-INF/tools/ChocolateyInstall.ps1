@@ -7,4 +7,4 @@ $arguments = @{
     silentArgs = '/S /v/qn'
 }
 
-Install-CustomPackage $arguments
+Install-FromZip $arguments

@@ -7,4 +7,4 @@ $arguments = @{
     silentArgs = '-s -overwrite -drvonly'
 }
 
-Install-CustomPackage $arguments
+Install-FromZip $arguments

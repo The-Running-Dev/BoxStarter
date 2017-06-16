@@ -7,4 +7,4 @@ $arguments = @{
     silentArgs = '/SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /NOCLOSEAPPLICATIONS /NORESTARTAPPLICATIONS /NOICONS'
 }
 
-Install-CustomPackage $arguments
+Install-FromZip $arguments

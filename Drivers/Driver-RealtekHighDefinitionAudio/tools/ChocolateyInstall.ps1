@@ -7,4 +7,4 @@ $arguments = @{
     silentArgs = '/s /sms'
 }
 
-Install-CustomPackage $arguments
+Install-FromZip $arguments
