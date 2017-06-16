@@ -54,13 +54,6 @@ Prefer HTTPS when available. Can be HTTP, FTP, or File URIs.
 
 In 0.10.4+, `Url` is an alias for VsixUrl.
 
-In 0.10.6+, `File` and `FileFullPath` are aliases for VsixUrl. These 
-aliases, if used in earlier versions of Chocolatey, may produce `ERROR: 
-Cannot bind parameter because parameter 'fileType' is specified more 
-than once.` See https://github.com/chocolatey/choco/issues/1284. Do not
-use these aliases with the community package repository until January
-2018.
-
 .PARAMETER VsVersion
 The major version number of Visual Studio where the
 package should be installed. This is optional. If not
@@ -108,6 +101,12 @@ The recommendation is to use at least SHA256.
 .PARAMETER Options
 OPTIONAL - Specify custom headers. Available in 0.9.10+.
 
+.PARAMETER File
+Will be used for VsixUrl if VsixUrl is empty. Available in 0.10.7+.
+
+This parameter provides compatibility, but should not be used directly
+and not with the community package repository until January 2018.
+
 .PARAMETER IgnoredArguments
 Allows splatting with arguments that do not apply. Do not use directly.
 
@@ -139,14 +138,21 @@ Install-ChocolateyZipPackage
 #>
 param(
   [alias("name")][parameter(Mandatory=$true, Position=0)][string] $packageName,
-  [alias("url","file","fileFullPath")][parameter(Mandatory=$false, Position=1)][string] $vsixUrl,
+  [alias("url")][parameter(Mandatory=$false, Position=1)][string] $vsixUrl,
   [alias("visualStudioVersion")][parameter(Mandatory=$false, Position=2)][int] $vsVersion = 0,
   [parameter(Mandatory=$false)][string] $checksum = '',
   [parameter(Mandatory=$false)][string] $checksumType = '',
   [parameter(Mandatory=$false)][hashtable] $options = @{Headers=@{}},
+  [alias("fileFullPath")][parameter(Mandatory=$false)][string] $file = '',
   [parameter(ValueFromRemainingArguments = $true)][Object[]] $ignoredArguments
 )
-    Write-Debug "Running 'Install-ChocolateyVsixPackage' for $packageName with vsixUrl:`'$vsixUrl`', vsVersion: `'$vsVersion`', checksum: `'$checksum`', checksumType: `'$checksumType`' ";
+
+    Write-FunctionCallLogMessage -Invocation $MyInvocation -Parameters $PSBoundParameters
+
+    if ($vsixUrl -eq '' -or $vsixUrl -eq $null) {
+        $vsixUrl = $file
+    }
+
     if($vsVersion -eq 0) {
         if ([System.IntPtr]::Size -eq 4)
         {
@@ -207,8 +213,8 @@ param(
 # SIG # Begin signature block
 # MIIcpwYJKoZIhvcNAQcCoIIcmDCCHJQCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCBa75/rZT1fkXQh
-# HBoMefsPyLy5oWrbExwJio5gjyLasaCCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCAwvbwbcXwGHARv
+# s0aL6zHGEwZUxYCbjjh5ZcXDMGFCc6CCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
 # ZnVTQ7VvlVAIMA0GCSqGSIb3DQEBCwUAMGUxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xJDAiBgNV
 # BAMTG0RpZ2lDZXJ0IEFzc3VyZWQgSUQgUm9vdCBDQTAeFw0xMzEwMjIxMjAwMDBa
@@ -340,22 +346,22 @@ param(
 # QTIgQXNzdXJlZCBJRCBDb2RlIFNpZ25pbmcgQ0ECEAawEVu18JDT8NoOYixifVgw
 # DQYJYIZIAWUDBAIBBQCggYQwGAYKKwYBBAGCNwIBDDEKMAigAoAAoQKAADAZBgkq
 # hkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgorBgEEAYI3AgELMQ4wDAYKKwYBBAGC
-# NwIBFTAvBgkqhkiG9w0BCQQxIgQg160Bab37c0r+FAsgs0R/i4hCnMzAxRicH/Tn
-# 35Ej0K4wDQYJKoZIhvcNAQEBBQAEggEAmKvJv8Y7AkZLthPFITfkhDlixiTcY27p
-# l9RkI6awNWoiPIV24huOgBRdoIhl7JZAjAafoh4uZ/0CaD1HM1NMCSm/O/EX4f92
-# 7cRswnW3CQsgxVlEKBN7hfvGnSjnSEKmxlc1Z3Vz6mA5MWuprQN+LnSt4OwqS/HQ
-# cTC6fn1bSLRZcDWe9FRMsXpeTspdTsybTpijPUoB55g9VlvuQwUVncW9LNAOeApl
-# 1gCLDIMWKUiqDqoAeaTq5vdlqDX++4hZp1bGbut9O/Q2OcfRnvfygeBPtbyIEOJG
-# wJBV6uUg3Gbbgnhw7U+LDsaTDw5Q3RzYTbW1wMA8uJCgY8OKcqrJXKGCAg8wggIL
+# NwIBFTAvBgkqhkiG9w0BCQQxIgQgY21LEp9apuTMLqguzypSjDhrQ2TRe8edZGc6
+# /Wjr8LIwDQYJKoZIhvcNAQEBBQAEggEAPxJVN6cWJJcXV7afUfephqn4giKtyoAr
+# 8XdVnoGO/3gkGsmbphCXi9qKCWrJFKtcVBE7YY6ya9VOeXUvFSZOUBHoVLbZ/e2I
+# ZV770km1RPzkYKC7GkXJfb7+reaZ2OSmFlmGdwXNxGDbet5Qa/ckyZZJDMSW9BeA
+# 7SK7ncNpx+sK67+gi3621+q/SRSJYxpedJs5oNWQ7TFDXvnEiUuZg6pCxkIlOXNf
+# HOi0bWprnXhd6gannbR1P41ljjOwqFCr5rshu68DthyaAlO7Yb6Ua6IEbUQx3aey
+# +fKkTimFgWOoq9Qy0DDMP5Fu/ngdAu6eRqDe0k53YcrtJRdTT+bt4qGCAg8wggIL
 # BgkqhkiG9w0BCQYxggH8MIIB+AIBATB2MGIxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xITAfBgNV
 # BAMTGERpZ2lDZXJ0IEFzc3VyZWQgSUQgQ0EtMQIQAwGaAjr/WLFr1tXq5hfwZjAJ
 # BgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0B
-# CQUxDxcNMTcwNjAzMjIzOTQ0WjAjBgkqhkiG9w0BCQQxFgQU/7OP2+k70BeCjIMH
-# MAqM14L6NCEwDQYJKoZIhvcNAQEBBQAEggEAOpOdiozv470UGnAb/jw2YafJb5ot
-# 4KaHZhTGMQs9l+N/Cfq8U8SKMAHS5y3nHoxIo9qKMqTMOaFPXcY38uH8UIIPt/kA
-# lvPjWCoHfYo2G/N5+BVdO5VwklidttXMrddTg1rtt1N8gID8eGEa0oxDEiaKt04V
-# 14zBJnfXGwUZdPIhOYHtzH2l7ScJHEmZtU+dla4TWawZ4mA9cof5KhWRItx3TSks
-# aD/o472N7dyi+zhCI+b+ylpJdw71H9X5JOO6EgtegtqG4aw2JIYwnw+MatbKAXcS
-# TIc8af9yQItzNxhNRt21jnDQhZP057MVt5S6HRpDxwzgWPOGyD/7MB9sZw==
+# CQUxDxcNMTcwNjA4MjAzMjEwWjAjBgkqhkiG9w0BCQQxFgQULUa8TQADTUUFaSVp
+# GlNibL23ec8wDQYJKoZIhvcNAQEBBQAEggEAO+abc+0Ln+7g+R4PSD7sAWmT5gsC
+# 6cAecUpFEpHChDwSLNlQMv9Fqcr0zzpAAeLrhYTyEtx7h0Tf6E4Biihdzrbm1Ahv
+# RwPnGTXFmN7pgufrxVOg519KLxi9GatPN6PSfbYjOkOjSA9610pDjABSD3OGL07i
+# r1bS0giTRVjsxut0uulItKtIr5kQfGFwDnznC+V6BxOieZyBkLalfXKDEqvw9pmY
+# 4+74MjQqIRVWME93thK5ZBB+Hbx65/IiX0k9R+u4YgcWOEn7JrQQpHbLawy3cKUi
+# d2r6XgZOJT0WdvHSh3YyRXxwDLAwJSL5e/9nO2YmRcXSUw12ELKzgUXOnA==
 # SIG # End signature block

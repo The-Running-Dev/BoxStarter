@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <doc>
     <assembly>
         <name>MvvmDialogs</name>
@@ -299,7 +299,7 @@
         <member name="T:MvvmDialogs.DialogServiceViews">
             <summary>
             Class containing means to register a <see cref="T:System.Windows.FrameworkElement"/> as a view for a view
-            model when using the MVVM pattern. The view will then be used by the
+            model when using the MVVM pattern. The view will then be used by the 
             <see cref="T:MvvmDialogs.DialogService"/> when opening dialogs.
             </summary>
         </member>
@@ -1001,7 +1001,7 @@
             </summary>
             <param name="frameworkElement">
             The <see cref="T:System.Windows.FrameworkElement"/> to find the <see cref="T:System.Windows.Window"/> for.
-            </param>
+            </param> 
             <returns>The owning <see cref="T:System.Windows.Window"/> if found; otherwise null.</returns>
         </member>
     </members>

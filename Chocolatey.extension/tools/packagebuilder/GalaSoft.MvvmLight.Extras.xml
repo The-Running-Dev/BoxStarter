@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <doc>
     <assembly>
         <name>GalaSoft.MvvmLight.Extras</name>
@@ -364,7 +364,7 @@
         </member>
         <member name="M:GalaSoft.MvvmLight.Ioc.SimpleIoc.GetInstance(System.Type)">
             <summary>
-            Provides a way to get an instance of a given type. If no instance had been instantiated
+            Provides a way to get an instance of a given type. If no instance had been instantiated 
             before, a new instance will be created. If an instance had already
             been created, that same instance will be returned.
             </summary>
@@ -411,7 +411,7 @@
         </member>
         <member name="M:GalaSoft.MvvmLight.Ioc.SimpleIoc.GetInstance``1">
             <summary>
-            Provides a way to get an instance of a given type. If no instance had been instantiated
+            Provides a way to get an instance of a given type. If no instance had been instantiated 
             before, a new instance will be created. If an instance had already
             been created, that same instance will be returned.
             </summary>
@@ -506,7 +506,7 @@
             <summary>
             Gets or sets a value indicating whether the attached element must be
             disabled when the <see cref="P:GalaSoft.MvvmLight.Command.EventToCommand.Command" /> property's CanExecuteChanged
-            event fires. If this property is true, and the command's CanExecute
+            event fires. If this property is true, and the command's CanExecute 
             method returns false, the element will be disabled. If this property
             is false, the element will not be disabled when the command's
             CanExecute method changes. This is a DependencyProperty.
@@ -516,7 +516,7 @@
             <summary>
             Gets or sets a value indicating whether the attached element must be
             disabled when the <see cref="P:GalaSoft.MvvmLight.Command.EventToCommand.Command" /> property's CanExecuteChanged
-            event fires. If this property is true, and the command's CanExecute
+            event fires. If this property is true, and the command's CanExecute 
             method returns false, the element will be disabled. This property is here for
             compatibility with the Silverlight version. This is NOT a DependencyProperty.
             For databinding, use the <see cref="P:GalaSoft.MvvmLight.Command.EventToCommand.MustToggleIsEnabled" /> property.

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <doc>
     <assembly>
         <name>System.Windows.Interactivity</name>
@@ -293,7 +293,7 @@
         </member>
         <member name="M:System.Windows.Interactivity.DependencyObjectHelper.GetSelfAndAncestors(System.Windows.DependencyObject)">
             <summary>
-            This method will use the VisualTreeHelper.GetParent method to do a depth first walk up
+            This method will use the VisualTreeHelper.GetParent method to do a depth first walk up 
             the visual tree and return all ancestors of the specified object, including the object itself.
             </summary>
             <param name="dependencyObject">The object in the visual tree to find ancestors of.</param>
@@ -328,11 +328,11 @@
             </summary>
             <typeparam name="T">The type that this trigger can be associated with.</typeparam>
             <remarks>
-            	EventTriggerBase extends TriggerBase to add knowledge of another object than the one it is attached to.
-            	This allows a user to attach a Trigger/Action pair to one element and invoke the Action in response to a
-            	change in another object somewhere else. Override OnSourceChanged to hook or unhook handlers on the source
-            	element, and OnAttached/OnDetaching for the associated element. The type of the Source element can be
-            	constrained by the generic type parameter. If you need control over the type of the
+            	EventTriggerBase extends TriggerBase to add knowledge of another object than the one it is attached to. 
+            	This allows a user to attach a Trigger/Action pair to one element and invoke the Action in response to a 
+            	change in another object somewhere else. Override OnSourceChanged to hook or unhook handlers on the source 
+            	element, and OnAttached/OnDetaching for the associated element. The type of the Source element can be 
+            	constrained by the generic type parameter. If you need control over the type of the 
             	AssociatedObject, set a TypeConstraintAttribute on your derived type.
             </remarks>
         </member>
@@ -772,10 +772,10 @@
             </summary>
             <typeparam name="T">The type constraint on the target.</typeparam>
             <remarks>
-            	TargetedTriggerAction extends TriggerAction to add knowledge of another element than the one it is attached to.
-            	This allows a user to invoke the action on an element other than the one it is attached to in response to a
-            	trigger firing. Override OnTargetChanged to hook or unhook handlers on the target element, and OnAttached/OnDetaching
-            	for the associated element. The type of the Target element can be constrained by the generic type parameter. If
+            	TargetedTriggerAction extends TriggerAction to add knowledge of another element than the one it is attached to. 
+            	This allows a user to invoke the action on an element other than the one it is attached to in response to a 
+            	trigger firing. Override OnTargetChanged to hook or unhook handlers on the target element, and OnAttached/OnDetaching 
+            	for the associated element. The type of the Target element can be constrained by the generic type parameter. If 
             	you need control over the type of the AssociatedObject, set a TypeConstraintAttribute on your derived type.
             </remarks>
         </member>
@@ -901,10 +901,10 @@
             </summary>
             <typeparam name="T">The type to which this trigger can be attached.</typeparam>
             <remarks>
-            	TriggerBase is the base class for controlling actions. Override OnAttached() and
-            	OnDetaching() to hook and unhook handlers on the AssociatedObject. You may
-            	constrain the types that a derived TriggerBase may be attached to by specifying
-            	the generic parameter. Call InvokeActions() to fire all Actions associated with
+            	TriggerBase is the base class for controlling actions. Override OnAttached() and 
+            	OnDetaching() to hook and unhook handlers on the AssociatedObject. You may 
+            	constrain the types that a derived TriggerBase may be attached to by specifying 
+            	the generic parameter. Call InvokeActions() to fire all Actions associated with 
             	this TriggerBase.
             </remarks>
         </member>

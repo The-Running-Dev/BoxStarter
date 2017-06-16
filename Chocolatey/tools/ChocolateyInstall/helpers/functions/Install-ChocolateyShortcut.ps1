@@ -129,7 +129,7 @@ Install-ChocolateyPinnedTaskBarItem
     [parameter(ValueFromRemainingArguments = $true)][Object[]]$ignoredArguments
 	)
 
-	Write-Debug "Running 'Install-ChocolateyShortcut' with parameters ShortcutFilePath: `'$shortcutFilePath`', TargetPath: `'$targetPath`', WorkingDirectory: `'$workingDirectory`', Arguments: `'$arguments`', IconLocation: `'$iconLocation`', Description: `'$description`', WindowStyle: `'$windowStyle`', RunAsAdmin: `'$runAsAdmin`', PinToTaskbar: `'$pinToTaskbar`'";
+  Write-FunctionCallLogMessage -Invocation $MyInvocation -Parameters $PSBoundParameters
 
 	# http://powershell.com/cs/blogs/tips/archive/2009/02/05/validating-a-url.aspx
 	function isURIWeb($address) {
@@ -225,8 +225,8 @@ Install-ChocolateyPinnedTaskBarItem
 # SIG # Begin signature block
 # MIIcpwYJKoZIhvcNAQcCoIIcmDCCHJQCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCAYdVe5UrJIl34L
-# JbtOP9JzSjRJSGyG/V/J6NxAGlgZ06CCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCDxmS0xVkYtOzRG
+# JkIxbXO7HtCCUmKGRgAXflRrvi/MeKCCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
 # ZnVTQ7VvlVAIMA0GCSqGSIb3DQEBCwUAMGUxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xJDAiBgNV
 # BAMTG0RpZ2lDZXJ0IEFzc3VyZWQgSUQgUm9vdCBDQTAeFw0xMzEwMjIxMjAwMDBa
@@ -358,22 +358,22 @@ Install-ChocolateyPinnedTaskBarItem
 # QTIgQXNzdXJlZCBJRCBDb2RlIFNpZ25pbmcgQ0ECEAawEVu18JDT8NoOYixifVgw
 # DQYJYIZIAWUDBAIBBQCggYQwGAYKKwYBBAGCNwIBDDEKMAigAoAAoQKAADAZBgkq
 # hkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgorBgEEAYI3AgELMQ4wDAYKKwYBBAGC
-# NwIBFTAvBgkqhkiG9w0BCQQxIgQg+XfN2A+w4EJYcLZhpL2QwrTgTwqHrVlH1Oxf
-# xrzc3l0wDQYJKoZIhvcNAQEBBQAEggEAfaisUd9NxVpRyDU7mJk5xp6sx2TBai/t
-# OddLxIuGLZghQ0UyFKCMeVk0xynH1+llBDSYsG/q8Mv5iXIny47z5wtz6GJGAqUo
-# 5EbnP1IlIpTqZiI2thaYXQGe2lP/UjBS4fJKF1FirTm517yothnQGVvEfww01+fx
-# g/cVFfOY7oCLO/rNKqRB6jyjnr2IWSG0+KHwsUoZjNUMzW7NFOEE4MgKtIRsIJzA
-# FIjt0LaDL91PYoxefmfDJlFYV1/yMquh38BFJFlhRoSR7U1HJb1qBr3Y3tmydwi4
-# BqKbu26hmMxmzjZnXQMtIA/Y69+g94u1EEYhZ3Qjqwc926HEQ3yUdqGCAg8wggIL
+# NwIBFTAvBgkqhkiG9w0BCQQxIgQgCVvaSU4BS72q9UUEF+uma/S/pmV3DOqwCpa1
+# kp4KwowwDQYJKoZIhvcNAQEBBQAEggEAOdI3PuTAMHTKz01N8RY5ZXJJEwxnAKKQ
+# crZjjuJqMqtIjursO8b2KsYdBANqGBfOiyfsVQS02rBDzOJ67pKDemNACWQefR07
+# VPOBww3lZ4BSBWxLNZVa1SJzxKSmFjgSp6ewX4D8XvvPRUuEH6jy6vYbd3EN8upH
+# H7+m3Q8JAdgGEzKOuDHRAbKmLGy/3DlrlwI89a+vhl7IpEaRWtk6jNVH/YLEcvH3
+# 52JGmlv2C19jjn1msAcBkN7TWSxcTj8dAZ2hnVzm0qaN6fsIe7pIfoD3Bt3jjePV
+# 9FdVU6eh96+8jRpQrSH1pSbaI+F7FzNauEJ6MMzv1N68ReYMKQcw9qGCAg8wggIL
 # BgkqhkiG9w0BCQYxggH8MIIB+AIBATB2MGIxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xITAfBgNV
 # BAMTGERpZ2lDZXJ0IEFzc3VyZWQgSUQgQ0EtMQIQAwGaAjr/WLFr1tXq5hfwZjAJ
 # BgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0B
-# CQUxDxcNMTcwNjAzMjIzOTQ0WjAjBgkqhkiG9w0BCQQxFgQUSFpBBBPRxhMH3uVB
-# TXUUHzWrCvIwDQYJKoZIhvcNAQEBBQAEggEAa4m9i79uQV/oUBvb4AacUsFyJNch
-# UlW/2WCrcaxY7o+gtim3QOXnSD0mLtTtKGPQt4Pqctpxq9fV4raLQSApwsAlUDYK
-# ChFnBsX6NxkPTdQhqYIRaT2PMDuCk1cD5ZxGpDxpCgO2FuWP0znB9Y0Xc//i3D/a
-# EY3TdfjaU6LPbWNUntqVdX21dPDfPbpnETv8rXcuINar6Vw1gWbc7couN2CjPVdR
-# gFO+IN7eWoEQM2w28MxuHre85R7gBF7vUaBI1Ny9++vLnU9TQL6k80p/Ii6GALv+
-# vpnX7Eb5rhxWJ1iUmX2HValPp36G6yehfiBv5chql/qJhkaASYzpEXi8hg==
+# CQUxDxcNMTcwNjA4MjAzMjEwWjAjBgkqhkiG9w0BCQQxFgQUqU2C527nx8GO9HCr
+# WwiSScR/n7swDQYJKoZIhvcNAQEBBQAEggEARezlL/tbZja8psnZrmkKXNclGkPZ
+# LubEZ2AWXI3qpVDavhOPrq5zrnPlgJjWRw9DX1Utx+1jcKXFabfHdannve2s4ac7
+# FW6K4Q5lam4U49DAcPHWr0qfj+BkZfZ+z7ebirwHgGLwGycvp+pDiJYWLN2tmJgV
+# 48fT7UR8GSzHApx9IxC4UVnoWodCGhaiSbaNn+rCgrjOTVly8s20hdv9OswVjO4E
+# mvit2kzc9LQvXH98lcNDrT466zg3mkG3/WQ3NTGmc0Xg0SYU4DqkgdWYlLqnI3U1
+# ji8SsLEDpUVyc3lawP9BkCFZwzq7k2jgPiQvob+IFSuWwMK9pJ/SC9YCwg==
 # SIG # End signature block

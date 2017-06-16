@@ -189,7 +189,8 @@ param(
   [parameter(Mandatory=$false)][hashtable] $options = @{Headers=@{}},
   [parameter(ValueFromRemainingArguments = $true)][Object[]] $ignoredArguments
 )
-  Write-Debug "Running 'Install-ChocolateyPowershellCommand' for $packageName with psFileFullPath:`'$psFileFullPath`', url: `'$url`', url64bit:`'$url64bit`', checkSum: `'$checksum`', checksumType: `'$checksumType`', checkSum64: `'$checksum64`', checksumType64: `'$checksumType64`' ";
+
+  Write-FunctionCallLogMessage -Invocation $MyInvocation -Parameters $PSBoundParameters
 
   if ($url -ne '') {
     Get-ChocolateyWebFile $packageName $psFileFullPath $url $url64bit -checksum $checksum -checksumType $checksumType -checksum64 $checksum64 -checksumType64 $checksumType64 -Options $options
@@ -214,8 +215,8 @@ powershell -NoProfile -ExecutionPolicy unrestricted -Command ""& `'$psFileFullPa
 # SIG # Begin signature block
 # MIIcpwYJKoZIhvcNAQcCoIIcmDCCHJQCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCCEWkYKq0YJ4cai
-# Ru4T9L+jBYccA/v/6IoyBmRFC1oDq6CCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCC9KcgX+eZZLU8W
+# /LaWoZwaNMs2L1G8yJsruP7peTY5EaCCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
 # ZnVTQ7VvlVAIMA0GCSqGSIb3DQEBCwUAMGUxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xJDAiBgNV
 # BAMTG0RpZ2lDZXJ0IEFzc3VyZWQgSUQgUm9vdCBDQTAeFw0xMzEwMjIxMjAwMDBa
@@ -347,22 +348,22 @@ powershell -NoProfile -ExecutionPolicy unrestricted -Command ""& `'$psFileFullPa
 # QTIgQXNzdXJlZCBJRCBDb2RlIFNpZ25pbmcgQ0ECEAawEVu18JDT8NoOYixifVgw
 # DQYJYIZIAWUDBAIBBQCggYQwGAYKKwYBBAGCNwIBDDEKMAigAoAAoQKAADAZBgkq
 # hkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgorBgEEAYI3AgELMQ4wDAYKKwYBBAGC
-# NwIBFTAvBgkqhkiG9w0BCQQxIgQgUHnFv6v4uRIc4xNFIsRxSGTBhJSnrSjF7yYA
-# 5ZExfhswDQYJKoZIhvcNAQEBBQAEggEAsufKi+1La/9aUTdiMN6YshtVyf0GqvDL
-# ZkgVY3t1wPKMtx1M/7t+TZ4c8zv1jf3j/zY62Rim+PJliDiQt1oTefDBxCnm2yRx
-# ciEwH4VZOMJzjyewnbqe6N4ql7kKz1+dRoQ80mP7EPC7KEOR1shuRc5OoiimAUZa
-# A45BlHD5N1dkGNOrrOnjjdXTcCycEfrklJ9QQTRhE9sM+xl1ZEP0lE3YHiY1GP3F
-# 4gz35ArGDWx0F88vXJdTlqq7F4q4qUiYy90Q3w32OQmJMB/poh3ucQfO6kKSwvm2
-# eHU3ihe6Q7IABctLS0RgSgoR8busVEzBtvAb7pVz1AZOWFZwk/Lv+KGCAg8wggIL
+# NwIBFTAvBgkqhkiG9w0BCQQxIgQg0Ob3ipI6AIWgNk0OZZuS170f7s7FEh6zobi1
+# CzrD1XkwDQYJKoZIhvcNAQEBBQAEggEAT654SzW9D1x+E8EnJ8+6mjjOIibxxMsk
+# VL8g1xqpn4kWuUPVcfPgpRmH1uUXOOXsQGH+tEAjds1nCRBA1KbH4cRE8Nw9qmsN
+# m5cxtDdmHl4pTSl+JC2rNQL8x4WrYlkMd6YhXWVvVljbJV7rMOnIxzttGrREjn6d
+# l8MNSD79O5GUz7H3tvozcFAiPrz5X3IZitg7MthJXdbancUtMuyffHO1ankgoyfC
+# mrQEWY64xnKdeiT5kCQH3FKr5uN3FlDiEVQYk9TZVk6fZuFfvZcQDRrT6ljwxac5
+# qZE47vi7bJFy5lq8R7zc2XgepKfZQnUrkhQ32ikhErJdbMJGdpU1CKGCAg8wggIL
 # BgkqhkiG9w0BCQYxggH8MIIB+AIBATB2MGIxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xITAfBgNV
 # BAMTGERpZ2lDZXJ0IEFzc3VyZWQgSUQgQ0EtMQIQAwGaAjr/WLFr1tXq5hfwZjAJ
 # BgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0B
-# CQUxDxcNMTcwNjAzMjIzOTQ0WjAjBgkqhkiG9w0BCQQxFgQUo3PSi+U1a+gV8AkG
-# ovfyuiKc+nMwDQYJKoZIhvcNAQEBBQAEggEAbA1GSHV1lV10+TtPIPa0kWxHNE8V
-# HBRiB00/DwCHO7xsWbTKqWr35gwdtJ8RfQCnvfleCo48wDECF1Xlk9PUFA/ghRD5
-# uXjJvjp9UYvazeYvyt79qzCZTjJTmoskRflRtpHlX7xAJMzpA+7aUueUvc2p/tQD
-# dOuazKvNTQz826XSfU4GTtq9mv8QA/GX/5w0SLvsZpJ4GDI0cvbSuNzbnd7DGTRN
-# d6KtTkQHfGufasJfFJv+CY6h/4DXtM9ZZKOFZ1T+LW75IeTXenXNGJngrW6fS68l
-# eeJnMVETQeV0Q83jznGtSZgPk0c/ggE3/Hau1s2TF5RvUosVopMSX1ORKw==
+# CQUxDxcNMTcwNjA4MjAzMjA5WjAjBgkqhkiG9w0BCQQxFgQU8nRzZwzu+EjoS6Mx
+# jcu62j0CmGMwDQYJKoZIhvcNAQEBBQAEggEAkPx1tYztxHfcL4Dto1RoDQLvbPVz
+# CCJAYumQKboUxVqx0eetps9T+t1lblnRYCvcXSomVbworhyaMGlEmJ/URNEQuNsB
+# 8eKBGW3n/bAd4GX1EZhrqY9n3uGCZ1A+rSjzN05iABsn6uDSyTdnCpTkaj9/XrN1
+# JxLvWNTJgyQUwe2LwwhF9qoKgwtZp6tNF+PhxBHPpXbRpXQCMdo4bPDBDL0PXXCQ
+# avPomvIOVD+PZAgHGl+YNB4ZfaHAi2o4CHur933+lFeUUqOXKzOwzlUX8fY6OK/8
+# BQ4RnfEaZPdC1IelBtKO/UwysAUP4CC1J4eLGUtTnKVY68jyCej6M8LQOQ==
 # SIG # End signature block

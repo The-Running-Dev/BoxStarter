@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <doc>
     <assembly>
         <name>GalaSoft.MvvmLight</name>
@@ -11,14 +11,14 @@
             method is 'true'.  This class does not allow you to accept command parameters in the
             Execute and CanExecute callback methods.
             </summary>
-            <remarks>If you are using this class in WPF4.5 or above, you need to use the
+            <remarks>If you are using this class in WPF4.5 or above, you need to use the 
             GalaSoft.MvvmLight.CommandWpf namespace (instead of GalaSoft.MvvmLight.Command).
             This will enable (or restore) the CommandManager class which handles
             automatic enabling/disabling of controls based on the CanExecute delegate.</remarks>
         </member>
         <member name="M:GalaSoft.MvvmLight.Command.RelayCommand.#ctor(System.Action)">
             <summary>
-            Initializes a new instance of the RelayCommand class that
+            Initializes a new instance of the RelayCommand class that 
             can always execute.
             </summary>
             <param name="execute">The execution logic. IMPORTANT: Note that closures are not supported at the moment
@@ -54,7 +54,7 @@
         </member>
         <member name="M:GalaSoft.MvvmLight.Command.RelayCommand.Execute(System.Object)">
             <summary>
-            Defines the method to be called when the command is invoked.
+            Defines the method to be called when the command is invoked. 
             </summary>
             <param name="parameter">This parameter will always be ignored.</param>
         </member>
@@ -66,14 +66,14 @@
             Execute and CanExecute callback methods.
             </summary>
             <typeparam name="T">The type of the command parameter.</typeparam>
-            <remarks>If you are using this class in WPF4.5 or above, you need to use the
+            <remarks>If you are using this class in WPF4.5 or above, you need to use the 
             GalaSoft.MvvmLight.CommandWpf namespace (instead of GalaSoft.MvvmLight.Command).
             This will enable (or restore) the CommandManager class which handles
             automatic enabling/disabling of controls based on the CanExecute delegate.</remarks>
         </member>
         <member name="M:GalaSoft.MvvmLight.Command.RelayCommand`1.#ctor(System.Action{`0})">
             <summary>
-            Initializes a new instance of the RelayCommand class that
+            Initializes a new instance of the RelayCommand class that 
             can always execute.
             </summary>
             <param name="execute">The execution logic. IMPORTANT: Note that closures are not supported at the moment
@@ -104,20 +104,20 @@
             <summary>
             Defines the method that determines whether the command can execute in its current state.
             </summary>
-            <param name="parameter">Data used by the command. If the command does not require data
+            <param name="parameter">Data used by the command. If the command does not require data 
             to be passed, this object can be set to a null reference</param>
             <returns>true if this command can be executed; otherwise, false.</returns>
         </member>
         <member name="M:GalaSoft.MvvmLight.Command.RelayCommand`1.Execute(System.Object)">
             <summary>
-            Defines the method to be called when the command is invoked.
+            Defines the method to be called when the command is invoked. 
             </summary>
-            <param name="parameter">Data used by the command. If the command does not require data
+            <param name="parameter">Data used by the command. If the command does not require data 
             to be passed, this object can be set to a null reference</param>
         </member>
         <member name="T:GalaSoft.MvvmLight.Helpers.IExecuteWithObject">
             <summary>
-            This interface is meant for the <see cref="T:GalaSoft.MvvmLight.Helpers.WeakAction`1" /> class and can be
+            This interface is meant for the <see cref="T:GalaSoft.MvvmLight.Helpers.WeakAction`1" /> class and can be 
             useful if you store multiple WeakAction{T} instances but don't know in advance
             what type T represents.
             </summary>
@@ -142,7 +142,7 @@
         </member>
         <member name="T:GalaSoft.MvvmLight.Helpers.IExecuteWithObjectAndResult">
             <summary>
-            This interface is meant for the <see cref="T:GalaSoft.MvvmLight.Helpers.WeakFunc`1" /> class and can be
+            This interface is meant for the <see cref="T:GalaSoft.MvvmLight.Helpers.WeakFunc`1" /> class and can be 
             useful if you store multiple WeakFunc{T} instances but don't know in advance
             what type T represents.
             </summary>
@@ -219,7 +219,7 @@
         </member>
         <member name="P:GalaSoft.MvvmLight.Helpers.WeakAction.Target">
             <summary>
-            Gets the Action's owner. This object is stored as a
+            Gets the Action's owner. This object is stored as a 
             <see cref="T:System.WeakReference" />.
             </summary>
         </member>
@@ -366,7 +366,7 @@
         </member>
         <member name="P:GalaSoft.MvvmLight.Helpers.WeakFunc`1.Target">
             <summary>
-            Gets the Func's owner. This object is stored as a
+            Gets the Func's owner. This object is stored as a 
             <see cref="T:System.WeakReference" />.
             </summary>
         </member>
@@ -602,7 +602,7 @@
         <member name="M:GalaSoft.MvvmLight.Messaging.IMessenger.Register``1(System.Object,System.Object,System.Action{``0})">
             <summary>
             Registers a recipient for a type of message TMessage.
-            The action parameter will be executed when a corresponding
+            The action parameter will be executed when a corresponding 
             message is sent. See the receiveDerivedMessagesToo parameter
             for details on how messages deriving from TMessage (or, if TMessage is an interface,
             messages implementing TMessage) can be received too.
@@ -625,7 +625,7 @@
         <member name="M:GalaSoft.MvvmLight.Messaging.IMessenger.Register``1(System.Object,System.Object,System.Boolean,System.Action{``0})">
             <summary>
             Registers a recipient for a type of message TMessage.
-            The action parameter will be executed when a corresponding
+            The action parameter will be executed when a corresponding 
             message is sent. See the receiveDerivedMessagesToo parameter
             for details on how messages deriving from TMessage (or, if TMessage is an interface,
             messages implementing TMessage) can be received too.
@@ -659,7 +659,7 @@
         <member name="M:GalaSoft.MvvmLight.Messaging.IMessenger.Register``1(System.Object,System.Boolean,System.Action{``0})">
             <summary>
             Registers a recipient for a type of message TMessage.
-            The action parameter will be executed when a corresponding
+            The action parameter will be executed when a corresponding 
             message is sent. See the receiveDerivedMessagesToo parameter
             for details on how messages deriving from TMessage (or, if TMessage is an interface,
             messages implementing TMessage) can be received too.
@@ -730,7 +730,7 @@
         </member>
         <member name="M:GalaSoft.MvvmLight.Messaging.IMessenger.Unregister``1(System.Object)">
             <summary>
-            Unregisters a message recipient for a given type of messages only.
+            Unregisters a message recipient for a given type of messages only. 
             After this method is executed, the recipient will not receive messages
             of type TMessage anymore, but will still receive other message types (if it
             registered for them previously).
@@ -741,7 +741,7 @@
         </member>
         <member name="M:GalaSoft.MvvmLight.Messaging.IMessenger.Unregister``1(System.Object,System.Object)">
             <summary>
-            Unregisters a message recipient for a given type of messages only and for a given token.
+            Unregisters a message recipient for a given type of messages only and for a given token. 
             After this method is executed, the recipient will not receive messages
             of type TMessage anymore with the given token, but will still receive other message types
             or messages with other tokens (if it registered for them previously).
@@ -846,7 +846,7 @@
         <member name="M:GalaSoft.MvvmLight.Messaging.Messenger.Register``1(System.Object,System.Boolean,System.Action{``0})">
             <summary>
             Registers a recipient for a type of message TMessage.
-            The action parameter will be executed when a corresponding
+            The action parameter will be executed when a corresponding 
             message is sent. See the receiveDerivedMessagesToo parameter
             for details on how messages deriving from TMessage (or, if TMessage is an interface,
             messages implementing TMessage) can be received too.
@@ -874,7 +874,7 @@
         <member name="M:GalaSoft.MvvmLight.Messaging.Messenger.Register``1(System.Object,System.Object,System.Action{``0})">
             <summary>
             Registers a recipient for a type of message TMessage.
-            The action parameter will be executed when a corresponding
+            The action parameter will be executed when a corresponding 
             message is sent.
             <para>Registering a recipient does not create a hard reference to it,
             so if this recipient is deleted, no memory leak is caused.</para>
@@ -895,7 +895,7 @@
         <member name="M:GalaSoft.MvvmLight.Messaging.Messenger.Register``1(System.Object,System.Object,System.Boolean,System.Action{``0})">
             <summary>
             Registers a recipient for a type of message TMessage.
-            The action parameter will be executed when a corresponding
+            The action parameter will be executed when a corresponding 
             message is sent. See the receiveDerivedMessagesToo parameter
             for details on how messages deriving from TMessage (or, if TMessage is an interface,
             messages implementing TMessage) can be received too.
@@ -972,7 +972,7 @@
         </member>
         <member name="M:GalaSoft.MvvmLight.Messaging.Messenger.Unregister``1(System.Object)">
             <summary>
-            Unregisters a message recipient for a given type of messages only.
+            Unregisters a message recipient for a given type of messages only. 
             After this method is executed, the recipient will not receive messages
             of type TMessage anymore, but will still receive other message types (if it
             registered for them previously).
@@ -983,7 +983,7 @@
         </member>
         <member name="M:GalaSoft.MvvmLight.Messaging.Messenger.Unregister``1(System.Object,System.Object)">
             <summary>
-            Unregisters a message recipient for a given type of messages only and for a given token.
+            Unregisters a message recipient for a given type of messages only and for a given token. 
             After this method is executed, the recipient will not receive messages
             of type TMessage anymore with the given token, but will still receive other message types
             or messages with other tokens (if it registered for them previously).
@@ -1044,26 +1044,26 @@
             <summary>
             Notifies the Messenger that the lists of recipients should
             be scanned and cleaned up.
-            Since recipients are stored as <see cref="T:System.WeakReference"/>,
-            recipients can be garbage collected even though the Messenger keeps
+            Since recipients are stored as <see cref="T:System.WeakReference"/>, 
+            recipients can be garbage collected even though the Messenger keeps 
             them in a list. During the cleanup operation, all "dead"
             recipients are removed from the lists. Since this operation
             can take a moment, it is only executed when the application is
             idle. For this reason, a user of the Messenger class should use
-            <see cref="M:GalaSoft.MvvmLight.Messaging.Messenger.RequestCleanup"/> instead of forcing one with the
+            <see cref="M:GalaSoft.MvvmLight.Messaging.Messenger.RequestCleanup"/> instead of forcing one with the 
             <see cref="M:GalaSoft.MvvmLight.Messaging.Messenger.Cleanup" /> method.
             </summary>
         </member>
         <member name="M:GalaSoft.MvvmLight.Messaging.Messenger.Cleanup">
             <summary>
             Scans the recipients' lists for "dead" instances and removes them.
-            Since recipients are stored as <see cref="T:System.WeakReference"/>,
-            recipients can be garbage collected even though the Messenger keeps
+            Since recipients are stored as <see cref="T:System.WeakReference"/>, 
+            recipients can be garbage collected even though the Messenger keeps 
             them in a list. During the cleanup operation, all "dead"
             recipients are removed from the lists. Since this operation
             can take a moment, it is only executed when the application is
             idle. For this reason, a user of the Messenger class should use
-            <see cref="M:GalaSoft.MvvmLight.Messaging.Messenger.RequestCleanup"/> instead of forcing one with the
+            <see cref="M:GalaSoft.MvvmLight.Messaging.Messenger.RequestCleanup"/> instead of forcing one with the 
             <see cref="M:GalaSoft.MvvmLight.Messaging.Messenger.Cleanup" /> method.
             </summary>
         </member>
@@ -1480,7 +1480,7 @@
         <member name="M:GalaSoft.MvvmLight.ObservableObject.Set``1(System.Linq.Expressions.Expression{System.Func{``0}},``0@,``0)">
             <summary>
             Assigns a new value to the property. Then, raises the
-            PropertyChanged event if needed.
+            PropertyChanged event if needed. 
             </summary>
             <typeparam name="T">The type of the property that
             changed.</typeparam>
@@ -1496,7 +1496,7 @@
         <member name="M:GalaSoft.MvvmLight.ObservableObject.Set``1(System.String,``0@,``0)">
             <summary>
             Assigns a new value to the property. Then, raises the
-            PropertyChanged event if needed.
+            PropertyChanged event if needed. 
             </summary>
             <typeparam name="T">The type of the property that
             changed.</typeparam>
@@ -1557,7 +1557,7 @@
         <member name="M:GalaSoft.MvvmLight.ViewModelBase.Broadcast``1(``0,``0,System.String)">
             <summary>
             Broadcasts a PropertyChangedMessage using either the instance of
-            the Messenger that was passed to this class (if available)
+            the Messenger that was passed to this class (if available) 
             or the Messenger's default instance.
             </summary>
             <typeparam name="T">The type of the property that
@@ -1611,7 +1611,7 @@
             Assigns a new value to the property. Then, raises the
             PropertyChanged event if needed, and broadcasts a
             PropertyChangedMessage using the Messenger instance (or the
-            static default instance if no Messenger instance is available).
+            static default instance if no Messenger instance is available). 
             </summary>
             <typeparam name="T">The type of the property that
             changed.</typeparam>
@@ -1629,7 +1629,7 @@
             Assigns a new value to the property. Then, raises the
             PropertyChanged event if needed, and broadcasts a
             PropertyChangedMessage using the Messenger instance (or the
-            static default instance if no Messenger instance is available).
+            static default instance if no Messenger instance is available). 
             </summary>
             <typeparam name="T">The type of the property that
             changed.</typeparam>
@@ -1645,7 +1645,7 @@
         <member name="T:GalaSoft.MvvmLight.Views.IDialogService">
             <summary>
             An interface defining how dialogs should
-            be displayed in various frameworks such as Windows,
+            be displayed in various frameworks such as Windows, 
             Windows Phone, Android, iOS etc.
             </summary>
         </member>
@@ -1725,7 +1725,7 @@
         <member name="T:GalaSoft.MvvmLight.Views.INavigationService">
             <summary>
             An interface defining how navigation between pages should
-            be performed in various frameworks such as Windows,
+            be performed in various frameworks such as Windows, 
             Windows Phone, Android, iOS etc.
             </summary>
         </member>
@@ -1756,7 +1756,7 @@
             Instructs the navigation service to display a new page
             corresponding to the given key, and passes a parameter
             to the new page.
-            Depending on the platforms, the navigation service might
+            Depending on the platforms, the navigation service might 
             have to be Configure with a key/page list.
             </summary>
             <param name="pageKey">The key corresponding to the page

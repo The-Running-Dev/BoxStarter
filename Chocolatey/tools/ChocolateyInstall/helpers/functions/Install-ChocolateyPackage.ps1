@@ -91,13 +91,6 @@ a 32 bit installation on a 64 bit system.
 
 Prefer HTTPS when available. Can be HTTP, FTP, or File URIs.
 
-In 0.10.6+, `File` and `FileFullPath` are aliases for Url. These 
-aliases, if used in earlier versions of Chocolatey, produce `ERROR: 
-Cannot bind parameter because parameter 'fileType' is specified more 
-than once.` See https://github.com/chocolatey/choco/issues/1284. Do not
-use these aliases with the community package repository until January
-2018.
-
 .PARAMETER Url64bit
 OPTIONAL - If there is a 64 bit resource available, use this
 parameter. Chocolatey will automatically determine if the user is
@@ -108,13 +101,6 @@ contains both (which is quite rare), set this to '$url' Otherwise remove
 this parameter.
 
 Prefer HTTPS when available. Can be HTTP, FTP, or File URIs.
-
-In 0.10.6+, `File64` and `FileFullPath64` are aliases for Url64Bit. 
-These aliases, if used in earlier versions of Chocolatey, produce 
-`ERROR: Cannot bind parameter because parameter 'fileType' is specified
-more than once.` See https://github.com/chocolatey/choco/issues/1284. 
-Do not use these aliases with the community package repository until 
-January 2018.
 
 .PARAMETER ValidExitCodes
 Array of exit codes indicating success. Defaults to `@(0)`.
@@ -182,6 +168,18 @@ The recommendation is to use at least SHA256.
 
 .PARAMETER Options
 OPTIONAL - Specify custom headers. Available in 0.9.10+.
+
+.PARAMETER File
+Will be used for Url if Url is empty. Available in 0.10.7+.
+
+This parameter provides compatibility, but should not be used directly
+and not with the community package repository until January 2018.
+
+.PARAMETER File64
+Will be used for Url64bit if Url64bit is empty. Available in 0.10.7+.
+
+This parameter provides compatibility, but should not be used directly
+and not with the community package repository until January 2018.
 
 .PARAMETER UseOnlyPackageSilentArguments
 Do not allow choco to provide/merge additional silent arguments and only
@@ -275,18 +273,20 @@ param(
   [parameter(Mandatory=$false, Position=1)]
   [alias("installerType","installType")][string] $fileType = 'exe',
   [parameter(Mandatory=$false, Position=2)][string[]] $silentArgs = '',
-  [alias("file","fileFullPath")][parameter(Mandatory=$false, Position=3)][string] $url = '',
+  [parameter(Mandatory=$false, Position=3)][string] $url = '',
   [parameter(Mandatory=$false, Position=4)]
-  [alias("url64","file64","fileFullPath64")][string] $url64bit = '',
+  [alias("url64")][string] $url64bit = '',
   [parameter(Mandatory=$false)] $validExitCodes = @(0),
   [parameter(Mandatory=$false)][string] $checksum = '',
   [parameter(Mandatory=$false)][string] $checksumType = '',
   [parameter(Mandatory=$false)][string] $checksum64 = '',
   [parameter(Mandatory=$false)][string] $checksumType64 = '',
   [parameter(Mandatory=$false)][hashtable] $options = @{Headers=@{}},
+  [alias("fileFullPath")][parameter(Mandatory=$false)][string] $file = '',
+  [alias("fileFullPath64")][parameter(Mandatory=$false)][string] $file64 = '',
   [parameter(Mandatory=$false)]
   [alias("useOnlyPackageSilentArgs")][switch] $useOnlyPackageSilentArguments = $false,
-  [switch]$useOriginalLocation,
+  [parameter(Mandatory=$false)][switch]$useOriginalLocation,
   [parameter(ValueFromRemainingArguments = $true)][Object[]] $ignoredArguments
 )
   [string]$silentArgs = $silentArgs -join ' '
@@ -295,13 +295,19 @@ param(
 
   $chocTempDir = $env:TEMP
   $tempDir = Join-Path $chocTempDir "$($env:chocolateyPackageName)"
-  if ($env:chocolateyPackageVersion -ne $null) {$tempDir = Join-Path $tempDir "$($env:chocolateyPackageVersion)"; }
+  if ($env:chocolateyPackageVersion -ne $null) { $tempDir = Join-Path $tempDir "$($env:chocolateyPackageVersion)"; }
   $tempDir = $tempDir -replace '\\chocolatey\\chocolatey\\', '\chocolatey\'
-
   if (![System.IO.Directory]::Exists($tempDir)) { [System.IO.Directory]::CreateDirectory($tempDir) | Out-Null }
-  $file = Join-Path $tempDir "$($packageName)Install.$fileType"
+  $downloadFilePath = Join-Path $tempDir "$($packageName)Install.$fileType"
 
-  [string]$filePath = $file
+  if ($url -eq '' -or $url -eq $null) {
+    $url = $file
+  } 
+  if ($url64bit -eq '' -or $url64bit -eq $null) {
+    $url64bit = $file64
+  }
+
+  [string]$filePath = $downloadFilePath
   if ($useOriginalLocation) {
     $filePath = $url
     if (Get-ProcessorBits 64) {
@@ -316,7 +322,7 @@ param(
     }
   } else {
     $filePath = Get-ChocolateyWebFile -PackageName $packageName `
-                                      -FileFullPath $file `
+                                      -FileFullPath $downloadFilePath `
                                       -Url $url `
                                       -Url64bit $url64bit `
                                       -Checksum $checksum `
@@ -338,8 +344,8 @@ param(
 # SIG # Begin signature block
 # MIIcpwYJKoZIhvcNAQcCoIIcmDCCHJQCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCCgXEBf2H8rvZU4
-# yvBvO8zzIsMili9gpC0RSxkBKBYfr6CCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCC6lba7dwxzgqqn
+# 5UA32l1IbLgSoqMzbuq9D7aTvIs8v6CCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
 # ZnVTQ7VvlVAIMA0GCSqGSIb3DQEBCwUAMGUxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xJDAiBgNV
 # BAMTG0RpZ2lDZXJ0IEFzc3VyZWQgSUQgUm9vdCBDQTAeFw0xMzEwMjIxMjAwMDBa
@@ -471,22 +477,22 @@ param(
 # QTIgQXNzdXJlZCBJRCBDb2RlIFNpZ25pbmcgQ0ECEAawEVu18JDT8NoOYixifVgw
 # DQYJYIZIAWUDBAIBBQCggYQwGAYKKwYBBAGCNwIBDDEKMAigAoAAoQKAADAZBgkq
 # hkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgorBgEEAYI3AgELMQ4wDAYKKwYBBAGC
-# NwIBFTAvBgkqhkiG9w0BCQQxIgQgBTVOPnULnqfb2jEdT5GhUQiZCWaEpLTUCH4+
-# Kex4G7kwDQYJKoZIhvcNAQEBBQAEggEARQnHftkyvwCzSJJELaff+VZok3eO6Ken
-# usqmhrb9tzOwz4pMsc3xsBkqWp4/gcol9rue45LsvJY6KYmGBKoyfEP/m0PLdynM
-# sNnY/V+MFIwbVGvIy3W3bglw1/1N0cmtsSqAfhWhi2DFhDxjM2C/8tm9iYD7oHJO
-# S2X2fUoXVCTnRFy05lzGqokUhO1zXqsM4AwoQ+zikKflgutGYKtI/qaoKl8iVTAL
-# Hg0GKaWYli3q+HPdmVAnxT/JuYtCozTzJm/8V8fA7hqvhHy336M4L2EnX2MjbkqS
-# sp9qchzfPQuUmqlBQLTzn2hL7R8FYKELtrOYk5YMS/uH7+0uDuVFtaGCAg8wggIL
+# NwIBFTAvBgkqhkiG9w0BCQQxIgQgNPO7ydO9MEBS/H/y7ONeaY8shIpgzeQnwV9E
+# BwjiRykwDQYJKoZIhvcNAQEBBQAEggEAmDjsJRsDi930FEMMDRbcQ9C6nKAIbR9V
+# IVcdEQmC+/0BrrW5IpgJROPAih6T+dyGDFEgx6TLrGbODT7uDsdSYs6Q1FOW+l/n
+# PFX5NYBFgeUFjLyzfP2gqiI9bJ4mn+2616kJ1iaraMi89kEZkqxS77104PrLOMkM
+# XfQbrtiHL6uk5/ouyWCUCFfd4vJ8l1DRLAoiuWgDzqoyfTlL/aJEpgcbkE3iPrLH
+# sd86wLJVYqEA9cZLzOMGAUomTSqz9i2j4zNTEm4n16kCIPiP/WyDIPRHO+CEmkvf
+# 1tVtwH31ROKIxtGudtzla95nmVBfX7svSA/boKo24Y1Ubpe5WMweGqGCAg8wggIL
 # BgkqhkiG9w0BCQYxggH8MIIB+AIBATB2MGIxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xITAfBgNV
 # BAMTGERpZ2lDZXJ0IEFzc3VyZWQgSUQgQ0EtMQIQAwGaAjr/WLFr1tXq5hfwZjAJ
 # BgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0B
-# CQUxDxcNMTcwNjAzMjIzOTQzWjAjBgkqhkiG9w0BCQQxFgQUpwtdPZYdCTxIvV/e
-# 0WqI70Fj+3IwDQYJKoZIhvcNAQEBBQAEggEAj42nzggnsa+R/W8SZZnakNAqiodP
-# 4F3CXdx6hxldH7p1Pm7BjVfBsfr9e0edANUGKV43UmC5FpDDDfSDETFUDVi5SnNB
-# 9F+4ZZ8OIfELnuBTMwK9nHzSPnIhlXAXhfCDRPcUhDE+ZeMmRgxbV/Go9IQT2p/U
-# 1ZzySihk1Qq/aoHZJ6CCDfohwfqFvAzc3sdudokvAeBLSVXg9/xwN7sCF2Me19Dh
-# UuFzB7iHAyNWkJc2woTmIToOqI/S0nOWZ7zsvpoxodTkj+8VvUvdYo6ZQGQuasvh
-# CHxdoeTTX16PxSDzwOpPa5TpRIm//o4mNxFSKCLWimq+q3+/kI8B+O92VA==
+# CQUxDxcNMTcwNjA4MjAzMjA5WjAjBgkqhkiG9w0BCQQxFgQULQfoduOFpbW8Vldo
+# vQNzbMHjsMAwDQYJKoZIhvcNAQEBBQAEggEAVIY3emM5mKgMEhbXlCOpH/VVoo5g
+# +MbStygbatty/V4R1B7tPk4Dd5O3odm2Wko133LSZTkZz1C5D/anpmf11w/MHKAq
+# FNJUJ/szqvO6cF8nx0oxq2MCELzH7hXvl4twbaNeDf9ssd0AyyOET0rMaDsqrvC5
+# 4Y+zcXB0Lc3cOYdLyKsb3Y1rD04yYi9UB/vCrReYaTB1qhgqh6iIuyr9pb/xnQJD
+# O/JqhbJnnBENagkNov92WrntD6frlIsPQwRYCqB44YK56AQF/eA/z2TFg+MdI15B
+# D2bYbKFfKMTyXkQaWPVzYGoNQHBzhtDvG1b/SIrUphIpWPgaA+qTt4XLlA==
 # SIG # End signature block

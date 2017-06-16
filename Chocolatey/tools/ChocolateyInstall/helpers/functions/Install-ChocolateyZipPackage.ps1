@@ -54,13 +54,6 @@ a 32 bit installation on a 64 bit system.
 
 Prefer HTTPS when available. Can be HTTP, FTP, or File URIs.
 
-In 0.10.6+, `File` and `FileFullPath` are aliases for Url. These 
-aliases, if used in earlier versions of Chocolatey, may produce `ERROR: 
-Cannot bind parameter because parameter 'fileType' is specified more 
-than once.` See https://github.com/chocolatey/choco/issues/1284. Do not
-use these aliases with the community package repository until January
-2018.
-
 .PARAMETER Url64bit
 OPTIONAL - If there is a 64 bit resource available, use this
 parameter. Chocolatey will automatically determine if the user is
@@ -71,13 +64,6 @@ contains both (which is quite rare), set this to '$url' Otherwise remove
 this parameter.
 
 Prefer HTTPS when available. Can be HTTP, FTP, or File URIs.
-
-In 0.10.6+, `File64` and `FileFullPath64` are aliases for Url64Bit. 
-These aliases, if used in earlier versions of Chocolatey, may produce 
-`ERROR: Cannot bind parameter because parameter 'fileType' is specified
-more than once.` See https://github.com/chocolatey/choco/issues/1284. 
-Do not use these aliases with the community package repository until 
-January 2018.
 
 .PARAMETER UnzipLocation
 This is the full path to a location to unzip the contents to, most
@@ -149,6 +135,18 @@ The recommendation is to use at least SHA256.
 .PARAMETER Options
 OPTIONAL - Specify custom headers. Available in 0.9.10+.
 
+.PARAMETER File
+Will be used for Url if Url is empty. Available in 0.10.7+.
+
+This parameter provides compatibility, but should not be used directly
+and not with the community package repository until January 2018.
+
+.PARAMETER File64
+Will be used for Url64bit if Url64bit is empty. Available in 0.10.7+.
+
+This parameter provides compatibility, but should not be used directly
+and not with the community package repository until January 2018.
+
 .PARAMETER IgnoredArguments
 Allows splatting with arguments that do not apply. Do not use directly.
 
@@ -176,17 +174,19 @@ Get-ChocolateyUnzip
 #>
 param(
   [parameter(Mandatory=$true, Position=0)][string] $packageName,
-  [alias("file","fileFullPath")][parameter(Mandatory=$false, Position=1)][string] $url = '',
+  [parameter(Mandatory=$false, Position=1)][string] $url = '',
   [parameter(Mandatory=$true, Position=2)]
   [alias("destination")][string] $unzipLocation,
   [parameter(Mandatory=$false, Position=3)]
-  [alias("url64","file64","fileFullPath64")][string] $url64bit = '',
+  [alias("url64")][string] $url64bit = '',
   [parameter(Mandatory=$false)][string] $specificFolder ='',
   [parameter(Mandatory=$false)][string] $checksum = '',
   [parameter(Mandatory=$false)][string] $checksumType = '',
   [parameter(Mandatory=$false)][string] $checksum64 = '',
   [parameter(Mandatory=$false)][string] $checksumType64 = '',
   [parameter(Mandatory=$false)][hashtable] $options = @{Headers=@{}},
+  [alias("fileFullPath")][parameter(Mandatory=$false)][string] $file = '',
+  [alias("fileFullPath64")][parameter(Mandatory=$false)][string] $file64 = '',
   [parameter(ValueFromRemainingArguments = $true)][Object[]] $ignoredArguments
 )
 
@@ -196,21 +196,27 @@ param(
 
   $chocTempDir = $env:TEMP
   $tempDir = Join-Path $chocTempDir "$($env:chocolateyPackageName)"
-  if ($env:chocolateyPackageVersion -ne $null) {$tempDir = Join-Path $tempDir "$($env:chocolateyPackageVersion)"; }
+  if ($env:chocolateyPackageVersion -ne $null) { $tempDir = Join-Path $tempDir "$($env:chocolateyPackageVersion)"; }
   $tempDir = $tempDir -replace '\\chocolatey\\chocolatey\\', '\chocolatey\'
+  if (![System.IO.Directory]::Exists($tempDir)) { [System.IO.Directory]::CreateDirectory($tempDir) | Out-Null }
+  $downloadFilePath = Join-Path $tempDir "$($packageName)Install.$fileType"
 
-  if (![System.IO.Directory]::Exists($tempDir)) {[System.IO.Directory]::CreateDirectory($tempDir) | Out-Null}
-  $file = Join-Path $tempDir "$($packageName)Install.$fileType"
+  if ($url -eq '' -or $url -eq $null) {
+    $url = $file
+  } 
+  if ($url64bit -eq '' -or $url64bit -eq $null) {
+    $url64bit = $file64
+  }
 
-  $filePath = Get-ChocolateyWebFile $packageName $file $url $url64bit -checkSum $checkSum -checksumType $checksumType -checkSum64 $checkSum64 -checksumType64 $checksumType64 -options $options -getOriginalFileName
+  $filePath = Get-ChocolateyWebFile $packageName $downloadFilePath $url $url64bit -checkSum $checkSum -checksumType $checksumType -checkSum64 $checkSum64 -checksumType64 $checksumType64 -options $options -getOriginalFileName
   Get-ChocolateyUnzip "$filePath" $unzipLocation $specificFolder $packageName
 }
 
 # SIG # Begin signature block
 # MIIcpwYJKoZIhvcNAQcCoIIcmDCCHJQCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCBqLBqMUoREAktG
-# +iQswaHinrfPnvm6J56v0Hy9Kg0VTKCCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCBwjp+iMpv+U/t+
+# ab3l2Yxl25kHUBI9XMIl8gurWd3vhKCCF7EwggUwMIIEGKADAgECAhAECRgbX9W7
 # ZnVTQ7VvlVAIMA0GCSqGSIb3DQEBCwUAMGUxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xJDAiBgNV
 # BAMTG0RpZ2lDZXJ0IEFzc3VyZWQgSUQgUm9vdCBDQTAeFw0xMzEwMjIxMjAwMDBa
@@ -342,22 +348,22 @@ param(
 # QTIgQXNzdXJlZCBJRCBDb2RlIFNpZ25pbmcgQ0ECEAawEVu18JDT8NoOYixifVgw
 # DQYJYIZIAWUDBAIBBQCggYQwGAYKKwYBBAGCNwIBDDEKMAigAoAAoQKAADAZBgkq
 # hkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgorBgEEAYI3AgELMQ4wDAYKKwYBBAGC
-# NwIBFTAvBgkqhkiG9w0BCQQxIgQgJ9u2Nye6qOUDSN04hAOokcWV7oVzdYLA4akO
-# LO9sXDgwDQYJKoZIhvcNAQEBBQAEggEAvW5tcX2VF8lpUq355TcjQtxGgBkv6YJh
-# mR4CS0lQ9E3LIuFmZ9YIuY+zgIZfV8xAWv6wR0luMlVh8r2LLYJSUZCe48iywsgs
-# K2vknCAIRCOZ7wae6V4zcyRCDpFlJJm6qm+K2FjAf/w0kFW1VvHgjhay1Ougwq7t
-# Irh/Z/N4Uz9idS290rv1CMymSx1YlNompJTz9oLxEt06roBFqp2/htjenfF1Cl5l
-# IS/k1SyRrNAQT2W+SKAedC6PQwXEJULZ84IhCvzCScxMfXoO6yX465gpn9LKDW49
-# 8LRbsU2qH3hsIPhu3z6VoxqsyCNbVnTe08Fz1YDSOYuyK6gMLRrqEKGCAg8wggIL
+# NwIBFTAvBgkqhkiG9w0BCQQxIgQg/mBvB6Rz9kTnEE7KJnzW6vbPyo5/agtA5Bw4
+# TDfmDJwwDQYJKoZIhvcNAQEBBQAEggEAn7VAl/4dt4Xc2sQybTc1SXquKvW6v/T/
+# jbdu8StZfc81DPOyJqEdYcowYeDsQbPl/6AddWE+L19A734nWFAPVvNPtPvIVxfa
+# kQQaUFHmIORNA/dEcYXAPa/Fa8C9v78WGAVwMgmSv42INqSU4tFKiZBIZH1fKcsD
+# Ebay3/WESyNS+HvsZyLFg6tC+AMclj67R27waSJzBMC0t/bRNkYlW9Xj+v50xI8B
+# Ltx+nXXlBGldbN+97NTOYkPdNJA3+B0ifgq48woPl8o4cnLfVLosL7paKFOIsH48
+# 747zC5IBrm3zlw8kD7cZ51TN+QK6zqhV15JdIc7fybvBrg31AAcqrKGCAg8wggIL
 # BgkqhkiG9w0BCQYxggH8MIIB+AIBATB2MGIxCzAJBgNVBAYTAlVTMRUwEwYDVQQK
 # EwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xITAfBgNV
 # BAMTGERpZ2lDZXJ0IEFzc3VyZWQgSUQgQ0EtMQIQAwGaAjr/WLFr1tXq5hfwZjAJ
 # BgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0B
-# CQUxDxcNMTcwNjAzMjIzOTQ0WjAjBgkqhkiG9w0BCQQxFgQUqEX7YHBi6WxUHbI0
-# uMNCajOf17wwDQYJKoZIhvcNAQEBBQAEggEAIWGXNbwIMJxI0xpEEnHwhmQ67g7E
-# AuhUjRekQme5Yt6Iiw2EJ8C1zb5avsdsE1YqsTsmLUONjT7KUDxDs5+kntvjU0GC
-# LOteKIs+8n4fch7dkJK8jDQ/zIhAqeQjAjdpDrpupFfrb/3OzvB5/4OxXpxFUKTF
-# LeCUJek5AybZ40pS4mOgdE5g5TA4kDm3/QcVPkc9u9KwFYrbLR7v9tnyvIpQqs7R
-# DPn1E6VafaGf1u2GkphHrNmJruu+Ko4ifra+LHsvw/pTENb2Y0gm9Hf35Cwd6Qzy
-# 0/KpzkXl334Klfce4d26i/j6Q8r0KyuAS1w3bWeDb/PfKYeEBaik5xQfEg==
+# CQUxDxcNMTcwNjA4MjAzMjEwWjAjBgkqhkiG9w0BCQQxFgQUW/gpb35FS4bdmGz9
+# sfnPLL6MbjswDQYJKoZIhvcNAQEBBQAEggEAFLBtT+aJJux8pA/JXa9rKb92J0K3
+# TNEo8lVAWwHZjCEsx0XogFLPdukCJaE5bk/yV3JgBEfeXTtgdco5V8Ya3vgNa0z6
+# XlrZoMPfpOvTBH98t3mg4BIYHHtgcS0y+e+ekGt1fKgYY139SmtscgHDdDg0sJk1
+# D0t9rvsuae6sO3/nHam+uwia5D0kXSw51GJZ6+izG3AxzJ2fq+61lc77my56ChW9
+# Y1DlB1ZDlG5DIC+huYIQ6mvBbo+dASvhCQqLxtZO4jvRA/EL0qUnSRKC4tKWbLGT
+# dsOyB9DIY92wojuL24P4tGmqA51vbrIhxByC5Y8qK/x41AziMg4ZfmBLmg==
 # SIG # End signature block
