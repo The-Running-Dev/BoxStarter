@@ -33,6 +33,8 @@ function Install-Package {
             -ValidExitCodes $packageArgs.validExitCodes
     }
 
-    Get-ChildItem -Path $env:ChocolateyPackageFolder `
-        -Include *.zip, *.7z, *.tar.gz, *.exe, *.msi, *.reg -Recurse -File | Remove-Item
+    if ($packageArgs.cleanUp) {
+        Get-ChildItem -Path $env:ChocolateyPackageFolder `
+            -Include *.zip, *.7z, *.tar.gz, *.exe, *.msi, *.reg -Recurse -File | Remove-Item
+    }
 }

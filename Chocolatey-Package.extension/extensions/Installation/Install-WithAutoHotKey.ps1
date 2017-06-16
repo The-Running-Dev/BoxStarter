@@ -4,22 +4,24 @@ function Install-WithAutoHotKey {
         [Parameter(Position = 0, ValueFromPipeline)][PSCustomObject] $arguments
     )
 
+    $packageArgs = Get-Arguments $arguments
+
     # No executable script provided, find the Install.exe in the package directory
-    if (![System.IO.File]::Exists($arguments.executable)) {
-        $arguments.executable = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
+    if (![System.IO.File]::Exists($packageArgs.executable)) {
+        $packageArgs.executable = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
                 -Filter 'Install.exe' | Select-Object -First 1 -ExpandProperty FullName)
     }
 
     # The executable parameter does not contain a full path
-    if (![System.IO.Path]::IsPathRooted($arguments.executable)) {
-        $arguments.executable = Join-Path $env:ChocolateyPackageFolder $packageArgs.executable
+    if (![System.IO.Path]::IsPathRooted($packageArgs.executable)) {
+        $packageArgs.executable = Join-Path $env:ChocolateyPackageFolder $packageArgs.executable
     }
 
     # Launch the AutoHotkey script that install the application
-    Start-Process $arguments.executable
+    Start-Process $packageArgs.executable
 
-    # We need to reset $arguments.executable so install package doesn't run it
-    $arguments.executable = ''
+    # Need to reset $arguments.executable so install package doesn't run it
+    $packageArgs.executable = ''
 
-    Install-Package $arguments
+    Install-Package $packageArgs
 }

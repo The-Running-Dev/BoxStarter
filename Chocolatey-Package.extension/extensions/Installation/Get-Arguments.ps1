@@ -25,7 +25,8 @@ function Get-Arguments {
     $packageArgs.checksum = Get-Argument $arguments 'checksum'
     $packageArgs.checksumType = Get-Argument $arguments 'checksumType' 'sha256'
     $packageArgs.silentArgs = Get-Argument $arguments 'silentArgs'
-    $packageArgs.validExitCodes = (Get-Argument $arguments 'validExitCodes')
+    $packageArgs.validExitCodes = Get-Argument $arguments 'validExitCodes'
+    $packageArgs.cleanUp = Get-Argument $arguments 'cleanUp' $true
 
     [Array]$packageArgs.validExitCodes += $global:defaultValidExitCodes
 

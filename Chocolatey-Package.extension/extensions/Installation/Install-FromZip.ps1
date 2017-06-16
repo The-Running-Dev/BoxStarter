@@ -46,6 +46,8 @@ function Install-FromZip {
         Install-ChocolateyInstallPackage @packageArgs
     }
 
-    Get-ChildItem -Path $env:ChocolateyPackageFolder `
-        -Include *.zip, *.7z, *.exe, *.msi, *.reg -Recurse -File | Remove-Item
+    if ($packageArgs.cleanUp) {
+        Get-ChildItem -Path $env:ChocolateyPackageFolder `
+            -Include *.zip, *.7z, *.exe, *.msi, *.reg -Recurse -File | Remove-Item
+    }
 }
