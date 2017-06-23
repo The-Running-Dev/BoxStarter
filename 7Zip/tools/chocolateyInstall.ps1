@@ -6,6 +6,4 @@
 
 Install-Package $arguments
 
-$installLocation = Get-AppInstallLocation $env:ChocolateyPackageTitle
-
-Install-BinFile '7z' $installLocation\7z.exe
+Install-BinFile '7z' (Join-Path (Get-AppInstallLocation $env:ChocolateyPackageTitle) '7z.exe')
