@@ -17,20 +17,11 @@
 ## Packages
   * 7Zip
   * Apache-Httpd
-  * BoxStarter
-  * Boxstarter.Bootstrapper
-  * Boxstarter.Chocolatey
-  * BoxStarter.Common
-  * Boxstarter.HyperV
-  * BoxStarter.WinConfig
   * CCleaner
-  * Chocolatey
-  * Chocolatey-Core.extension
   * Chocolatey-Dev.extension
   * Chocolatey-IIS.extension
   * Chocolatey-Package.extension
   * Chocolatey-SQL.extension
-  * Chocolatey.extension
   * ClipboardFusion
   * ConEmu
   * DatabaseDotNET
@@ -57,8 +48,11 @@
   * Google-Drive
   * HandBrake
   * HandBrake-CLI
+  * Hashicorp-Packer
+  * Hashicorp-Terraform
   * iTunes
   * iTunesFusion
+  * jDownloader
   * JetBrains-DataGrip
   * JetBrains-ReSharper-Platform
   * JetBrains-TeamCity
@@ -108,8 +102,8 @@
   * Octopus-Deploy
   * Octopus-Deploy-CommandLine
   * Octopus-Deploy-Tentacle
-  * Packer
   * Paint.NET
+  * PowerShell
   * PowerShell-Carbon
   * PowerShell-CommunityExtensions
   * PowerShell-PSake
@@ -121,6 +115,7 @@
   * Slack
   * Spotify
   * TeamViewer
+  * Tor-Browser
   * uTorrent
   * VMWare-Converter
   * VMWare-PowerCLI

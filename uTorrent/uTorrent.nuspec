@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>uTorrent</id>
-    <version>3.5.0.43804</version>
+    <version>3.5.0.43916</version>
     <title>uTorrent</title>
     <authors>BitTorrent, Inc.</authors>
     <licenseUrl>http://www.bittorrent.com/legal/eula</licenseUrl>
@@ -38,6 +38,7 @@
     <owners>The-Running-Dev</owners>
     <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
+      <dependency id="Chocolatey-Core.extension" />
       <dependency id="Chocolatey-Package.extension" />
     </dependencies>
   </metadata>
