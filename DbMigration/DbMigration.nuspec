@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>DbMigration</id>
-    <version>5.7.2</version>
+    <version>5.8.9</version>
     <title>dbMigration .NET</title>
     <authors>fish</authors>
     <projectUrl>http://fishcodelib.com/DBMigration.htm</projectUrl>

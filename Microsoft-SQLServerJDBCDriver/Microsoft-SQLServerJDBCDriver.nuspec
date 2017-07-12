@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Microsoft-SQLServerJDBCDriver</id>
-    <version>6.0.8112.100</version>
+    <version>6.0.8115</version>
     <title>Microsoft JDBC Driver for SQL Server</title>
     <authors>Microsoft</authors>
     <licenseUrl>https://download.microsoft.com/download/0/2/A/02AAE597-3865-456C-AE7F-613F99F850A8/enu/license60.txt</licenseUrl>
