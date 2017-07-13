@@ -5,10 +5,8 @@ $packageDir = $PSScriptRoot
 . (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $downloadPageUrl = 'https://github.com/moby/moby/releases'
-    $downloadUrl = 'https://download.docker.com/win/edge/InstallDocker.msi'
-    $release = Get-GitHubVersion 'moby/moby'
-    $version = $release.Version -replace '-ce', ''
+    $downloadUrl = 'https://download.docker.com/win/stable/InstallDocker.msi'
+    $version = Get-MatchingTextFromUrl 'https://docs.docker.com/docker-for-windows/release-notes/' 'CommunityEdition ([0-9\.\-]+)-ce'
 
     if ($force) {
         $global:au_Version = $version
