@@ -5,8 +5,8 @@ $packageDir = $PSScriptRoot
 . (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $downloadUrl = 'https://github.com/psake/psake/archive/v$version.zip'
-    $version = (Get-GitHubVersion 'psake/psake').Version
+    $downloadUrl = 'https://github.com/pester/Pester/archive/$version.zip'
+    $version = (Get-GitHubVersion 'pester/Pester').Version
 
     if ($force) {
         $global:au_Version = $release.Version

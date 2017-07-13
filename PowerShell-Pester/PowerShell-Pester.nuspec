@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>PowerShell-Pester</id>
+    <version>3.4.3.20170712</version>
+    <title>PowerShell Pester Module</title>
+    <authors>Dave Wyatt</authors>
+    <projectUrl>https://github.com/pester/Pester/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    Pester provides a framework for running unit tests to execute and validate PowerShell commands from within PowerShell.
+    Pester consists of a simple set of functions that expose a testing domain-specific language (DSL) for isolating,
+    running, evaluating and reporting the results of PowerShell commands.
+
+    Pester tests can execute any command or script that is accessible to a Pester test file. This can include functions,
+    cmdlets, modules and scripts. Pester can be run in ad-hoc style in a console or it can be integrated into the build
+    scripts of a continuous integration (CI) system.
+
+    Pester also contains a powerful set of mocking functions in which tests mimic any command functionality within the tested PowerShell code.
+    </description>
+    <summary>Pester provides a framework for running unit tests in PowerShell</summary>
+    <language>en-US</language>
+    <tags>testing powershell</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>

@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://download.jetbrains.com/datagrip/datagrip-2017.1.4.exe'
-    checksum        = '8EC99E69DBC5E2FCBF2C9D7E4C88E4BE390C08970799ECEAE4341C00062884FB'
+    url             = 'https://download.jetbrains.com/datagrip/datagrip-2017.1.5.exe'
+    checksum        = '7AB30463BE1BABB5D0ABE961EFBAB50421C3C340A35B5EEBDF80CC91F7EF68E5'
     silentArgs      = '/S'
 }
 
