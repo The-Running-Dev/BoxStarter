@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
-    url         = 'https://cdn1.evernote.com/win6/public/Evernote_6.5.4.4720.exe'
-    checksum    = '2A0A4D133197650EF8506CA26CE86927E4E3191A044EA2A08BFE696B1F18A9A2'
+    url         = 'https://cdn1.evernote.com/win6/public/Evernote_6.6.4.5512.exe'
+    checksum    = 'D909F785B407CBD57ED2B04AB8E95D6F993D54432A1303F6792F4E296DA11B31'
     silentArgs  = '/quiet'
 }
 

@@ -1,8 +1,8 @@
 ﻿$arguments              = @{
-    url                 = 'https://www.dotpdn.com/files/paint.net.4.0.16.install.zip'
-    checksum            = 'F79B615A6D9EC93F0A00547814C96AD7E74397214A94E0EB53BE021144DCCD90'
+    url                 = 'https://www.dotpdn.com/files/paint.net.4.0.17.install.zip'
+    checksum            = '4C6F4A582BCDC8E46898D13E6EAFC6358C21D8DB203DCE4EF26AB149F820752F'
     destination         = Join-Path $env:Temp 'Paint.NET'
-    executable          = 'paint.net.4.0.16.install.exe'
+    executable          = 'paint.net.4.0.17.install.exe'
     executableArgs      = '/auto'
 }
 

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>ProGet</id>
-    <version>4.7.13</version>
+    <version>4.8.0</version>
     <title>ProGet</title>
     <authors>Inedo</authors>
     <licenseUrl>http://inedo.com/proget/license-agreement</licenseUrl>

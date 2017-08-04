@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Launchy</id>
-    <version>2.6.2.1</version>
+    <version>2.6.2</version>
     <title>Launchy</title>
     <authors>Josh Karlin, Simon Capewell</authors>
     <projectUrl>http://www.launchy.net</projectUrl>

@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
     url             = 'http://www.danhinsley.com/downloads/MetaXSetup.msi'
-    checksum        = '4977F445D81DD3A40A8A040D6CBECCED52A46C328A52F5566C8370FF3FDBDF97'
+    checksum        = '881913E27E36A110D25F43B6527F5D5BF726C534A1959F3258E3BD097B51B945'
 }
 
 Install-Package $arguments
