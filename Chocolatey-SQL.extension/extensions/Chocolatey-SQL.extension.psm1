@@ -1,11 +1,14 @@
-$scriptRoot = Split-Path $MyInvocation.MyCommand.Definition
-
 [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.Smo')
 [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SmoExtended')
 
-$pre = Get-ChildItem Function:\*
-Get-ChildItem -Recurse "$scriptRoot\*.ps1" | Where-Object { $_.Name -cmatch '^[A-Z]+' } | ForEach-Object { . $_  }
+$existingFunctions = Get-ChildItem Function:\*
 
-$post = Get-ChildItem Function:\*
-$funcs = Compare-Object $pre $post | Select-Object -Expand InputObject | Select-Object -Expand Name
-$funcs | Where-Object { $_ -cmatch '^[A-Z]+'} | ForEach-Object { Export-ModuleMember -Function $_ }
+# Include file names that start with capital letters, ignore .Tests
+Get-ChildItem -Recurse "$PSScriptRoot\*.ps1" | Where-Object { $_.Name -cmatch '^[A-Z]+' -and $_.Name -notmatch '\.Tests' } | ForEach-Object { . $_  }
+
+$existingAndNewFunctions = Get-ChildItem Function:\*
+
+$exportFunctions = Compare-Object $existingFunctions $existingAndNewFunctions | Select-Object -Expand InputObject | Select-Object -Expand Name
+
+# Export functions that start with capital letter, others are private
+$exportFunctions | Where-Object { $_ -cmatch '^[A-Z]+'} | ForEach-Object { Export-ModuleMember -Function $_ }

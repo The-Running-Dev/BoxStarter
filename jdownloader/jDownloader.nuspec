@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>jdownloader</id>
+    <version>12.0.81460</version>
+    <title>JDownloader</title>
+    <authors>AppWork UG</authors>
+    <licenseUrl>http://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>http://jdownloader.org/download/offline</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/aronovgj/chocolatey/3a4f137eeca3f3487b56843f9e6b514a86083be5/icons/jdownloader.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    JDownloader simplifies and improves the process of downloading files from "free" file hosting sites like Rapidshare, MEGA, Mediafire, 4Shared, uploaded.to, Putlocker, Cyberlocker, etc.
+    JDownloader offers downloading in multiple parallel streams, CAPTCHA recognition, and automatic file extraction.
+    JDownloader can import CCF, RSDF and the new DLC files.
+
+    Note: This is not the official installer. It is unsupported by JDownloader and may break any time. The install directory is different to the official one.
+    </description>
+    <copyright />
+    <tags>beta-version download-manager jdownloader java</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+      <dependency id="JRE" />
+		</dependencies>
+  </metadata>
+</package>

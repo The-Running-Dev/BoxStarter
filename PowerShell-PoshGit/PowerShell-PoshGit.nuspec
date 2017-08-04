@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>PowerShell-PoshGit</id>
+    <version>0.7.1.20170716</version>
+    <title>PowerShell PoshGit</title>
+    <authors>Keith Dahlby,  Mark Embling,  Jeremy Skinner,  Keith Hill</authors>
+    <licenseUrl>https://github.com/dahlbyk/posh-git/blob/v0.7.1/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/dahlbyk/posh-git</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>### posh-git
+    A set of PowerShell scripts which provide Git/PowerShell integration
+
+    ### Prompt for Git repositories
+
+    The prompt within Git repositories can show the current branch and the state of files (additions, modifications, deletions) within.
+
+    ### Tab completion
+
+    Provides tab completion for common commands when using git.
+    E.g. `git ch&lt;tab&gt;` --&gt; `git checkout`
+
+    ### Usage
+
+    See profile.example.ps1 as to how you can integrate the tab completion and/or git prompt into your own profile. Prompt formatting, among other things, can be customized using `$GitPromptSettings`, `$GitTabSettings` and `$TortoiseGitSettings`.
+
+    Note on performance: displaying file status in the git prompt for a very large repo can be prohibitively slow. Rather than turn off file status entirely, you can disable it on a repo-by-repo basis by adding individual repository paths to `$GitPromptSettings.RepositoriesInWhichToDisableFileStatus`.</description>
+    <summary>Provides prompt with Git status summary information and tab completion for Git commands, parameters, remotes and branch names.</summary>
+    <tags>poshgit posh-git powershell git</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+      <dependency id="Git" />
+		</dependencies>
+  </metadata>
+</package>

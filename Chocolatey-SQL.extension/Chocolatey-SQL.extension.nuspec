@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Chocolatey-SQL.extension</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>Chocolatey SQL Extensions</title>
     <authors>The-Running-Dev</authors>
     <projectUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</projectUrl>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Tor-Browser</id>
+    <version>12.0.81460</version>
+    <title>Tor Browser Bundle</title>
+    <authors>Tor Project</authors>
+    <licenseUrl>https://www.torproject.org/docs/faq.html.en#DistributingTor</licenseUrl>
+    <projectUrl>https://www.torproject.org/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/chocolatey/chocolatey-coreteampackages/e4a49519947c3cff55c17a0b08266c56b0613e64/icons/tor-browser.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+    The Tor software protects you by bouncing your communications around a distributed network of relays run by volunteers all around the world: it prevents somebody watching your Internet connection from learning what sites you visit, it prevents the sites you visit from learning your physical location, and it lets you access sites which are blocked.
+
+    The Tor Browser Bundle lets you use Tor on Windows, Mac OS X, or Linux without needing to install any software. It can run off a USB flash drive, comes with a pre-configured web browser to protect your anonymity, and is self-contained.
+
+    This package puts the Tor Browser Bundle into `$env:ChocolateyBinRoot\tor-browser`.
+    </description>
+    <summary>Protect your privacy with the Tor Browser Bundle</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>tor browser privacy anonymity security relay network</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="Chocolatey-Package.extension" />
+		</dependencies>
+  </metadata>
+</package>
