@@ -10,10 +10,10 @@ function global:au_GetLatest {
     $executableRegEx = '\.exe$'
     $versionRegEx = '\<h6\>v((?:[\d]\.)[\d\.]+)'
 
-    $releasePage = Invoke-WebRequest $relasePageUrl -UseBasicParsing
+    try { $releasePage = Invoke-WebRequest $relasePageUrl -UseBasicParsing } catch {}
     $version = ([regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value)
 
-    $downloadPage = Invoke-WebRequest -Uri $downloadPageUrl -UseBasicParsing
+    $downloadPage = Invoke-WebRequest -Uri $downloadPageUrl -UseBasicParsing -ErrorAction SilentlyContinue
     $url = $downloadPage.links | Where-Object href -match $executableRegEx | Select-Object -First 1 -expand href
 
     if ($force) {

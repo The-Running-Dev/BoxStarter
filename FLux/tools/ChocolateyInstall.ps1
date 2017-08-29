@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
     url             = 'https://justgetflux.com/flux-setup.exe'
-    checksum        = '30FAB888B39E362A8C80CC7902D7B7B5B641569A4A628FB82814B46FBE73671D'
+    checksum        = 'EED100B96A9D20A35D8D961E317248F5C00D921C28EB479604861DD847671857'
     silentArgs      = '/S'
 }
 

@@ -1,6 +1,6 @@
 ﻿$arguments = @{
-    url        = 'https://cdn.devolutions.net/download/Setup.RemoteDesktopManager.12.6.2.0.exe'
-    checksum   = '77E4F8000CF71315D8513B9CFAADE018A7588E5E6424FF3A313B65D07EDC6F48'
+    url        = 'https://cdn.devolutions.net/download/Setup.RemoteDesktopManager.12.6.4.0.exe'
+    checksum   = '6DF237FDC5A129E561281D1B1A0D7EDD6B4F340302390230D3594F81F810C867'
 }
 
 Install-Package $arguments

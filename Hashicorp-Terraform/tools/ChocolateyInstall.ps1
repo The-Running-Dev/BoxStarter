@@ -1,6 +1,6 @@
 ﻿$arguments = @{
-    url         = 'https://releases.hashicorp.com/terraform/0.10.0/terraform_0.10.0_windows_amd64.zip'
-    checksum    = 'D9697B0153BED48AF4B077C711197F8FCA1163E94D5A1C067B077A02201BE25F'
+    url         = 'https://releases.hashicorp.com/terraform/0.10.2/terraform_0.10.2_windows_amd64.zip'
+    checksum    = 'B117DFDE4C64C626A0551B88EDA94C0D08015FF221935C0C82855203D7378C99'
     destination = Join-Path $env:AppData 'Terraform'
 }
 

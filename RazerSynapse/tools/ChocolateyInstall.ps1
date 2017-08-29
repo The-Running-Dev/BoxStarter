@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'http://dl.razerzone.com/drivers/Synapse2/win/Razer_Synapse_Framework_V2.20.17.413.exe'
-    checksum        = 'F0874FBECA11FD7D908EA3C98EA02AF1A1599CF33C58D0F840777ED9EA75491D'
+    url             = 'http://dl.razerzone.com/drivers/Synapse2/win/Razer_Synapse_Framework_V2.21.00.712.exe'
+    checksum        = '7EB2E80910E6AF84BFEC38E19781D5CA11577089ED28F85FBBB2554294A1FB2B'
     silentArgs      = '/s'
 }
 
