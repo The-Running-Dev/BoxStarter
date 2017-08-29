@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
-    url         = 'https://nodejs.org/dist/v8.3.0/node-v8.3.0-x64.msi'
-    checksum    = 'AF861EB512B58A3625F247E55088BBAF7A6315267AEE6EA998D066961FA57252'
+    url         = 'https://nodejs.org/dist/v8.4.0/node-v8.4.0-x64.msi'
+    checksum    = '8EFBD1B94FF8338BD36A1C30A86ABA4FAE3B80B61E265401FA97E7A4C5478AB2'
     silentArgs  = '/quiet'
 }
 
