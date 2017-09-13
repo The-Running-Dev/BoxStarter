@@ -6,11 +6,13 @@ $packageDir = $PSScriptRoot
 
 function global:au_GetLatest {
     $releaseUrl = 'https://octopus.com/downloads'
-    $downloadLinkRegEx = 'Octopus\.([0-9\.]+)\-x64\.msi'
+    $versionRegEx = 'Version: ([0-9\.]+)'
+    $url = 'https://download.octopusdeploy.com/octopus/Octopus.$version-x64.msi'
 
     $downloadPage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl
-    $url = $downloadPage.Links | Where-Object href -match $downloadLinkRegEx | Select-Object -First 1 -Expand href
-    $version = [regex]::match($url, $downloadLinkRegEx).Groups[1].Value
+    $version = [regex]::match($downloadPage, $versionRegEx).Groups[1].Value
+    $downloadEndPointUrl = $downloadPage.Links | Where-Object href -match $downloadEndPointLinkRegEx | Select-Object -First 1 -Expand href
+    $url = $ExecutionContext.InvokeCommand.ExpandString($url)
 
     if ($force) {
         $global:au_Version = $version

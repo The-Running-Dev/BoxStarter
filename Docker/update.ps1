@@ -6,7 +6,7 @@ $packageDir = $PSScriptRoot
 
 function global:au_GetLatest {
     $downloadUrl = 'https://download.docker.com/win/stable/InstallDocker.msi'
-    $version = Get-MatchingTextFromUrl 'https://docs.docker.com/docker-for-windows/release-notes/' 'CommunityEdition ([0-9\.\-]+)-ce'
+    $version = Get-MatchingTextFromUrl 'https://docs.docker.com/docker-for-windows/release-notes/' 'Community Edition ([0-9\.\-]+)-ce'
 
     if ($force) {
         $global:au_Version = $version

@@ -7,7 +7,7 @@ $packageDir = $PSScriptRoot
 function global:au_GetLatest {
     $releaseUrl = 'https://www.microsoft.com/net/download/core'
     $downloadLinkRegEx = '\.exe download'
-    $versionRegEx = 'dotnet\-dev\-win-x64\.([0-9\.]+)\.exe'
+    $versionRegEx = 'dotnet\-sdk-([0-9\.]+)\-win-x64\.exe'
 
     $downloadPage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl
     $downloadLink = $downloadPage.Links | Where-Object outerHTML -match $downloadLinkRegEx | Select-Object -First 1 -Expand href

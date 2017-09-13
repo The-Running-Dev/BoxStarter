@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Hashicorp-Terraform</id>
-    <version>0.10.2</version>
+    <version>0.10.4</version>
     <title>Terraform</title>
     <authors>Mitchell Hashimoto,  HashiCorp</authors>
     <owners>Mitchell Hashimoto,  HashiCorp</owners>

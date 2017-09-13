@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
     url             = 'https://download.docker.com/win/stable/InstallDocker.msi'
-    checksum        = 'B182A2802321EDDCEAF4C03C1F9DAF1CA17F9C93E0DEF925D80448ADB1F6AD20'
+    checksum        = '9C0DAB3A82E3CAFBEBBB48996F26E04C378FC420562DA6E6C77352786985D89B'
 }
 
 Install-Package $arguments

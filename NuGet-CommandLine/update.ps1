@@ -7,11 +7,10 @@ $packageDir = $PSScriptRoot
 function global:au_GetLatest {
     $releaseUrl = 'https://www.nuget.org/packages/NuGet.CommandLine/'
     $url = 'https://dist.nuget.org/win-x86-commandline/latest/nuget.exe'
-    $versionRegEx = '<h2>([0-9\.]+)<\/h2>'
+    $versionRegEx = 'NuGet.CommandLine ([0-9\.]+)'
 
     $downloadPage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl
     $version = [regex]::match($downloadPage, $versionRegEx).Groups[1].Value
-
 
     if ($force) {
         $global:au_Version = $version

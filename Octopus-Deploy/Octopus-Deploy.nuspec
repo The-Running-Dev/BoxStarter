@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Octopus-Deploy</id>
-    <version>3.16.5</version>
+    <version>3.17.0</version>
     <title>Octopus Deploy Server</title>
     <authors>Octopus Deploy</authors>
     <licenseUrl>http://octopusdeploy.com/pricing</licenseUrl>

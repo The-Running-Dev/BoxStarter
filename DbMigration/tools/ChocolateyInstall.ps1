@@ -1,6 +1,6 @@
 ﻿$arguments = @{
     url         = 'http://fishcodelib.com/files/DBMigration.zip'
-    checksum    = 'BF6D65A970117D5314E79671B7022197BAA82BA25C847FD015B04CD39F30A721'
+    checksum    = 'E0BCEE1BC40B7C6E160C79D80BEAD2DFDCD758DD1D2FC6072E88BC8F0DAECDB9'
     destination = Join-Path $env:AppData 'DBMigration'
 }
 

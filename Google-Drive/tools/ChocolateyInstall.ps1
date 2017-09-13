@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
     url             = 'https://dl.google.com/drive/gsync_enterprise.msi'
-    checksum        = '5DC5F87FAD5489DA006B6C3E623739BD7106FF08483344A3B4D9372B72052B88'
+    checksum        = 'D58AA8D090C1CB69EE92ADF656E783A3EB3A5149FBB2B98F23E529D759A5E720'
 }
 
 Install-Package $arguments

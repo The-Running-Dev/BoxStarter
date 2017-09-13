@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Docker</id>
-    <version>17.06.0</version>
+    <version>17.06.2</version>
     <title>Docker</title>
     <authors>Docker Contributors</authors>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>

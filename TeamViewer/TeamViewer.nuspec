@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>TeamViewer</id>
-    <version>12.0.81460</version>
+    <version>12.0.83369</version>
     <title>TeamViewer</title>
     <authors>TeamViewer Inc.</authors>
     <licenseUrl>http://www.teamviewer.com/</licenseUrl>
