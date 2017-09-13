@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>PowerShell-PoshGit</id>
-    <version>0.7.1.20170716</version>
+    <version>0.7.1</version>
     <title>PowerShell PoshGit</title>
     <authors>Keith Dahlby,  Mark Embling,  Jeremy Skinner,  Keith Hill</authors>
     <licenseUrl>https://github.com/dahlbyk/posh-git/blob/v0.7.1/LICENSE.txt</licenseUrl>
