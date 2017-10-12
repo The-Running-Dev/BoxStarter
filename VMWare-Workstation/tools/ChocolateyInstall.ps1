@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://download3.vmware.com/software/wkst/file/VMware-workstation-full-12.5.7-5813279.exe'
-    checksum        = '43E89499B9AFD473B09D8BE71A6AB4C9ADE7D3BE572186FF51832931CA7B271D'
+    url             = 'https://download3.vmware.com/software/wkst/file/VMware-workstation-full-14.0.0-6661328.exe'
+    checksum        = 'C596279ECEB407D376DAAE2E91038529182AF24A3144AFC451AA85E9F41D48DD'
     silentArgs      = '/s /v/qn EULAS_AGREED=1'
 }
 

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>uTorrent</id>
-    <version>3.5.0.43916</version>
+    <version>3.5.0.44090</version>
     <title>uTorrent</title>
     <authors>BitTorrent, Inc.</authors>
     <licenseUrl>http://www.bittorrent.com/legal/eula</licenseUrl>

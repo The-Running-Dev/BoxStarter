@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
     url         = 'https://www.xyplorer.com/download/xyplorer_full_noinstall.zip'
-    checksum    = '2FE3AE0FC7DD5BA572D4D4A322880527B7CDB8E1A67DE0542F3924748A837A5D'
+    checksum    = '2B4CB57C1CDFBEBCDC0EAEE17DB51E347C1CB2244ECEA13698BDB1B5270D22BE'
     destination = Join-Path $env:AppData 'XYplorer'
 }
 

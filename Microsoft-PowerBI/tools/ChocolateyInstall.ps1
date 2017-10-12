@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
     url             = 'https://download.microsoft.com/download/9/B/A/9BAEFFEF-1A68-4102-8CDF-5D28BFFE6A61/PBIDesktop_x64.msi'
-    checksum        = 'D77BA74AAECC173932D350475A1E22B612D5777E385191E954241A8A55D6D0F7'
+    checksum        = 'AAA0DFC81C291C6965107B34D3A595F877DEF80207E305FCD7E1F88A53DF29B4'
     silentArgs      = "/quiet ACCEPT_EULA=1 /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
 }
 

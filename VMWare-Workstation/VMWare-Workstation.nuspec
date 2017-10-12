@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>VMWare-Workstation</id>
-    <version>12.5.7</version>
+    <version>14.0.0</version>
     <title>VMware Workstation</title>
     <authors>VMware, Inc.</authors>
     <licenseUrl>https://www.vmware.com/download/eula/universal_eula.html</licenseUrl>

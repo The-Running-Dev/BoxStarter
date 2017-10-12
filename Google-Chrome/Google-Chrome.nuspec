@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Google-Chrome</id>
-    <version>61.0.3163.79</version>
+    <version>61.0.3163.100</version>
     <title>Google Chrome</title>
     <authors>Google Inc.</authors>
     <licenseUrl>https://www.google.it/intl/en/chrome/browser/privacy/eula_text.html</licenseUrl>

@@ -1,6 +1,6 @@
 ﻿$pp = Get-Parameters
 $arguments = @{
-    file        = 'httpd-2.4.27-x64-vc14.zip'
+    file        = 'httpd-2.4.28-x64-vc11.zip'
     destination = if ($pp.installLocation) { $pp.installLocation } else { $env:APPDATA }
     port        = if ($pp.Port) { $pp.Port } else { 80 }
     serviceName = if ($pp.serviceName) { $pp.serviceName } else { 'Apache' }

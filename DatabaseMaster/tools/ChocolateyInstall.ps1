@@ -1,6 +1,6 @@
 ﻿$arguments = @{
     url      = 'http://nucleonsoftware.com/download/DatabaseMasterSetup.msi'
-    checksum = '3FB2DC799D5E6C35A8ECB19061EAE5E1E06976CB6058175B97526DA2A3EF02EB'
+    checksum = '0EB8D48AFB0371E5560B5C8BF9258EC81733C0F5118086ED5B7BAF63C3A51057'
 }
 
 Install-Package $arguments

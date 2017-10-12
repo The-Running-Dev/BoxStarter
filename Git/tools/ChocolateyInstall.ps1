@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://github.com/git-for-windows/git/releases/download/v2.14.1.windows.1/Git-2.14.1-64-bit.exe'
-    checksum        = '0DC556503E3CE4699228FC910A8E4A8D81172635AC8E8E16A11BE107254C4901'
+    url             = 'https://github.com/git-for-windows/git/releases/download/v2.14.2.windows.1/Git-2.14.2-64-bit.exe'
+    checksum        = 'EF144A5DBB74518B56727F6C228993B9E7F5AEDEC7BBF7D680DCFFB5D36CE354'
     silentArgs      = '/VERYSILENT /NORESTART /NOCANCEL /SP- /COMPONENTS="icons,icons\quicklaunch,ext,ext\shellhere,ext\guihere,assoc,assoc_sh" /LOG'
 }
 
