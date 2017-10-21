@@ -1,0 +1,1 @@
+& "D:\DropBox\Projects\BoxStarter\build-push.ps1" > "D:\DropBox\Projects\BoxStarter\build-push.log"

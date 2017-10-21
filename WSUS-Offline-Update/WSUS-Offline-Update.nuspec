@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>WSUS-Offline-Update</id>
-    <version>11.0.2</version>
+    <version>11.0.3</version>
     <title>WSUS Offline Update</title>
     <authors>Torsten Wittrock</authors>
     <licenseUrl>http://www.gnu.org/copyleft/gpl.html</licenseUrl>
