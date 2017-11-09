@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>RazerSynapse</id>
-    <version>2.21.00.712</version>
+    <version>2.21.00.830</version>
     <title>Razer Synapse Framework</title>
     <authors>Razer</authors>
     <projectUrl>http://www.razerzone.com/synapse</projectUrl>

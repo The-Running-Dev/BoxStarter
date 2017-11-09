@@ -2,7 +2,7 @@ param([switch] $force, [switch] $push)
 
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $releaseUrl = 'https://support.office.com/en-us/article/Version-and-build-numbers-of-update-channel-releases-ae942449-1fca-4484-898b-a933ea23def7?ui=en-US&rs=en-US&ad=US'
@@ -24,4 +24,4 @@ function global:au_GetLatest {
     return @{ Url32 = $url; Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

@@ -2,7 +2,7 @@ param([switch] $force, [switch] $push)
 
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
     $url = 'https://github.com/dahlbyk/posh-git/archive/v$version.zip'
@@ -15,4 +15,4 @@ function global:au_GetLatest {
     return @{ Url32 = $ExecutionContext.InvokeCommand.ExpandString($url); Version = $version }
 }
 
-. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

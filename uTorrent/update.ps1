@@ -2,11 +2,11 @@ param([switch] $force, [switch] $push)
 
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $downloadPageUrl = 'http://www.utorrent.com/downloads/win'
-    $versionRegEx = 'Stable\(([0-9\.]+) build (\d+)\)'
+    $downloadPageUrl = 'http://filehippo.com/download_utorrent/'
+    $versionRegEx = 'uTorrent ([0-9\.]+) Build (\d+)'
     $url = 'http://download.ap.bittorrent.com/track/stable/endpoint/utorrent/os/windows'
     $fileName32 = 'uTorrent.exe'
 
@@ -17,4 +17,4 @@ function global:au_GetLatest {
     return @{ Url32 = $url; Version = $version; FileName32 = $fileName32; FileType = 'exe' }
 }
 
-. (Join-Path $PSScriptRoot '..\..\BoxStarter-Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')
