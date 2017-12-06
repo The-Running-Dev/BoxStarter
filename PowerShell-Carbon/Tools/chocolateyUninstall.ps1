@@ -1,11 +1,3 @@
-<#
-.SYNOPSIS
-Chocolately install script for Carbon.
-#>
-[CmdletBinding()]
-param(
-)
-
 #Requires -Version 4
 Set-StrictMode -Version 'Latest'
 $ErrorActionPreference = 'Stop'
