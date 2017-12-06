@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>jdownloader</id>
-    <version>12.0.83369</version>
+    <id>jDownloader</id>
+    <version>13.0.5058</version>
     <title>JDownloader</title>
     <authors>AppWork UG</authors>
     <licenseUrl>http://www.gnu.org/licenses/gpl.html</licenseUrl>
