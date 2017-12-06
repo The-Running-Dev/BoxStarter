@@ -1,8 +1,8 @@
 ﻿. (Join-Path $PSScriptRoot 'Helpers.ps1')
 
 $arguments = @{
-    url                = 'https://download.jetbrains.com/teamcity/TeamCity-2017.1.5.exe'
-    checksum           = 'B17C76B076A39DD640DC80B364D770A58EA01F46EFF22AAE2A31792B2B7CA5A3'
+    url                = 'https://download.jetbrains.com/teamcity/TeamCity-2017.2.exe'
+    checksum           = 'E2C34A7C0FDC3B81D2D11B897556B7815D4041DD384C2C0149D94D11D25B4367'
     installDir         = 'C:\TeamCity'
     dataDir            = 'C:\TeamCity\Data'
     javaDir            = 'C:\TeamCity\jre'

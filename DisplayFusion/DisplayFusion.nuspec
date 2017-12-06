@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>DisplayFusion</id>
-    <version>9.0</version>
+    <version>9.1</version>
     <authors>Binary Fortress</authors>
     <title>DisplayFusion</title>
     <projectUrl>http://www.displayfusion.com</projectUrl>

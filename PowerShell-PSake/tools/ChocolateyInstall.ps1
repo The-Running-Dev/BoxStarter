@@ -1,6 +1,6 @@
 ﻿$arguments = @{
-    url         = 'https://github.com/psake/psake/archive/v4.6.0.zip'
-    checksum    = '3AB9B982E2690D995ECEA372337AFA5F18D878482F2B63CAF32A4C011ABE5D26'
+    url         = 'https://github.com/psake/psake/archive/v4.7.0.zip'
+    checksum    = 'B5286E0A260B0E8981070BC4A567D6E421464C406D99A390EC48849FAD6D4D34'
     destination = Join-Path $env:ProgramFiles 'WindowsPowerShell\Modules'
 }
 

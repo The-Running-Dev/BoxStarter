@@ -1,7 +1,7 @@
 ﻿$processName        = [System.IO.Path]::GetFileNameWithoutExtension($installer)
 $arguments          = @{
-    url             = 'https://rufus.akeo.ie/downloads/rufus-2.17.exe'
-    checksum        = '260FBC40C09D3C175A62B94D9DF1A8C5CCB017A69C8C50BFE9AAEB1DF1F45FF6'
+    url             = 'https://rufus.akeo.ie/downloads/rufus-2.18.exe'
+    checksum        = 'E82ABD7F2C8F8C866141634A1CE10DA8EBF3C58B68CB2EAA351345777BB3F67C'
     executable      = 'rufus.exe'
     destination     = Join-Path $env:AppData 'Rufus'
 }

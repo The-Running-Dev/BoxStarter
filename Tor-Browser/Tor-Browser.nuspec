@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Tor-Browser</id>
-    <version>12.0.83369</version>
+    <version>13.0.5058</version>
     <title>Tor Browser Bundle</title>
     <authors>Tor Project</authors>
     <licenseUrl>https://www.torproject.org/docs/faq.html.en#DistributingTor</licenseUrl>

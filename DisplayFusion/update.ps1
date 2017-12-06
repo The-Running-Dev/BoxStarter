@@ -6,7 +6,7 @@ $packageDir = $PSScriptRoot
 
 function global:au_GetLatest {
     $downloadEndPointUrl = 'https://www.binaryfortress.com/Data/Download/?package=displayfusion&log=101'
-    $versionRegEx = 'DisplayFusionSetup-([0-9\.\-]+).*$'
+    $versionRegEx = 'DisplayFusionSetup-([0-9\.\-]+)\.\w+$'
 
     $downloadUrl = ((Get-WebURL -Url $downloadEndPointUrl).ResponseUri).AbsoluteUri
     $version = [regex]::match($downloadUrl, $versionRegEx).Groups[1].Value

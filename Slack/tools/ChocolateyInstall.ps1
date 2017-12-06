@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
     url             = 'https://downloads.slack-edge.com/releases_x64/SlackSetup.exe'
-    checksum        = 'F7EE5313670A563EB4AB27E8EF69BE76222FB892330F54069C94E8CA21F1C63E'
+    checksum        = 'CAF9E9DF4AF8B4483A679B37EF2FA2E8D3B58A78D8E8811FEFB28FB01347C638'
     silentArgs      = '/s'
     cleanUp         = $false
 }

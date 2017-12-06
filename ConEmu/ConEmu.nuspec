@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
 	<metadata>
 		<id>ConEmu</id>
-		<version>17.10.25</version>
+		<version>17.12.03</version>
 		<title>ConEmu</title>
 		<authors>ConEmu</authors>
 		<projectUrl>https://conemu.github.io</projectUrl>

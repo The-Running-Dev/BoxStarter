@@ -1,7 +1,7 @@
 ﻿$arguments = @{
     file           = 'uTorrent.exe'
     url            = 'http://download.ap.bittorrent.com/track/stable/endpoint/utorrent/os/windows'
-    checksum       = '52E9AD1773D87EB4A47CF05807D88A603880C42966C468CCC707D8BE76F8B7C6'
+    checksum       = '14082C0E0E4DD6C89FE64B7F97049F6C87FF20E457C06170BF0BF230C7D84AB9'
     silentArgs     = '/S'
     validExitCodes = @(0, 1)
 }

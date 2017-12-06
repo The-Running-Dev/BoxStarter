@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://download.microsoft.com/download/5/6/B/56BFEF92-9045-4414-970C-AB31E0FC07EC/dotnet-runtime-2.0.0-win-x64.exe'
-    checksum        = 'EA7F9FCE864932B25B6C709D3FE9E4432CB6D119658D1DAFCAFAAC59B75066A1'
+    url             = 'https://download.microsoft.com/download/5/C/1/5C190037-632B-443D-842D-39085F02E1E8/dotnet-runtime-2.0.3-win-x64.exe'
+    checksum        = 'E8EC46C2C35D1043BA1825F70348D736BF5D44ACC06C5DE3ADE3283FBAFF9C26'
     silentArgs      = "/install /quiet /norestart /log ""${env:temp}\$($data.PackageName).log"""
 }
 

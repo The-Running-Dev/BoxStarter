@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
-    url         = 'https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-6.3.9-winx64.msi'
-    checksum    = 'FA93CFF0124F65E94DAC4749A4C2BCDF5F79E1ECAE3777E5D276B4D5491B7FC5'
+    url         = 'https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-6.3.10-winx64.msi'
+    checksum    = 'ABB03477D1AF0748573B06C436A0A58F619607E6D63E3E9063E8120FD587294E'
     silentArgs  = "/quiet /norestart /l*v `"$($env:TEMP)\$($env:ChocolateyPackageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
 }
 

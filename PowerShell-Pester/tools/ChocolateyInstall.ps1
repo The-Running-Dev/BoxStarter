@@ -1,6 +1,6 @@
 ﻿$arguments = @{
-    url         = 'https://github.com/pester/Pester/archive/4.0.8.zip'
-    checksum    = '284B455C5892D1523AA90A9FE69772A48801B2A8FDF76C1FB3CAA8B2AFCCCFB4'
+    url         = 'https://github.com/pester/Pester/archive/4.1.0.zip'
+    checksum    = '08F3BAFF51DE9F759D65E75AFD6751F68AB68A1E421ABAE28C9CA5CCFDE40403'
     destination = Join-Path $env:ProgramFiles 'WindowsPowerShell\Modules'
 }
 

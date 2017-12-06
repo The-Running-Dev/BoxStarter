@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'http://download.piriform.com/ccsetup536.exe'
-    checksum        = '03D8B1EAFDDB81140AFE512122C20D048863BA861F976F97D28697F9E44A9E5B'
+    url             = 'http://download.piriform.com/ccsetup537.exe'
+    checksum        = '54E4512E0BF7C8359B883D814B1A8BA587F67E62F7B07BE496FCCDA79FD75F2D'
     silentArgs      = '/S'
 }
 

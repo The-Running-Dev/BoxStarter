@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>JetBrains-TeamCity</id>
-    <version>2017.1.5</version>
+    <version>2017.2</version>
     <title>JetBrains TeamCity Continuous Integration Server</title>
     <authors>JetBrains</authors>
     <licenseUrl>https://www.jetbrains.com/teamcity/buy/</licenseUrl>
