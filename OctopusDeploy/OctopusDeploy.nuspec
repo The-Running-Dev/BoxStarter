@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>Octopus-Deploy</id>
-    <version>3.17.11</version>
+    <id>OctopusDeploy</id>
+    <version>4.0.10</version>
     <title>Octopus Deploy Server</title>
     <authors>Octopus Deploy</authors>
     <licenseUrl>http://octopusdeploy.com/pricing</licenseUrl>
