@@ -13,7 +13,7 @@ New-Item -ItemType Directory $chocolateyBaseDir -Force | Out-Null
 
 if (-not (Test-Path $chocolateyBaseFile)) {
     Write-Host "Downloding Chocolatey-Base.zip to $chocolateyBaseFile"
-    Invoke-WebRequest -Uri 'https://github.com/The-Running-Dev/BoxStarter-Scripts/blob/master/Chocolatey-Base/Chocolatey-Base.zip?raw=true' -OutFile $chocolateyBaseFile
+    Invoke-WebRequest -Uri '' -OutFile $chocolateyBaseFile
 }
 
 Expand-Archive $chocolateyBaseFile $chocolateyBaseDir

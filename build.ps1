@@ -1,7 +1,7 @@
 param (
-    [Parameter(Position = 0)][String] $searchTerm,
-    [Parameter(Position = 1)][switch] $remote,
-    [Parameter(Position = 2)][switch] $force
+    [Parameter(Position = 0)][string] $searchTerm,
+    [Parameter(Position = 2)][switch] $force,
+    [Parameter(Position = 3)][string] $baseDir = $PSScriptRoot
 )
 
 $include = '*.zip,*.msi,*.exe'
@@ -9,6 +9,8 @@ $artifacts = '..\..\BoxStarter'
 $baseDir = $PSScriptRoot
 $searchTerm = $searchTerm -replace '\.\\(.*?)\\', '$1'
 $filter = '*.nuspec'
+
+$artifactsPath = Join-Path $baseDir $artifacts -Resolve
 
 if (-not $searchTerm) {
     # Get all packages in the base directory and sub directories
@@ -26,6 +28,6 @@ foreach ($p in $packages) {
     $currentDir = Split-Path -Parent $p.FullName
 
     Push-Location $currentDir
-    New-ChocoPackage $p.FullName $artifacts $include $force
+    New-ChocoPackage $p.FullName $artifactsPath $include $force
     Pop-Location
 }
