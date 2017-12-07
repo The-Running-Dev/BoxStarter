@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>PowerShell-Helpers.extension</id>
-    <version>1.0.35</version>
+    <version>1.0.36</version>
     <title>Chocolatey Package Extensions</title>
     <authors>The-Running-Dev</authors>
     <projectUrl>https://github.com/The-Running-Dev/BoxStarter</projectUrl>
