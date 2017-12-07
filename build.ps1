@@ -1,12 +1,11 @@
 param (
     [Parameter(Position = 0)][string] $searchTerm,
-    [Parameter(Position = 2)][switch] $force,
-    [Parameter(Position = 3)][string] $baseDir = $PSScriptRoot
+    [Parameter(Position = 1)][switch] $force,
+    [Parameter(Position = 2)][string] $baseDir = $PSScriptRoot
 )
 
 $include = '*.zip,*.msi,*.exe'
 $artifacts = '..\..\BoxStarter'
-$baseDir = $PSScriptRoot
 $searchTerm = $searchTerm -replace '\.\\(.*?)\\', '$1'
 $filter = '*.nuspec'
 
