@@ -2,35 +2,18 @@
 Param(
 )
 
-$chocolateyBaseUrl = 'http://bit.ly/2tJNjx6'
-$applicationsConfigUrl = ''
-
-# No $PSScriptRoot if the install is executed remotely
-if (-not $PSScriptRoot) {
-    $PSScriptRoot = $env:Temp
-}
-
 $pcName = (@{ $true = $env:pc; $false = $env:ComputerName }[$env:pc -ne $null]).ToLower()
 $chocolateyBaseDir = Join-Path $PSScriptRoot 'Chocolatey-Base'
 $chocolateyBaseFile = Join-Path $PSScriptRoot 'Chocolatey-Base.zip'
-$applicationsConfig = Join-Path $PSScriptRoot 'applications.config'
-$pcSpecificAppplicationsConfig = Join-Path $PSScriptRoot "applications.$pcName.config"
+$packagesFile = Join-Path $PSScriptRoot "install.$pcName.config"
 $packagesDir = Join-Path $PSScriptRoot 'Packages'
-
-if (Test-Path $pcSpecificAppplicationsConfig) {
-    $applicationsConfig = $pcSpecificAppplicationsConfig
-}
-elseif (-not (Test-Path $applicationsConfig)) {
-    # If the applicaiton config does not exist locally
-    Invoke-WebRequest -Uri $applicationsConfigUrl -OutFile $applicationsConfig
-}
 
 Write-Host "Creating Directory: $chocolateyBaseDir"
 New-Item -ItemType Directory $chocolateyBaseDir -Force | Out-Null
 
 if (-not (Test-Path $chocolateyBaseFile)) {
     Write-Host "Downloding Chocolatey-Base.zip to $chocolateyBaseFile"
-    Invoke-WebRequest -Uri $chocolateyBaseUrl -OutFile $chocolateyBaseFile
+    Invoke-WebRequest -Uri 'https://github.com/The-Running-Dev/BoxStarter-Scripts/blob/master/Chocolatey-Base/Chocolatey-Base.zip?raw=true' -OutFile $chocolateyBaseFile
 }
 
 Expand-Archive $chocolateyBaseFile $chocolateyBaseDir
@@ -47,8 +30,7 @@ if (-not (choco list Chocolatey-Personal -r -lo)) {
 
 Remove-Item $chocolateyBaseDir -Recurse -Force
 
-# If the applications config exists
-if (Test-Path $applicationsConfig) {
+if (Test-Path $packagesFile) {
     $chocoArgs = @()
 
     if (Test-Path $packagesDir) {
@@ -58,7 +40,7 @@ if (Test-Path $applicationsConfig) {
 
     # For the list of packages,
     # install each package only if it's not already installed
-    Get-Content $applicationsConfig | ForEach-Object {
+    Get-Content $packagesFile | ForEach-Object {
         if (-not (choco list $_ -r -lo)) {
             choco install $_ @chocoArgs
         }
