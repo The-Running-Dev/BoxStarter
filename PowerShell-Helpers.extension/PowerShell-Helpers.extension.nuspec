@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>PowerShell-Helpers.extension</id>
+    <version>1.0.35</version>
+    <title>Chocolatey Package Extensions</title>
+    <authors>The-Running-Dev</authors>
+    <projectUrl>https://github.com/The-Running-Dev/BoxStarter</projectUrl>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/BoxStarter</packageSourceUrl>
+    <summary>Encapsulates common package install functionality</summary>
+    <description>
+    PowerShell helper functions as Chocolatey extension
+    </description>
+  </metadata>
+</package>

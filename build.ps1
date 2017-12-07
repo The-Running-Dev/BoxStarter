@@ -4,8 +4,6 @@ param (
     [Parameter(Position = 2)][switch] $force
 )
 
-. .\Scripts\New-ChocoPackage.ps1
-
 $include = '*.zip,*.msi,*.exe'
 $artifacts = '..\..\BoxStarter'
 $vaseSir = $PSScriptRoot
