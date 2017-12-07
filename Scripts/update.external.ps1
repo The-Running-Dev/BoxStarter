@@ -9,7 +9,7 @@ function Invoke-ChocoSync {
     )
 
     $textInfo = (Get-Culture).TextInfo
-    $packagesDir = Join-Path $PSScriptRoot 'Packages'
+    $packagesDir = Join-Path $PSScriptRoot 'External'
     New-Item -ItemType Directory $packagesDir -Force | Out-Null
     Remove-Item $packagesDir\** -Recurse -Force
 
@@ -71,7 +71,7 @@ function Invoke-ChocoSync {
     }
 
     Get-ChildItem $packagesDir *.nupkg -Recurse | ForEach-Object { choco push $_.FullName -s $source -f }
-    Get-ChildItem $packagesDir | Remove-Item -Recurse -Force
+    Remove-Item $packagesDir -Recurse -Force
 
     choco source disable -n Chocolatey
     choco source disable -n Chocolatey.licensed

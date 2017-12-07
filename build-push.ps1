@@ -4,8 +4,7 @@ param (
     [Parameter(Position = 2)][switch] $force
 )
 
-Import-Module "$PSScriptRoot\Chocolatey-Package.extension\extensions\Chocolatey-Package.extension.psm1" -Force
-Import-Module "$PSScriptRoot\Chocolatey-Dev.extension\extensions\Chocolatey-Dev.extension.psm1" -Force
+Import-Module "$PSScriptRoot\PowerShell-Helpers.extension\extensions\PowerShell-Helpers.extension.psm1" -Force
 
 & $PSScriptRoot\build.ps1 $searchTerm $remote $force
 

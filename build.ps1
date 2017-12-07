@@ -6,7 +6,7 @@ param (
 
 $include = '*.zip,*.msi,*.exe'
 $artifacts = '..\..\BoxStarter'
-$vaseSir = $PSScriptRoot
+$baseDir = $PSScriptRoot
 $searchTerm = $searchTerm -replace '\.\\(.*?)\\', '$1'
 $filter = '*.nuspec'
 
