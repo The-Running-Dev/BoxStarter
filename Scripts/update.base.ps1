@@ -1,3 +1,7 @@
+param (
+    [Parameter(Position = 0)][switch] $force
+)
+
 $packagesDir = Join-Path $PSScriptRoot '..\..\..\BoxStarter' -Resolve
 $baseDir = Join-Path $PSScriptRoot 'Chocolatey-Base'
 $baseZip = Join-Path $baseDir 'Chocolatey-Base.zip'
@@ -20,7 +24,7 @@ $packages = @(
     'PowerShell-PSake'
 )
 
-$localPackagesBuildScript = Join-Path $PSScriptRoot '..\build-push.ps1' -Resolve
+$localPackagesBuildScript = Join-Path $PSScriptRoot '..\build.ps1' -Resolve
 $localPackages = @(
     'PowerShell-Carbon'
     'PowerShell-CommunityExtensions'
@@ -28,7 +32,7 @@ $localPackages = @(
     'PowerShell-PSake'
 )
 
-$localPrivatePackagesBuildScript = Join-Path $PSScriptRoot '..\..\BoxStarter-Private\build-push.ps1' -Resolve
+$localPrivatePackagesBuildScript = Join-Path $PSScriptRoot '..\..\BoxStarter-Private\build.ps1' -Resolve
 $localPrivatePackages = @(
     'Chocolatey-Personal'
     'PowerShell-Profile'
@@ -37,11 +41,21 @@ $localPrivatePackages = @(
 & $externalPackagesUpdateScript
 
 $localPackages | ForEach-Object {
-    & $localPackagesBuildScript $_
+    if ($force) {
+        & $localPackagesBuildScript $_ -Force
+    }
+    else {
+        & $localPackagesBuildScript $_
+    }
 }
 
 $localPrivatePackages | ForEach-Object {
-    & $localPrivatePackagesBuildScript $_
+    if ($force) {
+        & $localPrivatePackagesBuildScript $_ -Force
+    }
+    else {
+        & $localPrivatePackagesBuildScript $_
+    }
 }
 
 Get-ChildItem $packagesDir | `

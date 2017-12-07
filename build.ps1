@@ -4,6 +4,8 @@ param (
     [Parameter(Position = 2)][string] $baseDir = $PSScriptRoot
 )
 
+Import-Module "$PSScriptRoot\PowerShell-Helpers.extension\extensions\PowerShell-Helpers.extension.psm1" -Force
+
 $include = '*.zip,*.msi,*.exe'
 $artifacts = '..\..\BoxStarter'
 $searchTerm = $searchTerm -replace '\.\\(.*?)\\', '$1'
@@ -29,4 +31,14 @@ foreach ($p in $packages) {
     Push-Location $currentDir
     New-ChocoPackage $p.FullName $artifactsPath $include $force
     Pop-Location
+
+    $packageAritifactRegEx = $p.Name -replace '(.*?).nuspec', '$1([0-9\.]+)\.nupkg'
+
+    Get-ChildItem $artifactsPath -Recurse -File `
+    | Where-Object { $_.Name -match $packageAritifactRegEx } `
+    | Sort-Object -Descending | Skip-Object 1 `
+    | ForEach-Object {
+        Write-Host "Deleting previous version '$($_.FullName)'..."
+        Remove-Item $_.FullName
+    }
 }

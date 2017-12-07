@@ -94,7 +94,7 @@ function global:au_GetLatest {
 
     # Get the version from the nuspec
     $version = (Get-Item "$($Latest.PackageName).nuspec" `
-        | Select-String "(?i)<version>([0-9\.]+)</version>") `
+            | Select-String "(?i)<version>([0-9\.]+)</version>") `
         | ForEach-Object { $_.Matches[0].Groups[1].Value }
 
     # Force the version to be the same by default
@@ -133,10 +133,10 @@ function global:au_GetLatest {
     }
 
     $latestData = @{
-        Version     = $version
-        UpdatedOn   = $updatedOn.ToString('yyyy.MM.dd HH:mm:ss')
-        SettingsDir = $settingsDir
+        SettingsDir     = $settingsDir
+        UpdatedOn       = $updatedOn.ToString('yyyy.MM.dd HH:mm:ss')
         UpdateInstaller = $false
+        Version         = $version
     }
 
     if ($fileName32) { $latestData.FileName32 = $fileName32 }
