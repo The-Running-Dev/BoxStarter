@@ -1,0 +1,1 @@
+& C:\Setup\install.ps1
