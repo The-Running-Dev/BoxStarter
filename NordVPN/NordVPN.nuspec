@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>NordVPN</id>
+    <version>6.10.6</version>
+    <title>NordVPN</title>
+    <authors>NordVPN</authors>
+    <projectUrl>https://nordvpn.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Take back control over your Internet browsing.</description>
+    <summary>Take back control over your Internet browsing.</summary>
+    <tags>nordvpn vpn privacy</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="PowerShell-Helpers.extension" />
+		</dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Zoom</id>
+    <version>8.00.7600.16385</version>
+    <title>Zoom Client for Meetings</title>
+    <authors>Zoom Video Communications,  Inc.</authors>
+    <owners>Zoom Video Communications,  Inc.</owners>
+    <licenseUrl>http://zoom.us/pricing</licenseUrl>
+    <projectUrl>https://zoom.us/</projectUrl>
+    <iconUrl>http://cdn.rawgit.com/mikecole/chocolatey-packages/master/icons/zoom.jpg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Zoom unifies cloud video conferencing, simple online meetings, group messaging, and a software-defined conference room solution into one easy-to-use platform. Our solution offers the best video, audio, and wireless screen-sharing experience across Windows, Mac, iOS, Android, Blackberry, Linux, Zoom Rooms, and H.323/SIP room systems. Founded in 2011, Zoom's mission is to develop a people-centric cloud service that transforms the real-time collaboration experience and improves the quality and effectiveness of communications forever.</description>
+    <summary>Zoom unifies cloud video conferencing, simple online meetings, group messaging, and a software-defined conference room solution into one easy-to-use platform.</summary>
+    <copyright>Copyright ©2017 Zoom Video Communications, Inc. All rights reserved.</copyright>
+    <tags>zoom admin webinar webcam meeting</tags>
+    <docsUrl>https://support.zoom.us/hc/en-us</docsUrl>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="PowerShell-Helpers.extension" />
+		</dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Bonjour</id>
+    <version>2.0.2</version>
+    <title>Bonjour</title>
+    <authors>Apple Inc.</authors>
+    <licenseUrl>https://www.apple.com/legal/sla/docs/Bonjour_for_Windows.pdf</licenseUrl>
+    <projectUrl>https://support.apple.com/kb/DL999</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Bonjour is Apple's implementation of zero-configuration networking (zeroconf), a group of technologies that includes service discovery, address assignment, and hostname resolution.</description>
+    <summary>Zeroconf implementation by Apple.</summary>
+    <tags>bonjour zeroconf apple admin</tags>
+    <bugTrackerUrl>http://www.apple.com/feedback/bonjour.html</bugTrackerUrl>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+			<dependency id="PowerShell-Helpers.extension" />
+		</dependencies>
+  </metadata>
+</package>
