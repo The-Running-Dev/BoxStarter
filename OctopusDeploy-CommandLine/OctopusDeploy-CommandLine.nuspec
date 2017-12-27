@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>OctopusDeploy-CommandLine</id>
-    <version>4.27.3</version>
+    <version>4.29.0</version>
     <title>Octopus Deploy Command Line</title>
     <authors>Octopus Deploy</authors>
     <licenseUrl>https://octopus.com/</licenseUrl>
@@ -17,7 +17,7 @@
 		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <iconUrl>http://i.octopusdeploy.com/resources/Avatar3_360.png</iconUrl>
     <dependencies>
-      <dependency id="Chocolatey-Package.extension" />
+      <dependency id="PowerShell-Helpers.extension" />
     </dependencies>
   </metadata>
 </package>

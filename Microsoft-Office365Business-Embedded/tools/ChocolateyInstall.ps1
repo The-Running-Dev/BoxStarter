@@ -1,6 +1,6 @@
 ﻿. (Join-Path $env:ChocolateyPackageFolder 'tools\Helpers.ps1')
 
-$updatedOn = '2017.08.29 17:14:09'
+$updatedOn = '2017.12.16 21:48:36'
 $installerBase = 'Microsoft Office 365 Business'
 $parameters = Get-Parameters $env:chocolateyPackageParameters
 $defaultConfigurationFile = Join-Path $env:ChocolateyPackageFolder 'Configuration.xml'

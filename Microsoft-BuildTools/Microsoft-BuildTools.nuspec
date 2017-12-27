@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Microsoft-BuildTools</id>
-    <version>15.0.26208.0</version>
+    <version>15.0.27019.1</version>
     <title>Microsoft Build Tools for Visual Studio 2017</title>
     <authors>Microsoft Corporation</authors>
     <licenseUrl>https://www.microsoft.com/en-us/download/details.aspx?id=48159</licenseUrl>
@@ -27,7 +27,7 @@
     <owners>The-Running-Dev</owners>
 		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
-			<dependency id="Chocolatey-Package.extension" />
+			<dependency id="PowerShell-Helpers.extension" />
       <dependency id="Microsoft-DotNET4.6.2" />
 		</dependencies>
   </metadata>

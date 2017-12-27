@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>NotepadPlusPlus</id>
-    <version>7.5.2</version>
+    <version>7.5.3</version>
     <title>Notepad++</title>
     <authors>Don Ho</authors>
     <licenseUrl>https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/LICENSE</licenseUrl>
@@ -45,7 +45,7 @@
 		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
       <dependency id="Chocolatey-Core.extension" />
-      <dependency id="Chocolatey-Package.extension" />
+      <dependency id="PowerShell-Helpers.extension" />
     </dependencies>
   </metadata>
 </package>

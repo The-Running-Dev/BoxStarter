@@ -1,4 +1,4 @@
-param([switch] $force, [switch] $push)
+param([switch] $force)
 
 $packageDir = $PSScriptRoot
 
@@ -6,7 +6,7 @@ $packageDir = $PSScriptRoot
 
 function global:au_GetLatest {
     $releaseUrl = 'https://www.microsoft.com/net/download/core#/runtime'
-    $versionRegEx = 'Current \(v([0-9\.]+)\)'
+    $versionRegEx = 'Runtime v([0-9\.]+)'
     $downloadLinkRegEx = 'dotnet-runtime-$version-windows-x64-installer'
     $thankYouPageUrl = 'https://www.microsoft.com/net/download/thank-you/dotnet-runtime-$version-windows-x64-installer'
 

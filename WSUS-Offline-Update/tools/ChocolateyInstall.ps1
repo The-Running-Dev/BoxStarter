@@ -1,6 +1,6 @@
 ﻿$arguments = @{
-    url         = 'http://download.wsusoffline.net/wsusoffline1103.zip'
-    checksum    = '65CA37FC44DB59F802A021C313935CD531D90CA2DA8A69B0F97DE3DAD8E04F99'
+    url         = 'http://download.wsusoffline.net/wsusoffline111.zip'
+    checksum    = '27E1F1D0CCDE68F48D2BA273C80878B4CFAE79DDEC069EA6CAFE9043C166FF6D'
     destination = $env:AppData
 }
 

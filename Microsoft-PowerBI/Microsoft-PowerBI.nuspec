@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Microsoft-PowerBI</id>
-    <version>2.52.4921.682</version>
+    <version>2.53.4954.621</version>
     <title>Microsoft PowerBI</title>
     <authors>Microsoft</authors>
     <licenseUrl>https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx</licenseUrl>
@@ -31,7 +31,7 @@
     <owners>The-Running-Dev</owners>
     <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
 		<dependencies>
-      		<dependency id="Chocolatey-Package.extension" />
+      		<dependency id="PowerShell-Helpers.extension" />
     	</dependencies>
   </metadata>
 </package>

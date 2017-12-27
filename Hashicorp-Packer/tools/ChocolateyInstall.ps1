@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
-    url         = 'https://releases.hashicorp.com/packer/1.1.2/packer_1.1.2_windows_amd64.zip'
-    checksum    = '0BD1DF6A5FAD08DA93B01AC931F46B517BB77750964AEE365CA56A230B571308'
+    url         = 'https://releases.hashicorp.com/packer/1.1.3/packer_1.1.3_windows_amd64.zip'
+    checksum    = '8A8662E8341BD6FD45A2E43EE2B5E56B63C89CE355D5E367069B319AAA538044'
     destination = Join-Path $env:AppData 'Packer'
 }
 

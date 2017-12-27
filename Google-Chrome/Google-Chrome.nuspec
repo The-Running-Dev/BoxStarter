@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Google-Chrome</id>
-    <version>62.0.3202.94</version>
+    <version>63.0.3239.108</version>
     <title>Google Chrome</title>
     <authors>Google Inc.</authors>
     <licenseUrl>https://www.google.it/intl/en/chrome/browser/privacy/eula_text.html</licenseUrl>
@@ -15,7 +15,7 @@
     <releaseNotes />
     <tags>google chrome web internet browser admin</tags>
     <dependencies>
-			<dependency id="Chocolatey-Package.extension" />
+			<dependency id="PowerShell-Helpers.extension" />
 		</dependencies>
   </metadata>
 </package>

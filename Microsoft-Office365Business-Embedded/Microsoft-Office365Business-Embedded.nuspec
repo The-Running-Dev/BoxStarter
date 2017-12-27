@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
 	<metadata>
 		<id>Microsoft-Office365Business-Embedded</id>
-		<version>1703.7967.2144</version>
+		<version>1703.7967.2145</version>
 		<title>Microsoft Office 365 Business</title>
 		<authors>Microsoft</authors>
 		<description>
@@ -14,7 +14,7 @@
 		<owners>The-Running-Dev</owners>
     	<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
 		<dependencies>
-      		<dependency id="Chocolatey-Package.extension" />
+      		<dependency id="PowerShell-Helpers.extension" />
     	</dependencies>
 	</metadata>
 </package>

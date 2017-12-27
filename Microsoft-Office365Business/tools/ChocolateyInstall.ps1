@@ -9,8 +9,8 @@ $arguments = @{
     executablePackageName = 'Office Setup Files'
     executable = "$env:Temp\Office\Setup.exe"
     executableArgs = "/download ""$configurationFile"""
-    url = ''
-    checksum = ''
+    url = 'https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_8529.3600.exe'
+    checksum = 'BC7EA1A7682D7F3AB2C3B9F67A8CB07178288C865860C19B64FC29C7A914FA33'
     silentArgs = "/extract:""$env:Temp\Office"" /log:""$env:Temp\OfficeInstall.log"" /quiet /norestart"
     validExitCodes = @(2147781575, 2147205120)
 }

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>NTLite</id>
-    <version>1.5.0.5790</version>
+    <version>1.5.0.5855</version>
     <title>NTLite</title>
     <authors>Nlitesoft</authors>
     <licenseUrl>https://www.ntlite.com/shop/</licenseUrl>
@@ -52,7 +52,7 @@
 		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
       <dependency id="Chocolatey-Core.extension" />
-      <dependency id="Chocolatey-Package.extension" />
+      <dependency id="PowerShell-Helpers.extension" />
     </dependencies>
   </metadata>
 </package>

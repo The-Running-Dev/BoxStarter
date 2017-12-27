@@ -1,4 +1,4 @@
-param([switch] $force, [switch] $push)
+param([switch] $force)
 
 $packageDir = $PSScriptRoot
 
@@ -6,29 +6,18 @@ $packageDir = $PSScriptRoot
 
 function global:au_GetLatest {
     $releaseUrl = 'https://www.apple.com/itunes/download/'
-    $downloadPage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
+    $versionRegEx = 'iTunes ([0-9\.]+)'
+    $downloadUrlRegEx = 'iTunes64Setup.exe'
 
-    $downloadPage.Content -match "\<iframe src=`"([^`"]+)`"[^\>\/]+title=`"Please select a download" | Out-Null
-    $iframeLink = $Matches[1]
-    $matches = $null
-
-    $downloadPage = Invoke-WebRequest -Uri $iframeLink -UseBasicParsing
-    $downloadPage.Content -match "[`"'](https:\/\/[^`"']+iTunes64Setup\.exe)[`"']" | Out-Null
-    $downloadUrl = $Matches[1]
-    $matches = $null
-
-    $re = "[`"']iTunes ([\d\.]+) for Windows"
-    $downloadPage.Content -match $re
-
-    if ($matches) {
-        $version = $Matches[1]
-    }
+    $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
+    $version = [regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value
+    $url = $releasePage.Links | Where-Object href -match $downloadUrlRegEx | Select-Object -First 1 -Expand Href
 
     if ($force) {
         $global:au_Version = $version
     }
 
-    return @{ Url32 = $downloadUrl; Version = $version }
+    return @{ Url32 = $url; Version = $version }
 }
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

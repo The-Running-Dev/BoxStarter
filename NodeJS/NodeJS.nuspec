@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>NodeJS</id>
-    <version>9.2.0</version>
+    <version>9.3.0</version>
     <title>Node JS</title>
     <authors>Node.js Foundation</authors>
     <licenseUrl>https://raw.github.com/nodejs/node/master/LICENSE</licenseUrl>
@@ -16,7 +16,7 @@
 		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/nodejs.png</iconUrl>
     <dependencies>
-			<dependency id="Chocolatey-Package.extension" />
+			<dependency id="PowerShell-Helpers.extension" />
 		</dependencies>
   </metadata>
 </package>

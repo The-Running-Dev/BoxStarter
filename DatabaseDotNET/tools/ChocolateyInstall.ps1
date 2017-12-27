@@ -1,6 +1,6 @@
 ﻿$arguments = @{
     url        = 'http://fishcodelib.com/files/DatabaseNet4.zip'
-    checksum   = '98506F615C11BBE76F4392C6F3BB93B53238427E007DB3631AB92B3DF86D6046'
+    checksum   = 'FD3DDC41D49C576F0956EC5C6E1303FBFB84891FBE99FD24EE05243386C10140'
     destination = Join-Path $env:AppData 'DatabaseDotNET'
 }
 
