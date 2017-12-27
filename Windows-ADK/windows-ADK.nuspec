@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Windows-ADK</id>
+    <version>10.0.16299.0</version>
+    <title>Windows Assessment and Deployment Kit</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx</licenseUrl>
+    <projectUrl>https://msdn.microsoft.com/en-us/windows/hardware/dn913721.aspx</projectUrl>
+    <iconUrl>https://raw.github.com/keithga/Chocolatey/master/Resources/win_logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package will silently install Windows Assessment and Deployment Kit to the default location with all features.</description>
+    <summary>The Windows Assessment and Deployment Kit (Windows ADK) is a collection of tools that you can use to customize, assess, and deploy Windows operating systems to new computers.</summary>
+    <releaseNotes />
+    <copyright>Microsoft</copyright>
+    <tags>ADK Winpe WAIK USMT admin</tags>
+  </metadata>
+</package>
