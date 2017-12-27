@@ -15,7 +15,7 @@
     <copyright>2016 Binary Fortress Software</copyright>
     <tags>clipboardfusion clipboard sync history scrubbing macros</tags>
     <dependencies>
-			<dependency id="Chocolatey-Package.extension" />
+			<dependency id="PowerShell-Helpers.extension" />
 		</dependencies>
   </metadata>
 </package>

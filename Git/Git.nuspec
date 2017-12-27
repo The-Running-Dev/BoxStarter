@@ -31,7 +31,7 @@
     <summary>Git (for Windows) – Fast Version Control</summary>
     <tags>git vcs dvcs version control msysgit admin</tags>
     <dependencies>
-			<dependency id="Chocolatey-Package.extension" />
+			<dependency id="PowerShell-Helpers.extension" />
 		</dependencies>
   </metadata>
 </package>

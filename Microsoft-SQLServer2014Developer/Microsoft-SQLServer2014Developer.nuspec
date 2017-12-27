@@ -17,7 +17,7 @@
     <summary>Installs SQL Server 2014 Developer with SP2</summary>
     <tags>mssql sql server 2014 developer sp2</tags>
     <dependencies>
-      <dependency id="Chocolatey-Package.extension" />
+      <dependency id="PowerShell-Helpers.extension" />
       <dependency id="DotNet3.5" version="3.5.20160716" />
     </dependencies>
   </metadata>

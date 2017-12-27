@@ -18,10 +18,6 @@
   * 7Zip
   * Apache-Httpd
   * CCleaner
-  * Chocolatey-Dev.extension
-  * Chocolatey-IIS.extension
-  * Chocolatey-Package.extension
-  * Chocolatey-SQL.extension
   * ClipboardFusion
   * ConEmu
   * DatabaseDotNET

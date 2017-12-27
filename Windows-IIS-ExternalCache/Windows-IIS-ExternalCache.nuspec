@@ -19,7 +19,7 @@
 		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <iconUrl>http://www.microsoft.com/web/media/gallery/apps-screenshots/IIS_WebPlatformInstaller_GenericWizardArt.png</iconUrl>
     <dependencies>
-			<dependency id="Chocolatey-Package.extension" />
+			<dependency id="PowerShell-Helpers.extension" />
 		</dependencies>
   </metadata>
 </package>

@@ -1,7 +1,7 @@
-param([switch] $force, [switch] $push)
+param([switch] $force)
 
 $packageDir = $PSScriptRoot
 
-. (Join-Path $PSScriptRoot '..\..\..\BoxStarter-Scripts\update.begin.ps1')
+. (Join-Path $PSScriptRoot '..\..\Scripts\update.begin.ps1')
 
-. (Join-Path $PSScriptRoot '..\..\..\BoxStarter-Scripts\update.end.ps1')
+. (Join-Path $PSScriptRoot '..\..\Scripts\update.end.ps1')

@@ -25,8 +25,4 @@ if ($Latest.PackageName -notmatch '\-Personal$') {
     Remove-Item "$($packageInstaller).ignore" -ErrorAction SilentlyContinue
 }
 
-if ($push) {
-    & (Join-Path $PSScriptRoot ..\push.ps1) $Latest.PackageName
-}
-
 Pop-Location

@@ -26,7 +26,7 @@
      <owners>The-Running-Dev</owners>
 		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
 		<dependencies>
-			<dependency id="Chocolatey-Package.extension" />
+			<dependency id="PowerShell-Helpers.extension" />
 		</dependencies>
   </metadata>
 </package>

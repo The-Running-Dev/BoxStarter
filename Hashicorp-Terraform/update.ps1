@@ -1,4 +1,4 @@
-param([switch] $force, [switch] $push)
+param([switch] $force)
 
 $packageDir = $PSScriptRoot
 
@@ -11,7 +11,7 @@ function global:au_GetLatest {
 
     $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
     $version = [regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value
-    $url = $releasePage.links | Where-Object href -match $downloadUrlRegEx | Select-Object -First 1 -Expand Href
+    $url = $releasePage.Links | Where-Object href -match $downloadUrlRegEx | Select-Object -First 1 -Expand Href
 
     if ($force) {
         $global:au_Version = $version

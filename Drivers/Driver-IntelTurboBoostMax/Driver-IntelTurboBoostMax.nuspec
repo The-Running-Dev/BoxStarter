@@ -11,7 +11,7 @@
       Intel Turbo Boost Max 3.0 for the AsRock X99 Motherboard
     </description>
     <dependencies>
-      <dependency id="Chocolatey-Package.extension" />
+      <dependency id="PowerShell-Helpers.extension" />
     </dependencies>
   </metadata>
 </package>

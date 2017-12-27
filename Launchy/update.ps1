@@ -1,4 +1,4 @@
-param([switch] $force, [switch] $push)
+param([switch] $force)
 
 $packageDir = $PSScriptRoot
 $global:au_isFixedVersion = $true

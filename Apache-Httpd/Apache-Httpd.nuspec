@@ -38,7 +38,7 @@ Apache will be installed as a service under the default name 'Apache'
     <dependencies>
        <dependency id="Microsoft-VisualCRedistributable2015" />
        <dependency id="Chocolatey-Core.extension" />
-       <dependency id="Chocolatey-Package.extension" />
+       <dependency id="PowerShell-Helpers.extension" />
    </dependencies>
   </metadata>
 </package>

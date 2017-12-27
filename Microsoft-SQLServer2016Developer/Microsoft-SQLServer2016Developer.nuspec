@@ -17,7 +17,7 @@
     <summary>Installs SQL Server 2016 Developer with SP1</summary>
     <tags>mssql sql server 2016 developer sp1</tags>
     <dependencies>
-      <dependency id="Chocolatey-Package.extension" />
+      <dependency id="PowerShell-Helpers.extension" />
     </dependencies>
   </metadata>
 </package>

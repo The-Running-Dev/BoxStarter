@@ -11,7 +11,7 @@
       Intel Bluetooth Driver for the AsRock X99 motherboard
     </description>
     <dependencies>
-      <dependency id="Chocolatey-Package.extension" />
+      <dependency id="PowerShell-Helpers.extension" />
     </dependencies>
   </metadata>
 </package>

@@ -1,1 +1,0 @@
-& C:\Chocolatey-Base\install.ps1
