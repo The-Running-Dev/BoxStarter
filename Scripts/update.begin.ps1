@@ -36,8 +36,13 @@ function global:au_BeforeUpdate {
 
     $existingInstaller = Join-Path $installersPath $installer
 
-    # If the installer name is always the same
-    if ($([System.IO.Path]::GetFileName($installer)) -eq $([System.IO.Path]::GetFileName($existingInstaller)) -and $Latest.Url32) {
+    $localVersion = $Latest.NuspecVersion
+    $remoteVersion = $Latest.Version
+    $installerFile = [System.IO.Path]::GetFileName($installer)
+    $existingInstallerFile = [System.IO.Path]::GetFileName($existingInstaller)
+
+    # If the installer file is always the same, and the local and remote versions are different
+    if ($installerFile -eq $existingInstallerFile -and $Latest.Url32 -and ($localVersion -ne $remoteVersion)) {
         # Get the remote checksum to determine if we should re-download the installer
         $latestChecksum = Get-RemoteChecksum $Latest.Url32
     }
