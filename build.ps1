@@ -9,6 +9,10 @@ Import-Module "$PSScriptRoot\PowerShell-Helpers.extension\extensions\PowerShell-
 $include = '*.zip,*.msi,*.exe'
 $artifacts = '..\..\BoxStarter'
 
+if (Test-Path variable:\au_packageInstallerDir) {
+    Remove-Item variable:\au_packageInstallerDir
+}
+
 if (Test-Path variable:\au_settingsDir) {
     Remove-Item variable:\au_settingsDir
 }

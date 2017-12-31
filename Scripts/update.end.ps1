@@ -7,7 +7,7 @@ else {
 
 # Only cleanup if this is not a personal package
 if ($Latest.PackageName -notmatch '\-Personal$') {
-    $packageInstaller = Join-Path $packageDir $Latest.FileName32
+    $packageInstaller = Join-Path $packageInstallerDir $Latest.FileName32
     $existingPackageInstaller = Join-Path $installersPath $Latest.FileName32
 
     if (((Test-FileExists $packageInstaller) -and (-not (Test-FileExists $existingPackageInstaller))) -or $Latest.UpdateInstaller) {

@@ -14,7 +14,7 @@ function global:au_GetLatest {
     $version = ([regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value)
 
     $downloadPage = Invoke-WebRequest -Uri $downloadPageUrl -UseBasicParsing -ErrorAction SilentlyContinue
-    $url = $downloadPage.links | Where-Object href -match $executableRegEx | Select-Object -First 1 -expand href
+    $url = $downloadPage.Links | Where-Object href -match $executableRegEx | Select-Object -First 1 -expand href
 
     if ($force) {
         $global:au_Version = $version

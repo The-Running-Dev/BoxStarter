@@ -6,6 +6,7 @@ $global:au_Force = $false
 Push-Location $packageDir
 
 $installersPath = Join-Path $PSScriptRoot '..\..\..\BoxStarter\Installers' -Resolve
+$packageInstallerDir = @{$true = $global:au_packageInstallerDir; $false = $packageDir; }[(Test-Path variable:\au_packageInstallerDir)]
 
 $global:au_isFixedVersion = @{$true = $global:au_isFixedVersion; $false = $false; }[(Test-Path variable:\au_isFixedVersion)]
 
@@ -54,10 +55,10 @@ function global:au_BeforeUpdate {
 
         # Find the downloaded file
         $downloadedFile = Get-ChildItem `
-            -Recurse *.7z, *.zip, *.tar.gz, *.exe, *.msi | Select-Object -First 1
+            -Recurse *.7z, *.zip, *.tar.gz, *.exe, *.msi, *.jar | Select-Object -First 1
 
         # Remove the _32 and any HTML encoded space
-        $installer = Join-Path $packageDir ((Split-Path -Leaf $downloadedFile) -replace '%20', ' ')
+        $installer = Join-Path $packageInstallerDir ((Split-Path -Leaf $downloadedFile) -replace '%20', ' ')
 
         # Move the installer to the package directory
         # because I don't like it under the tools directory
@@ -73,11 +74,11 @@ function global:au_BeforeUpdate {
         $Latest.UpdateInstaller = $true
     }
     elseif (Test-Path $existingInstaller) {
-        Copy-Item $existingInstaller $packageDir -Force
+        Copy-Item $existingInstaller $packageInstallerDir -Force
 
         if ($existingInstaller -match '\.(exe|msi)$') {
             # Create a .ignore file for each found executable
-            New-Item "$packageDir\$(Split-Path -Leaf $existingInstaller).ignore" -Force | Out-Null
+            New-Item "$packageInstallerDir\$(Split-Path -Leaf $existingInstaller).ignore" -Force | Out-Null
         }
 
         $Latest.Checksum32 = (Get-FileHash $existingInstaller).Hash

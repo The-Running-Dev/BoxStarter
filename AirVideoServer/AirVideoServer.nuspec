@@ -6,12 +6,12 @@
     <title>AirVideo Server</title>
     <authors>Air Video</authors>
     <projectUrl>http://www.inmethod.com/airvideohd/index.html</projectUrl>
-    <owners>The-Running-Dev</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Watch videos streamed instantly from your computer on your iPhone, iPad, iPod touch or Apple TV.</description>
     <copyright>2017 Air Video</copyright>
     <tags>airvideo server video</tags>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <dependencies>
 			<dependency id="PowerShell-Helpers.extension" />
 		</dependencies>
