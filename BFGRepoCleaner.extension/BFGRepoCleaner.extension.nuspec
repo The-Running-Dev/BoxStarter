@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>BFGRepoCleaner.extension</id>
+    <version>1.12.16</version>
+    <title>The BFG</title>
+    <authors>Roberto Tyley</authors>
+    <licenseUrl>https://github.com/wjk/BFG-Windows/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://rtyley.github.io/bfg-repo-cleaner/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description># The BFG Repo Cleaner
+The BFG is a simpler, faster alternative to `git filter-branch` for cleansing bad data out of your Git repository history:
+
+* Removing Crazy Big Files
+* Removing Passwords, Credentials &amp; other Private data
+
+The `git filter-branch` command is enormously powerful and can do things that the BFG can't, but the BFG is much better for the tasks above, because:
+
+* It's faster: 10 - 720x faster
+* It's simpler: The BFG isn't particularily clever, but is focused on making the above tasks easy
+* It's beautiful: If you need to, you can use the beautiful Scala language to customise the BFG. Which has got to be better than Bash scripting at least some of the time.
+
+This package contains a precompiled version of The BFG, with all dependencies included in the JAR file, as well as a Windows command-line executable that runs The BFG.</description>
+    <summary>The BFG removes large and troublesome blobs from your repo</summary>
+    <releaseNotes>_Version 1.12.15:_
+* Updated build using Visual Studio 2017
+* Upgrade The BFG to version 1.12.15
+
+_Version 1.12.5.20160618:_
+
+* Updated build using Visual Studio 2015
+* Added C++ Redistributable dependency to ensure that the program runs on Windows 8.1 and earlier
+* Added Windows Explorer version information to `BFG.exe`
+* No functional changes</releaseNotes>
+    <tags>git java</tags>
+    <projectSourceUrl>https://github.com/rtyley/bfg-repo-cleaner</projectSourceUrl>
+    <docsUrl>https://rtyley.github.io/bfg-repo-cleaner/</docsUrl>
+    <bugTrackerUrl>https://github.com/rtyley/bfg-repo-cleaner/issues</bugTrackerUrl>
+    <owners>The-Running-Dev</owners>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+      <dependency id="jre" />
+			<dependency id="PowerShell-Helpers.extension" />
+		</dependencies>
+  </metadata>
+</package>
