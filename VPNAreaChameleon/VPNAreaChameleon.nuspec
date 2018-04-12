@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>VPNAreaChameleon</id>
-    <version>1.0.47.277</version>
+    <version>1.0.49</version>
     <title>VPN Area Chameleon</title>
     <authors>Offshore Securities Inc.</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

@@ -1,7 +1,7 @@
 ﻿$arguments          = @{
-    url             = 'https://s3.amazonaws.com/AirVideoHD/Download/AirVideoServerHD-2.2.4-beta2.exe'
-    checksum        = 'DCD5001524B83864F199753FF372BE3A2799827EA8EC0FE6A6C8FBE29F507CF0'
-    silentArgs      = '/SD'
+    url             = 'https://s3.amazonaws.com/AirVideoHD/Download/AirVideoServerHD-2.3.0-beta1.exe'
+    checksum        = '99C5A2F1D032040B5D3F2E2637C7936C5BCBE923998FC7C819BD030F4221C53C'
+    silentArgs      = '/S'
 }
 
 Install-Package $arguments

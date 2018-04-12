@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://github.com/git-lfs/git-lfs/releases/download/v2.3.4/git-lfs-windows-2.3.4.exe'
-    checksum        = 'F11EE43EAE6AE33C258418E6E4EE221EB87D2E98955C498F572EFA7B607F9F9B'
+    url             = 'https://github.com/git-lfs/git-lfs/releases/download/v2.4.0/git-lfs-windows-2.4.0.exe'
+    checksum        = '345034FC91459579370737201E991C7A2E8ACABBB24D15577ECF588D071B1949'
     silentArgs      = '/VERYSILENT /NORESTART /SUPPRESSMSGBOXES'
 }
 

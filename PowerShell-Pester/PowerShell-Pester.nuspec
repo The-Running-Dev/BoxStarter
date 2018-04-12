@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>PowerShell-Pester</id>
-    <version>4.1.1</version>
+    <version>4.3.1</version>
     <title>PowerShell Pester Module</title>
     <authors>Dave Wyatt</authors>
     <projectUrl>https://github.com/pester/Pester/</projectUrl>

@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://download.jetbrains.com/resharper/JetBrains.ReSharperUltimate.2017.3.1.exe'
-    checksum        = '4DACDE5BDFF6CC0D41C2F178875A1A80597FCE5C284FE1949BCE8B259D573BC6'
+    url             = 'https://download.jetbrains.com/resharper/JetBrains.ReSharperUltimate.2017.3.5.exe'
+    checksum        = '704225A14DF1EDA65F42747F948B31B4157BB63ACCBF638DE2F89539B6623AD9'
     silentArgs      = '/VsVersion=14.0;15.0 /SpecificProductNames=dotCover;dotMemory;dotPeek;dotTrace;ReSharperCpp;teamCityAddin;ReSharper /Silent=True'
 }
 

@@ -1,6 +1,6 @@
 ﻿$arguments = @{
     url            = 'https://download.docker.com/win/stable/Docker for Windows Installer.exe'
-    checksum       = 'D5A0C83EFE20445556B07D07482A2E95CD7A50E39C82A06489CA35589D018C16'
+    checksum       = '27615F98E95DD829AF0CC649AD75BA0EDB8618C780A143B96204426A4A3698EF'
     silentArgs     = "install --quiet"
     validExitCodes = @(0, 3010, 1641)
 }

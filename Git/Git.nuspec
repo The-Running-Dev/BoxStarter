@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Git</id>
-    <version>2.15.1</version>
+    <version>2.17.0</version>
     <title>Git</title>
     <authors>Johannes Schindelin, msysgit Committers</authors>
     <licenseUrl>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html</licenseUrl>

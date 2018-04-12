@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
     url         = 'https://dist.nuget.org/win-x86-commandline/latest/nuget.exe'
-    checksum    = '781930966CF218CA01560C11F99F3C7423AA734C3BBE480179B85A7EBA69D9B2'
+    checksum    = '2C562C1A18D720D4885546083EC8EAAD6773A6B80BEFB02564088CC1E55B304E'
     destination = Join-Path $env:AppData 'NuGet'
 }
 

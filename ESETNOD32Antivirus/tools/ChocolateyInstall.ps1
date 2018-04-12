@@ -1,7 +1,7 @@
 ﻿$arguments          = @{
     file            = 'eav_nt64_enu.exe'
     url             = 'https://download.eset.com/com/eset/apps/home/eav/windows/latest/eav_nt64_enu.exe'
-    checksum        = 'BA3E41D793D8A0D741954BCDCA646BD37327207AA4CBE77EB92C77D5C7CB7BBC'
+    checksum        = '9241F7721BB588246C6C46322B8B278566F613609DA0D35F4AA1AE04B40114C4'
 }
 
 Install-WithAutoHotKey $arguments

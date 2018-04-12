@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://github.com/gitextensions/gitextensions/releases/download/v2.50.02/GitExtensions-2.50.02-SetupComplete.msi'
-    checksum        = '1321116C5998A4CE6B87A6C3E7DD7396BD1109D55EF26A3E62D73DD5A3484DCE'
+    url             = 'https://github.com/gitextensions/gitextensions/releases/download/v2.51.01/GitExtensions-2.51.01-SetupComplete.msi'
+    checksum        = '270A3A67054DC914A08684BFE2E0CF58CB9903A0C3F76530A5688F2BB7FF3DEB'
     silentArgs      = '/quiet /norestart'
 }
 

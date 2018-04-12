@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>jDownloader</id>
-    <version>13.0.6447</version>
+    <version>13.1.1548</version>
     <title>JDownloader</title>
     <authors>AppWork UG</authors>
     <licenseUrl>http://www.gnu.org/licenses/gpl.html</licenseUrl>

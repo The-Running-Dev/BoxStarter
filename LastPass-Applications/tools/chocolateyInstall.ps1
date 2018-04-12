@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
     url         = 'https://lastpass.com/download/cdn/lastappinstall_x64.exe'
-    checksum    = '29CB9F2E69CFED90DCEFBEC8A13615BA7DB9C1B74AE6EFFAD1D0E0A078A30BB9'
+    checksum    = '97E85C7C6F61E831EBC70AD7CDB96768B3E875F3719E84BB05B5B9FD3C55DAA9'
     silentArgs  = '-si'
 }
 

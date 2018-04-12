@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>OctopusDeploy-Tentacle</id>
-    <version>3.16.3</version>
+    <version>3.19.1</version>
     <title>Octopus Deploy Tentacle</title>
     <authors>Octopus Deploy</authors>
     <licenseUrl>http://octopusdeploy.com/pricing</licenseUrl>

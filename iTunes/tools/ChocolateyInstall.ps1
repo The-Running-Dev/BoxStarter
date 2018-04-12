@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://secure-appldnld.apple.com/itunes12/091-56359-20171213-EDF2198A-E039-11E7-9A9F-D21A1E4B8CED/iTunes64Setup.exe'
-    checksum        = '7CD6CC4DA573DD5E4BA09E7710C2B97FB8E3AB4F2BCF729908BA26BD21AAC388'
+    url             = 'https://secure-appldnld.apple.com/itunes12/091-76333-20180329-6D5B026C-32F7-11E8-A675-99BAB071F5CF/iTunes64Setup.exe'
+    checksum        = 'F4B923ABBB515D87F1D7B363C8D66E108001E0B914BDAE90DFCF9453E874891A'
     silentArgs      = '/qn /norestart'
 }
 

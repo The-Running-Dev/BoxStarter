@@ -6,7 +6,7 @@ $packageDir = $PSScriptRoot
 
 function global:au_GetLatest {
     $releaseUrl = 'https://www.microsoft.com/net/download/core#/runtime'
-    $versionRegEx = 'SDK v([0-9\.]+)'
+    $versionRegEx = 'SDK ([0-9\.]+)'
     $downloadLinkRegEx = 'dotnet-sdk-$version-windows-x64-installer'
     $thankYouPageUrl = 'https://www.microsoft.com/net/download/thank-you/dotnet-sdk-$version-windows-x64-installer'
 

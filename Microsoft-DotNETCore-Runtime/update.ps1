@@ -5,10 +5,10 @@ $packageDir = $PSScriptRoot
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $releaseUrl = 'https://www.microsoft.com/net/download/core#/runtime'
-    $versionRegEx = 'Runtime v([0-9\.]+)'
+    $releaseUrl = 'https://www.microsoft.com/net/download/Windows/run'
+    $versionRegEx = 'Runtime ([0-9\.]+)'
     $downloadLinkRegEx = 'dotnet-runtime-$version-windows-x64-installer'
-    $thankYouPageUrl = 'https://www.microsoft.com/net/download/thank-you/dotnet-runtime-$version-windows-x64-installer'
+    $thankYouPageUrl = 'https://www.microsoft.com/net/download/thank-you/$downloadLinkRegEx'
 
     $releasePage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl
     $version = [regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value

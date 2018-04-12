@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>BFGRepoCleaner.extension</id>
-    <version>1.12.16</version>
+    <version>1.13.0</version>
     <title>The BFG</title>
     <authors>Roberto Tyley</authors>
     <licenseUrl>https://github.com/wjk/BFG-Windows/blob/master/LICENSE.md</licenseUrl>

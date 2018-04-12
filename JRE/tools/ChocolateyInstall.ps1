@@ -20,13 +20,13 @@
     return $x86_32, $x86_64
 }
 
-$x86Installer       = 'jre-8u151-windows-i586.exe'
+$x86Installer       = 'jre-8u161-windows-i586.exe'
 $arguments          = @{
-    file            = 'jre-8u151-windows-x64.exe'
-    url             = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=227550_e758a0de34e24606bca991d704f6dcbf'
-    url64           = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=227552_e758a0de34e24606bca991d704f6dcbf'
-    checksum        = '990FA41BD7A66C0402A6EDE43D51983CA0AC5F74B212FDD9F4AFE366CDE7A28D'
-    checksum64      = '4378D712C510930D066BFA256B24E07DFEA5ED31AA514AFB7C7DD72FCCE9BB68'
+    file            = 'jre-8u161-windows-x64.exe'
+    url             = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=230540_2f38c3b165be4555a1fa6e98c45e0808'
+    url64           = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=230542_2f38c3b165be4555a1fa6e98c45e0808'
+    checksum        = '9D4AB1C5EFF210FD165A1ACA33734DA82C6BAC9437BD8F20637E68460F3E9008'
+    checksum64      = '59C02EB80ACFAEEAF3728C3841440C68EA9E3B4D5E735A7A863F6E2492760B5D'
     fileType        = 'exe'
     checksumType    = 'sha256'
     checksumType64  = 'sha256'
@@ -53,8 +53,8 @@ else {
 
     if (!($thisJreInstalledHash[0]) -and $exclude -ne '32') {
         $arguments.file = Join-Path $env:ChocolateyPackageFolder $x86Installer
-        $arguments.url64 = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=227552_e758a0de34e24606bca991d704f6dcbf'
-        $arguments.checksum64 = '4378D712C510930D066BFA256B24E07DFEA5ED31AA514AFB7C7DD72FCCE9BB68'
+        $arguments.url64 = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=230542_2f38c3b165be4555a1fa6e98c45e0808'
+        $arguments.checksum64 = '59C02EB80ACFAEEAF3728C3841440C68EA9E3B4D5E735A7A863F6E2492760B5D'
 
         Install-Package $arguments
     }

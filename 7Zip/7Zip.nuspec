@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>7Zip</id>
-    <version>16.04</version>
+    <version>18.01</version>
     <title>7-Zip</title>
     <authors>Igor Pavlov</authors>
     <licenseUrl>http://www.7-zip.org/license.txt</licenseUrl>

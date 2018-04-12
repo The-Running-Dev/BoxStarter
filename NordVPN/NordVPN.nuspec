@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>NordVPN</id>
-    <version>6.10.6</version>
+    <version>6.12.11</version>
     <title>NordVPN</title>
     <authors>NordVPN</authors>
     <projectUrl>https://nordvpn.com/</projectUrl>

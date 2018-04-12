@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>NotepadPlusPlus</id>
-    <version>7.5.3</version>
+    <version>7.5.6</version>
     <title>Notepad++</title>
     <authors>Don Ho</authors>
     <licenseUrl>https://github.com/notepad-plus-plus/notepad-plus-plus/blob/master/LICENSE</licenseUrl>

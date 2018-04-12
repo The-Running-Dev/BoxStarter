@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>AirVideoServer</id>
-    <version>2.2.4</version>
+    <version>2.3.0</version>
     <title>AirVideo Server</title>
     <authors>Air Video</authors>
     <projectUrl>http://www.inmethod.com/airvideohd/index.html</projectUrl>

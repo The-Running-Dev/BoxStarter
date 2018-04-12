@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
     url         = 'https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi'
-    checksum    = 'AD978D8F634DAEFBDC7DFE7FF71E13AF103A8F0F3E7CF7CA4DDABF19E683EB41'
+    checksum    = 'B14B7A865C44D2ED509C7DE843780091729AA7D6D1195D8D09C4B8F0DEBD5DE0'
 }
 
 function Get-ChromeVersion() {
