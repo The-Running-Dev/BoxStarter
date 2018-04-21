@@ -6,7 +6,7 @@ $packageDir = $PSScriptRoot
 
 function global:au_GetLatest {
     $releaseUrl = 'https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms'
-    $versionRegEx = 'The build number for this release: ([0-9\.]+)'
+    $versionRegEx = 'Build number: ([0-9\.]+)'
     $downloadLinkRegEx = 'Download SQL Server Management Studio'
 
     $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
