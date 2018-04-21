@@ -7,15 +7,12 @@ $packageDir = $PSScriptRoot
 function global:au_GetLatest {
     $releaseUrl = 'https://handbrake.fr/downloads.php'
     $versionRegEx = 'Current Version: ([0-9\.]+)'
-    $downloadUrlPrefix = 'https://handbrake.fr/mirror'
-    $fileRegEx = 'file=(.*x86_64\-Win_GUI\.exe)'
+    $downloadUrl = 'https://download.handbrake.fr/releases/$version/HandBrake-$version-x86_64-Win_GUI.exe'
 
     $releasePage = Invoke-WebRequest -Uri $releaseUrl -UseBasicParsing
     $releasePage.Content -match $versionRegEx
     $version = [version]$matches[1]
-
-    $releasePage.Content -match $fileRegEx
-    $url = "$downloadUrlPrefix/$($matches[1])"
+    $url = $ExecutionContext.InvokeCommand.ExpandString($downloadUrl)
 
     if ($force) {
         $global:au_Version = $version
