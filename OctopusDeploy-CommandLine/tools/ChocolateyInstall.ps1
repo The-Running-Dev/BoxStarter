@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
-    url         = 'https://download.octopusdeploy.com/octopus-tools/4.32.0/OctopusTools.4.32.0.zip'
-    checksum    = '5EBC7A07B25D80CB231209624BD9153FDEE225C51017416433675CA0B16F140B'
+    url         = 'https://download.octopusdeploy.com/octopus-tools/4.32.1/OctopusTools.4.32.1.zip'
+    checksum    = 'F52B98C6F070DE34035B6EF1CD970FFDC9F11CAE9B4EA47BB6A1996C234F69F0'
     destination = Join-Path $env:AppData 'Octopus'
 }
 

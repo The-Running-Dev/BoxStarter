@@ -14,34 +14,26 @@ function global:au_BeforeUpdate {
     $client = New-Object System.Net.WebClient
 
     if (!(Test-Path $existingPackageInstaller)) {
-        $file = Join-Path $packageDir $downloadFile
         $downloadFilePath = (Join-Path $packageDir $global:downloadFile)
         $client.DownloadFile($Latest.Url32, $downloadFilePath)
-        Move-Item $downloadFilePath $file -Force
+        Move-Item $downloadFilePath $existingPackageInstaller -Force
 
         $Latest.ChecksumType32 = 'sha256'
         $Latest.Checksum32 = (Get-FileHash $file).Hash
     }
     else {
-        Copy-Item $existingPackageInstaller $packageDir -Force
-        New-Item "$(Join-Path $packageDir (Split-Path -Leaf $existingPackageInstaller)).ignore" -Force
-
         $Latest.Checksum32 = (Get-FileHash $existingPackageInstaller).Hash
     }
 
     if (!(Test-Path $existingPackageInstaller64)) {
-        $file64 = Join-Path $packageDir $downloadFile64
         $downloadFile64Path = (Join-Path $packageDir $global:downloadFile64)
         $client.DownloadFile($Latest.Url64, $downloadFile64Path)
-        Move-Item $downloadFile64Path $file64 -Force
+        Move-Item $downloadFile64Path $existingPackageInstaller64 -Force
 
         $Latest.ChecksumType64 = 'sha256'
         $Latest.Checksum64 = (Get-FileHash $file64).Hash
     }
     else {
-        Copy-Item $existingPackageInstaller64 $packageDir -Force
-        New-Item "$(Join-Path $packageDir (Split-Path -Leaf $existingPackageInstaller)).ignore" -Force
-
         $Latest.Checksum64 = (Get-FileHash $existingPackageInstaller64).Hash
     }
 }

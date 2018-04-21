@@ -1,7 +1,6 @@
 param([switch] $force)
 
 $packageDir = $PSScriptRoot
-$global:au_packageInstallerDir = Join-Path $PSScriptRoot '.\extensions' -Resolve
 
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 

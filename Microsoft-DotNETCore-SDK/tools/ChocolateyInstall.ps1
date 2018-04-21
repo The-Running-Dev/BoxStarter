@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
-    url         = 'https://download.microsoft.com/download/D/8/1/D8131218-F121-4E13-8C5F-39B09A36E406/dotnet-sdk-2.1.104-win-x64.exe'
-    checksum    = 'BE12095FD228306402F204684DF09BFDDBC83F37445D34C20BAF7AF8FAB817DE'
+    url         = 'https://download.microsoft.com/download/2/E/C/2EC018A0-A0FC-40A2-849D-AA692F68349E/dotnet-sdk-2.1.105-win-x64.exe'
+    checksum    = '1A8476A0949DF2BD3B8FE9117FAA192D2AA4385E35B2F0B87523448FDC40360A'
     silentArgs  = '/quiet'
 }
 

@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://download.jetbrains.com/resharper/JetBrains.Rider-2017.3.1.exe'
-    checksum        = 'DD7353C121FB5B611194261F8506DE794D63D6A254F773B416E5DD98087B2B8E'
+    url             = 'https://download.jetbrains.com/rider/JetBrains.Rider-2018.1.exe'
+    checksum        = '809A71CC1076DDAE2A30768A936FAF18CB0059208EFB4AD83960B57F1F31533A'
     silentArgs      = '/S'
 }
 

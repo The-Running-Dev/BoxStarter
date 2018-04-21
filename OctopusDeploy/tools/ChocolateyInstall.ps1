@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
-    url         = 'https://download.octopusdeploy.com/octopus/Octopus.2018.3.13-x64.msi'
-    checksum    = 'BDFF2F7D93AA90D20C807070382D6C7346D284F330851E346609A367A72DBED6'
+    url         = 'https://download.octopusdeploy.com/octopus/Octopus.2018.4.2-x64.msi'
+    checksum    = '8C74077FF2E833ACE28A4945F4D19F2BA67E62618979180ACA6D129D4C17F5AC'
 }
 
 Install-Package $arguments

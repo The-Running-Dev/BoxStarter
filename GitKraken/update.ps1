@@ -13,7 +13,7 @@ function global:au_GetLatest {
     $version = [regex]::match($releasePage.Content, $versionRegEx).Groups[1].Value
 
     if ($force) {
-        $global:au_Version = $release.Version
+        $global:au_Version = $version
     }
 
     return @{ Url32 = $url; Version = $version }
