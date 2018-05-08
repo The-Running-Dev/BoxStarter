@@ -1,7 +1,7 @@
 ## Chocolatey Packages
   * Packages support custom installer location through a Chocolatey extension
     * The installer can embedded into the package
-    * The installer can be in a local or network location (by setting $env:packagesInstallers)
+    * The installer can be in a local or network location (by setting $env:installers)
     * The installer can be downloaded from the internet (like most packages on the Community feed)
     * The installer can be inside a zip file (local or downloaded from the internet)
     * The installer can be inside an ISO image
