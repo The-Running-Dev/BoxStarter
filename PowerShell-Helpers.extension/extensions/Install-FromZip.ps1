@@ -9,13 +9,19 @@ function Install-FromZip {
     $originalFile = $packageArgs.file
 
     if (Test-FileExists $packageArgs.file) {
-        Write-Message "Install-FromZip: Unzipping to $($arguments.destination)"
-
-        Get-ChocolateyUnzip @packageArgs
+        Write-Message "Install-FromZip: Unzipping to $($packageArgs.destination)"
+        Get-ChocolateyUnzip  `
+            -PackageName $packageArgs.packageName `
+            -FileFullPath $packageArgs.file `
+            -Destination $packageArgs.destination
     }
     elseif ($packageArgs.url) {
-        Write-Message "Install-FromZip: Installing zip with Install-ChocolateyZipPackage"
-        Install-ChocolateyZipPackage @packageArgs
+        Write-Message "Install-FromZip: Installing with Install-ChocolateyZipPackage"
+
+        Install-ChocolateyZipPackage `
+            -PackageName $packageArgs.packageName `
+            -Url $packageArgs.Url `
+            -UnzipLocation $packageArgs.destination
     }
 
     if ($packageArgs.executableRegEx) {

@@ -10,7 +10,7 @@ SetWorkingDir %A_ScriptDir%
 
 SetTitleMatchMode, 2
 
-WinWait, Razer Synapse - InstallShield Wizard ahk_class MsiDialogCloseClass, Welcome,
+WinWait, Razer Synapse - InstallShield Wizard ahk_class MsiDialogCloseClass
 WinActivate
 ControlClick, &Next >, Razer Synapse - InstallShield Wizard ahk_class MsiDialogCloseClass
 Sleep, 400

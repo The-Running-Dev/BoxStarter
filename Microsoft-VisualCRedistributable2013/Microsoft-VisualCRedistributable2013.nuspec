@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Microsoft-VisualCRedistributable2013</id>
-    <version>12.0.30501.20150616</version>
+    <version>12.0.30501</version>
     <title>Visual C++ Redistributable Packages for Visual Studio 2013</title>
     <authors>Microsoft</authors>
     <projectUrl>http://www.microsoft.com/en-us/download/details.aspx?id=40784</projectUrl>
@@ -16,8 +16,6 @@
     <iconUrl>https://cdn.rawgit.com/dtgm/chocolatey-packages/d04fa0bcd6996bde7e372d426aee525944c23665/icons/vcredist2013.png</iconUrl>
     <dependencies>
       <dependency id="PowerShell-Helpers.extension" />
-      <dependency id="Microsoft-VisualCRedistributable2013x86" />
-      <dependency id="Microsoft-VisualCRedistributable2013x64" />
     </dependencies>
   </metadata>
 </package>

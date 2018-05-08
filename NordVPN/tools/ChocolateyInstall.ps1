@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
     url         = 'https://downloads.nordcdn.com/apps/windows/10/NordVPN/latest/NordVPNSetup.exe'
-    checksum    = '2C0CAFF0BC1B77C03B1530A6563F3BA3C80A5A8EE6B4D3C7E4A66F0D435D53CA'
+    checksum    = '76D97EF64A86E0CFFC0F0980E50AAF605A9E32125A3FBA2D756930F6A85CB741'
     silentArgs  = '/quiet /norestart'
 }
 

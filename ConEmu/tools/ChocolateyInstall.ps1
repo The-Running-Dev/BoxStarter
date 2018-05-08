@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://github.com/Maximus5/ConEmu/releases/download/v18.04.18/ConEmuSetup.180418.exe'
-    checksum        = 'E8E71B095E9226958F43EC8E9C6414CEE5FE801A92944F98F7FD1F70F268062A'
+    url             = 'https://github.com/Maximus5/ConEmu/releases/download/v18.05.06/ConEmuSetup.180506.exe'
+    checksum        = '4557380F8FB42CADFA40FBA46E731C234A53DDEF436DC1C0172B9F5B3AD47073'
     silentArgs      = "/p:x64 /quiet /norestart"
 }
 

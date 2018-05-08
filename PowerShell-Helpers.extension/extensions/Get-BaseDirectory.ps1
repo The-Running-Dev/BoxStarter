@@ -8,10 +8,10 @@ function Get-BaseDirectory {
         return $baseDir
     }
 
-    # Overwrite the base directory with packagesInstallers
-    if (Test-DirectoryExists $env:packagesInstallers) {
-        Write-Message "Get-BaseDirectory: Using 'PackagesInstallers' $($env:packagesInstallers)"
-        return $env:packagesInstallers
+    # Overwrite the base directory with installers
+    if (Test-DirectoryExists $env:installers) {
+        Write-Message "Get-BaseDirectory: Using 'Installers' $($env:installers)"
+        return $env:installers
     }
 
     # Overwrite the base directory with ChocolateyPackageFolder

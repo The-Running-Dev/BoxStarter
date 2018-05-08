@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>DatabaseDotNET</id>
-    <version>24.7</version>
+    <version>24.8</version>
     <title>Database .NET</title>
     <authors>fish</authors>
     <projectUrl>http://fishcodelib.com/Database.htm</projectUrl>

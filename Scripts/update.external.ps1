@@ -22,7 +22,7 @@ function Invoke-ChocoSync {
             $sourcePackageVersion = [version]($sourcePackage -split '\|' | Select-Object -Last 1)
         }
 
-        $publicFeedPackage = choco list $_ -s Chocolatey,Chocolatey.licensed -r -e
+        $publicFeedPackage = choco list $_ -s Chocolatey, Chocolatey.licensed -r -e
         if ($publicFeedPackage) {
             $publicFeedPackageVersion = [version]($publicFeedPackage -split '\|' | Select-Object -Last 1)
         }
@@ -36,7 +36,7 @@ function Invoke-ChocoSync {
                     Write-Host "You have $_ v$sourcePackageVersion, v$publicFeedPackageVersion is available, downloading..."
                 }
 
-                choco download $_ -outDir $packagesDir -s Chocolatey,Chocolatey.licensed -r
+                choco download $_ -outDir $packagesDir -s Chocolatey, Chocolatey.licensed -r
 
                 # Remove the downloaded package
                 Get-ChildItem $packagesDir *.nupkg | Remove-Item -Force
@@ -89,6 +89,7 @@ $packages = @(
     'BoxStarter.WinConfig'
     'Chocolatey'
     'Chocolatey.extension'
+    'Chocolatey-Agent'
     'Chocolatey-Core.extension'
     'Chocolatey-VisualStudio.extension'
     'Chocolatey-WindowsUpdate.extension'

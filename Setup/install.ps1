@@ -2,9 +2,12 @@ param([switch] $force)
 
 $installLatestBeta = $false
 $installLocalFile = $true
-$baseDir = Join-Path $PSScriptRoot . -Resolve
+$env:installers = Resolve-Path "$PSScriptRoot\Installers"
+$packages = Join-Path $PSScriptRoot 'packages.config'
+$packagesDir = Join-Path $PSScriptRoot 'Packages' -Resolve
 
-$localChocoPackage = Get-ChildItem $baseDir -Recurse -File | Where-Object { $_.Name -match 'Chocolatey\.([0-9\.]+).nupkg' } | Select-Object -Last 1 -ExpandProperty FullName
+$baseDir = Join-Path $PSScriptRoot . -Resolve
+$localChocoPackage = Get-ChildItem $baseDir -Recurse -File | Where-Object { $_.Name -match '^Chocolatey\.([0-9\.]+).nupkg' } | Select-Object -Last 1 -ExpandProperty FullName
 
 if (![System.IO.File]::Exists($localChocoPackage)) {
     $installLocalFile = $false
@@ -81,3 +84,13 @@ if (!(Test-Path $chocoInstallPath) -or $force) {
 
     choco feature enable -n allowGlobalConfirmation
 }
+
+# Add the current directory as a temporary Chocolatey source
+choco source add -n='Setup' -s="$packagesDir" -priority=1
+
+Get-Content $packages | ForEach-Object {
+    choco upgrade $_
+}
+
+# Remove the current directory as a Chocolatey source
+choco source remove -n='Setup'

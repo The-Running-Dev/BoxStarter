@@ -49,9 +49,12 @@ if ($addToPath) {
 }
 
 $arguments  = @{
-    url         = 'https://az764295.vo.msecnd.net/stable/3aeede733d9a3098f7b4bdc1f66b63b0f48c1ef9/VSCodeSetup-x64-1.22.2.exe'
-    checksum    = '8F10321BC920B9D593ED55BB3DDE0A325721169C4F8CF59258493681C22D1E83'
+    url         = 'https://az764295.vo.msecnd.net/stable/7c7da59c2333a1306c41e6e7b68d7f0caa7b3d45/VSCodeSetup-x64-1.23.0.exe'
+    checksum    = '3313356942DCB24376008EB3FC1D0580C9799F66BCFD3FB8992BC3699F447421'
     silentArgs  = "/verysilent /suppressmsgboxes /mergetasks=$mergeTasks /log=""$env:temp\vscode.log"""
 }
+
+# Stop Code if it's already running
+Get-Process -Name Code -ErrorAction SilentlyContinue | Stop-Process
 
 Install-Package $arguments

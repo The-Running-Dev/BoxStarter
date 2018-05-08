@@ -17,6 +17,7 @@ function Get-Arguments {
     $packageArgs.destination = Get-Argument $arguments 'destination' $env:ChocolateyPackageFolder
     $packageArgs.url = Get-Argument $arguments 'url'
     $packageArgs.file = Get-Argument $arguments 'file' ([System.IO.Path]::GetFileName($arguments.url) -replace '%20', ' ')
+    $packageArgs.fileFullPath = Join-Path $env:ChocolateyPackageFolder ([System.IO.Path]::GetFileName($packageArgs.file))
     $packageArgs.executablePackageName = Get-Argument $arguments 'executablePackageName'
     $packageArgs.executable = Get-Argument $arguments 'executable'
     $packageArgs.executableArgs = Get-Argument $arguments 'executableArgs'
@@ -30,23 +31,43 @@ function Get-Arguments {
 
     [Array]$packageArgs.validExitCodes += $global:defaultValidExitCodes
 
-    # The file parameter does not contain a full path
-    if (![System.IO.Path]::IsPathRooted($packageArgs.file)) {
-        $packageArgs.file = Join-Path $env:ChocolateyPackageFolder $packageArgs.file
+    $fileName = $packageArgs.file
+
+    # If the file does not contain a full path,
+    # look for the file in the package directory
+    if (-not [System.IO.Path]::IsPathRooted($packageArgs.file)) {
+        $file = Join-Path $env:ChocolateyPackageFolder $fileName
+
+        if (Test-FileExists $file) {
+            $packageArgs.file = $file
+        }
     }
 
-    # No file provided, find the first executable or zip in the package directory
-    if (![System.IO.File]::Exists($packageArgs.file) -and !$packageArgs.url) {
-        $packageArgs.file = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
+    # Next look in the installers directory
+    if (-not (Test-FileExists $packageArgs.file) -and (Test-DirectoryExists $env:installers)) {
+        $file = Join-Path $env:installers $fileName
+
+        if (Test-FileExists $file) {
+            $packageArgs.file = $file
+        }
+    }
+
+    # Next, find the first executable or zip in the package directory
+    if (-not (Test-FileExists $packageArgs.file)) {
+        $file = (Get-ChildItem -Path $env:ChocolateyPackageFolder `
                 -Include *.zip, *.7z, *.tar.gz, *.exe, *.msi, *.reg -Recurse -File `
                 | Select-Object -First 1 -ExpandProperty FullName)
+
+        if (Test-FileExists $file) {
+            $packageArgs.file = $file
+        }
     }
 
     $packageArgs.fileType = Get-FileExtension $packageArgs.file
     $packageArgs.executableType = Get-FileExtension $packageArgs.executable
 
     # No silent arguments provided and the file type is MSI
-    if (!$packageArgs.silentArgs -and $packageArgs.fileType -eq 'msi') {
+    if (-not $packageArgs.silentArgs -and $packageArgs.fileType -eq 'msi') {
         $packageArgs.silentArgs = '/quiet /norestart'
     }
 

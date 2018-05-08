@@ -45,13 +45,13 @@ Describe "Get-Executable" {
                 $result | Should Be $env:ModuleUnderTest
             }
         }
-        Context "When the packagesInstallers is Set" {
+        Context "When the installers is Set" {
             Mock Test-DirectoryExists { $false } -Verifiable
 
-            $env:packagesInstallers = Split-Path -Parent $env:ModuleUnderTest
+            $env:installers = Split-Path -Parent $env:ModuleUnderTest
             $result = Get-Executable -File $env:moduleName
 
-            It "Should Find the Executable in the packagesInstallers Directory" {
+            It "Should Find the Executable in the installers Directory" {
                 $result | Should Be $env:ModuleUnderTest
             }
         }

@@ -4,4 +4,7 @@
     silentArgs      = '/verysilent'
 }
 
+# Kill the Launchy process if it's already running
+Get-Process -Name Launchy -ErrorAction SilentlyContinue | Stop-Process
+
 Install-Package $arguments

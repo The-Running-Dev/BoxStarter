@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'http://www.7-zip.org/a/7z1801-x64.exe'
-    checksum        = '86670D63429281A4A65C36919CA0F3099E3F803E3096C3A9722D61B3D31E4A9F'
+    url             = 'http://www.7-zip.org/a/7z1805-x64.exe'
+    checksum        = 'C1E42D8B76A86EA1890AD080E69A04C75A5F2C0484BDCD838DC8FA908DD4A84C'
     silentArgs      = '/S'
 }
 

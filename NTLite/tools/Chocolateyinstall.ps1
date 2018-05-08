@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
     url         = 'http://downloads.ntlite.com/files/NTLite_setup_x64.exe'
-    checksum    = '4E7E775E8D0768501B9FA8406F5A11BB7353E480EC4C5EF9622397C58D07F127'
+    checksum    = 'B6FB10FFBC4EE643770CE39C5D89FE5365D1FD6E01CB69744B614E60B6570464'
     silentArgs  = '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
 }
 

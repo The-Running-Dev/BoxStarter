@@ -7,9 +7,11 @@ function Install-Package {
     $packageArgs = Get-Arguments $arguments
 
     if (-not (Test-FileExists $packageArgs.file) -and $packageArgs.url) {
-        Write-Message "Install-Package: Downloading from '$($arguments.url)'"
-
-        $arguments.file = Get-ChocolateyWebFile @packageArgs
+        Write-Host "Install-Package: Downloading from '$($packageArgs.url)'"
+        $packageArgs.file = Get-ChocolateyWebFile `
+            -PackageName $packageArgs.packageName `
+            -Url $packageArgs.url `
+            -FileFullPath $packageArgs.fileFullPath
     }
 
     Install-ChocolateyInstallPackage `

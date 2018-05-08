@@ -6,7 +6,7 @@ $global:au_Force = $false
 Push-Location $packageDir
 
 $installersPath = Join-Path $PSScriptRoot '..\..\..\BoxStarter\Installers' -Resolve
-$packageInstallerDir = @{$true = $global:au_packageInstallerDir; $false = $packageDir; }[(Test-Path variable:\au_packageInstallerDir)]
+$packageInstallerDir = @{$true = $global:au_packageInstallerDir; $false = "$packageDir\tools"; }[(Test-Path variable:\au_packageInstallerDir)]
 
 $global:au_isFixedVersion = @{$true = $global:au_isFixedVersion; $false = $false; }[(Test-Path variable:\au_isFixedVersion)]
 
@@ -27,12 +27,15 @@ $savedSettingsDir = Get-ChildItem -Path $programsSettingsDir -Directory -Filter 
 function global:au_BeforeUpdate {
     if ($Latest.FileName32) {
         $installer = $Latest.FileName32
+        Write-Host "Setting installer, Lastest.Filename32: $($Lastest.Filename32)"
     }
     elseif ($Latest.Url32) {
         $installer = [System.IO.Path]::GetFileName($Latest.Url32) -replace '%20', ' '
+        Write-Host "Setting installer, Lastest.Url32: $installer"
     }
     else {
-        $installer = (Get-Item $packageDir\tools\chocolateyInstall.ps1 | Select-String "(?i)file\s*=\s*'.*'" | Select-Object -First 1) -Split "=|'" | Select-Object -Last 1 -Skip 1
+        $installer = (Get-Item $packageDir\tools\ChocolateyInstall.ps1 | Select-String "(?i)file\s*=\s*'.*'" | Select-Object -First 1) -Split "=|'" | Select-Object -Last 1 -Skip 1
+        Write-Host "Setting installer, ChocolateyInstall.ps1: $installer"
     }
 
     $existingInstaller = Join-Path $installersPath $installer
@@ -44,45 +47,45 @@ function global:au_BeforeUpdate {
 
     # If the installer file is always the same, and the local and remote versions are different
     if ($installerFile -eq $existingInstallerFile -and $Latest.Url32 -and ($localVersion -ne $remoteVersion)) {
+        Write-Host "Getting Remote Checksum, Latest.Url32: $($Latest.Url32)"
+
         # Get the remote checksum to determine if we should re-download the installer
         $latestChecksum = Get-RemoteChecksum $Latest.Url32
     }
 
-    if ((-not(Test-Path $existingInstaller) -and $Latest.Url32) -or $latestChecksum -ne $Latest.Checksum32) {
+    #if ((-not(Test-Path $existingInstaller) -and $Latest.Url32) -or $latestChecksum -ne $Latest.Checksum32) {
+    if (-not(Test-Path $existingInstaller) -and $Latest.Url32) {
+        Write-Host "No Existing Installer: $existingInstaller"
+
         # Use the AU function to get the installer
+        Write-Host "Getting Installer with Get-RemoteFiles"
         Get-RemoteFiles -NoSuffix `
             -FileNameBase $([System.IO.Path]::GetFileNameWithoutExtension($existingInstaller))
 
         # Find the downloaded file
         $downloadedFile = Get-ChildItem `
             -Recurse *.7z, *.zip, *.tar.gz, *.exe, *.msi, *.jar | Select-Object -First 1
+        Write-Host "Installer Downloaded: $downloadedFile"
 
         # Remove the _32 and any HTML encoded space
         $installer = Join-Path $packageInstallerDir ((Split-Path -Leaf $downloadedFile) -replace '%20', ' ')
-
-        # Move the installer to the package directory
-        # because I don't like it under the tools directory
-        Move-Item $downloadedFile $installer -Force
-
-        if ($installer -match '\.(exe|msi)$') {
-            # Create a .ignore file for each found executable
-            New-Item "$($installer).ignore" -Force | Out-Null
-        }
-
         $installer = [System.IO.Path]::GetFileName($installer)
+
         $Latest.FileName32 = $installer
         $Latest.UpdateInstaller = $true
+
+        Write-Host "
+Installer: $installer
+Latest.FileName32: $($Latest.FileName32)
+Latest.UpdateInstaller: $($Latest.UpdateInstaller)"
     }
     elseif (Test-Path $existingInstaller) {
-        Copy-Item $existingInstaller $packageInstallerDir -Force
-
-        if ($existingInstaller -match '\.(exe|msi)$') {
-            # Create a .ignore file for each found executable
-            New-Item "$packageInstallerDir\$(Split-Path -Leaf $existingInstaller).ignore" -Force | Out-Null
-        }
-
         $Latest.Checksum32 = (Get-FileHash $existingInstaller).Hash
         $Latest.FileName32 = $installer
+        Write-Host "
+Existing Installer: $existingInstaller
+Latest.Checksum: $($Latest.Checksum32)
+Latest.FileName32: $($Latest.FileName32)"
     }
 
     if ($settingsDir -ne $packageDir) {
@@ -91,6 +94,8 @@ function global:au_BeforeUpdate {
             -DestinationPath $settingsZip `
             -Force
     }
+
+    global:au_CleanUp
 }
 
 function global:au_GetLatest {
@@ -172,4 +177,24 @@ function global:au_SearchReplace {
     if ($updatedOn) { $searchReplace[".\tools\chocolateyInstall.ps1"]["(?i)(^[$]updatedOn\s*=\s*)('.*')"] = "`$1'$($Latest.UpdatedOn)'" }
 
     return $searchReplace
+}
+
+function global:au_CleanUp {
+    # Only cleanup if this is not a personal package
+    if ($Latest.PackageName -notmatch '\-Personal$') {
+        $packageInstaller = Join-Path $packageInstallerDir $Latest.FileName32
+        $existingPackageInstaller = Join-Path $installersPath $Latest.FileName32
+
+        if (((Test-FileExists $packageInstaller) -and (-not (Test-FileExists $existingPackageInstaller))) -or $Latest.UpdateInstaller) {
+            # Get the beggining of the installer name, without the version
+            $installer = $packageInstaller -replace '.*\\([a-z0-9]+).*$', '$1'
+
+            # Delete any previous versions of the same installer
+            # Get-ChildItem $installersPath -File | `
+            # Where-Object { $_.Name -match $installer } | Remove-Item
+
+            Write-Host "Moving '$packageInstaller' --> '$installersPath'"
+            Move-Item $packageInstaller $installersPath -Force
+        }
+    }
 }

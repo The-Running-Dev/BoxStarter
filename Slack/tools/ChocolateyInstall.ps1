@@ -7,4 +7,4 @@
 
 Install-Package $arguments
 
-Install-BinFile 'Slack' (Join-Path (Get-AppInstallLocation $env:ChocolateyPackageTitle) 'Slack.exe')
+Install-BinFile 'Slack' (Join-Path $env:AppData 'Slack\Slack.exe')
