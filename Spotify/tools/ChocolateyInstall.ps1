@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
     url             = 'https://download.spotify.com/SpotifyFullSetup.exe'
-    checksum        = 'F907B9B1783327858914DB34BD11B8FC74815580D87F643654D714CFA24A0B78'
+    checksum        = '2542299A34D7D65414F528901FB1952870282FB7D0F1A065D215AB5233328EA5'
     silentArgs      = '/silent'
 }
 

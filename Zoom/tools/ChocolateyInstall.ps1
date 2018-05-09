@@ -5,3 +5,6 @@
 }
 
 Install-Package $arguments
+
+# Stop Zoom if it's running
+Get-Process -Name Zoom -ErrorAction SilentlyContinue | Stop-Process
