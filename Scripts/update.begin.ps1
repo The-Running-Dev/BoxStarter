@@ -45,17 +45,13 @@ function global:au_BeforeUpdate {
     $installerFile = [System.IO.Path]::GetFileName($installer)
     $existingInstallerFile = [System.IO.Path]::GetFileName($existingInstaller)
 
-    # If the installer file is always the same, and the local and remote versions are different
-    if ($installerFile -eq $existingInstallerFile -and $Latest.Url32 -and ($localVersion -ne $remoteVersion)) {
-        Write-Host "Getting Remote Checksum, Latest.Url32: $($Latest.Url32)"
-
-        # Get the remote checksum to determine if we should re-download the installer
-        $latestChecksum = Get-RemoteChecksum $Latest.Url32
-    }
-
-    #if ((-not(Test-Path $existingInstaller) -and $Latest.Url32) -or $latestChecksum -ne $Latest.Checksum32) {
-    if (-not(Test-Path $existingInstaller) -and $Latest.Url32) {
-        Write-Host "No Existing Installer: $existingInstaller"
+    if ((-not(Test-Path $existingInstaller) -and $Latest.Url32) -or $localVersion -ne $remoteVersion) {
+        if (-not(Test-Path $existingInstaller)) {
+            Write-Host "No Existing Installer: $existingInstaller"
+        }
+        elseif ($localVersion -ne $remoteVersion) {
+            Write-Host "Local Version and Remote Differ..."
+        }
 
         # Use the AU function to get the installer
         Write-Host "Getting Installer with Get-RemoteFiles"

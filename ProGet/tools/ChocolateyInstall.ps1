@@ -2,8 +2,8 @@
 
 $packageArgs    = Get-ProGetInstallArguments
 $arguments      = @{
-    url         = 'https://s3.amazonaws.com/cdn.inedo.com/downloads/proget/ProGetSetup5.0.10.exe'
-    checksum    = '346A87843ADA7E0D97C06711E4EEF637EC884BC83F0CC852B8A7BA70042D4209'
+    url         = 'https://s3.amazonaws.com/cdn.inedo.com/downloads/proget/ProGetSetup5.0.12.exe'
+    checksum    = '1444C443B084DF04F4FAE7E7517BF3F8968CFE4D342B14AA095A785E1335BEB8'
     silentArgs  = $packageArgs.silentArgs
 }
 
