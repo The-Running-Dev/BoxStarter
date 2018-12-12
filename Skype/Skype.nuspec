@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Skype</id>
+    <version>8.36.0.52</version>
+    <title>Skype</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.skype.com/intl/en-us/legal/eula/</licenseUrl>
+    <projectUrl>http://www.skype.com/</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/chocolatey/chocolatey-coreteampackages@040c834d483de9e38ceeef0fd8283d803be082bf/icons/skype.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Skype - Install Skype, add your friends as contacts, then call, video call and instant message with them for free. Call people who aren't on Skype too, at really low rates.
+
+## Notes
+The package have the following known issues.
+- Skype automatically starts after installation (no known way to disable it yet)
+- A desktop shortcut is automatically created.</description>
+    <summary>Skype - VOIP</summary>
+    <tags>Skype VOIP voice over ip video conferencing admin</tags>
+		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+      <dependency id="PowerShell-Helpers.extension" />
+    </dependencies>
+  </metadata>
+</package>
