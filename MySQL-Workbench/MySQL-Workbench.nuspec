@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>MySQL-Workbench</id>
-    <version>6.3.10</version>
+    <version>8.0.13</version>
     <title>MySQL Workbench</title>
     <authors>Oracle</authors>
     <licenseUrl>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html</licenseUrl>

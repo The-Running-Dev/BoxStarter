@@ -5,13 +5,13 @@ $packageDir = $PSScriptRoot
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $releaseUrl = 'https://lastpass.com/misc_download2.php'
-    $downloadUrl = 'https://lastpass.com/download/cdn/lastappinstall_x64.exe'
-    $versionRegEx = 'lastappinstall\.exe.*?Version ([0-9\.]+)'
+    $releaseUrl = 'https://lastpass.com/download'
+    $downloadUrl = 'https://download.cloud.lastpass.com/windows_installer/lastappinstall_x64.exe'
+    $versionRegEx = '<a id="applications".*?Version ([0-9\.]+)'
 
-    $releasePage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl -UserAgent $userAgent
-    $version = [regex]::match($releasePage, $versionRegEx).Groups[1].Value
-    $downloadUrl = $ExecutionContext.InvokeCommand.ExpandString($downloadUrl)
+    $releasePage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl
+    $version = ($releasePage.Content -Replace '[\n\r]', '') -match $versionRegEx | `
+        ForEach-Object { $Matches[1] }
 
     if ($force) {
         $global:au_Version = $version

@@ -1,6 +1,6 @@
 ﻿$arguments = @{
     url        = 'https://release.gitkraken.com/win64/GitKrakenSetup.exe'
-    checksum   = 'CCB109B78BFA669F3AE25DB2EDC5FB27E96ECA21F9F2EBB7284246069A2A67EA'
+    checksum   = '09E19828A270BE815ED35C47DD232AABE0B67D691B0446DE9F15C8AF18D67AF9'
     silentArgs = '-s'
 }
 

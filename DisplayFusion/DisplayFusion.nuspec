@@ -2,11 +2,10 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>DisplayFusion</id>
-    <version>9.1</version>
+    <version>9.4.6</version>
     <authors>Binary Fortress</authors>
     <title>DisplayFusion</title>
     <projectUrl>http://www.displayfusion.com</projectUrl>
-    <iconUrl>https://github.com/logo.png</iconUrl>
     <licenseUrl>http://www.binaryfortress.com/data/download/?package=displayFusion&amp;licenseEN=1&amp;log=0</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>multiMonitor displayFusion display binaryFortress monitor</tags>

@@ -6,7 +6,7 @@ $packageDir = $PSScriptRoot
 
 function global:au_GetLatest {
     $gitHubRepository = 'git-lfs/git-lfs'
-    $downloadUrlRegEx = '.*git-lfs-windows-([0-9\.]+)\.exe'
+    $downloadUrlRegEx = '.*git-lfs-windows-v([0-9\.]+)\.exe'
 
     $release = Get-GitHubVersion $gitHubRepository $downloadUrlRegEx
     $version = $release.Version

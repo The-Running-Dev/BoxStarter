@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
     url             = 'https://download.spotify.com/SpotifyFullSetup.exe'
-    checksum        = '2542299A34D7D65414F528901FB1952870282FB7D0F1A065D215AB5233328EA5'
+    checksum        = 'AD27A934F870D9E4337AC07BB1F61DB279E424E1AE4D9B2445D0180D89CECD68'
     silentArgs      = '/silent'
 }
 
@@ -17,3 +17,6 @@ do {
 
 }
 until ($done)
+
+# Remove the shortcut on the desktop
+Get-ChildItem "$env:UserProfile\Desktop" Spotify* | Remove-Item

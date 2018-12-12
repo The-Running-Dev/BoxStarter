@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>NuGet-CommandLine</id>
-    <version>4.6.2</version>
+    <version>4.7.1</version>
     <title>Nuget.CommandLine</title>
     <authors>Microsoft</authors>
     <licenseUrl>https://raw.githubusercontent.com/NuGet/NuGet.Client/dev/LICENSE.txt</licenseUrl>

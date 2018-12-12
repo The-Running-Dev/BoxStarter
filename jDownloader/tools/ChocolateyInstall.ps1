@@ -4,7 +4,7 @@ $url64 = 'http://installer.jdownloader.org/ic/JD2SilentSetup_x64.exe'
 
 $arguments = @{
     url        = 'https://download.teamviewer.com/download/TeamViewer_Setup_en.exe'
-    checksum   = 'F60062CF21ED42BA0ADF64A296F124074EF4AD92B6B58E2F488C4B028A286BF4'
+    checksum   = 'CE34113260805F46169CC8569440F62EE5EDF3E7C252BF0CB8393B285BA57C1F'
     silentArgs = '-q'
 }
 

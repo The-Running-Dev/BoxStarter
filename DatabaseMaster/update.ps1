@@ -7,11 +7,12 @@ $packageDir = $PSScriptRoot
 function global:au_GetLatest {
     $releaseUrl = 'http://nucleonsoftware.com/downloads'
     $url = 'http://nucleonsoftware.com/download/DatabaseMasterSetup.msi'
-    $versionRegEx = 'Version: ([0-9\.]+) / Size:.*'
+    $versionRegEx = 'Database Master.*?Version: ([0-9\.]+)'
 
     $releasePage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl
-    $releasePage.Content -match $versionRegEx
-    $version = $matches[1]
+    $versionString = Select-String '<li>Version: [0-9\.]+' -input $releasePage.Content -AllMatches  | ForEach {$_.matches.Value } | select -skip 2 -First 1
+    $versionString -match '[0-9\.]+'
+    $version = $matches[0]
 
     if ($force) {
         $global:au_Version = $version

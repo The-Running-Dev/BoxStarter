@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Microsoft-DotNETCore-Runtime</id>
-    <version>2.0.7</version>
+    <version>2.2.0</version>
     <title>Microsoft .NET Core Runtime</title>
     <authors>Microsoft</authors>
     <owners>The-Running-Dev</owners>
@@ -18,16 +18,11 @@
     .NET Core supports Windows 7 SP1 / Server 2008 R2 or later. On Windows 7 / Server 2008 R2, [security update KB2533623](https://support.microsoft.com/en-us/kb/2533623) must be installed, according to [documented system requirements](https://github.com/dotnet/core/blob/master/Documentation/prereqs.md).
     </description>
     <summary>This package is required to run console applications with the .NET Core runtime.</summary>
-    <releaseNotes>##### Software
-    [.NET Core Release Notes](https://github.com/dotnet/core/tree/master/release-notes)
-    ##### Package
-    1.1.0: Initial package release for software version 1.1.0.
-    </releaseNotes>
     <copyright>.NET Foundation and Contributors</copyright>
     <tags>Microsoft .NET Core Runtime Redistributable admin</tags>
     <dependencies>
       <dependency id="PowerShell-Helpers.extension" />
-      <dependency id="Microsoft-VisualCRedistributable2015" />
+      <dependency id="Microsoft-VisualCRedistributable2017" />
     </dependencies>
   </metadata>
 </package>

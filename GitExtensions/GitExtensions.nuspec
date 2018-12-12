@@ -2,13 +2,88 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>GitExtensions</id>
-    <version>2.51.01</version>
+    <version>3.00.00</version>
     <title>Git Extensions</title>
     <authors>Henk Westhuis</authors>
     <licenseUrl>https://github.com/gitextensions/gitextensions/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>http://gitextensions.github.io/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Git Extensions is the only graphical user interface for Git that allows you control Git without using the commandline. It comes with a manual and video tutorials to get you started quickly.</description>
+    <description>
+    Git Extensions is the only graphical user interface for Git that allows
+    you control Git without using the commandline. It comes with a manual and
+    video tutorials to get you started quickly.
+
+    ## Notes
+
+    Install with SQL Authentication. You have to specify the "sa" password.
+    ```
+    choco install Microsoft-SQLServer2016Expres -ia '/SECURITYMODE="SQL" /SAPWD="SetYourOwn"'
+    ```
+    GitExtensions
+    -------------
+    AddToPath - Add installation directory to PATH
+    Dictionaries - Spelling dictionaries
+    DiffScripts - Custom merge scripts
+    GitExtensions.desktop -	Desktop shortcut
+    Plugins	- Plugins
+    Protocol.git - Assign with git://-links
+    Protocol.github_windows - Assign with github-windows://-links
+    ShellExtension - Windows Explorer integration
+    Translation	- Translations
+    VSExtension	- Visual Studio extension
+
+    Plugins
+    -------------
+    AppVeyorIntegration	- AppVeyor integration
+    AutoCompileSubmodules - Auto compile submodules
+    AzureDevOpsIntegration - Azure DevOps and TFS &gt;= 2015 integration
+    BackgroundFetch	- Periodic background fetch
+    Bitbucket - Atlassian Bitbucket Server integration
+    CreateLocalBranches	- Create local branches
+    DeleteUnusedBranches - Delete unused branches
+    FindLargeFiles - Find large files
+    Gerrit - Gerrit code review
+    GitFlow - GitFlow
+    Github - Github integration
+    Gource - Gource visualization
+    Impact - Impact Graph
+    JenkinsIntegration - Jenkins integration
+    JiraCommitHintPlugin - Jira Commit Hint Plugin
+    ProxySwitcher - Proxy switcher
+    ReleaseNotesGenerator - Release notes generator
+    Statistics - Statistics
+    TeamCityIntegration - TeamCity integration
+    TfsIntegration - Tfs integration
+
+    Dictionaries
+    -------------
+    deDE
+    enAU
+    enCA
+    enGB
+    enUS
+    esES
+    esMX
+    frFR
+    itIT
+    nlNL
+    plPL
+    roRO
+    ruRU
+
+    Translation
+    -------------
+    Dutch
+    French
+    German
+    Polish
+    Russian
+    SimplifiedChinese
+
+    VSExtension
+    -------------
+    VS2015FeatureId	- Visual Studio 2015/2017 integration
+    </description>
     <summary>Git Extensions is the only graphical user interface for Git that allows you control Git without using the commandline.</summary>
     <releaseNotes>https://github.com/gitextensions/gitextensions/blob/master/GitUI/Resources/ChangeLog.md</releaseNotes>
     <docsUrl>https://git-extensions-documentation.readthedocs.org/en/latest/</docsUrl>
@@ -16,12 +91,13 @@
     <bugTrackerUrl>http://github.com/gitextensions/gitextensions/issues</bugTrackerUrl>
     <tags>gitextensions git gui admin</tags>
     <owners>The-Running-Dev</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
     <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/02c21bebe5abb495a56747cbb9b4b5415c933fc0/icons/gitextensions.svg</iconUrl>
     <dependencies>
-			<dependency id="PowerShell-Helpers.extension" />
-      <dependency id="Git" />
-      <dependency id="KDiff3" />
-		</dependencies>
+        <dependency id="PowerShell-Helpers.extension" />
+        <dependency id="Git" />
+        <dependency id="GitLFS" />
+        <dependency id="KDiff3" />
+	</dependencies>
   </metadata>
 </package>

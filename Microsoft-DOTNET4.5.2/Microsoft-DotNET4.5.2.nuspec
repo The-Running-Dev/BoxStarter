@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>Microsoft-DotNET4.5.2</id>
+    <id>Microsoft-DOTNET4.5.2</id>
     <version>4.5.2.20140902</version>
     <title>Microsoft Dot NET 4.5.2</title>
     <authors>Microsoft</authors>

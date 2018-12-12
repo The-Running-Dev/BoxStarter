@@ -5,7 +5,7 @@ $packageDir = $PSScriptRoot
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $release = Get-GitHubVersion 'gitextensions/gitextensions' '.*SetupComplete\.msi$'
+    $release = Get-GitHubVersion 'gitextensions/gitextensions' '.*\.msi$'
 
     if ($force) {
         $global:au_Version = $release.Version

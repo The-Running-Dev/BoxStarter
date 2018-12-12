@@ -11,7 +11,7 @@ function global:au_GetLatest {
     Invoke-WebRequest -Uri $url -OutFile $installer
     $version = (Get-Item $installer).VersionInfo.ProductVersion
 
-    Remove-ITem $installer
+    Remove-Item $installer
 
     if ($force) {
         $global:au_Version = $version

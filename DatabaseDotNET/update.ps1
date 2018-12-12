@@ -5,13 +5,13 @@ $packageDir = $PSScriptRoot
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $releaseUrl = 'http://fishcodelib.com/Database_new.htm'
-    $url = 'http://fishcodelib.com/files/DatabaseNet4.zip'
-    $versionRegEx = 'Ver ([0-9\.]+)'
+    $releaseUrl = 'https://fishcodelib.com/Database.htm'
+    $url = 'https://fishcodelib.com/files/DatabaseNet4.zip'
+    $versionRegEx = 'Free and Plus Edition ([0-9\.]+).*(\d{4})'
 
     $releasePage = Invoke-WebRequest -UseBasicParsing -Uri $releaseUrl
     $releasePage.Content -match $versionRegEx
-    $version = $matches[1]
+    $version = "$($matches[1]).$($matches[2])"
 
     if ($force) {
         $global:au_Version = $version

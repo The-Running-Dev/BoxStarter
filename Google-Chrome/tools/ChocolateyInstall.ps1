@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
     url         = 'https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi'
-    checksum    = '7CE423F4AB7F8FE3296DDD9AA6CB1DC5DA8997EAD9D7F38A0C4BFAE415695221'
+    checksum    = '1A6CECB8952C7E0B50DAC6AAA83BB8DCC7DE978466036BB97DE656DFC89900C4'
 }
 
 function Get-ChromeVersion() {
@@ -19,3 +19,6 @@ if ($env:ChocolateyPackageVersion -eq (Get-ChromeVersion)) {
 }
 
 Install-Package $arguments
+
+# Remove the shortcut on the desktop
+Get-ChildItem "$env:UserProfile\Desktop" Google* | Remove-Item

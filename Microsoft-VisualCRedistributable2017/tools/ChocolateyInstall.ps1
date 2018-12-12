@@ -1,47 +1,34 @@
-﻿Set-StrictMode -Version 2
-$ErrorActionPreference = 'Stop'
+﻿$otherData = @{
+    ThreePartVersion  = [version]'14.16.27012'
+    FamilyRegistryKey = '14.0'
+}
 
-. (Join-Path -Path (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent) -ChildPath 'data.ps1')
-$packageName = $otherData.PackageName
-$installerType = 'exe'
-$silentArgs = '/quiet /norestart'
-$validExitCodes = @(0, 3010)
 $force = $env:chocolateyPackageParameters -like '*Force*'
 
-Write-Verbose 'Checking Service Pack requirements'
-$os = Get-WmiObject -Class Win32_OperatingSystem
-$version = [Version]$os.Version
-if ($version -ge [Version]'6.1' -and $version -lt [Version]'6.2' -and $os.ServicePackMajorVersion -lt 1) {
-    # On Windows 7 / Server 2008 R2, Service Pack 1 is required
-    throw 'This package requires Service Pack 1 to be installed first. The "KB976932" package may be used to install it.'
-}
-elseif ($version -ge [Version]'6.0' -and $version -lt [Version]'6.1' -and $os.ServicePackMajorVersion -lt 2) {
-    # On Windows Vista / Server 2008, Service Pack 2 is required
-    throw 'This package requires Service Pack 2 to be installed first.'
-}
-elseif ($version -ge [Version]'5.2' -and $version -lt [Version]'6.0' -and $os.ServicePackMajorVersion -lt 2) {
-    # On Windows Server 2003 / XP x64, Service Pack 2 is required
-    throw 'This package requires Service Pack 2 to be installed first.'
-}
-elseif ($version -ge [Version]'5.1' -and $version -lt [Version]'5.2' -and $os.ServicePackMajorVersion -lt 3) {
-    # On Windows XP, Service Pack 3 is required
-    throw 'This package requires Service Pack 3 to be installed first.'
-}
-
 $runtimes = @{
-    'x64' = @{
-      RegistryPresent = $false;
-      RegistryVersion = $null;
-      DllVersion = $null;
-      InstallData = $installData64;
-      Applicable = (Get-ProcessorBits) -eq 64
-    }
     'x86' = @{
-      RegistryPresent = $false;
-      RegistryVersion = $null;
-      DllVersion = $null;
-      InstallData = $installData32;
-      Applicable = $true
+        RegistryPresent = $false
+        RegistryVersion = $null
+        DllVersion      = $null
+        Arguments       = @{
+            file       = 'Microsoft-VisualCRedistributable2017_x86.exe'
+            url        = 'https://download.visualstudio.microsoft.com/download/pr/9fbed7c7-7012-4cc0-a0a3-a541f51981b5/e7eec15278b4473e26d7e32cef53a34c/vc_redist.x64.exe'
+            checksum   = '7EADB463BDF3CD1DE633B0A292B485FCCA7647CA5F9145600F784C7DD5DDF115'
+            silentArgs = '/Q /norestart'
+        }
+        Applicable      = $true
+    }
+    'x64' = @{
+        RegistryPresent = $false
+        RegistryVersion = $null
+        DllVersion      = $null
+        Arguments       = @{
+            file       = 'Microsoft-VisualCRedistributable2017_x86.exe'
+            url        = 'https://download.visualstudio.microsoft.com/download/pr/9fbed7c7-7012-4cc0-a0a3-a541f51981b5/e7eec15278b4473e26d7e32cef53a34c/vc_redist.x64.exe'
+            checksum   = '7EADB463BDF3CD1DE633B0A292B485FCCA7647CA5F9145600F784C7DD5DDF115'
+            silentArgs = '/Q /norestart'
+        }
+        Applicable      = (Get-ProcessorBits) -eq 64
     }
 }
 
@@ -50,62 +37,52 @@ switch ([string](Get-ProcessorBits)) {
     }
     '64' { $registryRoots = @{ x86 = 'HKLM:\SOFTWARE\WOW6432Node'; x64 = 'HKLM:\SOFTWARE' }
     }
-    default { throw "Unsupported bitness: $_" }
+    default { throw "Unsupported Architecture: $_" }
 }
 
-Write-Verbose 'Analyzing servicing information in the registry'
 foreach ($archAndRegRoot in $registryRoots.GetEnumerator()) {
     $arch = $archAndRegRoot.Key
     $regRoot = $archAndRegRoot.Value
-    # https://docs.microsoft.com/en-us/cpp/ide/redistributing-visual-cpp-files
     $regData = Get-ItemProperty -Path "$regRoot\Microsoft\DevDiv\vc\Servicing\$($otherData.FamilyRegistryKey)\RuntimeMinimum" -Name 'Version' -ErrorAction SilentlyContinue
+
     if ($regData -ne $null) {
         $versionString = $regData.Version
+
         try {
             $parsedVersion = [version]$versionString
             Write-Verbose "Version of installed runtime for architecture $arch in the registry: $versionString"
-            $normalizedVersion = [version]($parsedVersion.ToString(3)) # future-proofing in case Microsoft starts putting more than 3 parts here
+
+            # future-proofing in case Microsoft starts putting more than 3 parts here
+            $normalizedVersion = [version]($parsedVersion.ToString(3))
             $runtimes[$arch].RegistryVersion = $normalizedVersion
         }
         catch {
-            Write-Warning "The servicing information in the registry is in an unknown format. Please report this to package maintainers. Data from the registry: Version = [$versionString]"
         }
     }
 }
 
 $packageRuntimeVersion = $otherData.ThreePartVersion
-Write-Verbose "Version number of runtime installed by this package: $packageRuntimeVersion"
 foreach ($archAndRuntime in $runtimes.GetEnumerator()) {
     $arch = $archAndRuntime.Key
     $runtime = $archAndRuntime.Value
 
     $shouldInstall = $runtime.RegistryVersion -eq $null -or $runtime.RegistryVersion -lt $packageRuntimeVersion
-    Write-Verbose "Runtime for architecture $arch applicable: $($runtime.Applicable); version in registry: [$($runtime.RegistryVersion)]; should install: $shouldInstall"
+    Write-Verbose "Runtime for $arch Applicable: $($runtime.Applicable); Version in Registry: [$($runtime.RegistryVersion)]; Should Install: $shouldInstall"
+
     if ($runtime.Applicable) {
         if (-not $shouldInstall) {
             if ($force) {
-                Write-Warning "Forcing installation of runtime for architecture $arch version $packageRuntimeVersion even though this or later version appears present, because 'Force' was specified in package parameters."
+                Write-Warning "Forcing Installation for $arch Version $packageRuntimeVersion..."
             }
             else {
                 if ($runtime.RegistryVersion -gt $packageRuntimeVersion) {
-                    Write-Warning "Skipping installation of runtime for architecture $arch version $packageRuntimeVersion because a newer version ($($runtime.RegistryVersion)) is already installed."
-                }
-                else {
-                    Write-Host "Runtime for architecture $arch version $packageRuntimeVersion is already installed."
+                    Write-Warning "Skipping Installation for $arch ...a Newer Version ($($runtime.RegistryVersion)) is Already Installed..."
                 }
 
                 continue
             }
         }
 
-        Write-Verbose "Installing runtime for architecture $arch"
-        $installData = $runtime.InstallData
-        Set-StrictMode -Off
-        Install-ChocolateyPackage -PackageName "${packageName}-$arch" `
-            -FileType $installerType `
-            -SilentArgs $silentArgs `
-            -ValidExitCodes $validExitCodes `
-            @installData
-        Set-StrictMode -Version 2
+        Install-Package $runtime.arguments
     }
 }

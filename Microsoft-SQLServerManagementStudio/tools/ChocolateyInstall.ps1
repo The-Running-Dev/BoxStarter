@@ -1,6 +1,6 @@
 ﻿$arguments = @{
-    url        = 'https://download.microsoft.com/download/0/D/2/0D26856F-E602-4FB6-8F12-43D2559BDFE4/SSMS-Setup-ENU.exe'
-    checksum   = '78591C090A91256CCBEBD871DD77EC1677436FC5CEB87560C914C6921D176FBD'
+    url        = 'http://download.microsoft.com/download/A/7/7/A77F55AC-6DFF-4B73-B2BD-420A97B946A3/SSMS-Setup-ENU.exe'
+    checksum   = '52C78DF04182FB4359E02FF9E971B1C0750B3B3F363DE78C2D4035B9B146E0F1'
     silentArgs = '/install /quiet /norestart'
 }
 

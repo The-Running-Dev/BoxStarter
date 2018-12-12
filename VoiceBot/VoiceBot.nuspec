@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>VoiceBot</id>
-    <version>3.3</version>
+    <version>3.4</version>
     <title>VoiceBot</title>
     <authors>Binary Fortress Software</authors>
     <licenseUrl>https://www.binaryfortress.com/Data/Download/?package=voicebot%26licenseen=1%26log=0</licenseUrl>

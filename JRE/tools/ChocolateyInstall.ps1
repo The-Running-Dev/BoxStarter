@@ -20,13 +20,13 @@
     return $x86_32, $x86_64
 }
 
-$x86Installer       = 'jre-8u171-windows-i586.exe'
+$x86Installer       = 'jre-8u191-windows-i586.exe'
 $arguments          = @{
-    file            = 'jre-8u171-windows-x64.exe'
-    url             = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=233170_512cd62ec5174c3487ac17c61aaa89e8'
-    url64           = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=233172_512cd62ec5174c3487ac17c61aaa89e8'
-    checksum        = 'ECAA6BF5DC3C02D5F3A93382268D44B1540F322C508E88E679CA17F8DCC906D7'
-    checksum64      = 'D5256B3D1A6DA959EA98EA2A2BE3A05A7DF9D1A5CD75DB3930F935AB71CE43B8'
+    file            = 'jre-8u191-windows-x64.exe'
+    url             = 'https://javadl.oracle.com/webapps/download/AutoDL?BundleId=235725_2787e4a523244c269598db4e85c51e0c'
+    url64           = 'https://javadl.oracle.com/webapps/download/AutoDL?BundleId=235727_2787e4a523244c269598db4e85c51e0c'
+    checksum        = 'DE27BD5A46F325E7F7874538F5CA7FBE77D25ABA9D1B3ED9B93E0A81E4EAFE35'
+    checksum64      = '605D05442C1640530A8CA2938BAAFB785560AEFA88DC8CD0B43261EF3ECFA4BD'
     fileType        = 'exe'
     checksumType    = 'sha256'
     checksumType64  = 'sha256'
@@ -53,14 +53,14 @@ else {
 
     if (!($thisJreInstalledHash[0]) -and $exclude -ne '32') {
         $arguments.file = Join-Path $env:ChocolateyPackageFolder $x86Installer
-        $arguments.url64 = 'http://javadl.oracle.com/webapps/download/AutoDL?BundleId=233172_512cd62ec5174c3487ac17c61aaa89e8'
-        $arguments.checksum64 = 'D5256B3D1A6DA959EA98EA2A2BE3A05A7DF9D1A5CD75DB3930F935AB71CE43B8'
+        $arguments.url64 = 'https://javadl.oracle.com/webapps/download/AutoDL?BundleId=235727_2787e4a523244c269598db4e85c51e0c'
+        $arguments.checksum64 = '605D05442C1640530A8CA2938BAAFB785560AEFA88DC8CD0B43261EF3ECFA4BD'
 
         Install-Package $arguments
     }
 }
 
-#Uninstalls the previous version of Java if either version exists
+# Uninstalls the previous version of Java if either version exists
 $oldJreInstalledHash = thisJreInstalled($oldVersion)
 
 if ($oldJreInstalledHash[0]) {
@@ -72,3 +72,8 @@ if ($oldJreInstalledHash[1]) {
     $64 = $oldJreInstalledHash[1].IdentifyingNumber
     Start-ChocolateyProcessAsAdmin "/qn /norestart /X$64" -exeToRun "msiexec.exe" -validExitCodes @(0, 1605, 3010)
 }
+
+# Remove the scheduled update from startup
+Get-ItemProperty `
+    -Path 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run' `
+    -Name 'SunJavaUpdateSched' -ErrorAction SilentlyContinue | Remove-Item

@@ -1,7 +1,10 @@
 ﻿$arguments          = @{
-    url             = 'https://github.com/Maximus5/ConEmu/releases/download/v18.05.06/ConEmuSetup.180506.exe'
-    checksum        = '4557380F8FB42CADFA40FBA46E731C234A53DDEF436DC1C0172B9F5B3AD47073'
+    url             = 'https://github.com/Maximus5/ConEmu/releases/download/v18.06.26/ConEmuSetup.180626.exe'
+    checksum        = 'AE2723E95AB1FA7A17BBB54E25EE813B5E6313AF6C0B68B36FCA46B1C0370A41'
     silentArgs      = "/p:x64 /quiet /norestart"
 }
 
 Install-Package $arguments
+
+# Remove the shortcut on the desktop
+Get-ChildItem "$env:Public\Desktop" ConEmu* | Remove-Item

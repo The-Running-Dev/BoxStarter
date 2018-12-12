@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Atom</id>
-    <version>1.26.1</version>
+    <version>1.33.0</version>
     <title>Atom</title>
     <authors>GitHub Inc.</authors>
     <licenseUrl>https://github.com/atom/atom/blob/master/LICENSE.md</licenseUrl>

@@ -5,11 +5,15 @@ $packageDir = $PSScriptRoot
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $downloadEndPointUrl = 'https://www.binaryfortress.com/Data/Download/?package=displayfusion&log=101'
-    $versionRegEx = 'DisplayFusionSetup-([0-9\.\-]+)\.\w+$'
+    $downloadEndPointUrl = 'https://www.binaryfortress.com/Data/Download/?package=displayfusion&beta=1&log=101'
+    $changeLogUrl = 'https://www.displayfusion.com/ChangeLog/Beta/'
+    $versionRegEx = 'v([0-9\.]+)\sBeta\s(\d+)'
 
     $downloadUrl = ((Get-WebURL -Url $downloadEndPointUrl).ResponseUri).AbsoluteUri
-    $version = [regex]::match($downloadUrl, $versionRegEx).Groups[1].Value
+
+    $changeLogPage = Invoke-WebRequest -UseBasicParsing -Uri $changeLogUrl
+    $changeLogPage.Content -match $versionRegEx
+    $version = "$($matches[1]).$($matches[2])"
 
     if ($force) {
         $global:au_Version = $version

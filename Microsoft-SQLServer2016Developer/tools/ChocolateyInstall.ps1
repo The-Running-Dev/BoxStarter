@@ -1,7 +1,7 @@
 ﻿$updatedOn = '2017.06.08 09:09:34'
 $installerBase = 'Microsoft SQL Server 2016 Developer SP1'
-$defaultConfigurationFile = Join-Path $env:chocolateyPackageFolder 'Configuration.ini'
-$parameters = Get-Parameters $env:chocolateyPackageParameters
+$defaultConfigurationFile = Join-Path $env:ChocolateyPackageFolder 'Configuration.ini'
+$parameters = Get-Parameters $env:ChocolateyPackageParameters
 $configurationFile = Get-ConfigurationFile $parameters['ConfigurationFile'] $defaultConfigurationFile
 $silentArgs = "/IAcceptSQLServerLicenseTerms /ConfigurationFile=""$($configurationFile)"""
 

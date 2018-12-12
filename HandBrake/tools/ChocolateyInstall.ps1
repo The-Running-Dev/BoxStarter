@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
-    url         = 'https://download.handbrake.fr/releases/1.1.0/HandBrake-1.1.0-x86_64-Win_GUI.exe'
-    checksum    = '9CF7C0813F91E16218EB770F834380CAD0D1641D93BA93926702562BD9D2EECE'
+    url         = 'https://download.handbrake.fr/releases/1.1.2/HandBrake-1.1.2-x86_64-Win_GUI.exe'
+    checksum    = 'F4CCE05A18402D9DFA768529CABAC2DD721B733CB0D631B940125D6A94BF1A0E'
     silentArgs  = '/S'
 }
 

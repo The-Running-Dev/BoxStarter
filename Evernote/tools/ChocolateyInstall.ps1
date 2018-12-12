@@ -1,7 +1,10 @@
 ﻿$arguments      = @{
-    url         = 'https://cdn1.evernote.com/win6/public/Evernote_6.11.2.7027.exe'
-    checksum    = 'A0146F555433A21ABFA536E3D99B0889D62838AD3CC0213428D910F974166571'
+    url         = 'https://cdn1.evernote.com/win6/public/Evernote_6.16.4.8094.exe'
+    checksum    = '14EBEBB107AEDF61FE7BEDCAA40CFAE8D851685EDC9D258A6D7256824F49B467'
     silentArgs  = '/quiet'
 }
 
 Install-Package $arguments
+
+# Remove the shortcut on the desktop
+Get-ChildItem "$env:Public\Desktop" Evernote* | Remove-Item

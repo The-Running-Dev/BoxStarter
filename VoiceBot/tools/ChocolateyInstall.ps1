@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://binaryfortressdownloads.com/Download/BFSFiles/123/VoiceBotSetup-3.3.exe'
-    checksum        = 'B1294EF4D0EC0CA35C58150E4E3B421EDB38C240496E9784148E6AE2A1F22155'
+    url             = 'https://binaryfortressdownloads.com/Download/BFSFiles/123/VoiceBotSetup-3.4.exe'
+    checksum        = 'CAB0F9D53E261FB59113F2495AD924229A0BBAFFB0896DB4FFAC85AB9954011C'
     silentArgs      = '/VERYSILENT /LAUNCHAFTER=0'
 }
 

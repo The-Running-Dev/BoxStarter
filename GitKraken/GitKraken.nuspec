@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>GitKraken</id>
-    <version>3.6.0</version>
+    <version>4.1.1</version>
     <title>GitKraken</title>
     <authors>AxoSoft</authors>
     <licenseUrl>http://www.gitkraken.com/beta-agreement</licenseUrl>
@@ -14,11 +14,11 @@
     <releaseNotes>http://www.gitkraken.com/release-notes</releaseNotes>
     <tags>git client gui</tags>
     <owners>The-Running-Dev</owners>
-		<packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
-     <dependencies>
-      <dependency id="Git" />
-      <dependency id="GitLfs" />
-			<dependency id="PowerShell-Helpers.extension" />
-		</dependencies>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+        <dependency id="PowerShell-Helpers.extension" />
+        <dependency id="Git" />
+        <dependency id="GitLFS" />
+    </dependencies>
   </metadata>
 </package>

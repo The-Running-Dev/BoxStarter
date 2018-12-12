@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
     url             = 'https://downloads.slack-edge.com/releases_x64/SlackSetup.exe'
-    checksum        = '622E0DF3050FC5D605366820B28BE4CD7188E396DBF84BB94234110BE812D18D'
+    checksum        = '79D28A2F7A95C891FD4E4E6BDBF1F2D5139AC6534FE144A3F689406584F48AAC'
     silentArgs      = '/s'
     cleanUp         = $false
 }
@@ -8,3 +8,6 @@
 Install-Package $arguments
 
 Install-BinFile 'Slack' (Join-Path $env:AppData 'Slack\Slack.exe')
+
+# Remove the shortcut on the desktop
+Get-ChildItem "$env:UserProfile\Desktop" Slack* | Remove-Item

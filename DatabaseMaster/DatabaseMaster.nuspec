@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>DatabaseMaster</id>
-    <version>10.0</version>
+    <version>10.4</version>
     <title>Database Master</title>
     <authors>Nucleon Software</authors>
     <licenseUrl>http://www.nucleonsoftware.com/product/dm/license.rtf</licenseUrl>

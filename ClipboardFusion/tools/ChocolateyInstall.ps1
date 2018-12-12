@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
-    url             = 'https://binaryfortressdownloads.com/Download/BFSFiles/104/ClipboardFusionSetup-5.3.exe'
-    checksum        = 'F07A3C5A68987410FEB764FF8BC30B81B88DB3726C8F94EC91A119211D124423'
+    url             = 'https://binaryfortressdownloads.com/Download/BFSFiles/104/ClipboardFusionSetup-5.4.1.exe'
+    checksum        = '63B35B5050853C93A793624B41B6ABBF7BEBAA1A1D5B746A4E5039BE1CD61352'
     silentArgs      = '/VERYSILENT /LAUNCHAFTER=0'
 }
 
