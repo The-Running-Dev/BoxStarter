@@ -33,9 +33,9 @@ try {
 
   Write-Host "Installing $package to $installDirectory..."
   $params = @{
-    PackageName = $package;
-    Url = "https://github.com/Iristyle/Posh-GitHub/zipball/$version";
-    UnzipLocation = $moduleDirectory;
+    packageName = $package;
+    url = "https://github.com/Iristyle/Posh-GitHub/zipball/$version";
+    unzipLocation = $moduleDirectory;
   }
 
   Install-ChocolateyZipPackage @params

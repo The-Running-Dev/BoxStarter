@@ -6,7 +6,7 @@ $packageDir = $PSScriptRoot
 
 function global:au_GetLatest {
     $downloadPageUrl = 'http://filehippo.com/download_utorrent/'
-    $versionRegEx = 'uTorrent ([0-9\.]+) Build (\d+)'
+    $versionRegEx = 'uTorrent ([0-9\.]+).*?([0-9\.]+)'
     $url = 'http://download.ap.bittorrent.com/track/stable/endpoint/utorrent/os/windows'
     $fileName32 = 'uTorrent.exe'
 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft-SQLServer2017Express</id>
+    <version>14.1801.3958.1</version>
+    <title>Microsoft SQL Server 2017 Express</title>
+    <authors>Microsoft</authors>
+    <projectUrl>https://www.microsoft.com/en-us/sql-server/sql-server-editions-express</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/ferventcoder/chocolatey-packages/59ad5e2e32c52fd2a45a9735f95a81368f9e5e85/icons/microsoft-sql-server.svg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Microsoft SQL Server 2017 Express
+
+      ## Notes
+
+      Install with SQL Authentication. You have to specify the "sa" password.
+      ```
+      choco install Microsoft-SQLServer2017Expres -ia '/SECURITYMODE="SQL" /SAPWD="SetYourOwn"'
+      ```
+
+      Install overriding the installation directory and other parameters.
+      ```
+      choco install Microsoft-SQLServer2017Expres `
+        -ia '/SECURITYMODE="SQL" /SAPWD="SetYourOwnComplex123" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData"'
+      ```
+
+      Install with overriding some parameters, and your own Configuraiton.ini (by specifing the URL to Configuration.ini).
+      ```
+      choco install Microsoft-SQLServer2017Expres `
+        -ia '/SECURITYMODE="SQL" /SAPWD="SetYourOwnComplex123" /InstallSQLDataDir="C:\SQLData" /SQLBACKUPDIR="C:\SQLData\Backup" /SQLUSERDBDIR="C:\SQLData" /SQLTEMPDBDIR="C:\SQLData" /ConfigurationFile="http://bit.ly/2doxBU1"'
+      ```
+
+      If you specify SECURITYMODE="SQL" you have to provide the SAPWD or the setup will fail.
+      SAPWD should be a complex value or the setup will fail.
+
+      If you specify SECURITYMODE="SQL" but do not provide a value for SQLSYSADMINACCOUNTS,
+      the current account will be added to SQL Server Express as a SQL Server admin.
+
+      choco install Microsoft-SQLServer2017Express -s NewPc -params '/file=""...PathTo\SQLEXPR_x64_ENU.exe""'
+    </description>
+    <summary>Installs SQL Server 2014 Express with SP2</summary>
+    <releaseNotes>Update download url for SP2 release.</releaseNotes>
+    <language>en-US</language>
+    <tags>mssql sql server 2017 express</tags>
+    <owners>The-Running-Dev</owners>
+    <packageSourceUrl>https://github.com/The-Running-Dev/Chocolatey-BoxStarter</packageSourceUrl>
+    <dependencies>
+      <dependency id="PowerShell-Helpers.extension" />
+    </dependencies>
+  </metadata>
+</package>

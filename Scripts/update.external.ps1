@@ -18,14 +18,19 @@ function Invoke-ChocoSync {
 
     $packages | ForEach-Object {
         $sourcePackage = choco list $_ -s $source -r -e
+        $sourcePackageName = $sourcePackage -split '\|' | Select-Object -First 1
+
         if ($sourcePackage) {
             $sourcePackageVersion = [version]($sourcePackage -split '\|' | Select-Object -Last 1)
         }
 
-        $publicFeedPackage = choco list $_ -s Chocolatey, Chocolatey.licensed -r -e
+        $publicFeedPackage = choco list $_ -s Chocolatey,Chocolatey.licensed -r -e
+
         if ($publicFeedPackage) {
             $publicFeedPackageVersion = [version]($publicFeedPackage -split '\|' | Select-Object -Last 1)
         }
+
+        Write-Host "$sourcePackageName, Local: $sourcePackageVersion, Remote: $publicFeedPackageVersion"
 
         if (-not $sourcePackage -or ($publicFeedPackageVersion -gt $sourcePackageVersion)) {
             if (-not (Get-ChildItem $packagesDir -Filter "$_.nuspec" -Recurse)) {
@@ -36,7 +41,7 @@ function Invoke-ChocoSync {
                     Write-Host "You have $_ v$sourcePackageVersion, v$publicFeedPackageVersion is available, downloading..."
                 }
 
-                choco download $_ -outDir $packagesDir -s Chocolatey, Chocolatey.licensed -r
+                choco download $_ -outDir $packagesDir -s Chocolatey,Chocolatey.licensed -r
 
                 # Remove the downloaded package
                 Get-ChildItem $packagesDir *.nupkg | Remove-Item -Force
@@ -81,6 +86,7 @@ $sourceUrls = @(
     'D:\Dropbox\BoxStarter'
 )
 $packages = @(
+    'AU'
     'BoxStarter'
     'BoxStarter.BootStrapper'
     'BoxStarter.Chocolatey'

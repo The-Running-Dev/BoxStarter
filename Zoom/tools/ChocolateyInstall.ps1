@@ -1,6 +1,6 @@
 ﻿$arguments      = @{
     url         = 'https://zoom.us/client/latest/ZoomInstaller.exe'
-    checksum    = '0F89B16A09CC9645E049577D4FDEFE80F3A2FFEE05919852715451BA829E34E4'
+    checksum    = 'ED507357743AA36A3A80B27397D812FDF5734DE30816A4B25382859B385F1BEF'
     silentArgs  = '/Q'
 }
 

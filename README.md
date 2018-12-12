@@ -16,13 +16,18 @@
 
 ## Packages
   * 7Zip
+  * AirVideoServer
   * Apache-Httpd
+  * Atom
+  * BFGRepoCleaner.extension
+  * Bonjour
   * CCleaner
   * ClipboardFusion
   * ConEmu
   * DatabaseDotNET
   * DatabaseMaster
   * DbMigration
+  * D-Fender-Reloaded
   * DisplayFusion
   * Docker
   * Driver-AsmediaUSB
@@ -37,9 +42,12 @@
   * Dropbox
   * ESETNOD32Antivirus
   * Evernote
+  * Firefox
   * FLux
   * Git
   * GitExtensions
+  * GitKraken
+  * GitLFS
   * Google-Chrome
   * Google-Drive
   * HandBrake
@@ -50,69 +58,75 @@
   * iTunesFusion
   * jDownloader
   * JetBrains-DataGrip
-  * JetBrains-ReSharper-Platform
+  * JetBrains-Resharper-Platform
+  * JetBrains-Rider
   * JetBrains-TeamCity
   * JetBrains-TeamCity-Agent
   * JetBrains-WebStorm
   * JRE
-  * K-LiteCodecPack
   * KDiff3
+  * K-LiteCodecPack
   * LastPass-Applications
   * Launchy
   * LogFusion
   * MetaX
   * Microsoft-BuildTools
   * Microsoft-DotNET3.5
-  * Microsoft-DotNET4.5.2
+  * Microsoft-DOTNET4.5.2
   * Microsoft-DotNET4.6.2
   * Microsoft-DotNET4.6.2-DevPack
   * Microsoft-DotNETCore-Runtime
   * Microsoft-DotNETCore-SDK
-  * Microsoft-MSBuild
+  * Microsoft-MSBuildVSTargets
   * Microsoft-Office365Business
   * Microsoft-Office365Business-Embedded
   * Microsoft-PowerBI
-  * Microsoft-SQLServer2014Developer
-  * Microsoft-SQLServer2014Express
   * Microsoft-SQLServer2016Developer
   * Microsoft-SQLServer2016Express
   * Microsoft-SQLServer2016LocalDb
   * Microsoft-SQLServer2016SharedManagementObjects
+  * Microsoft-SQLServer2017Express
   * Microsoft-SQLServerJDBCDriver
   * Microsoft-SQLServerManagementStudio
   * Microsoft-VisualCRedistributable2013
-  * Microsoft-VisualCRedistributable2013x64
-  * Microsoft-VisualCRedistributable2013x86
   * Microsoft-VisualCRedistributable2015
-  * Microsoft-VisualCRedistributable2015x64
-  * Microsoft-VisualCRedistributable2015x86
+  * Microsoft-VisualCRedistributable2017
   * Microsoft-VisualStudio2015Enterprise
   * Microsoft-VisualStudio2015Enterprise-Embedded
   * Microsoft-VisualStudioCode
   * Microsoft-WebPI
   * MySQL-Workbench
   * NodeJS
+  * NordVPN
   * NotepadPlusPlus
   * NTLite
   * NuGet-CommandLine
-  * Octopus-Deploy
-  * Octopus-Deploy-CommandLine
-  * Octopus-Deploy-Tentacle
+  * OctopusDeploy
+  * OctopusDeploy-CommandLine
+  * OctopusDeploy-Tentacle
   * Paint.NET
+  * Posh-GitHub
   * PowerShell
   * PowerShell-Carbon
   * PowerShell-CommunityExtensions
+  * PowerShell-Helpers.extension
+  * PowerShell-Pester
+  * PowerShell-PoshGit
   * PowerShell-PSake
   * ProGet
   * RazerSynapse
   * Recuva
   * RemoteDesktopManager
   * Rufus
+  * Skype
   * Slack
   * Spotify
+  * Steam
   * TeamViewer
   * Tor-Browser
+  * UltraVNC
   * uTorrent
+  * VLC
   * VMWare-Converter
   * VMWare-PowerCLI
   * VMWare-RemoteConsole
@@ -120,12 +134,13 @@
   * VoiceBot
   * VPNAreaChameleon
   * WinDirStat
+  * Windows-ADK
   * Windows-IIS
   * Windows-IIS-ExternalCache
   * Windows-IIS-UrlRewrite
   * WSUS-Offline-Update
-  * XYplorer
-
+  * XYPlorer
+  * Zoom
 
 ## Links
   * [Install BoxStarter](http://bit.ly/win10boxstarter)

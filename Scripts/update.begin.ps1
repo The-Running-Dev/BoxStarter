@@ -13,6 +13,8 @@ $global:au_isFixedVersion = @{$true = $global:au_isFixedVersion; $false = $false
 $programsSettingsDir = Join-Path $PSSCriptRoot '..\..\..\Programs\Settings' -Resolve
 $packageName = (Split-Path -Leaf $packageDir) -replace '-Personal'
 
+$downloadsFile = Join-Path $PSSCriptRoot '.\Downloads.txt' -Resolve
+
 # settingsZip is the package.zip by default,
 # but can be overridden in the individual update script
 $settingsZip = "$packageName.zip"
@@ -45,7 +47,8 @@ function global:au_BeforeUpdate {
     $installerFile = [System.IO.Path]::GetFileName($installer)
     $existingInstallerFile = [System.IO.Path]::GetFileName($existingInstaller)
 
-    if ((-not(Test-Path $existingInstaller) -and $Latest.Url32) -or $localVersion -ne $remoteVersion) {
+    if (((-not(Test-Path $existingInstaller) -and $Latest.Url32) -or $localVersion -ne $remoteVersion) `
+            -and ($Latest.PackageName -notmatch '\-Personal$|PowerShell-Helpers')) {
         if (-not(Test-Path $existingInstaller)) {
             Write-Host "No Existing Installer: $existingInstaller"
         }
@@ -53,8 +56,11 @@ function global:au_BeforeUpdate {
             Write-Host "Local Version and Remote Differ..."
         }
 
+        $Latest.Url32 | Tee-Object $downloadsFile -Append | Write-Output
+        $Latest.FileName32 = [System.IO.Path]::GetFileName($Latest.Url32)
+        <#
         # Use the AU function to get the installer
-        Write-Host "Getting Installer with Get-RemoteFiles"
+        # Write-Host "Getting Installer with Get-RemoteFiles"
         Get-RemoteFiles -NoSuffix `
             -FileNameBase $([System.IO.Path]::GetFileNameWithoutExtension($existingInstaller))
 
@@ -63,11 +69,12 @@ function global:au_BeforeUpdate {
             -Recurse *.7z, *.zip, *.tar.gz, *.exe, *.msi, *.jar | Select-Object -First 1
         Write-Host "Installer Downloaded: $downloadedFile"
 
-        # Remove the _32 and any HTML encoded space
+        # Remove the any HTML encoded space
         $installer = Join-Path $packageInstallerDir ((Split-Path -Leaf $downloadedFile) -replace '%20', ' ')
         $installer = [System.IO.Path]::GetFileName($installer)
 
         $Latest.FileName32 = $installer
+        #>
         $Latest.UpdateInstaller = $true
 
         Write-Host "
@@ -189,8 +196,10 @@ function global:au_CleanUp {
             # Get-ChildItem $installersPath -File | `
             # Where-Object { $_.Name -match $installer } | Remove-Item
 
-            Write-Host "Moving '$packageInstaller' --> '$installersPath'"
-            Move-Item $packageInstaller $installersPath -Force
+            if (Test-FileExists $packageInstaller) {
+                Write-Host "Moving '$packageInstaller' --> '$installersPath'"
+                Move-Item $packageInstaller $installersPath -Force
+            }
         }
     }
 }

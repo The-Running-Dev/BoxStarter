@@ -49,8 +49,8 @@ if ($addToPath) {
 }
 
 $arguments  = @{
-    url         = 'https://az764295.vo.msecnd.net/stable/d0182c3417d225529c6d5ad24b7572815d0de9ac/VSCodeSetup-x64-1.23.1.exe'
-    checksum    = 'E93B72BAEDF6FC1234E1DA751B03D67631E150F4D93573DB83C9F205B632E0BD'
+    url         = 'https://az764295.vo.msecnd.net/stable/bc24f98b5f70467bc689abf41cc5550ca637088e/VSCodeSetup-x64-1.29.1.exe'
+    checksum    = '25205076ECC7942B66772F8F7E275E81E89427C06A1B4BC6C9B24BB4B9AE4342'
     silentArgs  = "/verysilent /suppressmsgboxes /mergetasks=$mergeTasks /log=""$env:temp\vscode.log"""
 }
 

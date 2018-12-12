@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>Zoom</id>
-    <version>8.00.7600.16385</version>
+    <version>4.1.2222.868</version>
     <title>Zoom Client for Meetings</title>
     <authors>Zoom Video Communications,  Inc.</authors>
     <owners>Zoom Video Communications,  Inc.</owners>
