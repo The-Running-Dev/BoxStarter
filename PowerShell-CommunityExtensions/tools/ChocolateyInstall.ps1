@@ -1,7 +1,11 @@
-﻿$arguments          = @{
-    file            = 'Pscx-3.2.0.msi'
-    url             = 'http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=pscx&DownloadId=923562&FileTime=130585918034470000&Build=21050'
-    checksum        = '4C823A86B5EFE3313201F5531BA99D55C95C75C5F9D941A130A75E243D7F3E82'
+﻿$arguments = @{
+    url         = 'https://psg-prod-eastus.azureedge.net/packages/pscx.3.3.2.nupkg'
+    checksum    = '1078599AF91A46D1C1393EE36B523FE25D2AF8525387E5564A94C54310628DCC'
+    destination = Join-Path $env:ProgramFiles 'WindowsPowerShell\Modules\Pscx'
 }
 
-Install-Package $arguments
+Install-FromZip $arguments
+
+Import-Module Pscx
+
+Install-ChocolateyPath $arguments.destination 'Machine'

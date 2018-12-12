@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>PowerShell-PSake</id>
-    <version>4.7.0</version>
+    <version>4.7.4</version>
     <title>PowerShell Psake Module</title>
     <authors>James Kovacs</authors>
     <projectUrl>https://github.com/psake/psake</projectUrl>

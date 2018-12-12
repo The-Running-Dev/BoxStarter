@@ -5,16 +5,16 @@ $packageDir = $PSScriptRoot
 . (Join-Path $PSScriptRoot '..\Scripts\update.begin.ps1')
 
 function global:au_GetLatest {
-    $url = 'http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=pscx&DownloadId=923562&FileTime=130585918034470000&Build=21050'
-    $version = '3.2.0'
-    $fileName32 = 'Pscx-3.2.0.msi'
-    $fileType = 'msi'
+    $module = Invoke-RestMethod "https://www.powershellgallery.com/api/v2/Packages?`$filter=Id eq 'PSCX' and IsLatestVersion"
+    $version = $module.properties.version
+    $url = Get-RedirectUrl $module.Content.src
 
     if ($force) {
         $global:au_Version = $version
     }
 
-    return @{ Url32 = $url; Version = $version; FileName32 = $fileName32; FileType = $FileType }
+    return @{ Url32 = $url; Version = $version }
 }
 
+# install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 . (Join-Path $PSScriptRoot '..\Scripts\update.end.ps1')

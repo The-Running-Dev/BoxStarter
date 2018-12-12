@@ -32,10 +32,11 @@ function Install-FromZip {
         $packageArgs.fileType = Get-FileExtension $packageArgs.file
     }
     elseif ($packageArgs.executable) {
-        Write-Message "Install-FromZip: Finding executable '$($packageArgs.executable)' in $($ackageArgs.destination)"
+        Write-Message "Install-FromZip: Finding executable '$($packageArgs.executable)' in $($packageArgs.destination)"
 
         # Re-map the file to the unzip executable
         $packageArgs.file = Join-Path $packageArgs.destination $packageArgs.executable
+        $packageArgs.Remove('FileFullPath')
 
         # Re-map the file type
         $packageArgs.fileType = Get-FileExtension $packageArgs.file

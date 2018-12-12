@@ -3,7 +3,9 @@
     checksum    = 'DB719056C3B6A2160940FAD42740F4DAD9CF6A684AD2D61BEB15599427CF734C'
     destination = Join-Path $env:ProgramFiles 'WindowsPowerShell\Modules'
 }
+
 $installPath = Join-Path $env:ProgramFiles 'WindowsPowerShell\Modules\Posh-Git'
+
 if (Test-Path $installPath) {
     Remove-Item $installPath -Recurse -Force
 }
