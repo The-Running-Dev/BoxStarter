@@ -1,6 +1,6 @@
 ﻿$arguments          = @{
     url             = 'https://download.spotify.com/SpotifyFullSetup.exe'
-    checksum        = 'AD27A934F870D9E4337AC07BB1F61DB279E424E1AE4D9B2445D0180D89CECD68'
+    checksum        = 'F3C8624FD023474226D21597BDD503CD377171EB37789829C71EFDC6CF5CD922'
     silentArgs      = '/silent'
 }
 
@@ -13,10 +13,19 @@ do {
         $done = $true
     }
 
-    Start-Sleep -s 10
+    Start-Sleep 10
 
 }
 until ($done)
 
 # Remove the shortcut on the desktop
 Get-ChildItem "$env:UserProfile\Desktop" Spotify* | Remove-Item
+
+# Remove from Windows startup
+Remove-ItemProperty `
+    -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' `
+    -Name 'Spotify' -ErrorAction SilentlyContinue
+
+Remove-ItemProperty `
+    -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' `
+    -Name 'Spotify Web Helper' -ErrorAction SilentlyContinue

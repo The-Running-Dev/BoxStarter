@@ -7,3 +7,6 @@
 Install-Package $arguments
 
 New-StartMenuShortcut (Join-Path $env:ProgramFiles 'HandBrake\HandBrake.exe')
+
+# Remove the shortcut on the desktop
+Get-ChildItem "$env:Public\Desktop" 'HandBrake*' | Remove-Item

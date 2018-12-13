@@ -44,7 +44,7 @@ function Test-Url {
 
         if (!$success) {
             Write-Host "Trying Again in 5 Seconds..."
-            Start-Sleep -s 5
+            Start-Sleep 5
         }
     }
     while (!$success -and $timer.Elapsed -le (New-TimeSpan -Seconds $timeoutSeconds))

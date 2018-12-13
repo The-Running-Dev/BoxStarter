@@ -7,4 +7,4 @@
 Install-Package $arguments
 
 # Remove the shortcut on the desktop
-Get-ChildItem "$env:Public\Desktop" ConEmu* | Remove-Item
+Get-ChildItem "$env:Public\Desktop" 'ConEmu*' | Remove-Item

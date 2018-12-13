@@ -7,4 +7,4 @@
 Install-Package $arguments
 
 # Remove the shortcut on the desktop
-Get-ChildItem "$env:UserProfile\Desktop" Atom* | Remove-Item -Force
+Get-ChildItem "$env:UserProfile\Desktop" Atom* | Remove-Item

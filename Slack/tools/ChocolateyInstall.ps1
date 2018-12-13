@@ -10,4 +10,9 @@ Install-Package $arguments
 Install-BinFile 'Slack' (Join-Path $env:AppData 'Slack\Slack.exe')
 
 # Remove the shortcut on the desktop
-Get-ChildItem "$env:UserProfile\Desktop" Slack* | Remove-Item
+Get-ChildItem "$env:UserProfile\Desktop" 'Slack*' | Remove-Item
+
+# Remove from Windows startup
+Remove-ItemProperty `
+    -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' `
+    -Name 'com.squirrel.slack.slack' -ErrorAction SilentlyContinue

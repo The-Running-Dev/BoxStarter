@@ -5,3 +5,11 @@
 }
 
 Install-Package $arguments
+
+# Remove the shortcut on the desktop
+Get-ChildItem "$env:Public\Desktop" NordVPN* | Remove-Item
+
+# Remove from Windows startup
+Remove-ItemProperty `
+    -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' `
+    -Name 'NordVPN' -ErrorAction SilentlyContinue

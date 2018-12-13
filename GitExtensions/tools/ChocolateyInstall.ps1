@@ -13,3 +13,6 @@ if ($parameters) {
 Install-Package $arguments
 
 Install-BinFile gitex "$(Get-AppInstallLocation GitExtensions)\gitex.cmd"
+
+# Remove the shortcut on the desktop
+Get-ChildItem "$env:Public\Desktop" 'Git Extensions*' | Remove-Item

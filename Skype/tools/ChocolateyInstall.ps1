@@ -12,6 +12,6 @@ Stop-Process -ProcessName 'Skype'
 Get-ChildItem "$env:Public\Desktop" Skype* | Remove-Item
 
 # Remove from Windows startup
-Get-ItemProperty `
+Remove-ItemProperty `
     -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' `
-    -Name 'Skype for Desktop' -ErrorAction SilentlyContinue | Remove-Item
+    -Name 'Skype for Desktop' -ErrorAction SilentlyContinue

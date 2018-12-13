@@ -122,7 +122,7 @@ try
                     }
                     Else
                     {
-                        Write-Host " " 
+                        Write-Host " "
                         Write-Host "  ***********************************************************************************************"
                         Write-Host "  *  This machine is running Windows or Server 2008 R2 with WMF 3 installed and                 *"
                         Write-Host "  *  -Force was used, Experimental PSModulePath Backup and Attempted Restore Will Be Performed  *"
@@ -135,8 +135,8 @@ try
                         Write-Host "  *   If you find that #3 does not work correctly, then you can use #1 or #2 with some of your  *"
                         Write-Host "  *   own automation to recover from the situation                                              *"
                         Write-Host "  ***********************************************************************************************"
-                        Write-Host " " 
-                        
+                        Write-Host " "
+
                         $StandardPathsToFilterOut = @('%ProgramFiles%\WindowsPowerShell\Modules','%SystemRoot%\System32\WindowsPowerShell\v1.0\Modules','%SystemRoot%\System32\WindowsPowerShell\v1.0\Modules\')
                         [string[]]$currentpsmodulepath = (get-Item 'hklm:system\CurrentControlSet\Control\Session Manager\Environment').GetValue("PsModulePath","Default",[Microsoft.WIN32.RegistryValueOptions]::DoNotExpandEnvironmentNames).split(';')
                         $FilteredList = ($CurrentPSModulePath | Where {$StandardPathsToFilterOut -inotcontains $_}) -join ';'
@@ -162,7 +162,7 @@ try
 
                         $code = "set-Itemproperty 'hklm:system\CurrentControlSet\Control\Session Manager\Environment' -name 'PsModulePath' -value `$((get-Item 'hklm:system\CurrentControlSet\Control\Session Manager\Environment').GetValue('PsModulePath','Default',[Microsoft.WIN32.RegistryValueOptions]::DoNotExpandEnvironmentNames)" + "+`';$(invoke-expression -command '(get-variable FilteredList).value')`'" + ')'
                         $code | out-file $scriptlocation
-                        "start-sleep -s 2" | out-file $scriptlocation -append
+                        "start-sleep 2" | out-file $scriptlocation -append
                         "schtasks.exe /delete /f /tn `"PSModulePathFixUp`"" | out-file $scriptlocation -append
 
                         schtasks.exe /create /tn "PSModulePathFixUp" /ru SYSTEM /Sc ONSTART /tr "powershell.exe -file $scriptlocation"

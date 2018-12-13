@@ -1,13 +1,13 @@
-﻿$arguments      = @{
-    url         = 'https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi'
-    checksum    = '1A6CECB8952C7E0B50DAC6AAA83BB8DCC7DE978466036BB97DE656DFC89900C4'
+﻿$arguments = @{
+    url      = 'https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi'
+    checksum = 'E080C523B419D0F706B3633FCBCE37ADA61F983BDEAB1084E3320C69BA2134A4'
 }
 
 function Get-ChromeVersion() {
-    $root   = 'HKLM:\SOFTWARE\Google\Update\Clients'
+    $root = 'HKLM:\SOFTWARE\Google\Update\Clients'
     $root64 = 'HKLM:\SOFTWARE\Wow6432Node\Google\Update\Clients'
 
-    foreach ($r in $root,$root64) {
+    foreach ($r in $root, $root64) {
         $gcb = Get-ChildItem $r -ea 0 | ? { (gp $_.PSPath) -match 'Google Chrome binaries' }
         if ($gcb) { return $gcb.GetValue('pv') }
     }
@@ -20,5 +20,6 @@ if ($env:ChocolateyPackageVersion -eq (Get-ChromeVersion)) {
 
 Install-Package $arguments
 
-# Remove the shortcut on the desktop
-Get-ChildItem "$env:UserProfile\Desktop" Google* | Remove-Item
+# Remove the shortcuts from the desktop
+Get-ChildItem "$env:UserProfile\Desktop" "Google Chrome*" | Remove-Item -Force
+Get-ChildItem "$env:Public\Desktop" "Google Chrome*" | Remove-Item -Force

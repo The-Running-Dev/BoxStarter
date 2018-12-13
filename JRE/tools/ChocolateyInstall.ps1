@@ -73,7 +73,6 @@ if ($oldJreInstalledHash[1]) {
     Start-ChocolateyProcessAsAdmin "/qn /norestart /X$64" -exeToRun "msiexec.exe" -validExitCodes @(0, 1605, 3010)
 }
 
-# Remove the scheduled update from startup
-Get-ItemProperty `
+Remove-ItemProperty `
     -Path 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run' `
-    -Name 'SunJavaUpdateSched' -ErrorAction SilentlyContinue | Remove-Item
+    -Name 'SunJavaUpdateSched' -ErrorAction SilentlyContinue

@@ -5,3 +5,6 @@
 }
 
 Install-Package $arguments
+
+# Remove the shortcut on the desktop
+Get-ChildItem "$env:Public\Desktop" TeamViewer* | Remove-Item

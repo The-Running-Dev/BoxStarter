@@ -12,7 +12,7 @@ function Stop-ProcessSafe {
                 $done = $true
             }
 
-            Start-Sleep -s 5
+            Start-Sleep 5
 
         }
         until ($done)

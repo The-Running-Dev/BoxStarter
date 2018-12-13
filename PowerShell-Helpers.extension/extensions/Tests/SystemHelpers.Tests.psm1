@@ -1,7 +1,7 @@
 <#
 function IsSystem32Bit()
 {
-    return 
+    return
         ($Env:PROCESSOR_ARCHITECTURE -eq 'x86') -and `
         ($Env:PROCESSOR_ARCHITEW6432 -eq $null)
 }
@@ -18,7 +18,7 @@ function Invoke-ScheduledTask() {
 
     Register-ScheduledTask -TaskName $name -Action $action -Trigger $trigger
     Start-ScheduledTask -TaskName $name
-    Start-Sleep -s 1
+    Start-Sleep 1
     Unregister-ScheduledTask -TaskName $name -Confirm:$false
 }
 #>
